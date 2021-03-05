@@ -30,15 +30,15 @@
 7.  in vscode, create a new file config.yml, copy paste the following code to it, [PASSWORD], [THEME_ID] and [SHOP_URL]
     need to be replaced by the real values. You can find the three values in your shopify store
 
-    development:
-			password: [PASSWORD]
-			theme_id: [THEME_ID]
-			store: [SHOP_URL]
+				development:
+					password: [PASSWORD]
+					theme_id: [THEME_ID]
+					store: [SHOP_URL]
 
 8.  follow this [document](https://shopify.dev/tools/theme-kit/getting-started) and install theme kit
 9.  synchronize files with current theme
 
-    theme download
+			theme download
 
 10. if you are going to work on files outside of src folder, start theme watcher; if you are going to work on files in the src folder, start theme watcher as well as parcel watcher respectively in two terminals
 
