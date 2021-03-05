@@ -15,8 +15,8 @@ const GET_PRODUCTS = gql`
 `;
 
 function productList() {
-  const { loading, data, refetch } = useQuery(GET_PRODUCTS);
-  console.log(loading, data, refetch);
+  const { error, loading, data, refetch } = useQuery(GET_PRODUCTS);
+  console.log(error, loading, data, refetch);
   return html`<h1>hello world</h1>`;
 }
 
