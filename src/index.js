@@ -1,2 +1,2 @@
-import "./apollo-client";
-import "./components/index";
+import './apollo-client';
+import './components/index';
