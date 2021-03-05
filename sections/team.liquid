@@ -1,0 +1,395 @@
+<!--Team start-->
+{% if section.settings.our_team_enable %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<section id="team" class="team section-b-space {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        {%- include 'title' -%}
+        <div class="slick_carousel" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 480,"settings":{"slidesToShow": {{ section.settings.slidetoshow_480}} }} ]}'>
+          {% for block in section.blocks %}
+          {% capture blockId %}{{ block.id }}{% endcapture %}
+          <div>
+            <div class="img-border">
+            {% if block.settings.team_image == blank %}
+            <img src="{{ 'team_svg.png' | asset_url }}" alt="" class="img-fluid">
+            {% else %}
+
+            {% if section.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.team_image %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>        
+            {% else %}
+            {% assign block_image = block.settings.team_image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: 'original' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
+            {% endif %}
+            {% endif %}
+            </div>
+            {% if block.settings.team_name != blank %}
+            <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#team_{{blockId}}_team_name"{% endif %}>
+              {{ block.settings.team_name }}
+            </h4>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="team_{{blockId}}_team_name">{{ block.settings.trans_team_name | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if block.settings.team_position != blank %}
+            <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#team_{{blockId}}_team_position"{% endif %}>
+              {{ block.settings.team_position }} 
+            </h6>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="team_{{blockId}}_team_position">{{ block.settings.trans_team_position | raw }}</span>
+            {% endif %}
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!--Team ends-->
+
+{% schema %}
+  {
+   "name":"Our Team",
+   "settings":[
+      {
+         "type":"header",
+         "content":"Our Team"
+      },
+      {
+         "type":"checkbox",
+         "id":"our_team_enable",
+         "label":"Enabled",
+         "default":true
+      },
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Title",
+         "default":"Special offer"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_title",
+         "label":"Translate Title"
+      },
+      {
+         "type":"color",
+         "id":"title_color",
+         "label":"Title color",
+         "default":"#fff"
+      },
+      {
+         "type":"text",
+         "id":"subtitle",
+         "label":"SubTitle",
+         "default":"Top Collections"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_subtitle",
+         "label":"Translate subtitle"
+      },
+      {
+         "type":"color",
+         "id":"subtitle_color_color",
+         "label":"Subtitle color",
+         "default":"#fff"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 480"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_480",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    }
+   ],
+   "blocks":[
+      {
+         "type":"Team",
+         "name":"Our Team",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"team_image",
+               "label":"Testimonial Image"
+            },
+            {
+               "type":"text",
+               "id":"team_name",
+               "label":"Name",
+               "default":"Hilleri koel"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_team_name",
+               "label": "Translate Team Name"
+            },
+            {
+               "type":"text",
+               "id":"team_position",
+               "label":"Position",
+               "default":"Ceo & Founder at company"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_team_position",
+               "label": "Translate Team Position"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Our Team",
+         "category":"Our Team",
+         "settings":{
+         },
+         "blocks":[
+            {
+               "type":"Team"
+            },
+            {
+               "type":"Team"
+            },
+            {
+               "type":"Team"
+            },
+            {
+               "type":"Team"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

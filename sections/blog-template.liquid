@@ -1,0 +1,310 @@
+<!-- section start -->
+{% assign blog_limit = section.settings.blog_limit -%}
+{% assign blog_sidebar = section.settings.blog_sidebar_position -%}
+
+{% assign show_blog_date = section.settings.blog_date -%}
+{% assign show_blog_auther = section.settings.blog_auther -%}
+{% assign show_blog_comments = section.settings.blog_comment -%}
+
+{% if section.settings.blog_sidebar_tags %}
+{% assign blog_sidebar_tag = 'true' -%}
+{% endif %}
+{% if section.settings.blog_sidebar_recent_post %}
+{% assign blog_sidebar_recent_post = 'true' -%}
+{% endif %}
+{% if section.settings.blog_sidebar_content %}
+{% assign blog_sidebar_content = 'true' -%}
+{% endif %}
+
+{% paginate blog.articles by blog_limit %}
+<section class="section-b-space  blog-page">
+  <div class="container">
+    <div class="row">
+      
+      <!--Blog sidebar start-->
+      {% if blog_sidebar == 'left' %}
+      {% include 'blog-sidebar', blog_sidebar_tag, blog_sidebar_recent_post %}
+      {% endif%}
+      <!--Blog sidebar end-->
+      
+      <!--Blog List start-->
+      <div class="{% if blog_sidebar == 'none' %}col-xl-12 col-lg-12 col-md-12 {% else %}col-xl-9 col-lg-8 col-md-7  {% endif %}">
+        {% for article in blog.articles %}
+        {% include 'blog-item' %}
+        {% endfor %}        
+        
+        <div class="pagination-class">
+        {% include 'pagination' %}
+        </div>
+        
+      </div>
+      <!--Blog List end-->
+
+      <!--Blog sidebar start-->
+      {% if blog_sidebar == 'right' %}
+      {% include 'blog-sidebar', blog_sidebar, blog_sidebar_category, blog_sidebar_recent_post %}
+      {% endif%}
+      <!--Blog sidebar end-->
+      
+    </div>
+  </div>
+</section>
+{% endpaginate %}
+<!-- Section ends -->
+
+{% schema %}
+{
+   "name":"Blog pages",
+   "settings":[
+      {
+         "type":"select",
+         "id":"blog_limit",
+         "label":"Blog Paginate Limit",
+         "default":"3",
+         "options":[
+            {
+               "value":"3",
+               "label":"3"
+            },
+            {
+               "value":"6",
+               "label":"6"
+            },
+            {
+               "value":"9",
+               "label":"9"
+            }
+         ]
+      },
+      {
+         "type":"select",
+         "id":"blog_sidebar_position",
+         "label":"Blog Sidebar Position",
+         "default":"left",
+         "options":[
+            {
+               "value":"left",
+               "label":"Left"
+            },
+            {
+               "value":"right",
+               "label":"Right"
+            },
+            {
+               "value":"none",
+               "label":"None"
+            }
+         ]
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_date",
+         "label":"Show Blog Date",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_auther",
+         "label":"Show Blog Auther",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_comment",
+         "label":"Show Blog Comments",
+         "default":true
+      },
+      {
+         "type":"header",
+         "content":"Blog Sidebar Option"
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_sidebar_tags",
+         "label":"Show Popular Tags",
+         "default":true
+      },
+      {
+         "type":"text",
+         "id":"blog_sidebar_tags_title",
+         "label":"Blog Sidebar Tag Title"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_blog_sidebar_tags_title",
+         "label":"Translate Blog Sidebar Tag Title"
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_sidebar_content",
+         "label":"Show blog About",
+         "default":true
+      },
+      {
+         "type":"text",
+         "id":"blog_sidebar_abt_title",
+         "label":"Sidebar Blog About Title"
+      },
+      {
+         "type":"text",
+         "id":"trans_blog_sidebar_abt_title",
+         "label":"Translate Blog Sidebar Tag Title"
+      },
+      {
+         "type":"textarea",
+         "id":"blog_sidebar_abt_text",
+         "label":"Blog Sidebar About Text"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_blog_sidebar_abt_text",
+         "label":"Translate Blog Sidebar Tag Title"
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_sidebar_recent_post",
+         "label":"Show Sidebar Recent Post",
+         "default":true
+      },
+      {
+         "type":"text",
+         "id":"blog_sidebar_recentpost_title",
+         "label":"Blog Sidebar Recent Post Title"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_blog_sidebar_recentpost_title",
+         "label":"Translate Blog Sidebar Tag Title"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use equal height for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

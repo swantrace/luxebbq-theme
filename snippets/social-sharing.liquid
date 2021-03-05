@@ -1,0 +1,37 @@
+<ul class="product-social">
+  {% if settings.share_facebook %}
+  <li>
+    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" title="{{ 'general.social.share_on_facebook' | t }}">
+      <i class="fa fa-facebook"></i>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.share_google %}
+  <li>
+    <a target="_blank" href="https://plus.google.com/share?url={{ shop.url | append: share_permalink }}" title="{{ 'general.social.share_on_google' | t }}">
+      <i class="fa fa-google-plus"></i>
+    </a>
+  </li>  
+  {% endif %}
+  {% if settings.share_twitter %}
+  <li>
+    <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" title="{{ 'general.social.share_on_twitter' | t }}">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </li>  
+  {% endif %}
+  {% if settings.share_pinterest %}
+  <li>
+    <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}" title="{{ 'general.social.share_on_pinterest' | t }}">
+      <i class="fa fa-pinterest"></i>
+    </a>
+  </li>
+  {% endif %}
+  {% if settings.share_linked %}
+  <li>
+    <a target="_blank" href="//www.linkedin.com/shareArticle?mini=true&amp;url=//{{ shop.url | append: share_permalink }}{{ product.url }}&amp;title={{ product.title | truncate: 30 | url_param_escape }}&amp;source=http&#58;&#47;&#47;{{ shop.domain }}{{ product.url }}" title="{{ 'general.social.share_on_linkedin' | t }}">
+      <i class="fa fa-linkedin"></i>
+    </a>
+  </li>
+  {% endif %}
+</ul>

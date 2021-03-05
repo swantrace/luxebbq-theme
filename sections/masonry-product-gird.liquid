@@ -1,0 +1,1239 @@
+<!-- section start -->
+{% if section.settings.enabled %}
+
+{% assign product1 = all_products[section.settings.product_1] %}
+{% assign product2 = all_products[section.settings.product_2] %}
+{% assign product3 = all_products[section.settings.product_3] %}
+{% assign product4 = all_products[section.settings.product_4] %}
+{% assign product5 = all_products[section.settings.product_5] %}
+{% assign product6 = all_products[section.settings.product_6] %}
+{% assign product7 = all_products[section.settings.product_7] %}
+{% assign product8 = all_products[section.settings.product_8] %}
+{% assign product9 = all_products[section.settings.product_9] %}
+
+
+<section class="section-b-space layout7-product masonary_product_grid" style="padding: {{ section.settings.section_padding }};">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-12 p-0">
+        <div class="row m-0">
+          <div class="col-sm-6 col-12 p-0">
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product1 == blank %}
+                  <a href="#">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product1.url | within: collection }}">
+                    {% assign block_image = product1 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product1.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product1.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product1.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product1.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+
+                  {% if customer %}
+                  {% capture value %}{{ product1.id }}{% endcapture %}
+                  {% capture productID %}{{ product1.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product1.id }}" data-handle="{{ product1.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product1.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product1.url | within: collection }}">
+                  {% assign data_title = product1.title | split: '|' | first %}
+                  {% assign data_json = product1.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product1.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product1.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product1.id }}" data-price="{{ product1.price }}">{{ product1.price | money }}
+                  {% if product1.compare_at_price > product1.price %}
+                  <del>{{ product1.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product1.id }}" data-price="{{ product1.price }}">{{ product1.price | money }}
+                  {% if product1.compare_at_price > product1.price %}
+                  <del>{{ product1.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product1.id }}" data-price="{{ product1.price }}">{{ product1.price | money }}
+                  {% if product1.compare_at_price > product1.price %}
+                  <del>{{ product1.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12 p-0">
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product2 == blank %}
+                  <a href="#">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product2.url | within: collection }}">
+                    {% assign block_image = product2 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product2.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product2.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product2.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product2.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+
+                  {% if customer %}
+                  {% capture value %}{{ product2.id }}{% endcapture %}
+                  {% capture productID %}{{ product2.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product2.id }}" data-handle="{{ product2.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product2.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product2.url | within: collection }}">
+                  {% assign data_title = product2.title | split: '|' | first %}
+                  {% assign data_json = product2.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product2.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product2.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}  
+                </a>
+
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product2.id }}" data-price="{{ product2.price }}">{{ product2.price | money }}
+                  {% if product2.compare_at_price > product2.price %}
+                  <del>{{ product2.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product2.id }}" data-price="{{ product2.price }}">{{ product2.price | money }}
+                  {% if product2.compare_at_price > product2.price %}
+                  <del>{{ product2.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product2.id }}" data-price="{{ product2.price }}">{{ product2.price | money }}
+                  {% if product2.compare_at_price > product2.price %}
+                  <del>{{ product2.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row m-0">
+          <div class="col-12 p-0">
+            <div class="product-box custom_height">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product3 == blank %}
+                  <a href="#">{{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product3.url | within: collection }}">
+                    {% assign block_image = product3 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product3.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product3.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product3.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product3.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+
+                  {% if customer %}
+                  {% capture value %}{{ product3.id }}{% endcapture %}
+                  {% capture productID %}{{ product3.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product3.id }}" data-handle="{{ product3.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product3.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product3.url | within: collection }}">
+                  {% assign data_title = product3.title | split: '|' | first %}
+                  {% assign data_json = product3.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product3.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product3.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product3.id }}" data-price="{{ product3.price }}">{{ product3.price | money }}
+                  {% if product3.compare_at_price > product3.price %}
+                  <del>{{ product3.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product3.id }}" data-price="{{ product3.price }}">{{ product3.price | money }}
+                  {% if product3.compare_at_price > product3.price %}
+                  <del>{{ product3.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product3.id }}" data-price="{{ product3.price }}">{{ product3.price | money }}
+                  {% if product3.compare_at_price > product3.price %}
+                  <del>{{ product3.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-12 p-0">
+        <div class="product-box full_height">
+          <div class="img-wrapper">
+            <div class="front">
+              {% if product4 == blank %}
+              <a href="#">{{ 'product-4' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+              {% else %}
+              <a href="{{ product4.url | within: collection }}">
+                {% assign block_image = product4 %}        
+                {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img src="{{ block_image | img_url: 'original' }}" 
+                     data-src="{{ img_url }}" 
+                     data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                     data-aspectratio="{{ block_image.aspect_ratio }}" 
+                     data-sizes="auto" 
+                     class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product4.title | split: '|' | first }}" >
+              </a>
+              {% endif %}
+            </div>
+            <div class="cart-info cart-wrap">
+              {% if settings.show_catelogue != true %}
+              <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product4.variants.first.id }}">
+                <input type="hidden" name="id" value="{{ product4.variants.first.id }}" />
+                <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product4.variants[0].available%}disabled{% endunless %}>
+                  <i class="ti-shopping-cart" ></i>
+                </button>
+              </form>
+              {% endif %}
+              {% if settings.show_catelogue != true %}
+              {% if settings.show_wishlist %}
+              <!-- ========================= wishlist button ========================= -->
+
+              {% if customer %}
+              {% capture value %}{{ product4.id }}{% endcapture %}
+              {% capture productID %}{{ product4.id }}{% endcapture %}
+
+              {% for tag in customer.tags %}
+              {% capture tagID %}{{ tag }}{% endcapture %}
+              {% if tagID contains productID %}
+              {% assign value = 'x' | append:tag %}
+              {% endif %}
+              {% endfor %}
+
+              {% assign check = value.size | minus:productID.size | modulo:2 %}
+              {% if check == 0 %}
+              {% assign display_button = true %}
+              {% else %}
+              {% assign display_button = false %}
+              {% endif %}
+
+              {% if display_button %}
+              <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                <input name="form_type" type="hidden" value="customer">
+                <input name="utf8" type="hidden" value="✓">
+                <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+              </form>
+              {% else %}
+              <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                <i class="ti-heart"></i>
+              </a>
+              {% endif %}
+              {% else %}
+              <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                <i class="ti-heart"></i>
+              </a>
+              {% endif %}
+              {% endif %}
+              {% endif %}
+
+              {% if settings.show_quickview %}
+              <a class="quick-view" href="#quick-view-product" data-id="{{ product4.id }}" data-handle="{{ product4.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                <i class="ti-search"></i>
+              </a>
+              {% endif %}
+
+              {% if settings.show_compare %}
+              <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product4.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+              {% endif %}
+
+            </div>
+          </div>
+          <div class="details-product">
+            <a href="{{ product4.url | within: collection }}">
+              {% assign data_title = product4.title | split: '|' | first %}
+              {% assign data_json = product4.title | split: '|' | last %}
+              <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product4.id}}_pro_title"{% endif %}>
+                {{ data_title | truncatewords: 10 }}
+              </h6>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="{{product4.id}}_pro_title">{{ data_json | raw }}</span>
+              {% endif %}
+            </a>
+
+            {% if settings.eneble_login_price %}
+            {% if customer %}
+            <h4 data-id="{{ product4.id }}" data-price="{{ product4.price }}">{{ product4.price | money }}
+              {% if product4.compare_at_price > product4.price %}
+              <del>{{ product4.variants[0].compare_at_price | money }}</del>
+              {% endif %}
+            </h4>
+            {% else %}
+            <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+            {% endif %}
+            {% elsif settings.show_catelogue %}
+            {% if settings.show_catelogue_price %}
+            <h4 data-id="{{ product4.id }}" data-price="{{ product4.price }}">{{ product4.price | money }}
+              {% if product4.compare_at_price > product4.price %}
+              <del>{{ product4.variants[0].compare_at_price | money }}</del>
+              {% endif %}
+            </h4>
+            {% endif %}
+            {% else  %}
+            <h4 data-id="{{ product4.id }}" data-price="{{ product4.price }}">{{ product4.price | money }}
+              {% if product4.compare_at_price > product4.price %}
+              <del>{{ product4.variants[0].compare_at_price | money }}</del>
+              {% endif %}
+            </h4>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-12 p-0">
+        <div class="product-box">
+          <div class="img-wrapper">
+            <div class="front">
+              {% if product5 == blank %}
+              <a href="#">{{ 'product-5' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+              {% else %}
+              <a href="{{ product5.url | within: collection }}">
+                {% assign block_image = product5 %}        
+                {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img src="{{ block_image | img_url: 'original' }}" 
+                     data-src="{{ img_url }}" 
+                     data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                     data-aspectratio="{{ block_image.aspect_ratio }}" 
+                     data-sizes="auto" 
+                     class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product5.title | split: '|' | first }}" >
+              </a>
+              {% endif %}
+            </div>
+            <div class="cart-info cart-wrap">
+              {% if settings.show_catelogue != true %}
+              <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product5.variants.first.id }}">
+                <input type="hidden" name="id" value="{{ product5.variants.first.id }}" />
+                <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product5.variants[0].available%}disabled{% endunless %}>
+                  <i class="ti-shopping-cart" ></i>
+                </button>
+              </form>
+              {% endif %}
+
+
+              {% if settings.show_catelogue != true %}
+              {% if settings.show_wishlist %}
+              <!-- ========================= wishlist button ========================= -->
+
+              {% if customer %}
+              {% capture value %}{{ product5.id }}{% endcapture %}
+              {% capture productID %}{{ product5.id }}{% endcapture %}
+
+              {% for tag in customer.tags %}
+              {% capture tagID %}{{ tag }}{% endcapture %}
+              {% if tagID contains productID %}
+              {% assign value = 'x' | append:tag %}
+              {% endif %}
+              {% endfor %}
+
+              {% assign check = value.size | minus:productID.size | modulo:2 %}
+              {% if check == 0 %}
+              {% assign display_button = true %}
+              {% else %}
+              {% assign display_button = false %}
+              {% endif %}
+
+              {% if display_button %}
+              <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                <input name="form_type" type="hidden" value="customer">
+                <input name="utf8" type="hidden" value="✓">
+                <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+              </form>
+              {% else %}
+              <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                <i class="ti-heart"></i>
+              </a>
+              {% endif %}
+              {% else %}
+              <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                <i class="ti-heart"></i>
+              </a>
+              {% endif %}
+              {% endif %}
+              {% endif %}
+
+              {% if settings.show_quickview %}
+              <a class="quick-view" href="#quick-view-product" data-id="{{ product5.id }}" data-handle="{{ product5.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                <i class="ti-search"></i>
+              </a>
+              {% endif %}
+
+              {% if settings.show_compare %}
+              <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product5.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+              {% endif %}
+
+            </div>
+          </div>
+          <div class="details-product">
+            <a href="{{ product5.url | within: collection }}">
+              {% assign data_title = product5.title | split: '|' | first %}
+              {% assign data_json = product5.title | split: '|' | last %}
+              <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product5.id}}_pro_title"{% endif %}>
+                {{ data_title | truncatewords: 10 }}
+              </h6>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="{{product5.id}}_pro_title">{{ data_json | raw }}</span>
+              {% endif %}
+            </a>
+
+            {% if settings.eneble_login_price %}
+            {% if customer %}
+            <h4 data-id="{{ product5.id }}" data-price="{{ product5.price }}">{{ product5.price | money }}
+              {% if product5.compare_at_price > product5.price %}
+              <del>{{ product5.variants[0].compare_at_price | money }}</del>
+              {% endif %}
+            </h4>
+            {% else %}
+            <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+            {% endif %}
+            {% elsif settings.show_catelogue %}
+            {% if settings.show_catelogue_price %}
+            <h4 data-id="{{ product5.id }}" data-price="{{ product5.price }}">{{ product5.price | money }}
+              {% if product5.compare_at_price > product5.price %}
+              <del>{{ product5.variants[0].compare_at_price | money }}</del>
+              {% endif %}
+            </h4>
+            {% endif %}
+            {% else  %}
+            <h4 data-id="{{ product5.id }}" data-price="{{ product5.price }}">{{ product5.price | money }}
+              {% if product5.compare_at_price > product5.price %}
+              <del>{{ product5.variants[0].compare_at_price | money }}</del>
+              {% endif %}
+            </h4>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-12 p-0">
+        <div class="row m-0">
+          <div class="col-sm-6 col-12 p-0">
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product6 == blank %}
+                  <a href="#">{{ 'product-6' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product6.url | within: collection }}">
+                    {% assign block_image = product6 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product6.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product6.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product6.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product6.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+
+                  {% if customer %}
+                  {% capture value %}{{ product6.id }}{% endcapture %}
+                  {% capture productID %}{{ product6.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product6.id }}" data-handle="{{ product6.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product6.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product6.url | within: collection }}">
+                  {% assign data_title = product6.title | split: '|' | first %}
+                  {% assign data_json = product6.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product6.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product6.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product6.id }}" data-price="{{ product6.price }}">{{ product6.price | money }}
+                  {% if product6.compare_at_price > product6.price %}
+                  <del>{{ product6.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product6.id }}" data-price="{{ product6.price }}">{{ product6.price | money }}
+                  {% if product6.compare_at_price > product6.price %}
+                  <del>{{ product6.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product6.id }}" data-price="{{ product6.price }}">{{ product6.price | money }}
+                  {% if product6.compare_at_price > product6.price %}
+                  <del>{{ product6.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12 p-0">
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product7 == blank %}
+                  <a href="#">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product7.url | within: collection }}">
+                    {% assign block_image = product7 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product7.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product7.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product7.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product7.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+
+                  {% if customer %}
+                  {% capture value %}{{ product7.id }}{% endcapture %}
+                  {% capture productID %}{{ product7.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product7.id }}" data-handle="{{ product7.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product7.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product7.url | within: collection }}">
+                  {% assign data_title = product7.title | split: '|' | first %}
+                  {% assign data_json = product7.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product7.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product7.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product7.id }}" data-price="{{ product7.price }}">{{ product7.price | money }}
+                  {% if product7.compare_at_price > product7.price %}
+                  <del>{{ product7.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product7.id }}" data-price="{{ product7.price }}">{{ product7.price | money }}
+                  {% if product7.compare_at_price > product7.price %}
+                  <del>{{ product7.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product7.id }}" data-price="{{ product7.price }}">{{ product7.price | money }}
+                  {% if product7.compare_at_price > product7.price %}
+                  <del>{{ product7.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row m-0">
+          <div class="col-sm-6 col-12 p-0">
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product8 == blank %}
+                  <a href="#">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product8.url | within: collection }}">
+                    {% assign block_image = product8 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product8.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product8.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product8.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product8.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+                  {% if customer %}
+                  {% capture value %}{{ product8.id }}{% endcapture %}
+                  {% capture productID %}{{ product8.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product8.id }}" data-handle="{{ product8.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product8.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product8.url | within: collection }}">
+                  {% assign data_title = product8.title | split: '|' | first %}
+                  {% assign data_json = product8.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product8.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product8.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product8.id }}" data-price="{{ product8.price }}">{{ product8.price | money }}
+                  {% if product8.compare_at_price > product8.price %}
+                  <del>{{ product8.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product8.id }}" data-price="{{ product8.price }}">{{ product8.price | money }}
+                  {% if product8.compare_at_price > product8.price %}
+                  <del>{{ product8.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product8.id }}" data-price="{{ product8.price }}">{{ product8.price | money }}
+                  {% if product8.compare_at_price > product8.price %}
+                  <del>{{ product8.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-12 p-0">
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  {% if product9 == blank %}
+                  <a href="#">{{ 'product-3' | placeholder_svg_tag: 'placeholder-svg' }}</a>
+                  {% else %}
+                  <a href="{{ product9.url | within: collection }}">
+                    {% assign block_image = product9 %}        
+                    {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                    <img src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
+                         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product9.title | split: '|' | first }}" >
+                  </a>
+                  {% endif %}
+                </div>
+                <div class="cart-info cart-wrap">
+                  {% if settings.show_catelogue != true %}
+                  <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product9.variants.first.id }}">
+                    <input type="hidden" name="id" value="{{ product9.variants.first.id }}" />
+                    <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" {% unless product9.variants[0].available%}disabled{% endunless %}>
+                      <i class="ti-shopping-cart" ></i>
+                    </button>
+                  </form>
+                  {% endif %}
+
+
+                  {% if settings.show_catelogue != true %}
+                  {% if settings.show_wishlist %}
+                  <!-- ========================= wishlist button ========================= -->
+
+                  {% if customer %}
+                  {% capture value %}{{ product9.id }}{% endcapture %}
+                  {% capture productID %}{{ product9.id }}{% endcapture %}
+
+                  {% for tag in customer.tags %}
+                  {% capture tagID %}{{ tag }}{% endcapture %}
+                  {% if tagID contains productID %}
+                  {% assign value = 'x' | append:tag %}
+                  {% endif %}
+                  {% endfor %}
+
+                  {% assign check = value.size | minus:productID.size | modulo:2 %}
+                  {% if check == 0 %}
+                  {% assign display_button = true %}
+                  {% else %}
+                  {% assign display_button = false %}
+                  {% endif %}
+
+                  {% if display_button %}
+                  <form accept-charset="UTF-8" id="wish_list" action="/contact" method="post">
+                    <input name="form_type" type="hidden" value="customer">
+                    <input name="utf8" type="hidden" value="✓">
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}"/>
+                    <input id="update-me" type="hidden" name="contact[tags]" value="{{ value }}" />
+                    <button type="submit" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart"></i></button>
+                  </form>
+                  {% else %}
+                  <a href="/pages/wishlist" data-toggle="tooltip" data-placement="left" title="Add to Wishlist" class="added_wish added_wishlist_product">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% else %}
+                  <a href="/account/login" data-toggle="tooltip" data-placement="left" title="Add to Wishlist">
+                    <i class="ti-heart"></i>
+                  </a>
+                  {% endif %}
+                  {% endif %}
+                  {% endif %}
+
+                  {% if settings.show_quickview %}
+                  <a class="quick-view" href="#quick-view-product" data-id="{{ product9.id }}" data-handle="{{ product9.handle }}" data-toggle="tooltip" data-placement="left" title="Quick View">
+                    <i class="ti-search"></i>
+                  </a>
+                  {% endif %}
+
+                  {% if settings.show_compare %}
+                  <a href="#" data-toggle="tooltip" data-placement="left" data-pid="{{ product9.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                  {% endif %}
+
+                </div>
+              </div>
+              <div class="details-product">
+                <a href="{{ product9.url | within: collection }}">
+                  {% assign data_title = product9.title | split: '|' | first %}
+                  {% assign data_json = product9.title | split: '|' | last %}
+                  <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product9.id}}_pro_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </h6>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product9.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+
+                {% if settings.eneble_login_price %}
+                {% if customer %}
+                <h4 data-id="{{ product9.id }}" data-price="{{ product9.price }}">{{ product9.price | money }}
+                  {% if product9.compare_at_price > product9.price %}
+                  <del>{{ product9.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% else %}
+                <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                {% endif %}
+                {% elsif settings.show_catelogue %}
+                {% if settings.show_catelogue_price %}
+                <h4 data-id="{{ product9.id }}" data-price="{{ product9.price }}">{{ product9.price | money }}
+                  {% if product9.compare_at_price > product9.price %}
+                  <del>{{ product9.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+                {% else  %}
+                <h4 data-id="{{ product9.id }}" data-price="{{ product9.price }}">{{ product9.price | money }}
+                  {% if product9.compare_at_price > product9.price %}
+                  <del>{{ product9.variants[0].compare_at_price | money }}</del>
+                  {% endif %}
+                </h4>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- section start -->
+
+
+<script>
+  $(document).ready(function() {
+    var ful_height = $('.full_height').height();
+    var custom_height = ful_height/2;
+    $('.custom_height, .custom_height .img-wrapper').css({
+      'height' : custom_height+'px',
+      'overflow' : 'hidden'
+    });
+  });
+</script>
+
+{% schema %}
+{  
+   "name":"Masonry Product Grid",
+   "settings":[  
+      {  
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+      {  
+         "type":"text",
+         "id":"section_padding",
+         "label":"Padding",
+         "default":"0px 0px 0px 0px"
+      },
+      {  
+         "type":"product",
+         "id":"product_1",
+         "label":"Product 1"
+      },
+      {  
+         "type":"product",
+         "id":"product_2",
+         "label":"Product 2"
+      },
+      {  
+         "type":"product",
+         "id":"product_3",
+         "label":"Product 3"
+      },
+      {  
+         "type":"product",
+         "id":"product_4",
+         "label":"Product 4"
+      },
+      {  
+         "type":"product",
+         "id":"product_5",
+         "label":"Product 5"
+      },
+      {  
+         "type":"product",
+         "id":"product_6",
+         "label":"Product 6"
+      },
+      {  
+         "type":"product",
+         "id":"product_7",
+         "label":"Product 7"
+      },
+      {  
+         "type":"product",
+         "id":"product_8",
+         "label":"Product 8"
+      },
+      {  
+         "type":"product",
+         "id":"product_9",
+         "label":"Product 9"
+      }
+   ],
+   "presets":[  
+      {  
+         "name":"Masonry Product Grid",
+         "category":"Product",
+         "settings":{  
+
+         }
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

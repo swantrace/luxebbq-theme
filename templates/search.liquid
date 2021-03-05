@@ -1,0 +1,67 @@
+{% include 'breadcrumb' %}
+
+<!--section start-->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <section class="p-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <form class="form-header" action="/search" method="get" role="search">
+              <div class="input-group">
+                <input type="search" class="form-control" name="q" aria-label="Amount (to the nearest dollar)" placeholder="{{ 'general.search.placeholder' | t: terms: search.terms }}">
+                <div class="input-group-append">
+                  <button class="btn btn-solid">
+                    <i class="fa fa-search"></i>{{ 'general.search.submit' | t: terms: search.terms }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+<!-- section end -->
+
+{% if search.performed and search.results_count == 0 %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center section-b-space">
+      <img src="{{ 'empty-search.jpg' | asset_url }}" class="img-fluid mb-4">
+      <h3 {% if settings.enable_lang_switcher %}data-trans-key="general.search.no_results_html"{%endif%}>
+        {{ 'general.search.no_results_html' | t: terms: search.terms }}
+      </h3>
+      <p {% if settings.enable_lang_switcher %}data-trans-key="general.search.no_results_html_desc"{%endif%}>{{ 'general.search.no_results_html_desc' | t: terms: search.terms }}</p>
+      <a href="/" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.continue_shopping"{%endif%}>{{ 'cart.general.continue_shopping' | t }}</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<!-- product section start -->
+{% if search.results_count != 0  %}
+<section class="section-b-space pt-0">
+  <div class="container">
+    <div class="row search-product">
+      {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+      <div class="col-xl-3 col-md-4 col-sm-6">
+        {% if settings.product_box_layout == 'product_1' %}
+        {% include 'product-grid-1' , product: item %}
+        {% elsif settings.product_box_layout == 'product_2' %}
+        {% include 'product-grid-2' , product: item %}
+        {% elsif settings.product_box_layout == 'product_3' %}
+        {% include 'product-grid-3' , product: item %}
+        {% else %}
+        {% include 'product-grid-4' , product: item %}
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- product section end -->

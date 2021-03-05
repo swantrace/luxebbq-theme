@@ -1,0 +1,445 @@
+<!-- Product slider start -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% assign collection = collections[section.settings.collection] %}
+{% assign pro_limit =  section.settings.product_limit %}
+<section class="qurox-feature-product {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %}{% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" 
+         style="{% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | img_url: 'master'}});{% endif %}
+                padding: {{ section.settings.section_padding }};">
+
+{%- include 'title' -%}
+  {% if section.settings.desc != blank %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="product-para">
+          <p class="text-center {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_desc"{% endif %} style="color: {{ section.settings.text_color }};">
+            {{ section.settings.desc }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="FeaturePro1_{{sectionId}}_desc">{{ section.settings.trans_desc | raw }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if section.settings.slideshow_width == 'full-width' %}
+  <div class="container-fluid">
+    {% else %}
+    <div class="container">
+      {% endif %}
+      <div class="row">
+        <div class="col">
+          <div class="slick_carousel product-m" 
+               data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 577,"settings":{"slidesToShow": {{ section.settings.slidetoshow_420}} }} ]}'>
+            {% if collection.empty? %}
+            {% capture current %}{% cycle 1,2,3,4,5,6,1,2 %}{% endcapture %}
+            {% for i in (1..6) %}
+            <div class="product-box">
+              <div class="img-wrapper">
+                <div class="front">
+                  <a href="#">
+                    {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                  </a>
+                </div>
+                <div class="cart-info cart-wrap">
+                  <button  data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                  <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                  <a href="#" data-toggle="tooltip" data-placement="left" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                  <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div class="product-detail">
+                <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                <a href="#">
+                  <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+                </a>
+                <h4>{{ '$20.00' }}</h4>
+                <ul class="color-variant">
+                  <li class="bg-light0"></li>
+                  <li class="bg-light1"></li>
+                  <li class="bg-light2"></li>
+                </ul>
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            {% for product in collection.products limit: pro_limit %}
+            {% include 'product-grid-item' %}
+            {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% if section.settings.slideshow_width == 'full-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+<!-- Product slider end -->
+
+{% schema %}
+  {
+    "name": "Fetaure Product Slider",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"image_picker",
+         "id":"bg_image",
+         "label":"Background Image"
+      },
+	  {
+         "type":"checkbox",
+         "id":"enabled_parallax_bg",
+         "default":true,
+         "label":"Enabled Parallax"
+      },
+      {
+         "type":"select",
+         "id":"slideshow_width",
+         "label":"Slideshow Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width"
+            }
+         ],
+         "default":"standard-width"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default":"Special offer"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+      },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#fff"
+        },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "SubTitle",
+        "default":"Top Collections"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate subtitle"
+      },
+        {
+          "type": "color",
+          "id": "subtitle_color_color",
+          "label": "Subtitle color",
+          "default": "#fff"
+        },
+      {
+        "type": "textarea",
+        "id": "desc",
+        "label": "Description",
+        "default":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+      },
+      {
+         "type": "textarea",
+         "id": "trans_desc",
+         "label": "Translate Description"
+      },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#fff"
+        },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select collection"
+      },
+      {
+         "type":"select",
+         "id":"product_limit",
+         "label":"Product Limit",
+         "options":[
+            {
+                "label":"8",
+                "value":"8"
+            },
+            {
+                "label":"12",
+                "value":"12"
+            },
+            {
+                "label":"18",
+                "value":"18"
+            }
+        ],
+        "default":"8"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      },
+    {
+      "type": "header",
+      "content": "Slider settings( Only for Carousel layout )"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 577"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_420",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    }
+    ],
+    "presets": [{
+      "name": "Feature Product Slider",
+      "category": "Product",
+      "settings": {}
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

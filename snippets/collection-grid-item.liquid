@@ -1,0 +1,48 @@
+{% comment %}if collection image is empty we get first product images{% endcomment %}
+{% if collection.image %}
+{%- assign collection_image = collection.image -%}
+{% elsif collection.products.first and collection.products.first.images != empty %}
+{%- assign collection_image = collection.products.first.featured_image -%}
+{% else %}
+{% assign collection_image = blank %}
+{% endif %}
+
+<div class="collection-block">
+  <a href="{{ collection.url }}">
+
+    {% if section.settings.use_equal_height %}
+    <div class="mb-3">
+      <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: collection_image %}" data-sizes="auto" data-parent-fit="cover"></span>
+    </div>
+    {% else %}
+    {% assign block_image = collection_image %}
+    {% assign img_url = collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+    <img src="{{ collection_image | img_url: 'original' }}" 
+         data-src="{{ img_url }}" 
+         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+         data-aspectratio="{{ block_image.aspect_ratio }}" 
+         data-sizes="auto" 
+         class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ collection.title | split: '|' | first }}" >
+    {% endif %}
+
+  </a>
+  <div class="collection-content">
+
+    {% assign data_title = collection.title | split: '|' | first %}
+    {% assign data_json = collection.title | split: '|' | last %}
+    <h3 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{collection.id}}_collection_title"{% endif %}>
+      {{ data_title | truncatewords: 10 }}
+    </h3>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="{{collection.id}}_collection_title">{{ data_json | raw }}</span>
+    {% endif %}
+
+    <h4>({{ collection.products_count }} products)</h4>
+    {% if collection.description != blank %}
+    <p>
+      {{ collection.description | truncate: 200  }}
+    </p>
+    {% endif %}
+    <a href="{{ collection.url }}" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>{{ 'sections.featured_product.shop_now' | t  }}</a>
+  </div>
+</div>

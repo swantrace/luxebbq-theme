@@ -1,0 +1,178 @@
+<!-- service layout -->
+{% if section.settings.enabled %}
+<section class="pt-0" style="background-color:#000;">
+{% if section.settings.banner_layout == 'layout_3' %}
+<div class="service-home">
+  <div class="container">
+    {% endif %}
+
+    {% assign block_size = section.blocks.size  %}
+    {% if block_size == 2 %}
+    {% assign grid_width = 'col-md-6' %}
+    {% elsif block_size == 3 %}
+    {% assign grid_width = 'col-md-4' %}
+    {% elsif block_size == 4 %}
+    {% assign grid_width = 'col-md-3' %}
+    {% endif %}
+
+    {% if section.settings.banner_layout == 'layout_2' %}
+    <section class="banner-padding absolute-banner">
+      {% endif %}
+      <div class="container {% if section.settings.banner_layout == 'layout_2' %} absolute-bg{% endif %}" 
+           {% if section.settings.banner_layout == 'layout_1' %}style="padding: {{ section.settings.section_padding }};{% endif %}">
+        <div class="service services-qurox">
+          <div class="row">
+            {% for block in section.blocks %}
+            {% capture blockId %}{{ block.id }}{% endcapture %}
+            <div class="{{ grid_width }} service-block">
+              <div class="media">
+                {% if block.settings.services_image == blank %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% else %}
+                <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.services_image | img_url: 'master' }}"  alt="{{ block.settings.services_title }}"/>
+                {% endif %}
+                <div class="media-body">
+                  {% if block.settings.services_title != blank %}
+                  <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#service1_{{blockId}}_services_title"{% endif %}>
+                    {{ block.settings.services_title }}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="service1_{{blockId}}_services_title">{{ block.settings.trans_services_title | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                  {% if block.settings.services_desc != blank %}
+                  <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#service1_{{blockId}}_services_desc"{% endif %}>
+                    {{ block.settings.services_desc }}
+                  </p>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="service1_{{blockId}}_services_desc">{{ block.settings.trans_services_desc | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% if section.settings.banner_layout == 'layout_2' %}
+    </section>
+    {% endif %}
+
+    {% if section.settings.banner_layout == 'layout_3' %}
+  </div>
+</div>
+{% endif %}
+</section>
+{% endif %}
+<!-- service layout  end -->
+
+{% if section.settings.banner_layout == 'layout_3' %}
+<script>
+  $(document).ready(function(){
+    var set_margin = $('.service-home').innerHeight();
+    console.log(set_margin);
+    $('.service-home').css('margin-top' , -set_margin);
+  });
+</script>
+{% endif %}
+
+
+{% schema %}
+{
+   "name":"Services",
+   "max_blocks": 4,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "30px 0px 0px 0px"
+      },
+      {
+         "type":"select",
+         "id":"banner_layout",
+         "label":"Layout Design",
+         "options":[
+            {
+               "value":"layout_1",
+               "label":"layout 1"
+            },
+            {
+               "value":"layout_2",
+               "label":"layout 2"
+            },
+            {
+               "value":"layout_3",
+               "label":"layout 3"
+            }
+         ],
+         "default":"layout_1"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"Service",
+         "name":"Service",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"services_image",
+               "label":"Image"
+            },
+            {
+               "type":"text",
+               "id":"services_title",
+               "label":"Services Title",
+               "default":"free shipping"
+            },
+            {
+               "type":"textarea",
+               "id":"trans_services_title",
+               "label":"Transalate Services Title"
+            },
+            {
+               "type":"text",
+               "id":"services_desc",
+               "label":"Services Description",
+               "default":"Free Shipping World Wide"
+            },
+            {
+               "type":"textarea",
+               "id":"trans_services_desc",
+               "label":"Transalate Services Desc"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Services",
+         "category":"Services",
+         "blocks":[
+            {
+               "type":"Service"
+            },
+            {
+               "type":"Service"
+            },
+            {
+               "type":"Service"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,69 @@
+{% if settings.add_to_cart_style == 'cart_top'%}
+<!-- Add to cart bar -->
+<div id="cart_side" class=" add_to_cart top">
+  <a href="javascript:void(0)" class="overlay"></a>
+  <div class="cart-inner">
+    <div class="cart_top">
+      <h3 data-trans-key="cart.general.title">{{ 'cart.general.title' | t }}</h3>
+      <div class="close-cart">
+        <a href="javascript:void(0)" >
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="cart_media" id="cart_container_id">
+    </div>
+  </div>
+</div>
+<!-- Add to cart bar end-->
+{% elsif settings.add_to_cart_style == 'cart_bottom'%}
+<div id="cart_side" class=" add_to_cart bottom">
+  <a href="javascript:void(0)" class="overlay" ></a>
+  <div class="cart-inner">
+    <div class="cart_top">
+      <h3 data-trans-key="cart.general.title">{{ 'cart.general.title' | t }}</h3>
+      <div class="close-cart">
+        <a href="javascript:void(0)" >
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>	
+    </div>
+    <div class="cart_media" id="cart_container_id">
+    </div>
+  </div>
+</div>
+{% elsif settings.add_to_cart_style == 'cart_left'%}
+<!-- Add to cart bar -->
+<div id="cart_side" class=" add_to_cart left">
+  <a href="javascript:void(0)" class="overlay" ></a>
+  <div class="cart-inner">
+    <div class="cart_top">
+      <h3 data-trans-key="cart.general.title">{{ 'cart.general.title' | t }}</h3>
+      <div class="close-cart">
+        <a href="javascript:void(0)" >
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="cart_media" id="cart_container_id">
+    </div>
+  </div>
+</div>
+<!-- Add to cart bar end-->
+{% elsif settings.add_to_cart_style == 'cart_right'%}
+<div id="cart_side" class=" add_to_cart right">
+  <a href="javascript:void(0)" class="overlay" ></a>
+  <div class="cart-inner">
+    <div class="cart_top">
+      <h3 data-trans-key="cart.general.title">{{ 'cart.general.title' | t }}</h3>
+      <div class="close-cart">
+        <a href="javascript:void(0)" >
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="cart_media" id="cart_container_id">
+    </div>
+  </div>
+</div>
+{% endif %}

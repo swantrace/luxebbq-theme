@@ -1,0 +1,433 @@
+<!--Testimonial start-->
+{% if section.settings.testimonial_enable %}
+<div class="testimonial qurox-testimonial">
+  <div class="container-fluid">
+    <div class="row">
+      {% if section.settings.banner_enable == true %}
+        <div class="col-lg-6 col-sm-12">
+          <div class="collection-banner">
+              <div class="banner-img">
+                {% if section.settings.image != blank %}
+                {% assign block_image = section.settings.image %}
+                {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img src="{{ block_image | img_url: '1370x385' }}" 
+                     data-src="{{ img_url }}" 
+                     data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                     data-aspectratio="{{ block_image.aspect_ratio }}" 
+                     data-sizes="auto" 
+                     class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+                {% endif %}
+              </div>
+            </div>
+        </div>
+      {% endif %}
+      <div class="{% if section.settings.banner_enable %}col-lg-6 col-sm-12{% else %}col-sm-12{% endif %}">
+        <div class="testimonial pet-parallax lazyload {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}"
+         data-bgset="{% include 'bg-set', image: section.settings.test_back_img %}" data-sizes="auto" data-parent-fit="cover" 
+         style="padding: {{ section.settings.section_padding }}; {% if section.settings.test_back_img == blank %}background: {{ section.settings.test_back_color }};{% endif %}">
+        <div class="slick_carousel testimonial-slider" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }} ]}'>
+          {% for block in section.blocks %}
+          {% capture blockId %}{{ block.id }}{% endcapture %}
+          <div>
+            <div class="media">
+              <div class="text-center test-img">
+                {% if block.settings.testi_image == blank %}
+                <img src="{{ '122x122.png' | asset_url }}" alt="" class="img-fluid">
+                {% else %}
+                
+                {% if section.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.testi_image %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>        
+            {% else %}
+            {% assign block_image = block.settings.testi_image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: 'original' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
+            {% endif %}
+                
+                {% endif %}
+                
+              </div>
+              <div class="media-body">
+                <div class="qoute"></div>
+                {% if block.settings.testi_position != blank %}
+                <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#testimonial_{{blockId}}_testi_position"{% endif %}>
+                  {{ block.settings.testi_position }}
+                </h6>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="testimonial_{{blockId}}_testi_position">{{ block.settings.trans_testi_position | raw }}</span>
+                {% endif %}
+                {% endif %}
+                
+                {% if block.settings.testi_title != blank %}
+                <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#testimonial_{{blockId}}_testi_title"{% endif %}>
+                  {{ block.settings.testi_title }}
+                </h5>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="testimonial_{{blockId}}_testi_title">{{ block.settings.trans_testi_title | raw }}</span>
+                {% endif %}
+                {% endif %}
+                
+                {% if block.settings.testi_desc != blank %}
+                <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#testimonial_{{blockId}}_testi_desc"{% endif %}>
+                  {{ block.settings.testi_desc }}
+                </p>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="testimonial_{{blockId}}_testi_desc">{{ block.settings.trans_testi_desc | raw }}</span>
+                {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+{% endif %}
+<!--Testimonial ends-->
+
+{% schema %}
+  {
+   "name":"Testimonial",
+   "settings":[
+     {
+         "type":"header",
+         "content":"Banner"
+      },
+      {
+         "type":"checkbox",
+         "id":"banner_enable",
+         "label":"Enabled",
+         "default":true
+      },
+      {
+         "type":"image_picker",
+         "id":"image",
+         "label":"Banner Image"
+      },
+      {
+         "type":"header",
+         "content":"Testimonial"
+      },
+      {
+         "type":"checkbox",
+         "id":"testimonial_enable",
+         "label":"Enabled",
+         "default":true
+      },
+    {
+         "type":"header",
+         "content":"Testimonial Background Option"
+      },
+    {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "100px 0px 100px 0px"
+      },
+      {
+         "type":"image_picker",
+         "id":"test_back_img",
+         "label":"Background Image"
+      },
+    {
+        "type": "color",
+        "id": "test_back_color",
+        "label": "Background Color",
+        "default": "#f5f5f5",
+        "info": "Default Value: #f5f5f5"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+          "value": "full",
+          "label": "Image width Full"
+         },
+         {
+          "value": "auto",
+          "label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+    "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    }
+   ],
+   "blocks":[
+      {
+         "type":"testimonial",
+         "name":"Testimonial",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"testi_image",
+               "label":"Testimonial Image"
+            },
+            {
+               "type":"text",
+               "id":"testi_title",
+               "label":"Title",
+               "default":"Mark Jecno"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_testi_title",
+               "label": "Translate Team Name"
+            },
+            {
+               "type":"text",
+               "id":"testi_position",
+               "label":"Position",
+               "default":"Web Designer"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_testi_position",
+               "label": "Translate Team Position"
+            },
+            {
+               "type": "textarea",
+               "id": "testi_desc",
+               "label": "Description",
+                "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque semper neque vestibulum arcu. Proin sollicitudin eleifend tortor quis bibendum.Vestibulum sollicitudin mi ac nunc posuere ultricies."
+            },
+            {
+               "type": "textarea",
+               "id": "trans_testi_desc",
+               "label": "Translate Description"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Testimonial",
+         "category":"testimonial",
+         "settings":{
+         },
+         "blocks":[
+            {
+               "type":"testimonial"
+            },
+            {
+               "type":"testimonial"
+            },
+            {
+               "type":"testimonial"
+            },
+            {
+               "type":"testimonial"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

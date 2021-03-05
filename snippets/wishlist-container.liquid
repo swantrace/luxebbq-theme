@@ -1,0 +1,70 @@
+<div id="wishlist_side" class="add_to_cart right ">
+  <a href="javascript:void(0)" class="overlay" onclick="closeWishlist()"></a>
+  <div class="cart-inner">
+    <div class="cart_top">
+      <h3>my wishlist</h3>
+      <div class="close-cart">
+        <a href="javascript:void(0)" onclick="closeWishlist()">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    <div class="full-width-container wishlist-container">
+      <!-- Product Tile Grid -->
+      <div class="cart_media">
+        <ul class="cart_product " >
+          <!-- Loader -->
+          <div class="cart_media p-0 wishlist-grid--empty-list " id="cart_container_id">
+            <h5 class="empty_cart_slide_cls" >Your Wishlist is currently empty.</h5>
+          </div>
+          <li>
+            {% paginate collections.all.products by 9999 %}
+            {% for product in collections.all.products %}
+            <div class="media product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+              <a class="tile-media--media-link" href="{{ product.url }}">
+                <img  class="image--main" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title }}">
+              </a>
+              <div class="media-body">
+                <a href="{{ product.url }}">
+                  {% assign data_title = product.title | split: '|' | first %}
+                  {% assign data_json = product.title | split: '|' | last %}
+                  <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                    {{ data_title }}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </a>
+
+                <h4>
+                  <span class="td-color" data-id="{{ product.id }}" data-price="{{ product.price }}">{{ product.variants[0].price | money }}</span>
+                </h4>
+              </div>
+              <div class="product-tile--tile-actions flex">
+                <h6>
+                  <a class="action--wishlist tile-actions--btn flex wishlist-btn" href="#" data-product-handle="{{ product.handle }}">
+                    <i class="ti-trash" aria-hidden="true"></i>
+                  </a>
+                  <a class="action--quick-cart tile-actions--btn flex cart-btn" href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1"><i class="ti-shopping-cart"></i></a>
+                </h6>
+              </div>
+            </div>
+            {% endfor %}
+            {% endpaginate %}
+          </li>
+          <li>
+            <div class="border-bottom">
+
+            </div>
+          </li>
+          <li class=" wishlist-grid  product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}"> 
+            <div class="buttons checkout wishlist-grid d-block">
+              <a href="/pages/wishlist" class="btn btn-solid btn-block btn-solid-sm view-cart">view wislist</a>
+            </div>
+          </li>
+        </ul>
+     
+      </div>
+    </div>
+  </div>
+</div>

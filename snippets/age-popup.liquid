@@ -1,0 +1,76 @@
+<!--modal popup start-->
+<div class="modal fade bd-example-modal-md theme-modal" id="ageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="container-fluid p-0">
+          <div class="row">
+            <div class="col-12">
+              <div class="modal-bg lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: section.settings.banner_img %}" data-sizes="auto" data-parent-fit="cover">
+                <div class="age-content">                  
+                  <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#age_popup_age_popup_heading"{% endif %}>
+                    {{ settings.age_popup_heading }}
+                  </h2>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="age_popup_age_popup_heading">{{ settings.trans_age_popup_heading | raw }}</span>
+                  {% endif %}
+                  
+                  <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#age_popup_age_popup_text"{% endif %}>
+                    {{ settings.age_popup_text }}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="age_popup_age_popup_text">{{ settings.trans_age_popup_text | raw }}</span>
+                  {% endif %}
+                  
+                  <form name="demoForm" id="demoForm" action="">
+                    <input type="hidden" name="requiredAge" id="requiredAge" value="18">
+                    <input type="text" name="birthDay" id="birthDay" value="" class="form-control" placeholder="DD" min="1" max="31">
+                    <input type="text" name="birthMonth" id="birthMonth" value="" class="form-control" placeholder="MM" min="1" max="12">
+                    <input type="text" name="birthYear" id="birthYear" value="" class="form-control" placeholder="YY">
+                    <input type="submit" name="submit" value="Submit" class="btn btn-solid mt-2">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--modal popup end-->
+
+<script type="text/javascript">
+  $("#demoForm").submit(function(){
+    var day = $("#birthDay").val();
+    var month = $("#birthMonth").val();
+    var year = $("#birthYear").val();
+    var age  = $("#requiredAge").val();
+    if (day == "" || month == "" || year == "") {
+      alert("You must enter all fields.");
+      return false;
+    }
+    var mydate = new Date();
+    mydate.setFullYear(year, month-1, day);
+    var currdate = new Date();
+    currdate.setFullYear(currdate.getFullYear() - age);
+    if ((currdate - mydate) < 0){
+      window.location.href = "https://www.google.com/";
+      return false;
+    }
+    //window.location.href = "{{ shop.url }}";
+    return true;
+
+  });
+
+  $(document).ready(function() {
+    if(localStorage.getItem('popState') != 'shown'){
+      $('#ageModal').modal({
+        backdrop: 'static',
+        keyboard: false
+      });
+      localStorage.setItem('popState','shown')
+    }
+  });
+
+</script>

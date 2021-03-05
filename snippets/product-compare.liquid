@@ -1,0 +1,28 @@
+<div class="ajax-success-compare-modal compare_modal" id="moda-compare" tabindex="-1" role="dialog" style="display:none">
+  <div class="modal-dialog modal-compare-cls" style="background-image: url({{ settings.newsletter_img | img_url: 'master' }});">
+    <div class="modal-content content" id="compare-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" {% if settings.enable_lang_switcher %}data-trans-key="products.compare.compare_products"{%endif%}>{{ 'products.compare.compare_products' | t }}</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-wrapper">
+          <table class="table table-responsive">
+            <thead>
+              <tr class="th-compare">
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="table-compare">
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="close-modal"><i class="fa fa-close"></i></a>
+      </div>         
+    </div>
+  </div>
+</div>
+

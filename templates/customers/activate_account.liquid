@@ -1,0 +1,39 @@
+{% include 'breadcrumb' %}
+
+<!--section start-->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.activate_account.subtext"{%endif%}>{{ 'customer.activate_account.subtext' | t }}</h3>
+        <div class="theme-card">
+          {% form 'activate_customer_password' , class: 'theme-form' %}
+
+          {% if form.errors %}
+          <div class="form-message form-message--error">
+            {{ form.errors | default_errors }}
+          </div>
+          {% endif %}    
+
+          <div class="form-row">
+            <div class="col-md-12">
+              <label for="password" {% if settings.enable_lang_switcher %}data-trans-key="customer.activate_account.password"{%endif%}>{{ 'customer.activate_account.password' | t }}</label>
+              <input type="password" value="" name="customer[password]" id="customer_password" placeholder="{{ 'customer.activate_account.password' | t }}" class="form-control">
+            </div>
+            <div class="col-md-12">
+              <label for="password_confirmation" {% if settings.enable_lang_switcher %}data-trans-key="customer.activate_account.password_confirm"{%endif%}>{{ 'customer.activate_account.password_confirm' | t }}</label>
+              <input type="password" value="" name="customer[password_confirmation]" placeholder="{{ 'customer.activate_account.password_confirm' | t }}" id="customer_password_confirmation" class="form-control">
+            </div>
+            <div class="col-md-12">
+              <input class="btn btn-solid" type="submit" value="Activate Account" />
+              <input type="submit" class="btn btn-solid" name="decline" id="customer_decline" value="Decline Invitation" />
+            </div>
+          </div>
+
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Section ends-->

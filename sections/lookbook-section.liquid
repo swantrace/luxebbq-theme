@@ -1,0 +1,502 @@
+<!-- lookbook section start -->
+{% if section.settings.enabled %}
+<div class="container-fluid lookbook-section lookbook" style="padding: {{ section.settings.section_padding }};">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="row lookbook-img">
+        {% for block in section.blocks %}
+        {% if forloop.first == true or forloop.index == 2 or forloop.index == 3 %}
+        <div class="col-12">
+          <div class="lookbook-block">
+            {% if block.settings.image == blank %}
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            {% else %}
+            {% assign block_image = block.settings.image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: 'original' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+            {% for i in (1..4) %}
+            {% assign pro = "product_" | append: i %}
+            {% assign product_key = block.settings[pro] %}
+            {% assign product_ = all_products[product_key] %}	
+
+            {% assign set = "setposition_" | append: i %}
+            {% assign set_now = block.settings[set] %}
+            {% assign pos = "position_" | append: i %}
+            {% assign fix_pos = block.settings[pos] %}
+            {% if fix_pos == "" and fix_pos != "right" %}{% assign fix_pos = "left" %}{% endif %}
+
+            {% if product_key != '' %}
+            <div class="lookbook-dot dot{{i}}" style="{{set_now}}">
+              <span>{{ i }}</span>
+              <a href="{{product_.url}}" target="_blank">
+                <div class="dot-showbox pos_{{ fix_pos }}">
+                  {% assign block_image = product_ %}
+                  {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                  <img src="{{ product | img_url: 'medium' }}" 
+                       data-src="{{ img_url }}" 
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                       data-aspectratio="{{ block_image.aspect_ratio }}" 
+                       data-sizes="auto" 
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
+                  <div class="dot-info">
+                    {% assign data_title = product_.title | split: '|' | first %}
+                    {% assign data_json = product_.title | split: '|' | last %}
+                    <h5 class="title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product_.id}}_pro_title"{% endif %}>
+                      {{ data_title | truncatewords: 10 }}
+                    </h5>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="{{product_.id}}_pro_title">{{ data_json | raw }}</span>
+                    {% endif %}
+                    <h5>{{ product_.price | money }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="row lookbook-img">
+        {% for block in section.blocks %}
+        {% if forloop.index == 4 or forloop.index == 5 or forloop.index == 6 %}
+        <div class="col-12">
+          <div class="lookbook-block">
+            {% if block.settings.image == blank %}
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            {% else %}
+            {% assign block_image = block.settings.image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: 'original' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+            {% for i in (1..4) %}
+
+            {% assign pro = "product_" | append: i %}
+            {% assign product_key = block.settings[pro] %}
+            {% assign product_ = all_products[product_key] %}	
+
+            {% assign set = "setposition_" | append: i %}
+            {% assign set_now = block.settings[set] %}
+            {% assign pos = "position_" | append: i %}
+            {% assign fix_pos = block.settings[pos] %}
+            {% if fix_pos == "" and fix_pos != "right" %}{% assign fix_pos = "left" %}{% endif %}
+
+            {% if product_key != '' %}
+            <div class="lookbook-dot dot{{i}}" style="{{set_now}}">
+              <span>{{ i }}</span>
+              <a href="{{product_.url}}" target="_blank">
+                <div class="dot-showbox pos_{{ fix_pos }}">
+                  {% assign block_image = product_ %}
+                  {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                  <img src="{{ product | img_url: 'medium' }}" 
+                       data-src="{{ img_url }}" 
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                       data-aspectratio="{{ block_image.aspect_ratio }}" 
+                       data-sizes="auto" 
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
+                  <div class="dot-info">
+                    {% assign data_title = product_.title | split: '|' | first %}
+                    {% assign data_json = product_.title | split: '|' | last %}
+                    <h5 class="title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product_.id}}_pro_title"{% endif %}>
+                      {{ data_title | truncatewords: 10 }}
+                    </h5>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="{{product_.id}}_pro_title">{{ data_json | raw }}</span>
+                    {% endif %}
+                    <h5>{{ product_.price | money }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="row lookbook-img">
+        {% for block in section.blocks %}
+        {% if forloop.index == 7 or forloop.index == 8 or forloop.index == 9 %}
+        <div class="col-12">
+          <div class="lookbook-block">
+            {% if block.settings.image == blank %}
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            {% else %}
+            {% assign block_image = block.settings.image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: 'original' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+            {% for i in (1..4) %}
+
+            {% assign pro = "product_" | append: i %}
+            {% assign product_key = block.settings[pro] %}
+            {% assign product_ = all_products[product_key] %}	
+
+            {% assign set = "setposition_" | append: i %}
+            {% assign set_now = block.settings[set] %}
+            {% assign pos = "position_" | append: i %}
+            {% assign fix_pos = block.settings[pos] %}
+            {% if fix_pos == "" and fix_pos != "right" %}{% assign fix_pos = "left" %}{% endif %}
+
+            {% if product_key != '' %}
+            <div class="lookbook-dot dot{{i}}" style="{{set_now}}">
+              <span>{{ i }}</span>
+              <a href="{{product_.url}}" target="_blank">
+                <div class="dot-showbox pos_{{ fix_pos }}">
+                  {% assign block_image = product_ %}
+                  {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                  <img src="{{ product | img_url: 'medium' }}" 
+                       data-src="{{ img_url }}" 
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                       data-aspectratio="{{ block_image.aspect_ratio }}" 
+                       data-sizes="auto" 
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
+                  <div class="dot-info">
+                    {% assign data_title = product_.title | split: '|' | first %}
+                    {% assign data_json = product_.title | split: '|' | last %}
+                    <h5 class="title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product_.id}}_pro_title"{% endif %}>
+                      {{ data_title | truncatewords: 10 }}
+                    </h5>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="{{product_.id}}_pro_title">{{ data_json | raw }}</span>
+                    {% endif %}
+                    <h5>{{ product_.price | money }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="row lookbook-img">
+        {% for block in section.blocks %}
+        {% if forloop.index == 10 or forloop.index == 11 or forloop.last == true %}
+        <div class="col-12">
+          <div class="lookbook-block">
+            {% if block.settings.image == blank %}
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            {% else %}
+            {% assign block_image = block.settings.image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: 'original' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+            {% for i in (1..4) %}
+
+            {% assign pro = "product_" | append: i %}
+            {% assign product_key = block.settings[pro] %}
+            {% assign product_ = all_products[product_key] %}	
+
+            {% assign set = "setposition_" | append: i %}
+            {% assign set_now = block.settings[set] %}
+            {% assign pos = "position_" | append: i %}
+            {% assign fix_pos = block.settings[pos] %}
+            {% if fix_pos == "" and fix_pos != "right" %}{% assign fix_pos = "left" %}{% endif %}
+
+            {% if product_key != '' %}
+            <div class="lookbook-dot dot{{i}}" style="{{set_now}}">
+              <span>{{ i }}</span>
+              <a href="{{product_.url}}" target="_blank">
+                <div class="dot-showbox pos_{{ fix_pos }}">
+
+                  {% assign block_image = product_ %}
+                  {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                  <img src="{{ product | img_url: 'medium' }}" 
+                       data-src="{{ img_url }}" 
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                       data-aspectratio="{{ block_image.aspect_ratio }}" 
+                       data-sizes="auto" 
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
+
+                  <div class="dot-info">
+                    {% assign data_title = product_.title | split: '|' | first %}
+                    {% assign data_json = product_.title | split: '|' | last %}
+                    <h5 class="title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product_.id}}_pro_title"{% endif %}>
+                      {{ data_title | truncatewords: 10 }}
+                    </h5>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="{{product_.id}}_pro_title">{{ data_json | raw }}</span>
+                    {% endif %}
+                    <h5>{{ product_.price | money }}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- lookbook section end -->
+
+
+{% schema %}
+{
+   "name":"Loobook Section",
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 30px 0px 30px"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"Image",
+         "name":"Add Image",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"image",
+               "label":"Lookbook Image"
+            },
+            {
+               "type": "header",
+               "content": "----- Product 1 -----"
+            },
+            {
+               "type": "product",
+               "id": "product_1",
+               "label": "Product"
+            },
+            {
+               "type": "text",
+               "id": "setposition_1",
+               "label": "Set Position for dot",
+			   "default": "top:22%; left:45%;",
+			   "info": "top:22%; left:45%;"
+            },
+            {
+               "type": "radio",
+               "id": "position_1",
+               "label": "Set ToolTop Position",
+               "options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				]
+            },
+            {
+               "type": "header",
+               "content": "----- Product 2 -----"
+            },
+            {
+               "type": "product",
+               "id": "product_2",
+               "label": "Product"
+            },
+            {
+               "type": "text",
+               "id": "setposition_2",
+               "label": "Set Position for dot",
+			   "default": "top:22%; left:45%;"
+            },
+            {
+               "type": "radio",
+               "id": "position_2",
+               "label": "Set ToolTop Position",
+               "options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				]
+            },
+            {
+               "type": "header",
+               "content": "----- Product 3 -----"
+            },
+            {
+               "type": "product",
+               "id": "product_3",
+               "label": "Product"
+            },
+            {
+               "type": "text",
+               "id": "setposition_3",
+               "label": "Set Position for dot",
+			   "default": "top:22%; left:45%;"
+            },
+            {
+               "type": "radio",
+               "id": "position_3",
+               "label": "Set ToolTop Position",
+               "options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				]
+            },
+            {
+               "type": "header",
+               "content": "----- Product 4 -----"
+            },
+            {
+               "type": "product",
+               "id": "product_4",
+               "label": "Product"
+            },
+            {
+               "type": "text",
+               "id": "setposition_4",
+               "label": "Set Position for dot",
+			   "default": "top:22%; left:45%;"
+            },
+            {
+               "type": "radio",
+               "id": "position_4",
+               "label": "Set ToolTop Position",
+               "options": [
+					{
+						"value": "left",
+						"label": "Left"
+					},
+					{
+						"value": "right",
+						"label": "Right"
+					},
+					{
+						"value": "top",
+						"label": "Top"
+					},
+					{
+						"value": "bottom",
+						"label": "Bottom"
+					}
+				]
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Loobook Section",
+         "category":"Loobook",
+         "blocks":[
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            },
+            {
+               "type":"Image"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

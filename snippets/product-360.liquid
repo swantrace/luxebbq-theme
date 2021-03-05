@@ -1,0 +1,74 @@
+
+<div id="product360_view" class="product360">
+  <div class="product-image-360">
+    <div class="close-360"><i class="ti-close"></i></div>
+    <div class="nav_bar">
+      <a href="#" class="custom_previous">
+        <i class="ti-angle-left"></i>
+      </a>
+      <a href="#" class="custom_play">
+        <i class="ti-control-play"></i>
+      </a>
+      <a href="#" class="custom_stop">
+        <i class="ti-control-pause"></i>
+      </a>
+      <a href="#" class="custom_next">
+        <i class="ti-angle-right"></i>
+      </a>
+    </div>
+    <ul class="product-images-item" style="display: block;"></ul>
+    <div class="spinner"><span>0%</span></div>
+  </div>
+
+  {% assign items = product.metafields.images.view_img_list | split:"," %}
+
+  <script type="text/javascript">
+
+    var str = '{{ product.metafields.images.view_img_list }}';
+    var img_array = str.split(',');
+    var len_count = img_array.length;
+
+    window.onload = init;
+
+    var product;
+    function init(){
+
+      pro_view = $('.product-image-360').ThreeSixty({
+        totalFrames: len_count,
+        endFrame: len_count, 
+        currentFrame: 1, 
+        imgList: '.product-images-item', 
+        progress: '.spinner',
+        imgArray: img_array,
+        height: null,
+        width: null,
+        responsive: true,
+        navigation: false
+      });
+
+      $('.custom_previous').bind('click', function(e) {
+        pro_view.previous();
+      });
+
+      $('.custom_next').bind('click', function(e) {
+        pro_view.next();
+      });
+
+      $('.custom_play').bind('click', function(e) {
+        pro_view.play();
+        $('.nav_bar').addClass('play-video');
+      });
+
+      $('.custom_stop').bind('click', function(e) {
+        pro_view.stop();
+        $('.nav_bar').removeClass('play-video');
+      });
+    }
+
+  </script>
+</div>
+
+
+
+
+

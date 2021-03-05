@@ -1,0 +1,32 @@
+{% assign number_of_products = section.settings.related_product_product_length -%}
+<section class="section-b-space ratio_square product-related {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 product-related">
+        <h2 {% if settings.enable_lang_switcher %}class=" title lang_trans" data-trans="#{{sectionId}}_related_pro_title"{% endif %}>
+          {{ section.settings.related_product_title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="{{sectionId}}_related_pro_title">{{ section.settings.trans_related_pro_title | raw }}</span>
+        {% endif %}
+      </div>
+    </div>
+    <div class="slide-6" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 420,"settings":{"slidesToShow": {{ section.settings.slidetoshow_420}} }} ]}'>
+      
+      {% assign current_product = product %}
+      {% assign current_product_found = false %}
+      {% for product in collection.products limit:number_of_products %}
+      {% if product.handle == current_product.handle %}
+      {% assign current_product_found = true %}
+      {% else %}
+      {% unless current_product_found == false and forloop.last %} 
+      <div>
+        {% include 'product-grid-item' %}
+      </div>
+      {% endunless %}
+      {% endif %}
+      {% endfor %}
+    
+    </div>
+  </div>
+</section>

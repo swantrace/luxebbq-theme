@@ -1,0 +1,542 @@
+{% if section.settings.enabled %}
+<section class="banner-padding collection-banner  {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding: {{ section.settings.section_padding }}">
+  <div class="{% if section.settings.section_width == 'standard-width' %}container{% else %}container-fluid{% endif %}">
+    <div class="row partition2 super-deal-banner">
+      {% for block in section.blocks %}
+      {%- if block.type == 'Collection' -%}
+      {% capture blockId %}{{ block.id }}{% endcapture %}
+      {% assign collection = collections[block.settings.collection] %}
+      <div class="col-md-6">
+          <div class="collection-banner {{ block.settings.position }} {{ block.settings.alignment }}">
+            {% if block.settings.image == blank %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+            {% if section.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>        
+            {% else %}
+            {% assign block_image = block.settings.image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: '1370x385' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+            {% endif %}
+            {% if block.settings.enabled_info %}
+            <div class="contain-banner">
+              <div {% if  block.settings.position == 'absolute-btm' %}class="absolute-contain"{% endif %}>
+                {% if block.settings.subtitle != blank %}
+                <h4 style="color: {{ block.settings.subtitle_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_bnr_{{blockId}}_trans_subtitle"{% endif %}>
+                  {{ block.settings.subtitle }}
+                </h4>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="coll_bnr_{{blockId}}_trans_subtitle">{{ block.settings.trans_subtitle | raw }}</span>
+                {% endif %}
+                {% endif %}
+                {% if block.settings.title != blank %}
+                <h2 style="color: {{ block.settings.title_color }};{% if  block.settings.position == 'absolute-btm' %} margin-bottom: 0;{% endif %}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_bnr_{{blockId}}_trans_title"{% endif %}>
+                  {{ block.settings.title }}
+                </h2>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="coll_bnr_{{blockId}}_trans_title">{{ block.settings.trans_title | raw }}</span>
+                {% endif %}
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+      </div>
+      {%- endif -%}
+      {%- endfor -%}
+      <div class="col-md-6" style="padding: {{ block.settings.block_padding }}">
+        <div class="deal-banner-center">
+          <div class="theme-tab">
+            <ul class="tabs tab-title">
+              {% for block in section.blocks %}
+              {%- if block.type == 'Tab' -%}
+              {% assign collection1 = collections[block.settings.tab_collection] %}
+              {% capture blockId %}{{ block.id }}{% endcapture %}
+              {% if collection1.empty? %}
+              <li {% if forloop.first == true %}class="current"{% endif %}>
+                <a href="tab-{{ forloop.index }}" {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.collection_title"{%endif%}>
+                  {{ 'homepage.onboarding.collection_title' | t }}
+                </a>
+              </li>
+              {% else %}
+              <li {% if forloop.first == true %}class="current"{% endif %}>
+                <a href="tab-{{ forloop.index }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#Pro_tabs1_{{blockId}}_tab_title"{% endif %}>
+                  {{ block.settings.title }}
+                </a>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="Pro_tabs1_{{blockId}}_tab_title">{{ block.settings.trans_title | raw }}</span>
+                {% endif %}
+              </li>
+              {% endif %}
+              {%- endif -%}
+              {% endfor %}
+            </ul>
+            <div class="tab-content-cls">
+              {% for block in section.blocks %}
+              {%- if block.type == 'Tab' -%}
+              {% assign collection1 = collections[block.settings.tab_collection] %}
+              <div id="tab-{{ forloop.index }}" class="tab-content" >
+                <div class="slick_carousel row product-m" 
+                     data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 577,"settings":{"slidesToShow": {{ section.settings.slidetoshow_420}} }} ]}'>
+                  {% if collection1.empty? %}
+                  {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+                  {% for i in (1..4) %}
+                  <div class="product-box">
+                    <div class="img-wrapper">
+                      <div class="front">
+                        <a href="#">
+                          {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                        </a>
+                      </div>
+                      <div class="cart-info cart-wrap">
+                        <button  data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                    <div class="product-detail">
+                      <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                      <a href="#">
+                        <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+                      </a>
+                      <h4>{{ '$20.00' }}</h4>
+                      <ul class="color-variant">
+                        <li class="bg-light0"></li>
+                        <li class="bg-light1"></li>
+                        <li class="bg-light2"></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  {% endfor %}
+                  {% else %}
+                  {% for product in collection1.products %}
+                  {% include 'product-grid-item' %}
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+              {%- endif -%}
+              {% endfor %}                        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+   "name":"super Banner With Tab",
+   "max_blocks":6,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":"Section Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width "
+            }
+         ],
+         "default":"standard-width"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+    },
+    {
+      "type": "header",
+      "content": "Slider settings( Only for Carousel layout )"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 577"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_420",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    }
+   ],
+   "blocks":[
+      {
+         "type":"Collection",
+         "name":"Add Collection ",
+         "settings":[
+			{
+               "type":"image_picker",
+               "id":"image",
+               "label":"Collection Image"
+            },
+            {
+               "type": "text",
+               "id": "block_padding",
+               "label": "Padding",
+               "default": "0px 15px 0px 15px"
+            },
+            {
+               "type":"select",
+               "id":"alignment",
+               "label":"Text Alignment",
+               "options":[
+                  {
+                     "value":"text-left",
+                     "label":"Left"
+                  },
+                  {
+                     "value":"text-center",
+                     "label":"Center"
+                  },
+                  {
+                     "value":"text-right",
+                     "label":"Right"
+                  }
+               ],
+               "default":"text-center"
+            },
+            {
+               "type":"select",
+               "id":"position",
+               "label":"Text Position",
+               "options":[
+                  {
+                     "value":"p-left",
+                     "label":"Left"
+                  },
+                  {
+                     "value":"p-center",
+                     "label":"Center"
+                  },
+                  {
+                     "value":"p-right",
+                     "label":"Right"
+                  },
+                  {
+                     "value":"absolute-btm",
+                     "label":"Absolute Bottom"
+                  }
+               ],
+               "default":"p-left"
+            },
+            {
+               "type":"collection",
+               "id":"collection",
+               "label":"Select collection"
+            },
+            {
+               "type":"checkbox",
+               "id":"enabled_info",
+               "default":true,
+               "label":"Show Info"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+			   "default":"Mens"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Title"
+            },
+            {
+               "type": "color",
+               "id": "title_color",
+               "label": "Title color",
+               "default": "#222"
+            },
+            {
+               "type":"text",
+               "id":"subtitle",
+               "label":"Sub-Title",
+			   "default":"Save 30%"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_subtitle",
+               "label": "Translate subtitle"
+            },
+            {
+               "type": "color",
+               "id": "subtitle_color",
+               "label": "Title color",
+               "default": "#fff"
+            }
+         
+         ]
+      },
+      {
+         "type": "Tab",
+        "name": "Tab Collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Product Tab"
+          },
+          {
+            "type": "textarea",
+            "id": "trans_title",
+            "label": "Translate Title"
+          },
+          {
+            "type": "collection",
+            "id": "tab_collection",
+            "label": "Select Collection"
+          }
+        ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Super Banner with Tab",
+         "category":"Collection",
+         "blocks":[
+            {
+               "type":"Collection"
+            },
+            {
+               "type":"Tab"
+            },
+            {
+               "type":"Tab"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

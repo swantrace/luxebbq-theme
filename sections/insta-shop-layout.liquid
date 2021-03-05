@@ -1,0 +1,62 @@
+<!-- instagram section start -->
+{% if section.settings.enabled %}
+<section style="padding: {{ section.settings.section_padding }}">
+  <div class="{% if section.settings.section_width == 'standard-width' %}container{% else %}container-fluid p-0{% endif %}">
+    {{ section.settings.insta_code }}
+  </div>
+</section>
+{% endif %}
+<!-- instagram section end -->
+
+{% schema %}
+{
+   "name":"Instagram Shop Layout",
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+	  {
+         "type": "textarea",
+         "id": "insta_code",
+         "label": "Add Instagram Shop code"
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":"Section Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width "
+            }
+         ],
+         "default":"standard-width"
+      }
+   ],
+   "presets":[
+      {
+         "name":"Instagram Shop Layout",
+         "category":"Image"
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

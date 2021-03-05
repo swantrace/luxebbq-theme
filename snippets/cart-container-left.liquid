@@ -1,0 +1,54 @@
+<script id="CartTemplate" type="text/template"> 
+	{% raw %}
+      <form action="/cart" method="post" novalidate class="cart_ajax_silder_form">
+      <ul class="cart_product">
+      {{#items}}
+        <li>
+          <div class="media">
+            <a href="{{url}}">
+              <img class="mr-3" src="{{img}}" alt="{{name}}">
+            </a>
+            <div class="media-body">
+              <a href="{{url}}">
+                <h4 class="lang_trans" data-trans="#ajax_cart{{id}}">{{ name }}</h4>
+                 <span class="hide" id="ajax_cart{{id}}">{{name_josn}}</span>
+              </a>
+              {{#if variation}}
+                <span class="ajaxcart__product-meta">{{variation}}</span>
+                {{/if}}
+              <h4><em>{{itemQty}} x </em><span class="money">{{price}}</span></h4>
+            </div>
+          </div>
+          <div class="close-circle">
+            <a href="javascript:void(0)" class="cart_remove_item" data-id="{{key}}" data-line="{{line}}">
+              <i class="ti-trash" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+		{{/items}}
+      </ul>
+      <ul class="cart_total">
+          <li>
+            <div class="total">
+              <h5>
+              {% endraw %}
+              <span class="float-left" data-trans-key="cart.general.subtotal">{{ 'cart.general.subtotal' | t }} </span>
+              {% raw %}: <span class="money">{{totalPrice}}</span></h5>
+            </div>
+          </li>
+          <li>
+            <div class="buttons">
+              {% endraw %}
+              <a href="/cart" class="btn btn-solid btn-block btn-solid-sm view-cart" data-trans-key="cart.general.view_cart">
+              	{{ 'cart.general.view_cart' | t }}
+  			  </a>
+              <button type="submit" name="checkout" class="btn btn-solid btn-solid-sm btn-block checkout" data-trans-key="cart.general.checkout">
+              {{ 'cart.general.checkout' | t }}
+  			  </button>
+				{% raw %}
+            </div>
+          </li>
+        </ul>
+      </form>
+    {% endraw %}
+</script>

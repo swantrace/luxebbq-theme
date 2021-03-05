@@ -1,0 +1,465 @@
+<!-- category -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% assign collection_1 = collections[section.settings.coll_1] %}
+{% assign collection_2 = collections[section.settings.coll_2] %}
+{% assign collection_3 = collections[section.settings.coll_3] %}
+<div class="category-bg {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}">
+  <div class="container-fluid p-0">
+    <div class="row order-section">
+      <div class="col-sm-4 p-0">
+        <a href="{{ collection_1.url }}" class="image-block">
+          {% if section.settings.coll_1_img == blank %}
+          {{ 'collection-1' | placeholder_svg_tag }}
+          {% else %}
+          
+          {% if section.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: section.settings.coll_1_img %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>        
+            {% else %}
+            {% assign block_image = section.settings.coll_1_img %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: '1370x385' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+          {% endif %}
+        </a>
+      </div>
+      <div class="col-sm-4 p-0">
+        <div class="contain-block even">
+          <div>
+            {% if section.settings.coll_2_subtitle != blank %}
+            <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection2_{{sectionId}}_coll2_subtitle"{% endif %}>
+              {{ section.settings.coll_2_subtitle }}
+            </h6>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="collection2_{{sectionId}}_coll2_subtitle">{{ section.settings.trans_coll_2_subtitle | raw }}</span>
+            {% endif %}            
+            {% endif %}
+            {% if section.settings.coll_2_title != blank %}
+            <a href="{{ collection_2.url }}">
+              <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection2_{{sectionId}}_coll2_title"{% endif %}>
+                {{ section.settings.coll_2_title }}
+              </h2>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="collection2_{{sectionId}}_coll2_title">{{ section.settings.trans_coll_2_title | raw }}</span>
+              {% endif %}             
+            </a>
+            {% endif %}
+            {% if section.settings.coll_2_offer != blank %}
+            <a href="{{ collection_2.url }}" class="btn btn-solid category-btn {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#collection2_{{sectionId}}_coll2_offer"{% endif %}>
+              {{ section.settings.coll_2_offer }}
+            </a>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="collection2_{{sectionId}}_coll2_offer">{{ section.settings.trans_coll_2_offer | raw }}</span>
+            {% endif %}
+            {% endif %}
+            <a href="{{ collection_2.url }}"><h6>
+              <span {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>{{ 'sections.featured_product.shop_now' | t }}</span>
+              </h6></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 p-0">
+        <a href="{{ collection_3.url }}" class="image-block">
+          {% if section.settings.coll_3_img == blank %}
+          {{ 'collection-3' | placeholder_svg_tag }}
+          {% else %}
+          
+          {% if section.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: section.settings.coll_3_img %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>        
+            {% else %}
+            {% assign block_image = section.settings.coll_3_img %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: '1370x385' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+          {% endif %}
+        </a>
+      </div>
+      <div class="col-sm-4 p-0">
+        <div class="contain-block">
+          <div>
+            {% if section.settings.coll_1_subtitle != blank %}
+            <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection2_{{sectionId}}_coll1_subtitle"{% endif %}>
+              {{ section.settings.coll_1_subtitle }}
+            </h6>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="collection2_{{sectionId}}_coll1_subtitle">{{ section.settings.trans_coll_1_subtitle | raw }}</span>
+            {% endif %}  
+            {% endif %}
+            {% if section.settings.coll_1_title != blank %}
+            <a href="{{ collection_1.url }}">
+              <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection2_{{sectionId}}_coll1_title"{% endif %}>
+                {{ section.settings.coll_1_title }}
+              </h2>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="collection2_{{sectionId}}_coll1_title">{{ section.settings.trans_coll_1_title | raw }}</span>
+              {% endif %} 
+            </a>
+            {% endif %}
+            {% if section.settings.coll_1_offer != blank %}
+            <a href="{{ collection_1.url }}" class="btn btn-solid category-btn {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#collection2_{{sectionId}}_coll1_offer"{% endif %}>
+              {{ section.settings.coll_1_offer }}
+            </a>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="collection2_{{sectionId}}_coll1_offer">{{ section.settings.trans_coll_1_offer | raw }}</span>
+            {% endif %}
+            {% endif %}
+            <a href="{{ collection_1.url }}"><h6>
+              <span {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>{{ 'sections.featured_product.shop_now' | t }}</span>
+              </h6></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 p-0">
+        <a href="{{ collection_2.url }}" class="image-block even">
+          {% if section.settings.coll_2_img == blank %}
+          {{ 'collection-2' | placeholder_svg_tag }}
+          {% else %}
+          
+          {% if section.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: section.settings.coll_2_img %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>        
+            {% else %}
+            {% assign block_image = section.settings.coll_2_img %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: '1370x385' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
+
+          {% endif %}
+        </a>
+      </div>
+      <div class="col-sm-4 p-0">
+        <div class="contain-block">
+          <div>
+            {% if section.settings.coll_3_subtitle != blank %}
+            <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection2_{{sectionId}}_coll3_subtitle"{% endif %}>
+              {{ section.settings.coll_3_subtitle }}
+            </h6>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="collection2_{{sectionId}}_coll3_subtitle">{{ section.settings.trans_coll_3_subtitle | raw }}</span>
+            {% endif %} 
+            {% endif %}
+            {% if section.settings.coll_3_title != blank %}
+            <a href="{{ collection_3.url }}">
+              <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection2_{{sectionId}}_coll3_title"{% endif %}>
+                {{ section.settings.coll_3_title }}
+              </h2>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="collection2_{{sectionId}}_coll3_title">{{ section.settings.trans_coll_3_title | raw }}</span>
+              {% endif %}
+            </a>
+            {% endif %}
+            {% if section.settings.coll_3_offer != blank %}
+            <a href="{{ collection_3.url }}" class="btn btn-solid category-btn {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#collection2_{{sectionId}}_coll3_offer"{% endif %}>
+              {{ section.settings.coll_3_offer }}
+            </a>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="collection2_{{sectionId}}_coll3_offer">{{ section.settings.trans_coll_3_offer | raw }}</span>
+            {% endif %}
+            {% endif %}
+            <a href="{{ collection_3.url }}"><h6>
+              <span {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>{{ 'sections.featured_product.shop_now' | t }}</span>
+              </h6></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- category end -->
+
+{% schema %}
+{
+  "name": "Feature Collection 2",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "default": true,
+      "label": "Enabled"
+    },
+    {
+      "type": "header",
+      "content": "Image Design Option"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_equal_height",
+      "label": "Use height Option for images?",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image Aspect Ratio",
+      "default": "ratio_landscape",
+      "options": [
+        {
+          "value": "ratio2_1",
+          "label": "2:1"
+        },
+        {
+          "value": "ratio3_2",
+          "label": "3:2"
+        },
+        {
+          "value": "ratio_landscape",
+          "label": "4:3 (Landscape)"
+        },
+        {
+          "value": "ratio_square",
+          "label": "1:1 (Square)"
+        },
+        {
+          "value": "ratio_asos",
+          "label": "Ratio ASOS"
+        },
+        {
+          "value": "ratio_portrait",
+          "label": "2:3 (Portrait)"
+        },
+        {
+          "value": "ratio1_2",
+          "label": "1:2"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image Size",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Full"
+        },
+        {
+          "value": "contain",
+          "label": "Auto"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "info": "The first value is the horizontal position and the second value is the vertical.",
+      "options": [
+        {
+          "value": "1",
+          "label": "Left Top"
+        },
+        {
+          "value": "2",
+          "label": "Left Center"
+        },
+        {
+          "value": "3",
+          "label": "Left Bottom"
+        },
+        {
+          "value": "4",
+          "label": "Right Top"
+        },
+        {
+          "value": "5",
+          "label": "Right Center"
+        },
+        {
+          "value": "6",
+          "label": "Right Bottom"
+        },
+        {
+          "value": "7",
+          "label": "Center Top"
+        },
+        {
+          "value": "8",
+          "label": "Center Center"
+        },
+        {
+          "value": "9",
+          "label": "Center Bottom"
+        }
+      ],
+      "label": "Image Position",
+      "default": "8"
+    },
+    {
+      "type": "header",
+      "content": "Collection 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "coll_1_img",
+      "label": "1st Collection Image"
+    },
+    {
+      "type": "collection",
+      "id": "coll_1",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "coll_1_title",
+      "label": "1st Collection Title",
+      "default": "tucker bag"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_1_title",
+      "label": "Translate 1st Collection Title"
+    },
+    {
+      "type": "text",
+      "id": "coll_1_subtitle",
+      "label": "1st Collection Subtitle",
+      "default": "on sale"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_1_subtitle",
+      "label": "Translate 1st Collection Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "coll_1_offer",
+      "label": "1st Collection Offer",
+      "default": "save 30% off"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_1_offer",
+      "label": "Translate 1st Collection Offer"
+    },
+    {
+      "type": "header",
+      "content": "Collection 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "coll_2_img",
+      "label": "2nd Collection Image"
+    },
+    {
+      "type": "collection",
+      "id": "coll_2",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "coll_2_title",
+      "label": "2nd Collection Title",
+      "default": "tucker bag"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_2_title",
+      "label": "Translate 2nd Collection Title"
+    },
+    {
+      "type": "text",
+      "id": "coll_2_subtitle",
+      "label": "2nd Collection Subtitle",
+      "default": "on sale"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_2_subtitle",
+      "label": "Translate 2nd Collection Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "coll_2_offer",
+      "label": "2nd Collection Offer",
+      "default": "save 30% off"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_2_offer",
+      "label": "Translate 2nd Collection Offer"
+    },
+    {
+      "type": "header",
+      "content": "Collection 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "coll_3_img",
+      "label": "3rd Collection Image"
+    },
+    {
+      "type": "collection",
+      "id": "coll_3",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "coll_3_title",
+      "label": "3rd Collection Title",
+      "default": "tucker bag"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_3_title",
+      "label": "Translate 3rd Collection Title"
+    },
+    {
+      "type": "text",
+      "id": "coll_3_subtitle",
+      "label": "3rd Collection Subtitle",
+      "default": "on sale"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_3_subtitle",
+      "label": "Translate 3rd Collection Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "coll_3_offer",
+      "label": "3rd Collection Offer",
+      "default": "save 30% off"
+    },
+    {
+      "type": "textarea",
+      "id": "trans_coll_3_offer",
+      "label": "Translate 3rd Collection Offer"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Collection 2",
+      "category": "Collection",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,254 @@
+<div class="border-product">
+  <h6 class="product-title">Frequently bought together</h6>
+  <div class="bundle">
+
+    <form action="/cart/add" method="post" enctype="multipart/form-data">
+      <div class="bundle_img">
+
+        {% paginate collections.all.products by 999 %} 
+        {% assign categories = '' %}
+        {% for tag in collections.all.tags %} 
+
+        {% if tag contains 'bundle_' %}
+        {% capture bundle_tag_array %}
+
+        {% unless bundle_tag_array == blank -%}
+        {{ bundle_tag_array }},
+        {% endunless %}
+
+        {{ tag }}
+        {% endcapture %}
+        {% endif %}
+
+        {% endfor %}
+        {% assign _tag_array = bundle_tag_array | strip_newlines | uniq %}
+
+        {% assign current_product = product %}
+        {% assign current_product_found = false %}
+        {% assign current_pro_tags = current_product.tags %}
+
+        {% for product in collections.all.products %}
+        {% for tag in product.tags %}
+        {% if tag contains 'bundle_' %}
+
+        {% if product.handle == current_product.handle %}
+        {% assign current_product_found = true %}
+
+        {% else %}
+
+        {% for curr_tag in current_pro_tags %}
+        {% if curr_tag == tag %}
+
+        <div class="img-box bundle_curr_proImg" data-bundleimg="{{ product.id }}">
+          <a href="{{product.url}}"><img src="{{product | img_url: '100x'}}" alt="{{product.title}}" class="img-fluid"></a>
+        </div>
+        <span class="plus">+</span>
+
+        {% endif %}
+        {% endfor %}
+
+        {% endif %}
+
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+        {% endpaginate  %}
+
+      </div>
+
+      <div class="bundle_detail">
+        <div class="theme_checkbox">
+
+          {% paginate collections.all.products by 999 %} 
+          {% assign categories = '' %}
+          {% for tag in collections.all.tags %} 
+
+          {% if tag contains 'bundle_' %}
+          {% capture bundle_tag_array %}
+
+          {% unless bundle_tag_array == blank -%}
+          {{ bundle_tag_array }},
+          {% endunless %}
+
+          {{ tag }}
+          {% endcapture %}
+          {% endif %}
+
+          {% endfor %}
+
+          {% assign _tag_array = bundle_tag_array | strip_newlines | uniq %}
+          {% assign current_product = product %}
+          {% assign current_product_found = false %}
+          {% assign current_pro_tags = current_product.tags %}
+
+          {% for product in collections.all.products %}
+          {% capture index %}
+          {{ forloop.index }}
+          {% endcapture %}
+          {% assign _index = index | strip %}
+          {% for tag in product.tags %}
+          {% if tag contains 'bundle_' %}
+          {% if product.handle == current_product.handle %}
+          {% assign current_product_found = true %}
+          {% else %}
+          {% for curr_tag in current_pro_tags %}
+          {% if curr_tag == tag %}
+
+          <div class="bundle_product_cls bundle_active_pro">
+            <label>
+              {% assign data_title = product.title | split: '|' | first %}
+                      {% assign data_json = product.title | split: '|' | last %}
+                      <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_bundlepro_title"{% endif %}>
+                        {{ data_title }}
+                      </span>
+                      {% if settings.enable_lang_switcher %}
+                      <span class="hide" id="{{product.id}}_bundlepro_title">{{ data_json | raw }}</span>
+                      {% endif %}
+              <span class="price_product">{{product.price | money_without_trailing_zeros }}</span>
+              <input type="checkbox" name="bundle" checked="checked" data-bundleid="{{ product.id }}">
+              <span class="checkmark"></span>
+            </label>
+            <div class="pro_variant">
+              <input type="hidden" id="variant-{{ _index }}" value="{{ product.variants.first.id }}">
+              <input type="text" id="quantity-{{ _index }}" class="product_qty_input rg_qty hide" name="quantity" value="1">
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+
+          {% endif %}
+
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+          {% endpaginate  %}
+          <div class="error_qry_msg"></div>
+          <h3>Total price: <span class="bundle_total_price"></span></h3>
+          <button type="submit" name="add" id="Add_bundle_Cart" class="btn btn-solid btn-xs">
+            buy this bundle
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function (){
+    var shop_currency_val = $('#shop-currency').text();
+    var total_sum = 0;
+    $(".bundle_product_cls").each(function(index){
+      var bundle_pro_price = $(this).find('.price_product').text();
+      var _total = Number(bundle_pro_price.replace(/[^0-9.-]+/g,""));
+      total_sum += _total;
+      var _total_sum = Shopify.formatMoney(total_sum*100 , shop_currency_val);
+      $('.bundle_total_price').html('<span class="money">'+ _total_sum +'</span>');
+    });
+
+    $('input[type=checkbox]').change(function() {
+      if($(this).is(":checked")) {
+        $(this).parents('.bundle_product_cls').addClass('bundle_active_pro');
+
+        var _data_id = $(this).attr('data-bundleid');
+        var img_box = $(this).parents('.bundle_detail').prev('.bundle_img').find('.img-box');
+        $(img_box).each(function(index){
+          var _data_img = $(this).attr('data-bundleimg');
+          if(_data_id == _data_img){
+            $(this).addClass('bundle_curr_proImg');
+          }
+        });
+
+        var curr_total_price = $('.bundle_total_price span').text();
+        var _curr_total_price = Number(curr_total_price.replace(/[^0-9.-]+/g,""));
+        var increase_price = $(this).prev().text();
+        var _increase_price = Number(increase_price.replace(/[^0-9.-]+/g,""));
+        var change_price = _curr_total_price + _increase_price;
+        var _change_price = Shopify.formatMoney(change_price*100 , shop_currency_val);
+        $('.bundle_total_price').html('<span class="money">'+ _change_price +'</span>');
+      }else{
+        $(this).parents('.bundle_product_cls').removeClass('bundle_active_pro');
+
+        var _data_id = $(this).attr('data-bundleid');
+        var img_box = $(this).parents('.bundle_detail').prev('.bundle_img').find('.img-box');
+        $(img_box).each(function(index){
+          var _data_img = $(this).attr('data-bundleimg');
+          if(_data_id == _data_img){
+            $(this).removeClass('bundle_curr_proImg');
+          }
+        });
+
+        var curr_total_price = $('.bundle_total_price span').text();
+        var _curr_total_price = Number(curr_total_price.replace(/[^0-9.-]+/g,""));
+        var decreae_price = $(this).prev().text();
+        var _decreae_price = Number(decreae_price.replace(/[^0-9.-]+/g,""));
+        var change_price = _curr_total_price - _decreae_price;
+        var _change_price = Shopify.formatMoney(change_price*100 , shop_currency_val);
+        $('.bundle_total_price').html('<span class="money">'+ _change_price +'</span>');
+      }
+
+    });
+
+    $("#Add_bundle_Cart").click(function(e){
+      e.preventDefault();
+      var len = $('.bundle_active_pro').length;
+      if ($('input:checkbox').filter(':checked').length < 1){
+        alert("Choose at least one Product in bundle!");
+        return false;
+      }
+      var toAdd = new Array();
+      var qty;
+      $(".bundle_active_pro").each(function(index){
+        var temp_variant = $(this).find('input[type=hidden]').val();
+        var temp_qty = $(this).find('input[type=text]').val();
+        toAdd.push({
+          variant_id: temp_variant,
+          quantity_id: temp_qty
+        });
+      });
+
+      function addBundle(){
+        if(toAdd.length > 0){
+          var request = toAdd.shift();
+          var tempId = request.variant_id;
+          var tempQty = request.quantity_id;
+          //console.log('QTY : '+tempQty+ 'ID : '+tempId);
+
+          var ajax = {
+            type: 'POST',
+            url: '/cart/add.js',
+            data: 'quantity='+tempQty+'&id='+tempId,
+            dataType: 'json',
+            beforeSend: function(){
+              jQuery('#Add_bundle_Cart').text('adding to Cart');
+            },
+            success: function(cart){
+              addBundle();
+              //console.log('success');
+            },
+            error: function(XMLHttpRequest, textStatus){
+              //console.log('error');
+              var data = eval('('+XMLHttpRequest.responseText+')');
+              if (!!data.textStatus) {
+                $('.error_qry_msg').append('<p>'+data.textStatus + '('+data.status+'): ' +data.description+'</p>');
+              }
+            }
+          };
+          $.ajax(ajax);
+        } else{
+          jQuery.getJSON('/cart.js', function(cart){
+            if(cart.item_count > 0){
+              setTimeout(function(){
+                jQuery('#Add_bundle_Cart').text('Added to Cart');
+                window.location.href = "/cart";
+              }, 200);
+            }
+          });
+        }
+      };
+      addBundle();
+      return false;
+    });
+  });
+
+</script>

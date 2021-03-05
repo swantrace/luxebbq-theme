@@ -1,0 +1,166 @@
+{% assign sidebar_menu_id = settings.sidebar_menu -%}
+
+<div class="navbar">
+  {% unless settings.header_layout == 'header_3' or settings.header_layout == 'header_4' %}
+  <a href="javascript:void(0)" onclick="openNav()">
+    <div class="bar-style"> <img src="{{'menu.png' | asset_img_url : '30x'}}" alt="image"></div>
+  </a>
+  {% endunless %}
+  {% if settings.header_layout == 'header_3' or settings.header_layout == 'header_4' %}
+  <a href="javascript:void(0)" onclick="openNav()">
+    <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+  </a>
+  {% endif %}
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+    <nav>
+      <div onclick="closeNav()">
+        <div class="sidebar-back text-left">
+          <i class="fa fa-angle-left pr-2" aria-hidden="true"></i> 
+          <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
+        </div>
+      </div>
+      <!-- Sample menu definition -->
+      <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+        {% for mainlink in linklists[sidebar_menu_id].links %}
+        {% assign child_list_handle = mainlink.title | handleize %}        
+        {% assign megamenu_title = settings.sidebar_menu_title | handleize -%}
+
+        {% if mainlink.handle == megamenu_title %}
+
+        <li>
+          {% assign data_title = mainlink.title | split: '|' | first %}
+          {% assign data_json = mainlink.title | split: '|' | last %}
+          <a href="javascript:void(0)" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{mainlink.handle}}"{% endif %}>
+            {{ data_title }}
+          </a>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="header_sidebar_{{mainlink.handle}}">{{ data_json | raw }}</span>
+          {% endif %}
+
+          <ul class="mega-menu clothing-menu">
+            <li>
+              <div class="row m-0">
+                {% for i in (1..3) %}
+                {% assign for_index = forloop.index | times: 1 -%}
+                {% capture menu_title %}submenu_title_{{ i }}{% endcapture %}
+                {% capture menu_linklist %}submenu_grid_{{ i }}{% endcapture %}
+                {% capture trans_menu_title %}trans_submenu_title_{{ i }}{% endcapture %}
+
+                {% assign linklidt_grid  = settings[menu_linklist] -%}
+                {% if linklidt_grid != blank %}
+                <div class="col-xl-4">
+                  <div class="link-section">
+
+                    <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{menu_linklist}}_menu_title"{% endif %}>
+                      {{ settings[menu_title] }}
+                    </h5>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="header_sidebar_{{menu_linklist}}_menu_title">{{ settings[trans_menu_title] | raw }}</span>
+                    {% endif %}
+
+                    <ul>
+                      {% for link in linklists[linklidt_grid].links %}
+                      <li>
+                        {% assign data_title = link.title | split: '|' | first %}
+                        {% assign data_json = link.title | split: '|' | last %}
+                        <a href="{{ link.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{link.handle}}"{% endif %}>
+                          {{ data_title }}
+                        </a>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="header_sidebar_{{link.handle}}">{{ data_json | raw }}</span>
+                        {% endif %}
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% if settings.show_sidebar_menu_img %}
+                <div class="col-xl-4">
+                  <a href="javascript:void(0)" class="mega-menu-banner"><img src="{{ settings.sidebar_menu_img | img_url: 'master' }}" alt="Image" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid"></a>
+                </div>
+                {% endif %}
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        {% elsif linklists[child_list_handle].links != blank %}
+
+        <li>
+          {% assign data_title = mainlink.title | split: '|' | first %}
+          {% assign data_json = mainlink.title | split: '|' | last %}
+          <a href="{{ mainlink.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{mainlink.handle}}"{% endif %}>
+            {{ data_title }}
+          </a>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="header_sidebar_{{mainlink.handle}}">{{ data_json | raw }}</span>
+          {% endif %}
+          <ul>
+            {% for submenu in linklists[child_list_handle].links %}
+            {% assign child_child_list_handle = submenu.title | handleize %}
+            {% if linklists[child_child_list_handle].links != blank %}
+            <li>
+
+              {% assign data_title = submenu.title | split: '|' | first %}
+              {% assign data_json = submenu.title | split: '|' | last %}
+              <a href="{{ submenu.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{submenu.handle}}"{% endif %}>
+                {{ data_title }}
+              </a>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="header_sidebar_{{submenu.handle}}">{{ data_json | raw }}</span>
+              {% endif %}
+
+              <ul>
+                {% for submenu1 in linklists[child_child_list_handle].links %}
+                <li>
+                  {% assign data_title = submenu1.title | split: '|' | first %}
+                  {% assign data_json = submenu1.title | split: '|' | last %}
+                  <a href="{{ submenu1.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{submenu1.handle}}"{% endif %}>
+                    {{ data_title }}
+                  </a>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="header_sidebar_{{submenu1.handle}}">{{ data_json | raw }}</span>
+                  {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+            </li>
+            {% else %}
+            <li>
+              {% assign data_title = submenu.title | split: '|' | first %}
+              {% assign data_json = submenu.title | split: '|' | last %}
+              <a href="{{ submenu.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{submenu.handle}}"{% endif %}>
+                {{ data_title }}
+              </a>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="header_sidebar_{{submenu.handle}}">{{ data_json | raw }}</span>
+              {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+
+        {% else %}
+
+        <li>
+          {% assign data_title = mainlink.title | split: '|' | first %}
+          {% assign data_json = mainlink.title | split: '|' | last %}
+          <a href="{{ mainlink.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header_sidebar_{{mainlink.handle}}"{% endif %}>
+            {{ data_title }}
+          </a>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="header_sidebar_{{mainlink.handle}}">{{ data_json | raw }}</span>
+          {% endif %}
+        </li>
+
+        {% endif %}
+        {% endfor %}
+
+      </ul>
+    </nav>
+  </div>
+</div>

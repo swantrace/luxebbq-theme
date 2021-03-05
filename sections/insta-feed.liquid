@@ -1,0 +1,231 @@
+<!-- instagram section -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% assign user_id = section.settings.insta_user_id -%}
+{% assign access_token = section.settings.insta_access_token -%}
+
+<section class="instagram {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %}" 
+         style="padding: {{ section.settings.section_padding }};background-image: url({{ section.settings.bg_image | img_url: 'master'}});">
+  {% if section.settings.slideshow_width == 'standard-width' %}
+  <div class="container">
+    {% else %}
+    <div class="container-fluid">
+      {% endif %}
+      <div class="row">
+        <div class="col-md-12 p-0">
+          {% if section.settings.instagram_title != blank %}
+          <h2 class="title-borderless {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#insta_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.instagram_title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="insta_{{sectionId}}_title">{{ section.settings.trans_instagram_title | raw }}</span>
+          {% endif %}
+          {% endif %}
+          <div id="insta_feed" class="no-arrow slick-instagram"></div>
+        </div>
+      </div>
+      {% if section.settings.slideshow_width == 'standard-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+
+<div id="user-id" data-id="{{ user_id }}"></div>
+<div id="access-token" data-token="{{ access_token }}"></div>
+<!-- instagram section end -->
+
+<script type="text/javascript">
+$(window).on('load', function() {
+    var user_id = $('#user-id').attr('data-id');
+    var access_token = $('#access-token').attr('data-token');
+    var i, div_lth;
+    var ajax_url = 'https://api.instagram.com/v1/users/'+user_id+'/media/recent/?access_token='+access_token;
+
+    $.ajax({
+      url: ajax_url,
+      type: "GET",
+      async:false,
+      dataType: "jsonp",
+      headers: {
+        "access-control-allow-origin": true,
+        "content-type": "application/json"
+      },
+      success: function(object){
+        if(object.data.length > 0){
+          div_lth = '';
+          for(i=0; i<16; i++){
+            if(typeof object.data[i] == "undefined"){}
+            else{
+              div_lth += '<div><a href="'+object.data[i].link+'" target="_blank" id="'+object.data[i].id+'"><div class="instagram-box"><img class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="'+object.data[i].images.low_resolution.url+'" alt="instagram" /><div class="overlay"><i class="fa fa-instagram"  aria-hidden="true"></i></div></div></a></div>';
+            }
+          }
+        } else{
+          $('#insta_feed').append('<p class="text-center">There is no post yet.</p>');
+        }
+        $('#insta_feed').append(div_lth);
+        setTimeout(function() {
+
+          $('.slick-instagram').slick({
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: {{ section.settings.post_limit }},
+            slidesToScroll: 1,
+            responsive: [
+              {
+                breakpoint: 1367,
+                settings: {
+                  slidesToShow: 5,
+                  slidesToScroll: 5
+                }
+              },
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 4,
+                  slidesToScroll: 4,
+                  infinite: true
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2
+                }
+              }
+            ]
+          });
+
+        },100);
+      },
+      error: function (xhr, status, error) {
+        console.log(status);
+        console.log(error);
+      }
+    });
+
+  });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "settings": [
+	  {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"image_picker",
+         "id":"bg_image",
+         "label":"Background Image"
+      },
+	  {
+         "type":"checkbox",
+         "id":"enabled_parallax_bg",
+         "default":true,
+         "label":"Enabled Parallax"
+      },
+      {
+         "type":"select",
+         "id":"slideshow_width",
+         "label":"Slideshow Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width "
+            }
+         ],
+         "default":"full-width"
+      },
+      {
+         "type":"select",
+         "id":"post_limit",
+         "label":"Insta POst Limit",
+         "options":[
+            {
+               "value":"4",
+               "label":"4"
+            },
+            {
+               "value":"5",
+               "label":"5"
+            },
+            {
+               "value":"6",
+               "label":"6"
+            },
+            {
+               "value":"7",
+               "label":"7"
+            },
+            {
+               "value":"8",
+               "label":"8 "
+            }
+         ],
+         "default":"6"
+      },
+	  {
+		"type": "text",
+      	"id": "instagram_title",
+      	"label": "Instagram Title",
+		"default": "#Instagram"
+	  },
+      {
+         "type": "textarea",
+         "id": "trans_instagram_title",
+         "label": "Translate Instagram Title"
+	  },
+	  {
+		"type": "text",
+      	"id": "insta_user_id",
+      	"label": "Instagram User Id"
+	  },
+	  {
+		"type": "text",
+      	"id": "insta_access_token",
+      	"label": "Instagram Access Token"
+	  }
+	],
+    "presets": [
+      {
+        "name": "Instagram layout",
+        "category": "Image",
+        "settings": {
+          "insta_user_id": "8295761913",
+          "insta_access_token": "8295761913.aa0cb6f.2914e9f04dd343b8a57d9dc9baca91cc"
+        }
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,98 @@
+<!-- category 3 -->
+{% if section.settings.enabled %}
+
+<section class="p-0">
+  <div class="container">
+    <div class="row background">
+      {% for block in section.blocks %}
+      {% capture blockId %}{{ block.id }}{% endcapture %}
+      {% assign collection = collections[block.settings.collection] %}
+      <div class="col">
+        <a href="{{ collection.url }}">
+          <div class="contain-bg">
+
+            <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#cat2_{{blockId}}_trans_title"{% endif %}>
+              {{ block.settings.title }}
+            </h4>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="cat2_{{blockId}}_trans_title">{{ block.settings.trans_title | raw }}</span>
+            {% endif %}
+
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- category 3 end-->
+
+{% endif %}
+
+{% schema %}
+{
+   "name":"Category layout 2",
+   "max_blocks": 8,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"collection",
+         "name":"Category",
+         "settings":[
+            {
+               "type":"collection",
+               "id":"collection",
+               "label":"Select collection"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default":"Size 08"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Title"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Category layout 2",
+         "category":"Category",
+         "settings":{
+
+         },
+         "blocks":[
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

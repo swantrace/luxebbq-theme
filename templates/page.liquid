@@ -1,0 +1,16 @@
+{% include 'breadcrumb' %}
+
+<section class="section-b-space">
+  <div class="container">
+    <div class="row">
+      {% assign data_title = page.content | split: '|' | first %}
+      {% assign data_json = page.content | split: '|' | last %}
+      <div class="col-sm-12 lang_desc_trans" {% if settings.enable_lang_switcher %}data-trans="#page_{{page.id}}_desc"{% endif %}>
+        {{ data_title }}
+      </div>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="page_{{page.id}}_desc">{{ data_json }}</span>
+      {% endif %}
+    </div>
+  </div>
+</section>

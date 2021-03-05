@@ -1,0 +1,183 @@
+{% if section.settings.portfolio_layout == 'normal'  %}
+{% include 'portfolio-default' %}
+{% else %}
+{% include 'portfolio-mesonary' %}
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Portfolio section",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Portfolio Header"
+      },
+	  {
+          "type": "select",
+          "id": "section_width",
+          "label": "Section container Width",
+          "default": "standard-width",
+          "options": [
+              {
+              "value": "full-width",
+              "label": "Full width"
+              },
+			  {
+              "value": "standard-width",
+              "label": "Standard width"
+              }
+		]
+	  },
+	  {
+          "type": "select",
+          "id": "portfolio_layout",
+          "label": "Portfolio Layout",
+          "default": "normal",
+          "options": [
+              {
+              "value": "mesonary",
+              "label": "Mesonary"
+              },
+			  {
+              "value": "normal",
+              "label": "Normal"
+              }
+		]
+	  },
+	  {
+          "type": "select",
+          "id": "portfolio_grid",
+          "label": "Portfolio Image row (grid only)",
+          "default": "3",
+          "options": [
+              {
+              "value": "2",
+              "label": "2"
+              },
+			  {
+              "value": "3",
+              "label": "3"
+              },
+              {
+              "value": "4",
+              "label": "4"
+              }
+		]
+	  },
+	  {
+		"type": "text",
+		"id": "page_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "textarea",
+		"id": "trans_page_title",
+		"label": "Translate Title"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_portfolio_tab_1",
+		"label": "Show Portfolio Tab 1",
+		"default": true
+	  },
+	  {
+		"type": "text",
+		"id": "portfolio_tab_title_1",
+		"label": "Portfolio Title 1"
+	  },
+	  {
+		"type": "textarea",
+		"id": "trans_portfolio_tab_title_1",
+		"label": "Translate Portfolio Title"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_portfolio_tab_2",
+		"label": "Show Portfolio Tab 2",
+		"default": true
+	  },
+	  {
+		"type": "text",
+		"id": "portfolio_tab_title_2",
+		"label": "Portfolio Title 2"
+	  },
+	  {
+		"type": "textarea",
+		"id": "trans_portfolio_tab_title_2",
+		"label": "Translate Portfolio Title"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_portfolio_tab_3",
+		"label": "Show Portfolio Tab 3",
+		"default": true
+	  },
+	  {
+		"type": "text",
+		"id": "portfolio_tab_title_3",
+		"label": "Portfolio Title 3"
+	  },
+	  {
+		"type": "textarea",
+		"id": "trans_portfolio_tab_title_3",
+		"label": "Translate Portfolio Title"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_portfolio_tab_4",
+		"label": "Show Portfolio Tab 4",
+		"default": false
+	  },
+	  {
+		"type": "text",
+		"id": "portfolio_tab_title_4",
+		"label": "Portfolio Title 4"
+	  },
+	  {
+		"type": "textarea",
+		"id": "trans_portfolio_tab_title_4",
+		"label": "Translate Portfolio Title"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "show_portfolio_tab_5",
+		"label": "Show Portfolio Tab 5",
+		"default": true
+	  },
+	  {
+		"type": "text",
+		"id": "portfolio_tab_title_5",
+		"label": "Portfolio Title 5"
+	  },
+	  {
+		"type": "textarea",
+		"id": "trans_portfolio_tab_title_5",
+		"label": "Translate Portfolio Title"
+	  }
+	],
+	"blocks": [
+	  {
+		"type": "image",
+        "name": "Service",
+        "settings": [
+          {
+		    "type": "image_picker",
+            "id": "portfolio_img",
+            "label": "Portfolio Image"
+      	  },
+          {
+            "type": "text",
+            "id": "portfolio_tab_title",            
+            "label": "Portfolio Tab Title"
+          }
+        ]
+	  }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

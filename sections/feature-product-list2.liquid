@@ -1,0 +1,755 @@
+<!-- product section start -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% case section.settings.product_per_row %}
+{% when '3' %}
+{% assign column_grid_width = 'col-xl-4 col-sm-6' -%}
+{% when '4' %}
+{% assign column_grid_width = 'col-xl-3 col-sm-6' -%}
+{% when '5' %}
+{% assign column_grid_width = 'col-xl-2 col-sm-6' -%}
+{% when '6' %}
+{% assign column_grid_width = 'col-xl-2 col-sm-6' -%}
+{% endcase %}
+
+{% assign collection = collections[section.settings.collection] %}
+{% assign pro_limit =  section.settings.product_limit %}
+
+<section class="box-product" style="padding: {{ section.settings.section_padding }}">
+  <div class="full-box">
+    <div class="container">
+      {% if settings.title_layout == 'title_1' %}
+      <div class="title1">
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %}
+        {% endif %}
+        {% if section.settings.title != blank %}
+        <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+          {{ section.settings.title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+        {% endif %}
+        {% endif %}
+      </div>
+      {% elsif settings.title_layout == 'title_2' %}
+      <div class="title3">
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %} 
+        {% endif %}
+        {% if section.settings.title != blank %}
+        <h2 class="title-inner3 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+          {{ section.settings.title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+        {% endif %} 
+        {% endif %}
+        <div class="line"></div>
+      </div>
+      {% elsif settings.title_layout == 'title_3' %}
+      <div class="title2">
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %}
+        {% endif %}
+        {% if section.settings.title != blank %}
+        <h2 class="title-inner2 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+          {{ section.settings.title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+        {% endif %}
+        {% endif %}
+      </div>
+      {% elsif settings.title_layout == 'title_4' %}
+      <div class="title4">
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %}
+        {% endif %}
+        {% if section.settings.title != blank %}
+        <h2 class="title-inner4 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+          {{ section.settings.title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+        {% endif %}
+        {% endif %}
+        <div class="line">
+          <span></span>
+        </div>
+      </div>
+      {% elsif settings.title_layout == 'title_5' %}
+      <div class="title1 title-gradient">
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %}
+        {% endif %}
+        {% if section.settings.title != blank %}
+        <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+          {{ section.settings.title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+        {% endif %}
+        {% endif %}
+      </div>
+      {% elsif settings.title_layout == 'title_6' %}
+      <div class="title1 title5">
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %}          
+        {% endif %}
+        {% if section.settings.title != blank %}
+        <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+          {{ section.settings.title }}
+        </h2>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+        {% endif %}  
+        {% endif %}
+        <hr role="tournament6">
+      </div>
+      {% endif %}
+
+      <div class="row">
+
+        <div class="col-xl-3 col-md-6 col-sm-12">
+          <div class="theme-card">
+            <div class="offer-slider">
+              <div class="">
+                {% for product in collection.products limit: 8 %}
+                {% if forloop.first == true or forloop.index == 2 %}
+                <div class="product-box2 product-box">
+                  <div class="media img-wrapper">
+                    <div class="front">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product | img_url: '145x190' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% if settings.show_second_img %}
+                    {% if product.images.size > 1 %}
+                    <div class="back">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.images[1] %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product.images[1] | img_url: '340x455' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    <div class="media-body align-self-center">
+                      {% if settings.show_review_rating %}
+                      <div class="rating">
+                        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                      </div>
+                      {% endif %}
+                      <a href="{{ product.url | within: collection }}">
+                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_json = product.title | split: '|' | last %}
+                        <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                          {{ data_title | truncatewords: 10 }}
+                        </h6>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                        {% endif %}
+                      </a>
+                      {% if settings.eneble_login_price %}
+                      {% if customer %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% else %}
+                      <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                      {% endif %}
+
+                      {% elsif settings.show_catelogue  %}
+                      {% if settings.show_catelogue_price %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      {% else %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      <div class="cart-bottom">
+                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="compare.html" title="Compare"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-sm-12">
+          <div class="theme-card">
+            <div class="offer-slider">
+              <div class="">
+                {% for product in collection.products limit: 8 %}
+                {% if forloop.index == 3 or forloop.index == 4 %}
+                <div class="product-box2 product-box">
+                  <div class="media img-wrapper">
+                    <div class="front">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product | img_url: '145x190' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% if settings.show_second_img %}
+                    {% if product.images.size > 1 %}
+                    <div class="back">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.images[1] %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product.images[1] | img_url: '340x455' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    <div class="media-body align-self-center">
+                      {% if settings.show_review_rating %}
+                      <div class="rating">
+                        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                      </div>
+                      {% endif %}
+                      <a href="{{ product.url | within: collection }}">
+                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_json = product.title | split: '|' | last %}
+                        <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                          {{ data_title | truncatewords: 10 }}
+                        </h6>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                        {% endif %}
+                      </a>
+                      {% if settings.eneble_login_price %}
+                      {% if customer %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% else %}
+                      <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                      {% endif %}
+
+                      {% elsif settings.show_catelogue  %}
+                      {% if settings.show_catelogue_price %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      {% else %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      <div class="cart-bottom">
+                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="compare.html" title="Compare"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-sm-12">
+          <div class="theme-card">
+            <div class="offer-slider">
+              <div class="">
+                {% for product in collection.products limit: 8 %}
+                {% if forloop.index == 5 or forloop.index == 6 %}
+                <div class="product-box2 product-box">
+                  <div class="media img-wrapper">
+                    <div class="front">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product | img_url: '145x190' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% if settings.show_second_img %}
+                    {% if product.images.size > 1 %}
+                    <div class="back">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.images[1] %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product.images[1] | img_url: '340x455' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    <div class="media-body align-self-center">
+                      {% if settings.show_review_rating %}
+                      <div class="rating">
+                        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                      </div>
+                      {% endif %}
+                      <a href="{{ product.url | within: collection }}">
+                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_json = product.title | split: '|' | last %}
+                        <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                          {{ data_title | truncatewords: 10 }}
+                        </h6>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                        {% endif %}
+                      </a>
+                      {% if settings.eneble_login_price %}
+                      {% if customer %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% else %}
+                      <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                      {% endif %}
+
+                      {% elsif settings.show_catelogue  %}
+                      {% if settings.show_catelogue_price %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      {% else %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      <div class="cart-bottom">
+                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="compare.html" title="Compare"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-6 col-sm-12">
+          <div class="theme-card">
+            <div class="offer-slider">
+              <div class="">
+                {% for product in collection.products limit: 8 %}
+                {% if forloop.index == 7 or forloop.last == true %}
+                <div class="product-box2 product-box">
+                  <div class="media img-wrapper">
+                    <div class="front">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product | img_url: '145x190' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% if settings.show_second_img %}
+                    {% if product.images.size > 1 %}
+                    <div class="back">
+                      <a href="{{ product.url | within: collection }}">
+                        {% if section.settings.use_equal_height %}
+                        <div>
+                          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.images[1] %}" data-sizes="auto" data-parent-fit="cover"></span>
+                        </div>        
+                        {% else %}
+                        <img src="{{ product.images[1] | img_url: '340x455' }}" 
+                             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+                        {% endif %}
+                      </a>
+                    </div>
+                    {% endif %}
+                    {% endif %}
+                    <div class="media-body align-self-center">
+                      {% if settings.show_review_rating %}
+                      <div class="rating">
+                        <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                      </div>
+                      {% endif %}
+                      <a href="{{ product.url | within: collection }}">
+                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_json = product.title | split: '|' | last %}
+                        <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                          {{ data_title | truncatewords: 10 }}
+                        </h6>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                        {% endif %}
+                      </a>
+                      {% if settings.eneble_login_price %}
+                      {% if customer %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% else %}
+                      <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                      {% endif %}
+
+                      {% elsif settings.show_catelogue  %}
+                      {% if settings.show_catelogue_price %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      {% else %}
+                      <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h4>
+                      {% endif %}
+                      <div class="cart-bottom">
+                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a href="compare.html" title="Compare"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- product section end -->
+
+{% schema %}
+  {
+    "name": "Fetaure Product List2",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":"Slideshow Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width"
+            }
+         ],
+         "default":"standard-width"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default":"Special offer"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "SubTitle",
+        "default":"Top Collections"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate subtitle"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select collection"
+      },
+      {
+         "type":"select",
+         "id":"product_per_row",
+         "label":"Product Per Row",
+         "options":[
+            {
+                "label":"3",
+                "value":"3"
+            },
+            {
+                "label":"4",
+                "value":"4"
+            },
+            {
+                "label":"5",
+                "value":"5"
+            },
+            {
+                "label":"6",
+                "value":"6"
+            }
+        ],
+        "default":"4"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+    ],
+    "presets": [{
+      "name": "Feature Product list2",
+      "category": "Product",
+      "settings": {}
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

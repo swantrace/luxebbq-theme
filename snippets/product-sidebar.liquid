@@ -1,0 +1,271 @@
+<div class="col-sm-3 collection-filter">
+  <div class="collection-filter-block">
+    <div class="collection-mobile-back">
+      <span class="filter-back">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
+      </span>
+    </div>
+    {% if settings.category_enable %}
+    <div class="collection-collapse-block border-0 open">
+
+      <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#pro_sidebar_{{product.id}}_catgory_title"{% endif %}>
+        {{ settings.catgory_title }}
+      </h3>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="pro_sidebar_{{product.id}}_catgory_title">{{ settings.trans_catgory_title | raw }}</span>
+      {% endif %}
+
+      <div class="collection-collapse-block-content">
+        <div class="collection-brand-filter mb-0">
+          <ul class="category-list">
+            {% assign sidebar_menu_id = settings.category_menu -%}
+            {% for link in linklists[sidebar_menu_id].links %}
+            <li>
+
+              {% assign data_title = link.title | split: '|' | first %}
+              {% assign data_json = link.title | split: '|' | last %}
+              <a href="{{ link.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{link.handle}}"{% endif %}>
+                {{ data_title | truncatewords: 10 }}
+              </a>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="pro_sidebar_{{link.handle}}">{{ data_json | raw }}</span>
+              {% endif %}
+
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="collection-filter-block">
+    <div class="product-service">
+      <div class="media">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_1 | img_url: '50x' }}"  alt="{{ image.alt }}"/>
+        <div class="media-body">
+
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_1"{% endif %}>
+            {{ settings.service_title_1 }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_title_1">{{ settings.trans_service_title_1 | raw }}</span>
+          {% endif %}
+
+          <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_text_1"{% endif %}>
+            {{ settings.service_text_1 }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_text_1">{{ settings.trans_service_text_1 | raw }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="media">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_2 | img_url: '50x' }}" alt="{{ image.alt }}">
+        <div class="media-body">
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_2"{% endif %}>
+            {{ settings.service_title_2 }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_title_2">{{ settings.trans_service_title_2 | raw }}</span>
+          {% endif %}
+
+          <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_text_2"{% endif %}>
+            {{ settings.service_text_2 }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_text_2">{{ settings.trans_service_text_2 | raw }}</span>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="media">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_3 | img_url: '50x' }}" alt="{{ image.alt }}">
+        <div class="media-body">
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_3"{% endif %}>
+            {{ settings.service_title_3 }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_title_3">{{ settings.trans_service_title_3 | raw }}</span>
+          {% endif %}
+
+          <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_text_3"{% endif %}>
+            {{ settings.service_text_3 }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_text_3">{{ settings.trans_service_text_3 | raw }}</span>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="media border-0 m-0">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_4 | img_url: '50x' }}" alt="{{ image.alt }}">
+        <div class="media-body">
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_4"{% endif %}>
+            {{ settings.service_title_4 }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_title_4">{{ settings.trans_service_title_4 | raw }}</span>
+          {% endif %}
+
+          <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_text_4"{% endif %}>
+            {{ settings.service_text_4 }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="pro_sidebar_{{product.id}}_service_text_4">{{ settings.trans_service_text_4 | raw }}</span>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- side-bar single product slider start -->
+  {% if settings.show_pro_title %}
+  <div class="theme-card">
+
+    <h5 class="title-border {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#pro_sidebar_{{product.id}}_sidebar_pro_title"{% endif %}>
+      {{ settings.sidebar_pro_title }}
+    </h5>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="pro_sidebar_{{product.id}}_sidebar_pro_title">{{ settings.trans_sidebar_pro_title | raw }}</span>
+    {% endif %}
+
+    {% assign collection = collections[settings.select_sidebar_pro_coll] %}
+    <div class="offer-slider slide-1">
+      <div>
+        {% if collection.empty? %}
+        {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+        {% for i in (1..3) %}
+        <div class="media">
+          <a href="#">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+          <div class="media-body align-self-center">
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <a href="#">
+              <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+            </a>
+            <h4>{{ '$20.00' }}</h4>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for product in collection.products limit: 3 %}
+        {% if forloop.index == 4 %}
+        {% break %}
+        {% else %}
+        <div class="media">
+          <a href="{{ product.url | within: collection }}" >
+            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title }}" >
+          </a>
+          <div class="media-body align-self-center">
+            <div class="rating">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </div>
+            <a href="{{ product.url | within: collection }}">
+              {% assign data_title = product.title | split: '|' | first %}
+              {% assign data_json = product.title | split: '|' | last %}
+              <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_pro_title"{% endif %}>
+                {{ data_title | truncatewords: 10 }}
+              </h6>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="pro_sidebar_{{product.id}}_pro_title">{{ data_json | raw }}</span>
+              {% endif %}
+            </a>
+            <h4>{{ product.price | money }}</h4>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% if collection.products.size > 5 %}
+      <div>
+        {% if collection.empty? %}
+        {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+        {% for i in (1..3) %}
+        <div class="media">
+          <a href="#">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+          </a>
+          <div class="media-body align-self-center">
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+            <a href="#">
+              <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+            </a>
+            <h4>{{ '$20.00' }}</h4>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for product in collection.products limit: 3 offset:3 %}
+        <div class="media">
+          <a href="{{ product.url | within: collection }}" >
+            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title }}" >
+          </a>
+          <div class="media-body align-self-center">
+            <div class="rating">
+              <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </div>
+            <a href="{{ product.url | within: collection }}">
+              {% assign data_title = product.title | split: '|' | first %}
+              {% assign data_json = product.title | split: '|' | last %}
+              <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_pro_title"{% endif %}>
+                {{ data_title | truncatewords: 10 }}
+              </h6>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="pro_sidebar_{{product.id}}_pro_title">{{ data_json | raw }}</span>
+              {% endif %}
+            </a>
+            <h4>{{ product.price | money }}</h4>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  <!-- side-bar single product slider end -->
+  <!-- side-bar banner start here -->
+  {% if settings.show_pro_sidebar_banner %}
+  <div class="collection-sidebar-banner">
+    <a href="{{ settings.pro_sidebar_bnr_link }}">
+      <img src="{{ settings.pro_sidebar_bnr | img_url: 'master' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ image.alt }}">
+    </a>
+  </div>
+  {% endif  %}
+  <!-- side-bar banner end here -->
+</div>
+
+<script>
+  //  category page //
+  $('.collapse-block-title').on('click', function(e) {
+    e.preventDefault;
+    var speed = 300;
+    var thisItem = $(this).parent(),
+        nextLevel = $(this).next('.collection-collapse-block-content');
+    if (thisItem.hasClass('open')){
+      thisItem.removeClass('open');
+      nextLevel.slideUp(speed);
+    }
+    else {
+      thisItem.addClass('open');
+      nextLevel.slideDown(speed);
+    }
+  });
+</script>

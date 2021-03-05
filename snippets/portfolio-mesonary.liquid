@@ -1,0 +1,71 @@
+<!-- section start -->
+
+{% case section.settings.portfolio_grid %}
+{% when '2' %}
+{% assign grid_width = 'col-sm-6' -%}
+{% when '3' %}
+{% assign grid_width = 'col-lg-4 col-sm-6' -%}
+{% when '4' %}
+{% assign grid_width = 'col-lg-3 col-sm-6' -%}
+{% endcase %}
+
+<section class="filter-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="title1 ">
+          <h2 class="title-inner1">{{ section.settings.page_title }}</h2>
+        </div>
+        <div class="filter-container isotopeFilters">
+          <ul class="list-inline filter">
+            <li class="active"><a href="#" data-filter="*">All </a></li>
+            {% if section.settings.show_portfolio_tab_1 %}
+            <li><a href="#" data-filter=".{{ section.settings.portfolio_tab_title_1 }}">{{ section.settings.portfolio_tab_title_1 }}</a></li>
+            {% endif %}
+            {% if section.settings.show_portfolio_tab_2 %}
+            <li><a href="#" data-filter=".{{ section.settings.portfolio_tab_title_2 }}">{{ section.settings.portfolio_tab_title_2 }}</a></li>
+            {% endif %}
+            {% if section.settings.show_portfolio_tab_3 %}
+            <li><a href="#" data-filter=".{{ section.settings.portfolio_tab_title_3 }}">{{ section.settings.portfolio_tab_title_3 }}</a></li>
+            {% endif %}
+            {% if section.settings.show_portfolio_tab_4 %}
+            <li><a href="#" data-filter=".{{ section.settings.portfolio_tab_title_4 }}">{{ section.settings.portfolio_tab_title_4 }}</a></li>
+            {% endif %}
+            {% if section.settings.show_portfolio_tab_5 %}
+            <li><a href="#" data-filter=".{{ section.settings.portfolio_tab_title_5 }}">{{ section.settings.portfolio_tab_title_5 }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="portfolio-section pt-0 port-col zoom-gallery">
+  {% if section.settings.section_width == 'standard-width' %}
+  <div class="container">
+    {% else %}
+    <div class="container-fluid">
+      {% endif %}
+      <div class="isotopeContainer row">
+        {% for block in section.blocks %}
+        <div class="isotopeSelector {{ block.settings.portfolio_tab_title }} {{grid_width}}">
+          <div class="overlay">
+            <div class="border-portfolio">
+              <a href="{{ block.settings.portfolio_img | img_url:'master' }}" data-source="{{ block.settings.portfolio_img | img_url:'master' }}">
+                <div class="overlay-background">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <img src="{{ block.settings.portfolio_img | img_url:'master' }}" class="img-fluid">
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if section.settings.section_width == 'standard-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+<!-- Section ends -->

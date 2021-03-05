@@ -1,0 +1,45 @@
+{% include 'breadcrumb' %}
+
+<!--section start-->
+<section class="register-page section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.register.title"{%endif%}>{{ 'customer.register.title' | t }}</h3>
+        <div class="theme-card">
+          {% form 'create_customer' , class: 'theme-form' %}
+
+          {% if form.errors %}
+          <div class="form-message form-message--error">
+            {{ form.errors | default_errors }}
+          </div>
+          {% endif %}
+
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="FirstName" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.first_name"{%endif%}>{{ 'customer.register.first_name' | t }}</label>
+              <input type="text" class="form-control" name="customer[first_name]" placeholder="{{ 'customer.register.first_name' | t }}" id="FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autofocus>
+            </div>
+            <div class="col-md-6">
+              <label for="LastName" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.last_name"{%endif%}>{{ 'customer.register.last_name' | t }}</label>
+              <input type="text" class="form-control" name="customer[last_name]" id="LastName" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %}>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="email" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.email"{%endif%}>{{ 'customer.register.email' | t }}</label>
+              <input type="email" name="customer[email]" id="Email" placeholder="{{ 'customer.register.email' | t }}" class="form-control {% if form.errors contains 'email' %} input--error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+            </div>
+            <div class="col-md-6">
+              <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.password"{%endif%}>{{ 'customer.register.password' | t }}</label>
+              <input type="password" name="customer[password]" placeholder="{{ 'customer.register.password' | t }}" id="CreatePassword" class="form-control {% if form.errors contains 'password' %} input--error{% endif %}">
+            </div>
+            <button class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.submit"{%endif%}>{{ 'customer.register.submit' | t }}</button>
+          </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Section ends-->

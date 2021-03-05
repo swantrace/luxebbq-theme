@@ -1,0 +1,63 @@
+<!-- breadcrumb start -->
+{% if settings.eneble_breadcrumb %}
+{% assign temp = template | split: '.' | first  %}
+<div class="breadcrumb-section" style=" {%- if settings.breadcrumb_image != blank -%}  background: url({{ settings.breadcrumb_image | img_url: '1920x1080' }});  background-attachment: fixed;  background-repeat: no-repeat; width: 100%;
+    background-size: cover;  {%- endif -%}"  >
+  <div class="container">
+    <div class="row">
+      {% case temp %} 
+
+      <div class="col-sm-12">
+        <div class="page-title">
+          {% if search.results_count == 0 or search.performed == false %}
+          <h2 {% if settings.enable_lang_switcher %}data-trans-key="general.search.title"{%endif%}>{{ 'general.search.title' | t }}</h2>
+          {% else %}
+          <h2 {% if settings.enable_lang_switcher %}data-trans-key="general.search.results_with_count"{%endif%}>{{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</h2>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <nav aria-label="breadcrumb" class="theme-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" {% if settings.enable_lang_switcher %}data-trans-key="general.breadcrumb.home"{%endif%}>{{ 'general.breadcrumb.home' | t }}</a></li>
+            <li class="breadcrumb-item active" {% if settings.enable_lang_switcher %}data-trans-key="general.search.subtitle"{%endif%}>{{ 'general.search.subtitle' | t }}</li>
+          </ol>
+        </nav>
+      </div>
+      {% else %}
+      <div class="col-sm-12">
+        <div class="page-title">
+          {% assign data_title = page_title | split: '|' | first %}
+          {% assign data_json = page_title | split: '|' | last %}
+          <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{ data_title | handleize }}_breadcrumb_page_title"{% endif %}>
+            {{ data_title | truncatewords: 10 }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="{{ data_title | handleize }}_breadcrumb_page_title">{{ data_json | raw }}</span>
+          {% endif %}
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <nav aria-label="breadcrumb" class="theme-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/" {% if settings.enable_lang_switcher %}data-trans-key="general.breadcrumb.home"{%endif%}>{{ 'general.breadcrumb.home' | t }}</a></li>
+
+            {% assign data_title = page_title | split: '|' | first %}
+            {% assign data_json = page_title | split: '|' | last %}
+            <li class="breadcrumb-item active {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{ data_title | handleize }}_breadcrumb_active_page_title"{% endif %}>
+              {{ data_title | truncatewords: 10 }}
+            </li>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="{{ data_title | handleize }}_breadcrumb_active_page_title">{{ data_json | raw }}</span>
+            {% endif %}
+
+          </ol>
+        </nav>
+      </div>
+
+      {% endcase %}      
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- breadcrumb End -->

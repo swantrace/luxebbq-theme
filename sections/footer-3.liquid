@@ -1,0 +1,584 @@
+<!-- footer -->
+<footer class="{% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %} {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %} bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}" 
+         style="padding: {{ section.settings.section_padding }};
+                {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | img_url: 'master'}});{% endif %}">
+  <div class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %} dark-layout{% endunless %}" 
+       {% unless settings.enable_gradiant_colors or section.settings.bg_image %}style="background-color: {{ settings.footer_bg_color }};"{% endunless %}>
+    {% if section.settings.footer_width == 'standard-width' %}
+    <div class="container">
+      {% else %}
+      <div class="container-fluid">
+        {% endif %}
+        <section class="section-b-space border-b" style="border-bottom: 1px solid {{ settings.footer_text_color }};">
+          <div class="row footer-theme2">
+            {% for block in section.blocks %}
+            {% capture blockId %}{{ block.id }}{% endcapture %}
+            {% if block.type == 'Custom-html' %}
+            <div class="col-lg-3">
+              <div class="footer-title footer-mobile-title">
+                <h4 style="color: {{ settings.footer_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_title"{% endif %}>
+                  {{ block.settings.title }}
+                </h4>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="footer3_{{blockId}}_title">{{ block.settings.trans_title | raw }}</span>
+                {% endif %}
+              </div>
+              <div class="footer-contant">
+                {% if block.settings.footer_logo %}
+                {% capture image_size %}{{ block.settings.footer_logo_max_width | escape }}x{% endcapture %}
+                <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
+                  <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" />
+                </div>{% else %}
+                <h1 itemprop="logo"><a href="/" itemprop="url">{{ shop.name }}</a></h1>
+                {% endif %}
+                {% if block.settings.text %}
+                <p style="color: {{ settings.footer_link_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_text"{% endif %}>
+                  {{ block.settings.text }}
+                </p>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="footer3_{{blockId}}_text">{{ block.settings.trans_text | raw }}</span>
+                {% endif %}
+                {% endif %}
+
+                {% if block.settings.show_social %}
+                <div class="social-white">
+                  <ul>
+                    {% if settings.social_facebook_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_facebook_link | escape }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_google_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_google_link | escape }}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_twitter_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_twitter_link | escape }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_instagram_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_instagram_link | escape }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_rss_link != blank %}
+                    <li>
+                      <a href="{{ settings.social_rss_link | escape }}"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            {% elsif block.type == 'newsletter' %}
+            <div class="col-lg-6 subscribe-wrapper">
+              <div class="subscribe-block" {% unless settings.enable_gradiant_colors or section.settings.bg_image %}style="background-color: {{ settings.footer_newsletter_bg_color }};"{% endunless %}>
+                <h2 style="color: {{ settings.footer_newsletter_text_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_newsltr_title"{% endif %}>
+                  {{ block.settings.title }}
+                </h2>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="footer3_{{blockId}}_info_title">{{ block.settings.trans_title | raw }}</span>
+                {% endif %}
+                <form action="{{ section.settings.form_url }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                  <div id="mc_embed_signup_scroll">
+                    <div class="form-group">
+                      <input type="email" class="required email form-control"  value="" name="EMAIL" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" id="mce-EMAIL" required>
+                    </div>
+                    <div id="mce-responses" class="clear">
+                      <div class="response" id="mce-error-response" style="display:none"></div>
+                      <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" hidden>
+                      <input type="text" name="b_17af379706d80b694776f991f_9ebb72e4d2" tabindex="-1" value="">
+                    </div>
+                    <button type="submit" class="btn btn-solid" name="subscribe" id="mc-embedded-subscribe" {% if settings.enable_lang_switcher %}data-trans-key="general.newsletter_form.submit"{%endif%}>{{ 'general.newsletter_form.submit' | t }}</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            {% elsif block.type == 'Info' %}
+            <div class="col-lg-3">
+              <div class="footer-title">
+                <h4 style="color: {{ settings.footer_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_info_title"{% endif %}>
+                  {{ block.settings.title }}
+                </h4>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="footer3_{{blockId}}_info_title">{{ block.settings.trans_title | raw }}</span>
+                {% endif %}
+              </div>
+              <div class="footer-contant">
+                <ul class="contact-details">
+                  {% if block.settings.address %}
+                  <li style="color: {{ settings.footer_link_color }}">
+                    <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_address"{% endif %}>
+                      {{ block.settings.address }}
+                    </span>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="footer3_{{blockId}}_address">{{ block.settings.trans_address | raw }}</span>
+                    {% endif %}
+                  </li>
+                  {% endif %}
+                  {% if block.settings.contact_info %}
+                  <li style="color: {{ settings.footer_link_color }}">
+                    <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_contact_info"{% endif %}>
+                      {{ block.settings.contact_info }}
+                    </span>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="footer3_{{blockId}}_contact_info">{{ block.settings.trans_contact_info | raw }}</span>
+                    {% endif %}
+                  </li>
+                  {% endif %}
+                  {% if block.settings.email %}
+                  <li style="color: {{ settings.footer_link_color }}">
+                    <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_email"{% endif %}>
+                      {{ block.settings.email }}
+                    </span>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="footer3_{{blockId}}_email">{{ block.settings.trans_email | raw }}</span>
+                    {% endif %}
+                  </li>
+                  {% endif %}
+                  {% if block.settings.fax %}
+                  <li style="color: {{ settings.footer_link_color }}">
+                    <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_fax"{% endif %}>
+                      {{ block.settings.fax }}
+                    </span>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="footer3_{{blockId}}_fax">{{ block.settings.trans_fax | raw }}</span>
+                    {% endif %}
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+        {% if section.settings.footer_width == 'standard-width' %}
+      </div>
+      {% else %}
+    </div>
+    {% endif %}
+  </div>
+  {% for block in section.blocks %}
+  {% capture blockId %}{{ block.id }}{% endcapture %}
+  {% if block.type == 'Menu' %}
+  <div class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %}dark-layout{% endunless %}" 
+       {% unless settings.enable_gradiant_colors or section.settings.bg_image %} style="background-color: {{ settings.footer_bg_color }};"{% endunless %}>
+    {% if section.settings.footer_width == 'standard-width' %}
+    <div class="container">
+      {% else %}
+      <div class="container-fluid">
+        {% endif %}
+        <section class="small-section">
+          <div class="row footer-theme2">
+            <div class="col p-set">
+              <div class="footer-link">
+                <div class="footer-title">
+                  <h4 style="color: {{ settings.footer_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_menu_title"{% endif %}>
+                    {{ block.settings.title1 }}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="footer3_{{blockId}}_menu_title">{{ block.settings.trans_title1 | raw }}</span>
+                  {% endif %}
+                </div>
+                <div class="footer-contant">
+                  <ul>
+                    {% if block.settings.footer_linklist1 != blank %} 
+                    {% assign footer_linklist_1 = block.settings.footer_linklist1 -%}
+                    {% for link in linklists[footer_linklist_1].links %}
+                    <li>
+                      {% assign data_title = link.title | split: '|' | first %}
+                      {% assign data_json = link.title | split: '|' | last %}
+                      <a href="{{ link.url }}" style="color: {{ settings.footer_link_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{link.handle}}"{% endif %}>
+                        {{ data_title }}
+                      </a>
+                      {% if settings.enable_lang_switcher %}
+                      <span class="hide" id="footer3_{{link.handle}}">{{ data_json | raw }}</span>
+                      {% endif %}
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+              <div class="footer-link-b">
+                <div class="footer-title">
+                  <h4 style="color: {{ settings.footer_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{blockId}}_menu_title"{% endif %}>
+                    {{ block.settings.title2 }}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="footer3_{{blockId}}_menu_title">{{ block.settings.trans_title2 | raw }}</span>
+                  {% endif %}
+                </div>
+                <div class="footer-contant">
+                  <ul>
+                    {% if block.settings.footer_linklist2 != blank %} 
+                    {% assign footer_linklist_2 = block.settings.footer_linklist2 -%}
+                    {% for link in linklists[footer_linklist_2].links %}
+                    <li>
+                      {% assign data_title = link.title | split: '|' | first %}
+                      {% assign data_json = link.title | split: '|' | last %}
+                      <a href="{{ link.url }}" style="color: {{ settings.footer_link_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer3_{{link.handle}}"{% endif %}>
+                        {{ data_title }}
+                      </a>
+                      {% if settings.enable_lang_switcher %}
+                      <span class="hide" id="footer3_{{link.handle}}">{{ data_json | raw }}</span>
+                      {% endif %}
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {% if section.settings.footer_width == 'standard-width' %}
+      </div>
+      {% else %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% for block in section.blocks %}
+  {% capture blockId %}{{ block.id }}{% endcapture %}
+  {% if block.type == 'Copyright-footer' %}
+  <div class="sub-footer darker-subfooter">
+    {% if section.settings.footer_width == 'standard-width' %}
+    <div class="container">
+      {% else %}
+      <div class="container-fluid">
+        {% endif %}
+        <div class="row">
+          <div class="col-xl-6 col-md-6 col-sm-12">
+            {% if block.settings.copyright_text != blank %}
+            <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer3_{{blockId}}_copyright_text"{% endif %}>
+              {{ block.settings.copyright_text }}              
+            </div>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="footer3_{{blockId}}_copyright_text">{{ block.settings.trans_copyright_text | raw }}</span>
+            {% endif %}
+            {% endif %}
+          </div>
+          {% if block.settings.show_payment_icons %}
+          <div class="col-xl-6 col-md-6 col-sm-12">
+            <div class="payment-card-bottom">
+              {% unless shop.enabled_payment_types == empty %}
+                {% assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,google_pay,interac,jcb,klarna,litecoin,maestro,master,paypal,stripe,shopify_pay,visa' | split: ',' -%}
+                <ul>
+                  {% for type in shop.enabled_payment_types %}
+                    {% if payment_icons_available contains type %}
+                      <li class="payment-icon">
+                        {% assign icon_name = type | prepend: 'icon-' -%}
+                        {% include icon_name %}
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endunless %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% if section.settings.footer_width == 'standard-width' %}
+      </div>
+      {% else %}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% endfor %}
+</footer>
+<!-- end footer -->
+
+{% schema %}
+{
+   "name":"Footer",
+   "max_blocks":6,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"show_transparent_sticky",
+         "label":"Enalbe Transparent footer in Desktop?",
+         "default":false
+      },
+      {
+         "type":"select",
+         "id":"footer_width",
+         "label":"Footer Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width "
+            }
+         ],
+         "default":"standard-width"
+      },
+      {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"image_picker",
+         "id":"bg_image",
+         "label":"Background Image"
+      },
+	  {
+         "type":"checkbox",
+         "id":"enabled_parallax_bg",
+         "default":true,
+         "label":"Enabled Parallax"
+      },
+	  {
+         "type":"checkbox",
+         "id":"enabled_overlay",
+         "default":true,
+         "label":"Enabled Overlay"
+      },
+	  {
+         "type":"checkbox",
+         "id":"enabled_torn_footer",
+         "default":true,
+         "label":"Enabled footer Torn shadow"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"Custom-html",
+         "name":"Custom Html",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"footer_logo",
+               "label":"footer Logo image"
+            },
+            {
+               "type":"text",
+               "id":"footer_logo_max_width",
+               "label":"Custom logo width (in pixels)",
+               "default":"280"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default":"About"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Title"
+            },
+            {
+               "type":"textarea",
+               "id":"text",
+               "label":"Text",
+               "default":"It is a long established fact that a reader will be distracted by the readable content."
+            },
+            {
+               "type": "textarea",
+               "id": "trans_text",
+               "label": "Translate Custom text"
+            },
+            {
+               "type":"checkbox",
+               "id":"show_social",
+               "label":"Show Social Icons",
+               "default":true
+            }
+         ]
+      },
+      {
+         "type":"Copyright-footer",
+         "name":"Copyright footer",
+         "settings":[
+      {
+               "type":"richtext",
+               "id":"copyright_text",
+               "label":"Copyright Text",
+               "default":"<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap</p>"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_copyright_text",
+               "label": "Translate Copyright Text"
+            },
+            {
+               "type":"checkbox",
+               "id":"show_payment_icons",
+               "label":"Show Payment Icon",
+               "default":true
+            },
+            {
+               "type":"image_picker",
+               "id":"payment_img_1",
+               "label":"Visa image"
+            },
+            {
+               "type":"image_picker",
+               "id":"payment_img_2",
+               "label":"Master Card image"
+            },
+            {
+               "type":"image_picker",
+               "id":"payment_img_3",
+               "label":"Paypal image"
+            },
+            {
+               "type":"image_picker",
+               "id":"payment_img_4",
+               "label":"American Express image"
+            },
+            {
+               "type":"image_picker",
+               "id":"payment_img_5",
+               "label":"Discover image"
+            }
+         ]
+      },
+      {
+         "type":"newsletter",
+         "name":"Newsletter",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Newsletter Title",
+               "default":"Newsletter"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Newsletter Title"
+            },
+            {
+               "type":"text",
+               "id":"form_url",
+               "label":"Form Action URl",
+               "info":"Add Mailchimp Form Url Here."
+            }
+         ]
+      },
+      {
+         "type":"Menu",
+         "name":"footer Menu",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title1",
+               "label":"Menu Title 1",
+               "default":"Links"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title1",
+               "label": "Translate Menu Title1"
+            },
+            {
+               "type":"link_list",
+               "id":"footer_linklist1",
+               "label":"Select footer menu 1",
+               "default":"footer"
+            },
+      {
+               "type":"text",
+               "id":"title2",
+               "label":"Menu Title 2",
+               "default":"Links"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title2",
+               "label": "Translate Menu Title2"
+            },
+            {
+               "type":"link_list",
+               "id":"footer_linklist2",
+               "label":"Select footer menu 2",
+               "default":"footer"
+            }
+         ]
+      },
+      {
+         "type":"Info",
+         "name":"Store Info",
+         "settings":[
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Store Info title",
+               "default":"Store Info"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate title"
+            },
+            {
+               "type":"text",
+               "id":"address",
+               "label":"Address",
+               "default":"Fiot Fashion Demo Store Demo Store USA"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_address",
+               "label": "Translate Address"
+            },
+            {
+               "type":"text",
+               "id":"contact_info",
+               "label":"Contact Number",
+               "default":"Call Us: 123-456-7898"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_contact_info",
+               "label": "Translate Custom HTML"
+            },
+            {
+               "type":"text",
+               "id":"email",
+               "label":"Email Addres",
+               "default":"Email Us: Support@Fiot.com"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_email",
+               "label": "Translate Email"
+            },
+            {
+               "type":"text",
+               "id":"fax",
+               "label":"Fax Number",
+               "default":"Fax: 123456"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_fax",
+               "label": "Translate Fax"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

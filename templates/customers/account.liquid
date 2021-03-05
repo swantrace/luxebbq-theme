@@ -1,0 +1,66 @@
+{% include 'breadcrumb' %}
+
+<!--section start-->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.title"{%endif%}>{{ 'customer.orders.title' | t }}</h3>
+
+        {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+
+        <div class="order-table">
+          <table class="table cart-table table-responsive-xl">
+            <thead>
+              <tr>
+                <th class="text-center" {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.order_number"{%endif%}>{{ 'customer.orders.order_number' | t }}</th>
+                <th class="text-center" {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.date"{%endif%}>{{ 'customer.orders.date' | t }}</th>
+                <th class="text-center" {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.payment_status"{%endif%}>{{ 'customer.orders.payment_status' | t }}</th>
+                <th class="text-center" {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.fulfillment_status"{%endif%}>{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th class="text-center" {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.total"{%endif%}>{{ 'customer.orders.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+              <tr>
+                <td class="text-center" data-label="{{ 'customer.orders.order_number' | t }}" >
+                  <a href="{{ order.customer_url }}" class="order-link">{{ order.name }}</a>
+                </td>
+                <td class="text-center" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+                <td class="text-center" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                <td class="text-center" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                <td class="text-center" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        {% else %}
+
+        <p {% if settings.enable_lang_switcher %}data-trans-key="customer.orders.none"{%endif%}>{{ 'customer.orders.none' | t }}</p>
+
+        {% endif %}
+        {% if paginate.pages > 1 %}
+        {% include 'pagination' %}
+        {% endif %}
+        {% endpaginate %}
+
+      </div>
+
+      <div class="col-lg-4 text-right">
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.account.details"{%endif%}>{{ 'customer.account.details' | t }}</h3>
+        
+        <h4>{{ customer.name }}</h4>
+
+        <p {% if settings.enable_lang_switcher %}data-trans-key="customer.account.log_out"{%endif%}>{{ 'customer.account.log_out' | t | customer_logout_link }}</p>
+
+        {{ customer.default_address | format_address }}
+
+        <a href="/account/addresses" class="order-link" {% if settings.enable_lang_switcher %}data-trans-key="customer.account.view_addresses"{%endif%}>{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Section ends-->

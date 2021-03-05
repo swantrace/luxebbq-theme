@@ -1,0 +1,21 @@
+{% if settings.shhiping_bar_enable %}
+
+<section class="shipping-info">
+  <div class="container">
+    <div class="row">
+      <div class="free_shipping_bar">
+        <div class="shipping-wrapper">          
+          {% assign free_shipping_amount = settings.free_shipping_price | times: 100 %}          
+          <h4 id="free_shipping_price">{{settings.free_shipping_text}}<span class="money">{{ free_shipping_amount | money_with_currency   }}</span>
+          </h4>
+          {%-if settings.button_text != blank -%}
+          <a href="{{settings.button_url}}">{{settings.button_text}}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="close_shipping_bar">x
+  </span>
+</section>
+{% endif %}

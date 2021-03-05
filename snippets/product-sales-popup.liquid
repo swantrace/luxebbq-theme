@@ -1,0 +1,79 @@
+<script>
+  $(function() {
+    $('#someone-purchased').show();
+    var mytimeAgo = ['20 seconds', '34 seconds','35 seconds', '43 seconds','1 minute', '5 minutes', '10 minutes', '12 minutes', '14 minutes', '16 minutes', '18 minutes', '20 minutes', '25 minutes', '30 minutes', '35 minutes', '40 minutes','42 minutes','45 minutes', '50 minutes', '1 hours'];  
+    var randomlytimeAgo = Math.floor(Math.random() * mytimeAgo.length);
+    var currentmytimeAgo = mytimeAgo[randomlytimeAgo];
+
+    $(".timeAgo").text(currentmytimeAgo+" ago"); 
+    $("#someone-purchased > div:gt(0)").hide();
+
+    setInterval(function() {
+      $('#someone-purchased > div:first')
+      .fadeOut(0)
+      .next()
+      .fadeIn(0)
+      .end()
+      .appendTo('#someone-purchased');
+
+      var mytimeAgo = ['0 minute', '1 minute', '5 minutes', '10 minutes', '12 minutes', '14 minutes', '16 minutes', '18 minutes', '20 minutes', '25 minutes', '30 minutes', '35 minutes', '40 minutes','42 minutes','45 minutes', '50 minutes', '1 hours'];  
+      var randomlytimeAgo = Math.floor(Math.random() * mytimeAgo.length);
+      var currentmytimeAgo = mytimeAgo[randomlytimeAgo];
+
+      $(".timeAgo").text(currentmytimeAgo+" ago");
+    },  20000);
+
+    setInterval(function() {
+      $('#someone-purchased').fadeIn(function() {    $(this).removeClass("fade-out"); }).delay(5000).fadeIn( function() {  $(this).addClass("fade-out"); }).delay(15000); 
+    }, 5000);
+
+  });
+
+  $(document).ready(function() {
+    $('.close_sales_popup').click(function(){
+      $(this).parent().closest('div').hide();
+    });
+  });
+
+</script>
+
+{% assign randomly_collection = collections[settings.popup_randomly_collection] %}
+
+{% if settings.popup_enable %}
+
+<div id="someone-purchased" class="customized fade-in" style="display:none;">
+
+  {% capture index %}{{ 'now' | date: '%S' | times: randomly_collection.products.size | divided_by: 60 }}{% endcapture %}
+  {% for product in randomly_collection.products offset:index limit:1000 %}
+  <div>
+    <img src="{{ product | img_url: '120x85' }}" alt="{{ product.title | split: '|' | first }}">
+    <p>
+      <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sales_popup_title"{% endif %}>
+        {{ settings.buttom_message }}
+      </span>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="pro_sales_popup_title">{{ settings.trans_buttom_message | raw }}</span>
+      {% endif %}
+
+      <a href="{{ product.url | within: collection }}">
+        {% assign data_title = product.title | split: '|' | first %}
+        {% assign data_json = product.title | split: '|' | last %}
+        <span itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+          {{ data_title | truncatewords: 10 }}
+        </span>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+        {% endif %}
+      </a>
+      {% if settings.popup_ago_custom_time %}
+      <small class="timeAgo"></small>
+      {% endif %}
+    </p>
+    <span class="close_sales_popup fa fa-times"></span>
+  </div>
+  {% comment %}<span class="close_sales_popup fa fa-times"></span>{% endcomment %}
+  {% endfor %}
+</div>
+
+{% endif %}
+

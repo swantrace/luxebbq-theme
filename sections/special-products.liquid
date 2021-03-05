@@ -1,0 +1,517 @@
+<!-- Category banner section start -->
+{% if section.settings.enabled %}
+<section class="section-b-space banner-sec theme-bg {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}">
+  {% if section.settings.section_width == 'full-width' %}
+  <div class="container-fluid">
+    {% else %}
+    <div class="container">
+      {% endif %}
+      <div class="row">
+        {% for block in section.blocks %}
+        {% capture blockId %}{{ block.id }}{% endcapture %}
+        {% assign collection = collections[block.settings.collection] %}
+        {% if block.type == 'image' %}
+        <div class="col-lg-3 col-6">
+          <a href="{{collection.url}}">
+            <div class="collection-banner border-0">
+              <div class="img-part">
+                {% if block.settings.image == blank %}
+                <img src="{{ 'offer-banner.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" />
+                {% else %}
+                {% if section.settings.use_equal_height %}
+                <div>
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" 
+                        data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"
+                        style="background-image: url('{{ block.settings.image | img_url: 'master' }}');"></span>
+                </div>        
+                {% else %}
+                {% assign block_image = block.settings.image %}
+                <img src="{{ block_image | img_url: 'master' }}" 
+                     class="lazyload img-fluid  {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" {% if section.settings.img_width == "full" %} w-100{% endif %}alt="{{block_image.alt}}" >
+                {% endif %}                  
+                {% endif %}
+              </div>
+              <div class="banner-contain">
+                <div>
+                  {% if block.settings.subtitle != blank %}
+                  <h4 class=" {% if block.enable_lang_switcher %}lang_trans" data-trans="#offer-banner-2{{blockId}}_title {% endif %}">
+                    {{ block.settings.subtitle}}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                   <span class="hide" id="offer-banner{{blockId}}_title">{{ block.settings.trans_subtitle | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                  {% if block.settings.title != blank %}
+                  <h2 class=" {% if block.enable_lang_switcher %}lang_trans" data-trans="#offer-banner-2{{blockId}}_title {% endif %}">
+                    {{ block.settings.title}}
+                  </h2>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="offer-banner{{blockId}}_title">{{ block.settings.trans_title | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                   {% if block.settings.bottom_title != blank %}
+                  <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#offer-banner-2{{blockId}}_bottom_title"{% endif %}>
+                    {{ block.settings.bottom_title }}
+                  </h5>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="offer-banner{{blockId}}_bottom_title">{{ block.settings.trans_bottom_title | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+         {% elsif block.type == 'product' %}
+        <div class="col-lg-6 col-12 order-class">
+          <div class="center-banner">
+          {% assign collection = collections[block.settings.collection] %}
+           {% for product in collection.products limit: 1 %}
+            <div class="center">
+               <a href="{{ product.url }}" >
+                             {% if section.settings.use_equal_height %}
+                <div>
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" 
+                        data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"
+                        style="background-image: url('{{ product.featured_image.src | img_url: 'master' }}');"></span>
+                </div>        
+                {% else %}
+                {% assign block_image = product.featured_image.src %}
+                <img src="{{ block_image | img_url: 'master' }}" 
+                     class="lazyload img-fluid  {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" {% if section.settings.img_width == "full" %} w-100{% endif %}alt="{{block_image.alt}}" >
+                {% endif %}
+              </a>
+            </div>
+            <div class="contain-left">
+              <div>
+                {% if block.settings.title != blank %}
+                  <h4 class=" {% if block.enable_lang_switcher %}lang_trans" data-trans="#offer-banner-2{{blockId}}_title {% endif %}">
+                    {{ block.settings.title}}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                   <span class="hide" id="offer-banner{{blockId}}_title">{{ block.settings.title | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                <h4>{% if block.settings.subtitle != blank %}
+                <span  {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#offer-banner-2{{blockId}}_subtitle"{% endif %}>
+                  {{ block.settings.subtitle }}
+                </span>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="offer-banner{{blockId}}_subtitle">{{ block.settings.trans_subtitle | raw }}</span>
+                {% endif %}
+                {% endif %}    
+                </h4>
+              </div>
+            </div>
+            <div class="contain-right">
+              <div>
+                 <a href="{{ product.url | within: collection }}">
+                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_json = product.title | split: '|' | last %}
+                        <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                          {{ data_title | truncatewords: 10 }}
+                        </h6>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                        {% endif %}
+                      </a>
+                    {% if settings.eneble_login_price %}
+                      {% if customer %}
+                      <h5 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h5>
+                      {% else %}
+                      <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+                      {% endif %}
+
+                      {% elsif settings.show_catelogue %}
+
+                      {% if settings.show_catelogue_price %}
+
+                      <h5 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h5>
+                      {% endif %}
+                      {% else  %}
+                      <h5 data-id="{{ product.id }}" data-price="{{ product.price }}">
+                        {{ product.price | money }}
+                        {% if product.compare_at_price > product.price %}
+                        <del>{{ product.variants[0].compare_at_price | money }}</del>
+                        {% endif %}
+                      </h5>
+                      {% endif %}
+                
+                <h6><span> {{ product.description | split: '[countdowntimer-date-start]' | first | truncatewords: 3 }}</span></h6>
+                <p id="demo2"></p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% elsif block.type == 'banner' %}
+        <div class="col-lg-3 col-6">
+          <a href="#">
+            <div class="collection-banner border-0">
+              <div class="img-part">
+                {% if block.settings.image == blank %}
+                <img src="{{ 'offer-banner.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" />
+                {% else %}
+                {% if section.settings.use_equal_height %}
+                <div>
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" 
+                        data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"
+                        style="background-image: url('{{ block.settings.image | img_url: 'master' }}');"></span>
+                </div>        
+                {% else %}
+                {% assign block_image = block.settings.image %}
+                <img src="{{ block_image | img_url: 'master' }}" 
+                     class="lazyload img-fluid  {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" {% if section.settings.img_width == "full" %} w-100{% endif %}alt="{{block_image.alt}}" >
+                {% endif %}                
+                {% endif %}
+              </div>
+              <div class="banner-contain">
+                <div>
+                   {% if block.settings.subtitle != blank %}
+                  <h4 class=" {% if block.enable_lang_switcher %}lang_trans" data-trans="#offer-banner-2{{blockId}}_title {% endif %}">
+                    {{ block.settings.subtitle}}
+                  </h4>
+                  {% if settings.enable_lang_switcher %}
+                   <span class="hide" id="offer-banner{{blockId}}_title">{{ block.settings.trans_subtitle | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                  {% if block.settings.title != blank %}
+                  <h2 class=" {% if block.enable_lang_switcher %}lang_trans" data-trans="#offer-banner-2{{blockId}}_title {% endif %}">
+                    {{ block.settings.title}}
+                  </h2>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="offer-banner{{blockId}}_title">{{ block.settings.trans_title | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                   {% if block.settings.bottom_title != blank %}
+                  <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#offer-banner-2{{blockId}}_bottom_title"{% endif %}>
+                    {{ block.settings.bottom_title }}
+                  </h5>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="offer-banner{{blockId}}_bottom_title">{{ block.settings.trans_bottom_title | raw }}</span>
+                  {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% if section.settings.section_width == 'full-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+<!-- Category banner section end -->
+{% schema %}
+  {
+    "name": "Offer-banner-2",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+      {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "standard-width",
+          "label": "Standard Width "
+        }
+      ],
+      "default": "standard-width"
+     },
+
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+    ],
+    "blocks": [
+    {
+      "type": "image",
+      "name": "Product left",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "bridal"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_title",
+          "label": "Translate Title"
+        },
+        {
+         "type":"text",
+         "id":"subtitle",
+         "label":"sub Title",
+         "default":"new"
+        },
+        {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate Subtitle"
+	    },
+        {
+         "type":"text",
+         "id":"bottom_title",
+         "label":"Middle Title",
+         "default":"save 30% off"
+        },
+        {
+         "type": "textarea",
+         "id": "trans_bottom_title",
+         "label": "Translate Subtitle"
+	    },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        }
+
+      ]
+    },
+    
+	{
+      "type": "product",
+      "name": "product center",
+      "settings": [
+         {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "today"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_title",
+          "label": "Translate Title"
+        },
+        {
+         "type":"text",
+         "id":"subtitle",
+         "label":"Middle Title",
+         "default":"money savers"
+        },
+        {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate Subtitle"
+	    },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        }
+      ]
+    },
+  {
+      "type": "banner",
+      "name": "Product right",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "hand bag"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_title",
+          "label": "Translate Title"
+        },
+        {
+         "type":"text",
+         "id":"subtitle",
+         "label":"sub Title",
+         "default":"leather"
+        },
+        {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate Subtitle"
+	    },
+        {
+         "type":"text",
+         "id":"bottom_title",
+         "label":"Middle Title",
+         "default":"save 60% off"
+        },
+        {
+         "type": "textarea",
+         "id": "trans_bottom_title",
+         "label": "Translate Subtitle"
+	    },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner Image"
+        }
+
+        
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer-banner-2",
+      "category": "Product",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "banner"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

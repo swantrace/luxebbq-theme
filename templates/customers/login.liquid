@@ -1,0 +1,102 @@
+{% include 'breadcrumb' %}
+
+<!--section start-->
+<section class="login-page section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div id="CustomerLoginForm">
+
+          <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.login.login"{%endif%}>{{ 'customer.login.login' | t }}</h3>
+          <div class="form-message form-message--success hide" id="ResetSuccess">
+            {{ 'customer.recover_password.success' | t }}
+          </div>
+
+          <div class="theme-card">
+
+            {% form 'customer_login' , class: 'theme-form' %}
+
+            {% if form.errors -%}
+            <div class="form-message form-message--error">
+              {{ form.errors | default_errors }}
+            </div>
+            {%- endif -%}
+
+            <div class="form-group">
+              <label for="email" {% if settings.enable_lang_switcher %}data-trans-key="customer.login.email"{%endif%}>{{ 'customer.login.email' | t }}</label>
+              <input type="email" name="customer[email]" id="CustomerEmail" placeholder="{{ 'customer.login.email' | t }}" class="form-control {% if form.errors contains 'email' %} input--error{% endif %}" autocorrect="off" autocapitalize="off" autofocus>
+            </div>
+            <div class="form-group">
+              <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="customer.login.password"{%endif%}>{{ 'customer.login.password' | t }}</label>
+              <input type="password" value="" name="customer[password]" placeholder="{{ 'customer.login.password' | t }}" id="CustomerPassword" class="form-control {% if form.errors contains 'password' %} input--error{% endif %}">
+            </div>
+            <button type="submit" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="customer.login.login"{%endif%}>{{ 'customer.login.login' | t }}</button>
+
+            {% if form.password_needed %}
+            <p class="text-left"><a href="#recover" id="RecoverPassword" {% if settings.enable_lang_switcher %}data-trans-key="customer.login.forgot_password"{%endif%}>{{ 'customer.login.forgot_password' | t }}</a></p>
+            {% endif %}
+
+            {% endform %}
+
+          </div>
+
+        </div>
+
+        <div id="RecoverPasswordForm" class="hide">
+          <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.recover_password.title"{%endif%}>{{ 'customer.recover_password.title' | t }}</h3>
+
+          <div class="theme-card">
+
+            {% form 'recover_customer_password' , class: 'theme-form' %}
+
+            {% if form.errors %}
+            <div class="form-message form-message--error">
+              {{ form.errors | default_errors }}
+            </div>
+            {% endif %}
+
+            {% if form.posted_successfully? %}
+            <span class="hide reset-password-success"></span> 
+            {% endif %}
+
+            <div class="form-row">
+              <div class="col-md-12">
+                <label for="RecoverEmail" {% if settings.enable_lang_switcher %}data-trans-key="customer.recover_password.email"{%endif%}>{{ 'customer.recover_password.email' | t }}</label>
+                <input type="email" value="" name="email" id="RecoverEmail" class="form-control" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+              </div>
+              <div class="col-md-12 mb-2">
+                <button type="submit" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="customer.recover_password.submit"{%endif%}>{{ 'customer.recover_password.submit' | t }}</button>
+              </div>
+              <div class="col-md-12">
+                <button type="button" id="HideRecoverPasswordLink" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="customer.recover_password.cancel"{%endif%}>{{ 'customer.recover_password.cancel' | t }}</button>
+              </div>
+            </div>
+            {% endform %}
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6 right-login">
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.register.heading"{%endif%}>{{ 'customer.register.heading' | t }}</h3>
+        <div class="theme-card authentication-right">
+          <h6 class="title-font" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.title"{%endif%}>{{ 'customer.register.title' | t }}</h6>
+          <p {% if settings.enable_lang_switcher %}data-trans-key="customer.register.content"{%endif%}>{{ 'customer.register.content' | t }}</p>
+          <a href="/account/register" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="customer.register.submit"{%endif%}>{{ 'customer.register.submit' | t }}</a>
+        </div>
+      </div>
+
+      {% if shop.checkout.guest_login %}
+      <div class="col-md-12 text-center">
+        <hr>
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.login.guest_title"{%endif%}>{{ 'customer.login.guest_title' | t }}</h3>
+
+        {% form 'guest_login' %}
+        <input type="submit" class="btn" placeholder="{{ 'customer.login.guest_continue' | t }}">
+        {% endform %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+<!--Section ends-->

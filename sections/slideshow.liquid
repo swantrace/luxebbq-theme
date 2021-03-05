@@ -1,0 +1,502 @@
+<!-- Home slider -->
+{% if section.settings.enabled %}
+<section class="p-0 qurox-slider {% if section.settings.enabled_torn_section %}effect-cls{% endif %}" {% if section.settings.enabled_animation %}id="tool-bg"{% endif %}>
+  {% if section.settings.slideshow_width == 'standard-width' %}
+  <div class="container">
+    {% endif %}
+    <div class="{% if section.settings.enabled_fullpage %} fullpage full-slider {% else %}slide-1 {% endif %}  home-slider" {% unless section.settings.enabled_fullpage %} data-slick='{"autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}} }'  {% endunless%}>
+      {% for block in section.blocks %}
+      {% capture blockId %}{{ block.id }}{% endcapture %}
+      {% if block.type == 'Image' %}
+      <div>
+        <div class="home lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} {{ block.settings.alignment }} {{ block.settings.position }}" data-bgset="{% include 'bg-set', image: block.settings.slider %}" data-sizes="auto" data-parent-fit="cover" style="height: {{ section.settings.slider_height }}vh;{% if section.settings.enabled_overlay %}background-blend-mode: overlay;background-color: rgba(0,0,0, 0.{{ section.settings.overlay_opacity }});{% endif %}">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="slider-contain" style="height: {{ block.settings.slider_content_height }}vh;">
+                  <div>
+                    {% if block.settings.slide_subtitle != blank %}
+                    <h4 style="color: {{ block.settings.slide_subtitle_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_subtitle"{% endif %}>
+                      {{ block.settings.slide_subtitle }}
+                    </h4>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="slide_{{blockId}}_slide_subtitle">{{ block.settings.trans_slide_subtitle | raw }}</span>
+                    {% endif %}
+                    {% endif %}
+                    {% if block.settings.slide_title != blank %}
+                    <h1 style="color: {{ block.settings.slide_title_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_title"{% endif %}>
+                      {{ block.settings.slide_title }}
+                    </h1>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="slide_{{blockId}}_slide_title">{{ block.settings.trans_slide_title | raw }}</span>
+                    {% endif %}
+                    {% endif %}
+                    {% if block.settings.slide_text != blank %}
+                    <h3 style="color: {{ block.settings.slide_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_text"{% endif %}>
+                      {{ block.settings.slide_text }}
+                    </h3>
+                    {% if settings.enable_lang_switcher %}
+                    <span class="hide" id="slide_{{blockId}}_slide_text">{{ block.settings.trans_slide_text | raw }}</span>
+                    {% endif %}
+                    {% endif %}
+                    {% if block.settings.shop_btn_url != blank %}
+                    <a href="{{ block.settings.shop_btn_url }}" class="btn btn-solid"{% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
+                      {{ 'sections.featured_product.shop_now' | t }}  
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% if block.settings.item_img %}
+            <div class="tools-parts" id="tool-{{ forloop.index }}">
+              <img src="{{ block.settings.item_img | img_url: 'original' }}" class="img-fluid" alt="animation">
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% elsif block.type == 'Video' %}
+      <div>
+        <div class="home lazyload {{ block.settings.alignment }} {{ block.settings.position }}" style="height: {{ section.settings.slider_height }}vh;">
+          <div class="slider-contain" id="block" style="width: 100%; " data-vide-bg="{{ block.settings.video_url }}" data-vide-options="position: 0% 50%" style="height: {{ block.settings.slider_content_height }}vh;">
+            <div>
+              {% if block.settings.slide_subtitle != blank %}
+              <h4 style="color: {{ block.settings.slide_subtitle_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_subtitle"{% endif %}>
+                {{ block.settings.slide_subtitle }}
+              </h4>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="slide_{{blockId}}_slide_subtitle">{{ block.settings.trans_slide_subtitle | raw }}</span>
+              {% endif %}
+              {% endif %}
+              {% if block.settings.slide_title != blank %}
+              <h1 style="color: {{ block.settings.slide_title_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_title"{% endif %}>
+                {{ block.settings.slide_title }}
+              </h1>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="slide_{{blockId}}_slide_title">{{ block.settings.trans_slide_title | raw }}</span>
+              {% endif %}
+              {% endif %}
+              {% if block.settings.slide_text != blank %}
+              <h3 style="color: {{ block.settings.slide_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_text"{% endif %}>
+                {{ block.settings.slide_text }}
+              </h3>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="slide_{{blockId}}_slide_text">{{ block.settings.trans_slide_text | raw }}</span>
+              {% endif %}
+              {% endif %}
+              {% if block.settings.shop_btn_url != blank %}
+              <a href="{{ block.settings.shop_btn_url }}" class="btn btn-solid"{% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
+                {{ 'sections.featured_product.shop_now' | t }}  
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>   
+    {% if section.settings.slideshow_width == 'standard-width' %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+<!-- Home slider end -->
+
+{% if section.settings.enabled_animation %}
+<script>
+    /*=====================
+ Parallax effect Js
+ ==========================*/
+
+window.onload = function(){
+    let sky   = document.querySelector('#tool-bg'),
+        elemOne   = document.querySelector('#tool-1'),
+        elemTwo   = document.querySelector('#tool-2');
+
+    sky.addEventListener('mousemove',function(e){
+        var pageX = e.clientX - window.innerWidth/2,
+            pageY = e.clientY - window.innerHeight/2;
+        elemOne.style.transform = 'translateX(' + (5 + pageX/150) + '%) translateY(' + (1 + pageY/150) + '%)';
+        elemTwo.style.transform = 'translateX(-' + (5 + pageX/160) + '%) translateY(-' + (1 + pageY/160) +  '%)';
+        
+    });
+}
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Slideshow",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "default": true,
+      "label": "Enabled "
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled_fullpage",
+      "default": true,
+      "label": "Enabled Fullpage Verticle Slider"
+    },
+    {
+      "type": "select",
+      "id": "slideshow_width",
+      "label": "Slideshow Width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "standard-width",
+          "label": "Standard Width "
+        }
+      ],
+      "default": "full-width"
+    },
+	  {
+         "type":"checkbox",
+         "id":"enabled_torn_section",
+         "default":true,
+         "label":"Enabled section Torn shadow"
+      },
+    {
+      "type": "range",
+      "id": "slider_height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Section height",
+      "default": 75
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled_overlay",
+      "default": false,
+      "label": "Enabled overlay"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 9,
+      "step": 1,
+      "label": "Overlay Opacity",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled_animation",
+      "default": true,
+      "label": "Enabled animation in Item/product image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Image",
+      "name": "Add Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slider",
+          "label": "Add Slide Image"
+        },
+		{
+          "type": "image_picker",
+          "id": "item_img",
+          "label": "Add Product/Item Image"
+        },
+        {
+          "type": "range",
+          "id": "slider_content_height",
+          "min": 50,
+          "max": 100,
+          "step": 5,
+          "unit": "vh",
+          "label": "Content height",
+          "default": 75
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "text-left",
+              "label": "Left"
+            },
+            {
+              "value": "text-center",
+              "label": "Center"
+            },
+            {
+              "value": "text-right",
+              "label": "Right"
+            }
+          ],
+          "default": "text-center"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Text Position",
+          "options": [
+            {
+              "value": "p-left",
+              "label": "Left"
+            },
+            {
+              "value": "p-center",
+              "label": "Center"
+            },
+            {
+              "value": "p-right",
+              "label": "Right"
+            }
+          ],
+          "default": "p-left"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Title",
+          "default": "WoMen fashion"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_slide_title",
+          "label": "Translate Title"
+        },
+        {
+          "type": "color",
+          "id": "slide_title_color",
+          "label": "Title color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "slide_subtitle",
+          "label": "SubTitle",
+          "default": "Welcome to Fashion"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_slide_subtitle",
+          "label": "Translate Subtitle"
+        },
+        {
+          "type": "color",
+          "id": "slide_subtitle_color",
+          "label": "SubTitle color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "slide_text",
+          "label": "Small Text"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_slide_text",
+          "label": "Translate Text"
+        },
+        {
+          "type": "color",
+          "id": "slide_text_color",
+          "label": "Text color",
+          "default": "#fff"
+        },
+        {
+          "type": "url",
+          "id": "shop_btn_url",
+          "label": "Button Url"
+        }
+      ]
+    },
+	{
+      "type": "Video",
+      "name": "Add Video slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Youtube Video Url",
+          "default": "https://www.youtube.com/embed/FRIDLxM8Roc"
+        },
+        {
+          "type": "range",
+          "id": "slider_content_height",
+          "min": 50,
+          "max": 100,
+          "step": 5,
+          "unit": "vh",
+          "label": "Content height",
+          "default": 75
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "text-left",
+              "label": "Left"
+            },
+            {
+              "value": "text-center",
+              "label": "Center"
+            },
+            {
+              "value": "text-right",
+              "label": "Right"
+            }
+          ],
+          "default": "text-center"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Text Position",
+          "options": [
+            {
+              "value": "p-left",
+              "label": "Left"
+            },
+            {
+              "value": "p-center",
+              "label": "Center"
+            },
+            {
+              "value": "p-right",
+              "label": "Right"
+            }
+          ],
+          "default": "p-left"
+        },
+        {
+          "type": "text",
+          "id": "slide_title",
+          "label": "Title",
+          "default": "WoMen fashion"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_slide_title",
+          "label": "Translate Title"
+        },
+        {
+          "type": "color",
+          "id": "slide_title_color",
+          "label": "Title color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "slide_subtitle",
+          "label": "SubTitle",
+          "default": "Welcome to Fashion"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_slide_subtitle",
+          "label": "Translate Subtitle"
+        },
+        {
+          "type": "color",
+          "id": "slide_subtitle_color",
+          "label": "SubTitle color",
+          "default": "#fff"
+        },
+        {
+          "type": "text",
+          "id": "slide_text",
+          "label": "Small Text"
+        },
+        {
+          "type": "textarea",
+          "id": "trans_slide_text",
+          "label": "Translate Text"
+        },
+        {
+          "type": "color",
+          "id": "slide_text_color",
+          "label": "Text color",
+          "default": "#fff"
+        },
+        {
+          "type": "url",
+          "id": "shop_btn_url",
+          "label": "Button Url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slideshow",
+      "category": "Slideshow",
+      "blocks": [
+        {
+          "type": "Image"
+        },
+        {
+          "type": "Image"
+        },
+        {
+          "type": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,123 @@
+<div class="container">
+  {% if settings.title_layout == 'title_1' %}
+  <div class="title1">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_2' %}
+  <div class="title3">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %} 
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner3 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %} 
+    {% endif %}
+    <div class="line"></div>
+  </div>
+  {% elsif settings.title_layout == 'title_3' %}
+  <div class="title2">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner2 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_4' %}
+  <div class="title4">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner4 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+    <div class="line">
+      <span></span>
+    </div>
+  </div>
+  {% elsif settings.title_layout == 'title_5' %}
+  <div class="title1 title-gradient ">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}          
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}  
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_6' %}
+  <div class="title1 title5">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}          
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}  
+    {% endif %}
+    <hr role="tournament6">
+  </div>
+  {% endif %}
+
+</div>
