@@ -1,0 +1,54 @@
+<div class="row blog-media">
+  <div class="col-xl-6">
+    <div class="blog-left">
+      <a href="{{ article.url }}">
+        {% if article.image == blank %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% else %}        
+        {% if section.settings.use_equal_height %}
+		<div class="mb-3">
+        <a class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" href="{{ article.url }}" data-bgset="{% include 'bg-set', image: article.image %}" data-sizes="auto" data-parent-fit="cover"></a>
+        </div>
+        {% else %}
+        {% assign block_image = article.image %}
+        {% assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+          <img src="{{ article.image | img_url: '1000x600' }}" 
+               data-src="{{ img_url }}" 
+               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+               data-aspectratio="{{ block_image.aspect_ratio }}" 
+               data-sizes="auto" 
+               class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ article.title | split: '|' | first }}" >
+        {% endif %}
+        {% endif %}
+      </a>
+    </div>
+  </div>
+  <div class="col-xl-6">
+    <div class="blog-right">
+      <div>
+        <h6>{{ article.published_at | date: format: "month_day_year" }}</h6>
+        <a href="{{ article.url }}">
+          {% assign data_title = article.title | split: '|' | first %}
+          {% assign data_json = article.title | split: '|' | last %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{article.id}}_post_title"{% endif %}>
+            {{ data_title | truncatewords: 12 }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="{{article.id}}_post_title">{{ data_json | raw }}</span>
+          {% endif %}
+        </a>
+        <ul class="post-social">
+          {% if show_blog_auther %}
+          <li>{{ 'blogs.article.posted_by' | t }} {{ article.author | truncatewords: 1, '' }} </li>
+          {% endif %}
+          {% if show_blog_comments %}
+          <li><i class="fa fa-comments"></i> {{ article.comments_count }}{{ 'blogs.comments.comments' | t }}</li>
+          {% endif %}
+        </ul>
+        <p>
+          {{ article.content  | truncatewords: '30' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

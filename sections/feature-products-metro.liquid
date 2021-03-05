@@ -1,0 +1,164 @@
+<!-- section start -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% assign collection = collections[section.settings.collection] %}
+
+{% case section.settings.product_per_row %}
+{% when '3' %}
+{% assign column_grid_width = 'col-lg-4 col-sm-6' -%}
+{% when '4' %}
+{% assign column_grid_width = 'col-lg-3 col-sm-6' -%}
+{% when '5' %}
+{% assign column_grid_width = 'col-lg-3 col-sm-6' -%}
+{% when '6' %}
+{% assign column_grid_width = 'col-lg-2 col-sm-6' -%}
+{% endcase %}
+
+<section class="portfolio-section metro-section port-col" style="padding: {{ section.settings.section_padding }};">
+  {% if section.settings.section_width == 'full-width' %}
+  <div class="container-fluid">
+    {% else %}
+    <div class="container">
+      {% endif %}
+      <div class="isotopeContainer row">
+        {% if collection.empty? %}
+        {% capture current %}{% cycle 1,2,3,4,5,6,1,2 %}{% endcapture %}
+        {% for i in (1..6) %}
+        <div class="col-lg-3 col-sm-6 isotopeSelector">
+          <div class="product-box">
+            <div class="img-wrapper">
+              <div class="front">
+                <a href="#">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                </a>
+              </div>
+              <div class="cart-info cart-wrap">
+                <button  title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="product-detail">
+              <a href="#">
+                <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+              </a>
+              <h4>{{ '$20.00' }}</h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for product in collection.products limit: 15 %}
+        <div class="{{column_grid_width}} isotopeSelector">
+          {% include 'product-grid-8' %}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% if section.settings.section_width == 'full-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+<!-- Section ends -->
+
+{% schema %}
+  {
+    "name": "Fetaure Product Metro",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":"Section Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width"
+            }
+         ],
+         "default":"standard-width"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default":"Special offer"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "SubTitle",
+        "default":"Top Collections"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate subtitle"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select collection"
+      },
+      {
+         "type":"select",
+         "id":"product_per_row",
+         "label":"Product Per Row",
+         "options":[
+            {
+                "label":"3",
+                "value":"3"
+            },
+            {
+                "label":"4",
+                "value":"4"
+            },
+            {
+                "label":"5",
+                "value":"5"
+            },
+            {
+                "label":"6",
+                "value":"6"
+            }
+        ],
+        "default":"4"
+      }
+    ],
+    "presets": [{
+      "name": "Feature Product Metro",
+      "category": "Product",
+      "settings": {}
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

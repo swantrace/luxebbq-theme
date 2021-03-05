@@ -1,0 +1,13 @@
+{
+	"id": "{{ a_product.id | escape }}",
+	"title": "{{ a_product.title | escape }}",
+	"url": "{{ a_product.url | escape }}",
+	"handle": "{{ a_product.handle }}",
+	"vendor": "{{ a_product.vendor | escape }}",
+	"price": {{ a_product.price | json }},
+	"compare_at_price": {{ a_product.compare_at_price | json }},
+	"variants": {{ a_product.variants | json }},
+	"images": {{ a_product.images | json }},
+	"featured_image": "{{ a_product.featured_image | img_url : 'master'}}",
+	"options": {{ a_product.options | json }}
+}

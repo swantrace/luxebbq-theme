@@ -1,0 +1,75 @@
+<section class="tab-product m-0">
+  <div class="row">
+    <div class="col-sm-12 col-lg-12">
+      <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+        {% if section.settings.enable_tab_1 %}
+        <li class="nav-item">
+          <a class="nav-link active" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true">
+            <i class="icofont icofont-ui-home"></i>
+            <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#tab_horizontal_{{product.id}}_tab_title_1"{% endif %}>
+              {{ section.settings.tab_title_1 }}
+            </span>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="tab_horizontal_{{product.id}}_tab_title_1">{{ section.settings.trans_tab_title_1 | raw }}</span>
+            {% endif %}
+          </a>
+          <div class="material-border"></div>
+        </li>
+        {% endif %}
+        {% if section.settings.enable_tab_2 %}
+        <li class="nav-item">
+          <a class="nav-link" id="profile-top-tab" data-toggle="tab" href="#top-profile" role="tab" aria-selected="false">
+            <i class="icofont icofont-man-in-glasses"></i>
+            <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#tab_horizontal_{{product.id}}_tab_title_2"{% endif %}>
+              {{ section.settings.tab_title_2 }}
+            </span>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="tab_horizontal_{{product.id}}_tab_title_2">{{ section.settings.trans_tab_title_2 | raw }}</span>
+            {% endif %}
+          </a>
+          <div class="material-border"></div>
+        </li>
+        {% endif %}
+        {% if section.settings.enable_tab_3 %}
+        <li class="nav-item">
+          <a class="nav-link" id="review-top-tab" data-toggle="tab" href="#top-review" role="tab" aria-selected="false">
+            <i class="icofont icofont-contacts"></i>
+            <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#tab_horizontal_{{product.id}}_tab_title_3"{% endif %}>
+              {{ section.settings.tab_title_3 }}
+            </span>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="tab_horizontal_{{product.id}}_tab_title_3">{{ section.settings.trans_tab_title_3 | raw }}</span>
+            {% endif %}
+          </a>
+          <div class="material-border"></div>
+        </li>
+        {% endif %}
+      </ul>
+      <div class="tab-content nav-material" id="top-tabContent">
+        {% if section.settings.enable_tab_1 %}
+        <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+          {% if section.settings.tab_content_1 == blank %}
+            <p >{{ product.description | split:'[countdowntimer-date-start]' | first }}</p>
+          {% else %}
+          <p>
+            {{ section.settings.tab_content_1  }}
+          </p>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% if section.settings.enable_tab_2 %}
+        <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+          <p>
+            {{ section.settings.tab_content_2 }}
+          </p>
+        </div>
+        {% endif %}
+        {% if section.settings.enable_tab_3 %}
+        <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>          
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

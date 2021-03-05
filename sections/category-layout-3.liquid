@@ -1,0 +1,94 @@
+<!-- category  -->
+{% if section.settings.enabled %}
+
+<div class="container category-button">
+  <section class="section-b-space border-section border-bottom-0">
+    <div class="row partition1">
+      {% for block in section.blocks %}
+      {% capture blockId %}{{ block.id }}{% endcapture %}
+      {% assign collection = collections[block.settings.collection] %}
+      <div class="col">
+
+        <a href="{{ collection.url }}" class="btn btn-outline btn-block {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#cat3_{{blockId}}_trans_title"{% endif %}>
+          {{ block.settings.title }}
+        </a>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="cat3_{{blockId}}_trans_title">{{ block.settings.trans_title | raw }}</span>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+
+{% endif %}
+<!-- category end -->
+
+{% schema %}
+{
+   "name":"Category layout 3",
+   "max_blocks":6,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"collection",
+         "name":"Category",
+         "settings":[
+            {
+               "type":"collection",
+               "id":"collection",
+               "label":"Select collection"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default":"Size 08"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Title"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Category layout 3",
+         "category":"Category",
+         "settings":{
+
+         },
+         "blocks":[
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

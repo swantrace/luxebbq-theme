@@ -1,0 +1,129 @@
+<div class="product-top-filter">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="filter-main-btn">
+          <span class="filter-btn btn btn-theme"><i class="fa fa-filter" aria-hidden="true"></i> 
+            <span {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.title_tags"{%endif%}>{{ 'collections.filters.title_tags' | t }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="product-filter-content">
+          {% if collection_infinite_scrolling == 'default' %}
+          <div class="search-count">
+            {% assign current_first_item = paginate.current_offset | plus:1 %}
+            {% if paginate.pages == paginate.current_page %}
+            {% assign current_displayed = paginate.items | modulo:paginate.page_size %}
+            {% assign current_last_item = paginate.items %}
+            {% else %}
+            {% assign current_displayed = paginate.page_size %}
+            {% assign current_last_item = paginate.current_offset | plus:paginate.page_size %}
+            {% endif %}
+            <h5>Showing Products{% assign current_first_item = paginate.current_offset | plus:1 %}
+              {% if paginate.pages == paginate.current_page %}
+              {% assign current_displayed = paginate.items | modulo:paginate.page_size %}
+              {% assign current_last_item = paginate.items %}
+              {% else %}
+              {% assign current_displayed = paginate.page_size %}
+              {% assign current_last_item = paginate.current_offset | plus:paginate.page_size %}
+              {% endif %}
+              {{ current_first_item }} - {{ current_last_item }} of {{ paginate.items }} Results</h5>
+          </div>
+          {% endif %}
+          <div class="collection-view">
+            <ul>
+              <li class="active"><i class="fa fa-th grid-layout-view"></i></li>
+              <li><i class="fa fa-list-ul list-layout-view"></i></li>
+            </ul>
+          </div>
+          <div class="collection-grid-view">
+            <ul>
+              <li>
+                <img src="{{ '2.png' | asset_url }}" class="product-2-layout-view">
+              </li>
+              <li>
+                <img src="{{ '3.png' | asset_url }}" class="product-3-layout-view">
+              </li>
+              <li class="active">
+                <img src="{{ '4.png' | asset_url }}" class="product-4-layout-view">
+              </li>
+              <li>
+                <img src="{{ '6.png' | asset_url }}" class="product-6-layout-view">
+              </li>
+            </ul>
+          </div>
+          <div class="product-page-per-view">
+            <select name="pro_limit">
+              <option value="12">Default</option>
+              <option value="24">24 Products</option>
+              <option value="36">36 Products</option>
+              <option value="48">48 Products</option>
+            </select>
+          </div>
+          <script>  
+            {% if collection.url != '' %}
+            var coll_url = '{{ collection.url }}';
+            {% else %}
+            var coll_url = '/collections/all';
+            {% endif %}
+
+            $('.product-page-per-view select').bind('change', function(){     
+              if($(this).val() != 'none'){
+                var limit = $(this).val();
+                var load_url = coll_url+'?view='+limit;
+                window.location.href = load_url;
+              } else{
+                window.location.href = coll_url;
+              }
+            });
+
+            jQuery(function(){
+              $('.product-page-per-view select > option').each(function(index, element) {
+                var _val = $(this).val();
+                var _windowUrl = window.location.href.split('view=').pop();
+                if( _val == _windowUrl){
+                  $(this).attr('selected', true);
+                }
+              });
+            });
+          </script>
+          <div class="product-page-filter">
+            <select name="sortBy" id="sortBy">
+              <option value="manual" {% if settings.enable_lang_switcher %}data-trans-key="collections.sorting.featured"{%endif%}>{{ 'collections.sorting.featured' | t }}</option>
+              <option value="best-selling" {% if settings.enable_lang_switcher %}data-trans-key="collections.sorting.best_selling"{%endif%}>{{ 'collections.sorting.best_selling' | t }}</option>
+              <option value="title-ascending" {% if settings.enable_lang_switcher %}data-trans-key="collections.sorting.az"{%endif%}>{{ 'collections.sorting.az' | t }}</option>
+              <option value="title-descending" {% if settings.enable_lang_switcher %}data-trans-key="collections.sorting.za"{%endif%}>{{ 'collections.sorting.za' | t }}</option>
+              <option value="price-ascending" {% if settings.enable_lang_switcher %}data-trans-key="collections.sorting.price_ascending"{%endif%}>{{ 'collections.sorting.price_ascending' | t }}</option>
+              <option value="price-descending" {% if settings.enable_lang_switcher %}data-trans-key="collections.sorting.price_descending"{%endif%}>{{ 'collections.sorting.price_descending' | t }}</option>
+            </select>
+            <script type="text/javascript">
+              Shopify.queryParams = {};
+              if (location.search.length) {
+                for (var aKeyValue, i = 0, aCouples = location.search.substr(1).split('&'); i < aCouples.length; i++) {
+                  aKeyValue = aCouples[i].split('=');
+                  if (aKeyValue.length > 1) {
+                    Shopify.queryParams[decodeURIComponent(aKeyValue[0])] = decodeURIComponent(aKeyValue[1]);
+                  }
+                }
+              }
+
+              jQuery(function() {
+                jQuery('#sortBy')
+                // select the current sort order
+                .val('{{ collection.sort_by | default: collection.default_sort_by | escape }}')
+                     .bind('change', function() {
+                  Shopify.queryParams.sort_by = jQuery(this).val();
+                  location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+                }
+                );
+              });
+            </script> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,266 @@
+<!--section start-->
+<section class="collection section-b-space {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}">
+  <div class="container">
+    <div class="row partition-collection">
+      {% assign blocks = section.blocks | sort: 'collection.all_products_count' -%}
+      {% case section.settings.grid %}
+      {% when '2' %}
+      {%- assign grid_item_width = 'col-lg-6 col-sm-12' -%}
+      {% when '3' %}
+      {%- assign grid_item_width = 'col-lg-4 col-md-6 col-sm-6' -%}
+      {% when '4' %}
+      {%- assign grid_item_width = 'col-lg-3 col-md-4 col-sm-6' -%}
+      {% endcase %}
+      {% if section.settings.display_type == 'all' %}
+      {% case section.settings.sort %}
+      {% when 'products_high' or 'products_low' %}
+      {%- assign collections = collections | sort: 'all_products_count' -%}
+      {% when 'date' or 'date_reversed' %}
+      {%- assign collections = collections | sort: 'published_at' -%}
+      {% endcase %}
+
+      {% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}
+      {% for collection in collections %}
+      <div class="{{ grid_item_width}}">
+        {% include 'collection-grid-item' %}
+      </div>
+      {% endfor %}
+      {% else %}
+      {% for collection in collections reversed %}
+      <div class="{{ grid_item_width}}">
+        {% include 'collection-grid-item' %}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% else %}
+      {% for block in section.blocks %}
+      <div class="{{ grid_item_width}}" >
+        {%- assign collection = collections[block.settings.collection] -%}
+        {% include 'collection-grid-item' %}
+      </div>
+      {% endfor %}
+      {% endif %}
+      
+    </div>
+  </div>
+</section>
+<!--Section ends-->
+
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "settings": [
+  {
+    "type": "paragraph",
+    "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections."
+  },
+  {
+    "type": "radio",
+    "id": "display_type",
+    "label": "Select collections to show",
+    "default": "all",
+    "options": [
+    {
+      "value": "all",
+      "label": "All"
+    },
+    {
+      "value": "selected",
+      "label": "Selected"
+    }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "sort",
+    "label": "Sort collections by:",
+    "info": "Sorting only applies when 'All' is selected",
+    "default": "alphabetical",
+    "options": [
+    {
+      "value": "products_high",
+      "label": "Product count, high to low"
+    },
+    {
+      "value": "products_low",
+      "label": "Product count, low to high"
+    },
+    {
+      "value": "alphabetical",
+      "label": "Alphabetically, A-Z"
+    },
+    {
+      "value": "alphabetical_reversed",
+      "label": "Alphabetically, Z-A"
+    },
+    {
+      "value": "date",
+      "label": "Date, old to new"
+    },
+    {
+      "value": "date_reversed",
+      "label": "Date, new to old"
+    }
+    ]
+  },
+  {
+    "type": "select",
+    "id": "grid",
+    "label": "Collections per row",
+    "default": "4",
+    "options": [
+    {
+      "value": "2",
+      "label": "2"
+    },
+    {
+      "value": "3",
+      "label": "3"
+    },
+    {
+      "value": "4",
+      "label": "4"
+    }
+    ]
+  },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+  ],
+  "blocks": [
+  {
+    "type": "collection",
+    "name": "Collection",
+    "settings": [
+    {
+      "label": "Collection",
+      "id": "collection",
+      "type": "collection"
+    }
+    ]
+  }
+  ]
+}
+{% endschema %}
+

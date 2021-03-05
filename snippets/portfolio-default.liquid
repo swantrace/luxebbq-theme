@@ -1,0 +1,63 @@
+<!-- Our Project Start -->
+
+{% case section.settings.portfolio_grid %}
+{% when '2' %}
+{% assign grid_width = 'col-sm-6' -%}
+{% when '3' %}
+{% assign grid_width = 'col-lg-4 col-sm-6' -%}
+{% when '4' %}
+{% assign grid_width = 'col-lg-3 col-sm-6' -%}
+{% endcase %}
+
+<section class="portfolio-section grid-portfolio">
+  {% if section.settings.section_width == 'standard-width' %}
+  <div class="container">
+    {% else %}
+    <div class="container-fluid">
+      {% endif %}
+
+      <div class="title1 ">
+        <h2 class="title-inner1">{{ section.settings.page_title }}</h2>
+      </div>
+
+      <div align="center" id="form1">
+        <button class="filter-button project_button active" data-filter="all">All</button>
+        {% if section.settings.show_portfolio_tab_1 %}
+        <button class="filter-button project_button" data-filter="{{ section.settings.portfolio_tab_title_1 }}">{{ section.settings.portfolio_tab_title_1 }}</button>
+        {% endif %}
+        {% if section.settings.show_portfolio_tab_2 %}
+        <button class="filter-button project_button" data-filter="{{ section.settings.portfolio_tab_title_2 }}">{{ section.settings.portfolio_tab_title_2 }}</button>
+        {% endif %}
+        {% if section.settings.show_portfolio_tab_3 %}
+        <button class="filter-button project_button" data-filter="{{ section.settings.portfolio_tab_title_3 }}">{{ section.settings.portfolio_tab_title_3 }}</button>
+        {% endif %}
+        {% if section.settings.show_portfolio_tab_4 %}
+        <button class="filter-button project_button" data-filter="{{ section.settings.portfolio_tab_title_4 }}">{{ section.settings.portfolio_tab_title_4 }}</button>
+        {% endif %}
+        {% if section.settings.show_portfolio_tab_5 %}
+        <button class="filter-button project_button" data-filter="{{ section.settings.portfolio_tab_title_4 }}">{{ section.settings.portfolio_tab_title_5 }}</button>
+        {% endif %}
+      </div>
+      <div class="row zoom-gallery">
+        {% for block in section.blocks %}
+        <div class="isotopeSelector filter {{ block.settings.portfolio_tab_title }} {{grid_width}}">
+          <div class="overlay">
+            <div class="border-portfolio">
+              <a href="{{ block.settings.portfolio_img | img_url:'master' }}" data-source="{{ block.settings.portfolio_img | img_url:'master' }}">
+                <div class="overlay-background">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+                <img src="{{ block.settings.portfolio_img | img_url:'master' }}" class="img-fluid">
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% if section.settings.section_width == 'standard-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+<!-- Our Project End -->

@@ -1,0 +1,155 @@
+{% comment %} Width of results box {% endcomment %}
+{% assign results_box_width = '100%' %}
+{% comment %} Background color of results box {% endcomment %}
+{% assign results_box_background_color = '#ffffff' %}
+{% comment %} Border color of results box {% endcomment %}
+{% assign results_box_border_color = '#eee' %}
+
+<script>
+  $(function() {
+    // Current Ajax request.
+    var currentAjaxRequest = null;
+    // Grabbing all search forms on the page, and adding a .search-results list to each.
+    var searchForms = $('form[action="/search"]').css('position','relative').each(function() {
+      // Grabbing text input.
+      var input = $(this).find('input[name="q"]');
+      // Adding a list for showing search results.
+      var offSet = input.position().top + input.innerHeight();
+      $('<ul class="search-results"></ul>').css( { 'position': 'absolute', 'left': '0px', 'top': offSet } ).appendTo($(this)).hide();    
+      // Listening to keyup and change on the text field within these search forms.
+      input.attr('autocomplete', 'off').bind('keyup change', function() {
+        // What's the search term?
+        var term = $(this).val();
+        // What's the search form?
+        var form = $(this).closest('form');
+        // What's the search URL?
+        var searchURL = '/search?type=product&q=' + term;
+        // What's the search results list?
+        var resultsList = form.find('.search-results');
+        // If that's a new term and it contains at least 3 characters.
+        if (term.length > 3 && term != $(this).attr('data-old-term')) {
+          // Saving old query.
+          $(this).attr('data-old-term', term);
+          // Killing any Ajax request that's currently being processed.
+          if (currentAjaxRequest != null) currentAjaxRequest.abort();
+          // Pulling results.
+          currentAjaxRequest = $.getJSON(searchURL + '&view=json', function(data) {
+            // Reset results.
+            resultsList.empty();
+            // If we have no results.
+            if(data.results_count == 0) {
+              // resultsList.html('<li><span class="title">No results.</span></li>');
+              // resultsList.fadeIn(200);
+              resultsList.hide();
+            } else {
+              // If we have results.
+              $.each(data.results, function(index, item) {
+                var link = $('<a></a>').attr('href', item.url);
+
+                var _name = item.title;
+                var _name_default = _name.split('|')[0];
+                var _name_json = _name.substr(_name.indexOf(":") + 1);
+                var _id = item.id;
+
+                link.append('<span class="thumbnail"><img src="' + item.thumbnail + '" /></span>');
+                link.append('<p class="title"><span class="lang_trans" data-trans="#'+_id+'_pro_title">' + _name_default + '</span><span class="hide" id="'+_id+'_pro_title">'+_name_json+'</span></p>');
+                link.append('<span class="price">' + item.price + '</span>');
+                link.wrap('<li></li>');
+                resultsList.append(link.parent());
+              });
+              // The Ajax request will return at the most 10 results.
+              // If there are more than 10, let's link to the search results page.
+              if(data.results_count > 8) {
+                resultsList.append('<li><span class="title"><a href="' + searchURL + '">See all results (' + data.results_count + ')</a></span></li>');
+              }
+              resultsList.fadeIn(200);
+            }        
+          });
+        }
+      });
+    });
+    // Clicking outside makes the results disappear.
+    $('body').bind('click', function(){
+      $('.search-results').hide();
+    });
+  });
+</script>
+
+<!-- Some styles to get you started. -->
+<style>
+  .search-results {
+    z-index: 8889;
+    list-style-type: none;   
+    width: {{ results_box_width }};
+    margin: 0;
+    padding: 0;
+    background: {{ results_box_background_color }};
+    border: 1px solid {{ results_box_border_color }};
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.1);
+    overflow: scroll;
+    top: 66px !important;
+    height: 430px;
+  }
+  .search-results li {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 4px;
+    border-top: 1px solid {{ results_box_border_color }};
+    line-height: 38px;
+    overflow: hidden;
+  }
+  .search-results li:first-child {
+    border-top: none;
+  }
+  .search-results .title {
+    float: left;
+    width: 90%;
+    padding: 20px 10px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-align: left;
+    border: none;
+    line-height: 16px;
+    font-size: 16px !important;
+    text-transform: capitalize;
+    color: {{settings.primary_color}};
+    margin-bottom: 0;
+  }
+  .search-results .price {
+    width: auto;
+    float: left;
+    font-size: 15px;
+    padding: 6px 10px;
+    line-height: 16px;
+    color: #222;
+    font-weight: 600;}
+  .search-results .thumbnail {
+    float: left;
+    display: block;
+    width: 5%;    
+    margin: 0 8px 0;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+  }
+    .search-results .thumbnail img{
+    width: 5%;    
+
+      
+    }
+  @media(max-width: 991px) {
+    .search-results .thumbnail {
+      width: 20%;
+      margin: 0;
+    }
+    .search-results .title {
+      width: 75%;
+    }
+  }
+</style>

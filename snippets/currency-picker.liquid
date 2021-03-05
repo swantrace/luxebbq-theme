@@ -1,0 +1,53 @@
+<div style="padding: 0;width: 0;display: none;">
+  <select class="currency-picker" name="currencies" style="display:block; width: auto; visibility:hidden; height:0; padding:0; margin:0; min-height:0px; border: none;">
+    {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+    {% assign supported_codes = settings.supported_currencies | split: ' ' %}
+    <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+    {% for code in supported_codes %}
+    {% if code != shop.currency and codes contains code %}
+    <option value="{{ code }}">{{ code }}</option>
+    {% endif %}
+    {% endfor %}
+  </select>
+</div>
+
+{% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+{% assign supported_codes = settings.supported_currencies | split: ' ' %}
+
+<ul class="list-inline">
+  {% for code in supported_codes %}
+    {% if codes contains code %}
+    <li class="currency_li_cls_2"><a href="javascript:void(0)" data-value="{{ code }}">{{ code }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+<script>
+  $(window).on("load", function (e) {
+    function change_class_2(){
+      $('.currency_li_cls_2 a').each(function(){
+        $(this).removeClass('selected');
+        var cookie_val = $.cookie("currency");
+        if($(this).attr('data-value') == cookie_val){
+          var temp_val = '';
+          var code = ''
+          code = ''+$(this).attr('data-value');
+          $(this).addClass('selected');
+        }
+      });
+    }
+    change_class_2();
+    var shop_domain = '{{ shop.url }}';
+    shop_domain = shop_domain.replace(/(^\w+:|^)\/\//, '');
+    var cookie_domain = '.'+shop_domain;
+    $('.currency_li_cls_2 a').click(function(){
+      var cty_opt = $(this).attr('data-value');
+      $.cookie('currency', cty_opt, { domain: cookie_domain });
+      $('.currency-picker option[value="'+cty_opt+'"]').attr('selected','selected').siblings().removeAttr('selected');
+      $(this).addClass('selected');
+      $('.currency-picker').trigger('change');
+      change_class_2();
+    });
+  });
+</script>
+

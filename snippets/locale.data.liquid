@@ -1,0 +1,15 @@
+{% assign languages = settings.languages_support | split: ',' %}
+{
+	{% for l in languages %}
+	{% assign l = l | strip %}
+	{% assign groups = l | split: '=' %}
+	{% assign code = groups | first | strip %}
+	{% assign localeCode = 'locale.' | append: code %}
+	{% capture the_snippet_content %}{% include localeCode %}{% endcapture %}
+	{% if the_snippet_content contains "Liquid error" %}
+	"{{ code }}":{}{% if forloop.last == false %},{% endif %}
+	{% else %}
+	"{{ code }}":{{ the_snippet_content }}{% if forloop.last == false %},{% endif %}
+	{% endif %}
+	{% endfor %}
+}

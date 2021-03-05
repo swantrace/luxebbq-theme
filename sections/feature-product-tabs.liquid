@@ -1,0 +1,372 @@
+<!-- Tab product -->
+
+<style>
+  {% if section.settings.grid_per_row == '3' %}
+  .no-slider .product-box {
+    flex: 0 0 33.33%;
+    max-width: calc(33.33% - 30px);
+    margin: 0 15px 30px;
+  }
+  {% elsif section.settings.grid_per_row == '4' %}
+  .no-slider .product-box {
+    flex: 0 0 25%;
+    max-width: calc(25% - 30px);
+    margin: 0 15px 30px;
+  }
+  {% else %}
+  .no-slider .product-box {
+    flex: 0 0 20%;
+    max-width: calc(20% - 30px);
+    margin: 0 15px 30px;
+  }
+  {% endif %}  
+</style>
+
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<div class="container section-t-space ">
+
+
+  {% case section.settings.grid_per_row %}
+  {% when '3' %}
+  {% assign pro_limit = '6' -%}
+  {% when '4' %}
+  {% assign pro_limit = '8' -%}
+  {% when '5' %}
+  {% assign pro_limit = '10' -%}
+  {% endcase %}
+  {%- include 'title' -%}
+  {% if section.settings.desc != blank %}
+  <div class="col-md-6 offset-md-3">
+    <div class="product-para">
+      <p class="text-center {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_desc"{% endif %}>
+        {{ section.settings.desc }}
+      </p>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="FeaturePro1_{{sectionId}}_desc">{{ section.settings.trans_desc | raw }}</span>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+<section class="section-b-space p-t-0 {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="theme-tab">
+          <ul class="tabs tab-title">
+            {% for block in section.blocks %}
+            {% capture blockId %}{{ block.id }}{% endcapture %}
+            {% assign collection = collections[block.settings.tab_collection] %}
+            {% if collection.empty? %}
+            <li {% if forloop.first == true %}class="current"{% endif %}>
+              <a href="tab-{{ forloop.index }}" {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.collection_title"{%endif%}>
+                {{ 'homepage.onboarding.collection_title' | t }}
+              </a>
+            </li>
+            {% else %}
+            <li {% if forloop.first == true %}class="current"{% endif %}>
+              <a href="tab-{{ forloop.index }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#Pro_tabs1_{{blockId}}_tab_title"{% endif %}>
+                {{ block.settings.title }}
+              </a>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="Pro_tabs1_{{blockId}}_tab_title">{{ block.settings.trans_title | raw }}</span>
+              {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+          <div class="tab-content-cls">
+            {% for block in section.blocks %}
+            {% assign collection = collections[block.settings.tab_collection] %}
+            <div id="tab-{{ forloop.index }}" class="tab-content" >
+              <div class=" no-slider row">
+                {% if collection.empty? %}
+                {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+                {% for i in (1..4) %}
+                <div class="product-box">
+                  <div class="img-wrapper">
+                    <div class="front">
+                      <a href="#">
+                        {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                      </a>
+                    </div>
+                    <div class="cart-info cart-wrap">
+                      <button  data-toggle="tooltip" data-placement="left" title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                      <a href="#" data-toggle="tooltip" data-placement="left" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                      <a href="#" data-toggle="tooltip" data-placement="left" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                      <a href="#" data-toggle="tooltip" data-placement="left" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                    </div>
+                  </div>
+                  <div class="product-detail">
+                    <div class="rating">
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                    </div>
+                    <a href="#">
+                      <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+                    </a>
+                    <h4>{{ '$20.00' }}</h4>
+                    <ul class="color-variant">
+                      <li class="bg-light0"></li>
+                      <li class="bg-light1"></li>
+                      <li class="bg-light2"></li>
+                    </ul>
+                  </div>
+                </div>
+
+                {% endfor %}
+                {% else %}
+                {% for product in collection.products limit: pro_limit %}
+                {% include 'product-grid-item' %}
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}                        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- Tab product end -->
+
+{% schema %}
+  {
+    "name": "Feature Product Tabs",
+    "max_blocks": 4,
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Special Products"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "Exclusive Products"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate subtitle"
+      },
+      {
+        "type": "textarea",
+        "id": "desc",
+        "label": "Description",
+        "default":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+      },
+      {
+         "type": "textarea",
+         "id": "trans_desc",
+         "label": "Translate Description"
+      },
+      {
+        "type": "select",
+        "id": "grid_per_row",
+        "label": "Grid per row",
+        "default": "4",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Tab",
+        "name": "Tab Collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Product Tab"
+          },
+          {
+            "type": "textarea",
+            "id": "trans_title",
+            "label": "Translate Title"
+          },
+          {
+            "type": "collection",
+            "id": "tab_collection",
+            "label": "Select Collection"
+          }
+        ]
+      }
+    ],
+    "presets": [{
+      "name": "Feature Product Tabs",
+      "category": "Product",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "Tab"
+        },
+        {
+          "type": "Tab"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

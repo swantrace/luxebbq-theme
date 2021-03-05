@@ -1,0 +1,305 @@
+<!-- category 2 -->
+{% if section.settings.enabled %}
+<section class=" {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding:{{ section.settings.section_padding }}">
+  {%- include 'title' -%}
+  {% if section.settings.desc != blank %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="product-para">
+          <p class="text-center {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_desc"{% endif %} style="color: {{ section.settings.text_color }};">
+            {{ section.settings.desc }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="FeaturePro1_{{sectionId}}_desc">{{ section.settings.trans_desc | raw }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="container-fluid">
+    <div class="row category-border">
+      {% assign block_size = section.blocks.size  %}
+      {% for block in section.blocks %}
+      {% capture blockId %}{{ block.id }}{% endcapture %}
+      {% assign collection = collections[block.settings.collection] %}
+
+      {% if block_size == '2' %}
+      {% assign column_grid_width = 'col-md-6 col-sm-12' -%}
+      {% elsif block_size == '3' %}
+      {% assign column_grid_width = 'col-md-4 col-sm-12 ' -%}
+      {% elsif block_size == '4' %}
+      {% assign column_grid_width = 'col-md-3 col-sm-12 ' -%}
+      {% else %}
+      {% assign column_grid_width = 'col-md-4 col-sm-12' -%}
+      {% endif  %}
+      <div class="{{ column_grid_width }} border-padding">
+        <div class="category-banner">
+          {% if block.settings.image == blank %}
+          {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          {% else %}
+
+          {% if section.settings.use_equal_height %}
+          <div>
+            <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"></span>
+          </div>        
+          {% else %}
+          {% assign block_image = block.settings.image %}
+          {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+          <img src="{{ block_image | img_url: '1370x385' }}" 
+               data-src="{{ img_url }}" 
+               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+               data-aspectratio="{{ block_image.aspect_ratio }}" 
+               data-sizes="auto" 
+               class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+          {% endif %}
+
+          {% endif %}
+          {% if block.settings.enabled_info %}
+          <div class="category-box">
+            <a href="{{ collection.url }}">
+              <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#collection1_{{blockId}}_trans_title"{% endif %}>
+                {{ block.settings.title }}
+              </h2>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="collection1_{{blockId}}_trans_title">{{ block.settings.trans_title | raw }}</span>
+              {% endif %}
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- category 2 end -->
+
+{% schema %}
+{
+   "name":"Feature Collection 1",
+   "max_blocks":4,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Title",
+         "default":"Special offer"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_title",
+         "label":"Translate Title"
+      },
+      {
+         "type":"color",
+         "id":"title_color",
+         "label":"Title color",
+         "default":"#fff"
+      },
+      {
+         "type":"text",
+         "id":"subtitle",
+         "label":"SubTitle",
+         "default":"Top Collections"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_subtitle",
+         "label":"Translate subtitle"
+      },
+      {
+         "type":"color",
+         "id":"subtitle_color_color",
+         "label":"Subtitle color",
+         "default":"#fff"
+      },
+      {
+         "type":"textarea",
+         "id":"desc",
+         "label":"Description",
+         "default":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"Collection",
+         "name":"Add Collection ",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"image",
+               "label":"Collection Image"
+            },
+            {
+               "type": "collection",
+               "id": "collection",
+               "label": "Select collection"
+            },
+            {
+               "type":"checkbox",
+               "id":"enabled_info",
+               "default":true,
+               "label":"Show Info"
+            },
+            {
+               "type": "text",
+               "id": "title",
+               "label": "Heading",
+               "default": "Men"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Title"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Feature Collection 1",
+         "category":"Collection",
+         "blocks":[
+            {
+               "type":"Collection"
+            },
+            {
+               "type":"Collection"
+            },
+            {
+               "type":"Collection"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,88 @@
+<!--section start-->
+{% if section.settings.faq_enabled %}
+<section class="faq-section section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="accordion theme-accordion" id="accordionExample">
+          {% for block in section.blocks %}
+          {% capture blockId %}{{ block.id }}{% endcapture %}
+          <div class="card">
+            <div class="card-header" id="heading-{{ forloop.index }}">
+              <h5 class="mb-0">
+                <button class="btn btn-link {% if settings.enable_lang_switcher %}lang_trans{% endif %} collapsed" type="button" {% if settings.enable_lang_switcher %}data-trans="#faq_{{blockId}}_ques"{% endif %} data-toggle="collapse" data-target="#collapse-{{ forloop.index }}" aria-expanded="true" aria-controls="collapse-{{ forloop.index }}">
+                  {{ block.settings.question_title }}
+                </button>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="faq_{{blockId}}_ques">{{ block.settings.trans_question_title | raw }}</span>
+                {% endif %}
+              </h5>
+            </div>
+
+            <div id="collapse-{{ forloop.index }}" class="collapsed collapse {%- if forloop.index == 1 -%} show {%- endif -%} " aria-labelledby="heading-{{ forloop.index }}" data-parent="#accordionExample">
+              <div class="card-body">
+                <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#faq_{{blockId}}_ans"{% endif %}>
+                  {{ block.settings.question_desc }}
+                </p>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="faq_{{blockId}}_ans">{{ block.settings.trans_question_desc | raw }}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!--Section ends-->
+
+{% schema %}
+  {
+    "name": "Faq Template",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"faq_enabled",
+         "default":true,
+         "label":"Enabled"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "question",
+        "name": "Question",
+        "settings": [
+          {
+            "type": "text",
+            "id": "question_title",
+            "label": "Question Title" 
+          },
+          {
+            "type": "textarea",
+            "id": "trans_question_title",
+            "label": "Translate Question"
+          },
+          {
+            "type": "textarea",
+            "id": "question_desc",
+            "label": "Question Description"
+          },
+          {
+            "type": "textarea",
+            "id": "trans_question_desc",
+            "label": "Translate Answer"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

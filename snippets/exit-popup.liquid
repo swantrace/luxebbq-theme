@@ -1,0 +1,59 @@
+<script>
+  $(function() {
+    $.exitIntent('enable');
+    $(document).bind('exitintent', function() {
+      if(typeof(Storage) !== "undefined") {
+        if(sessionStorage.exit_popup == 'true'){
+        }
+        else{
+          sessionStorage.exit_popup = 'true';
+          setTimeout(function () {
+            if( $.cookie("exit-popup") == 'hide_exit_popup' ){
+            }
+            else{
+              $("#exit_popup").show();
+            }
+          }, 100);
+        }
+      }
+    });
+    $("#exit_popup a").bind('click', function() {
+      $("#exit_popup").hide();
+      return false;
+    });
+  });
+</script>	
+
+{% if settings.exit_enable %}
+<div id="exit_popup">
+  <div class ="exit-popup-modal" style="background-image: url({{ settings.exit_img | img_url: 'master' }});">
+    <div class ="exit-popup-body">
+      <div class="close"><a href="#"><span aria-hidden="true">×</span></a></div>
+      <div class="media">
+        <img src="{{ settings.exit_bnr_img | img_url: '150x150' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid mr-3" alt="{{ settings.exit_bnr_img }}">
+        <div class="media-body text-left">
+          <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#exit_popup_heading"{% endif %}>
+            {{ settings.exit_heading }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="exit_popup_heading">{{ settings.trans_exit_heading | raw }}</span>
+          {% endif %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#exit_popup_subheading"{% endif %}>
+            {{ settings.exit_heading_sub }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="exit_popup_subheading">{{ settings.trans_exit_heading_sub | raw }}</span>
+          {% endif %}
+          <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#exit_popup_text"{% endif %}>
+            {{ settings.exit_popup_text }}
+          </h5>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="exit_popup_text">{{ settings.trans_exit_popup_text | raw }}</span>
+          {% endif %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

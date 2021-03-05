@@ -1,0 +1,72 @@
+<div class="row product-accordion">
+  <div class="col-sm-12">
+    <div class="accordion theme-accordion" id="accordionExample">
+      {% if section.settings.enable_tab_1 %}
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#accordian_{{product.id}}_tab_title_1"{% endif %} type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              {{ section.settings.tab_title_1 }}
+            </button>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="accordian_{{product.id}}_tab_title_1">{{ section.settings.trans_tab_title_1 | raw }}</span>
+            {% endif %}
+
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            {% if section.settings.tab_content_1 == blank %}
+            <div>
+              {{ product.description  | split: '[countdowntimer-date-start]' | first }}
+            </div>
+            {% else %}
+            <div>
+              {{ section.settings.tab_content_1 }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if section.settings.enable_tab_2 %}
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#accordian_{{product.id}}_tab_title_2"{% endif %} type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              {{ section.settings.tab_title_2 }}
+            </button>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="accordian_{{product.id}}_tab_title_2">{{ section.settings.trans_tab_title_2 | raw }}</span>
+            {% endif %}
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            {{ section.settings.tab_content_2 }}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% if section.settings.enable_tab_3 %}
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#accordian_{{product.id}}_tab_title_3"{% endif %} type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              {{ section.settings.tab_title_3 }}
+            </button>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="accordian_{{product.id}}_tab_title_3">{{ section.settings.trans_tab_title_3 | raw }}</span>
+            {% endif %}
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

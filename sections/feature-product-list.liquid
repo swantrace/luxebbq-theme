@@ -1,0 +1,430 @@
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% case section.settings.product_per_row %}
+{% when '3' %}
+{% assign column_grid_width = 'col-xl-4 col-sm-6' -%}
+{% when '4' %}
+{% assign column_grid_width = 'col-xl-3 col-sm-6' -%}
+{% when '5' %}
+{% assign column_grid_width = 'col-xl-2 col-sm-6' -%}
+{% when '6' %}
+{% assign column_grid_width = 'col-xl-2 col-sm-6' -%}
+{% endcase %}
+
+{% assign collection = collections[section.settings.collection] %}
+{% assign pro_limit =  section.settings.product_limit %}
+
+<!-- Product slider -->
+<section class="gym-product" style="padding: {{ section.settings.section_padding }}">
+
+  {% if settings.title_layout == 'title_1' %}
+  <div class="title1">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_2' %}
+  <div class="title3">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %} 
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner3 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %} 
+    {% endif %}
+    <div class="line"></div>
+  </div>
+  {% elsif settings.title_layout == 'title_3' %}
+  <div class="title2">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner2 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_4' %}
+  <div class="title4">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner4 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+    <div class="line">
+      <span></span>
+    </div>
+  </div>
+  {% elsif settings.title_layout == 'title_5' %}
+  <div class="title1 title-gradient">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_6' %}
+  <div class="title1 title5">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro_list_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}          
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro_list_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeaturePro_list_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}  
+    {% endif %}
+    <hr role="tournament6">
+  </div>
+  {% endif %}
+
+  {% if section.settings.section_width == 'full-width' %}
+  <div class="container-fluid">
+    {% else %}
+    <div class="container">
+      {% endif %}
+      <div class="row partition-cls">
+        {% if collection.empty? %}
+        {% capture current %}{% cycle 1,2,3,4,5,6,1,2 %}{% endcapture %}
+        {% for i in (1..4) %}
+        <div class="col-xl-3 col-sm-6">
+          <div class="product-box ">
+            <div class="img-wrapper">
+              <div class="front">
+                <a href="#">
+                  {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                </a>
+              </div>
+              <div class="cart-info cart-wrap">
+                <button  title="Add to cart"><i class="ti-shopping-cart" ></i></button>
+                <a href="javascript:void(0)"  title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a>
+                <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+                <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="product-detail">
+              <a href="#">
+                <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
+              </a>
+              <h4>{{ '$20.00' }}</h4>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% for product in collection.products limit: pro_limit %}
+        <div class="{{column_grid_width}}">
+          {% include 'product-grid-item' %}
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% if section.settings.section_width == 'full-width' %}
+    </div>
+    {% else %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+<!-- Product slider end -->
+
+{% schema %}
+  {
+    "name": "Fetaure Product List",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+      {
+         "type":"select",
+         "id":"section_width",
+         "label":"Slideshow Width",
+         "options":[
+            {
+               "value":"full-width",
+               "label":"Full Width"
+            },
+            {
+               "value":"standard-width",
+               "label":"Standard Width"
+            }
+         ],
+         "default":"standard-width"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default":"Special offer"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "SubTitle",
+        "default":"Top Collections"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate subtitle"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Select collection"
+      },
+      {
+         "type":"select",
+         "id":"product_limit",
+         "label":"Product Limit",
+         "options":[
+            {
+                "label":"8",
+                "value":"8"
+            },
+            {
+                "label":"12",
+                "value":"12"
+            },
+            {
+                "label":"16",
+                "value":"16"
+            }
+        ],
+        "default":"8"
+      },
+      {
+         "type":"select",
+         "id":"product_per_row",
+         "label":"Product Per Row",
+         "options":[
+            {
+                "label":"3",
+                "value":"3"
+            },
+            {
+                "label":"4",
+                "value":"4"
+            },
+            {
+                "label":"5",
+                "value":"5"
+            },
+            {
+                "label":"6",
+                "value":"6"
+            }
+        ],
+        "default":"4"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+    ],
+    "presets": [{
+      "name": "Feature Product list",
+      "category": "Product",
+      "settings": {}
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

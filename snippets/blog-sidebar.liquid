@@ -1,0 +1,84 @@
+<div class="col-xl-3 col-lg-4 col-md-5">
+  <div class="blog-sidebar">
+    {% if blog_sidebar_recent_post %}
+    <div class="theme-card">      
+      <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_sidebar_{{sectionId}}_blog_sidebar_recentpost_title"{% endif %}>
+        {{ section.settings.blog_sidebar_recentpost_title }}
+      </h4>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="blog_sidebar_{{sectionId}}_blog_sidebar_recentpost_title">{{ section.settings.trans_blog_sidebar_recentpost_title | raw }}</span>
+      {% endif %}
+
+      <ul class="recent-blog">
+        {% for article in blogs[blog.handle].articles limit:3 %}
+        <li>
+          <div class="media">
+            <a href="{{ article.url }}" title="{{ article.title | split: '|' | first }}">
+              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ article.image | img_url:'120x' }}" alt="{{ article.title | split: '|' | first }}">
+            </a>
+            <div class="media-body align-self-center">
+              <h6>{{ article.published_at | date: format: "month_day_year" }}</h6>
+              {% assign data_title = article.title | split: '|' | first %}
+              {% assign data_json = article.title | split: '|' | last %}
+              <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_sidebar_{{article.id}}_post_title"{% endif %}>
+                {{ data_title | truncatewords: 12 }}
+              </p>
+              {% if settings.enable_lang_switcher %}
+              <span class="hide" id="blog_sidebar_{{article.id}}_post_title">{{ data_json | raw }}</span>
+              {% endif %}
+
+            </div>
+          </div>
+        </li>
+        {% endfor %}	
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if blog_sidebar_content %}
+    <div class="theme-card">
+      <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_sidebar_{{sectionId}}_blog_sidebar_abt_title"{% endif %}>
+        {{ section.settings.blog_sidebar_abt_title }}
+      </h4>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="blog_sidebar_{{sectionId}}_blog_sidebar_abt_title">{{ section.settings.trans_blog_sidebar_abt_title | raw }}</span>
+      {% endif %}
+      
+      <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_sidebar_{{sectionId}}_blog_sidebar_abt_text"{% endif %}>
+        {{ section.settings.blog_sidebar_abt_text }}
+      </p>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="blog_sidebar_{{sectionId}}_blog_sidebar_abt_text">{{ section.settings.trans_blog_sidebar_abt_text | raw }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if blog_sidebar_tag %}
+    <div class="theme-card">
+      
+      <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_sidebar_{{sectionId}}_blog_sidebar_tags_title"{% endif %}>
+        {{ section.settings.blog_sidebar_tags_title }}
+      </h4>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="blog_sidebar_{{sectionId}}_blog_sidebar_tags_title">{{ section.settings.trans_blog_sidebar_tags_title | raw }}</span>
+      {% endif %}
+      
+      <ul class="popular-tags">
+        {% for tag in blog.all_tags limit:8 %}
+        {% assign count = 0 %}
+        {% for article in blogs[blog.handle].articles %}
+        {% if article.tags contains tag %}
+        {% capture count %}{{ count | plus: 1 }}{% endcapture %}
+        {% endif %}
+        {% endfor %}
+        {% if current_tags contains tag %}
+        <li class="selected d-block"><a href="javascript:void(0)" title="{{ tag }}">{{ tag }}</a></li>
+        {% else %}
+        <li class="d-block"><a href="/blogs/{{ blog.handle }}/tagged/{{tag.handle}}" title="{{ tag }}">{{ tag }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>

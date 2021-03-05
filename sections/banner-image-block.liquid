@@ -1,0 +1,445 @@
+<!-- home banner start -->
+{% if section.settings.enabled %}
+<div class="container banner-slider" style="padding: {{ section.settings.section_padding }}">
+  <div class="row">
+    {% for block in section.blocks %}
+    {% if block.type == 'single_image' %}
+    <div class="{% if block.settings.block_width == '60%' %}col-md-7 {% elsif block.settings.block_width == '50%' %}col-md-6 {% elsif block.settings.block_width == '40%' %}col-md-5 {% endif %}{% if block.settings.use_equal_height %}equal_height {{ block.settings.image_ratio }} {{ block.settings.image_size }} bg_pos_{{ block.settings.image_position }}{% endif %}">
+      <a href="{{ block.settings.link }}">
+        {% if block.settings.image == blank %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% else %}
+
+        {% if block.settings.use_equal_height %}
+        <div>
+          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"></span>
+        </div>
+        {% else %}        
+        {% assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+        <img src="{{ block.settings.image | img_url: '1000x600' }}" 
+             data-src="{{ img_url }}" 
+             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+             data-aspectratio="{{ block_image.aspect_ratio }}" 
+             data-sizes="auto" 
+             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if block.settings.img_width == "full" %} w-100{% endif %}" alt="banner" >
+        {% endif %}
+        {% endif %}
+      </a>
+    </div>
+    {% elsif block.type == 'double_image' %}
+    <div class="{% if block.settings.block_width == '60%' %}col-md-7 {% elsif block.settings.block_width == '50%' %}col-md-6 {% elsif block.settings.block_width == '40%' %}col-md-5 {% endif %}{% if block.settings.use_equal_height %}equal_height {{ block.settings.image_ratio }} {{ block.settings.image_size }} bg_pos_{{ block.settings.image_position }}{% endif %}">
+      <div class="row home-banner">
+        <div class="col-12">
+          <a href="{{ block.settings.link_1 }}">
+            {% if block.settings.image_1 == blank %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+
+            {% if block.settings.use_equal_height %}
+            <div>
+              <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image_1 %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>
+            {% else %}        
+            {% assign img_url = block.settings.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block.settings.image_1 | img_url: '1000x600' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if block.settings.img_width == "full" %} w-100{% endif %}" alt="banner" >
+            {% endif %}
+            {% endif %}
+          </a>
+        </div>
+        <div class="col-12">
+          <a href="{{ block.settings.link_2 }}">
+            {% if block.settings.image_2 == blank %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+
+            {% if block.settings.use_equal_height %}
+            <div>
+              <span class="lazyload" data-bgset="{% include 'bg-set', image: block.settings.image_2 %}" data-sizes="auto" data-parent-fit="cover"></span>
+            </div>
+            {% else %}        
+            {% assign img_url = block.settings.image_2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block.settings.image_2 | img_url: '1000x600' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload img-fluid {% if block.settings.img_width == "full" %} w-100{% endif %}" alt="banner" >
+            {% endif %}
+            {% endif %}
+          </a>
+        </div>
+      </div>
+    </div>      
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+<!-- home banner end  -->
+
+{% schema %}
+  {
+  "name": "Banner Image Block",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Enabled",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "section_padding",
+      "label": "Padding",
+      "default": "0px 0px 0px 0px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "single_image",
+      "name": "Single Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image 1"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Banner Link"
+        },
+        {
+          "type": "select",
+          "id": "block_width",
+          "label": "Block Grid Width",
+          "default": "60%",
+          "options": [
+            {
+              "value": "60%",
+              "label": "60%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "40%",
+              "label": "40%"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Image Design Option"
+        },
+        {
+          "type": "radio",
+          "id": "img_width",
+          "options": [
+            {
+              "value": "full",
+              "label": "Image width Full"
+            },
+            {
+              "value": "auto",
+              "label": "Image Width Auto"
+            }
+          ],
+          "label": "Image width option",
+          "info": "This option will work if Use height for images option will be disabled."
+        },
+        {
+          "type": "checkbox",
+          "id": "use_equal_height",
+          "label": "Use equal height for images?",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image Aspect Ratio",
+          "default": "ratio_landscape",
+          "options": [
+            {
+              "value": "ratio2_1",
+              "label": "2:1"
+            },
+            {
+              "value": "ratio3_2",
+              "label": "3:2"
+            },
+            {
+              "value": "ratio_landscape",
+              "label": "4:3 (Landscape)"
+            },
+            {
+              "value": "ratio_square",
+              "label": "1:1 (Square)"
+            },
+            {
+              "value": "ratio_asos",
+              "label": "Ratio ASOS"
+            },
+            {
+              "value": "ratio_portrait",
+              "label": "2:3 (Portrait)"
+            },
+            {
+              "value": "ratio1_2",
+              "label": "1:2"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Size",
+          "default": "cover",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Full"
+            },
+            {
+              "value": "contain",
+              "label": "Auto"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "info": "The first value is the horizontal position and the second value is the vertical.",
+          "options": [
+            {
+              "value": "1",
+              "label": "Left Top"
+            },
+            {
+              "value": "2",
+              "label": "Left Center"
+            },
+            {
+              "value": "3",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "4",
+              "label": "Right Top"
+            },
+            {
+              "value": "5",
+              "label": "Right Center"
+            },
+            {
+              "value": "6",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "7",
+              "label": "Center Top"
+            },
+            {
+              "value": "8",
+              "label": "Center Center"
+            },
+            {
+              "value": "9",
+              "label": "Center Bottom"
+            }
+          ],
+          "label": "Image Position",
+          "default": "8"
+        }
+      ]
+    },
+	{
+      "type": "double_image",
+      "name": "Double Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "Banner Link"
+        },
+		{
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "Banner Link"
+        },
+        {
+          "type": "select",
+          "id": "block_width",
+          "label": "Block Grid Width",
+          "default": "60%",
+          "options": [
+            {
+              "value": "60%",
+              "label": "60%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            },
+            {
+              "value": "40%",
+              "label": "40%"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "Image Design Option"
+        },
+        {
+          "type": "radio",
+          "id": "img_width",
+          "options": [
+            {
+              "value": "full",
+              "label": "Image width Full"
+            },
+            {
+              "value": "auto",
+              "label": "Image Width Auto"
+            }
+          ],
+          "label": "Image width option",
+          "info": "This option will work if Use height for images option will be disabled."
+        },
+        {
+          "type": "checkbox",
+          "id": "use_equal_height",
+          "label": "Use equal height for images?",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image Aspect Ratio",
+          "default": "ratio_landscape",
+          "options": [
+            {
+              "value": "ratio2_1",
+              "label": "2:1"
+            },
+            {
+              "value": "ratio3_2",
+              "label": "3:2"
+            },
+            {
+              "value": "ratio_landscape",
+              "label": "4:3 (Landscape)"
+            },
+            {
+              "value": "ratio_square",
+              "label": "1:1 (Square)"
+            },
+            {
+              "value": "ratio_asos",
+              "label": "Ratio ASOS"
+            },
+            {
+              "value": "ratio_portrait",
+              "label": "2:3 (Portrait)"
+            },
+            {
+              "value": "ratio1_2",
+              "label": "1:2"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Size",
+          "default": "cover",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Full"
+            },
+            {
+              "value": "contain",
+              "label": "Auto"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "info": "The first value is the horizontal position and the second value is the vertical.",
+          "options": [
+            {
+              "value": "1",
+              "label": "Left Top"
+            },
+            {
+              "value": "2",
+              "label": "Left Center"
+            },
+            {
+              "value": "3",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "4",
+              "label": "Right Top"
+            },
+            {
+              "value": "5",
+              "label": "Right Center"
+            },
+            {
+              "value": "6",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "7",
+              "label": "Center Top"
+            },
+            {
+              "value": "8",
+              "label": "Center Center"
+            },
+            {
+              "value": "9",
+              "label": "Center Bottom"
+            }
+          ],
+          "label": "Image Position",
+          "default": "8"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Image Block",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

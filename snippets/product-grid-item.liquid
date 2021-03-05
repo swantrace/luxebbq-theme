@@ -1,0 +1,25 @@
+{% if settings.product_box_layout == 'product_1' %}
+{% include 'product-grid-1' %}
+{% elsif settings.product_box_layout == 'product_2' %}
+{% include 'product-grid-2' %}
+{% elsif settings.product_box_layout == 'product_3' %}
+{% include 'product-grid-3' %}
+{% elsif settings.product_box_layout == 'product_4' %}
+{% include 'product-grid-4' %}
+{% elsif settings.product_box_layout == 'product_5' %}
+{% include 'product-grid-5' %}
+{% elsif settings.product_box_layout == 'product_6' %}
+{% include 'product-grid-6' %}
+{% elsif settings.product_box_layout == 'product_7' %}
+{% include 'product-grid-7' %}
+{% elsif settings.product_box_layout == 'product_8' %}
+{% include 'product-grid-8' %}
+{% elsif settings.product_box_layout == 'product_9' %}
+{% include 'product-grid-9' %}
+{% elsif settings.product_box_layout == 'product_10' %}
+{% include 'product-grid-10' %}
+{% elsif settings.product_box_layout == 'product_11' %}
+{% include 'product-grid-11' %}
+{% else %}
+{% include 'product-grid-12' %}
+{% endif %}

@@ -1,0 +1,230 @@
+<!-- Video section start -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<section class="video-section section-b-space" style="padding: {{ section.settings.section_padding }}">
+
+  {% if settings.title_layout == 'title_1' %}
+  <div class="title1">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeatureVideo_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeatureVideo_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_2' %}
+  <div class="title3">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeatureVideo_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %} 
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner3 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeatureVideo_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %} 
+    {% endif %}
+    <div class="line"></div>
+  </div>
+  {% elsif settings.title_layout == 'title_3' %}
+  <div class="title2">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeatureVideo_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner2 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeatureVideo_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_4' %}
+  <div class="title4">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeatureVideo_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner4 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeatureVideo_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}
+    {% endif %}
+    <div class="line">
+      <span></span>
+    </div>
+  </div>
+  {% elsif settings.title_layout == 'title_5' %}
+  <div class="title1 title-gradient ">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeatureVideo_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}          
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeatureVideo_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}  
+    {% endif %}
+  </div>
+  {% elsif settings.title_layout == 'title_6' %}
+  <div class="title1 title5">
+    {% if section.settings.subtitle != blank %}
+    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeatureVideo_{{sectionId}}_subtitle"{% endif %}>
+      {{ section.settings.subtitle }}
+    </h4>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+    {% endif %}          
+    {% endif %}
+    {% if section.settings.title != blank %}
+    <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeatureVideo_{{sectionId}}_title"{% endif %}>
+      {{ section.settings.title }}
+    </h2>
+    {% if settings.enable_lang_switcher %}
+    <span class="hide" id="FeatureVideo_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+    {% endif %}  
+    {% endif %}
+    <hr role="tournament6">
+  </div>
+  {% endif %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <a href="" data-toggle="modal" data-target="#video">
+          <div class="video-img">
+            {% if section.settings.image == blank %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+
+            {% assign block_image = section.settings.image %}
+            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+            <img src="{{ block_image | img_url: '920x450' }}" 
+                 data-src="{{ img_url }}" 
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                 data-sizes="auto" 
+                 class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" > 
+            {% endif %}
+            <div class="modal fade video-modal" id="video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <iframe src="{{ section.settings.video_url }}" allowfullscreen></iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="play-btn">
+              <span><i class="fa fa-play" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- video section end -->
+
+{% schema %}
+  {
+    "name": "Featured video",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "label":"Enabled",
+         "default":true
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+	  {
+	    "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+		"info": "Will be scaled down 350x340"
+	  },
+      {
+         "type": "text",
+         "id": "title",
+         "label": "Title",
+		 "default": "Product tutorial"
+	  },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+	  },
+      {
+         "type": "text",
+         "id": "sub_title",
+         "label": "Sub title",
+		 "default": "special offer"
+	  },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate subTitle"
+	  },
+      {
+         "type": "text",
+         "id": "video_url",
+         "label": "Youtube Video Url",
+		 "default": "https://www.youtube.com/embed/FRIDLxM8Roc"
+	  }
+	],
+   "presets":[
+      {
+         "name":"Featured video",
+         "category":"video"
+      }
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

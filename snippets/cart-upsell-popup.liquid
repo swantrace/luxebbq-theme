@@ -1,0 +1,41 @@
+<div class="cart-upsell-popup" id="cart-upsell-popup">
+  <div class="upsell-modal" style="background-image: url({{ settings.newsletter_img | img_url: 'master' }});">
+    <div class="upsell-body">
+      <div class="media">
+        <a href="" class="pro_url">
+          <img class="img-fluid pro-img" src="" alt="">
+        </a>
+        <div class="media-body align-self-center">
+          <a href="" class="pro_url">
+            <h6></h6>
+          </a>
+          <div class="buttons">
+            <a href="/cart" class="view-cart" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.title"{%endif%}>{{ 'cart.general.title' | t }}</a>
+            <button type="submit" name="checkout" class="checkout" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.checkout"{%endif%}>{{ 'cart.general.checkout' | t }}</button>
+            <a href="/" class="continue" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.continue_shopping"{%endif%}>{{ 'cart.general.continue_shopping' | t }}</a>
+          </div>
+          {% if settings.show_payment_img %}
+          <div class="upsell_payment">
+            <img src="{{ settings.upsell_payment_img | img_url: '600x40' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="Upsell_payment">
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% if settings.eneble_upsell_products %}
+      <div class="col-12 product-upsell">
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#cart_upsell_related_pro_title"{% endif %}>
+          {{ settings.related_pro_title }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="cart_upsell_related_pro_title">{{ settings.trans_related_pro_title | raw }}</span>
+        {% endif %}
+      </div>
+      <div class="no-arrow" id="upsell_product">  
+      </div>
+      {% endif %}
+      <span class="close_upsell">x
+      </span>
+    </div>
+  </div>
+</div>
+

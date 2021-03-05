@@ -1,0 +1,16 @@
+{% layout none %}
+[
+{% assign cart_items_handle = ',' -%}
+{% for item in cart.items %}
+{% assign cart_items_handle = cart_items_handle | append: item.product.handle | append: ',' %}
+{% endfor %}
+{% assign upsell_handles = ',' %}
+{% for product in collection.products %}
+{% assign handle_compare = ',' | append: product.handle | append: ',' %}
+{% unless cart_items_handle contains handle_compare %}
+{% if upsell_handles != ',' %},{% endif %}
+{% include 'product-json' with a_product: product %}
+{% assign upsell_handles = upsell_handles | append : product.handle | append : ',' %}
+{% endunless %}
+{% endfor %}
+]

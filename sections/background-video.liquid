@@ -1,0 +1,47 @@
+{% if section.settings.enabled %}
+<div id="block" style="width: 100%; height: 100vh;" data-vide-bg="{{ section.settings.video_url }}" data-vide-options="position: 0% 50%">
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Background video Section",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "label":"Enabled",
+         "default":true
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+	  {
+	    "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+		"info": "Will be scaled down 350x340"
+	  },
+      {
+         "type": "text",
+         "id": "video_url",
+         "label": "Youtube Video Url",
+		 "default": "https://www.youtube.com/embed/FRIDLxM8Roc"
+	  }
+	],
+   "presets":[
+      {
+         "name":"Background video Section",
+         "category":"video"
+      }
+   ]
+  }
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

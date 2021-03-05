@@ -1,0 +1,239 @@
+<!-- category -->
+{% if section.settings.enabled %}
+<div class="container">
+  <section class="section-b-space border-top-0 ">
+    <div class="row">
+      <div class="col">
+        <div class="slick_carousel" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 480,"settings":{"slidesToShow": {{ section.settings.slidetoshow_480}} }} ]}'>
+          {% for block in section.blocks %}
+          {% capture blockId %}{{ block.id }}{% endcapture %}
+          {% assign collection = collections[block.settings.collection] %}
+          <div class="category-block">
+            <a href="{{ collection.url }}">
+              <div class="category-image">
+                {% if block.settings.cat_image == blank %}
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {% else %}
+                {% assign block_image = block.settings.cat_image %}
+                <img src="{{ block_image | img_url: '40x' }}" 
+                     class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
+                {% endif %}
+              </div>
+            </a>
+            {% if block.settings.title != blank %}
+            <div class="category-details">
+              {% if block.settings.title != blank %}
+              <a href="{{ collection.url }}">
+              
+                <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#cat1_{{blockId}}_trans_title"{% endif %}>
+                  {{ block.settings.title }}
+                </h5>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="cat1_{{blockId}}_trans_title">{{ block.settings.trans_title | raw }}</span>
+                {% endif %}
+              
+              </a>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+              <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#cat1_{{blockId}}_trans_subtitle"{% endif %}>
+                 {{ block.settings.subtitle }}
+              </h6>
+              {% if settings.enable_lang_switcher %}
+                <span class="hide" id="cat1_{{blockId}}_trans_subtitle">{{ block.settings.trans_subtitle | raw }}</span>
+                {% endif %}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}  
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endif %}
+<!-- category end -->
+
+{% schema %}
+{
+   "name":"Category layout 1",
+   "max_blocks": 8,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+    {
+      "type": "header",
+      "content": "Slider settings( Only for Carousel layout )"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 480"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_480",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    }
+   ],
+   "blocks":[
+      {
+         "type":"collection",
+         "name":"Category",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"cat_image",
+               "label":"Image"
+            },
+            {
+               "type":"collection",
+               "id":"collection",
+               "label":"Select collection"
+            },
+            {
+               "type":"text",
+               "id":"title",
+               "label":"Title",
+               "default":"Formal shoes"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_title",
+               "label": "Translate Title"
+            },
+            {
+               "type": "text",
+               "id": "subtitle",
+               "label": "SubTitle",
+               "default":"Top Collections"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_subtitle",
+               "label": "Translate subtitle"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Category layout 1",
+         "category":"Category",
+         "settings":{
+
+         },
+         "blocks":[
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            },
+            {
+               "type":"collection"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

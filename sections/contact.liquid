@@ -1,0 +1,151 @@
+<!--section start-->
+{% if section.settings.contact_enable %}
+<section class="contact-page section-b-space">
+  <div class="container">
+    <div class="row section-b-space">
+      <div class="col-lg-7 map">
+        {% if section.settings.google_map_iframe != blank %}
+        {{ section.settings.google_map_iframe }}
+        {% endif %}
+      </div>
+      <div class="col-lg-5">
+        <div class="contact-right">
+          <ul class="contact-right">
+            {% for block in section.blocks %}
+            {% capture blockId %}{{ block.id }}{% endcapture %}
+            <li>
+              <div class="contact-icon">
+                {% if block.settings.services_image != blank %}
+                <img src="{{ block.settings.services_image | img_url: 'original' }}" alt="" class="img-fluid">
+                {% endif %}
+
+                {% if block.settings.service_title != blank %}
+                
+                <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#contact_{{blockId}}_service_title"{% endif %}>
+                  {{ block.settings.service_title }}
+                </h6>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="contact_{{blockId}}_service_title">{{ block.settings.trans_service_title | raw }}</span>
+                {% endif %}
+                
+                {% endif %}
+              </div>
+              <div>
+                {% if block.settings.service_desc != blank %}
+                {{ block.settings.service_desc }}
+                {% endif %}
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+
+        {% form 'contact', class: 'theme-form' %}
+
+        {% if form.posted_successfully? %}
+        <p class="alert alert-success">
+          {{ 'contact.form.post_success' | t }}
+        </p>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="name" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.name"{%endif%}>{{ 'contact.form.name' | t }}</label>
+            <input type="text" class="form-control" placeholder="{{ 'contact.form.name' | t }}" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="">
+          </div>
+          <div class="col-md-6">
+            <label for="email" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.email"{%endif%}>{{ 'contact.form.email' | t }}</label>
+            <input type="email" required="" class="form-control" placeholder="{{ 'contact.form.email' | t }}" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          </div>
+          <div class="col-md-12">
+            <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.phone"{%endif%}>{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" class="form-control" placeholder="{{ 'contact.form.phone' | t }}" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" required="">
+          </div>
+          <div class="col-md-12">
+            <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.message"{%endif%}>{{ 'contact.form.message' | t }}</label>
+            <textarea class="form-control" placeholder="{{ 'contact.form.message' | t }}" id="ContactFormMessage" name="contact[body]" rows="6"></textarea>
+          </div>
+          <div class="col-md-12">
+            <button id="submit" class="btn btn-solid" name="submit" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.submit"{%endif%}>{{ 'contact.form.submit' | t }}</button>
+          </div>
+        </div>
+        {% endform %}
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!--Section ends-->
+
+{% schema %}
+  {
+    "name": "Contact Us",
+    "max_blocks": 4,
+    "settings": [
+    {
+         "type":"header",
+         "content":"Contact Us"
+    },
+    {
+       "type":"checkbox",
+       "id":"contact_enable",
+       "label":"Enabled",
+       "default":true
+    },
+    {
+       "type":"text",
+       "id":"page_heading",
+       "label":"Enabled",
+       "default":"CONTACT US"
+    },
+    {
+       "type": "html",
+       "id": "google_map_iframe",
+       "label": "Google Map"
+   }
+  ],
+  "blocks":[
+    {
+         "type":"Services",
+         "name":"Services",
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"services_image",
+               "label":"Image"
+            },
+            {
+               "type":"text",
+               "id":"service_title",
+               "label":"Title",
+               "default":"CONTACT US"
+            },
+            {
+               "type": "textarea",
+               "id": "trans_service_title",
+               "label": "Translate Service title"
+            },
+            {
+               "type":"html",
+               "id":"service_desc",
+               "label":"Description",
+               "default":"<p>+91 123 - 456 - 7890</p><p>+86 163 - 451 - 7894</p>"
+            }
+         ]
+      }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

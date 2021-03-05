@@ -1,0 +1,348 @@
+<!--  logo section -->
+{% if section.settings.enabled %}
+
+<section class="{% if section.settings.enabled_box_layout %} tools-brand {% endif %}{% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding: {{ section.settings.section_padding }};background-color: {{ section.settings.bg_color }};">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="slick_carousel" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 480,"settings":{"slidesToShow": {{ section.settings.slidetoshow_480}} }} ]}'>
+          {% for block in section.blocks %}
+          <div>
+            <div class="logo-block">
+              <a href="{{ block.settings.link }}">
+                {% if block.settings.image == blank %}
+                <img src="{{ 'logo.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" />
+                {% else %}
+
+                {% if section.settings.use_equal_height %}
+                <div>
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"></span>
+                </div>        
+                {% else %}
+                {% assign block_image = block.settings.image %}
+                  <img src="{{ block_image | img_url: '125x125' }}" 
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
+                {% endif %}                
+                {% endif %}
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!--  logo section end-->
+
+
+{% schema %}
+{
+  "name": "Brand Logo",
+  "max_blocks": 20,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "default": true,
+      "label": "Enabled"
+    },
+    {
+      "type": "text",
+      "id": "section_padding",
+      "label": "Padding",
+      "default": "30px 0px 30px 0px"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f7f7f7"
+    },
+	{
+      "type": "checkbox",
+      "id": "enabled_box_layout",
+      "default": true,
+      "label": "Enabled section box-layout"
+    },
+    {
+      "type": "header",
+      "content": "Image Design Option"
+    },
+    {
+      "type": "radio",
+      "id": "img_width",
+      "default": "full",
+      "options": [
+        {
+          "value": "full",
+          "label": "Image width Full"
+        },
+        {
+          "value": "auto",
+          "label": "Image Width Auto"
+        }
+      ],
+      "label": "Image width option",
+      "info": "This option will work if Use height for images option will be disabled."
+    },
+    {
+      "type": "checkbox",
+      "id": "use_equal_height",
+      "label": "Use height Option for images?",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image Aspect Ratio",
+      "default": "ratio_landscape",
+      "options": [
+        {
+          "value": "ratio2_1",
+          "label": "2:1"
+        },
+        {
+          "value": "ratio3_2",
+          "label": "3:2"
+        },
+        {
+          "value": "ratio_landscape",
+          "label": "4:3 (Landscape)"
+        },
+        {
+          "value": "ratio_square",
+          "label": "1:1 (Square)"
+        },
+        {
+          "value": "ratio_asos",
+          "label": "Ratio ASOS"
+        },
+        {
+          "value": "ratio_portrait",
+          "label": "2:3 (Portrait)"
+        },
+        {
+          "value": "ratio1_2",
+          "label": "1:2"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_size",
+      "label": "Image Size",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Full"
+        },
+        {
+          "value": "contain",
+          "label": "Auto"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "info": "The first value is the horizontal position and the second value is the vertical.",
+      "options": [
+        {
+          "value": "1",
+          "label": "Left Top"
+        },
+        {
+          "value": "2",
+          "label": "Left Center"
+        },
+        {
+          "value": "3",
+          "label": "Left Bottom"
+        },
+        {
+          "value": "4",
+          "label": "Right Top"
+        },
+        {
+          "value": "5",
+          "label": "Right Center"
+        },
+        {
+          "value": "6",
+          "label": "Right Bottom"
+        },
+        {
+          "value": "7",
+          "label": "Center Top"
+        },
+        {
+          "value": "8",
+          "label": "Center Center"
+        },
+        {
+          "value": "9",
+          "label": "Center Bottom"
+        }
+      ],
+      "label": "Image Position",
+      "default": "8"
+    },
+    {
+      "type": "header",
+      "content": "Slider settings( Only for Carousel layout )"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 480"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_480",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_image",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Optional"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo list",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        },
+        {
+          "type": "logo_image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,204 @@
+<script>
+  $(window).on('load',function(){
+    setTimeout(function(){
+      $('#exampleModal').modal('show');
+    }, 500);
+  });
+  {% if settings.enable_cookie_bar %}
+  $.cookieBar({
+    message: '{{ settings.cookie_msg }}', 
+    acceptButton: true, 
+    acceptText: '{{ settings.cookie_btn_text }}'
+  });
+  {% endif %}
+  //    tooltip
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  });
+  $(document).ready(function() {
+    $('#ageModal').modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+    {% if settings.enable_lang_switcher %}
+    var currentLang = localStorage.getItem("selectLang");
+    if(currentLang != null){
+      $("#translate option").each(function(){
+        var val = $(this).attr('data-val');
+        if(val == currentLang){ 
+          $(this).attr('selected','selected');
+        }
+      });
+      $('.lang_trans').each(function(index) {
+        var item = $(this);
+        var data_trans = $(this).attr('data-trans');
+        var data_trans_val = data_trans.replace('#', '');
+        var trans_id = $(this).next().attr('id');
+        var trans_content = $(this).next().text();
+        var array = trans_content.split(',');
+        $.each(array,function(i){
+          var val = array[i];
+          var _name = val.split(':')[0];
+          var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
+          var _content = val.substr(val.indexOf(":") + 1);
+          var lang_content = _content.toString().replace(/"/g, "");
+          var lang_content = lang_content.toString().replace(/[{}]/g, "");
+          if(data_trans_val == trans_id){
+            if(currentLang == lang_name){
+              item.text(lang_content);
+            }
+          }
+        });
+      });
+      $('.lang_desc_trans').each(function(index) {
+        var item = $(this);
+        var data_trans = $(this).attr('data-trans');
+        var data_trans_val = data_trans.replace('#', '');
+        var trans_id = $(this).next().attr('id');
+        console.log(trans_id);
+        var trans_content = $(this).next().html();
+        var array = trans_content.split(';;');
+        $.each(array,function(i){
+          var val = array[i];
+          var _name = val.split(':-')[0];
+          console.log('_name', _name);
+          var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
+          var _content = val.substr(val.indexOf(":") + 1);
+          var lang_content = _content.toString().replace(/"/g, "");
+          var lang_content = lang_content.toString().replace(/[{}]/g, "");
+//           var _lang_content = _lang_content.substring(_lang_content.indexOf('[') + 1, _lang_content.indexOf(']'));
+          if(data_trans_val == trans_id){
+            if(currentLang == lang_name){
+              item.html(lang_content);
+            }
+          }
+        });
+      });
+      $('[data-trans-key]').each(function(index) {
+        var item = jQuery(this);
+        var selector = item.attr('data-trans-key');
+        var lang_data_json = arrlang[currentLang];
+        var properties = selector.split('.');
+        item.text(lang_data_json[properties[0]][properties[1]][properties[2]]);
+      });
+    }
+
+    $('#translate').on('change', function (e) {
+      var valueSelected = $(this).find(':selected').attr('data-val');
+
+      localStorage.removeItem("selectLang");
+      localStorage.setItem("selectLang", valueSelected);
+
+      $('.lang_trans').each(function(index) {
+        var item = $(this);
+        var data_trans = $(this).attr('data-trans');
+        var data_trans_val = data_trans.replace('#', '');
+        var trans_id = $(this).next().attr('id');
+        var trans_content = $(this).next().text();
+        var array = trans_content.split(',');
+        $.each(array,function(i){
+          var val = array[i];
+          var _name = val.split(':')[0];
+          var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
+          var _content = val.substr(val.indexOf(":") + 1);
+          var lang_content = _content.toString().replace(/"/g, "");
+          var lang_content = lang_content.toString().replace(/[{}]/g, "");
+          if(data_trans_val == trans_id){
+            if(valueSelected == lang_name){
+              item.text(lang_content);
+            }
+          }
+        });
+      });
+      $('.lang_desc_trans').each(function(index) {
+        var item = $(this);
+        var data_trans = $(this).attr('data-trans');
+        var data_trans_val = data_trans.replace('#', '');
+        var trans_id = $(this).next().attr('id');
+        var trans_content = $(this).next().html();
+        var array = trans_content.split(';;');
+        $.each(array,function(i){
+          var val = array[i];
+          var _name = val.split(':-')[0];
+          console.log('_name', _name);
+          var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
+          var _content = val.substr(val.indexOf(":") + 1);
+          var lang_content = _content.toString().replace(/"/g, "");
+          var lang_content = lang_content.toString().replace(/[{}]/g, "");
+          if(data_trans_val == trans_id){
+            if(valueSelected == lang_name){
+              item.html(lang_content);
+            }
+          }
+        });
+      }); 
+      $('[data-trans-key]').each(function(index) {
+        var item = jQuery(this);
+        var selector = item.attr('data-trans-key');
+        var lang_data_json = arrlang[valueSelected];
+        var properties = selector.split('.');
+        item.text(lang_data_json[properties[0]][properties[1]][properties[2]]);
+      });
+    });
+    {% endif %}
+
+    {% if settings.auto_curr_swticher and settings.show_multiple_currencies %}
+    var expire = 7;
+    if (Currency.cookie.read() == null) {
+    }
+    else{
+      var countryMap = {"BD": "BDT", "BE": "EUR", "BF": "XOF", "BG": "BGN", "BA": "BAM", "BB": "BBD", "WF": "XPF", "BL": "EUR", "BM": "BMD", "BN": "BND", "BO": "BOB", "BH": "BHD", "BI": "BIF", "BJ": "XOF", "BT": "BTN", "JM": "JMD", "BV": "NOK", "BW": "BWP", "WS": "WST", "BQ": "USD", "BR": "BRL", "BS": "BSD", "JE": "GBP", "BY": "BYR", "BZ": "BZD", "RU": "RUB", "RW": "RWF", "RS": "RSD", "TL": "USD", "RE": "EUR", "TM": "TMT", "TJ": "TJS", "RO": "RON", "TK": "NZD", "GW": "XOF", "GU": "USD", "GT": "GTQ", "GS": "GBP", "GR": "EUR", "GQ": "XAF", "GP": "EUR", "JP": "JPY", "GY": "GYD", "GG": "GBP", "GF": "EUR", "GE": "GEL", "GD": "XCD", "GB": "GBP", "GA": "XAF", "SV": "USD", "GN": "GNF", "GM": "GMD", "GL": "DKK", "GI": "GIP", "GH": "GHS", "OM": "OMR", "TN": "TND", "JO": "JOD", "HR": "HRK", "HT": "HTG", "HU": "HUF", "HK": "HKD", "HN": "HNL", "HM": "AUD", "VE": "VEF", "PR": "USD", "PS": "ILS", "PW": "USD", "PT": "EUR", "SJ": "NOK", "PY": "PYG", "IQ": "IQD", "PA": "PAB", "PF": "XPF", "PG": "PGK", "PE": "PEN", "PK": "PKR", "PH": "PHP", "PN": "NZD", "PL": "PLN", "PM": "EUR", "ZM": "ZMK", "EH": "MAD", "EE": "EUR", "EG": "EGP", "ZA": "ZAR", "EC": "USD", "IT": "EUR", "VN": "VND", "SB": "SBD", "ET": "ETB", "SO": "SOS", "ZW": "ZWL", "SA": "SAR", "ES": "EUR", "ER": "ERN", "ME": "EUR", "MD": "MDL", "MG": "MGA", "MF": "EUR", "MA": "MAD", "MC": "EUR", "UZ": "UZS", "MM": "MMK", "ML": "XOF", "MO": "MOP", "MN": "MNT", "MH": "USD", "MK": "MKD", "MU": "MUR", "MT": "EUR", "MW": "MWK", "MV": "MVR", "MQ": "EUR", "MP": "USD", "MS": "XCD", "MR": "MRO", "IM": "GBP", "UG": "UGX", "TZ": "TZS", "MY": "MYR", "MX": "MXN", "IL": "ILS", "FR": "EUR", "IO": "USD", "SH": "SHP", "FI": "EUR", "FJ": "FJD", "FK": "FKP", "FM": "USD", "FO": "DKK", "NI": "NIO", "NL": "EUR", "NO": "NOK", "NA": "NAD", "VU": "VUV", "NC": "XPF", "NE": "XOF", "NF": "AUD", "NG": "NGN", "NZ": "NZD", "NP": "NPR", "NR": "AUD", "NU": "NZD", "CK": "NZD", "XK": "EUR", "CI": "XOF", "CH": "CHF", "CO": "COP", "CN": "CNY", "CM": "XAF", "CL": "CLP", "CC": "AUD", "CA": "CAD", "CG": "XAF", "CF": "XAF", "CD": "CDF", "CZ": "CZK", "CY": "EUR", "CX": "AUD", "CR": "CRC", "CW": "ANG", "CV": "CVE", "CU": "CUP", "SZ": "SZL", "SY": "SYP", "SX": "ANG", "KG": "KGS", "KE": "KES", "SS": "SSP", "SR": "SRD", "KI": "AUD", "KH": "KHR", "KN": "XCD", "KM": "KMF", "ST": "STD", "SK": "EUR", "KR": "KRW", "SI": "EUR", "KP": "KPW", "KW": "KWD", "SN": "XOF", "SM": "EUR", "SL": "SLL", "SC": "SCR", "KZ": "KZT", "KY": "KYD", "SG": "SGD", "SE": "SEK", "SD": "SDG", "DO": "DOP", "DM": "XCD", "DJ": "DJF", "DK": "DKK", "VG": "USD", "DE": "EUR", "YE": "YER", "DZ": "DZD", "US": "USD", "UY": "UYU", "YT": "EUR", "UM": "USD", "LB": "LBP", "LC": "XCD", "LA": "LAK", "TV": "AUD", "TW": "TWD", "TT": "TTD", "TR": "TRY", "LK": "LKR", "LI": "CHF", "LV": "EUR", "TO": "TOP", "LT": "LTL", "LU": "EUR", "LR": "LRD", "LS": "LSL", "TH": "THB", "TF": "EUR", "TG": "XOF", "TD": "XAF", "TC": "USD", "LY": "LYD", "VA": "EUR", "VC": "XCD", "AE": "AED", "AD": "EUR", "AG": "XCD", "AF": "AFN", "AI": "XCD", "VI": "USD", "IS": "ISK", "IR": "IRR", "AM": "AMD", "AL": "ALL", "AO": "AOA", "AQ": "", "AS": "USD", "AR": "ARS", "AU": "AUD", "AT": "EUR", "AW": "AWG", "IN": "INR", "AX": "EUR", "AZ": "AZN", "IE": "EUR", "ID": "IDR", "UA": "UAH", "QA": "QAR", "MZ": "MZN"};
+      jQuery.ajax( {
+        url: 'https://get.geojs.io/v1/ip/geo.js',
+        type: 'POST',
+        dataType: 'jsonp',
+        success: function(location) {
+
+          if(location.country_code){
+            var mycurrency = countryMap[location.country_code];
+            var _supported_codes = '{{ settings.supported_currencies }}';
+            if(mycurrency){
+              $('.currency_li_cls_2 a').each(function(){
+                var curr_val = $(this).attr('data-value');
+                if(mycurrency == curr_val){	
+                  $(this).trigger('click');
+                }
+              });
+            }
+          }
+        }
+      });
+    }
+    jQuery.cookie('currencycookie', 'true', { expires: 7 });
+    {% endif %}
+  });
+  function openSearch() {
+    document.getElementById("search-overlay").style.display = "block";
+  }
+
+  function closeSearch() {
+    document.getElementById("search-overlay").style.display = "none";
+  }  
+
+  function openNav() {
+    document.getElementById("mySidenav").classList.add('open-side');
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").classList.remove('open-side');
+  }
+
+  // add to cart sidebar js //
+
+//   function openCart() {
+//     document.getElementById("cart_side").classList.add('open-side');
+//     document.getElementsByClassName("fixed_cart").classList.add('open-side');
+//   }
+//   function closeCart() {
+//     document.getElementById("cart_side").classList.remove('open-side');
+//   }
+
+
+  {% if settings.enable_fixe_footer %}
+  $('footer').footerReveal();
+  {% endif %}
+</script>

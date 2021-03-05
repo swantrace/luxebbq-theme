@@ -1,0 +1,12 @@
+{% if settings.enable_lang_switcher %}
+<h6>Language</h6>
+{% assign languages = settings.languages_support | split: ',' %}
+<select id="translate">
+  {% for l in languages %}
+  {% assign l = l | strip %}
+  {% assign groups = l | split: '=' %}
+  {% assign code = groups | first | strip %}
+  <option data-val="{{ code }}">{{ groups | last | strip }}</option>
+  {% endfor %}
+</select>
+{% endif %}

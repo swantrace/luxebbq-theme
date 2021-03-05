@@ -1,0 +1,87 @@
+<div class="product-box metro-section" data-pro-id="{{ product.id }}">
+  <div class="img-wrapper">
+    <div class="front">
+      <a href="{{ product.url | within: collection }}">
+        {% if section.settings.use_equal_height %}
+        <div>
+          <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
+        </div>        
+        {% else %}
+        <img src="{{ product | img_url: '340x455' }}" 
+             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+        {% endif %}
+      </a>
+    </div>
+    <div class="cart-info cart-wrap">
+      
+      {% if settings.show_catelogue != true %}
+      <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product.variants.first.id }}">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        <button  title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" 
+                {% unless product.variants[0].available%}disabled{% endunless %}>
+          <i class="ti-shopping-cart"></i>
+        </button>
+      </form>
+      {% endif %}
+      {% include 'wishlist-button'%}
+      {% if settings.show_quickview %}
+      <a class="quick-view" href="#quick-view-product" data-id="{{ product.id }}" data-handle="{{ product.handle }}" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a>
+      {% endif %}
+      
+      {% if settings.show_compare %}
+      <a href="#" data-pid="{{ product.handle  }}" title="Compare" class="compare"><i class="ti-reload" aria-hidden="true"></i></a>
+      {% endif %}
+      
+    </div>
+  </div>
+  <div class="product-detail">
+    
+    {% if settings.show_review_rating %}
+    <div class="rating">
+      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+    </div>
+    {% endif %}
+    
+    <a href="{{ product.url | within: collection }}">
+      {% assign data_title = product.title | split: '|' | first %}
+      {% assign data_json = product.title | split: '|' | last %}
+      <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+        {{ data_title | truncatewords: 10 }}
+      </h6>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+      {% endif %}
+    </a>
+    
+    {% if settings.eneble_login_price %}
+    {% if customer %}
+    <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+      {{ product.price | money }}
+      {% if product.compare_at_price > product.price %}
+      <del>{{ product.variants[0].compare_at_price | money }}</del>
+      {% endif %}
+    </h4>
+    {% else %}
+    <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
+    {% endif %}
+
+    {% elsif settings.show_catelogue  %}
+    {% if settings.show_catelogue_price %}
+    <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+      {{ product.price | money }}
+      {% if product.compare_at_price > product.price %}
+      <del>{{ product.variants[0].compare_at_price | money }}</del>
+      {% endif %}
+    </h4>
+    {% endif %}
+    {% else %}
+    <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
+      {{ product.price | money }}
+      {% if product.compare_at_price > product.price %}
+      <del>{{ product.variants[0].compare_at_price | money }}</del>
+      {% endif %}
+    </h4>
+    {% endif %}
+    
+  </div>
+</div>

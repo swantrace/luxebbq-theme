@@ -1,0 +1,188 @@
+{% include 'breadcrumb' %}
+
+<!--section start-->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <div class="row">
+      {% paginate customer.addresses by 5 %}
+      <div class="col-sm-12 text-center">
+        <h3 {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.heading"{%endif%}>{{ 'customer.addresses.heading' | t }}</h3>
+        <a href="/account" class="order-link" {% if settings.enable_lang_switcher %}data-trans-key="customer.account.return"{%endif%}>{{ 'customer.account.return' | t }}</a>
+        <p><button type="button" class="btn btn-solid m-1 address-new-toggle" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.add_new"{%endif%}>{{ 'customer.addresses.add_new' | t }}</button></p>
+
+        <div id="AddressNewForm" class="theme-card col-md-12 hide">
+          {% form 'customer_address', customer.new_address , class: 'theme-form' %}
+
+          <div class="form-row text-left">
+
+            <div class="col-md-6">
+              <label for="AddressFirstNameNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.first_name"{%endif%}>{{ 'customer.addresses.first_name' | t }}</label>
+              <input type="text" class="form-control" id="AddressFirstNameNew" name="address[first_name]" value="{{ form.first_name }}">
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressLastNameNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.last_name"{%endif%}>{{ 'customer.addresses.last_name' | t }}</label>
+              <input type="text" class="form-control" id="AddressLastNameNew" name="address[last_name]" value="{{ form.last_name }}"> 
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressCompanyNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.company"{%endif%}>{{ 'customer.addresses.company' | t }}</label>
+              <input type="text" class="form-control" id="AddressCompanyNew" name="address[company]" value="{{ form.company }}">
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressAddress1New" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.address1"{%endif%}>{{ 'customer.addresses.address1' | t }}</label>
+              <input type="text" class="form-control" id="AddressAddress1New" name="address[address1]" value="{{ form.address1 }}">
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressAddress2New" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.address2"{%endif%}>{{ 'customer.addresses.address2' | t }}</label>
+              <input type="text" class="form-control" id="AddressAddress2New" name="address[address2]" value="{{ form.address2 }}">
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressCityNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.city"{%endif%}>{{ 'customer.addresses.city' | t }}</label>
+              <input type="text" class="form-control" id="AddressCityNew" name="address[city]" value="{{ form.city }}">
+            </div>
+
+            <div class="col-md-12">
+              <label for="AddressCountryNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.country"{%endif%}>{{ 'customer.addresses.country' | t }}</label>
+              <select id="AddressCountryNew" class="form-control" name="address[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+            </div>
+
+            <div class="col-md-12">
+              <div id="AddressProvinceContainerNew" >
+                <label for="AddressProvinceNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.province"{%endif%}>{{ 'customer.addresses.province' | t }}</label>
+                <select id="AddressProvinceNew" class="form-control" name="address[province]" data-default="{{ form.province }}"></select>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressZipNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.zip"{%endif%}>{{ 'customer.addresses.zip' | t }}</label>
+              <input type="text" class="form-control" id="AddressZipNew" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+            </div>
+
+            <div class="col-md-6">
+              <label for="AddressPhoneNew" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.phone"{%endif%}>{{ 'customer.addresses.phone' | t }}</label>
+              <input type="tel" class="form-control" id="AddressPhoneNew" name="address[phone]" value="{{ form.phone }}">
+            </div>
+
+            <div class="col-md-12">
+              {{ form.set_as_default_checkbox }}
+              <label for="address_default_address_new" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.set_default"{%endif%}>{{ 'customer.addresses.set_default' | t }}</label>
+
+              <div><input type="submit" class="btn btn-solid" value="{{ 'customer.addresses.add' | t }}"></div>
+              <div><button type="button" class="btn btn-solid address-new-toggle" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.cancel"{%endif%}>{{ 'customer.addresses.cancel' | t }}</button></div>
+
+            </div>
+            {% endform %}
+            <hr>
+          </div>
+
+        </div>
+      </div>
+
+      {% for address in customer.addresses %}
+
+      <div class="col-lg-4 col-md-6 col-sm-12 address pt-3">
+        <div class="theme-card">
+          <div class="address text-left">
+            {% if address == customer.default_address %}
+            <p><strong {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.default"{%endif%}>{{ 'customer.addresses.default' | t }}</strong></p>
+            {% else %}
+            <p><strong {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.another"{%endif%}>{{ 'customer.addresses.another' | t }}</strong></p>
+            {% endif %}
+
+            {{ address | format_address }}
+
+            <p>
+              <button type="button" class="btn btn-solid address-edit-toggle" data-form-id="{{ address.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.edit"{%endif%}>{{ 'customer.addresses.edit' | t }}</button>
+              <button type="button" class="btn btn-solid address-delete" data-form-id="{{ address.id }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.delete"{%endif%}>
+                {{ 'customer.addresses.delete' | t }}</button>
+            </p>
+          </div>
+
+          <div id="EditAddress_{{ address.id }}" class="theme-card hide">
+            {% form 'customer_address', address , class: 'theme-form' %}
+
+            <h5 {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.first_name"{%endif%}>{{ 'customer.addresses.edit_address' | t }}</h5>
+
+            <div class="form-row text-left">
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressFirstName_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.first_name"{%endif%}>{{ 'customer.addresses.first_name' | t }}</label>
+                <input type="text" class="form-control" id="AddressFirstName_{{ form.id }}" name="address[first_name]" value="{{ form.first_name }}">
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressLastName_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.last_name"{%endif%}>{{ 'customer.addresses.last_name' | t }}</label>
+                <input type="text" class="form-control" id="AddressLastName_{{ form.id }}" name="address[last_name]" value="{{ form.last_name }}">
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressCompany_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.company"{%endif%}>{{ 'customer.addresses.company' | t }}</label>
+                <input type="text" class="form-control" id="AddressCompany_{{ form.id }}" name="address[company]" value="{{ form.company }}">
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressAddress1_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.address1"{%endif%}>{{ 'customer.addresses.address1' | t }}</label>
+                <input type="text" class="form-control" id="AddressAddress1_{{ form.id }}" name="address[address1]" value="{{ form.address1 }}">
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressAddress2_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.address2"{%endif%}>{{ 'customer.addresses.address2' | t }}</label>
+                <input type="text" class="form-control" id="AddressAddress2_{{ form.id }}" name="address[address2]" value="{{ form.address2 }}">
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressCity_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.city"{%endif%}>{{ 'customer.addresses.city' | t }}</label>
+                <input type="text" class="form-control" id="AddressCity_{{ form.id }}" name="address[city]" value="{{ form.city }}">
+              </div>
+
+              <div class="col-md-12">
+                <label for="AddressCountry_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.country"{%endif%}>{{ 'customer.addresses.country' | t }}</label>
+                <select id="AddressCountry_{{ form.id }}" class="address-country-option form-control" data-form-id="{{ form.id }}" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+              </div>
+
+              <div class="col-md-12">
+                <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
+                  <label for="AddressProvince_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.province"{%endif%}>{{ 'customer.addresses.province' | t }}</label>
+                  <select id="AddressProvince_{{ form.id }}" class="form-control" name="address[province]" data-default="{{ form.province }}"></select>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressZip_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.zip"{%endif%}>{{ 'customer.addresses.zip' | t }}</label>
+                <input type="text" class="form-control" id="AddressZip_{{ form.id }}" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+              </div>
+
+              <div class="col-lg-6 col-md-12">
+                <label for="AddressPhone_{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.phone"{%endif%}>{{ 'customer.addresses.phone' | t }}</label>
+                <input type="tel" class="form-control" id="AddressPhone_{{ form.id }}" name="address[phone]" value="{{ form.phone }}">
+              </div>
+
+              <div class="text-left">
+
+                {{ form.set_as_default_checkbox }}
+                <label for="address_default_address_new" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.set_default"{%endif%}>{{ 'customer.addresses.set_default' | t }}</label>
+
+                <div class="address_edit_btn"><input type="submit" class="btn btn-solid" value="{{ 'customer.addresses.update' | t }}"></div>
+                <div><button type="button" class="btn btn-solid address-edit-toggle" data-form-id="{{ form.id }}" {% if settings.enable_lang_switcher %}data-trans-key="customer.addresses.cancel"{%endif%}>{{ 'customer.addresses.cancel' | t }}</button></div>
+              </div>
+
+            </div>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% if paginate.pages > 1 %}
+      {% include 'pagination' %}
+      {% endif %}
+
+      {% endpaginate %}
+    </div>
+  </div>
+</section>
+<!--Section ends-->

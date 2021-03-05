@@ -1,0 +1,570 @@
+{% if collection.url != '' %}
+{% assign coll_url = collection.url -%}
+{% else %}
+{% assign coll_url = '/collections/all' -%}
+{% endif %}
+
+{% if section.blocks.size > 0 %}
+<div class="collection-filter col-sm-3" data-collurl="{{ collection.url }}">
+  <div class="coll_sidebar" data-sticky_column>
+    {% for block in section.blocks %}
+    
+    {% if block.type == 'filter_category' %}
+    <div class="collection-filter-block">    
+      <div class="collection-mobile-back">
+        <span class="filter-back">
+          <i class="fa fa-angle-left" aria-hidden="true"></i> 
+          <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
+        </span>
+      </div>
+
+      {% if block.settings.filter_by_category_enable %}
+      <div class="category-block collection-collapse-block open ">
+
+        <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_category_title"{% endif %}>
+          {{ block.settings.filter_category_title }}
+        </h3>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="coll_sidebar_{{sectionId}}_filter_category_title">{{ block.settings.trans_filter_category_title | raw }}</span>
+        {% endif %}
+
+        <div class="collection-collapse-block-content" style="">
+          <div class="collection-brand-filter">
+            <div class="collection-category-list">
+              {% if block.settings.show_custom_category %}
+              {% assign cat_filter_linklist = block.settings.custom_filter_category -%}
+              <ul class="sidebar_category category-list" id="category_filters">
+                {% for link in linklists[cat_filter_linklist].links limit: block.settings.collection_category_limit%}
+                <li>
+                  {% assign data_title = link.title | split: '|' | first %}
+                  {% assign data_json = link.title | split: '|' | last %}
+                  <a href="{{ link.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_sidebar_{{link.id}}_collection_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </a>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="coll_sidebar_{{link.id}}_collection_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <ul class="sidebar_category category-list" id="category_filters">
+                {% for collection in collections limit: block.settings.collection_category_limit %}
+                <li data-value="{{ collection.handle }}" data-link-collection>
+                  {% assign data_title = collection.title | split: '|' | first %}
+                  {% assign data_json = collection.title | split: '|' | last %}
+                  <a href="{{ collection.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_sidebar_{{collection.id}}_collection_title"{% endif %}>
+                    {{ data_title | truncatewords: 10 }}
+                  </a>
+                  {% if settings.enable_lang_switcher %}
+                  <span class="hide" id="coll_sidebar_{{collection.id}}_collection_title">{{ data_json | raw }}</span>
+                  {% endif %}
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    <!-- silde-bar colleps block start here -->
+    <div class="collection-filter-block custom_filter">
+      <!-- brand filter start -->
+      {% unless block.settings.filter_by_category_enable %}
+      <div class="collection-mobile-back">
+        <span class="filter-back">
+          <i class="fa fa-angle-left" aria-hidden="true"></i> 
+          <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
+        </span>
+      </div>
+      {% endunless %}
+
+      {% for block in section.blocks %}
+    {% if block.type == 'filter_brand' %}
+      
+      <!-- Brand filter start here -->
+      {% if block.settings.filter_by_brand_enable %}
+      <div class="collection-collapse-block open">
+        {% assign vendors = block.settings.brand_options | split: ',' -%}
+        <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_brand_title"{% endif %}>
+          {{ block.settings.filter_brand_title }}
+        </h3>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="coll_sidebar_{{sectionId}}_filter_brand_title">{{ block.settings.trans_filter_brand_title | raw }}</span>
+        {% endif %}
+        <div class="collection-collapse-block-content" style="">
+          <div class="collection-brand-filter">
+            <ul class="sidebar_filter_cls sidebar_brand">
+              {% for product_vendor in vendors limit: block.settings.filter_brand_limit %}
+              {% assign vendor = product_vendor | lstrip | rstrip -%}
+              <li data-value="{{ vendor | handleize }}" data-link-collection>
+                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{ vendor | handleize }}" data-value="{{ vendor | handleize }}" data-link-collection>
+                  <label class="custom-control-label" for="{{ vendor | handleize }}">{{ vendor }}</label>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% elsif block.type == 'filter_color' %}
+
+      <!-- color filter start here -->
+      {% if block.settings.filter_by_color_enable %}
+      <div class="collection-collapse-block open">
+        <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_color_title"{% endif %}>
+          {{ block.settings.filter_color_title }}
+        </h3>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="coll_sidebar_{{sectionId}}_filter_color_title">{{ block.settings.trans_filter_color_title | raw }}</span>
+        {% endif %}
+
+        <div class="collection-collapse-block-content">
+          <div class="color-selector">
+            {% assign colors = block.settings.filter_by_color_option | split: ',' -%}
+            <ul class="sidebar_filter_cls sidebar_color">
+              {% for color in colors limit: block.settings.color_limit %}
+              <li class="{{color}}" data-toggle="tooltip" data-placement="top" title="{{color}}" data-value="{{color}}" data-link-collection></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% elsif block.type == 'filter_price' %}
+
+      <!-- price filter start here -->
+      {% if block.settings.filter_by_price_enable %}
+      <div class="collection-collapse-block open">
+        {% assign pro_price = block.settings.filter_by_price_option | split: ',' -%}
+
+        <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_price_title"{% endif %}>
+          {{ block.settings.filter_price_title }}
+        </h3>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="coll_sidebar_{{sectionId}}_filter_price_title">{{ block.settings.trans_filter_price_title | raw }}</span>
+        {% endif %}
+
+        <div class="collection-collapse-block-content">
+          <div class="collection-brand-filter">
+            <ul class="sidebar_filter_cls sidebar_price" id="price_filters">
+              {% for product_price in pro_price limit: block.settings.collection_price_limit %}
+              {% assign price = product_price | lstrip | rstrip -%}
+              <li data-value="{{ price | handleize }}" data-link-collection>
+                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{ price | handleize }}">
+                  <label class="custom-control-label" for="{{ price | handleize }}">{{ price }}</label>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% elsif block.type == 'filter_size' %}
+
+      <!-- size filter start here -->
+      {% if block.settings.filter_by_size_enable %}
+      <div class="collection-collapse-block open">
+        {% assign sizes = block.settings.filter_by_size_option | split: ',' -%}
+
+        <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_size_title"{% endif %}>
+          {{ block.settings.filter_size_title }}
+        </h3>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="coll_sidebar_{{sectionId}}_filter_size_title">{{ block.settings.trans_filter_size_title | raw }}</span>
+        {% endif %}
+
+        <div class="collection-collapse-block-content" style="">
+          <div class="collection-brand-filter">
+            <ul class="sidebar_filter_cls sidebar_size">
+              {% for size in sizes limit: block.settings.size_category_limit %}
+              <li data-value="{{ size | handleize }}" data-link-collection>
+                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{ size | handleize }}" data-value="{{ size | handleize }}" data-link-collection>
+                  <label class="custom-control-label" for="{{ size | handleize }}">{{ size }}</label>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% elsif block.type == 'filter_custom' %}
+      
+      <!-- Custom filter start here -->
+      {% if block.settings.filter_by_custom_enable %}
+      <div class="collection-collapse-block open">
+        {% assign custom_optn = block.settings.custom_options | split: ',' -%}
+
+        <h3 class="collapse-block-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_size_title"{% endif %}>
+          {{ block.settings.filter_custom_title }}
+        </h3>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="coll_sidebar_{{sectionId}}_filter_size_title">{{ block.settings.trans_custom_title | raw }}</span>
+        {% endif %}
+
+        <div class="collection-collapse-block-content" style="">
+          <div class="collection-brand-filter">
+            <ul class="sidebar_filter_cls sidebar_size">
+              {% for optn in custom_optn limit: block.settings.filter_custom_limit %}
+              <li data-value="{{ optn | handleize }}" data-link-collection>
+                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="{{ optn | handleize }}" data-value="{{ optn | handleize }}" data-link-collection>
+                  <label class="custom-control-label" for="{{ optn | handleize }}">{{ size }}</label>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      
+      {% endif %}
+      {% endfor %}
+
+    </div>
+    <!-- silde-bar colleps block end here -->
+
+    {% for block in section.blocks %}
+    {% if block.type == 'block_product_slider' %}
+    <!-- side-bar single product slider start -->
+    {% if block.settings.show_new_pro %}
+    <div class="theme-card">
+
+      <h5 class="title-border {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#coll_sidebar_{{sectionId}}_filter_new_pro_title"{% endif %}>
+        {{ block.settings.filter_new_pro_title }}
+      </h5>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="coll_sidebar_{{sectionId}}_filter_new_pro_title">{{ block.settings.trans_filter_new_pro_title | raw }}</span>
+      {% endif %}
+
+      {% assign collection_new = collections[block.settings.select_new_pro_coll] %}
+      <div class="offer-slider {% if settings.enable_rtl %}rtl-1 {% else %}slide-1 {% endif %}">
+        <div>
+          {% if collection_new.empty? %}
+          {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+          {% for i in (1..3) %}
+          <div class="media">
+            <a href="#">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            </a>
+            <div class="media-body align-self-center">
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <a href="#"><h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6> </a>
+              <h4>{{ '$20.00' }}</h4>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          {% for product in collection_new.products limit: 3 %}
+          {% if forloop.index == 4 %}
+          {% break %}
+          {% else %}
+          <div class="media">
+            <a href="{{ product.url | within: collection }}" >
+              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title | split: '|' | first }}" >
+            </a>
+            <div class="media-body align-self-center">
+              <div class="rating">
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              </div>
+              <a href="{{ product.url | within: collection }}">
+                {% assign data_title = product.title | split: '|' | first %}
+                {% assign data_json = product.title | split: '|' | last %}
+                <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                  {{ data_title | truncatewords: 10 }}
+                </h6>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                {% endif %}
+              </a>
+              <h4>{{ product.price | money }}</h4>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+        </div>
+        {% if collection_new.products.size > 5 %}
+        <div>
+          {% if collection_new.empty? %}
+          {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+          {% for i in (1..3) %}
+          <div class="media">
+            <a href="#">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            </a>
+            <div class="media-body align-self-center">
+              <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <a href="#"><h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6> </a>
+              <h4>{{ '$20.00' }}</h4>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          {% for product in collection_new.products limit: 3 offset:3 %}
+          <div class="media">
+            <a href="{{ product.url | within: collection }}" >
+              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title | split: '|' | first }}" >
+            </a>
+            <div class="media-body align-self-center">
+              <div class="rating">
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              </div>
+              <a href="{{ product.url | within: collection }}">
+                {% assign data_title = product.title | split: '|' | first %}
+                {% assign data_json = product.title | split: '|' | last %}
+                <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                  {{ data_title | truncatewords: 10 }}
+                </h6>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
+                {% endif %}
+              </a>
+              <h4>{{ product.price | money }}</h4>
+            </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+    <!-- side-bar single product slider end -->
+    {% endif %}
+    {% endfor %}
+
+    {% for block in section.blocks %}
+    {% if block.type == 'custom_banner_block' %}
+    <!-- side-bar banner start here -->
+    {% if block.settings.show_sidebar_banner %}
+    <div class="collection-sidebar-banner">
+      <a href="{{ block.settings.sidebar_banner_link }}">
+        <img src="{{ block.settings.sidebar_bnr_img | img_url: '295x445' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid w-100">
+      </a>
+    </div>
+    {% endif %}
+    <!-- side-bar banner end here -->
+    
+    {% elsif block.type == 'custom_text_block' %}
+    
+    <!-- side-bar Custom block start here -->
+    {% if block.settings.show_sidebar_custom_text %}
+    <div class="collection-sidebar-banner">
+      <div class="theme-card">
+      <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_sidebar_{{sectionId}}_sidebar_custom_title"{% endif %}>
+        {{ block.settings.sidebar_custom_title }}
+      </h4>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="coll_sidebar_{{sectionId}}_sidebar_custom_title">{{ block.settings.trans_sidebar_custom_title | raw }}</span>
+      {% endif %}
+      
+      <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_sidebar_{{sectionId}}_sidebar_custom_text"{% endif %}>
+        {{ block.settings.sidebar_custom_text }}
+      </p>
+      {% if settings.enable_lang_switcher %}
+      <span class="hide" id="coll_sidebar_{{sectionId}}_sidebar_custom_text">{{ block.settings.trans_sidebar_custom_text | raw }}</span>
+      {% endif %}
+    </div>
+    </div>
+    {% endif %}
+    <!-- side-bar Custom block end here -->
+    
+    {% endif %}
+    {% endfor %}
+
+    <!-- Mobile filter bottom -->
+    <div class="mob-filter-bottom">
+      <a href="#" class="btn btn-solid Clear_btn filter-btn" data-link-collection {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.clear_all"{%endif%}>
+        {{ 'collections.filters.clear_all' | t }}
+      </a> 
+      <a href="#" class="btn btn-solid apply_btn filter-btn" {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.apply"{%endif%}>
+        {{ 'collections.filters.apply' | t }}
+      </a> 
+    </div>
+
+  </div>
+</div>
+{% endif %}
+
+<script>
+  $(document).ready(function(){
+    $(document).on('click', '[data-link-collection]', function(e){
+      e.preventDefault();
+
+      var temp_click = $(this).attr('data-value');
+      var click_cls = $(this).parents('ul').attr('id');
+
+      if ($(window).width() > 991) {
+        $(".collection-wrapper").css("opacity","0.2");
+        $('.ajax-loader').css("display","block");
+      }else {
+        $(".collection-product-wrapper").css("opacity","0.2");
+      }
+
+      if( $(this).hasClass('Clear_btn') ){
+        $('.sidebar_filter_cls li.active').each(function(){
+          $(this).removeClass("active");
+        });
+        setTimeout(function(){
+          $('.filter-back, .clear_filter').trigger('click');
+        }, 1000); 
+      }
+
+      if(click_cls == 'price_filters'){
+        $("#price_filters li").each(function(){
+          var price_val = $(this).attr('data-value');
+          if($(this).attr('data-value') == temp_click){
+            if($(this).hasClass("active")){
+              $(this).removeClass("active");
+              $('.product-filter-tags a').each(function(index) {
+                if($(this).attr('data-value') == temp_click){
+                  $(this).remove();
+                }
+              });
+            } else{
+              $(this).addClass("active");
+              $('.product-filter-tags').append('<a href="javascript:void(0)" data-value="'+price_val+'" class="filter_tag mr-1 active-price-tag">' + price_val + '<i class="ti-close"></i></a>');
+            };
+          } else{
+            $(this).removeClass("active");
+            $('.product-filter-tags .active-price-tag').each(function(){
+              var price_filter_val = $(this).attr('data-value');
+              if(price_filter_val == price_val){
+              	$(this).hide();
+              }
+            });
+          }
+        });
+      } else {
+        if($(this).hasClass("active")){
+          $(this).removeClass("active");
+          $('.product-filter-tags a').each(function(index) {
+            if($(this).attr('data-value') == temp_click){
+              $(this).remove();
+            }
+          });
+        } else{
+          $(this).addClass("active");
+          if(click_cls != 'category_filters'){
+            $('.product-filter-tags').append('<a href="javascript:void(0)" data-value="'+temp_click+'" class="filter_tag mr-1">' + temp_click + '<i class="ti-close"></i></a>');
+          }
+        };
+      }
+
+      $('.product-filter-tags a i').click(function() {
+        var test_val = $(this).parent('a').attr('data-value');
+        $('.sidebar_filter_cls li.active').each(function(){
+          var close_tag = $(this).attr('data-value');
+          if(close_tag == test_val){
+            $(this).trigger("click");
+          }
+        });
+      });
+
+      if($('.product-filter-tags a').length > 1){
+        $('.product-filter-tags .clear_filter').show();  
+      }else {
+        $('.product-filter-tags .clear_filter').hide();
+      }
+
+      if(click_cls == 'category_filters'){
+        var cat_value = $(this).attr('data-value'); 
+        $('.coll_title, .breadcrumb-item.active').text(cat_value);
+        $("#category_filters li").each(function(){
+          if($(this).attr('data-value') == temp_click){
+            $(this).addClass("active");
+          } else{
+            $(this).removeClass("active");
+          }
+        });
+      }
+
+      var shop_url = '{{ shop.url }}';
+      var activeTags = [];
+      var form_url_id = '';
+      var current_value = $('#category_filters li.active').attr('data-value');
+
+      $('.sidebar_filter_cls li.active').each(function(){
+        var selected_val = $(this).attr('data-value');
+        activeTags.push(selected_val);
+      });
+
+      var coll_all = '/all';  
+      var coll_url = $('.collection-filter').attr('data-collurl');
+
+      if(current_value){
+        form_url_id = shop_url+'/collections/'+current_value+'/'+activeTags.join('+');
+      } else{
+        if(window.location.href.indexOf(coll_all) > -1){
+          form_url_id = shop_url+'/collections/all/' + activeTags.join('+');
+        }else{
+          form_url_id = shop_url+coll_url+'/'+ activeTags.join('+');
+        }
+      };
+
+      $('.product-wrapper-ajax').load(form_url_id + ' .product-wrapper-ajax', function(){
+        window.history.pushState({}, null, form_url_id);
+      });
+
+      $(".clear_filter").click(function () {
+        $('.sidebar_filter_cls li.active').each(function(){
+          $(this).removeClass("active");
+        });
+        $('.product-filter-tags').html('');
+        if(window.location.href.indexOf(coll_all) > -1){
+          form_url_id = shop_url+'/collections/all/';
+          $('.product-wrapper-ajax').load(form_url_id + ' .product-wrapper-ajax', function(){
+            window.history.pushState({}, null, form_url_id);
+          });
+        }else{
+          form_url_id = shop_url+coll_url+'/';
+          $('.product-wrapper-ajax').load(form_url_id + ' .product-wrapper-ajax', function(){
+            window.history.pushState({}, null, form_url_id);
+          });
+        }
+      });
+
+      setTimeout(function(){
+        $(".collection-wrapper, .collection-product-wrapper").css("opacity","1");
+        $('.ajax-loader').css("display","none");
+        window.scrollTo(0,0);
+      }, 500)
+    });
+
+    $('.apply_btn').click(function() {
+      setTimeout(function(){
+        $('.filter-back').trigger('click');
+      }, 1000);
+    });
+
+  });
+</script>

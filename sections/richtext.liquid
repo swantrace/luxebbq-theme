@@ -1,0 +1,82 @@
+<!-- about section-->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        {%- include 'title' -%}
+        <div class="about-text">
+          <p class="{% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#richtext_{{sectionId}}_desc"{% endif %}>
+            {{ section.settings.desc }}
+          </p>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="richtext_{{sectionId}}_desc">{{ section.settings.trans_desc | raw }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- about section end -->
+
+{% schema %}
+{
+   "name":"Richtext",
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Heading",
+		 "default": "Welcome to multistore"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_title",
+         "label":"Translate Title"
+      },
+      {
+         "type":"text",
+         "id":"subtitle",
+         "label":"Sub title",
+		 "default": "About Us"
+      },
+      {
+         "type":"textarea",
+         "id":"trans_subtitle",
+         "label":"Translate Subtitle"
+      },
+      {
+         "type":"text",
+         "id":"desc",
+         "label":"Description",
+		 "default": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo."
+      },
+      {
+         "type":"textarea",
+         "id":"trans_desc",
+         "label":"Translate desc"
+      }
+   ],
+   "presets":[
+      {
+         "name":"Richtext",
+         "category":"text",
+         "settings":{ }
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

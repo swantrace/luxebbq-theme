@@ -1,0 +1,544 @@
+<!-- blog section -->
+{% assign blog = blogs[section.settings.blog] -%}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<section class="blog blog-qurox {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}
+                {% if section.settings.enable_bg_img %}flower-bg{% endif %}" style="{% if section.settings.enable_bg_img %}
+                                                                                         background-image: url({{ section.settings.bg_img | img_url: 'master' }});{% else %}
+                                                                                         background-color: {{ section.settings.bg_color }};{% endif %}padding: {{ section.settings.section_padding }}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        {% if settings.title_layout == 'title_1' %}
+        <div class="title1">
+          {% if section.settings.subtitle != blank %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_{{sectionId}}_subtitle"{% endif %}>
+            {{ section.settings.subtitle }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+          {% endif %}          
+          {% endif %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#blog_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %}  
+          {% endif %}
+        </div>
+        {% elsif settings.title_layout == 'title_2' %}
+        <div class="title3">
+          {% if section.settings.subtitle != blank %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_{{sectionId}}_subtitle"{% endif %}>
+            {{ section.settings.subtitle }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+          {% endif %} 
+          {% endif %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-inner3 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#blog_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %} 
+          {% endif %}
+          <div class="line"></div>
+        </div>
+        {% elsif settings.title_layout == 'title_3' %}
+        <div class="title2">
+          {% if section.settings.subtitle != blank %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_{{sectionId}}_subtitle"{% endif %}>
+            {{ section.settings.subtitle }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+          {% endif %}
+          {% endif %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-inner2 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#blog_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %}
+          {% endif %}
+        </div>
+        {% elsif settings.title_layout == 'title_4' %}
+        <div class="title4">
+          {% if section.settings.subtitle != blank %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_{{sectionId}}_subtitle"{% endif %}>
+            {{ section.settings.subtitle }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+          {% endif %}
+          {% endif %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-inner4 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#blog_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %}
+          {% endif %}
+          <div class="line">
+            <span></span>
+          </div>
+        </div>
+        {% elsif settings.title_layout == 'title_5' %}
+        <div class="title1 title-gradient ">
+          {% if section.settings.subtitle != blank %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_{{sectionId}}_subtitle"{% endif %}>
+            {{ section.settings.subtitle }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+          {% endif %}          
+          {% endif %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#blog_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %}  
+          {% endif %}
+        </div>
+        {% elsif settings.title_layout == 'title_6' %}
+        <div class="title1 title5">
+          {% if section.settings.subtitle != blank %}
+          <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#blog_{{sectionId}}_subtitle"{% endif %}>
+            {{ section.settings.subtitle }}
+          </h4>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+          {% endif %}          
+          {% endif %}
+          {% if section.settings.title != blank %}
+          <h2 class="title-inner1 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#blog_{{sectionId}}_title"{% endif %}>
+            {{ section.settings.title }}
+          </h2>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="blog_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %}  
+          {% endif %}
+          <hr role="tournament6">
+        </div>
+        {% endif %}
+
+        <div class="slick_carousel" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }},{"breakpoint": 480,"settings":{"slidesToShow": 1 }} ]}'>
+          {% if blog.title == blank %}
+          {% for i in (1..6) %}
+          <div class="col-md-12">
+            <a href="#">
+              <div class="{% if settings.enable_gradiant_colors %}basic-effect {% else %}classic-effect{% endif %}">
+                {% capture current %}{% cycle 1,2,3,4,1,2 %}{% endcapture %}
+                {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+                <span></span>
+              </div>
+            </a>
+            <div class="blog-details qurox-detail">
+              <h4>{{ '25 January 2018' }}</h4>
+              <a href="#"><p {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.blog_title"{%endif%}>{{ 'homepage.onboarding.blog_title' | t }}</p></a>
+              <hr class="style1">
+              <h6>{{ 'by: John Dio , 2 Comment' }}</h6>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          {% for article in blog.articles limit: section.settings.post_limit %}
+          <div class="col-md-12">
+            <a href="{{ article.url }}">
+              <div class="{% if settings.enable_gradiant_colors %}basic-effect {% else %}classic-effect{% endif %}">
+
+                {% if section.settings.use_equal_height %}
+                <div>
+                  <em class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: article.image %}" data-sizes="auto" data-parent-fit="cover"></em>
+                </div>        
+                {% else %}
+                {% assign block_image = article.image %}
+                  {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                  <img src="{{ block_image | img_url: '1370x385' }}" 
+                       data-src="{{ img_url }}" 
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                       data-aspectratio="{{ block_image.aspect_ratio }}" 
+                       data-sizes="auto" 
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
+                {% endif %}
+                <span></span>
+              </div>
+            </a>
+            <div class="blog-details qurox-detail">
+              {% if section.settings.blog_show_date %}
+              <h4>{{ article.published_at | time_tag: '%d %b, %Y' }}</h4>
+              {% endif %}              
+              <a href="{{ article.url }}">
+                {% assign data_title = article.title | split: '|' | first %}
+                {% assign data_json = article.title | split: '|' | last %}
+                <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{article.id}}_blog_title"{% endif %}>
+                  {{ data_title | truncatewords: 12 }}
+                </p>
+                {% if settings.enable_lang_switcher %}
+                <span class="hide" id="{{article.id}}_blog_title">{{ data_json | raw }}</span>
+                {% endif %}
+              </a>
+              <hr class="style1">
+              <h6>
+                {% if section.settings.show_auther %}
+                by: {{ article.author | truncatewords: 1, '' }}
+                {% endif %}
+                {% if section.settings.show_comment %}
+                , {{ article.comments_count }}{{ 'blogs.comments.comments' | t }}
+                {% endif %}
+              </h6>
+            </div>
+          </div>
+          {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- blog section end -->
+
+<style>
+  .title1 h2, .title2 h2, .title3 h2, .title4 h2{
+    color: {{ section.settings.title_color }};
+  }
+</style>
+
+{% schema %}
+{
+   "name":"Featured Blog",
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+      {
+         "type": "color",
+         "id": "bg_color",
+         "label": "Background Color",
+         "default": "#fff"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_bg_img",
+        "label": "Background Image enable?",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "bg_img",
+        "label": "Background image"
+      },
+      {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Section padding",
+         "default": "70px 0 0 0"
+      },
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Heading",
+         "default":"From The Blog"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+	  },
+      {
+         "type":"color",
+         "id":"title_color",
+         "label":"Title Color",
+         "default":"#222"
+      },
+      {
+         "type":"text",
+         "id":"subtitle",
+         "label":"Sub-Heading",
+         "default":"Recent Story"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate Subtitle"
+	  },
+      {
+         "id":"blog",
+         "type":"blog",
+         "label":"Blog"
+      },
+      {
+         "type":"select",
+         "id":"post_limit",
+         "label":"Posts limit",
+         "default":"5",
+         "options":[
+            {
+               "value":"5",
+               "label":"5"
+            },
+            {
+               "value":"6",
+               "label":"6"
+            },
+            {
+               "value":"7",
+               "label":"7"
+            }
+         ]
+      },
+      {
+         "type":"checkbox",
+         "id":"show_comment",
+         "label":"Show Comment",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"show_auther",
+         "label":"Show Auther",
+         "default":true
+      },
+      {
+         "type":"checkbox",
+         "id":"blog_show_date",
+         "label":"Show date",
+         "default":true
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      },
+    {
+      "type": "header",
+      "content": "Slider settings( Only for Carousel layout )"
+    },
+    {
+      "type": "range",
+      "id": "slider_speed",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "label": "Autoplay Speed in milliseconds",
+      "unit": "sec",
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "use_autoplay",
+      "label": "Use autoplay?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_arrows",
+      "label": "Use Arrows?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_dots",
+      "default": false,
+      "label": "Use dots for pagination control?"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_loop",
+      "label": "Use Infinite loop sliding?",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "slides To Show(Image per row)",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1367"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1367",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Breakpoint: 1024"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_1024",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "breakpoint: 767"
+    },
+    {
+      "type": "range",
+      "id": "slidetoshow_767",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "slides To Show",
+      "default": 1
+    }
+   ],
+   "presets":[
+      {
+         "name":"Feature Blog",
+         "category":"Blog",
+         "settings":{
+
+         }
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

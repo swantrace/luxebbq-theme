@@ -1,0 +1,250 @@
+<!-- full banner section start -->
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+{% if section.settings.enabled %}
+<section class="p-0 {% if section.settings.text_layout == 'style-1' %} advertise-section{% else %}pet-parallax {% endif %} lazyload blur-up" 
+         data-bgset="{% include 'bg-set', image: section.settings.banner_img %}" data-sizes="auto" data-parent-fit="cover" 
+         style="padding: {{ section.settings.section_padding }};">
+  <div class="full-banner parallax {{ section.settings.alignment }} {{ section.settings.position }}">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          {% if section.settings.text_layout == 'style-1' %}
+          <div class="banner-contain">
+            {% if section.settings.title != blank %}
+            <h2 style="color:{{ section.settings.title_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_title"{% endif %}>
+              {{ section.settings.title }}
+            </h2>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="parallax_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+            <h3 style="color:{{ section.settings.subtitle_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_subtitle"{% endif %}>
+              {{ section.settings.subtitle }}
+            </h3>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="parallax_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if section.settings.bottom_title != blank %}
+            <h4 style="color:{{ section.settings.bottom_title_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_bottom_title"{% endif %}>
+              {{ section.settings.bottom_title }}
+            </h4>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="parallax_{{sectionId}}_bottom_title">{{ section.settings.trans_bottom_title | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if section.settings.enabled_button %}
+            <a href="{{ section.settings.link }}" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
+              {{ 'sections.featured_product.shop_now' | t }}  
+            </a>
+            {% endif %}
+          </div>
+          {% else %}
+          <div class="banner-contain">
+            {% if section.settings.subtitle != blank %}
+            <h4 style="color:{{ section.settings.subtitle_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_subtitle"{% endif %}>
+              {{ section.settings.subtitle }}
+            </h4>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="parallax_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if section.settings.title != blank %}
+            <h3 style="color:{{ section.settings.title_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_title"{% endif %}>
+              {{ section.settings.title }}
+            </h3>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="parallax_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if section.settings.bottom_title != blank %}
+            <p style="color:{{ section.settings.bottom_title_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_bottom_title"{% endif %}>
+              {{ section.settings.bottom_title }}
+            </p>
+            {% if settings.enable_lang_switcher %}
+            <span class="hide" id="parallax_{{sectionId}}_bottom_title">{{ section.settings.trans_bottom_title | raw }}</span>
+            {% endif %}
+            {% endif %}
+            {% if section.settings.enabled_button %}
+            <a href="{{ section.settings.link }}" class="btn btn-solid black-btn" {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
+              {{ 'sections.featured_product.shop_now' | t }}  
+            </a>
+            {% endif %}
+          </div>
+          {% endif %}                  
+        </div>
+      </div>
+    </div>
+    {% if section.settings.object_img != blank %}
+    <div class="pet-decor">
+      <img src="{{ section.settings.object_img | img_url: 'master' }}" alt="" class="img-fluid blur-up lazyloaded">
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+<!-- full banner section end -->
+
+{% schema %}
+{
+   "name":"Parallax banner2",
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled "
+      },
+    {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"image_picker",
+         "id":"banner_img",
+         "label":"Banner background Image"
+      },
+      {
+         "type":"image_picker",
+         "id":"object_img",
+         "label":"Image"
+      },
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Top Title",
+         "default":"2018"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_title",
+         "label": "Translate Title"
+	  },
+      {
+         "type":"color",
+         "id":"title_color",
+         "label":"Title Color",
+         "default": "#ff4c3b"
+      },
+      {
+         "type":"text",
+         "id":"subtitle",
+         "label":"Middle Title",
+         "default":"Fashion Trends"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_subtitle",
+         "label": "Translate Subtitle"
+	  },
+      {
+         "type":"color",
+         "id":"subtitle_color",
+         "label":"SubTitle Color",
+         "default": "#fff"
+      },
+      {
+         "type":"text",
+         "id":"bottom_title",
+         "label":"Bottom Title",
+         "default":"Summer Sale"
+      },
+      {
+         "type": "textarea",
+         "id": "trans_bottom_title",
+         "label": "Translate Bottom Title"
+	  },
+      {
+         "type":"color",
+         "id":"bottom_title_color",
+         "label":"Title Color",
+         "default": "#aaa"
+      },
+      {
+         "type":"checkbox",
+         "id":"enabled_button",
+         "default":true,
+         "label":"Show Button? "
+      },
+      {
+         "type":"url",
+         "id":"link",
+         "label":"Banner link"
+      },
+      {
+         "type":"select",
+         "id":"text_layout",
+         "label":"Text Layout",
+         "options":[
+            {
+               "value":"style-1",
+               "label":"Style 1"
+            },
+            {
+               "value":"style-2",
+               "label":"style 2"
+            }
+         ],
+         "default":"style-1"
+      },
+      {
+         "type":"select",
+         "id":"alignment",
+         "label":"Text Alignment",
+         "options":[
+            {
+               "value":"text-left",
+               "label":"Left"
+            },
+            {
+               "value":"text-center",
+               "label":"Center"
+            },
+            {
+               "value":"text-right",
+               "label":"Right"
+            }
+         ],
+         "default":"text-center"
+      },
+      {
+         "type":"select",
+         "id":"position",
+         "label":"Text Position",
+         "options":[
+            {
+               "value":"p-left",
+               "label":"Left"
+            },
+            {
+               "value":"p-center",
+               "label":"Center"
+            },
+            {
+               "value":"p-right",
+               "label":"Right"
+            }
+         ],
+         "default":"p-left"
+      }
+   ],
+   "presets":[
+      {
+         "name":"Parallax banner2",
+         "category":"Banner",
+         "settings":{
+
+         }
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

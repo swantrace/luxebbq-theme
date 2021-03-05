@@ -1,0 +1,41 @@
+<script id="CartTemplate" type="text/template"> 
+{% raw %}
+<form action="/cart" method="post" novalidate class="cart_ajax_silder_form">
+{{#items}}
+<li>
+  <div class="media">
+    <a href="{{url}}">
+      <img class="mr-3" src="{{img}}" alt="{{name}}">
+  </a>
+    <div class="media-body">
+      <a href="{{url}}">
+      <h4 class="lang_trans" data-trans="#ajax_cart{{id}}">{{ name }}</h4>
+      <span class="hide" id="ajax_cart{{id}}">{{name_josn}}</span>
+  </a>
+      {{#if variation}}
+		<span class="ajaxcart__product-meta">{{variation}}</span>
+      {{/if}}
+      <h4><em>{{itemQty}} x </em><span class="money">{{price}}</span></h4>
+  </div>
+  </div>
+  <div class="close-circle">
+    <a href="javascript:void(0)" class="cart_remove_item" data-id="{{key}}" data-line="{{line}}">
+      <i class="fa fa-times"></i>
+  </a>
+  </div>
+  </li>
+{{/items}}
+<li>
+  <div class="total">
+    <h5>subtotal : <span class="money">{{totalPrice}}</span></h5>
+  </div>
+  </li>
+<li>
+  <div class="buttons">
+    <a href="/cart" class="view-cart">view cart</a>
+    <button type="submit" name="checkout" class="checkout">Checkout</button>
+  </div>
+  </li>
+  </form>
+{% endraw %}
+</script>
