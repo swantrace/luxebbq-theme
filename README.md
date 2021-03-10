@@ -5,6 +5,7 @@
 2.  clone the repository:
 
 		git clone https://github.com/luxecadev/theme.git
+		cd theme
 
 3.  install libraries:
     yarn install
