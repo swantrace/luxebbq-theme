@@ -5,6 +5,7 @@
 2.  clone the repository:
 
 		git clone https://github.com/luxecadev/theme.git
+		cd theme
 
 3.  install libraries:
     yarn install
@@ -36,7 +37,7 @@
 					store: [SHOP_URL]
 
 8.  follow this [document](https://shopify.dev/tools/theme-kit/getting-started) and install theme kit
-9.  synchronize files with current theme
+9.  navigate to "theme" folder. synchronize files with current theme
 
 			theme download
 
