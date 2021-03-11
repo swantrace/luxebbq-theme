@@ -2,11 +2,10 @@
   "current": {
     "enable_rtl": false,
     "display_demo_btn": false,
-    "enable_blur_lazy_load": false,
+    "enable_blur_lazy_load": true,
     "enable_box_layout": false,
-    "box_layout": "box_layout_1",
+    "box_layout": "box_layout_2",
     "enable_box_bg_img": false,
-    "box_bg_img": "",
     "enable_box_bg_animation": false,
     "enable_body_bg_img": false,
     "body_bg_img": "",
@@ -24,14 +23,14 @@
     "cookie_btn_text": "Accept",
     "cookie_btn_padding": "10px 0",
     "cookie_bar_position": "bottom",
-    "header_font_new": "poppins_n4",
+    "header_font_new": "oswald_n4",
     "heading_one_fontsize": 60,
     "heading_two_fontsize": 36,
     "heading_three_fontsize": 24,
     "heading_four_fontsize": 18,
     "heading_five_fontsize": 16,
     "heading_six_fontsize": 14,
-    "base_font_new": "poppins_n4",
+    "base_font_new": "oswald_n4",
     "body_base_size": 16,
     "body_color": "#555555",
     "body_bg_color": "#ffffff",
@@ -42,18 +41,18 @@
     "primary_color": "#111111",
     "secondary_color": "#222222",
     "theme_title_color": "#222222",
-    "primary_button_bg_color": "#111111",
-    "primary_button_border_color": "#111111",
+    "primary_button_bg_color": "#fb711c",
+    "primary_button_border_color": "rgba(0,0,0,0)",
     "primary_button_text_color": "#fff",
-    "primary_button_bg_color_hover": "#ffffff",
-    "primary_button_text_color_hover": "#000000",
-    "secondary_button_bg_color": "#111111",
-    "secondary_button_border_color": "#111111",
+    "primary_button_bg_color_hover": "#e9cebd",
+    "primary_button_text_color_hover": "#ffffff",
+    "secondary_button_bg_color": "#fb711c",
+    "secondary_button_border_color": "rgba(0,0,0,0)",
     "secondary_button_text_color": "#111111",
-    "secondary_button_bg_color_hover": "#ff4c3b",
-    "secondary_button_text_color_hover": "#ff4c3b",
-    "top_header_bg_color": "#f8f8f8",
-    "top_header_text_color": "#777777",
+    "secondary_button_bg_color_hover": "#e9cebd",
+    "secondary_button_text_color_hover": "#ffffff",
+    "top_header_bg_color": "#111111",
+    "top_header_text_color": "#ffffff",
     "header_bg_color": "#fff",
     "header_text_color": "#111111",
     "header_text_hover_color": "#444444",
@@ -75,7 +74,7 @@
     "btm_footer_text_color": "#777",
     "btm_footer_payment_color": "#777",
     "header_layout": "header_5",
-    "display_sticky_header": false,
+    "display_sticky_header": true,
     "cart_redirect": "redirect_to_cart",
     "other_color": "#ff4c3b",
     "new_color": "#65cb67",
@@ -87,7 +86,7 @@
     "footer_layout": "footer_1",
     "enable_fixe_footer": false,
     "title_layout": "title_1",
-    "eneble_header_sidebar": true,
+    "eneble_header_sidebar": false,
     "sidebar_menu": "category",
     "sidebar_menu_title": "clothing",
     "sidebar_menu_width": "",
@@ -105,7 +104,7 @@
     "add_to_cart_style": "popup",
     "show_payment_img": true,
     "upsell_payment_img": "",
-    "eneble_upsell_products": true,
+    "eneble_upsell_products": false,
     "related_pro_title": "Customers who bought this item also.",
     "trans_related_pro_title": "{\"en\":\"Customers who bought this item also.\", \"fr\":\"Les clients qui ont acheté cet article aussi.\", \"ar\":\"الزبائن الذين اشتروا هذا البند أيضا.\",  \"de\":\"Kunden, die diesen Artikel auch gekauft haben.\", \"it\":\"I clienti che hanno acquistato questo articolo anche\"}",
     "enable_360_view": true,
@@ -143,17 +142,17 @@
     "pro_sidebar_bnr": "",
     "pro_sidebar_bnr_link": "",
     "product_box_layout": "product_2",
-    "show_sale_tag": true,
-    "show_new_tag": true,
-    "show_quickview": true,
+    "show_sale_tag": false,
+    "show_new_tag": false,
+    "show_quickview": false,
     "show_wishlist": true,
     "show_compare": true,
     "show_second_img": true,
     "show_product_thumb": false,
-    "show_color_swatches": true,
+    "show_color_swatches": false,
     "show_size_swatches": false,
     "grid_swatches_style": "round",
-    "show_review_rating": true,
+    "show_review_rating": false,
     "grid_new_label_style": "round",
     "grid_new_label_size": "large",
     "grid_new_label_position": "center",
@@ -250,6 +249,8 @@
     "checkout_accent_color": "#197bbd",
     "checkout_button_color": "#197bbd",
     "checkout_error_color": "#e32c2b",
+    "covidresponse_bar_enable": true,
+    "covidresponse_url": "#",
     "header_base_size": "26",
     "type_primary_family": "Google_Poppins+Sans_400_sans",
     "type_seconadry_family": "Google_Poppins+Sans-serif",
@@ -502,7 +503,6 @@
             "settings": {
               "menu_name": "Home",
               "trans_menu_name": "",
-              "menu_link": "",
               "show_label": false,
               "label_text": "hot",
               "trans_label_text": ""
@@ -513,7 +513,6 @@
             "settings": {
               "menu_name": "pages",
               "trans_menu_name": "",
-              "menu_link": "",
               "submenu_linklist": "",
               "show_label": true,
               "label_text": "hot",
@@ -537,7 +536,6 @@
           "email_address": "",
           "trans_email_address": "",
           "show_wishlist": true,
-          "logo": "",
           "logo_max_width": "250",
           "enable_search": false,
           "enable_currency": true
@@ -686,7 +684,7 @@
               "trans_filter_category_title": "{\"en\":\"category\", \"fr\":\"Catégorie\", \"ar\":\"الفئة\", \"de\":\"Kategorie\", \"it\":\"categoria\"}",
               "filter_by_category_enable": true,
               "show_custom_category": true,
-              "custom_filter_category": "category",
+              "custom_filter_category": "",
               "collection_category_limit": 7
             }
           },
@@ -749,7 +747,6 @@
           "1547547824582"
         ],
         "settings": {
-          "banner_img": "shopify:\/\/shop_images\/1_465047ac-b5a0-477d-bc62-a5c18f0d3104.jpg",
           "banner_url": "shopify:\/\/collections\/trading-collections",
           "product_per_page": "24",
           "product_per_row_product": "3",
@@ -2022,7 +2019,6 @@
           "email_address": "",
           "trans_email_address": "",
           "show_wishlist": true,
-          "logo": "",
           "logo_max_width": "250",
           "enable_search": true,
           "enable_currency": true
@@ -2040,11 +2036,10 @@
           "email_address": "EMAIL: Support@Fiot.com",
           "trans_email_address": "",
           "show_wishlist": true,
-          "logo": "",
           "logo_max_width": "250",
           "enable_search": true,
           "enable_currency": true,
-          "nav_bg_color": "#000",
+          "nav_bg_color": "#000000",
           "opacity": 5
         }
       },
@@ -2140,8 +2135,7 @@
               "submenu_grid_3": "",
               "submenu_title_3": "",
               "trans_submenu_title_3": "",
-              "show_sidebar_menu_img": true,
-              "sidebar_menu_img": ""
+              "show_sidebar_menu_img": true
             }
           }
         },
@@ -2157,7 +2151,6 @@
           "email_address": "",
           "trans_email_address": "",
           "show_wishlist": true,
-          "logo": "",
           "logo_max_width": "250",
           "enable_search": true,
           "enable_currency": true,
@@ -2294,87 +2287,9 @@
           "section_padding": "110px 0px 60px 0px"
         }
       },
-      "1554730713690": {
-        "type": "slideshow",
-        "blocks": {
-          "1554730713690-1": {
-            "type": "Image",
-            "settings": {
-              "slider_content_height": 100,
-              "alignment": "text-left",
-              "position": "p-right",
-              "slide_title": "daily standards",
-              "trans_slide_title": "",
-              "slide_title_color": "#3cd7d7",
-              "slide_subtitle": "",
-              "trans_slide_subtitle": "",
-              "slide_subtitle_color": "#333333",
-              "slide_text": "Welcome to Fashion the fashion Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece",
-              "trans_slide_text": "",
-              "slide_text_color": "#777777",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          },
-          "1554730713690-0": {
-            "type": "Image",
-            "settings": {
-              "slider_content_height": 100,
-              "alignment": "text-left",
-              "position": "p-left",
-              "slide_title": "royal collection",
-              "trans_slide_title": "",
-              "slide_title_color": "#3cd7d7",
-              "slide_subtitle": "",
-              "trans_slide_subtitle": "",
-              "slide_subtitle_color": "#333333",
-              "slide_text": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from",
-              "trans_slide_text": "",
-              "slide_text_color": "#777777",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          },
-          "1595853088880": {
-            "type": "Image",
-            "settings": {
-              "slider_content_height": 100,
-              "alignment": "text-left",
-              "position": "p-left",
-              "slide_title": "WoMen fashion",
-              "trans_slide_title": "",
-              "slide_title_color": "#3cd7d7",
-              "slide_subtitle": "",
-              "trans_slide_subtitle": "",
-              "slide_subtitle_color": "#ffffff",
-              "slide_text": "Welcome to Fashion the fashion Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece",
-              "trans_slide_text": "",
-              "slide_text_color": "#777777",
-              "shop_btn_url": "shopify:\/\/collections\/trading-collections"
-            }
-          }
-        },
-        "block_order": [
-          "1554730713690-1",
-          "1554730713690-0",
-          "1595853088880"
-        ],
-        "settings": {
-          "enabled": true,
-          "enabled_fullpage": false,
-          "slideshow_width": "full-width",
-          "enabled_torn_section": false,
-          "slider_height": 100,
-          "enabled_overlay": false,
-          "overlay_opacity": 4,
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": true,
-          "use_dots": false,
-          "use_loop": false,
-          "enabled_animation": false
-        }
-      },
       "1554730795823": {
         "type": "feature-blog",
+        "disabled": true,
         "settings": {
           "enabled": true,
           "bg_color": "#ffffff",
@@ -2423,6 +2338,7 @@
       },
       "1554730812690": {
         "type": "brand-logo",
+        "disabled": true,
         "blocks": {
           "1554730812690-0": {
             "type": "logo_image",
@@ -2499,6 +2415,7 @@
       },
       "1593854626428": {
         "type": "feature-sale-banner",
+        "disabled": true,
         "blocks": {
           "1593854626428-0": {
             "type": "Collection",
@@ -2616,6 +2533,7 @@
       },
       "1593947817795": {
         "type": "super-deal",
+        "disabled": true,
         "blocks": {
           "1593951997321": {
             "type": "Collection",
@@ -2677,6 +2595,7 @@
       },
       "1593955325068": {
         "type": "timer-offer",
+        "disabled": true,
         "blocks": {
           "1593955325068-0": {
             "type": "Collection",
@@ -2711,109 +2630,9 @@
           "image_position": "8"
         }
       },
-      "1594127383503": {
-        "type": "product-tab-slider-2",
-        "blocks": {
-          "1594127383503-0": {
-            "type": "Tab",
-            "settings": {
-              "title": "new product",
-              "trans_title": "",
-              "tab_collection": "trending-collection"
-            }
-          },
-          "1594127383503-1": {
-            "type": "Tab",
-            "settings": {
-              "title": "best selling",
-              "trans_title": "",
-              "tab_collection": "latest-collection"
-            }
-          }
-        },
-        "block_order": [
-          "1594127383503-0",
-          "1594127383503-1"
-        ],
-        "settings": {
-          "enabled": true,
-          "title": "",
-          "trans_title": "",
-          "subtitle": "Exclusive Products",
-          "trans_subtitle": "",
-          "show_countdown_timer": true,
-          "img_width": "full",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": false,
-          "use_dots": false,
-          "use_loop": false,
-          "slidetoshow": 4,
-          "slidetoshow_1367": 3,
-          "slidetoshow_1024": 3,
-          "slidetoshow_991": 2,
-          "slidetoshow_767": 2,
-          "slidetoshow_480": 1
-        }
-      },
-      "1594388660847": {
-        "type": "feature-collection-1",
-        "blocks": {
-          "1594388660847-0": {
-            "type": "Collection",
-            "settings": {
-              "collection": "trending-collection",
-              "enabled_info": true,
-              "title": "top",
-              "trans_title": ""
-            }
-          },
-          "1594388660847-2": {
-            "type": "Collection",
-            "settings": {
-              "collection": "latest-collection",
-              "enabled_info": true,
-              "title": "sale",
-              "trans_title": ""
-            }
-          },
-          "1594388660847-1": {
-            "type": "Collection",
-            "settings": {
-              "collection": "offer-deal",
-              "enabled_info": true,
-              "title": "new",
-              "trans_title": ""
-            }
-          }
-        },
-        "block_order": [
-          "1594388660847-0",
-          "1594388660847-2",
-          "1594388660847-1"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "70px 0px 0px 0px",
-          "title": "New arrival",
-          "trans_title": "",
-          "title_color": "#111111",
-          "subtitle": "product of the year",
-          "trans_subtitle": "",
-          "subtitle_color_color": "#111111",
-          "desc": "",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8"
-        }
-      },
       "1594536804963": {
         "type": "lookbook-banner",
+        "disabled": true,
         "blocks": {
           "1594536804963-0": {
             "type": "Image",
@@ -2853,48 +2672,6 @@
           "text_layout": "style-1",
           "alignment": "text-center",
           "position": "p-left"
-        }
-      },
-      "1594547199625": {
-        "type": "service",
-        "blocks": {
-          "1594547199625-0": {
-            "type": "Service",
-            "settings": {
-              "services_title": "FREE SHIPPING & RETURN",
-              "trans_services_title": "",
-              "services_desc": "Free shipping on all US orders",
-              "trans_services_desc": ""
-            }
-          },
-          "1594547199625-1": {
-            "type": "Service",
-            "settings": {
-              "services_title": "MONEY GAURNTEE",
-              "trans_services_title": "",
-              "services_desc": "30 days money back guarantee",
-              "trans_services_desc": ""
-            }
-          },
-          "1594547199625-2": {
-            "type": "Service",
-            "settings": {
-              "services_title": "ONLINE SUPPORT",
-              "trans_services_title": "",
-              "services_desc": "We support online 24\/7 on day",
-              "trans_services_desc": ""
-            }
-          }
-        },
-        "block_order": [
-          "1594547199625-0",
-          "1594547199625-1",
-          "1594547199625-2"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "0px 0px 0px 0px",
-          "banner_layout": "layout_1"
         }
       },
       "product-right-sidebar-template": {
@@ -3725,41 +3502,6 @@
           "image_position": "8"
         }
       },
-      "1595560927788": {
-        "type": "feature-product-slider",
-        "settings": {
-          "enabled": true,
-          "section_padding": "0px 0px 70px 0px",
-          "enabled_parallax_bg": false,
-          "slideshow_width": "full-width",
-          "title": "new collection",
-          "trans_title": "",
-          "title_color": "#111111",
-          "subtitle": "sale Collections",
-          "trans_subtitle": "",
-          "subtitle_color_color": "#111111",
-          "desc": "",
-          "trans_desc": "",
-          "text_color": "#111111",
-          "collection": "trending-collection",
-          "product_limit": "8",
-          "img_width": "full",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": false,
-          "use_dots": false,
-          "use_loop": false,
-          "slidetoshow": 5,
-          "slidetoshow_1367": 4,
-          "slidetoshow_1024": 3,
-          "slidetoshow_767": 2,
-          "slidetoshow_420": 1
-        }
-      },
       "product-3-column-bottom-image": {
         "type": "product-3-column-bottom-image",
         "settings": {
@@ -3831,21 +3573,169 @@
           "slidetoshow_767": 3,
           "slidetoshow_420": 2
         }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "99583c74-03f2-4370-a4a3-efd08415eae0": {
+            "type": "Image",
+            "settings": {
+              "slider": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "slider_content_height": 75,
+              "alignment": "text-center",
+              "position": "p-left",
+              "slide_title": "WoMen fashion",
+              "trans_slide_title": "",
+              "slide_title_color": "#ffffff",
+              "slide_subtitle": "Welcome to Fashion",
+              "trans_slide_subtitle": "",
+              "slide_subtitle_color": "#ffffff",
+              "trans_slide_text": "",
+              "slide_text_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "99583c74-03f2-4370-a4a3-efd08415eae0"
+        ],
+        "settings": {
+          "enabled": true,
+          "enabled_fullpage": true,
+          "slideshow_width": "full-width",
+          "enabled_torn_section": false,
+          "slider_height": 75,
+          "enabled_overlay": false,
+          "overlay_opacity": 0,
+          "slider_speed": 1,
+          "use_autoplay": false,
+          "use_arrows": false,
+          "use_dots": false,
+          "use_loop": false,
+          "enabled_animation": false
+        }
+      },
+      "1615442735421b11d9": {
+        "type": "feature-product-slider",
+        "settings": {
+          "enabled": true,
+          "section_padding": "80px 10px 80px 10px",
+          "enabled_parallax_bg": true,
+          "slideshow_width": "standard-width",
+          "title": "NEW ARRIVAL",
+          "trans_title": "",
+          "title_color": "#fb711c",
+          "subtitle": "",
+          "trans_subtitle": "",
+          "subtitle_color_color": "#fb711c",
+          "desc": "",
+          "trans_desc": "",
+          "text_color": "#ffffff",
+          "collection": "new-arrival",
+          "product_limit": "18",
+          "img_width": "auto",
+          "use_equal_height": false,
+          "image_ratio": "ratio_portrait",
+          "image_size": "contain",
+          "image_position": "8",
+          "slider_speed": 1,
+          "use_autoplay": false,
+          "use_arrows": true,
+          "use_dots": false,
+          "use_loop": false,
+          "slidetoshow": 4,
+          "slidetoshow_1367": 4,
+          "slidetoshow_1024": 4,
+          "slidetoshow_767": 2,
+          "slidetoshow_420": 1
+        }
+      },
+      "1615445549b17595a2": {
+        "type": "parallax-banner",
+        "settings": {
+          "enabled": true,
+          "section_padding": "100px 10px",
+          "enabled_torn_section": false,
+          "enabled_overlay": true,
+          "banner_img": "shopify:\/\/shop_images\/fireplace-close-up-flames.jpg",
+          "title": "",
+          "trans_title": "",
+          "title_color": "#ff4c3b",
+          "subtitle": "Luxe Barbeque Company is a locally owned and operated business. We have the largest selection in Manitoba, we service what we sell, have educated & knowledgeable staff who like to help and NOBODY will beat our prices.",
+          "trans_subtitle": "",
+          "subtitle_color": "#ffffff",
+          "bottom_title": "",
+          "trans_bottom_title": "Luxe Barbeque Company is a locally owned and operated business. We have the largest selection in Manitoba, we service what we sell, have educated & knowledgeable staff who like to help and NOBODY will beat our prices.",
+          "bottom_title_color": "#aaaaaa",
+          "enabled_button": true,
+          "link": "\/page\/about-us",
+          "text_layout": "style-2",
+          "alignment": "text-center",
+          "position": "p-center"
+        }
+      },
+      "16154475014ba4bd75": {
+        "type": "slideshow",
+        "blocks": {
+          "16154475014ba4bd75-0": {
+            "type": "Image",
+            "settings": {
+              "slider": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "slider_content_height": 100,
+              "alignment": "text-left",
+              "position": "p-left",
+              "slide_title": "Keep Grilling.",
+              "trans_slide_title": "",
+              "slide_title_color": "#ffffff",
+              "slide_subtitle": "A perfect BBQ time is waiting for you.",
+              "trans_slide_subtitle": "",
+              "slide_subtitle_color": "#ffffff",
+              "button_text": "Find your grill",
+              "trans_slide_text": "",
+              "slide_text_color": "#ffffff",
+              "shop_btn_url": "shopify:\/\/pages\/find-your-girll"
+            }
+          }
+        },
+        "block_order": [
+          "16154475014ba4bd75-0"
+        ],
+        "settings": {
+          "enabled": true,
+          "enabled_fullpage": false,
+          "slideshow_width": "full-width",
+          "enabled_torn_section": false,
+          "slider_height": 100,
+          "enabled_overlay": false,
+          "overlay_opacity": 0,
+          "slider_speed": 3,
+          "use_autoplay": false,
+          "use_arrows": false,
+          "use_dots": false,
+          "use_loop": false,
+          "enabled_animation": false
+        }
+      },
+      "16154556628bfa7323": {
+        "type": "announcement-bar",
+        "settings": {
+          "enabled": true,
+          "covidresponse_text": "Click Here for our COVID-19 Response",
+          "covidresponse_url": "#"
+        }
       }
     },
     "content_for_index": [
-      "1554730713690",
+      "16154475014ba4bd75",
+      "16154556628bfa7323",
+      "1615442735421b11d9",
+      "1615445549b17595a2",
       "1593854626428",
       "1593947817795",
-      "1595560927788",
       "1593955325068",
-      "1594388660847",
-      "1594127383503",
       "1594536804963",
       "1554730795823",
       "1554730812690",
-      "1554730805487",
-      "1594547199625"
+      "1554730805487"
     ]
   }
 }

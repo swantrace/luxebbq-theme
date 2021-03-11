@@ -1,7 +1,7 @@
 <!-- Parallax banner -->
 {% capture sectionId %}{{ section.id }}{% endcapture %}
 {% if section.settings.enabled %}
-<section class="p-0 {% if section.settings.enabled_torn_section %}effect-cls{% endif %}">
+<section class="p-0 {% if section.settings.enabled_torn_section %}effect-cls{% endif %} dmt home-section-about-block">
   <div class="full-banner parallax {{ section.settings.alignment }} {{ section.settings.position }} {% if section.settings.text_layout == 'style-2' %}banner-layout-3 parallax-banner2{% endif %} lazyload blur-up" 
        data-bgset="{% include 'bg-set', image: section.settings.banner_img %}" data-sizes="auto" data-parent-fit="cover" 
        style="padding: {{ section.settings.section_padding }};
@@ -39,9 +39,17 @@
           {% else %}
           <div class="banner-contain">
             {% if section.settings.subtitle != blank %}
+
+            <h5 style="color:{{ section.settings.subtitle_color }};" class="text-center">
+              {{ section.settings.subtitle }}
+            </h5>
+
+            {% comment %}
             <h4 style="color:{{ section.settings.subtitle_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#parallax_{{sectionId}}_subtitle"{% endif %}>
               {{ section.settings.subtitle }}
             </h4>
+            {% endcomment %}
+
             {% if settings.enable_lang_switcher %}
             <span class="hide" id="parallax_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
             {% endif %}
@@ -64,7 +72,7 @@
             {% endif %}
             {% if section.settings.enabled_button %}
             <a href="{{ section.settings.link }}" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
-              {{ 'sections.featured_product.shop_now' | t }}  
+              {{ 'About Luxe BBQ    &nbsp;&nbsp;&nbsp;&nbsp;>>' }}  
             </a>
             {% endif %}
           </div>

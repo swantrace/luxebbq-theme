@@ -469,7 +469,7 @@ button[disabled]{cursor:not-allowed;}
 03.Title CSS start
 ==========================*/
 .title1 {
-  text-align: center;
+  text-align: left;
   h4{
     color: $theme-deafult;
     padding-bottom: 10px;
@@ -483,8 +483,9 @@ button[disabled]{cursor:not-allowed;}
     padding-bottom: 15px;
     margin-bottom: 30px;
     position: relative;
-    font-size: 36px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 500;
+    {% comment %} 
     &:after{
       position: absolute;
       height:5px;
@@ -495,7 +496,8 @@ button[disabled]{cursor:not-allowed;}
       right: 0;
       margin:0 auto;
       bottom: 0;
-    }
+    } 
+    {% endcomment %}
   }
   &.title-gradient {
     .title-inner1 {
@@ -2029,11 +2031,12 @@ header {
     display: flex;
     align-items: center;
     h1 {
-      margin-bottom: 0;
+      margin-bottom: 12px;
       margin-top: 10px;
       font-weight: 700;
-      font-family: 'Dancing Script', cursive;
-      font-size: 90px;
+      {% comment %} font-family: 'Dancing Script', cursive; {% endcomment %}
+      font-size: 85px;
+      font-style: italic;
       text-transform: capitalize;
       span{
         font-size: 60px;
@@ -2047,7 +2050,7 @@ header {
       letter-spacing: 0.1em;
       color: $grey;
       margin-bottom: 0;
-      font-family: 'Dancing Script', cursive;
+      {% comment %} font-family: 'Dancing Script', cursive; {% endcomment %}
       font-size: 24px;
     }
     h3{

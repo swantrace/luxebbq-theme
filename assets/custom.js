@@ -36973,10 +36973,9 @@ function productList() {
   const {
     loading,
     data,
-    refetch,
-    error
+    refetch
   } = (0, _haunted.useQuery)(GET_PRODUCTS);
-  console.log(loading, data, refetch, error);
+  console.log(loading, data, refetch);
   return (0, _haunted.html)`<h1>hello world</h1>`;
 }
 

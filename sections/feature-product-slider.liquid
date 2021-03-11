@@ -1,4 +1,4 @@
-<!-- Product slider start -->
+<!-- Product slider start feature-product-slider.liquid-->
 {% if section.settings.enabled %}
 {% capture sectionId %}{{ section.id }}{% endcapture %}
 {% assign collection = collections[section.settings.collection] %}
@@ -63,11 +63,11 @@
                   <h6 {% if settings.enable_lang_switcher %}data-trans-key="homepage.onboarding.product_title"{%endif%}>{{ 'homepage.onboarding.product_title' | t }}</h6>
                 </a>
                 <h4>{{ '$20.00' }}</h4>
-                <ul class="color-variant">
+                {% comment %} <ul class="color-variant">
                   <li class="bg-light0"></li>
                   <li class="bg-light1"></li>
                   <li class="bg-light2"></li>
-                </ul>
+                </ul> {% endcomment %}
               </div>
             </div>
             {% endfor %}

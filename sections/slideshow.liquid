@@ -1,6 +1,6 @@
 <!-- Home slider -->
 {% if section.settings.enabled %}
-<section class="p-0 qurox-slider {% if section.settings.enabled_torn_section %}effect-cls{% endif %}" {% if section.settings.enabled_animation %}id="tool-bg"{% endif %}>
+<section class="p-0 qurox-slider dmt home-slider {% if section.settings.enabled_torn_section %}effect-cls{% endif %}" {% if section.settings.enabled_animation %}id="tool-bg"{% endif %}>
   {% if section.settings.slideshow_width == 'standard-width' %}
   <div class="container">
     {% endif %}
@@ -15,14 +15,7 @@
               <div class="col">
                 <div class="slider-contain" style="height: {{ block.settings.slider_content_height }}vh;">
                   <div>
-                    {% if block.settings.slide_subtitle != blank %}
-                    <h4 style="color: {{ block.settings.slide_subtitle_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_subtitle"{% endif %}>
-                      {{ block.settings.slide_subtitle }}
-                    </h4>
-                    {% if settings.enable_lang_switcher %}
-                    <span class="hide" id="slide_{{blockId}}_slide_subtitle">{{ block.settings.trans_slide_subtitle | raw }}</span>
-                    {% endif %}
-                    {% endif %}
+
                     {% if block.settings.slide_title != blank %}
                     <h1 style="color: {{ block.settings.slide_title_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_title"{% endif %}>
                       {{ block.settings.slide_title }}
@@ -31,17 +24,31 @@
                     <span class="hide" id="slide_{{blockId}}_slide_title">{{ block.settings.trans_slide_title | raw }}</span>
                     {% endif %}
                     {% endif %}
-                    {% if block.settings.slide_text != blank %}
+
+                    {% if block.settings.slide_subtitle != blank %}
+                    <h4 style="color: {{ block.settings.slide_subtitle_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_subtitle"{% endif %}>
+                      {{ block.settings.slide_subtitle }}
+                    </h4>
+                  
+                    {% if settings.enable_lang_switcher %}
+                      <span class="hide" id="slide_{{blockId}}_slide_subtitle">{{ block.settings.trans_slide_subtitle | raw }}</span>
+                      {% endif %}
+                    {% endif %}
+
+
+                    {% comment %} {% if block.settings.slide_text != blank %}
                     <h3 style="color: {{ block.settings.slide_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_text"{% endif %}>
                       {{ block.settings.slide_text }}
                     </h3>
                     {% if settings.enable_lang_switcher %}
                     <span class="hide" id="slide_{{blockId}}_slide_text">{{ block.settings.trans_slide_text | raw }}</span>
                     {% endif %}
-                    {% endif %}
+                    {% endif %} {% endcomment %}
+
+
                     {% if block.settings.shop_btn_url != blank %}
                     <a href="{{ block.settings.shop_btn_url }}" class="btn btn-solid"{% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
-                      {{ 'sections.featured_product.shop_now' | t }}  
+                      {{ block.settings.button_text }}   &nbsp;&nbsp;&nbsp;&nbsp;>>
                     </a>
                     {% endif %}
                   </div>
@@ -336,8 +343,8 @@ window.onload = function(){
         },
         {
           "type": "text",
-          "id": "slide_text",
-          "label": "Small Text"
+          "id": "button_text",
+          "label": "Button Text"
         },
         {
           "type": "textarea",
@@ -453,8 +460,8 @@ window.onload = function(){
         },
         {
           "type": "text",
-          "id": "slide_text",
-          "label": "Small Text"
+          "id": "button_text",
+          "label": "Button Text"
         },
         {
           "type": "textarea",
