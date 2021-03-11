@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container dtm dtm-title">
   {% if settings.title_layout == 'title_1' %}
   <div class="row">
-    <div class="title1 d-flex justify-content-between align-items-center">
+    <div class="title1 d-flex justify-content-between align-items-center" style="flex-grow: 1;">
+     
       {% if section.settings.subtitle != blank %}
       <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
         {{ section.settings.subtitle }}
@@ -10,21 +11,27 @@
       <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
       {% endif %}
       {% endif %}
+
+      <! -- DTM Title Style -->
       {% if section.settings.title != blank %}
-      <div>
-        <h2 class="title-inner1 pb-0 mb-0 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
-          {{ section.settings.title }}
-        </h2>
-      </div>
+        <div style="flex-grow: 1;" >
+          <h2 class="title-inner1 pb-0 mb-0 {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#FeaturePro1_{{sectionId}}_title"{% endif %} style="color: {{ section.settings.title_color }};">
+            {{ section.settings.title }}
+          </h2>
+        </div>
 
-    <div class="parallelograms-group">
-      <span class="title-parallelogram"> </span>
-      {% if settings.enable_lang_switcher %}
-      <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
-      {% endif %}
-    </div>
+        <div class="parallelograms-group">
+          <span class="parallelograms parallelogram-lt"> </span>
+          <span class="parallelograms parallelogram-rt"> </span>
 
+            <span class="parallelograms parallelogram-br"> </span>
+          {% if settings.enable_lang_switcher %}
+          <span class="hide" id="FeaturePro1_{{sectionId}}_title">{{ section.settings.trans_title | raw }}</span>
+          {% endif %}
+        </div>
       {% endif %}
+      <! --END DTM Title Style -->
+
     </div>
   </div>
   {% elsif settings.title_layout == 'title_2' %}
