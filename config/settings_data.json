@@ -53,7 +53,7 @@
     "secondary_button_text_color_hover": "#ffffff",
     "top_header_bg_color": "#111111",
     "top_header_text_color": "#ffffff",
-    "header_bg_color": "#fff",
+    "header_bg_color": "#111111",
     "header_text_color": "#111111",
     "header_text_hover_color": "#444444",
     "megamenu_bg_color": "#fff",
@@ -92,10 +92,10 @@
     "sidebar_menu_width": "",
     "submenu_grid_1": "",
     "submenu_title_1": "men fashion",
-    "trans_submenu_title_1": "{\"en\":\"men fashion\", \"fr\":\"la mode des hommes\", \"ar\":\"أزياء الرجال\", de\":\"Fax: Herrenmode\", \"it\":\"moda maschile\"}",
+    "trans_submenu_title_1": "",
     "submenu_grid_2": "",
-    "submenu_title_2": "women fashion",
-    "trans_submenu_title_2": "{\"en\": Women fashion\", \"fr\":\" Mode femme\", \"ar\":\"أزياء المرأة\", de\":\"Damenmode\", \"it\":\"La moda femminile\"}",
+    "submenu_title_2": "",
+    "trans_submenu_title_2": "",
     "submenu_grid_3": "",
     "submenu_title_3": "",
     "trans_submenu_title_3": "",
@@ -2071,13 +2071,13 @@
           "1594900799320": {
             "type": "megamenu",
             "settings": {
-              "menu_name": "product",
+              "menu_name": "Barbeques \/ Smokers",
               "trans_menu_name": "",
-              "show_label": true,
+              "show_label": false,
               "label_text": "hot",
               "trans_label_text": "",
-              "linklist_1": "",
-              "linklist_title_1": "product sidebar",
+              "linklist_1": "gas-grills",
+              "linklist_title_1": "Gas Grills",
               "trans_linklist_title_1": "",
               "linklist_2": "",
               "linklist_title_2": "thumbnail image",
@@ -2112,6 +2112,7 @@
           "1593834555870"
         ],
         "settings": {
+          "logo": "shopify:\/\/shop_images\/lbc_logo.png",
           "logo_max_width": "250",
           "enable_search": true,
           "show_wishlist": true,
@@ -2287,40 +2288,6 @@
           "section_padding": "110px 0px 60px 0px"
         }
       },
-      "1554730795823": {
-        "type": "feature-blog",
-        "disabled": true,
-        "settings": {
-          "enabled": true,
-          "bg_color": "#ffffff",
-          "enable_bg_img": false,
-          "section_padding": "70px 0 30px 0",
-          "title": "From The Blog",
-          "trans_title": "",
-          "title_color": "#222222",
-          "subtitle": "Recent Story",
-          "trans_subtitle": "",
-          "blog": "news",
-          "post_limit": "5",
-          "show_comment": true,
-          "show_auther": true,
-          "blog_show_date": true,
-          "img_width": "full",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": false,
-          "use_dots": false,
-          "use_loop": false,
-          "slidetoshow": 3,
-          "slidetoshow_1367": 3,
-          "slidetoshow_1024": 2,
-          "slidetoshow_767": 1
-        }
-      },
       "1554730805487": {
         "type": "insta-feed",
         "disabled": true,
@@ -2328,7 +2295,7 @@
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
           "enabled_parallax_bg": false,
-          "slideshow_width": "full-width",
+          "slideshow_width": "standard-width",
           "post_limit": "6",
           "instagram_title": "#Instagram",
           "trans_instagram_title": "",
@@ -2382,14 +2349,14 @@
           "enabled": true,
           "section_padding": "0px 0px 70px 0px",
           "bg_color": "#ffffff",
-          "enabled_box_layout": false,
+          "enabled_box_layout": true,
           "img_width": "auto",
           "use_equal_height": false,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8",
           "slider_speed": 3,
-          "use_autoplay": true,
+          "use_autoplay": false,
           "use_arrows": false,
           "use_dots": false,
           "use_loop": false,
@@ -2411,186 +2378,6 @@
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
-        }
-      },
-      "1593854626428": {
-        "type": "feature-sale-banner",
-        "disabled": true,
-        "blocks": {
-          "1593854626428-0": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 15px 0px 0px",
-              "alignment": "text-right",
-              "position": "p-left",
-              "collection": "",
-              "enabled_info": true,
-              "title": "Best collection",
-              "trans_title": "",
-              "title_color": "#3cd7d7",
-              "subtitle": "DON'T MISS TODAY'S FEATURED DEALS",
-              "trans_subtitle": "",
-              "subtitle_color": "#333333",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          },
-          "1593854626428-1": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 15px 0px 0px",
-              "alignment": "text-center",
-              "position": "p-right",
-              "collection": "",
-              "enabled_info": true,
-              "title": "20% off deal",
-              "trans_title": "",
-              "title_color": "#3cd7d7",
-              "subtitle": "DON'T MISS TODAY'S DEALS offer",
-              "trans_subtitle": "",
-              "subtitle_color": "#333333",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          },
-          "1593854834486": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 15px 0px 0px",
-              "alignment": "text-center",
-              "position": "p-left",
-              "collection": "",
-              "enabled_info": true,
-              "title": "Must-Haves trend",
-              "trans_title": "",
-              "title_color": "#3cd7d7",
-              "subtitle": "FIND YOUR NEW FAVORITE",
-              "trans_subtitle": "",
-              "subtitle_color": "#333333",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          },
-          "1593854828408": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 15px 0px 0px",
-              "alignment": "text-center",
-              "position": "p-left",
-              "collection": "",
-              "enabled_info": true,
-              "title": "Unique COLLECTION",
-              "trans_title": "",
-              "title_color": "#3cd7d7",
-              "subtitle": "trading collection",
-              "trans_subtitle": "",
-              "subtitle_color": "#333333",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          },
-          "1595685078717": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 0px 0px 0px",
-              "alignment": "text-center",
-              "position": "p-left",
-              "collection": "",
-              "enabled_info": true,
-              "title": "zara collection",
-              "trans_title": "",
-              "title_color": "#3cd7d7",
-              "subtitle": "best of the year",
-              "trans_subtitle": "",
-              "subtitle_color": "#111111",
-              "shop_btn_url": "shopify:\/\/collections\/frontpage"
-            }
-          }
-        },
-        "block_order": [
-          "1593854626428-0",
-          "1593854626428-1",
-          "1593854834486",
-          "1593854828408",
-          "1595685078717"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "15px 0px 60px 0px",
-          "section_width": "full-width",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": false,
-          "use_dots": false,
-          "use_loop": true,
-          "slidetoshow": 3,
-          "slidetoshow_1367": 2,
-          "slidetoshow_1024": 2,
-          "slidetoshow_767": 2,
-          "slidetoshow_600": 1,
-          "slidetoshow_480": 1
-        }
-      },
-      "1593947817795": {
-        "type": "super-deal",
-        "disabled": true,
-        "blocks": {
-          "1593951997321": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 15px 0px 15px",
-              "alignment": "text-center",
-              "position": "p-center",
-              "collection": "trending-collection",
-              "enabled_info": true,
-              "title": "collection",
-              "trans_title": "",
-              "title_color": "#111111",
-              "subtitle": "unique 2020",
-              "trans_subtitle": "",
-              "subtitle_color": "#111111"
-            }
-          },
-          "1593952001391": {
-            "type": "Tab",
-            "settings": {
-              "title": "top selling",
-              "trans_title": "",
-              "tab_collection": "trending-collection"
-            }
-          },
-          "1593952175309": {
-            "type": "Tab",
-            "settings": {
-              "title": "formal",
-              "trans_title": "",
-              "tab_collection": "trending-collection"
-            }
-          }
-        },
-        "block_order": [
-          "1593951997321",
-          "1593952001391",
-          "1593952175309"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "0px 0px 70px 0px",
-          "section_width": "full-width",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": false,
-          "use_dots": false,
-          "use_loop": false,
-          "slidetoshow": 3,
-          "slidetoshow_1367": 2,
-          "slidetoshow_1024": 2,
-          "slidetoshow_767": 2,
-          "slidetoshow_420": 1
         }
       },
       "1593955325068": {
@@ -2628,50 +2415,6 @@
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
-        }
-      },
-      "1594536804963": {
-        "type": "lookbook-banner",
-        "disabled": true,
-        "blocks": {
-          "1594536804963-0": {
-            "type": "Image",
-            "settings": {
-              "product_1": "cut-dress",
-              "setposition_1": "top:22%; left:65%;",
-              "position_1": "left",
-              "product_2": "floral-top",
-              "setposition_2": "top:10%; left:30%;",
-              "position_2": "left",
-              "product_3": "",
-              "setposition_3": "top:80%; left:25%;",
-              "position_3": "bottom",
-              "product_4": "",
-              "setposition_4": "top:22%; left:45%;",
-              "position_4": "left"
-            }
-          }
-        },
-        "block_order": [
-          "1594536804963-0"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "190px 0px 190px 0px",
-          "banner_padding": "0px 0px 0px 0px",
-          "title": "trading offer sale",
-          "trans_title": "",
-          "title_color": "#111111",
-          "subtitle": "style of the year",
-          "trans_subtitle": "",
-          "subtitle_color": "#111111",
-          "bottom_title": "new product purchase up to 50% off all now fast shopping",
-          "trans_bottom_title": "",
-          "bottom_title_color": "#111111",
-          "enabled_button": true,
-          "text_layout": "style-1",
-          "alignment": "text-center",
-          "position": "p-left"
         }
       },
       "product-right-sidebar-template": {
@@ -3722,20 +3465,181 @@
           "covidresponse_text": "Click Here for our COVID-19 Response",
           "covidresponse_url": "#"
         }
+      },
+      "161552166845bd5aa7": {
+        "type": "custom-featured-products-grid",
+        "blocks": {
+          "161552166845bd5aa7-0": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/fireplace-close-up-flames.jpg",
+              "title": "Pellet Grills"
+            }
+          },
+          "161552166845bd5aa7-2": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "title": "Gas Grills"
+            }
+          },
+          "161552166845bd5aa7-1": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/brushing-bbq-sauce-on-grilled-steak.jpg",
+              "title": "Smokers"
+            }
+          },
+          "ff2d3360-f26a-4ec8-a89c-c04e4d18510f": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+              "title": "Rubs & Sauces"
+            }
+          },
+          "fb2f41c2-a0c6-4342-bf81-a969a10ec2cb": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "title": "Traeger"
+            }
+          },
+          "789bffd9-dfb3-44df-971f-d81e04fe5dc0": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/roasting-corn-cobs.jpg",
+              "title": "Napoleon"
+            }
+          },
+          "d26702db-4914-4327-ae98-c788f23e019c": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/close-up-grilled-corn.jpg",
+              "title": "Weber"
+            }
+          }
+        },
+        "block_order": [
+          "161552166845bd5aa7-0",
+          "161552166845bd5aa7-2",
+          "161552166845bd5aa7-1",
+          "ff2d3360-f26a-4ec8-a89c-c04e4d18510f",
+          "fb2f41c2-a0c6-4342-bf81-a969a10ec2cb",
+          "789bffd9-dfb3-44df-971f-d81e04fe5dc0",
+          "d26702db-4914-4327-ae98-c788f23e019c"
+        ],
+        "settings": {
+          "enabled": true,
+          "section_padding": "0px 0px 0px 0px",
+          "title": "FEATURED PRODUCTS",
+          "title_color": "#fb711c",
+          "use_equal_height": false
+        }
+      },
+      "1615529853a3d387ef": {
+        "type": "custom-more-collections-grid",
+        "blocks": {
+          "1615529853a3d387ef-0": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/close-up-grilled-corn.jpg",
+              "page_url": "shopify:\/\/pages\/find-your-girll",
+              "enabled_info": true,
+              "title": "Furniture"
+            }
+          },
+          "1615529853a3d387ef-1": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/roasting-corn-cobs.jpg",
+              "page_url": "shopify:\/\/pages\/find-your-girll",
+              "enabled_info": true,
+              "title": "Heaters & Fire Tables"
+            }
+          },
+          "1615529853a3d387ef-2": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "enabled_info": true,
+              "title": "Accessories"
+            }
+          },
+          "a4d43a0c-6bf1-48c7-88b0-0d90886a70f3": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "enabled_info": true,
+              "title": "Yetti"
+            }
+          },
+          "c4e6d5bb-8799-432e-bfc6-897aa5529e65": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
+              "page_url": "shopify:\/\/pages\/find-your-girll",
+              "enabled_info": true,
+              "title": "Charcoal Grills"
+            }
+          },
+          "41f248a5-f086-4cb4-9bf6-411cb27cefcc": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/brushing-cooking-oil-on-bbq-corn.jpg",
+              "page_url": "shopify:\/\/collections\/frontpage",
+              "enabled_info": true,
+              "title": "Portable Grills"
+            }
+          },
+          "b0984531-813d-4178-98a3-635f099e12d9": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+              "enabled_info": true,
+              "title": "Ooni Pizza Ovens"
+            }
+          },
+          "219a8aa4-936e-41a0-891d-9d2b61cc26f0": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/brushing-bbq-sauce-on-grilled-steak.jpg",
+              "enabled_info": true,
+              "title": "Fontana Pizza Ovens"
+            }
+          }
+        },
+        "block_order": [
+          "1615529853a3d387ef-0",
+          "1615529853a3d387ef-1",
+          "1615529853a3d387ef-2",
+          "a4d43a0c-6bf1-48c7-88b0-0d90886a70f3",
+          "c4e6d5bb-8799-432e-bfc6-897aa5529e65",
+          "41f248a5-f086-4cb4-9bf6-411cb27cefcc",
+          "b0984531-813d-4178-98a3-635f099e12d9",
+          "219a8aa4-936e-41a0-891d-9d2b61cc26f0"
+        ],
+        "settings": {
+          "enabled": true,
+          "section_padding": "0px 0px 0px 0px",
+          "title": "More Collections",
+          "title_color": "#fb711c",
+          "use_equal_height": false,
+          "image_ratio": "ratio_square",
+          "image_size": "cover",
+          "image_position": "8"
+        }
       }
     },
     "content_for_index": [
       "16154475014ba4bd75",
       "16154556628bfa7323",
+      "161552166845bd5aa7",
       "1615442735421b11d9",
       "1615445549b17595a2",
-      "1593854626428",
-      "1593947817795",
+      "1615529853a3d387ef",
+      "1554730805487",
       "1593955325068",
-      "1594536804963",
-      "1554730795823",
-      "1554730812690",
-      "1554730805487"
+      "1554730812690"
     ]
   }
 }
