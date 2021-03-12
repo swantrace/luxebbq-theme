@@ -2049,7 +2049,48 @@
           "d2d0d108-f6c5-45bc-9874-7720f31668b6": {
             "type": "select-nav-menu",
             "settings": {
-              "mainmenu": "main-menu"
+              "menu_name": "Shop",
+              "trans_menu_name": "",
+              "submenu_linklist": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "1594900799320": {
+            "type": "megamenu",
+            "settings": {
+              "menu_name": "Barbeques \/ Smokers",
+              "trans_menu_name": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": "",
+              "linklist_1": "gas-grills",
+              "linklist_title_1": "Gas Grills",
+              "trans_linklist_title_1": "",
+              "linklist_2": "",
+              "linklist_title_2": "thumbnail image",
+              "trans_linklist_title_2": "",
+              "linklist_3": "",
+              "linklist_title_3": "advanced product",
+              "trans_linklist_title_3": "",
+              "linklist_4": "",
+              "linklist_title_4": "3 column",
+              "trans_linklist_title_4": "",
+              "linklist_5": "",
+              "linklist_title_5": "best layout",
+              "trans_linklist_title_5": ""
+            }
+          },
+          "1593834555870": {
+            "type": "parent-item",
+            "settings": {
+              "menu_name": "Contact",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/pages\/contact-us",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
             }
           }
         },
@@ -2058,7 +2099,7 @@
         ],
         "settings": {
           "logo": "shopify:\/\/shop_images\/lbc_logo.png",
-          "logo_max_width": "200",
+          "logo_max_width": "250",
           "enable_search": true,
           "show_wishlist": true,
           "enable_currency": false
