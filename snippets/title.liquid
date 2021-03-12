@@ -3,6 +3,7 @@
   <div class="row">
     <div class="title1 d-flex justify-content-between align-items-center" style="flex-grow: 1;">
      
+      {% comment %} 
       {% if section.settings.subtitle != blank %}
       <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
         {{ section.settings.subtitle }}
@@ -10,7 +11,7 @@
       {% if settings.enable_lang_switcher %}
       <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
       {% endif %}
-      {% endif %}
+      {% endif %} {% endcomment %}
 
       <! -- DTM Title Style -->
       {% if section.settings.title != blank %}

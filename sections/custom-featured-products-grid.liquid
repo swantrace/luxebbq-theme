@@ -1,0 +1,129 @@
+<!-- DTM HOMEPAGE featured products Grid -->
+{% if section.settings.enabled %}
+<section class="dtm dtm-featured-products-section {% if section.settings.use_equal_height %}equal_height {% endif %}" style="padding:{{ section.settings.section_padding }}">
+  {%- include 'title' -%}
+
+  <div class="container px-0">
+    <div class="row">
+      {% assign block_size = section.blocks.size  %}
+      {% for block in section.blocks %}
+         {% capture blockId %}{{ block.id }}{% endcapture %}
+         {% assign collection = collections[block.settings.collection] %}
+
+        {% if forloop.index == 1 or forloop.index == 4 or forloop.index == 7 %}
+            {% assign column_grid_width = 'col-md-12 col-sm-12 py-2 px-0' -%}
+        {% elsif forloop.index == 2 or forloop.index == 5 %}
+            {% assign column_grid_width = 'col-md-6 col-sm-6 py-2 pl-0 pr-2' -%}
+        {% elsif forloop.index == 3 or forloop.index == 6 %}
+            {% assign column_grid_width = 'col-md-6 col-sm-6 py-2 pr-0 pl-2' -%}
+        {% endif %}
+
+        <div class="{{ column_grid_width }}">
+            {% assign block_image = block.settings.image %}
+            <a href="{{ block.page_url }}" >
+            <img src="{{ block.settings.image | img_url: '1370x385' }}"
+             class="img-fluid" alt="{{block.settings.title}}"
+            >
+
+            <h2>
+                {{ block.settings.title }}
+            </h2> 
+
+            </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- category 2 end -->
+
+{% schema %}
+{
+   "name":"Feature Products Grid",
+   "max_blocks":7,
+   "settings":[
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "default":true,
+         "label":"Enabled"
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Title",
+         "default":"Special offer"
+      },
+      {
+         "type":"color",
+         "id":"title_color",
+         "label":"Title color",
+         "default":"#fff"
+      },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      }
+   ],
+   "blocks":[
+      {
+         "type":"Collection",
+         "name":"Collection URL",
+         "limit": 7,
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"image",
+               "label":"Collection Image"
+            },
+            {
+               "type": "url",
+               "id": "page_url",
+               "label": "Select Page URL"
+            },
+            {
+               "type": "text",
+               "id": "title",
+               "label": "Heading"
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"DTM Feature Products Grid",
+         "category":"DTM",
+         "blocks":[
+            {
+               "type":"Collection"
+            },
+            {
+               "type":"Collection"
+            },
+            {
+               "type":"Collection"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

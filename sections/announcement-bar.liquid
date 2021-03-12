@@ -1,14 +1,13 @@
 <!-- COVID-19 Response Bar -->
 {% capture sectionId %}{{ section.id }}{% endcapture %}
 {% if section.settings.enabled %}
-<section class="dtm announcement-bar">
+<div class="dtm announcement-bar"> 
   <div class="container">
         <div class="announcement-wrapper">          
           <a href="{{ section.settings.covidresponse_url }}""> <h4> {{ section.settings.covidresponse_text }}</h4> </a>
         </div>
   </div>
-  </span>
-</section>
+</div>
 {% endif %}
 
 
@@ -37,7 +36,7 @@
    "presets":[
       {
          "name":"Announcement Bar",
-         "category":"text",
+         "category":"DTM",
          "settings":{ }
       }
    ]
