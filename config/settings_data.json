@@ -51,14 +51,14 @@
     "secondary_button_text_color": "#111111",
     "secondary_button_bg_color_hover": "#e9cebd",
     "secondary_button_text_color_hover": "#ffffff",
-    "top_header_bg_color": "#111111",
+    "top_header_bg_color": "#000000",
     "top_header_text_color": "#ffffff",
     "header_bg_color": "#111111",
-    "header_text_color": "#111111",
-    "header_text_hover_color": "#444444",
+    "header_text_color": "#ffffff",
+    "header_text_hover_color": "#fb711c",
     "megamenu_bg_color": "#fff",
     "megamenu_link_color": "#555555",
-    "sidebar_icon_color": "#111111",
+    "sidebar_icon_color": "#ffffff",
     "sidebar_bg_color": "#fff",
     "new_label_bg_color": "#3cd7d7",
     "new_label_text_color": "#fff",
@@ -79,7 +79,7 @@
     "other_color": "#ff4c3b",
     "new_color": "#65cb67",
     "sale_color": "#ff3e11",
-    "deal_color": "#252525",
+    "deal_color": "#ffffff",
     "hot_color": "#3cd7d7",
     "search_style": "full_search",
     "eneble_auto_search": true,
@@ -184,7 +184,7 @@
     "trans_age_popup_heading": "{\"en\":\"age varification\", \"fr\":\"verification de l'AGE\", \"ar\":\"تاكيد السن\", \"de\":\"Altersverifikation\", \"it\":\"Verifica dell'età\"}",
     "age_popup_text": "This Website requires you to be 18 years or older to enter. Please enter your Date Of Birth in this fields below in order to continue",
     "trans_age_popup_text": "{\"en\":\"This Website requires you to be 18 years or older to enter. Please enter your Date Of Birth in this fields below in order to continue\", \"fr\":\"Pour accéder à ce site Web, vous devez être âgé de 18 ans ou plus. Veuillez entrer votre date de naissance dans les champs ci-dessous pour continuer\", \"ar\":\"يتطلب هذا الموقع أن يكون عمرك 18 عامًا أو أكثر للدخول. الرجاء إدخال تاريخ الميلاد في هذه الحقول أدناه للمتابعة\", \"de\":\"Für diese Website müssen Sie 18 Jahre oder älter sein. Bitte geben Sie unten Ihr Geburtsdatum ein, um fortzufahren\", \"it\":\"Questo sito richiede che tu abbia almeno 18 anni per entrare. Inserisci la tua data di nascita nei campi qui sotto per continuare\"}",
-    "exit_enable": true,
+    "exit_enable": false,
     "exit_color": "#fff",
     "exit_heading": "wait!",
     "trans_exit_heading": "{\"en\":\"wait!\", \"fr\":\"attendre!\", \"ar\":\"انتظر!\", \"de\":\"warten!\", \"it\":\"aspettare!\"}",
@@ -2049,48 +2049,7 @@
           "d2d0d108-f6c5-45bc-9874-7720f31668b6": {
             "type": "select-nav-menu",
             "settings": {
-              "menu_name": "Shop",
-              "trans_menu_name": "",
-              "submenu_linklist": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "1594900799320": {
-            "type": "megamenu",
-            "settings": {
-              "menu_name": "Barbeques \/ Smokers",
-              "trans_menu_name": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": "",
-              "linklist_1": "gas-grills",
-              "linklist_title_1": "Gas Grills",
-              "trans_linklist_title_1": "",
-              "linklist_2": "",
-              "linklist_title_2": "thumbnail image",
-              "trans_linklist_title_2": "",
-              "linklist_3": "",
-              "linklist_title_3": "advanced product",
-              "trans_linklist_title_3": "",
-              "linklist_4": "",
-              "linklist_title_4": "3 column",
-              "trans_linklist_title_4": "",
-              "linklist_5": "",
-              "linklist_title_5": "best layout",
-              "trans_linklist_title_5": ""
-            }
-          },
-          "1593834555870": {
-            "type": "parent-item",
-            "settings": {
-              "menu_name": "Contact",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/pages\/contact-us",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
+              "mainmenu": "main-menu"
             }
           }
         },
@@ -3430,11 +3389,11 @@
         ],
         "settings": {
           "enabled": true,
-          "enabled_fullpage": false,
+          "enabled_fullpage": true,
           "slideshow_width": "full-width",
           "enabled_torn_section": false,
           "slider_height": 100,
-          "enabled_overlay": false,
+          "enabled_overlay": true,
           "overlay_opacity": 0,
           "slider_speed": 3,
           "use_autoplay": false,
@@ -3610,8 +3569,8 @@
           "title": "More Collections",
           "title_color": "#fb711c",
           "use_equal_height": false,
-          "image_ratio": "ratio_square",
-          "image_size": "cover",
+          "image_ratio": "ratio1_2",
+          "image_size": "contain",
           "image_position": "8"
         }
       }

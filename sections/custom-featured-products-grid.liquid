@@ -20,16 +20,18 @@
 
         <div class="{{ column_grid_width }}">
             {% assign block_image = block.settings.image %}
-            <a href="{{ block.page_url }}" >
-            <img src="{{ block.settings.image | img_url: '1370x385' }}"
-             class="img-fluid" alt="{{block.settings.title}}"
-            >
 
-            <h2>
-                {{ block.settings.title }}
-            </h2> 
+            <div class="featured-products-banner">
+               <a href="{{ block.page_url }}" >
+                  <img src="{{ block.settings.image | img_url: '1370x500' , crop: 'center' }}"
+                  class="img-fluid" alt="{{block.settings.title}}"
+                  >
 
-            </a>
+                  <h2 class="dtm-featured-product-title">
+                     {{ block.settings.title }}
+                  </h2> 
+                </a>
+            </div>
       </div>
       {% endfor %}
     </div>

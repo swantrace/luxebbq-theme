@@ -10,7 +10,7 @@
       {% capture blockId %}{{ block.id }}{% endcapture %}
       {% assign collection = collections[block.settings.collection] %}
 
-      {% assign column_grid_width = 'col-md-3 col-sm-12' -%}
+      {% assign column_grid_width = 'col-sm-12 col-md-6 col-lg-3' -%}
 
       <div class="{{ column_grid_width }} p-2">
         <div class="category-banner">
@@ -25,11 +25,10 @@
           </div>        
           {% else %}
             {% assign block_image = block.settings.image %}
-            {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-           <img src="{{ block.settings.image | img_url: '800x' }}" 
-               data-src="{{ block.settings.image | img_url: '800x' }}" 
+           <img src="{{ block.settings.image | img_url: '720x720' , crop: 'center' }}" 
+               data-src="{{ block.settings.image | img_url: '720x720'  , crop: 'center' }}" 
                data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-               data-aspectratio="{{ block_image.aspect_ratio }}" 
+               data-aspectratio="1" 
                data-sizes="full" 
                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
           {% endif %}
@@ -38,9 +37,9 @@
           {% if block.settings.enabled_info %}
           <div class="category-box">
             <a href="{{ block.settings.page_url }}">
-              <h5>
+              <h6>
                 {{ block.settings.title }}
-              </h5>
+              </h6>
             </a>
           </div>
           {% endif %}
