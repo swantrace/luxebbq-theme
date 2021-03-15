@@ -22,7 +22,7 @@
             {% assign block_image = block.settings.image %}
 
             <div class="featured-products-banner">
-               <a href="{{ block.page_url }}" >
+               <a href="{{ block.settings.page_url }}" >
                   <img src="{{ block.settings.image | img_url: '1370x500' , crop: 'center' }}"
                   class="img-fluid" alt="{{block.settings.title}}"
                   >

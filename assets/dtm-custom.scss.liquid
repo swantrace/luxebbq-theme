@@ -1,3 +1,38 @@
+/*=====================
+Header & Footer
+==========================*/
+
+.dtm .pixelstrap a, .dtm .pixelstrap a:hover, .dtm .pixelstrap a:active {
+    font-weight: 500;
+    font-size: 14px;
+    padding-right: 36px;
+    letter-spacing: 0.05em;
+}
+
+.dtm .newsletter-wrap {
+
+    .footer-title h2{
+        font-size: 30px;
+    }
+
+    .parallelograms-group {
+        max-width: 40% !important;
+        .parallelograms{
+            background: {{ settings.footer_newsletter_text_color }};
+        }
+
+        .parallelogram-lt, .parallelogram-rt{
+            width: 5%;
+        }
+
+    }
+
+}
+
+
+/*=====================
+Homepage
+==========================*/
 .home-section-about-block .banner-contain h5{
     width: 35%;
     margin: 0 auto;
@@ -16,8 +51,6 @@
 
 }
 
-
-
 .featured-products-banner {
     padding: 0;
     position: relative;
@@ -34,8 +67,6 @@
         }
       }
 }
-
-
 
 .dtm-featured-products-section .row{
 
@@ -70,7 +101,7 @@
     padding: 30px 0;
 }
 
-.dtm .title1 .parallelograms-group {
+.dtm .parallelograms-group {
     width: 70%;
     display: flex;
     flex-grow: 1;
@@ -96,6 +127,19 @@
         width: 100%;
     }
 
+}
+
+.slick-vertical .slick-slide{
+    border: none !important; 
+}
+
+
+.dtm .two-columns-section  .parallelograms-group{
+    max-width: 40% !important;
+
+    .parallelogram-rt, .parallelogram-lt{
+        width: 5%;
+    }
 }
 
 

@@ -1,0 +1,133 @@
+<!-- About section start -->
+{% if section.settings.enabled %}
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<section class="dtm section-b-space{% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding: {{ section.settings.section_padding }}">
+  <div class="container two-columns-section">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 text-center pr-5">
+            <div class="leftside-section">
+                <div class="title1 d-flex justify-content-between align-items-center">
+                    <! -- DTM Title Style -->
+                    {% if section.settings.title != blank %}
+                        <div style="flex-grow: 1;" >
+                        <h2 class="title-inner1 pb-0 mb-0" style="color: {{ section.settings.title_color }};">
+                            {{ section.settings.title }}
+                        </h2>
+                        </div>
+
+                        <div class="parallelograms-group">
+                            <span class="parallelograms parallelogram-lt"> </span>
+                            <span class="parallelograms parallelogram-rt"> </span>
+                            <span class="parallelograms parallelogram-br"> </span>
+                        </div>
+                    {% endif %}
+                    <! --END DTM Title Style -->
+                </div>
+
+                {% assign block_image = section.settings.image %}
+                {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img src="{{ block_image | img_url: '350x340' }}" 
+                data-src="{{ img_url }}" 
+                data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                data-aspectratio="{{ block_image.aspect_ratio }}" 
+                data-sizes="auto" 
+                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid w-100" alt="{{block_image.alt}}" >
+
+            </div>
+        </div>
+
+
+      <div class="col-xl-6 col-lg-6 col-md-12 pl-5">
+        <div class="rightside-section">
+            <div class="title1 d-flex justify-content-between align-items-center">
+
+                <! -- DTM Title Style -->
+                    {% if section.settings.title2 != blank %}
+                        <div style="flex-grow: 1;" >
+                        <h2 class="title-inner1 pb-0 mb-0" style="color: {{ section.settings.title_color }};">
+                            {{ section.settings.title2 }}
+                        </h2>
+                        </div>
+
+                        <div class="parallelograms-group">
+                        <span class="parallelograms parallelogram-lt"> </span>
+                        <span class="parallelograms parallelogram-rt"> </span>
+                        <span class="parallelograms parallelogram-br"> </span>
+
+                        </div>
+                    {% endif %}
+                <! --END DTM Title Style -->
+            </div>
+
+            <div class="about-text">
+              <p class="text-justify " >
+
+              </p>
+            </div>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+<!-- About section  end -->
+
+{% schema %}
+  {
+    "name": "Featured Brands & INS",
+    "settings": [
+      {
+         "type":"checkbox",
+         "id":"enabled",
+         "label":"Enabled",
+         "default":true
+      },
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+	  {
+	    "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+		"info": "Will be scaled down 350x340"
+	  },
+      {
+         "type": "text",
+         "id": "title",
+         "label": "left column title",
+		 "default": "FEATURED BRANDS"
+	  },
+      {
+         "type": "text",
+         "id": "title2",
+         "label": "Right column title",
+		 "default": "LUXE BBQ INSTAGRAM"
+	  },
+      {
+         "type":"color",
+         "id":"title_color",
+         "label":"Title color",
+         "default":"#fb711c"
+    }
+	],
+   "presets":[
+      {
+         "name":"Featured Brands & INS",
+         "category":"DTM"
+      }
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

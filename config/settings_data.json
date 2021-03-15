@@ -64,15 +64,15 @@
     "new_label_text_color": "#fff",
     "sale_label_bg_color": "#111111",
     "sale_label_text_color": "#ffffff",
-    "footer_newsletter_bg_color": "#f9f9f9",
-    "footer_newsletter_text_color": "#111111",
-    "footer_bg_color": "#f9f9f9",
-    "footer_text_color": "#111111",
-    "footer_link_color": "#777777",
-    "footer_social_color": "#111111",
-    "btm_footer_color": "#ffffff",
-    "btm_footer_text_color": "#777",
-    "btm_footer_payment_color": "#777",
+    "footer_newsletter_bg_color": "#ffffff",
+    "footer_newsletter_text_color": "#ffffff",
+    "footer_bg_color": "#111111",
+    "footer_text_color": "#ffffff",
+    "footer_link_color": "#ffffff",
+    "footer_social_color": "#fb711c",
+    "btm_footer_color": "#111111",
+    "btm_footer_text_color": "#ffffff",
+    "btm_footer_payment_color": "#fb711c",
     "header_layout": "header_5",
     "display_sticky_header": true,
     "cart_redirect": "redirect_to_cart",
@@ -427,46 +427,20 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "1536581092978": {
-            "type": "Copyright-footer",
-            "settings": {
-              "copyright_text": "<p>2020 - 21 Powered by Pixelstrap <\/p>",
-              "trans_copyright_text": "{\"en\":\"2020 - 21 Powered by Pixelstrap \", \"fr\":\"2018 - 19 Propulsé par Pixelstrap\", \"ar\":\"2018 - 19 مدعوم من Pixelstrap\", \"de\":\"2018 - 19 Angetrieben durch Pixelstrap\", \"it\":\"2018 - 19 Realizzato da Pixelstrap\"}",
-              "show_payment_icons": true
-            }
-          },
-          "1554731832534": {
-            "type": "Custom-html",
-            "settings": {
-              "footer_logo_max_width": "280",
-              "title": "About",
-              "trans_title": "",
-              "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-              "trans_text": "",
-              "address": "Fiot Fashion Demo Store Demo Store USA",
-              "trans_address": "",
-              "contact_info": "Call Us: <span>123-456-7898<\/span>",
-              "trans_contact_info": "",
-              "email": "Email Us: <span>Support@Fiot.com<\/span>",
-              "trans_email": "",
-              "fax": "",
-              "trans_fax": ""
-            }
-          },
           "1554731840560": {
             "type": "Menu",
             "settings": {
-              "title": "QUICK LINK",
+              "title": "",
               "trans_title": "",
-              "footer_linklist": ""
+              "footer_linklist": "footer-widget-1"
             }
           },
           "1554731846491": {
             "type": "Menu",
             "settings": {
-              "title": "category",
+              "title": "",
               "trans_title": "",
-              "footer_linklist": ""
+              "footer_linklist": "footer"
             }
           },
           "1594903342726": {
@@ -475,20 +449,29 @@
               "title": "Newsletter",
               "trans_title": "",
               "form_url": "",
-              "show_social": true
+              "show_social": false
+            }
+          },
+          "1536581092978": {
+            "type": "Copyright-footer",
+            "settings": {
+              "copyright_text": "<p>©2021 Luxe Barbeque Company<\/p>",
+              "trans_copyright_text": "",
+              "show_payment_icons": true
             }
           }
         },
         "block_order": [
-          "1536581092978",
-          "1554731832534",
           "1554731840560",
           "1554731846491",
-          "1594903342726"
+          "1594903342726",
+          "1536581092978"
         ],
         "settings": {
           "show_transparent_sticky": false,
           "footer_width": "standard-width",
+          "logo": "shopify:\/\/shop_images\/lbc_logo.png",
+          "logo_max_width": "150",
           "section_padding": "70px 0px 70px 0px",
           "enabled_parallax_bg": false,
           "enabled_overlay": false,
@@ -547,7 +530,6 @@
           "1536646212515": {
             "type": "Custom-html",
             "settings": {
-              "footer_logo": "",
               "footer_logo_max_width": "280",
               "title": "About",
               "trans_title": "",
@@ -592,12 +574,7 @@
             "settings": {
               "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
-              "show_payment_icons": true,
-              "payment_img_1": "",
-              "payment_img_2": "",
-              "payment_img_3": "",
-              "payment_img_4": "",
-              "payment_img_5": ""
+              "show_payment_icons": true
             }
           }
         },
@@ -1164,7 +1141,6 @@
           "1537518078125": {
             "type": "Custom-html",
             "settings": {
-              "footer_logo": "",
               "footer_logo_max_width": "280",
               "title": "About",
               "trans_title": "",
@@ -1201,12 +1177,7 @@
             "settings": {
               "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
-              "show_payment_icons": true,
-              "payment_img_1": "",
-              "payment_img_2": "",
-              "payment_img_3": "",
-              "payment_img_4": "",
-              "payment_img_5": ""
+              "show_payment_icons": true
             }
           },
           "1550640457997": {
@@ -1232,7 +1203,6 @@
           "show_transparent_sticky": false,
           "footer_width": "standard-width",
           "section_padding": "0px 0px 0px 0px",
-          "bg_image": "",
           "enabled_parallax_bg": true,
           "enabled_overlay": true,
           "enabled_torn_footer": true
@@ -1263,7 +1233,6 @@
           "1537530692285": {
             "type": "Custom-html",
             "settings": {
-              "footer_logo": "",
               "footer_logo_max_width": "280",
               "title": "About",
               "trans_title": "",
@@ -1277,12 +1246,7 @@
             "settings": {
               "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
-              "show_payment_icons": true,
-              "payment_img_1": "",
-              "payment_img_2": "",
-              "payment_img_3": "",
-              "payment_img_4": "",
-              "payment_img_5": ""
+              "show_payment_icons": true
             }
           },
           "1537530775934": {
@@ -1337,7 +1301,6 @@
           "show_transparent_sticky": false,
           "footer_width": "standard-width",
           "section_padding": "0px 0px 0px 0px",
-          "bg_image": "",
           "enabled_parallax_bg": true,
           "enabled_overlay": true,
           "enabled_torn_footer": true
@@ -2058,7 +2021,7 @@
         ],
         "settings": {
           "logo": "shopify:\/\/shop_images\/lbc_logo.png",
-          "logo_max_width": "250",
+          "logo_max_width": "200",
           "enable_search": true,
           "show_wishlist": true,
           "enable_currency": false
@@ -2143,7 +2106,6 @@
           "show_transparent_sticky": false,
           "footer_width": "standard-width",
           "section_padding": "0px 0px 0px 0px",
-          "footer_logo": "",
           "footer_logo_max_width": "280",
           "show_social": true,
           "title": "Links",
@@ -2160,7 +2122,6 @@
           "1551532982417": {
             "type": "Custom-html",
             "settings": {
-              "footer_logo": "",
               "footer_logo_max_width": "280",
               "title": "About",
               "trans_title": "",
@@ -2233,85 +2194,6 @@
           "section_padding": "110px 0px 60px 0px"
         }
       },
-      "1554730805487": {
-        "type": "insta-feed",
-        "disabled": true,
-        "settings": {
-          "enabled": true,
-          "section_padding": "0px 0px 0px 0px",
-          "enabled_parallax_bg": false,
-          "slideshow_width": "standard-width",
-          "post_limit": "6",
-          "instagram_title": "#Instagram",
-          "trans_instagram_title": "",
-          "insta_user_id": "8295761913",
-          "insta_access_token": "8295761913.aa0cb6f.2914e9f04dd343b8a57d9dc9baca91cc"
-        }
-      },
-      "1554730812690": {
-        "type": "brand-logo",
-        "disabled": true,
-        "blocks": {
-          "1554730812690-0": {
-            "type": "logo_image",
-            "settings": {}
-          },
-          "1554730812690-1": {
-            "type": "logo_image",
-            "settings": {}
-          },
-          "1554730812690-2": {
-            "type": "logo_image",
-            "settings": {}
-          },
-          "1554730812690-3": {
-            "type": "logo_image",
-            "settings": {}
-          },
-          "1554730812690-4": {
-            "type": "logo_image",
-            "settings": {}
-          },
-          "1554730812690-5": {
-            "type": "logo_image",
-            "settings": {}
-          },
-          "1554730812690-6": {
-            "type": "logo_image",
-            "settings": {}
-          }
-        },
-        "block_order": [
-          "1554730812690-0",
-          "1554730812690-1",
-          "1554730812690-2",
-          "1554730812690-3",
-          "1554730812690-4",
-          "1554730812690-5",
-          "1554730812690-6"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "0px 0px 70px 0px",
-          "bg_color": "#ffffff",
-          "enabled_box_layout": true,
-          "img_width": "auto",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": false,
-          "use_arrows": false,
-          "use_dots": false,
-          "use_loop": false,
-          "slidetoshow": 6,
-          "slidetoshow_1367": 5,
-          "slidetoshow_1024": 4,
-          "slidetoshow_767": 3,
-          "slidetoshow_480": 2
-        }
-      },
       "list-collection-template": {
         "type": "list-collection-template",
         "settings": {
@@ -2319,43 +2201,6 @@
           "sort": "alphabetical",
           "grid": "4",
           "img_width": "full",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8"
-        }
-      },
-      "1593955325068": {
-        "type": "timer-offer",
-        "disabled": true,
-        "blocks": {
-          "1593955325068-0": {
-            "type": "Collection",
-            "settings": {
-              "block_padding": "0px 15px 0px 15px",
-              "alignment": "text-center",
-              "position": "p-left",
-              "collection": "20-sale-offer",
-              "enabled_info": true,
-              "title": "Best Deals of the Days",
-              "trans_title": "",
-              "title_color": "#222222",
-              "subtitle": "unique collection sale",
-              "trans_subtitle": "",
-              "subtitle_color": "#000000",
-              "shop_btn_url": "shopify:\/\/collections"
-            }
-          }
-        },
-        "block_order": [
-          "1593955325068-0"
-        ],
-        "settings": {
-          "enabled": true,
-          "section_padding": "0px 0px 0px 0px",
-          "banner_layout": "normal_layout",
-          "grid_per_row": "2",
-          "section_width": "standard-width",
           "use_equal_height": false,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
@@ -3418,6 +3263,7 @@
             "type": "Collection",
             "settings": {
               "image": "shopify:\/\/shop_images\/fireplace-close-up-flames.jpg",
+              "page_url": "shopify:\/\/pages\/pellet-grills",
               "title": "Pellet Grills"
             }
           },
@@ -3425,6 +3271,7 @@
             "type": "Collection",
             "settings": {
               "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "page_url": "shopify:\/\/pages\/gas-grills",
               "title": "Gas Grills"
             }
           },
@@ -3432,6 +3279,7 @@
             "type": "Collection",
             "settings": {
               "image": "shopify:\/\/shop_images\/brushing-bbq-sauce-on-grilled-steak.jpg",
+              "page_url": "shopify:\/\/pages\/smokers",
               "title": "Smokers"
             }
           },
@@ -3573,6 +3421,17 @@
           "image_size": "contain",
           "image_position": "8"
         }
+      },
+      "161579579914c45978": {
+        "type": "custom-sponsors-and-ins-section",
+        "settings": {
+          "enabled": true,
+          "section_padding": "50px 0 50px 10px",
+          "image": "shopify:\/\/shop_images\/LuxeBBQ_brand-02.png",
+          "title": "FEATURED BRANDS",
+          "title2": "LUXE BBQ INSTAGRAM",
+          "title_color": "#fb711c"
+        }
       }
     },
     "content_for_index": [
@@ -3580,11 +3439,9 @@
       "16154556628bfa7323",
       "161552166845bd5aa7",
       "1615442735421b11d9",
-      "1615445549b17595a2",
       "1615529853a3d387ef",
-      "1554730805487",
-      "1593955325068",
-      "1554730812690"
+      "1615445549b17595a2",
+      "161579579914c45978"
     ]
   }
 }

@@ -1,5 +1,5 @@
 <!--footer section -->
-<footer class="{% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %}{% if section.settings.enabled_parallax_bg %}p-0 full-banner parallax {% endif %}  bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}" 
+<footer class="dtm {% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %}{% if section.settings.enabled_parallax_bg %}p-0 full-banner parallax {% endif %}  bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}" 
          style="background-image: url({{ section.settings.bg_image | img_url: 'master'}});">
   <section class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %}light-layout{% endunless %}" 
            style="padding: {{ section.settings.section_padding }};
@@ -88,16 +88,13 @@
             </div>
           </div>
           {% elsif block.type == 'Menu' %}
-          <div class="col">
+          <div class="col-sm-12 col-md-6 col-lg-3">
             <div class="sub-title">
-              <div class="footer-title">
+              {% comment %} <div class="footer-title">
                 <h4 style="color: {{ settings.footer_text_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer1_{{blockId}}_menu_title"{% endif %}>
                   {{ block.settings.title }}
                 </h4>
-                {% if settings.enable_lang_switcher %}
-                <span class="hide" id="footer1_{{blockId}}_menu_title">{{ block.settings.trans_title | raw }}</span>
-                {% endif %}
-              </div>
+              </div> {% endcomment %}
               <div class="footer-contant">
                 <ul>
                   {% if block.settings.footer_linklist != blank %} 
@@ -182,17 +179,22 @@
           </div>
           {% elsif block.type == 'newsletter' %}
           <div class="col form-p ">
-            <div class="sub-title">
-              <div class="footer-title">
-                <h4 style="color: {{ settings.footer_newsletter_text_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer2_{{blockId}}_newsltr_title"{% endif %}>
+            <div class="sub-title newsletter-wrap">
+              <div class="footer-title d-flex justify-content-between align-items-center" style="flex-grow: 1;">
+                <h2 style="color: {{ settings.footer_newsletter_text_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer2_{{blockId}}_newsltr_title"{% endif %}>
                   {{ block.settings.title }}
-                </h4>
-                {% if settings.enable_lang_switcher %}
-                <span class="hide" id="footer2_{{blockId}}_info_title">{{ block.settings.trans_title | raw }}</span>
-                {% endif %}
+                </h2>
+ 
+                <div class="parallelograms-group">
+                  <span class="parallelograms parallelogram-lt"> </span>
+                  <span class="parallelograms parallelogram-rt"> </span>
+
+                  <span class="parallelograms parallelogram-br"> </span>
+                </div>
+
               </div>
               <div class="footer-contant">
-                <p> Join 40.00+ Subscribers and get a new discount coupon </p>
+                <p style="color: {{ settings.footer_newsletter_text_color }};" class="py-3">Promotions, new products and sales. </p>
                 <form action="{{ section.settings.form_url }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                   <div id="mc_embed_signup_scroll">
                     <div class="form-group">
@@ -262,18 +264,23 @@
         {% capture blockId %}{{ block.id }}{% endcapture %}
         {% if block.type == 'Copyright-footer' %}
         <div class="row">
-          <div class="col-xl-6 col-md-6 col-sm-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 text-center">
+
+            <div class="brand-logo" itemscope itemtype="http://schema.org/Organization">
+              <a href="/" itemprop="url"> 
+                <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+              </a>
+            </div>
+
+
             {% if block.settings.copyright_text != blank %}
             <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer1_{{blockId}}_copyright_text"{% endif %}>
               {{ block.settings.copyright_text }}              
             </div>
-            {% if settings.enable_lang_switcher %}
-            <span class="hide" id="footer1_{{blockId}}_copyright_text">{{ block.settings.trans_copyright_text | raw }}</span>
-            {% endif %}
             {% endif %}
           </div>
           {% if block.settings.show_payment_icons %}
-          <div class="col-xl-6 col-md-6 col-sm-12">
+          <div class="col-xl-12 col-md-12 col-sm-12 text-center">
             <div class="payment-card-bottom">
               {% unless shop.enabled_payment_types == empty %}
               {% assign enabled_payment_types = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,google_pay,interac,jcb,klarna,litecoin,maestro,master,paypal,stripe,shopify_pay,visa' | remove: ' ' | split: ',' %}
@@ -330,6 +337,17 @@
             }
          ],
          "default":"standard-width"
+      },
+      {  
+         "type":"image_picker",
+         "id":"logo",
+         "label":"Logo image"
+      },
+      {  
+         "type":"text",
+         "id":"logo_max_width",
+         "label":"Custom logo width (in pixels)",
+         "default":"200"
       },
       {
          "type":"text",

@@ -484,7 +484,7 @@ button[disabled]{cursor:not-allowed;}
     margin-bottom: 30px;
     position: relative;
     font-size: 30px;
-    font-weight: 500;
+    font-weight: 600;
     {% comment %} 
     &:after{
       position: absolute;
@@ -900,7 +900,7 @@ header {
   &.header-5 {
     position: absolute;
     width: 100%;
-    background-color: transparent;
+    {% comment %} background-color: transparent; {% endcomment %}
     transition: .5s ease-in-out;
     &.header-5-inner{
       position: relative;
@@ -933,13 +933,13 @@ header {
           padding-top: 40px;
           padding-right: 0;
           &.mobile-account {
-            padding: 40px 15px 15px !important;
+            padding: 40px 10px 10px !important;
             &:before {
               display: none;
             }
           }
           &.mobile-wishlist {
-            padding: 40px 15px 15px !important;
+            padding: 40px 10px 10px !important;
           }
         }
         .onhover-dropdown {
@@ -1713,7 +1713,7 @@ header {
     .icon-nav {
       display: inline-block;
       li {
-        padding-left: 20px;
+        padding-left: 10px;
         img{
           height: auto;
           width: 30px;
@@ -6573,6 +6573,11 @@ footer{
       text-transform: uppercase;
       font-weight: 700;
     }
+
+    li:first-child{
+      padding-top: 0;
+    }
+
     li {
       position: relative;
       display: inherit;
@@ -6583,6 +6588,8 @@ footer{
       a {
         position: relative;
         color:$grey;
+        letter-spacing: 0.05em;
+
         &:before {
           content: "";
           position: absolute;
