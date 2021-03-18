@@ -197,8 +197,13 @@
                 <p style="color: {{ settings.footer_newsletter_text_color }};" class="py-3">Promotions, new products and sales. </p>
                 <form action="{{ section.settings.form_url }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                   <div id="mc_embed_signup_scroll">
-                    <div class="form-group">
-                      <input type="email" class="required email form-control"  value="" name="EMAIL" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" id="mce-EMAIL" required>
+                    <div class="dtm-subscription-inner-wrapper">
+                      <div class="form-group">
+                        <input type="email" class="required email form-control"  value="" name="EMAIL" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" id="mce-EMAIL" required>
+                      </div>
+                      <button type="submit" class="btn btn-solid" name="subscribe" id="mc-embedded-subscribe" {% if settings.enable_lang_switcher %}data-trans-key="general.newsletter_form.submit"{%endif%}>
+                        {{ 'general.newsletter_form.submit' | t }}
+                      </button>
                     </div>
                     <div id="mce-responses" class="clear">
                       <div class="response" id="mce-error-response" style="display:none"></div>
@@ -208,7 +213,6 @@
                     <div style="position: absolute; left: -5000px;" hidden>
                       <input type="text" name="b_17af379706d80b694776f991f_9ebb72e4d2" tabindex="-1" value="">
                     </div>
-                    <button type="submit" class="btn btn-solid" name="subscribe" id="mc-embedded-subscribe" {% if settings.enable_lang_switcher %}data-trans-key="general.newsletter_form.submit"{%endif%}>{{ 'general.newsletter_form.submit' | t }}</button>
                   </div>
                 </form>
               {% if block.settings.show_social %}

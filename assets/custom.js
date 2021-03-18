@@ -36987,5 +36987,16 @@ customElements.define('product-list', (0, _haunted.component)(productList));
 require("./apollo-client");
 
 require("./components/index");
+
+document.addEventListener('DOMContentLoaded', () => {
+  var _activeParentLinkElem;
+
+  // add active class to menu item
+  const path = window.location.pathname;
+  const navigationElement = document.querySelector('#main-menu');
+  const activeLinkElement = navigationElement === null || navigationElement === void 0 ? void 0 : navigationElement.querySelector(`[href*="${path}"]`);
+  const activeParentLinkElement = activeLinkElement === null || activeLinkElement === void 0 ? void 0 : activeLinkElement.closest('#main-menu>li>a');
+  activeParentLinkElement === null || activeParentLinkElement === void 0 ? void 0 : (_activeParentLinkElem = activeParentLinkElement.classList) === null || _activeParentLinkElem === void 0 ? void 0 : _activeParentLinkElem.add('active');
+});
 },{"./apollo-client":"apollo-client.js","./components/index":"components/index.js"}]},{},["index.js"], null)
 //# sourceMappingURL=/custom.js.map
