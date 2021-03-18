@@ -35,9 +35,10 @@
                     </div>
                   </li>
                   {% for block in section.blocks %}
+                  <h1>{{ block.settings.menu_link }}</h1>
                   {% capture blockId %}{{ block.id }}{% endcapture %}
                   {% if block.type == 'parent-item' %}
-                  <li class="{%- if forloop.index == 1 -%} current {%- endif -%}" >
+                  <li class="{%- if forloop.index == 1 -%}current{%- endif -%}" >
                     <a href="{{ block.settings.menu_link }}">
                       <span {% if settings.enable_lang_switcher %}class="lang_trans border-menu" data-trans="#header1_{{blockId}}_menu_name"{% endif %}>
                         {{ block.settings.menu_name }}
@@ -321,21 +322,39 @@
               </nav>
             </div>
           </div>
-          <div class="menu-right pull-right">
+          <div class="menu-right pull-right main-icons">
             <div class="top-header">
               <ul class="header-dropdown">
-                {% if settings.show_catelogue != true %}
-                {% if section.settings.show_wishlist %}
-                <li class="mobile-wishlist"><a href="/pages/wishlist">
-                  <img src="{{ 'heart.png' | asset_img_url : '25x' }}" alt="wishlist">
-                  </a>
+                {% if section.settings.enable_search %}
+                <li class="onhover-div mobile-search">
+                  <div>
+                    <i class="bi bi-search dtm-header-icon" style="color: white;"></i>
+                    <i class="ti-search search-open" onclick="openSearch()"></i>
+                  </div>
+                  <div id="search-overlay" class="search-overlay">
+                    <div>
+                      <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                      <div class="overlay-content">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-xl-12">
+                              <form action="/search" method="get" role="search">
+                                <div class="form-group">
+                                  <input type="search" class="form-control" name="q" placeholder="{{ 'general.search.placeholder' | t: terms: search.terms }}">
+                                </div>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 {% endif %}
-                {% endif %}
-
                 {% if settings.show_catelogue != true %}
                 <li class="onhover-dropdown mobile-account">
-                  <img src="{{ 'avatar.png' | asset_img_url : '25x' }}" alt="">
+                  <i class="bi bi-person-fill dtm-header-icon" style="color: white"></i>
                   <ul class="onhover-show-div">
                     <li>
                       {% if customer %}
@@ -362,15 +381,49 @@
                   </ul>
                 </li>
                 {% endif %}
+                {% if settings.show_catelogue != true %}
+                {% if section.settings.show_wishlist %}
+                <li class="mobile-wishlist">
+                  <a href="/pages/wishlist">
+                    <i class="bi bi-heart dtm-header-icon"></i>
+                  </a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% if settings.show_catelogue != true %}
+                <li class="onhover-div mobile-cart">
+                  <div>
+                    {% if settings.cart_redirect == 'redirect_to_cart'%}
+                    <a href="/cart">
+                      {% endif %}
+                      <i class="bi bi-cart3 dtm-header-icon" style="color: white;"></i>
+                      <i class="ti-shopping-cart"></i>
+                      {% if settings.cart_redirect == 'redirect_to_cart'%}
+                    </a>
+                    {% endif %}
+
+                    <span class="cart_qty_cls">
+                      {{ cart.item_count }}
+                    </span>
+                  </div>
+
+                  {% if settings.cart_redirect == 'ajax_cart' and settings.add_to_cart_style == 'fly_cart' %}
+                  <ul class="show-div shopping-cart" id="cart_container_id">
+                  </ul>
+                  {% endif %}
+                </li>
+                {% endif %}
               </ul>
             </div>
-            <div>
+            <div class="original-wrapper-for-search-and-cart">
               <div class="icon-nav">
                 <ul>
                   {% if section.settings.enable_search %}
                   <li class="onhover-div mobile-search">
-                    <div><img src="{{ 'search.png' |   asset_img_url : '30x'  }}" onclick="openSearch()" class="img-fluid search-open" alt="">
-                      <i class="ti-search search-open" onclick="openSearch()"></i></div>
+                    <div>
+                      <i class="bi bi-search dtm-header-icon" style="color: white;"></i>
+                      <i class="ti-search search-open" onclick="openSearch()"></i>
+                    </div>
                     <div id="search-overlay" class="search-overlay">
                       <div>
                         <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
@@ -416,7 +469,7 @@
                       {% if settings.cart_redirect == 'redirect_to_cart'%}
                       <a href="/cart">
                         {% endif %}
-                        <img src="{{ 'cart.png' | asset_img_url : '35x' }}" class="img-fluid fixed_cart" alt="" >
+                        <i class="bi bi-cart3 dtm-header-icon" style="color: white;"></i>
                         <i class="ti-shopping-cart"></i>
                         {% if settings.cart_redirect == 'redirect_to_cart'%}
                       </a>
@@ -793,7 +846,7 @@
 {% endschema %}
 
 {% stylesheet %}
-{% endstylesheet %}
 
+{% endstylesheet %}
 {% javascript %}
 {% endjavascript %}

@@ -1,11 +1,23 @@
 /*=====================
+global Settings
+==========================*/
+$theme-deafult: #fb711c;
+
+.image-overlay
+{
+    filter: brightness(60%);
+}
+
+
+
+/*=====================
 Header & Footer
 ==========================*/
 
 .dtm .pixelstrap a, .dtm .pixelstrap a:hover, .dtm .pixelstrap a:active {
     font-weight: 500;
-    font-size: 14px;
-    padding-right: 36px;
+    font-size: 12px;
+    padding-right: 35px;
     letter-spacing: 0.05em;
 }
 
@@ -31,6 +43,81 @@ Header & Footer
 
 
 /*=====================
+Landing Pages
+==========================*/
+.dtm .full-banner{
+
+    .landing-page-title{
+        color:#fff;
+        font-size: 40px;
+    }
+}
+
+
+.about-section p{
+    color: #111;;
+}
+
+
+/*=====================
+Product Pages
+==========================*/
+.share-buttons{
+    display:flex;
+}
+
+.product-right{
+
+    .product_price{
+        font-weight: 600;
+    }
+
+    .product-icon{
+        .wishlist-btn span{
+            font-size: 15px;
+            color: $theme-deafult;
+        }
+    }
+
+    .qty-box{
+        margin-bottom: 25px;
+    }
+}
+
+.collection-wrapper .slider-nav .slick-slide{
+    max-width: 150px !important;
+}
+
+.product-icon {
+
+    .share-btn, .compare-btn{
+        background-color: transparent;
+        border: none;
+        color: $theme-deafult;
+        i {
+          font-size: 15px;
+          padding-left: 10px;
+          margin-left: 15px;
+          transition: all 0.5s ease;
+          color: $theme-deafult;
+        }
+        span {
+          padding-left: 6px;
+          font-size: 15px;
+          color: $theme-deafult;
+        }
+        &:hover {
+          i {
+            color: $theme-deafult;
+            transition: all 0.5s ease;
+          }
+        }
+    }
+
+}
+
+
+/*=====================
 Homepage
 ==========================*/
 .home-section-about-block .banner-contain h5{
@@ -47,6 +134,12 @@ Homepage
 
     a{
         color: {{ settings.primary_button_text_color }};
+
+        h4{
+            font-size:15px;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
     }
 
 }
