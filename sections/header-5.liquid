@@ -321,13 +321,14 @@
               </nav>
             </div>
           </div>
-          <div class="menu-right pull-right">
+          <div class="menu-right pull-right main-icons">
             <div class="top-header">
               <ul class="header-dropdown">
                 {% if settings.show_catelogue != true %}
                 {% if section.settings.show_wishlist %}
-                <li class="mobile-wishlist"><a href="/pages/wishlist">
-                  <img src="{{ 'heart.png' | asset_img_url : '25x' }}" alt="wishlist">
+                <li class="mobile-wishlist">
+                  <a href="/pages/wishlist">
+                    <i class="bi bi-heart dtm-header-icon"></i>
                   </a>
                 </li>
                 {% endif %}
@@ -335,7 +336,7 @@
 
                 {% if settings.show_catelogue != true %}
                 <li class="onhover-dropdown mobile-account">
-                  <img src="{{ 'avatar.png' | asset_img_url : '25x' }}" alt="">
+                  <i class="bi bi-person-fill dtm-header-icon" style="color: white"></i>
                   <ul class="onhover-show-div">
                     <li>
                       {% if customer %}
@@ -369,8 +370,10 @@
                 <ul>
                   {% if section.settings.enable_search %}
                   <li class="onhover-div mobile-search">
-                    <div><img src="{{ 'search.png' |   asset_img_url : '30x'  }}" onclick="openSearch()" class="img-fluid search-open" alt="">
-                      <i class="ti-search search-open" onclick="openSearch()"></i></div>
+                    <div>
+                      <i class="bi bi-search dtm-header-icon" style="color: white;"></i>
+                      <i class="ti-search search-open" onclick="openSearch()"></i>
+                    </div>
                     <div id="search-overlay" class="search-overlay">
                       <div>
                         <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
@@ -416,7 +419,7 @@
                       {% if settings.cart_redirect == 'redirect_to_cart'%}
                       <a href="/cart">
                         {% endif %}
-                        <img src="{{ 'cart.png' | asset_img_url : '35x' }}" class="img-fluid fixed_cart" alt="" >
+                        <i class="bi bi-cart3 dtm-header-icon" style="color: white;"></i>
                         <i class="ti-shopping-cart"></i>
                         {% if settings.cart_redirect == 'redirect_to_cart'%}
                       </a>
@@ -793,7 +796,36 @@
 {% endschema %}
 
 {% stylesheet %}
+.dtm .top-header .header-dropdown li a:hover i {
+  color: #eee;
+  transition: all 0.5s ease;
+}
+@media (min-width: 578px){
+  .header-5 .main-menu .menu-right .icon-nav .mobile-search i.dtm-header-icon, .header-5 .main-menu .menu-right .icon-nav .mobile-cart i.dtm-header-icon, .header-5 .main-menu .menu-right .icon-nav .mobile-setting i.dtm-header-icon {
+    display: inline;   
+  }
+}
+i.dtm-header-icon {
+  font-size: 22px !important;
+  padding-right: 10px !important;
+}
+header.header-5.dtm .top-header .header-dropdown > li{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.dtm .main-menu .menu-right .icon-nav li.mobile-cart {
+    padding-left: 0 !important;
+}
+.dtm .main-menu .menu-right .icon-nav li.mobile-search {
+    padding-left: 0 !important;
+}
+.dtm .main-icons {
+  padding-right: 40px;
+}
+.dtm .cart_qty_cls {
+  top: 35%;
+  right: 0px;
+}
 {% endstylesheet %}
-
 {% javascript %}
 {% endjavascript %}
