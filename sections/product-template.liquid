@@ -162,18 +162,17 @@
                       <div id="sold-out" class="sold_notify_form">
                         {% form 'contact' %}
                         {% if form.posted_successfully? %}
-                        <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
+                          <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
                         {% else %}
-                        <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when 
+
+                        {% comment %} <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when 
                           {% assign data_title = product.title | split: '|' | first %}
                           {% assign data_json = product.title | split: '|' | last %}
                           <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#product-three-col-template{{product.id}}_pro_title"{% endif %}>
                             {{ data_title }}
                           </span>
-                          {% if settings.enable_lang_switcher %}
-                          <span class="hide" id="product-three-col-template{{product.id}}_pro_title">{{ data_json | raw }}</span>
-                          {% endif %}
-                          becomes available.</p>
+                          becomes available.</p> {% endcomment %}
+
                         {% endif %}
                         {% if form.errors %}
                         <div class="error feedback accent-text">
@@ -225,7 +224,7 @@
                         {% endif %}
                       {% endif %} 
 
-                        <div class="product-description border-product">
+                        <div class="product-description">
                           {% if product.options contains 'Size' or product.options contains 'size' %}
                           <h6 class="product-title size-text">
                             select size 
@@ -235,6 +234,49 @@
                             {% endif %}
                           </h6>
                           {% endif %}
+
+                       <div class="share-buttons py-3">
+
+                        <!-- ========================= share button ========================= -->
+                          <div class="product-icon">
+                            <div class="share-btn">
+                                <a class="action--wishlist tile-actions--btn flex " href="javascript:void(0)">
+                                <i class="ti-sharethis btn--main pl-0 ml-0" aria-hidden="true"></i>
+                                </a>
+                              <span class="title-font" style="">Share</span>
+                            </div>
+                          </div>
+                
+                         {% comment %} {% if section.settings.show_share_buttons %}
+                          <h6 class="product-title" {% if settings.enable_lang_switcher %}data-trans-key="products.product.social_share"{%endif%}>{{ 'products.product.social_share' | t }}</h6>
+                         {% endif %} {% endcomment %}
+
+
+                         <div class="product-icon">
+
+                           {% comment %} {% if section.settings.show_share_buttons %}
+                            {% include 'social-sharing' , share_title: product.title, share_permalink: product.url, share_image: product %}
+                           {% endif %} {% endcomment %}
+
+                           <!-- ========================= wishlist button ========================= -->
+                           <div class="wishlist-btn">
+                             {% include 'wishlist-button' %}
+                             <span class="title-font" style="">Added To Favourite</span>
+                           </div>
+                         </div>
+                        
+                        <!-- ========================= compare button ========================= -->
+                        <div class="product-icon">
+                           <div class="compare-btn">
+                              <a class="action--wishlist tile-actions--btn flex" href="javascript:void(0)" data-product-handle="{{ product.handle }}">
+                              <i class="fa fa-balance-scale btn--main" aria-hidden="true"></i>
+                              </a>
+                             <span class="title-font" style="">Compare</span>
+                           </div>
+                          </div>
+
+
+                      </div>
 
                           {% if section.settings.show_product_inventory %}
                           <div class="pro_inventory" style="width: 80%;"> 
@@ -259,13 +301,13 @@
                           {% if section.settings.show_qty_selector %}
                           <div class="qty-box">
                             <div class="input-group">
-                              <span class="input-group-prepend">
+                              <span class="input-group-prepend mr-2">
                                 <button type="button" class="btn quantity-left-minus" data-type="minus" data-field="">
                                   <i class="ti-angle-left"></i>
                                 </button>
                               </span>
                               <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-                              <span class="input-group-prepend">
+                              <span class="input-group-prepend ml-2">
                                 <button type="button" class="btn quantity-right-plus" data-type="plus" data-field="">
                                   <i class="ti-angle-right"></i>
                                 </button>
@@ -277,10 +319,10 @@
                         </div>
 
 
-                        <div class="border-product"></div>
+                       
                         {% if settings.show_catelogue != true %}
                         <div class="product-buttons">
-                          <button type="submit" id="addtocart_btn_id" class="add_to_cart_btn_cls cart_btn_class btn btn-solid" {% unless current_variant.available %}disabled="disabled"{% endunless %} {% if settings.enable_lang_switcher %}data-trans-key="products.product.add_to_cart"{%endif%}>{{ 'products.product.add_to_cart' | t }}</button>
+                          <button type="submit" id="addtocart_btn_id" class="add_to_cart_btn_cls cart_btn_class btn btn-solid" {% unless current_variant.available %}disabled="disabled"{% endunless %} {% if settings.enable_lang_switcher %}data-trans-key="products.product.add_to_cart"{%endif%}>Add to cart &nbsp;&nbsp;&nbsp;>></button>
                           {% if section.settings.show_buy_now_btn %}
                           <div class="dynamic-payment-button ml-2">
                             <div data-shopify="payment-button" class="shopify-payment-button">
@@ -292,53 +334,25 @@
                         </div>
                         {% endif %}
                         
-                        {% if section.settings.show_inquiry_form %}
-                        <div class="product-title cate-mode  mb-2">
-                          <h6 class="mb-1">Please <a href="mailto:{{ shop.email }}">contact us</a> if you are interested in this product.</h6>
-                          <span>
-                            <a href="" data-toggle="modal" data-target="#product-inquiry" {% if settings.enable_lang_switcher %}data-trans-key="products.product.ask_abt_pro"{%endif%}>{{ 'products.product.ask_abt_pro' | t }}</a>
-                          </span>
-                        </div>
-                        {% endif %}
                         
-                        <div class="border-product">
+                        <div class="">
                           {% if section.settings.show_product_desc %}
                           <div>
                             <h6 class="product-title" {% if settings.enable_lang_switcher %}data-trans-key="products.product.pro_details"{%endif%}>
                               {{ 'products.product.pro_details' | t }}
                             </h6>
                             <div class="pro-desc">
-                              {% if settings.enable_lang_switcher %}
-                              {% assign lang-array = product.description | split: '|' %}
-                              {% for lang in lang-array %}
-                              <span class="lang{{ forloop.index }}">{{ lang | truncatewords: 30 }}</span>
-                              {% endfor %}
-                              {% else %}
-                              {{ product.description | split: '[countdowntimer-date-start]' | first | truncatewords: 30 }}
-                              {% endif %}
+
+                              {{ product.description | split: '[countdowntimer-date-start]'  }}
                             </div>
                           </div>
                           {% endif %}
                         </div>
                       </form>
                       
-                       <div class="border-product">
-                         {% if section.settings.show_share_buttons %}
-                         <h6 class="product-title" {% if settings.enable_lang_switcher %}data-trans-key="products.product.social_share"{%endif%}>{{ 'products.product.social_share' | t }}</h6>
-                         {% endif %}
-                         <div class="product-icon">
-                           {% if section.settings.show_share_buttons %}
-                           {% include 'social-sharing' , share_title: product.title, share_permalink: product.url, share_image: product %}
-                           {% endif %}
-                           <!-- ========================= wishlist button ========================= -->
-                           <div class="wishlist-btn">
-                             {% include 'wishlist-button' %}
-                             <span class="title-font" style="">Added To WishList</span>
-                           </div>
-                         </div>
-                      </div>
 
-                      {% if product.description contains '[countdowntimer-date-start]' %}
+
+                      {% comment %} {% if product.description contains '[countdowntimer-date-start]' %}
                       {% if section.settings.show_countdown_timer %}
                       <div class="border-product">
                         <h6 class="product-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#pro_{{sectionId}}_countdown_timer_title"{% endif %}>
@@ -354,9 +368,9 @@
                         </div>
                       </div>
                       {% endif %}
-                      {% endif %}
+                      {% endif %} {% endcomment %}
 
-                      {% if section.settings.show_trust_badges %}
+                      {% comment %} {% if section.settings.show_trust_badges %}
                       <div class="border-product">
                         <div class="trust-badges">
                           {% assign block_image = section.settings.trust_badge_img %}
@@ -369,18 +383,21 @@
                                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="badges" >
                         </div>
                       </div>      
-                      {% endif %}
+                      {% endif %} {% endcomment %}
 
                     </div>
-                  {% assign bundle_product = false %}
+
+
+                  {% comment %} {% assign bundle_product = false %}
                   {% for tag in product.tags %}
-                  {% if tag contains 'bundle_' %}
-                  {% assign bundle_product = true %}
-                  {% endif %}
+                    {% if tag contains 'bundle_' %}
+                      {% assign bundle_product = true %}
+                    {% endif %}
                   {% endfor %}
                   {% if bundle_product %}
                   {% include 'product-bundle' %}
-                  {% endif %}  
+                  {% endif %}  {% endcomment %}
+
               </div>
              
             </div>
@@ -461,7 +478,7 @@
         </button>
       </div>
       <div class="modal-body">
-        {% form 'contact', class: 'theme-form' %}
+        {% form 'contact', class: 'theme-form mt-2' %}
 
         {% if form.posted_successfully? %}
         <p class="alert alert-success">
@@ -512,8 +529,8 @@ $(document).ready(function () {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
-     autoplay:true,
-     autoplaySpeed:1500,
+    autoplay:false,
+     //autoplaySpeed:1500,
     fade: true,
     adaptiveHeight: true,
     asNavFor: '.slider-nav'
@@ -605,7 +622,7 @@ $(document).ready(function () {
       jQuery('.pro_sku span').text(variant.sku);
       jQuery('.in-stock').show();
       jQuery('.out-of-stock').hide();
-      jQuery('.sold_notify_form').hide();
+      //jQuery('.sold_notify_form').hide();
       jQuery('.pro_inventory p, .inventory-scroll').each(function() {
         var inventry_val = jQuery(this).attr('data-value');
         if(inventry_val == var_title){
@@ -699,7 +716,7 @@ $(document).ready(function () {
 
   });
   {% if section.settings.eneble_img_zoom %}
-  if($(window).width() > 991){
+  if($(window).width() > 999991){
     $('.product-right-slick, .product-slick').on('afterChange', function(event, slick, currentSlide, nextSlide){
       var img_url_temp = $(this).find('img').attr('src');
       var imgs = $('.image_zoom_cls');
@@ -715,7 +732,7 @@ $(document).ready(function () {
       }, 300);
     });
   }
-  if($(window).width() > 991){
+  if($(window).width() > 99999991){
     setTimeout(function(){
       $(".slick-current .main_img").elevateZoom({
         zoomType: "inner",
@@ -753,20 +770,20 @@ $(document).ready(function () {
   {% endif %}
   {% endif %}
 
-  $(document).ready(function () {
-    $('.image-360').click(function(){
-      $('body').addClass('show-360');
+  // $(document).ready(function () {
+  //   $('.image-360').click(function(){
+  //     $('body').addClass('show-360');
 
-    });
-    $('.close-360').click(function(){
-      $('body').removeClass('show-360');
-    });
-    $('#notify-me').click(function() {
-      jQuery('#notify-me-wrapper').fadeIn();           
-      return false;
-    });
+  //   });
+  //   $('.close-360').click(function(){
+  //     $('body').removeClass('show-360');
+  //   });
+  //   $('#notify-me').click(function() {
+  //     jQuery('#notify-me-wrapper').fadeIn();           
+  //     return false;
+  //   });
 
-  });
+  // });
 
 </script>
 

@@ -248,7 +248,7 @@ button , select{
   }
 }
 section ,.section-t-space{
-  padding-top: 70px;
+  padding-top: 80px;
 }
 .section-b-space {
   padding-bottom: 70px;
@@ -3844,7 +3844,7 @@ header {
    background-position: center !important;
   @for $i from 1 through 20 {
     &.parallax-banner#{$i} {
-      background-image:url("../images/parallax/#{$i}.jpg");
+      {% comment %} background-image:url("../images/parallax/#{$i}.jpg"); {% endcomment %}
     }
   }
   &.parallax-layout {
@@ -8149,7 +8149,6 @@ footer{
       line-height: 1;
       i{
         font-weight: 900;
-        color: $dark-font;
       }
     }
     .icon {
@@ -8615,6 +8614,7 @@ footer{
     margin-bottom: 15px;
     font-size: 25px;
     line-height: 1.2em;
+    font-weight: 600;
   }
   h3 {
     font-size: 26px;
@@ -8717,7 +8717,7 @@ footer{
         justify-content: unset;
         width: unset;
         .form-control {
-          border-right: none;
+
         }
       }
     }
@@ -8783,21 +8783,20 @@ footer{
     .wishlist-btn {
       background-color: transparent;
       border: none;
-      color: $theme-deafult;
+      color: #fb711c;
       i {
-        border-left: 1px solid $round-border;
-        font-size: 18px;
+        font-size: 15px;
         padding-left: 10px;
         margin-left: 15px;
         transition: all 0.5s ease;
       }
       span {
-        padding-left: 10px;
-        font-size: 18px;
+        padding-left: 6px;
+        font-size: 15px;
       }
       &:hover {
         i {
-          color: $theme-deafult;
+          color: #fb711c;
           transition: all 0.5s ease;
         }
       }

@@ -107,28 +107,28 @@
     "eneble_upsell_products": false,
     "related_pro_title": "Customers who bought this item also.",
     "trans_related_pro_title": "{\"en\":\"Customers who bought this item also.\", \"fr\":\"Les clients qui ont acheté cet article aussi.\", \"ar\":\"الزبائن الذين اشتروا هذا البند أيضا.\",  \"de\":\"Kunden, die diesen Artikel auch gekauft haben.\", \"it\":\"I clienti che hanno acquistato questo articolo anche\"}",
-    "enable_360_view": true,
-    "display_prev_next_product": true,
-    "catgory_title": "Category",
-    "trans_catgory_title": "{\"en\":\"category\", \"fr\":\"Catégorie\", \"ar\":\"الفئة\", \"de\":\"Kategorie\", \"it\":\"categoria\"}",
-    "category_enable": true,
+    "enable_360_view": false,
+    "display_prev_next_product": false,
+    "catgory_title": "",
+    "trans_catgory_title": "",
+    "category_enable": false,
     "category_limit": 5,
     "category_menu": "category",
     "Sidebar_service_1": "shopify:\/\/shop_images\/1.png",
-    "service_title_1": "Free Shipping",
-    "trans_service_title_1": "{\"en\":\"free shipping\", \"fr\":\"livraison gratuite\", \"ar\":\"الشحن مجانا\", \"de\":\"kostenloser Versand\", \"it\":\"spedizione gratuita\"}",
-    "service_text_1": "Free Shipping World Wide",
-    "trans_service_text_1": "{\"en\":\"Free Shipping World Wide\", \"fr\":\"Envoi gratuit dans le monde entier\", \"ar\":\"شحن مجاني في جميع أنحاء العالم\", \"de\":\"Kostenloser Versand weltweit\", \"it\":\"Spedizione gratuita in tutto il mondo\"}",
+    "service_title_1": "",
+    "trans_service_title_1": "",
+    "service_text_1": "",
+    "trans_service_text_1": "",
     "Sidebar_service_2": "shopify:\/\/shop_images\/3_f0bf8007-8ed3-4f69-a5e0-d5e4491ce3cc.png",
-    "service_title_2": "24 X 7 Service",
-    "trans_service_title_2": "{\"en\":\"24 X 7 SERVICE \", \"fr\":\"SERVICE 24 X 7\", \"ar\":\"خدمة 24 X 7\", \"de\":\"24 X 7 SERVICE\", \"it\":\"SERVIZIO 24 X 7\"}",
-    "service_text_2": "Online Service",
-    "trans_service_text_2": "{\"en\":\"Online Service For New Customer\", \"fr\":\"Service en ligne pour nouveau client\", \"ar\":\"خدمة عبر الإنترنت للعميل الجديد\", \"de\":\"Online-Service für Neukunden\", \"it\":\"Servizio online per il nuovo cliente\"}",
+    "service_title_2": "",
+    "trans_service_title_2": "",
+    "service_text_2": "",
+    "trans_service_text_2": "",
     "Sidebar_service_3": "shopify:\/\/shop_images\/2_60c0614a-a0e9-432a-b9d4-d26b4d744dbb.png",
-    "service_title_3": "Festival Offer",
-    "trans_service_title_3": "{\"en\":\"FESTIVAL OFFER\", \"fr\":\"OFFRE FESTIVAL\", \"ar\":\"عرض مهرجان\", \"de\":\"FESTIVAL ANGEBOT\", \"it\":\"OFFERTA DEL FESTIVAL\"}",
-    "service_text_3": "Special Festival Offer",
-    "trans_service_text_3": "{\"en\":\"New Online Special Festival Offer \", \"fr\":\"Nouvelle offre spéciale de festival en ligne\", \"ar\":\"عرض خاص بالمهرجان الجديد عبر الإنترنت\", \"de\":\"Neues Online Special Festival Angebot\", \"it\":\"Nuova offerta per i festival speciali online\"}",
+    "service_title_3": "",
+    "trans_service_title_3": "",
+    "service_text_3": "",
+    "trans_service_text_3": "",
     "Sidebar_service_4": "shopify:\/\/shop_images\/4_a0977511-2400-4e1f-8a8a-739bb3bce550.png",
     "service_title_4": "Online Payment",
     "trans_service_title_4": "{\"en\":\"Online Payment\", \"fr\":\"Paiement en ligne\", \"ar\":\"الدفع الالكتروني\", \"de\":\"Onlinebezahlung\", \"it\":\"Pagamento online\"}",
@@ -136,7 +136,7 @@
     "trans_service_text_4": "{\"en\":\"Contrary To Popular Belief.\", \"fr\":\"Contrairement aux idées reçues.\", \"ar\":\"خلافا للاعتقاد الشائع.\", \"de\":\"Entgegen der landläufigen Meinung.\", \"it\":\"Contrariamente alle credenze popolari.\"}",
     "sidebar_pro_title": "new product",
     "trans_sidebar_pro_title": "{\"en\":\"new products\", \"fr\":\"Nouveaux produits\", \"ar\":\"منتجات جديدة\", \"de\":\"Exklusive Produkte\", \"it\":\"Prodotti esclusivi\"}",
-    "show_pro_title": true,
+    "show_pro_title": false,
     "select_sidebar_pro_coll": "trending-collection",
     "show_pro_sidebar_banner": false,
     "pro_sidebar_bnr": "",
@@ -1376,61 +1376,60 @@
         "settings": {
           "layout": "thumbnails-bottom",
           "eneble_img_zoom": true,
-          "pro_title_fontsize": "25px",
+          "pro_title_fontsize": "28px",
           "show_wishlist_button": true,
           "show_qty_selector": true,
           "show_buy_now_btn": true,
-          "show_share_buttons": true,
-          "show_sku": false,
-          "show_vendor": false,
+          "show_share_buttons": false,
+          "show_sku": true,
+          "show_vendor": true,
           "show_type": false,
-          "show_avalibity_option": false,
-          "show_product_inventory": true,
-          "show_size_chart": true,
-          "size_guide_page": "size-guid",
+          "show_avalibity_option": true,
+          "show_product_inventory": false,
+          "show_size_chart": false,
+          "size_guide_page": "",
           "show_product_desc": true,
-          "show_inquiry_form": true,
-          "enable_random_sale": true,
-          "random_product_text": "orders in last 24 hours",
-          "enable_product_active_view": true,
-          "active_product_text": "active view this product",
+          "show_inquiry_form": false,
+          "enable_random_sale": false,
+          "random_product_text": "",
+          "enable_product_active_view": false,
+          "active_product_text": "",
           "show_trust_badges": false,
-          "trust_badge_img": "",
-          "show_countdown_timer": true,
-          "countdown_timer_title": "Hurry !!! 1 day left!",
+          "show_countdown_timer": false,
+          "countdown_timer_title": "",
           "trans_countdown_title": "",
           "product_opt_type": "color-swatches",
-          "color_swatch_style": "color",
-          "swatches_option": "round",
-          "tab_layout": "horizontal",
-          "accordian_position": "beside_product",
-          "enable_tab_1": true,
+          "color_swatch_style": "image_variant",
+          "swatches_option": "square",
+          "tab_layout": "accordian",
+          "accordian_position": "below_product",
+          "enable_tab_1": false,
           "tab_title_1": "Description",
           "trans_tab_title_1": "",
           "tab_content_1": "",
-          "enable_tab_2": true,
+          "enable_tab_2": false,
           "tab_title_2": "Size Guide",
           "trans_tab_title_2": "",
-          "tab_content_2": "<p>Enjoy the flexibility of our 30-day free returns policy! Simply pack the item, with its original packaging and tags,\n              and the returns slip into the iOne delivery package. Feel free to drop the package of at any counter!<\/p>  \n\n            <p>For more details, please see our FAQs <a href=\"#return-policy\" target=\"_blank\">here<\/a>.<\/p>\n\n            <p>Should you have any questions regarding this product, please feel free to get in touch with our friendly Customer Experience Team at customer@ione.com,\n              or call us at +84 1234 5678 daily, 9am - 6pm.<\/p>",
-          "enable_tab_3": true,
-          "tab_title_3": "Reviews",
+          "tab_content_2": "",
+          "enable_tab_3": false,
+          "tab_title_3": "",
           "trans_tab_title_3": "",
           "tab_content_3": "",
-          "show_resent_products": true,
-          "resent_product_title": "Recently Viewed Products",
+          "show_resent_products": false,
+          "resent_product_title": "Related Products",
           "trans_resent_pro_title": "",
-          "resent_product_product_length": "6",
+          "resent_product_product_length": "4",
           "show_related_products": true,
           "related_product_title": "Related Products",
           "trans_related_pro_title": "",
-          "related_product_product_length": "7",
+          "related_product_product_length": "6",
           "img_width": "full",
           "use_equal_height": false,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
+          "slider_speed": 30,
+          "use_autoplay": false,
           "use_arrows": true,
           "use_dots": false,
           "use_loop": false,
@@ -2691,15 +2690,13 @@
         "type": "about-image-with-text",
         "settings": {
           "enabled": true,
-          "enabled_right": false,
+          "enabled_right": true,
           "section_padding": "70px 0px7 0px 0px",
-          "image": "shopify:\/\/shop_images\/00_banner.jpg",
-          "title": "build your owen site",
+          "title": "",
           "trans_title": "",
-          "desc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium",
+          "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
           "trans_desc": "",
           "custom_desc": "",
-          "shop_btn_url": "",
           "img_width": "full",
           "use_equal_height": false,
           "image_ratio": "ratio_landscape",
@@ -3431,6 +3428,131 @@
           "title": "FEATURED BRANDS",
           "title2": "LUXE BBQ INSTAGRAM",
           "title_color": "#fb711c"
+        }
+      },
+      "dtm-hero-image": {
+        "type": "dtm-hero-image",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/rib-eye-steak-on-bbq.jpg",
+          "text_on_image": "PELLET GRILLS"
+        }
+      },
+      "dtm-landing-page-text-with-video": {
+        "type": "dtm-landing-page-text-with-video",
+        "settings": {
+          "section_padding": "80px 10px 80px 10px",
+          "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
+          "video_url": "https:\/\/youtu.be\/yAoLSRbwxL8",
+          "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+          "custom_desc": "",
+          "img_width": "full",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8"
+        }
+      },
+      "custom-more-collections-grid": {
+        "type": "custom-more-collections-grid",
+        "blocks": {
+          "3f904787-f725-4cbf-9d28-d181e318446f": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
+              "enabled_info": true,
+              "title": "Black Earth"
+            }
+          },
+          "a1bd3f89-6307-427d-bb52-bd2a1b683d9b": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/berries-granola.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Broil King"
+            }
+          },
+          "9b793614-7460-4f70-adbf-d5114a06fba7": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Kamada Joe"
+            }
+          },
+          "1788b4d9-3f65-41e0-a350-453072fce18c": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Louisiana"
+            }
+          },
+          "9f603776-42ca-465d-ab06-0f8def2e49e2": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Pit Boss"
+            }
+          },
+          "92922651-584f-426e-af8b-6d38eb84b50f": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/piece-of-grilled-salmon.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Traeger Grill"
+            }
+          },
+          "34193726-609d-4877-8b6e-bec3d91837e6": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/steaks-ready-to-be-seasoned-and-grilled.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Weber"
+            }
+          },
+          "2cbfbfc9-bc3a-4851-a421-76de618628f0": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Yoder"
+            }
+          }
+        },
+        "block_order": [
+          "3f904787-f725-4cbf-9d28-d181e318446f",
+          "a1bd3f89-6307-427d-bb52-bd2a1b683d9b",
+          "9b793614-7460-4f70-adbf-d5114a06fba7",
+          "1788b4d9-3f65-41e0-a350-453072fce18c",
+          "9f603776-42ca-465d-ab06-0f8def2e49e2",
+          "92922651-584f-426e-af8b-6d38eb84b50f",
+          "34193726-609d-4877-8b6e-bec3d91837e6",
+          "2cbfbfc9-bc3a-4851-a421-76de618628f0"
+        ],
+        "settings": {
+          "enabled": true,
+          "section_padding": "0px 0px 80px 0px",
+          "title": "Matching GRILLS",
+          "title_color": "#fb711c",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8"
+        }
+      },
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "enabled": true,
+          "covidresponse_text": "Click Here for our COVID-19 Respons    >>"
         }
       }
     },

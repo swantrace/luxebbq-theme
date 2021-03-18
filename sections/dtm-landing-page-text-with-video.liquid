@@ -1,0 +1,244 @@
+<!-- Landing Page Text section start -->
+{% capture sectionId %}{{ section.id }}{% endcapture %}
+<section class="section-b-space beauty-about {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding: {{ section.settings.section_padding }}">
+  <div class="container">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12  text-center  order-1">
+            {% if section.settings.video_url == blank %}
+
+            {% if section.settings.image == blank %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% else %}
+                {% assign block_image = section.settings.image %}
+                {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                <img src="{{ block_image | img_url: '350x340' }}" 
+                    data-src="{{ img_url }}" 
+                    data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                    data-aspectratio="{{ block_image.aspect_ratio }}" 
+                    data-sizes="auto" 
+                    class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
+             {% endif %}
+
+            {% else %}
+
+            <div class="video-block video-section">
+                <a href="" data-toggle="modal" data-target="#video">
+                    <div class="video-img">
+                        {% if section.settings.image == blank %}
+                            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        {% else %}
+
+                        {% assign block_image = section.settings.image %}
+                        {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+                        <img src="{{ block_image | img_url: '920x450' }}" 
+                            data-src="{{ img_url }}" 
+                            data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                            data-aspectratio="{{ block_image.aspect_ratio }}" 
+                            data-sizes="auto" 
+                            class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" > 
+                        {% endif %}
+                        <div class="modal fade video-modal" id="video" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-body">
+                                <iframe src="{{ section.settings.video_url }}" allowfullscreen></iframe>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="play-btn">
+                        <span><i class="fa fa-play" aria-hidden="true"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+ 
+
+        <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="about-section">
+                <div class="about-text">
+                <p class="text-justify ">
+                    {{ section.settings.desc }}
+                </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</section>
+<!-- Landing Page Text section end -->
+
+{% schema %}
+  {
+    "name": "Landing Page Text block",
+    "settings": [
+	  {
+         "type": "text",
+         "id": "section_padding",
+         "label": "Padding",
+         "default": "0px 0px 0px 0px"
+      },
+	  {
+	    "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+	  },
+        {
+         "type": "text",
+         "id": "video_url",
+         "label": "Youtube Video Url",
+		 "default": "https://www.youtube.com/embed/FRIDLxM8Roc"
+	  },
+      {
+         "type": "textarea",
+         "id": "desc",
+         "label": "Description",
+		 "default": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium"
+	  },
+      {
+         "type": "html",
+         "id": "custom_desc",
+         "label": "Custom HTML"
+	  },
+      {
+        "type": "header",
+        "content": "Image Design Option"
+      },
+      {
+         "type": "radio",
+         "id": "img_width",
+         "options": [
+         {
+         	"value": "full",
+         	"label": "Image width Full"
+         },
+         {
+         	"value": "auto",
+         	"label": "Image Width Auto"
+         }
+      ],
+      "label": "Image width option",
+	  "info": "This option will work if Use height for images option will be disabled."
+      },
+      {
+        "type": "checkbox",
+        "id": "use_equal_height",
+        "label": "Use height Option for images?",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "image_ratio",
+        "label": "Image Aspect Ratio",
+        "default": "ratio_landscape",
+        "options": [
+          {
+            "value": "ratio2_1",
+            "label": "2:1"
+          },
+          {
+            "value": "ratio3_2",
+            "label": "3:2"
+          },
+          {
+            "value": "ratio_landscape",
+            "label": "4:3 (Landscape)"
+          },
+          {
+            "value": "ratio_square",
+            "label": "1:1 (Square)"
+          },
+          {
+            "value": "ratio_asos",
+            "label": "Ratio ASOS"
+          },
+          {
+            "value": "ratio_portrait",
+            "label": "2:3 (Portrait)"
+          },
+          {
+            "value": "ratio1_2",
+            "label": "1:2"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image Size",
+        "default": "cover",
+        "options": [
+          {
+            "value": "cover",
+            "label": "Full"
+          },
+          {
+            "value": "contain",
+            "label": "Auto"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "info":"The first value is the horizontal position and the second value is the vertical.",
+        "options": [
+          {
+            "value": "1",
+            "label": "Left Top"
+          },
+          {
+            "value": "2",
+            "label": "Left Center"
+          },
+          {
+            "value": "3",
+            "label": "Left Bottom"
+          },
+          {
+            "value": "4",
+            "label": "Right Top"
+          },
+          {
+            "value": "5",
+            "label": "Right Center"
+          },
+          {
+            "value": "6",
+            "label": "Right Bottom"
+          },
+          {
+            "value": "7",
+            "label": "Center Top"
+          },
+          {
+            "value": "8",
+            "label": "Center Center"
+          },
+          {
+            "value": "9",
+            "label": "Center Bottom"
+          }
+        ],
+        "label": "Image Position",
+        "default": "8"
+      }
+	],
+   "presets":[
+      {
+         "name":"Landing Page text With Image or Video",
+         "category":"DTM"
+      }
+   ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
