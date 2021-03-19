@@ -1,5 +1,9 @@
 import { html, useEffect, useState } from '@apollo-elements/haunted';
 import CollectionBanner from '../components/common/CollectionBanner';
+import CollectionProductsCount from '../components/common/CollectionProductsCount';
+import CollectionProductsPerPageController from '../components/common/CollectionProductsPerPageController';
+import CollectionSortByController from '../components/common/CollectionSortByController';
+import CollectionViewModeChanger from '../components/common/CollectionViewModeChanger';
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -36,7 +40,15 @@ function BarbequeSmokerCollection({
     currentPriceRange,
     currentGrillCookingArea
   );
-  return html`${CollectionBanner({ collectionName: 'Barbeques/Smokers' })}`;
+  return html` ${CollectionBanner({ collectionName: 'Barbeques/Smokers' })}
+    <hr />
+    ${CollectionProductsCount({ productsCount: 28, productTypeName: 'Grills' })}
+    <hr />
+    ${CollectionViewModeChanger()}
+    <hr />
+    ${CollectionProductsPerPageController()}
+    <hr />
+    ${CollectionSortByController()}`;
 }
 
 export default {
@@ -49,6 +61,6 @@ export default {
       'grill-cooking-area-min-and-max',
       'total-products-count',
     ],
+    useShadowDOM: false,
   },
-  useShadowDOM: false,
 };

@@ -1,8 +1,15 @@
 .collection-banner {
   .collection-banner-name {
     color: #fb711c;
+    flex-basis: 250px;
+    flex-grow: 45;
   }
-  .parallelograms {
-    background-color: #fb711c;
+  .parallelograms-group {
+    flex-basis: 55%;
+    flex-grow: 55;
+    flex-shrink: 100;
+    .parallelograms {
+      background-color: #fb711c;
+    }
   }
 }
