@@ -83,6 +83,7 @@
 
     {% comment %} dtm added {% endcomment %}
     {{ 'custom.js' | asset_url | script_tag }}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'bootstrap-icon.css' | asset_url |  stylesheet_tag  }}
     {% comment %} dtm added {% endcomment %}
     {{ 'TweenMax.min.js' | asset_url | script_tag }}

@@ -32237,21 +32237,7 @@ exports.disableExperimentalFragmentVariables = disableExperimentalFragmentVariab
 exports.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables;
 exports.disableFragmentWarnings = disableFragmentWarnings;
 exports.resetCaches = resetCaches;
-},{"./ApolloClient.js":"../node_modules/@apollo/client/core/ApolloClient.js","./ObservableQuery.js":"../node_modules/@apollo/client/core/ObservableQuery.js","./networkStatus.js":"../node_modules/@apollo/client/core/networkStatus.js","./types.js":"../node_modules/@apollo/client/cache/inmemory/fixPolyfills.js","../errors/index.js":"../node_modules/@apollo/client/errors/index.js","../cache/index.js":"../node_modules/@apollo/client/cache/index.js","../cache/inmemory/types.js":"../node_modules/@apollo/client/cache/inmemory/types.js","../link/core/index.js":"../node_modules/@apollo/client/link/core/index.js","../link/http/index.js":"../node_modules/@apollo/client/link/http/index.js","../link/utils/index.js":"../node_modules/@apollo/client/link/utils/index.js","../utilities/index.js":"../node_modules/@apollo/client/utilities/index.js","ts-invariant":"../node_modules/ts-invariant/lib/invariant.esm.js","graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"apollo-client.js":[function(require,module,exports) {
-"use strict";
-
-var _core = require("@apollo/client/core");
-
-const client = new _core.ApolloClient({
-  uri: `https://${"luxe-bbq-dev"}.myshopify.com/api/2021-01/graphql.json`,
-  cache: new _core.InMemoryCache(),
-  headers: {
-    'Content-Type': 'application/graphql',
-    'X-Shopify-Storefront-Access-Token': `${"9056963bca32d153b6dde5e5a6d0640b"}`
-  }
-});
-window.__APOLLO_CLIENT__ = client;
-},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js"}],"../node_modules/@open-wc/dedupe-mixin/src/dedupeMixin.js":[function(require,module,exports) {
+},{"./ApolloClient.js":"../node_modules/@apollo/client/core/ApolloClient.js","./ObservableQuery.js":"../node_modules/@apollo/client/core/ObservableQuery.js","./networkStatus.js":"../node_modules/@apollo/client/core/networkStatus.js","./types.js":"../node_modules/@apollo/client/cache/inmemory/fixPolyfills.js","../errors/index.js":"../node_modules/@apollo/client/errors/index.js","../cache/index.js":"../node_modules/@apollo/client/cache/index.js","../cache/inmemory/types.js":"../node_modules/@apollo/client/cache/inmemory/types.js","../link/core/index.js":"../node_modules/@apollo/client/link/core/index.js","../link/http/index.js":"../node_modules/@apollo/client/link/http/index.js","../link/utils/index.js":"../node_modules/@apollo/client/link/utils/index.js","../utilities/index.js":"../node_modules/@apollo/client/utilities/index.js","ts-invariant":"../node_modules/ts-invariant/lib/invariant.esm.js","graphql-tag":"../node_modules/graphql-tag/lib/index.js"}],"../node_modules/@open-wc/dedupe-mixin/src/dedupeMixin.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36949,7 +36935,21 @@ Object.keys(_haunted).forEach(function (key) {
     }
   });
 });
-},{"./useQuery":"../node_modules/@apollo-elements/haunted/useQuery.js","./useMutation":"../node_modules/@apollo-elements/haunted/useMutation.js","./useSubscription":"../node_modules/@apollo-elements/haunted/useSubscription.js","haunted":"../node_modules/haunted/lib/haunted.js"}],"components/index.js":[function(require,module,exports) {
+},{"./useQuery":"../node_modules/@apollo-elements/haunted/useQuery.js","./useMutation":"../node_modules/@apollo-elements/haunted/useMutation.js","./useSubscription":"../node_modules/@apollo-elements/haunted/useSubscription.js","haunted":"../node_modules/haunted/lib/haunted.js"}],"apollo-client.js":[function(require,module,exports) {
+"use strict";
+
+var _core = require("@apollo/client/core");
+
+const client = new _core.ApolloClient({
+  uri: `https://${"luxe-bbq-dev"}.myshopify.com/api/2021-01/graphql.json`,
+  cache: new _core.InMemoryCache(),
+  headers: {
+    'Content-Type': 'application/graphql',
+    'X-Shopify-Storefront-Access-Token': `${"9056963bca32d153b6dde5e5a6d0640b"}`
+  }
+});
+window.__APOLLO_CLIENT__ = client;
+},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js"}],"components/index.js":[function(require,module,exports) {
 "use strict";
 
 var _core = require("@apollo/client/core");
@@ -36981,13 +36981,206 @@ function productList() {
 }
 
 customElements.define('product-list', (0, _haunted.component)(productList));
-},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js","@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"index.js":[function(require,module,exports) {
+},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js","@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionBanner.js":[function(require,module,exports) {
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+const CollectionBanner = (0, _haunted.virtual)(({
+  collectionName
+}) => (0, _haunted.html)`<div
+    class="collection-banner d-flex justify-content-between align-items-center"
+  >
+    <h2 class="collection-banner-name">${collectionName}</h2>
+    <div class="parallelograms-group">
+      <span class="parallelograms parallelogram-lt"> </span>
+      <span class="parallelograms parallelogram-rt"> </span>
+      <span class="parallelograms parallelogram-br"> </span>
+    </div>
+  </div>`);
+var _default = CollectionBanner;
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductsCount.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+const CollectionProductsCount = (0, _haunted.virtual)(({
+  productsCount,
+  productTypeName
+}) => (0, _haunted.html)`<div class="search-count">
+    <h5>${productsCount} ${productTypeName} match your search criteria</h5>
+  </div>`);
+var _default = CollectionProductsCount;
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductsPerPageController.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+const CollectionProductsPerPageController = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="product-page-per-view">
+    <select name="pro_limit">
+      <option value="12">Default</option>
+      <option value="24">24 Products</option>
+      <option value="36">36 Products</option>
+      <option value="48">48 Products</option>
+    </select>
+  </div>`);
+var _default = CollectionProductsPerPageController;
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSortByController.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+const CollectionSortByController = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="product-page-filter">
+    <select name="sortBy" id="sortBy">
+      <option value="manual">Featured</option>
+      <option value="best-selling">Best Selling</option>
+      <option value="title-ascending">Alphabetically, A-Z</option>
+      <option value="title-descending">Alphabetically, Z-A</option>
+      <option value="price-ascending">Price, low to high</option>
+      <option value="price-descending">Price, high to low</option>
+    </select>
+  </div>`);
+var _default = CollectionSortByController;
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionViewModeChanger.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+const CollectionViewModeChanger = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="collection-view">
+    <ul>
+      <li class="active"><i class="fa fa-th grid-layout-view"></i></li>
+      <li><i class="fa fa-list-ul list-layout-view"></i></li>
+    </ul>
+  </div>`);
+var _default = CollectionViewModeChanger;
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"pages/barbequeSmokerCollection.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+var _CollectionBanner = _interopRequireDefault(require("../components/common/CollectionBanner"));
+
+var _CollectionProductsCount = _interopRequireDefault(require("../components/common/CollectionProductsCount"));
+
+var _CollectionProductsPerPageController = _interopRequireDefault(require("../components/common/CollectionProductsPerPageController"));
+
+var _CollectionSortByController = _interopRequireDefault(require("../components/common/CollectionSortByController"));
+
+var _CollectionViewModeChanger = _interopRequireDefault(require("../components/common/CollectionViewModeChanger"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function BarbequeSmokerCollection({
+  cookTypesAndBrands,
+  priceRangeMinAndMax,
+  grillCookingAreaMinAndMax,
+  totalProductsCount
+}) {
+  const brandInfo = JSON.parse(cookTypesAndBrands !== null && cookTypesAndBrands !== void 0 ? cookTypesAndBrands : '{"Gas Grill":[], "Charcoal Grill":[], "Pellet Grill":[], "Oven":[]}');
+  const [minPrice, maxPrice] = JSON.parse(priceRangeMinAndMax !== null && priceRangeMinAndMax !== void 0 ? priceRangeMinAndMax : '[0, 0]').map(p => Math.floor(Number(p)));
+  const [minGrillCookingArea, maxGrillCookingArea] = JSON.parse(grillCookingAreaMinAndMax !== null && grillCookingAreaMinAndMax !== void 0 ? grillCookingAreaMinAndMax : '[0, 0]').map(p => Math.floor(Number(p)));
+  const productsCount = Math.floor(Number(totalProductsCount !== null && totalProductsCount !== void 0 ? totalProductsCount : 0));
+  const [currentPriceRange, setCurrentPriceRange] = (0, _haunted.useState)([0, 0]);
+  const [currentGrillCookingArea, setCurrentGrillCookingArea] = (0, _haunted.useState)([0, 0]);
+  (0, _haunted.useEffect)(() => {
+    setCurrentPriceRange([minPrice, maxPrice]);
+  }, [minPrice, maxPrice]);
+  (0, _haunted.useEffect)(() => {
+    setCurrentGrillCookingArea([minGrillCookingArea, maxGrillCookingArea]);
+  }, [minGrillCookingArea, maxGrillCookingArea]);
+  console.log(brandInfo, productsCount, currentPriceRange, currentGrillCookingArea);
+  return (0, _haunted.html)` ${(0, _CollectionBanner.default)({
+    collectionName: 'Barbeques/Smokers'
+  })}
+    <hr />
+    ${(0, _CollectionProductsCount.default)({
+    productsCount: 28,
+    productTypeName: 'Grills'
+  })}
+    <hr />
+    ${(0, _CollectionViewModeChanger.default)()}
+    <hr />
+    ${(0, _CollectionProductsPerPageController.default)()}
+    <hr />
+    ${(0, _CollectionSortByController.default)()}`;
+}
+
+var _default = {
+  tagName: 'barbeque-smoker-collection',
+  renderer: BarbequeSmokerCollection,
+  options: {
+    observedAttributes: ['cook-types-and-brands', 'price-range-min-and-max', 'grill-cooking-area-min-and-max', 'total-products-count'],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../components/common/CollectionBanner":"components/common/CollectionBanner.js","../components/common/CollectionProductsCount":"components/common/CollectionProductsCount.js","../components/common/CollectionProductsPerPageController":"components/common/CollectionProductsPerPageController.js","../components/common/CollectionSortByController":"components/common/CollectionSortByController.js","../components/common/CollectionViewModeChanger":"components/common/CollectionViewModeChanger.js"}],"pages/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _barbequeSmokerCollection = _interopRequireDefault(require("./barbequeSmokerCollection"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = {
+  barbequeSmokerCollection: _barbequeSmokerCollection.default
+};
+exports.default = _default;
+},{"./barbequeSmokerCollection":"pages/barbequeSmokerCollection.js"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _haunted = require("@apollo-elements/haunted");
 
 require("./apollo-client");
 
 require("./components/index");
 
+var _pages = _interopRequireDefault(require("./pages"));
+
+require("./styles.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log(_pages.default);
 document.addEventListener('DOMContentLoaded', () => {
   var _activeParentLinkElem;
 
@@ -36996,7 +37189,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const navigationElement = document.querySelector('#main-menu');
   const activeLinkElement = navigationElement === null || navigationElement === void 0 ? void 0 : navigationElement.querySelector(`[href*="${path}"]`);
   const activeParentLinkElement = activeLinkElement === null || activeLinkElement === void 0 ? void 0 : activeLinkElement.closest('#main-menu>li>a');
-  activeParentLinkElement === null || activeParentLinkElement === void 0 ? void 0 : (_activeParentLinkElem = activeParentLinkElement.classList) === null || _activeParentLinkElem === void 0 ? void 0 : _activeParentLinkElem.add('active');
+  activeParentLinkElement === null || activeParentLinkElement === void 0 ? void 0 : (_activeParentLinkElem = activeParentLinkElement.classList) === null || _activeParentLinkElem === void 0 ? void 0 : _activeParentLinkElem.add('active'); // create custom elements
+
+  Object.values(_pages.default).forEach(pageComponent => {
+    customElements.define(pageComponent.tagName, (0, _haunted.component)(pageComponent.renderer, pageComponent.options));
+  });
 });
-},{"./apollo-client":"apollo-client.js","./components/index":"components/index.js"}]},{},["index.js"], null)
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","./apollo-client":"apollo-client.js","./components/index":"components/index.js","./pages":"pages/index.js","./styles.scss":"../node_modules/@apollo/client/cache/inmemory/fixPolyfills.js"}]},{},["index.js"], null)
 //# sourceMappingURL=/custom.js.map
