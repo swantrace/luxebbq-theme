@@ -1,0 +1,26 @@
+{% render 'dtm-landing-page-hero-image', text_on_image: section.settings.text_on_image, hero_image:section.settings.hero_image %}
+
+{% schema %}
+  {
+    "name": "Hero Image",
+    "class": "datomar--about-us-hero-image hero-image",
+    "settings": [
+        {
+            "type": "header",
+            "content": {
+            "en": "Hero Image"
+            }
+        },
+		{
+        	"type":"image_picker",
+         	"id":"hero_image",
+         	"label":"Image"
+      	},
+		{
+			"type": "text",
+			"id": "text_on_image",
+			"label": "Text on image"
+		}
+	]
+  }
+{% endschema %}

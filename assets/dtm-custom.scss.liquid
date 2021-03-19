@@ -12,9 +12,31 @@ $theme-deafult: #fb711c;
 /*=====================
 Header & Footer
 ==========================*/
+.header-phone-banner:before
+{
+    content: "";
+    display: block;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    transform: skewX(-12deg);
+}
+
+// .header-phone-banner:before
+// {
+//     display: block;
+//     top: 0;
+//     bottom: 0;
+//     width: 20px;
+//     transform: skewX(-12deg);
+// }
+
+
 .header-phone-banner{
     position: relative;
     z-index: 999999;
+
+    
 
     .trapezoid.left {
         // width: 0;
@@ -66,7 +88,7 @@ Header & Footer
         }
 
         .parallelogram-lt, .parallelogram-rt{
-            width: 5%;
+            width: 10px;
         }
 
     }
@@ -222,9 +244,9 @@ Homepage
 }
 
 
-.dtm.dtm-title{
-    padding: 30px 0;
-}
+// .dtm.dtm-title{
+//     padding: 30px 0;
+// }
 
 .dtm .parallelograms-group {
     width: 70%;
@@ -239,12 +261,12 @@ Homepage
     }
 
     .parallelogram-lt{
-        width: 1%;
+        width: 10px;
         margin-right: 10px;
     }
 
     .parallelogram-rt{
-        width: 1%;
+        width: 10px;
         margin-right: 10px;
     }
 
@@ -263,7 +285,7 @@ Homepage
     max-width: 40% !important;
 
     .parallelogram-rt, .parallelogram-lt{
-        width: 5%;
+        width: 10px;
     }
 }
 
@@ -273,4 +295,21 @@ Homepage
         width: 80%;
     }
 
+}
+
+
+@media (max-width: 480px){
+    .title1 .title-inner1{   font-size: 25px;}
+    .dtm .parallelograms-group{width:50% }
+}
+
+@media (max-width: 1367px){
+
+
+}
+
+
+@media (max-width: 1199px){
+    .title1 .title-inner1{   font-size: 25px;}
+    .dtm .parallelograms-group{width: 60%;}
 }

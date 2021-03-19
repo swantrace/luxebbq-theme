@@ -1,3 +1,23 @@
-{% section 'dtm-hero-image' %}
-{%- section 'dtm-landing-page-text-with-video' -%}
-{%- section 'custom-more-collections-grid' -%}
+
+
+{% if template contains 'page' and page.url == '/pages/pellet-grills' %}
+
+    {% section 'dtm-hero-image' %}
+    {%- section 'dtm-landing-page-text-with-video' -%}
+    {%- section 'custom-more-collections-grid' -%}
+
+{% elsif template contains 'page' and page.url == '/pages/gas-grills'  %}
+
+    {% section 'dtm-gas-grills-hero-image' %}
+    {%- section 'dtm-gas-grills-landing-page-text-with-video' -%}
+    {%- section 'custom-gas-grills-page-collections-grid' -%}
+
+{% elsif template contains 'page' and page.url == '/pages/smokers'  %}
+
+    {% section 'dtm-smokers-hero-image' %}
+    {%- section 'dtm-smokers-landing-page-text-with-video' -%}
+    {%- section 'custom-smokers-page-collections-grid' -%}
+
+{% endif %}
+
+
