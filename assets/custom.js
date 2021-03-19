@@ -37005,84 +37005,6 @@ const CollectionBanner = (0, _haunted.virtual)(({
   </div>`);
 var _default = CollectionBanner;
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductsCount.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _haunted = require("@apollo-elements/haunted");
-
-const CollectionProductsCount = (0, _haunted.virtual)(({
-  productsCount,
-  productTypeName
-}) => (0, _haunted.html)`<div class="search-count">
-    <h5>${productsCount} ${productTypeName} match your search criteria</h5>
-  </div>`);
-var _default = CollectionProductsCount;
-exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductsPerPageController.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _haunted = require("@apollo-elements/haunted");
-
-const CollectionProductsPerPageController = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="product-page-per-view">
-    <select name="pro_limit">
-      <option value="12">Default</option>
-      <option value="24">24 Products</option>
-      <option value="36">36 Products</option>
-      <option value="48">48 Products</option>
-    </select>
-  </div>`);
-var _default = CollectionProductsPerPageController;
-exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSortByController.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _haunted = require("@apollo-elements/haunted");
-
-const CollectionSortByController = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="product-page-filter">
-    <select name="sortBy" id="sortBy">
-      <option value="manual">Featured</option>
-      <option value="best-selling">Best Selling</option>
-      <option value="title-ascending">Alphabetically, A-Z</option>
-      <option value="title-descending">Alphabetically, Z-A</option>
-      <option value="price-ascending">Price, low to high</option>
-      <option value="price-descending">Price, high to low</option>
-    </select>
-  </div>`);
-var _default = CollectionSortByController;
-exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionViewModeChanger.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _haunted = require("@apollo-elements/haunted");
-
-const CollectionViewModeChanger = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="collection-view">
-    <ul>
-      <li class="active"><i class="fa fa-th grid-layout-view"></i></li>
-      <li><i class="fa fa-list-ul list-layout-view"></i></li>
-    </ul>
-  </div>`);
-var _default = CollectionViewModeChanger;
-exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"pages/barbequeSmokerCollection.js":[function(require,module,exports) {
 "use strict";
 
@@ -37094,14 +37016,6 @@ exports.default = void 0;
 var _haunted = require("@apollo-elements/haunted");
 
 var _CollectionBanner = _interopRequireDefault(require("../components/common/CollectionBanner"));
-
-var _CollectionProductsCount = _interopRequireDefault(require("../components/common/CollectionProductsCount"));
-
-var _CollectionProductsPerPageController = _interopRequireDefault(require("../components/common/CollectionProductsPerPageController"));
-
-var _CollectionSortByController = _interopRequireDefault(require("../components/common/CollectionSortByController"));
-
-var _CollectionViewModeChanger = _interopRequireDefault(require("../components/common/CollectionViewModeChanger"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37124,32 +37038,21 @@ function BarbequeSmokerCollection({
     setCurrentGrillCookingArea([minGrillCookingArea, maxGrillCookingArea]);
   }, [minGrillCookingArea, maxGrillCookingArea]);
   console.log(brandInfo, productsCount, currentPriceRange, currentGrillCookingArea);
-  return (0, _haunted.html)` ${(0, _CollectionBanner.default)({
+  return (0, _haunted.html)`${(0, _CollectionBanner.default)({
     collectionName: 'Barbeques/Smokers'
-  })}
-    <hr />
-    ${(0, _CollectionProductsCount.default)({
-    productsCount: 28,
-    productTypeName: 'Grills'
-  })}
-    <hr />
-    ${(0, _CollectionViewModeChanger.default)()}
-    <hr />
-    ${(0, _CollectionProductsPerPageController.default)()}
-    <hr />
-    ${(0, _CollectionSortByController.default)()}`;
+  })}`;
 }
 
 var _default = {
   tagName: 'barbeque-smoker-collection',
   renderer: BarbequeSmokerCollection,
   options: {
-    observedAttributes: ['cook-types-and-brands', 'price-range-min-and-max', 'grill-cooking-area-min-and-max', 'total-products-count'],
-    useShadowDOM: false
-  }
+    observedAttributes: ['cook-types-and-brands', 'price-range-min-and-max', 'grill-cooking-area-min-and-max', 'total-products-count']
+  },
+  useShadowDOM: false
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../components/common/CollectionBanner":"components/common/CollectionBanner.js","../components/common/CollectionProductsCount":"components/common/CollectionProductsCount.js","../components/common/CollectionProductsPerPageController":"components/common/CollectionProductsPerPageController.js","../components/common/CollectionSortByController":"components/common/CollectionSortByController.js","../components/common/CollectionViewModeChanger":"components/common/CollectionViewModeChanger.js"}],"pages/index.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../components/common/CollectionBanner":"components/common/CollectionBanner.js"}],"pages/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
