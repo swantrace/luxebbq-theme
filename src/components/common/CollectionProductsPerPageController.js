@@ -1,14 +1,22 @@
-import { html, virtual } from '@apollo-elements/haunted';
+import { html } from '@apollo-elements/haunted';
 
-const CollectionProductsPerPageController = virtual(
-  () => html`<div class="product-page-per-view">
+function CollectionProductsPerPageController() {
+  console.log('CollectionProductsPerPageController');
+  return html`<div class="product-page-per-view">
     <select name="pro_limit">
       <option value="12">Default</option>
       <option value="24">24 Products</option>
       <option value="36">36 Products</option>
       <option value="48">48 Products</option>
     </select>
-  </div>`
-);
+  </div>`;
+}
 
-export default CollectionProductsPerPageController;
+export default {
+  tagName: 'collection-products-per-page-controller',
+  renderer: CollectionProductsPerPageController,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false,
+  },
+};

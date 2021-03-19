@@ -4,7 +4,7 @@
   "author": "datomar",
   "scripts": {
     "dev": "parcel watch src/index.js --target browser -d assets --out-file custom.js --no-hmr",
-    "build": "parcel build src/index.js --target browser -d assets --out-file custom.min.js --no-hmr"
+    "build": "parcel build src/index.js --target browser -d assets --out-file custom.min.js"
   },
   "browserslist": [
     "last 2 safari versions",
@@ -22,6 +22,7 @@
     "vanilla-lazyload": "^17.3.1"
   },
   "devDependencies": {
+    "cssnano": "^4.1.10",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "^8.1.0",

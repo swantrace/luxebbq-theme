@@ -1,10 +1,9 @@
-import { component } from '@apollo-elements/haunted';
+import { component, html } from '@apollo-elements/haunted';
 import './apollo-client';
-import './components/index';
+import partComponents from './components';
 import pageComponents from './pages';
 import './styles.scss';
 
-console.log(pageComponents);
 document.addEventListener('DOMContentLoaded', () => {
   // add active class to menu item
   const path = window.location.pathname;
@@ -16,10 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
   activeParentLinkElement?.classList?.add('active');
 
   // create custom elements
-  Object.values(pageComponents).forEach((pageComponent) => {
-    customElements.define(
-      pageComponent.tagName,
-      component(pageComponent.renderer, pageComponent.options)
-    );
-  });
+
+  // Object.values({ ...partComponents, ...pageComponents }).forEach(
+  //   (pComponent) => {
+  //     customElements.define(
+  //       pComponent.tagName,
+  //       component(pComponent.renderer, pComponent.options)
+  //     );
+  //   }
+  // );
+  const {
+    renderer,
+    tagName,
+    options,
+  } = partComponents.CookTypesAndBrandsFilter;
+  customElements.define(tagName, component(renderer(html), options));
 });

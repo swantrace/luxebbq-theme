@@ -1,7 +1,8 @@
-import { html, virtual } from '@apollo-elements/haunted';
+import { html } from '@apollo-elements/haunted';
 
-const CollectionSortByController = virtual(
-  () => html`<div class="product-page-filter">
+function CollectionSortByController() {
+  console.log('CollectionSortByController');
+  return html`<div class="product-page-filter">
     <select name="sortBy" id="sortBy">
       <option value="manual">Featured</option>
       <option value="best-selling">Best Selling</option>
@@ -10,7 +11,14 @@ const CollectionSortByController = virtual(
       <option value="price-ascending">Price, low to high</option>
       <option value="price-descending">Price, high to low</option>
     </select>
-  </div>`
-);
+  </div>`;
+}
 
-export default CollectionSortByController;
+export default {
+  tagName: 'collection-sort-by-controller',
+  renderer: CollectionSortByController,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false,
+  },
+};

@@ -1,7 +1,10 @@
-import { html, virtual } from '@apollo-elements/haunted';
+import { html } from '@apollo-elements/haunted';
+import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
 
-const CollectionBanner = virtual(
-  ({ collectionName }) => html`<div
+function CollectionBanner({ collectionName }) {
+  const { brandInfo } = useBarbequeSmokerCollectionContext();
+  console.log('brandInfo', brandInfo);
+  return html`<div
     class="collection-banner d-flex justify-content-between align-items-center"
   >
     <h2 class="collection-banner-name">${collectionName}</h2>
@@ -10,7 +13,14 @@ const CollectionBanner = virtual(
       <span class="parallelograms parallelogram-rt"> </span>
       <span class="parallelograms parallelogram-br"> </span>
     </div>
-  </div>`
-);
+  </div>`;
+}
 
-export default CollectionBanner;
+export default {
+  tagName: 'collection-banner',
+  renderer: CollectionBanner,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false,
+  },
+};

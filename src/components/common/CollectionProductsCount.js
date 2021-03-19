@@ -1,9 +1,17 @@
-import { html, virtual } from '@apollo-elements/haunted';
+import { html } from '@apollo-elements/haunted';
 
-const CollectionProductsCount = virtual(
-  ({ productsCount, productTypeName }) => html`<div class="search-count">
+function CollectionProductsCount({ productsCount, productTypeName }) {
+  console.log('CollectionProductsCount');
+  return html`<div class="search-count">
     <h5>${productsCount} ${productTypeName} match your search criteria</h5>
-  </div>`
-);
+  </div>`;
+}
 
-export default CollectionProductsCount;
+export default {
+  tagName: 'collection-products-count',
+  renderer: CollectionProductsCount,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false,
+  },
+};
