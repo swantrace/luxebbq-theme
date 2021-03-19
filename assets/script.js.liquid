@@ -208,6 +208,7 @@ $(function () {
 
  Full slider
  _____________________________________ */
+{% comment %}  
     if ($(window).width() > 767){
       var $slider = $(".full-slider");
       $slider.
@@ -261,7 +262,7 @@ $(function () {
           $slider.slick('slickPrev');
         }
       }
-    }
+    } {% endcomment %}
 
 
     /* _____________________________________

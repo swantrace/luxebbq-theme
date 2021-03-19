@@ -9,15 +9,47 @@ $theme-deafult: #fb711c;
 }
 
 
-
 /*=====================
 Header & Footer
 ==========================*/
+.header-phone-banner{
+    position: relative;
+    z-index: 999999;
+
+    .trapezoid.left {
+        // width: 0;
+        // height: 0;
+        // border-top: 100px solid red;
+        // border-right: 100px solid transparent;
+    }
+
+    .header-phone-block{
+        background: $theme-deafult;
+        padding: 8px 25px;
+        display: inline-flex;
+        position: absolute;
+        right: 0;
+    
+        .header_social{
+            margin-left: 15px;
+            
+            li{    padding: 0 2px; }
+
+            a{
+                color: #111;
+            }
+        }
+    
+        .call-text{
+            color: #111;
+        }
+    }
+}
 
 .dtm .pixelstrap a, .dtm .pixelstrap a:hover, .dtm .pixelstrap a:active {
     font-weight: 500;
     font-size: 12px;
-    padding-right: 35px;
+    padding-right: 30px;
     letter-spacing: 0.05em;
 }
 
@@ -68,7 +100,7 @@ Product Pages
 
 .product-right{
 
-    .product_price{
+    #product_price{
         font-weight: 600;
     }
 

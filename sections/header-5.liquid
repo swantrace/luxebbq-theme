@@ -1,6 +1,51 @@
 <!-- header start -->
 {% capture sectionId %}{{ section.id }}{% endcapture %}
 <header class="dtm header-5 header-qurox header-5-inner {% if settings.display_sticky_header %} sticky{% endif %}">
+  
+  <!-- header Phone call out -->
+  <div class="header-phone-banner container">
+   <span class="trapezoid left"> </span>
+    <div class="header-phone-block"> 
+      <span class="call-text"> Call Now: 1-204-888-LUXE </span>
+        <div class="header_social">
+              <ul>
+                {% if settings.social_facebook_link != blank %}
+                <li>
+                  <a href="{{ settings.social_facebook_link | escape }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.social_google_link != blank %}
+                <li>
+                  <a href="{{ settings.social_google_link | escape }}"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.social_twitter_link != blank %}
+                <li>
+                  <a href="{{ settings.social_twitter_link | escape }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.social_instagram_link != blank %}
+                <li>
+                  <a href="{{ settings.social_instagram_link | escape }}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.social_rss_link != blank %}
+                <li>
+                  <a href="{{ settings.social_rss_link | escape }}"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
+                {% if settings.social_youtube_link != blank %}
+                <li>
+                  <a href="{{ settings.social_youtube_link | escape }}"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                </li>
+                {% endif %}
+              </ul>
+        </div>
+      </div>
+    <span class="trapezoid right"> </span>
+  </div>
+   <!-- END header Phone call out -->
+  
   <div class="mobile-fix-option"></div>
   <div class="container">
     <div class="row">
