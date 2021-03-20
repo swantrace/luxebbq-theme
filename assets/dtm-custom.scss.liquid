@@ -8,6 +8,15 @@ $theme-deafult: #fb711c;
     filter: brightness(60%);
 }
 
+.instock-lable{
+    color:#8CC63F;
+    font-size: 18px;
+
+    .fa{
+        padding: 0 10px;
+    }
+}
+
 
 /*=====================
 Header & Footer
@@ -22,28 +31,27 @@ Header & Footer
     transform: skewX(-12deg);
 }
 
-// .header-phone-banner:before
+/* // .header-phone-banner:before
 // {
 //     display: block;
 //     top: 0;
 //     bottom: 0;
 //     width: 20px;
 //     transform: skewX(-12deg);
-// }
+// } */
 
 
 .header-phone-banner{
     position: relative;
     z-index: 999999;
 
-    
 
-    .trapezoid.left {
+    /* .trapezoid.left {
         // width: 0;
         // height: 0;
         // border-top: 100px solid red;
         // border-right: 100px solid transparent;
-    }
+    } */
 
     .header-phone-block{
         background: $theme-deafult;
@@ -94,6 +102,32 @@ Header & Footer
     }
 
 }
+
+
+/*=====================
+Wishlist Pages
+==========================*/
+.wishlist-section{
+    h2{font-size: 21px;}
+
+    .btn{color: #fff;}
+
+    .share-buttons{
+        text-align:left;
+
+        .product-icon{
+
+            .share-btn i, .compare-btn i{padding-left: 0; margin-left: 0;}
+
+            .remove-btn,.remove-btn a {color: #CCCCCC; }
+        }
+    }
+    
+    .cart-table thead th:last-child, tbody tr td:last-child {text-align:left;}
+
+
+}
+
 
 
 /*=====================

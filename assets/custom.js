@@ -36949,39 +36949,7 @@ const client = new _core.ApolloClient({
   }
 });
 window.__APOLLO_CLIENT__ = client;
-},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js"}],"components/index.js":[function(require,module,exports) {
-"use strict";
-
-var _core = require("@apollo/client/core");
-
-var _haunted = require("@apollo-elements/haunted");
-
-const GET_PRODUCTS = (0, _core.gql)`
-  query getProducts {
-    products(first: 50) {
-      edges {
-        node {
-          id
-          handle
-        }
-      }
-    }
-  }
-`;
-
-function productList() {
-  const {
-    loading,
-    data,
-    refetch,
-    error
-  } = (0, _haunted.useQuery)(GET_PRODUCTS);
-  console.log(loading, data, refetch, error);
-  return (0, _haunted.html)`<h1>hello world</h1>`;
-}
-
-customElements.define('product-list', (0, _haunted.component)(productList));
-},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js","@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionBanner.js":[function(require,module,exports) {
+},{"@apollo/client/core":"../node_modules/@apollo/client/core/index.js"}],"components/barbequeSmokerCollection/CookTypesAndBrandsFilter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36991,9 +36959,143 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-const CollectionBanner = (0, _haunted.virtual)(({
+function CookTypesAndBrandsFilter() {
+  return (0, _haunted.html)`<h1>CookTypesAndBrandsFilter</h1>`;
+}
+
+var _default = {
+  tagName: 'cook-types-and-brands-filter',
+  renderer: CookTypesAndBrandsFilter,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/barbequeSmokerCollection/GrillCookingAreaFilter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function GrillCookingAreaFilter() {
+  return (0, _haunted.html)`<h1>GrillCookingAreaFilter</h1>`;
+}
+
+var _default = {
+  tagName: 'grill-cooking-area-filter',
+  renderer: GrillCookingAreaFilter,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/barbequeSmokerCollection/PriceRangeFilter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function PriceRangeFilter() {
+  return (0, _haunted.html)`<h1>PriceRangeFilter</h1>`;
+}
+
+var _default = {
+  tagName: 'price-range-filter',
+  renderer: PriceRangeFilter,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/BackToTopBanner.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function BackToTopBanner() {
+  return (0, _haunted.html)`<h1>BackToTopBanner</h1>`;
+}
+
+var _default = {
+  tagName: 'back-to-top-banner',
+  renderer: BackToTopBanner,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"context/barbequeSmokerCollection.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.useBarbequeSmokerCollectionContext = exports.BarbequeSmokerCollectionWrapper = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+const BarbequeSmokerCollectionContext = (0, _haunted.createContext)();
+customElements.define('barbeque-smoker-collection-provider', BarbequeSmokerCollectionContext.Provider);
+const BarbequeSmokerCollectionWrapper = (0, _haunted.virtual)(({
+  children,
+  ...rest
+}) => {
+  const sharedState = {};
+  return (0, _haunted.html)`<barbeque-smoker-collection-provider
+      .value=${{ ...rest,
+    ...sharedState
+  }}
+    >
+      ${(0, _haunted.html)`${children}`}
+    </barbeque-smoker-collection-provider>`;
+});
+exports.BarbequeSmokerCollectionWrapper = BarbequeSmokerCollectionWrapper;
+
+const useBarbequeSmokerCollectionContext = () => (0, _haunted.useContext)(BarbequeSmokerCollectionContext);
+
+exports.useBarbequeSmokerCollectionContext = useBarbequeSmokerCollectionContext;
+var _default = {
+  useBarbequeSmokerCollectionContext,
+  BarbequeSmokerCollectionWrapper
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionBanner.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+
+function CollectionBanner({
   collectionName
-}) => (0, _haunted.html)`<div
+}) {
+  const {
+    brandInfo
+  } = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  console.log('brandInfo', brandInfo);
+  return (0, _haunted.html)`<div
     class="collection-banner d-flex justify-content-between align-items-center"
   >
     <h2 class="collection-banner-name">${collectionName}</h2>
@@ -37002,8 +37104,63 @@ const CollectionBanner = (0, _haunted.virtual)(({
       <span class="parallelograms parallelogram-rt"> </span>
       <span class="parallelograms parallelogram-br"> </span>
     </div>
-  </div>`);
-var _default = CollectionBanner;
+  </div>`;
+}
+
+var _default = {
+  tagName: 'collection-banner',
+  renderer: CollectionBanner,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js"}],"components/common/CollectionMainContent.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionMainContent() {
+  return (0, _haunted.html)`<h1>CollectionMainContent</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-main-content',
+  renderer: CollectionMainContent,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionMainContentPagination.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionMainContentPagination() {
+  return (0, _haunted.html)`<h1>CollectionMainContentPagination</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-main-content-pagination',
+  renderer: CollectionMainContentPagination,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductsCount.js":[function(require,module,exports) {
 "use strict";
@@ -37015,13 +37172,24 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-const CollectionProductsCount = (0, _haunted.virtual)(({
+function CollectionProductsCount({
   productsCount,
   productTypeName
-}) => (0, _haunted.html)`<div class="search-count">
+}) {
+  console.log('CollectionProductsCount');
+  return (0, _haunted.html)`<div class="search-count">
     <h5>${productsCount} ${productTypeName} match your search criteria</h5>
-  </div>`);
-var _default = CollectionProductsCount;
+  </div>`;
+}
+
+var _default = {
+  tagName: 'collection-products-count',
+  renderer: CollectionProductsCount,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductsPerPageController.js":[function(require,module,exports) {
 "use strict";
@@ -37033,15 +37201,26 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-const CollectionProductsPerPageController = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="product-page-per-view">
+function CollectionProductsPerPageController() {
+  console.log('CollectionProductsPerPageController');
+  return (0, _haunted.html)`<div class="product-page-per-view">
     <select name="pro_limit">
       <option value="12">Default</option>
       <option value="24">24 Products</option>
       <option value="36">36 Products</option>
       <option value="48">48 Products</option>
     </select>
-  </div>`);
-var _default = CollectionProductsPerPageController;
+  </div>`;
+}
+
+var _default = {
+  tagName: 'collection-products-per-page-controller',
+  renderer: CollectionProductsPerPageController,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSortByController.js":[function(require,module,exports) {
 "use strict";
@@ -37053,7 +37232,9 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-const CollectionSortByController = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="product-page-filter">
+function CollectionSortByController() {
+  console.log('CollectionSortByController');
+  return (0, _haunted.html)`<div class="product-page-filter">
     <select name="sortBy" id="sortBy">
       <option value="manual">Featured</option>
       <option value="best-selling">Best Selling</option>
@@ -37062,8 +37243,17 @@ const CollectionSortByController = (0, _haunted.virtual)(() => (0, _haunted.html
       <option value="price-ascending">Price, low to high</option>
       <option value="price-descending">Price, high to low</option>
     </select>
-  </div>`);
-var _default = CollectionSortByController;
+  </div>`;
+}
+
+var _default = {
+  tagName: 'collection-sort-by-controller',
+  renderer: CollectionSortByController,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionViewModeChanger.js":[function(require,module,exports) {
 "use strict";
@@ -37075,15 +37265,26 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-const CollectionViewModeChanger = (0, _haunted.virtual)(() => (0, _haunted.html)`<div class="collection-view">
+function CollectionViewModeChanger() {
+  console.log('CollectionViewModeChanger');
+  return (0, _haunted.html)`<div class="collection-view">
     <ul>
       <li class="active"><i class="fa fa-th grid-layout-view"></i></li>
       <li><i class="fa fa-list-ul list-layout-view"></i></li>
     </ul>
-  </div>`);
-var _default = CollectionViewModeChanger;
+  </div>`;
+}
+
+var _default = {
+  tagName: 'collection-view-mode-changer',
+  renderer: CollectionViewModeChanger,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"pages/barbequeSmokerCollection.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionMainContentTopControllers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37093,17 +37294,384 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _CollectionBanner = _interopRequireDefault(require("../components/common/CollectionBanner"));
+var _CollectionProductsCount = _interopRequireDefault(require("./CollectionProductsCount"));
 
-var _CollectionProductsCount = _interopRequireDefault(require("../components/common/CollectionProductsCount"));
+var _CollectionProductsPerPageController = _interopRequireDefault(require("./CollectionProductsPerPageController"));
 
-var _CollectionProductsPerPageController = _interopRequireDefault(require("../components/common/CollectionProductsPerPageController"));
+var _CollectionSortByController = _interopRequireDefault(require("./CollectionSortByController"));
 
-var _CollectionSortByController = _interopRequireDefault(require("../components/common/CollectionSortByController"));
-
-var _CollectionViewModeChanger = _interopRequireDefault(require("../components/common/CollectionViewModeChanger"));
+var _CollectionViewModeChanger = _interopRequireDefault(require("./CollectionViewModeChanger"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function CollectionMainContentTopControllers() {
+  console.log('CollectionMainContentTopControllers');
+  return (0, _haunted.html)`<div class="row">
+    <div class="col-12">
+      <div class="product-filter-content collection-top-controllers">
+        ${(0, _CollectionProductsCount.default)({
+    productsCount: 28,
+    productTypeName: 'Grills'
+  })}
+        ${(0, _CollectionViewModeChanger.default)()} ${(0, _CollectionProductsPerPageController.default)()}
+        ${(0, _CollectionSortByController.default)()}
+      </div>
+    </div>
+  </div>`;
+}
+
+var _default = {
+  tagName: 'collection-main-content-top-controllers',
+  renderer: CollectionMainContentTopControllers,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","./CollectionProductsCount":"components/common/CollectionProductsCount.js","./CollectionProductsPerPageController":"components/common/CollectionProductsPerPageController.js","./CollectionSortByController":"components/common/CollectionSortByController.js","./CollectionViewModeChanger":"components/common/CollectionViewModeChanger.js"}],"components/common/CollectionProductItem.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionProductItem() {
+  return (0, _haunted.html)`<h1>CollectionProductItem</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-product-item',
+  renderer: CollectionProductItem,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionProductList.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionProductList() {
+  return (0, _haunted.html)`<h1>CollectionProductList</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-product-list',
+  renderer: CollectionProductList,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSearchInput.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionSearchInput() {
+  return (0, _haunted.html)`<h1>CollectionSearchInput</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-search-input',
+  renderer: CollectionSearchInput,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSidebar.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+
+function CollectionSidebar() {
+  const {
+    brandInfo
+  } = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  console.log('brandInfo', brandInfo);
+  return (0, _haunted.html)`<h1>CollectionSidebar</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-sidebar',
+  renderer: CollectionSidebar,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js"}],"components/common/CollectionSidebarFilter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionSidebarFilter() {
+  return (0, _haunted.html)`<h1>CollectionSidebarFilter</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-sidebar-filter',
+  renderer: CollectionSidebarFilter,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSidebarTopImages.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+function CollectionSidebarTopImages() {
+  return (0, _haunted.html)`<h1>CollectionSidebarTopImages</h1>`;
+}
+
+var _default = {
+  tagName: 'collection-sidebar-top-images',
+  renderer: CollectionSidebarTopImages,
+  options: {
+    observedAttributes: [],
+    useShadowDOM: false
+  }
+};
+exports.default = _default;
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _CookTypesAndBrandsFilter = _interopRequireDefault(require("./barbequeSmokerCollection/CookTypesAndBrandsFilter"));
+
+var _GrillCookingAreaFilter = _interopRequireDefault(require("./barbequeSmokerCollection/GrillCookingAreaFilter"));
+
+var _PriceRangeFilter = _interopRequireDefault(require("./barbequeSmokerCollection/PriceRangeFilter"));
+
+var _BackToTopBanner = _interopRequireDefault(require("./common/BackToTopBanner"));
+
+var _CollectionBanner = _interopRequireDefault(require("./common/CollectionBanner"));
+
+var _CollectionMainContent = _interopRequireDefault(require("./common/CollectionMainContent"));
+
+var _CollectionMainContentPagination = _interopRequireDefault(require("./common/CollectionMainContentPagination"));
+
+var _CollectionMainContentTopControllers = _interopRequireDefault(require("./common/CollectionMainContentTopControllers"));
+
+var _CollectionProductItem = _interopRequireDefault(require("./common/CollectionProductItem"));
+
+var _CollectionProductList = _interopRequireDefault(require("./common/CollectionProductList"));
+
+var _CollectionProductsCount = _interopRequireDefault(require("./common/CollectionProductsCount"));
+
+var _CollectionProductsPerPageController = _interopRequireDefault(require("./common/CollectionProductsPerPageController"));
+
+var _CollectionSearchInput = _interopRequireDefault(require("./common/CollectionSearchInput"));
+
+var _CollectionSidebar = _interopRequireDefault(require("./common/CollectionSidebar"));
+
+var _CollectionSidebarFilter = _interopRequireDefault(require("./common/CollectionSidebarFilter"));
+
+var _CollectionSidebarTopImages = _interopRequireDefault(require("./common/CollectionSidebarTopImages"));
+
+var _CollectionSortByController = _interopRequireDefault(require("./common/CollectionSortByController"));
+
+var _CollectionViewModeChanger = _interopRequireDefault(require("./common/CollectionViewModeChanger"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = {
+  CookTypesAndBrandsFilter: _CookTypesAndBrandsFilter.default,
+  GrillCookingAreaFilter: _GrillCookingAreaFilter.default,
+  PriceRangeFilter: _PriceRangeFilter.default,
+  BackToTopBanner: _BackToTopBanner.default,
+  CollectionBanner: _CollectionBanner.default,
+  CollectionMainContent: _CollectionMainContent.default,
+  CollectionMainContentPagination: _CollectionMainContentPagination.default,
+  CollectionMainContentTopControllers: _CollectionMainContentTopControllers.default,
+  CollectionProductItem: _CollectionProductItem.default,
+  CollectionProductList: _CollectionProductList.default,
+  CollectionProductsCount: _CollectionProductsCount.default,
+  CollectionProductsPerPageController: _CollectionProductsPerPageController.default,
+  CollectionSearchInput: _CollectionSearchInput.default,
+  CollectionSidebar: _CollectionSidebar.default,
+  CollectionSidebarFilter: _CollectionSidebarFilter.default,
+  CollectionSidebarTopImages: _CollectionSidebarTopImages.default,
+  CollectionSortByController: _CollectionSortByController.default,
+  CollectionViewModeChanger: _CollectionViewModeChanger.default
+};
+exports.default = _default;
+},{"./barbequeSmokerCollection/CookTypesAndBrandsFilter":"components/barbequeSmokerCollection/CookTypesAndBrandsFilter.js","./barbequeSmokerCollection/GrillCookingAreaFilter":"components/barbequeSmokerCollection/GrillCookingAreaFilter.js","./barbequeSmokerCollection/PriceRangeFilter":"components/barbequeSmokerCollection/PriceRangeFilter.js","./common/BackToTopBanner":"components/common/BackToTopBanner.js","./common/CollectionBanner":"components/common/CollectionBanner.js","./common/CollectionMainContent":"components/common/CollectionMainContent.js","./common/CollectionMainContentPagination":"components/common/CollectionMainContentPagination.js","./common/CollectionMainContentTopControllers":"components/common/CollectionMainContentTopControllers.js","./common/CollectionProductItem":"components/common/CollectionProductItem.js","./common/CollectionProductList":"components/common/CollectionProductList.js","./common/CollectionProductsCount":"components/common/CollectionProductsCount.js","./common/CollectionProductsPerPageController":"components/common/CollectionProductsPerPageController.js","./common/CollectionSearchInput":"components/common/CollectionSearchInput.js","./common/CollectionSidebar":"components/common/CollectionSidebar.js","./common/CollectionSidebarFilter":"components/common/CollectionSidebarFilter.js","./common/CollectionSidebarTopImages":"components/common/CollectionSidebarTopImages.js","./common/CollectionSortByController":"components/common/CollectionSortByController.js","./common/CollectionViewModeChanger":"components/common/CollectionViewModeChanger.js"}],"helpers.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.queryAllProducts = exports.query250ProductsCreator = exports.getQueryString = exports.addslashes = void 0;
+
+const addslashes = str => `${str}`.replace(/([\\"'])/g, '\\$1').replace(/\0/g, '\\0');
+
+exports.addslashes = addslashes;
+
+const getQueryString = (productTypes, selectedCookTypesAndBrands) => {
+  const productTypePart = `(${productTypes.map(type => `product_type:"${addslashes(type)}"`).join(' OR ')})`;
+  const cookTypeAndBrandsPart = Object.keys(selectedCookTypesAndBrands !== null && selectedCookTypesAndBrands !== void 0 ? selectedCookTypesAndBrands : {}).map(cookType => {
+    const brands = selectedCookTypesAndBrands[cookType];
+    const productBrandPart = `(${brands.map(brand => `vendor:"${brand}"`).join(' OR ')})`;
+
+    if (productBrandPart === '') {
+      return `tag:"dtm_cook-type_${cookType}"`;
+    }
+
+    return `(tag:"dtm_cook-type_${cookType}" AND ${productBrandPart})`;
+  }).join(' OR ');
+
+  if (cookTypeAndBrandsPart.length > 0) {
+    return `${productTypePart} AND (${cookTypeAndBrandsPart})`;
+  }
+
+  return productTypePart;
+};
+
+exports.getQueryString = getQueryString;
+
+const query250ProductsCreator = (client, query, productTypes) => {
+  const query250Products = dataWithLastPageProducts => {
+    var _dataWithLastPageProd, _dataWithLastPageProd2, _dataWithLastPageProd3, _dataWithLastPageProd4, _dataWithLastPageProd5, _dataWithLastPageProd6;
+
+    console.log(dataWithLastPageProducts);
+    debugger;
+    return client.query({
+      query,
+      variables: {
+        first: 250,
+        query: `${getQueryString(productTypes)}`,
+        after: (_dataWithLastPageProd = dataWithLastPageProducts === null || dataWithLastPageProducts === void 0 ? void 0 : (_dataWithLastPageProd2 = dataWithLastPageProducts.data) === null || _dataWithLastPageProd2 === void 0 ? void 0 : (_dataWithLastPageProd3 = _dataWithLastPageProd2.products) === null || _dataWithLastPageProd3 === void 0 ? void 0 : (_dataWithLastPageProd4 = _dataWithLastPageProd3.edges) === null || _dataWithLastPageProd4 === void 0 ? void 0 : (_dataWithLastPageProd5 = _dataWithLastPageProd4.slice(-1)) === null || _dataWithLastPageProd5 === void 0 ? void 0 : (_dataWithLastPageProd6 = _dataWithLastPageProd5[0]) === null || _dataWithLastPageProd6 === void 0 ? void 0 : _dataWithLastPageProd6.cursor) !== null && _dataWithLastPageProd !== void 0 ? _dataWithLastPageProd : null
+      }
+    }).then(query250Products);
+  };
+
+  return query250Products;
+};
+
+exports.query250ProductsCreator = query250ProductsCreator;
+
+const queryAllProducts = async (client, query, productTypes) => {
+  const query250ProductsOfBarbeques = query250ProductsCreator(client, query, productTypes);
+  await query250ProductsOfBarbeques();
+};
+
+exports.queryAllProducts = queryAllProducts;
+var _default = {
+  getQueryString,
+  queryAllProducts
+};
+exports.default = _default;
+},{}],"pages/BarbequeSmokerCollection.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _haunted = require("@apollo-elements/haunted");
+
+var _core = require("@apollo/client/core");
+
+var _barbequeSmokerCollection = require("../context/barbequeSmokerCollection");
+
+var _helpers = require("../helpers");
+
+const GET_PRODUCTS = (0, _core.gql)`
+  query getProducts(
+    $first: Int
+    $after: String
+    $query: String
+    $reverse: Boolean
+    $sortKey: ProductSortKeys
+  ) {
+    products(
+      first: $first
+      after: $after
+      query: $query
+      reverse: $reverse
+      sortKey: $sortKey
+    ) {
+      edges {
+        cursor
+        node {
+          id
+          handle
+          title
+          availableForSale
+          onlineStoreUrl
+          productType
+          vendor
+          images(first: 1) {
+            edges {
+              node {
+                altText
+                originalSrc
+                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 340)
+              }
+            }
+          }
+          priceRange {
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          tags
+        }
+      }
+    }
+  }
+`;
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -37111,33 +37679,69 @@ function BarbequeSmokerCollection({
   grillCookingAreaMinAndMax,
   totalProductsCount
 }) {
+  var _params$get;
+
+  const client = window.__APOLLO_CLIENT__;
+  const params = new URLSearchParams(window.location.search);
+  const selectedCookTypesAndBrandsFromQueryString = JSON.parse(decodeURI((_params$get = params.get('selected')) !== null && _params$get !== void 0 ? _params$get : '{}'));
   const brandInfo = JSON.parse(cookTypesAndBrands !== null && cookTypesAndBrands !== void 0 ? cookTypesAndBrands : '{"Gas Grill":[], "Charcoal Grill":[], "Pellet Grill":[], "Oven":[]}');
   const [minPrice, maxPrice] = JSON.parse(priceRangeMinAndMax !== null && priceRangeMinAndMax !== void 0 ? priceRangeMinAndMax : '[0, 0]').map(p => Math.floor(Number(p)));
   const [minGrillCookingArea, maxGrillCookingArea] = JSON.parse(grillCookingAreaMinAndMax !== null && grillCookingAreaMinAndMax !== void 0 ? grillCookingAreaMinAndMax : '[0, 0]').map(p => Math.floor(Number(p)));
   const productsCount = Math.floor(Number(totalProductsCount !== null && totalProductsCount !== void 0 ? totalProductsCount : 0));
   const [currentPriceRange, setCurrentPriceRange] = (0, _haunted.useState)([0, 0]);
   const [currentGrillCookingArea, setCurrentGrillCookingArea] = (0, _haunted.useState)([0, 0]);
+  const [searchString, setSearchString] = (0, _haunted.useState)(''); // potential elements are: Gas Grills, Charcoal Grills, Pellet Grills, Oven
+
+  const [selectedCookTypesAndBrands, setSelectedCookTypesAndBrands] = (0, _haunted.useState)(selectedCookTypesAndBrandsFromQueryString);
+  const [currentPage, setCurrentPage] = (0, _haunted.useState)(1);
+  const [viewMode, setViewMode] = (0, _haunted.useState)('grid'); // potential value grid/list
+
+  const [productsPerPage, setProductsPerPage] = (0, _haunted.useState)(24);
+  const [sortValue, setSortValue] = (0, _haunted.useState)('BEST_SELLING_ASC'); // potential value "BEST_SELLING_ASC", "PRICE_ASC", "PRICE_DESC",
+
+  const [allProductsLoaded, setAllProductsLoaded] = (0, _haunted.useState)(false);
+  const {
+    data: dataWithFirstPageProducts
+  } = (0, _haunted.useQuery)(GET_PRODUCTS, {
+    first: productsPerPage,
+    variables: {
+      first: productsPerPage,
+      query: `${(0, _helpers.getQueryString)(['Barbeques'], selectedCookTypesAndBrands)}`,
+      reverse: !!sortValue.includes('DESC'),
+      sortKey: sortValue.replace('_DESC', '').replace('_ASC', '')
+    }
+  });
+  console.log('dataWithFirstPageProducts', dataWithFirstPageProducts);
+  (0, _haunted.useEffect)(async () => {
+    await (0, _helpers.queryAllProducts)(client, GET_PRODUCTS, ['Barbeques']);
+    debugger;
+  }, []);
   (0, _haunted.useEffect)(() => {
     setCurrentPriceRange([minPrice, maxPrice]);
   }, [minPrice, maxPrice]);
   (0, _haunted.useEffect)(() => {
     setCurrentGrillCookingArea([minGrillCookingArea, maxGrillCookingArea]);
   }, [minGrillCookingArea, maxGrillCookingArea]);
-  console.log(brandInfo, productsCount, currentPriceRange, currentGrillCookingArea);
-  return (0, _haunted.html)` ${(0, _CollectionBanner.default)({
-    collectionName: 'Barbeques/Smokers'
-  })}
-    <hr />
-    ${(0, _CollectionProductsCount.default)({
-    productsCount: 28,
-    productTypeName: 'Grills'
-  })}
-    <hr />
-    ${(0, _CollectionViewModeChanger.default)()}
-    <hr />
-    ${(0, _CollectionProductsPerPageController.default)()}
-    <hr />
-    ${(0, _CollectionSortByController.default)()}`;
+  console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
+  console.log('currentPriceRange', currentPriceRange);
+  console.log('currentGrillCookingArea', currentGrillCookingArea);
+  console.log();
+  return (0, _haunted.html)`${(0, _barbequeSmokerCollection.BarbequeSmokerCollectionWrapper)({
+    children: (0, _haunted.html)`<section class="section-b-space">
+      <div class="collection-wrapper">
+        <div class="container">
+          <div class="row">
+            <collection-sidebar></collection-sidebar>
+            <collection-main-content></collection-main-content>
+          </div>
+        </div>
+      </div>
+    </section>`,
+    brandInfo,
+    productsCount,
+    currentPriceRange,
+    currentGrillCookingArea
+  })}`;
 }
 
 var _default = {
@@ -37149,7 +37753,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../components/common/CollectionBanner":"components/common/CollectionBanner.js","../components/common/CollectionProductsCount":"components/common/CollectionProductsCount.js","../components/common/CollectionProductsPerPageController":"components/common/CollectionProductsPerPageController.js","../components/common/CollectionSortByController":"components/common/CollectionSortByController.js","../components/common/CollectionViewModeChanger":"components/common/CollectionViewModeChanger.js"}],"pages/index.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","@apollo/client/core":"../node_modules/@apollo/client/core/index.js","../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../helpers":"helpers.js"}],"pages/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37157,22 +37761,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _barbequeSmokerCollection = _interopRequireDefault(require("./barbequeSmokerCollection"));
+var _BarbequeSmokerCollection = _interopRequireDefault(require("./BarbequeSmokerCollection"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = {
-  barbequeSmokerCollection: _barbequeSmokerCollection.default
+  BarbequeSmokerCollection: _BarbequeSmokerCollection.default
 };
 exports.default = _default;
-},{"./barbequeSmokerCollection":"pages/barbequeSmokerCollection.js"}],"index.js":[function(require,module,exports) {
+},{"./BarbequeSmokerCollection":"pages/BarbequeSmokerCollection.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _haunted = require("@apollo-elements/haunted");
 
 require("./apollo-client");
 
-require("./components/index");
+var _components = _interopRequireDefault(require("./components"));
 
 var _pages = _interopRequireDefault(require("./pages"));
 
@@ -37180,8 +37784,7 @@ require("./styles.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_pages.default);
-document.addEventListener('DOMContentLoaded', () => {
+const start = () => {
   var _activeParentLinkElem;
 
   // add active class to menu item
@@ -37191,9 +37794,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const activeParentLinkElement = activeLinkElement === null || activeLinkElement === void 0 ? void 0 : activeLinkElement.closest('#main-menu>li>a');
   activeParentLinkElement === null || activeParentLinkElement === void 0 ? void 0 : (_activeParentLinkElem = activeParentLinkElement.classList) === null || _activeParentLinkElem === void 0 ? void 0 : _activeParentLinkElem.add('active'); // create custom elements
 
-  Object.values(_pages.default).forEach(pageComponent => {
-    customElements.define(pageComponent.tagName, (0, _haunted.component)(pageComponent.renderer, pageComponent.options));
+  Object.values({ ..._components.default,
+    ..._pages.default
+  }).forEach(pComponent => {
+    customElements.define(pComponent.tagName, (0, _haunted.component)(pComponent.renderer, pComponent.options));
   });
-});
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","./apollo-client":"apollo-client.js","./components/index":"components/index.js","./pages":"pages/index.js","./styles.scss":"../node_modules/@apollo/client/cache/inmemory/fixPolyfills.js"}]},{},["index.js"], null)
+};
+
+if (/complete|interactive|loaded/.test(document.readyState)) {
+  console.log(document.readyState);
+  start();
+} else {
+  document.addEventListener('DOMContentLoaded', start, false);
+}
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","./apollo-client":"apollo-client.js","./components":"components/index.js","./pages":"pages/index.js","./styles.scss":"../node_modules/@apollo/client/cache/inmemory/fixPolyfills.js"}]},{},["index.js"], null)
 //# sourceMappingURL=/custom.js.map

@@ -5,6 +5,9 @@
   var $wishlistItemCount = $('.wishlist-item-count');
   var numProductTiles = $wishlistTile.length;
   var wishlist = localStorage.getItem('user_wishlist') || [];
+
+  // debugger;
+
   if (wishlist.length > 0) {
     wishlist = JSON.parse(localStorage.getItem('user_wishlist'));
   }
@@ -24,6 +27,9 @@
   var updateWishlist = function (self) {
     var productHandle = $(self).attr('data-product-handle');
     var isRemove = $(self).hasClass('is-active');
+    
+    // debugger;
+
     /* Remove */
     if (isRemove) {
       console.log('remove');

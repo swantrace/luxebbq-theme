@@ -1,18 +1,38 @@
-{% include 'breadcrumb' %}
-<!--section start-->
+<!--Wishlist Page section start-->
+
+{% section 'announcement-bar' %}
+
 <section class="wishlist-section section-b-space wishlist-container">
   <div class="container">
-    <div class="row">
+
+  <div class="row dtm dtm-title pt-2 pb-5">
+    <div class="title1 d-flex justify-content-between align-items-center  flex-column flex-md-row " style="flex-grow: 1;">
+        <div style="flex-grow: 1;" >
+          <h2 class="title-inner1 pb-0 mb-0" style="color: #fb711c;">
+            Favourites
+          </h2>
+        </div>
+
+        <div class="parallelograms-group d-none d-sm-flex">
+          <span class="parallelograms parallelogram-lt"> </span>
+          <span class="parallelograms parallelogram-rt"> </span>
+          <span class="parallelograms parallelogram-br"> </span>
+        </div>
+    </div>
+  </div>
+
+
+    <div class="row pt-5">
       <div class="col-sm-12 wishlist-grid flex">
         <div class="wishlist-grid flex">
           <table class="table cart-table table-responsive-xs wishlist_table wishlist-grid">
             <thead>
               <tr class="table-head">
-                <th scope="col" {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.image"{%endif%}>{{ 'general.wishlist.image' | t }}</th>
-                <th scope="col" {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.product_name"{%endif%}>{{ 'general.wishlist.product_name' | t }}</th>
-                <th scope="col" {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.price"{%endif%}>{{ 'general.wishlist.price' | t }}</th>
-                <th scope="col" {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.avalibility"{%endif%}>{{ 'general.wishlist.avalibility' | t }}</th>
-                <th scope="col" {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.action"{%endif%}>{{ 'general.wishlist.action' | t }}</th>
+                <th scope="col">{{ 'general.wishlist.image' | t }}</th>
+                <th scope="col">{{ 'general.wishlist.product_name' | t }}</th>
+                <th scope="col">{{ 'general.wishlist.price' | t }}</th>
+                <th scope="col">{{ 'general.wishlist.avalibility' | t }}</th>
+                <th scope="col">{{ 'general.wishlist.action' | t }}</th>
               </tr>
             </thead>
             {% paginate collections.all.products by 9999 %}
@@ -26,16 +46,13 @@
                   <a href="{{ product.url }}">
                     {% assign data_title = product.title | split: '|' | first %}
                     {% assign data_json = product.title | split: '|' | last %}
-                    <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
+                    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                       {{ data_title }}
-                    </h6>
-                    {% if settings.enable_lang_switcher %}
-                    <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
-                    {% endif %}
+                    </h4>
                   </a>
                   <div class="mobile-cart-content row">
                     <div class="col-xs-3">
-                      <p>{% if product.available %}Instock{% else %}Out of stock{% endif %}</p>
+                      <p>{% if product.available %}<span class="instock-lable"><i class="fa fa-check-circle" aria-hidden="true"></i>Instock</span>{% else %}<span class="outofstock-lable">Out of stock</span>{% endif %}</p>
                     </div>
                     <div class="col-xs-3">
                       <h2 class="td-color">{{ product.variants[0].price | money }}</h2>
@@ -51,13 +68,49 @@
                 <td>
                   <h2 class="td-color">{{ product.variants[0].price | money }}</h2>
                 <td>
-                  <p>{% if product.available %}Instock{% else %}Out of stock{% endif %}</p>
+                  <p>{% if product.available %}<span class="instock-lable"><i class="fa fa-check-circle" aria-hidden="true"></i>Instock</span>{% else %}<span class="outofstock-lable">Out of stock</span>{% endif %}</p>
                 </td>
                 <td>
-                  <a class="action--wishlist tile-actions--btn flex wishlist-btn icon mr-3 " style="font-size:18px" href="#" data-product-handle="{{ product.handle }}">
-                    <i class="ti-trash" aria-hidden="true"></i>
+
+                  <a href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1" class="btn btn-solid">
+                    Add to cart &nbsp;&nbsp;&nbsp;>>
                   </a>
-                  <a href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1" style="font-size:18px" class="icon mr-1 action--quick-cart tile-actions--btn flex cart-btn"><i class="ti-shopping-cart"></i> </a>
+
+                  <div class="share-buttons py-3 d-flex flex-column">
+
+                      <div class="product-icon">
+                          <div class="share-btn">
+                              <a class="action--wishlist tile-actions--btn flex " href="javascript:void(0)">
+                              <i class="ti-sharethis btn--main pl-0 ml-0" aria-hidden="true"></i>
+                              </a>
+                            <span class="title-font" style="">Share</span>
+                          </div>
+                      </div>
+
+                      <div class="product-icon">
+                           <div class="compare-btn">
+                              <a class="action--wishlist tile-actions--btn flex" href="javascript:void(0)" data-product-handle="{{ product.handle }}">
+                              <i class="fa fa-balance-scale btn--main" aria-hidden="true"></i>
+                              </a>
+                             <span class="title-font" style="">Compare</span>
+                           </div>
+                      </div>
+
+                  {% comment %} <a class="action--wishlist tile-actions--btn flex wishlist-btn icon mr-3 " style="font-size:18px">
+                    <i class="ti-trash" aria-hidden="true"></i>
+                  </a> {% endcomment %}
+
+                      <div class="product-icon">
+                           <div class="remove-btn">
+                              <a class="action--wishlist tile-actions--btn flex" href="#" data-product-handle="{{ product.handle }}">
+                              <i class="fa fa-times btn--main" aria-hidden="true"></i>
+                              </a>
+                             <span class="title-font" style="">Remove</span>
+                           </div>
+                      </div>
+
+                  </div>
+
                 </td>
               </tr>
             </tbody>
@@ -71,7 +124,7 @@
           </table>
         </div>
         <div class="text-right mt-5 checkout wishlist-grid ">
-          <a href="/checkout" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.checkout"{%endif%}>{{ 'cart.general.checkout' | t }}</a>
+          <a href="/checkout" class="btn btn-solid" >{{ 'cart.general.checkout' | t }}</a>
         </div>
       </div>
     </div>

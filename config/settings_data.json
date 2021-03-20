@@ -3410,7 +3410,7 @@
         ],
         "settings": {
           "enabled": true,
-          "section_padding": "0px 0px 0px 0px",
+          "section_padding": "0px 0px 80px 0px",
           "title": "More Collections",
           "title_color": "#fb711c",
           "use_equal_height": false,
