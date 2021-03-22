@@ -1,20 +1,17 @@
 import { html } from '@apollo-elements/haunted';
-import CollectionProductsCount from './CollectionProductsCount';
-import CollectionProductsPerPageController from './CollectionProductsPerPageController';
-import CollectionSortByController from './CollectionSortByController';
-import CollectionViewModeChanger from './CollectionViewModeChanger';
 
 function CollectionMainContentTopControllers() {
   console.log('CollectionMainContentTopControllers');
   return html`<div class="row">
     <div class="col-12">
       <div class="product-filter-content collection-top-controllers">
-        ${CollectionProductsCount({
-          productsCount: 28,
-          productTypeName: 'Grills',
-        })}
-        ${CollectionViewModeChanger()} ${CollectionProductsPerPageController()}
-        ${CollectionSortByController()}
+        <collection-products-count
+          products-count="28"
+          product-type-name="Grills"
+        ></collection-products-count>
+        <collection-view-mode-changer></collection-view-mode-changer>
+        <collection-products-per-page-controller></collection-products-per-page-controller>
+        <collection-sort-by-controller></collection-sort-by-controller>
       </div>
     </div>
   </div>`;

@@ -3,15 +3,18 @@
 {% assign pellet_grill_brands = '"Pellet Grill":["' | append: section.settings.pellet_grill_brands | split: ',' | join: '","' | append: '"]' %}
 {% assign oven_brands = '"Oven":["' | append: section.settings.oven_brands | split: ',' | join: '","' | append: '"]' %}
 {% assign cook_types_and_brands = '{' | append: gas_grill_brands | append: ',' | append: charcoal_grill_brands | append: ',' | append: pellet_grill_brands | append: ',' | append: oven_brands | append: '}' %}
+
 <barbeque-smoker-collection
   total-products-count='{{collection.products_count}}'
   cook-types-and-brands='{{cook_types_and_brands|escape}}'
   price-range-min-and-max='[{{section.settings.min_price_in_range}}, {{section.settings.max_price_in_range}}]'
   grill-cooking-area-min-and-max='[{{section.settings.min_grill_cooking_area}}, {{section.settings.max_grill_cooking_area}}]'
   total-products-count='{{collection.products_count}}'
+  default-sort-by='{{collection.default_sort_by}}'
+  collection-handle='{{collection.handle}}'
+  collection-metafields='{{collection.metafields.dtm.info|json}}'
 >
 </barbeque-smoker-collection>
-<cook-types-and-brands-filter></cook-types-and-brands-filter>
 {% schema %}
 {
   "name": "BBQ Collection Template",

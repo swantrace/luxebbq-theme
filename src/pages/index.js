@@ -1,3 +1,3 @@
-import barbequeSmokerCollection from './barbequeSmokerCollection';
+import BarbequeSmokerCollection from './BarbequeSmokerCollection';
 
-export default { barbequeSmokerCollection };
+export default { BarbequeSmokerCollection };

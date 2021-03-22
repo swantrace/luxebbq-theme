@@ -11,7 +11,7 @@ export default {
   tagName: 'collection-products-count',
   renderer: CollectionProductsCount,
   options: {
-    observedAttributes: [],
+    observedAttributes: ['products-count', 'product-type-name'],
     useShadowDOM: false,
   },
 };

@@ -1,21 +1,32 @@
-.collection-banner .collection-banner-name {
+barbeque-smoker-collection .collection-banner .collection-banner-name {
   color: #fb711c;
   flex-basis: 250px;
   flex-grow: 45;
 }
-.collection-banner .parallelograms-group {
+barbeque-smoker-collection .collection-banner .parallelograms-group {
   flex-basis: 55%;
   flex-grow: 55;
   flex-shrink: 100;
 }
-.collection-banner .parallelograms-group .parallelograms {
+barbeque-smoker-collection .collection-banner .parallelograms-group .parallelograms {
   background-color: #fb711c;
 }
-
-.collection-top-controllers {
+barbeque-smoker-collection .collection-top-controllers {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+barbeque-smoker-collection collection-sidebar-filter .collection-collapse-block .collapse-block-title:after {
+  content: "";
+}
+barbeque-smoker-collection collection-sidebar-filter ul#cook_types_filter li {
+  display: block;
+}
+barbeque-smoker-collection collection-sidebar-filter ul#cook_types_filter li ul#brands_filter {
+  margin-top: 15px;
+}
+barbeque-smoker-collection collection-sidebar-filter ul#cook_types_filter li ul#brands_filter li {
+  display: block;
 }
 
 /*# sourceMappingURL=/custom.css.map */

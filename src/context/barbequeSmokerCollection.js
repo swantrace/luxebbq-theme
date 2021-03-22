@@ -13,7 +13,6 @@ customElements.define(
 );
 export const BarbequeSmokerCollectionWrapper = virtual(
   ({ children, ...rest }) => {
-    console.log(children, rest);
     const sharedState = {};
     return html`<barbeque-smoker-collection-provider
       .value=${{ ...rest, ...sharedState }}

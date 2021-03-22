@@ -1,10 +1,11 @@
-import { component, html } from '@apollo-elements/haunted';
+import { component } from '@apollo-elements/haunted';
+import 'paper-range-slider';
 import './apollo-client';
 import partComponents from './components';
 import pageComponents from './pages';
 import './styles.scss';
 
-document.addEventListener('DOMContentLoaded', () => {
+const start = () => {
   // add active class to menu item
   const path = window.location.pathname;
   const navigationElement = document.querySelector('#main-menu');
@@ -16,18 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // create custom elements
 
-  // Object.values({ ...partComponents, ...pageComponents }).forEach(
-  //   (pComponent) => {
-  //     customElements.define(
-  //       pComponent.tagName,
-  //       component(pComponent.renderer, pComponent.options)
-  //     );
-  //   }
-  // );
-  const {
-    renderer,
-    tagName,
-    options,
-  } = partComponents.CookTypesAndBrandsFilter;
-  customElements.define(tagName, component(renderer(html), options));
-});
+  Object.values({ ...partComponents, ...pageComponents }).forEach(
+    (pComponent) => {
+      customElements.define(
+        pComponent.tagName,
+        component(pComponent.renderer, pComponent.options)
+      );
+    }
+  );
+};
+
+if (/complete|interactive|loaded/.test(document.readyState)) {
+  console.log(document.readyState);
+  start();
+} else {
+  document.addEventListener('DOMContentLoaded', start, false);
+}

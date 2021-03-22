@@ -1,21 +1,42 @@
-.collection-banner {
-  .collection-banner-name {
-    color: #fb711c;
-    flex-basis: 250px;
-    flex-grow: 45;
-  }
-  .parallelograms-group {
-    flex-basis: 55%;
-    flex-grow: 55;
-    flex-shrink: 100;
-    .parallelograms {
-      background-color: #fb711c;
+barbeque-smoker-collection {
+  .collection-banner {
+    .collection-banner-name {
+      color: #fb711c;
+      flex-basis: 250px;
+      flex-grow: 45;
+    }
+    .parallelograms-group {
+      flex-basis: 55%;
+      flex-grow: 55;
+      flex-shrink: 100;
+      .parallelograms {
+        background-color: #fb711c;
+      }
     }
   }
-}
 
-.collection-top-controllers {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  .collection-top-controllers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  collection-sidebar-filter {
+    .collection-collapse-block .collapse-block-title {
+      &:after {
+        content: '';
+      }
+    }
+    ul#cook_types_filter {
+      li {
+        display: block;
+        ul#brands_filter {
+          margin-top: 15px;
+          li {
+            display: block;
+          }
+        }
+      }
+    }
+  }
 }

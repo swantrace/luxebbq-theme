@@ -1,7 +1,40 @@
 import { html } from '@apollo-elements/haunted';
+import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
+import { DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE } from '../../helpers';
 
 function PriceRangeFilter() {
-  return html`<h1>PriceRangeFilter</h1>`;
+  const context = useBarbequeSmokerCollectionContext();
+  const [min, max] =
+    context?.priceRangeMinAndMax ?? DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
+  const [valueMin, valueMax] =
+    context?.collectionState?.currentPriceRange ??
+    DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
+  const allProducts = context?.collectionState?.allProducts ?? [];
+  const dispatch = context?.collectionDispatch ?? (() => {});
+  return html`<div class="collection-collapse-block">
+    <h3 class="collapse-block-title">Price Range</h3>
+    <div class="collection-collapse-block-content">
+      <div class="collection-price-filter">
+        <paper-range-slider
+          id="price-range-slider"
+          ?disabled=${allProducts?.length === 0}
+          min=${min}
+          max=${max}
+          value-min=${valueMin}
+          value-max=${valueMax}
+          @updateValues=${(customEvent) => {
+            dispatch({
+              type: 'changePriceRange',
+              payload: [
+                customEvent.target.valueMin,
+                customEvent.target.valueMax,
+              ],
+            });
+          }}
+        ></paper-range-slider>
+      </div>
+    </div>
+  </div>`;
 }
 
 export default {

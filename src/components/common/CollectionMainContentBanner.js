@@ -1,9 +1,6 @@
 import { html } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
 
-function CollectionBanner({ collectionName }) {
-  const { brandInfo } = useBarbequeSmokerCollectionContext();
-  console.log('brandInfo', brandInfo);
+function CollectionMainContentBanner({ collectionName }) {
   return html`<div
     class="collection-banner d-flex justify-content-between align-items-center"
   >
@@ -17,10 +14,10 @@ function CollectionBanner({ collectionName }) {
 }
 
 export default {
-  tagName: 'collection-banner',
-  renderer: CollectionBanner,
+  tagName: 'collection-main-content-banner',
+  renderer: CollectionMainContentBanner,
   options: {
-    observedAttributes: [],
+    observedAttributes: ['collection-name'],
     useShadowDOM: false,
   },
 };
