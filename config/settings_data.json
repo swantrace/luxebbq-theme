@@ -3410,7 +3410,7 @@
         ],
         "settings": {
           "enabled": true,
-          "section_padding": "0px 0px 0px 0px",
+          "section_padding": "0px 0px 80px 0px",
           "title": "More Collections",
           "title_color": "#fb711c",
           "use_equal_height": false,
@@ -3566,6 +3566,231 @@
           "min_price_in_range": "1",
           "max_grill_cooking_area": "100",
           "min_grill_cooking_area": "1"
+        }
+      },
+      "dtm-gas-grills-hero-image": {
+        "type": "dtm-gas-grills-hero-image",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/brushing-bbq-sauce-on-grilled-steak.jpg",
+          "text_on_image": "Gas Grills"
+        }
+      },
+      "dtm-gas-grills-landing-page-text-with-video": {
+        "type": "dtm-gas-grills-landing-page-text-with-video",
+        "settings": {
+          "section_padding": "80px 10px 80px 10px",
+          "video_url": "https:\/\/www.youtube.com\/embed\/FRIDLxM8Roc",
+          "desc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium",
+          "custom_desc": "",
+          "img_width": "full",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8"
+        }
+      },
+      "custom-gas-grills-page-collections-grid": {
+        "type": "custom-gas-grills-page-collections-grid",
+        "blocks": {
+          "4a5fc804-d6e2-4ea9-bf2c-22dd475b1d73": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Black Earth"
+            }
+          },
+          "ba093fe4-b986-4623-8dfb-874daa4312ef": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Broil King"
+            }
+          },
+          "1543d424-ea6e-4182-a1e2-87cf333410db": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Kamada Joe"
+            }
+          },
+          "d8159180-7449-4d44-b1aa-68ea770cc52d": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+              "page_url": "#",
+              "enabled_info": true,
+              "title": "Louisiana"
+            }
+          },
+          "e01e073d-94db-4f9b-8d9b-6814f68b4c8d": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
+              "enabled_info": true,
+              "title": "Pit Boss"
+            }
+          },
+          "74e8fed2-2a9a-474b-8514-8c2871a16a49": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "enabled_info": true,
+              "title": "Traeger Grill"
+            }
+          },
+          "03663663-03e3-4d48-8624-332622af57ee": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+              "enabled_info": true,
+              "title": "Weber"
+            }
+          },
+          "abe51f15-9bf5-4385-adf0-79d5cbd7e7ea": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "enabled_info": true,
+              "title": "Yoder"
+            }
+          }
+        },
+        "block_order": [
+          "4a5fc804-d6e2-4ea9-bf2c-22dd475b1d73",
+          "ba093fe4-b986-4623-8dfb-874daa4312ef",
+          "1543d424-ea6e-4182-a1e2-87cf333410db",
+          "d8159180-7449-4d44-b1aa-68ea770cc52d",
+          "e01e073d-94db-4f9b-8d9b-6814f68b4c8d",
+          "74e8fed2-2a9a-474b-8514-8c2871a16a49",
+          "03663663-03e3-4d48-8624-332622af57ee",
+          "abe51f15-9bf5-4385-adf0-79d5cbd7e7ea"
+        ],
+        "settings": {
+          "enabled": true,
+          "section_padding": "0px 0px 80px 0px",
+          "title": "Matching Grills",
+          "title_color": "#fb711c",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8"
+        }
+      },
+      "dtm-smokers-hero-image": {
+        "type": "dtm-smokers-hero-image",
+        "settings": {
+          "hero_image": "shopify:\/\/shop_images\/fireplace-close-up-flames.jpg",
+          "text_on_image": "Smokers"
+        }
+      },
+      "dtm-smokers-landing-page-text-with-video": {
+        "type": "dtm-smokers-landing-page-text-with-video",
+        "settings": {
+          "section_padding": "80px 10px 80px 10px",
+          "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+          "video_url": "https:\/\/www.youtube.com\/embed\/FRIDLxM8Roc",
+          "desc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiumSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiumSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiumSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium",
+          "custom_desc": "",
+          "img_width": "full",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8"
+        }
+      },
+      "custom-smokers-page-collections-grid": {
+        "type": "custom-smokers-page-collections-grid",
+        "blocks": {
+          "d4727c51-0c93-425e-9c1a-54c53a12f4a9": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/piece-of-grilled-salmon.jpg",
+              "enabled_info": true,
+              "title": "Black Earth"
+            }
+          },
+          "97f57610-b4ea-49a2-aed7-44763415ccf7": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "enabled_info": true,
+              "title": "Broil King"
+            }
+          },
+          "80790712-cb33-43ce-9002-613cc3629e00": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/brushing-cooking-oil-on-bbq-corn.jpg",
+              "enabled_info": true,
+              "title": "Kamada Joe"
+            }
+          },
+          "625b71a9-c767-48b2-a7f2-19ce50d3cc94": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
+              "enabled_info": true,
+              "title": "Louisiana"
+            }
+          },
+          "0a72b2a3-19f8-4b43-8622-94aa350e8e46": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "enabled_info": true,
+              "title": "Pit Boss"
+            }
+          },
+          "f04106fd-3d33-4581-88bc-4d48578e4d14": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
+              "enabled_info": true,
+              "title": "Traeger Grill"
+            }
+          },
+          "21315c28-6219-4fb2-a91e-fdba89f28495": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
+              "enabled_info": true,
+              "title": "Weber"
+            }
+          },
+          "0c29aef4-c2a4-43e8-abe1-c2d885277af0": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/sneaky-treats.jpg",
+              "enabled_info": true,
+              "title": "Yoder"
+            }
+          }
+        },
+        "block_order": [
+          "d4727c51-0c93-425e-9c1a-54c53a12f4a9",
+          "97f57610-b4ea-49a2-aed7-44763415ccf7",
+          "80790712-cb33-43ce-9002-613cc3629e00",
+          "625b71a9-c767-48b2-a7f2-19ce50d3cc94",
+          "0a72b2a3-19f8-4b43-8622-94aa350e8e46",
+          "f04106fd-3d33-4581-88bc-4d48578e4d14",
+          "21315c28-6219-4fb2-a91e-fdba89f28495",
+          "0c29aef4-c2a4-43e8-abe1-c2d885277af0"
+        ],
+        "settings": {
+          "enabled": true,
+          "section_padding": "0px 0px 80px 0px",
+          "title": "MATCHING GRILLS",
+          "title_color": "#fb711c",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8"
         }
       }
     },

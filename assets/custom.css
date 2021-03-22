@@ -29,4 +29,10 @@ barbeque-smoker-collection collection-sidebar-filter ul#cook_types_filter li ul#
   display: block;
 }
 
+.collection-top-controllers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 /*# sourceMappingURL=/custom.css.map */

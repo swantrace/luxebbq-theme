@@ -242,6 +242,7 @@
             <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer1_{{blockId}}_copyright_text"{% endif %}>
               {{ block.settings.copyright_text }}              
             </div>
+
             {% if settings.enable_lang_switcher %}
             <span class="hide" id="footer1_{{blockId}}_copyright_text">{{ block.settings.trans_copyright_text | raw }}</span>
             {% endif %}
