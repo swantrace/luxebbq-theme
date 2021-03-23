@@ -1,9 +1,15 @@
 import sizeof from 'object-sizeof';
+import chunk from 'lodash.chunk';
 
 export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 10000];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 100];
 export const addslashes = (str) =>
   `${str}`.replace(/([\\"'])/g, '\\$1').replace(/\0/g, '\\0');
+
+export const removeKey = (obj, propToDelete) => {
+  const { [propToDelete]: deleted, ...objectWithoutDeletedProp } = obj;
+  return objectWithoutDeletedProp;
+};
 
 export const getQueryString = (productTypes, selectedCookTypesAndBrands) => {
   const productTypePart = `(${productTypes
@@ -111,10 +117,17 @@ export const createBarbequesCollectionFilters = (
   searchString,
   selectedCookTypesAndBrands,
   currentPriceRange,
-  currentGrillCookingAreaRange
+  currentGrillCookingAreaRange,
+  onlineStoreOnly
 ) => {
   const st = searchString?.trim() ?? '';
   return {
+    onlineStoreOnly: (product) => {
+      if (!onlineStoreOnly) {
+        return true;
+      }
+      return !!product.onlineStoreUrl;
+    },
     searchString: (product) => {
       if (st.length === 0) {
         return true;
@@ -194,34 +207,49 @@ export const createBarbequesCollectionSorter = (sortValue) => (
   productA,
   productB
 ) => {
-  if (sortValue === 'TITLE_ASC' || sortValue === 'TITLE_DESC') {
-    return productA?.title?.localeCompare(productB?.title, undefined, {
-      base: true,
-    });
+  switch (sortValue) {
+    case 'TITLE_ASC': {
+      return productA?.title?.localeCompare(productB?.title, undefined, {
+        base: true,
+      });
+    }
+    case 'TITLE_DESC': {
+      return productB?.title?.localeCompare(productA?.title, undefined, {
+        base: true,
+      });
+    }
+    case 'PRICE_ASC': {
+      return productA.minVariantPrice - productB.maxVariantPrice;
+    }
+    case 'PRICE_DESC': {
+      return productB.minVariantPrice - productA.maxVariantPrice;
+    }
+    default: {
+      return 0;
+    }
   }
-  if (sortValue === 'PRICE_ASC' || sortValue === 'PRICE_DESC') {
-    return productA.minVariantPrice - productB.maxVariantPrice;
-  }
-  return 0;
 };
 
 export const getBarbequesCollectionSearchedProducts = (
-  allProductsFromAction,
-  searchString,
-  selectedCookTypesAndBrands,
-  currentPriceRange,
-  currentGrillCookingAreaRange,
-  sortValue
+  {
+    allProducts = [],
+    searchString = '',
+    selectedCookTypesAndBrands = {},
+    currentPriceRange = DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
+    currentGrillCookingAreaRange = DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
+    sortValue,
+  } = {},
+  onlineStoreOnly = false
 ) => {
   const filters = createBarbequesCollectionFilters(
     searchString,
     selectedCookTypesAndBrands,
     currentPriceRange,
-    currentGrillCookingAreaRange
+    currentGrillCookingAreaRange,
+    onlineStoreOnly
   );
   const sorter = createBarbequesCollectionSorter(sortValue);
-  let products = [...allProductsFromAction];
-  console.log(filters);
+  let products = [...allProducts];
   Object.values(filters).forEach((f) => {
     products = products.filter(f);
   });
@@ -252,7 +280,51 @@ export const getSortValueFromDefaultSortBy = (defaultSortBy) => {
   }
 };
 
+export const getPageCount = (state) => {
+  const productsPerPage = state?.productsPerPage ?? 24;
+  const searchedProducts = getBarbequesCollectionSearchedProducts(state);
+  const productsInChunks = chunk(searchedProducts, productsPerPage);
+  return productsInChunks.length ?? 1;
+};
+
+export const getBarbequesCollectionSearchedProductsOfCurrentPage = (state) => {
+  const pageNumber = state?.pageNumber ?? 1;
+  const productsPerPage = state?.productsPerPage ?? 24;
+  const searchedProducts = getBarbequesCollectionSearchedProducts(state);
+  const productsInChunks = chunk(searchedProducts, productsPerPage);
+  const productsOfCurrentPage =
+    productsInChunks[pageNumber - 1] ?? productsInChunks[0] ?? [];
+  return productsOfCurrentPage;
+};
+
+export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
+  const displayedPageNumbers = [
+    1,
+    pageCount,
+    pageNumber - 2,
+    pageNumber - 1,
+    pageNumber,
+    pageNumber + 1,
+    pageNumber + 2,
+  ]
+    .filter((item, pos, a) => a.indexOf(item) === pos && item >= 1)
+    .sort((a, b) => a - b)
+    .reduce((acc, cur, idx) => {
+      let accCopy = [...acc];
+      if (idx === 0) {
+        accCopy = [cur];
+      } else if (cur - acc[acc.length - 1] > 1) {
+        accCopy = [...acc, '...', cur];
+      } else {
+        accCopy = [...acc, cur];
+      }
+      return accCopy;
+    }, []);
+  return displayedPageNumbers;
+};
+
 export default {
+  removeKey,
   getQueryString,
   queryAllProducts,
   hasIntersectionBetweenTwoRanges,
@@ -260,4 +332,6 @@ export default {
   createBarbequesCollectionSorter,
   getBarbequesCollectionSearchedProducts,
   getSortValueFromDefaultSortBy,
+  getPageCount,
+  getBarbequesCollectionSearchedProductsOfCurrentPage,
 };

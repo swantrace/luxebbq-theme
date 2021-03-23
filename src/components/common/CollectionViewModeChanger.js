@@ -1,11 +1,28 @@
 import { html } from '@apollo-elements/haunted';
+import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
 
 function CollectionViewModeChanger() {
-  console.log('CollectionViewModeChanger');
+  const context = useBarbequeSmokerCollectionContext();
+  const state = context?.collectionState;
+  const viewMode = state?.viewMode ?? 'grid';
+  const dispatch = context?.collectionDispatch;
+  const handleViewModeIconClicked = (newViewMode) => {
+    dispatch({ type: 'changeViewMode', payload: newViewMode });
+  };
   return html`<div class="collection-view">
     <ul>
-      <li class="active"><i class="fa fa-th grid-layout-view"></i></li>
-      <li><i class="fa fa-list-ul list-layout-view"></i></li>
+      <li class=${viewMode === 'grid' ? 'active' : ''}>
+        <i
+          class="fa fa-th grid-layout-view"
+          @click=${(e) => handleViewModeIconClicked('grid', e)}
+        ></i>
+      </li>
+      <li class=${viewMode === 'list' ? 'active' : ''}>
+        <i
+          class="fa fa-list-ul list-layout-view"
+          @click=${(e) => handleViewModeIconClicked('list', e)}
+        ></i>
+      </li>
     </ul>
   </div>`;
 }

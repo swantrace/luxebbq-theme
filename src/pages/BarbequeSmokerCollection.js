@@ -9,7 +9,6 @@ import { BarbequeSmokerCollectionWrapper } from '../context/barbequeSmokerCollec
 import {
   DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
   DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
-  getBarbequesCollectionSearchedProducts,
   getQueryString,
   getSortValueFromDefaultSortBy,
   queryAllProducts,
@@ -34,17 +33,18 @@ const GET_PRODUCTS = gql`
         cursor
         node {
           id
+          onlineStoreUrl
           handle
           title
           availableForSale
           productType
           vendor
-          images(first: 1) {
+          images(first: 2) {
             edges {
               node {
                 altText
                 originalSrc
-                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 340)
+                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 555)
               }
             }
           }
@@ -68,6 +68,7 @@ const GET_PRODUCTS = gql`
 
 const transformFunc = ({
   availableForSale,
+  onlineStoreUrl,
   description,
   handle,
   images,
@@ -76,26 +77,35 @@ const transformFunc = ({
   title,
   vendor,
   productType,
-}) => ({
-  availableForSale,
-  title,
-  handle,
-  imageAltText: images?.edges?.[0]?.node?.altText,
-  imageOriginalSrc: images?.edges?.[0]?.node?.originalSrc,
-  imageTransformedSrc: images?.edges?.[0]?.node?.transformedSrc,
-  maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
-  minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
-  cookType: tags
-    ?.find((tag) => tag.includes('dtm_cook-type_'))?.[0]
-    ?.replace('dtm_cook-type_', ''),
-  grillCookingArea: tags
-    ?.find((tag) => tag.includes('dtm_grill-cooking-area'))?.[0]
-    ?.replace('dtm_grill-cooking-area_', ''),
-  tags,
-  description,
-  vendor,
-  productType,
-});
+}) => {
+  const processedProduct = {
+    availableForSale,
+    title,
+    handle,
+    images:
+      images?.edges?.map(({ node: image }) => ({
+        imageAltText: image?.altText ?? null,
+        imageOriginalSrc: image?.originalSrc ?? null,
+        imageTransformedSrc: image?.transformedSrc ?? null,
+      })) ?? [],
+    maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
+    minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
+    cookType:
+      tags
+        ?.find((tag) => tag.includes('dtm_cook-type_'))
+        ?.replace('dtm_cook-type_', '') ?? null,
+    grillCookingArea:
+      tags
+        ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
+        ?.replace('dtm_grill-cooking-area_', '') ?? null,
+    tags,
+    description,
+    vendor,
+    productType,
+    onlineStoreUrl,
+  };
+  return processedProduct;
+};
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -175,6 +185,12 @@ function BarbequeSmokerCollection({
           pageNumber: action.payload,
         };
       }
+      case 'changeViewMode': {
+        return {
+          ...previousState,
+          viewMode: action.payload,
+        };
+      }
       default:
         return { ...previousState };
     }
@@ -187,6 +203,7 @@ function BarbequeSmokerCollection({
     currentGrillCookingAreaRange: DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
     productsPerPage: 24,
     pageNumber: 1,
+    viewMode: 'grid',
     sortValue: 'BEST_SELLING_ASC',
   });
 
@@ -215,6 +232,7 @@ function BarbequeSmokerCollection({
       ['Barbeques'],
       transformFunc
     );
+    console.log('allProducts:', products);
     dispatch({ type: 'setAllProducts', payload: products });
   }, []);
 
@@ -242,18 +260,6 @@ function BarbequeSmokerCollection({
       ).map((p) => Math.floor(Number(p))),
     });
   }, [grillCookingAreaMinAndMax]);
-
-  const searchedProducts = getBarbequesCollectionSearchedProducts(
-    state.allProducts,
-    state.searchString,
-    state.selectedCookTypesAndBrands,
-    state.currentPriceRange,
-    state.currentGrillCookingAreaRange,
-    state.sortValue
-  );
-
-  // console.log('collectionMetafields', collectionMetafields);
-  console.log('searchedProducts', searchedProducts);
 
   return html`${BarbequeSmokerCollectionWrapper({
     children: html`<section class="section-b-space">
