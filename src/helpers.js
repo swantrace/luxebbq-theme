@@ -307,7 +307,10 @@ export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
     pageNumber + 1,
     pageNumber + 2,
   ]
-    .filter((item, pos, a) => a.indexOf(item) === pos && item >= 1)
+    .filter(
+      (item, pos, a) =>
+        a.indexOf(item) === pos && item >= 1 && item <= pageCount
+    )
     .sort((a, b) => a - b)
     .reduce((acc, cur, idx) => {
       let accCopy = [...acc];
@@ -323,6 +326,47 @@ export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
   return displayedPageNumbers;
 };
 
+export const transformFunc = ({
+  availableForSale,
+  onlineStoreUrl,
+  description,
+  handle,
+  images,
+  priceRange,
+  tags,
+  title,
+  vendor,
+  productType,
+}) => {
+  const processedProduct = {
+    availableForSale,
+    title,
+    handle,
+    images:
+      images?.edges?.map(({ node: image }) => ({
+        imageAltText: image?.altText ?? null,
+        imageOriginalSrc: image?.originalSrc ?? null,
+        imageTransformedSrc: image?.transformedSrc ?? null,
+      })) ?? [],
+    maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
+    minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
+    cookType:
+      tags
+        ?.find((tag) => tag.includes('dtm_cook-type_'))
+        ?.replace('dtm_cook-type_', '') ?? null,
+    grillCookingArea:
+      tags
+        ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
+        ?.replace('dtm_grill-cooking-area_', '') ?? null,
+    tags,
+    description,
+    vendor,
+    productType,
+    onlineStoreUrl,
+  };
+  return processedProduct;
+};
+
 export default {
   removeKey,
   getQueryString,
@@ -334,4 +378,5 @@ export default {
   getSortValueFromDefaultSortBy,
   getPageCount,
   getBarbequesCollectionSearchedProductsOfCurrentPage,
+  transformFunc,
 };

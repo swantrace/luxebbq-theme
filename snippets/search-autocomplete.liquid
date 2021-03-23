@@ -43,17 +43,18 @@
               resultsList.hide();
             } else {
               // If we have results.
-              $.each(data.results, function(index, item) {
-                var link = $('<a></a>').attr('href', item.url);
+              $.each(data.search_results, function(index, item) {
+                console.log("item", item);
+                var link = $('<a></a>').attr('href', `/products/${item.handle}`);
 
                 var _name = item.title;
                 var _name_default = _name.split('|')[0];
                 var _name_json = _name.substr(_name.indexOf(":") + 1);
                 var _id = item.id;
 
-                link.append('<span class="thumbnail"><img src="' + item.thumbnail + '" /></span>');
+                link.append('<span class="thumbnail" style="height: 100%; width: 90px;"><img src="' + item.featured_image + '" style="height: 100%;width: 80px;"/></span>');
                 link.append('<p class="title"><span class="lang_trans" data-trans="#'+_id+'_pro_title">' + _name_default + '</span><span class="hide" id="'+_id+'_pro_title">'+_name_json+'</span></p>');
-                link.append('<span class="price">' + item.price + '</span>');
+                link.append('<span class="price">$' + item.price + '</span>');
                 link.wrap('<li></li>');
                 resultsList.append(link.parent());
               });

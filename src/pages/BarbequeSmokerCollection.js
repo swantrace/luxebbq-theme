@@ -4,7 +4,7 @@ import {
   useQuery,
   useReducer,
 } from '@apollo-elements/haunted';
-import { gql } from '@apollo/client/core';
+import { GET_PRODUCTS } from '../apollo-client';
 import { BarbequeSmokerCollectionWrapper } from '../context/barbequeSmokerCollection';
 import {
   DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
@@ -12,100 +12,8 @@ import {
   getQueryString,
   getSortValueFromDefaultSortBy,
   queryAllProducts,
+  transformFunc,
 } from '../helpers';
-
-const GET_PRODUCTS = gql`
-  query getProducts(
-    $first: Int
-    $after: String
-    $query: String
-    $reverse: Boolean
-    $sortKey: ProductSortKeys
-  ) {
-    products(
-      first: $first
-      after: $after
-      query: $query
-      reverse: $reverse
-      sortKey: $sortKey
-    ) {
-      edges {
-        cursor
-        node {
-          id
-          onlineStoreUrl
-          handle
-          title
-          availableForSale
-          productType
-          vendor
-          images(first: 2) {
-            edges {
-              node {
-                altText
-                originalSrc
-                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 555)
-              }
-            }
-          }
-          priceRange {
-            maxVariantPrice {
-              amount
-              currencyCode
-            }
-            minVariantPrice {
-              amount
-              currencyCode
-            }
-          }
-          tags
-          description
-        }
-      }
-    }
-  }
-`;
-
-const transformFunc = ({
-  availableForSale,
-  onlineStoreUrl,
-  description,
-  handle,
-  images,
-  priceRange,
-  tags,
-  title,
-  vendor,
-  productType,
-}) => {
-  const processedProduct = {
-    availableForSale,
-    title,
-    handle,
-    images:
-      images?.edges?.map(({ node: image }) => ({
-        imageAltText: image?.altText ?? null,
-        imageOriginalSrc: image?.originalSrc ?? null,
-        imageTransformedSrc: image?.transformedSrc ?? null,
-      })) ?? [],
-    maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
-    minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
-    cookType:
-      tags
-        ?.find((tag) => tag.includes('dtm_cook-type_'))
-        ?.replace('dtm_cook-type_', '') ?? null,
-    grillCookingArea:
-      tags
-        ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
-        ?.replace('dtm_grill-cooking-area_', '') ?? null,
-    tags,
-    description,
-    vendor,
-    productType,
-    onlineStoreUrl,
-  };
-  return processedProduct;
-};
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -114,6 +22,7 @@ function BarbequeSmokerCollection({
   defaultSortBy,
   collectionHandle,
   collectionMetafields,
+  emptyCollectionImage,
 }) {
   const client = window.__APOLLO_CLIENT__;
   const params = new URLSearchParams(window.location.search);
@@ -290,6 +199,7 @@ function BarbequeSmokerCollection({
     collectionImages,
     collectionState: state,
     collectionDispatch: dispatch,
+    emptyCollectionImage,
   })}`;
 }
 
@@ -304,6 +214,7 @@ export default {
       'default-sort-by',
       'collection-handle',
       'collection-metafields',
+      'empty-collection-image',
     ],
     useShadowDOM: false,
   },

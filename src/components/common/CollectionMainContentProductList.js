@@ -1,42 +1,33 @@
-import { html } from '@apollo-elements/haunted';
+import { html, useEffect } from '@apollo-elements/haunted';
 import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
 import { getBarbequesCollectionSearchedProductsOfCurrentPage } from '../../helpers';
+import ProductList from './ProductList';
 
 function CollectionMainContentProductList() {
   const context = useBarbequeSmokerCollectionContext();
   const state = context?.collectionState ?? {};
-  const searchedProductsOfCurrentPage = getBarbequesCollectionSearchedProductsOfCurrentPage(
-    state
-  );
+  const viewMode = state?.viewMode ?? 'grid';
+  const emptyCollectionImage = context?.emptyCollectionImage;
+  const allProducts = state?.allProducts ?? [];
   const productsOfFirstPage = context?.productsOfFirstPage;
   let products = [];
-  if ((searchedProductsOfCurrentPage ?? []).length === 0) {
+  if (allProducts.length === 0) {
     products = productsOfFirstPage;
   } else {
-    products = searchedProductsOfCurrentPage;
+    products = getBarbequesCollectionSearchedProductsOfCurrentPage(state);
   }
+  useEffect(() => {
+    console.log('change');
+    const imgs = this.querySelectorAll('img.lazyloaded');
+    console.log(imgs);
+    imgs.forEach((img) => {
+      img.removeAttribute('src');
+      img.classList.remove('lazyloaded');
+      img.classList.add('lazyload');
+    });
+  }, [products]);
 
-  const viewMode = state?.viewMode ?? 'grid';
-  return html`<div
-    class=${`product-wrapper-grid collection-grid${
-      viewMode === 'grid' ? '' : ' list-view'
-    }`}
-    style="opacity: 1;"
-  >
-    <div class="container-fluid">
-      <div class="row">
-        ${products.map(
-          (product) =>
-            html`<collection-main-content-product-item
-              class=${viewMode === 'grid'
-                ? 'col-xl-4 col-md-6 col-grid-box'
-                : 'col-lg-12'}
-              .product=${product}
-            ></collection-main-content-product-item>`
-        )}
-      </div>
-    </div>
-  </div>`;
+  return html`${ProductList({ viewMode, products, emptyCollectionImage })}`;
 }
 
 export default {

@@ -1,20 +1,18 @@
-barbeque-smoker-collection {
-  .collection-banner {
-    .collection-banner-name {
-      color: #fb711c;
-      flex-basis: 250px;
-      flex-grow: 45;
-    }
-    .parallelograms-group {
-      flex-basis: 55%;
-      flex-grow: 55;
-      flex-shrink: 100;
-      .parallelograms {
-        background-color: #fb711c;
-      }
-    }
+.banner-name.dtm-banner-name {
+  color: #fb711c;
+  flex-basis: 250px;
+  flex-grow: 45;
+}
+.parallelograms-group.dtm-parallelograms-group {
+  flex-basis: 55%;
+  flex-grow: 55;
+  flex-shrink: 100;
+  .parallelograms.dtm-parallelograms {
+    background-color: #fb711c;
   }
+}
 
+barbeque-smoker-collection {
   .collection-top-controllers {
     display: flex;
     flex-wrap: wrap;
@@ -81,4 +79,8 @@ collection-view-mode-changer {
       }
     }
   }
+}
+
+.row.search-title-banner-row {
+  margin-top: 40px;
 }

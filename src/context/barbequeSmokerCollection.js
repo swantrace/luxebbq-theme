@@ -5,11 +5,11 @@ import {
   virtual,
 } from '@apollo-elements/haunted';
 
-const BarbequeSmokerCollectionContext = createContext();
+const barbequeSmokerCollectionContext = createContext();
 
 customElements.define(
   'barbeque-smoker-collection-provider',
-  BarbequeSmokerCollectionContext.Provider
+  barbequeSmokerCollectionContext.Provider
 );
 export const BarbequeSmokerCollectionWrapper = virtual(
   ({ children, ...rest }) => {
@@ -23,7 +23,7 @@ export const BarbequeSmokerCollectionWrapper = virtual(
 );
 
 export const useBarbequeSmokerCollectionContext = () =>
-  useContext(BarbequeSmokerCollectionContext);
+  useContext(barbequeSmokerCollectionContext);
 
 export default {
   useBarbequeSmokerCollectionContext,
