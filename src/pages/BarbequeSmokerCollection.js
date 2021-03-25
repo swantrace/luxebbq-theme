@@ -4,16 +4,16 @@ import {
   useQuery,
   useReducer,
 } from '@apollo-elements/haunted';
-import { GET_PRODUCTS } from '../apollo-client';
-import { BarbequeSmokerCollectionWrapper } from '../context/barbequeSmokerCollection';
 import {
+  GET_PRODUCTS,
   DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
   DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
   getQueryString,
   getSortValueFromDefaultSortBy,
   queryAllProducts,
-  transformFunc,
+  barbequesCollectionTransformFunc,
 } from '../helpers';
+import { BarbequeSmokerCollectionWrapper } from '../context/barbequeSmokerCollection';
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -24,7 +24,6 @@ function BarbequeSmokerCollection({
   collectionMetafields,
   emptyCollectionImage,
 }) {
-  const client = window.__APOLLO_CLIENT__;
   const params = new URLSearchParams(window.location.search);
   const selectedCookTypesAndBrandsFromQueryString = JSON.parse(
     decodeURI(params.get('selected') ?? '{}')
@@ -119,10 +118,11 @@ function BarbequeSmokerCollection({
   const { data: dataWithFirstPageProducts } = useQuery(GET_PRODUCTS, {
     variables: {
       first: state.productsPerPage,
-      query: `${getQueryString(
-        ['Barbeques'],
-        selectedCookTypesAndBrandsFromQueryString
-      )}`,
+      query: `${getQueryString({
+        searchString: '',
+        productTypes: ['Barbeques'],
+        selectedCookTypesAndBrands: selectedCookTypesAndBrandsFromQueryString,
+      })}`,
       reverse: !!getSortValueFromDefaultSortBy(defaultSortBy).includes('DESC'),
       sortKey: getSortValueFromDefaultSortBy(defaultSortBy)
         .replace('_DESC', '')
@@ -131,17 +131,14 @@ function BarbequeSmokerCollection({
   });
   const productsOfFirstPage =
     dataWithFirstPageProducts?.products?.edges?.map(({ node }) =>
-      transformFunc(node)
+      barbequesCollectionTransformFunc(node)
     ) ?? [];
 
   useEffect(async () => {
-    const products = await queryAllProducts(
-      client,
-      GET_PRODUCTS,
-      ['Barbeques'],
-      transformFunc
-    );
-    console.log('allProducts:', products);
+    const products = await queryAllProducts({
+      productTypes: ['Barbeques'],
+      transformFunc: barbequesCollectionTransformFunc,
+    });
     dispatch({ type: 'setAllProducts', payload: products });
   }, []);
 

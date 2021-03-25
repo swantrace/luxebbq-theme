@@ -1,13 +1,8 @@
 import { html, virtual } from '@apollo-elements/haunted';
 
 const ProductItem = virtual(
-  ({ viewMode, product }) =>
-    html`<div
-      class=${viewMode === 'grid'
-        ? 'col-xl-4 col-md-6 col-grid-box'
-        : 'col-lg-12'}
-      .product=${product}
-    >
+  ({ viewMode, product, itemClassList }) =>
+    html`<div class=${itemClassList[viewMode]}>
       <div class="product-box qurox-feature-product">
         <div class="img-block">
           <div class="img-effect">

@@ -11,6 +11,8 @@ import CollectionSidebar from './common/CollectionSidebar';
 import CollectionSidebarFilter from './common/CollectionSidebarFilter';
 import CollectionSidebarTopImages from './common/CollectionSidebarTopImages';
 import SearchProductList from './common/SearchProductList';
+import SearchPagination from './common/SearchPagination';
+import SearchTopControllers from './common/SearchTopControllers';
 
 export default {
   CookTypesAndBrandsFilter,
@@ -25,5 +27,7 @@ export default {
   CollectionSidebar,
   CollectionSidebarFilter,
   CollectionSidebarTopImages,
+  SearchTopControllers,
   SearchProductList,
+  SearchPagination,
 };

@@ -45,6 +45,14 @@ barbeque-smoker-collection {
   }
 }
 
+search-result {
+  .search-top-controllers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
 collection-view-mode-changer {
   .collection-view {
     li.active i {

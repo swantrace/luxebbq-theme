@@ -1,20 +1,17 @@
 import { html } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
-import {
-  getBarbequesCollectionSearchedProducts,
-  getDisplayedPageNumbers,
-  getPageCount,
-} from '../../helpers';
+import { useSearchResultContext } from '../../context/searchResult';
+import { getDisplayedPageNumbers, getPageCount } from '../../helpers';
 import PagePagination from './PagePagination';
 
-function CollectionMainContentPagination() {
-  const context = useBarbequeSmokerCollectionContext();
-  const dispatch = context?.collectionDispatch ?? (() => {});
-  const state = context?.collectionState ?? {};
-  const pageCount = getPageCount(state, getBarbequesCollectionSearchedProducts);
+function SearchPagination() {
+  const context = useSearchResultContext();
+  const dispatch = context?.searchResultDispatch ?? (() => {});
+  const state = context?.searchResultState ?? {};
+  const pageCount = getPageCount(state);
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
 
+  console.log('displayedPageNumbers: ', displayedPageNumbers);
   const handlePageLinkClicked = (number) => {
     if (Number.isNaN(Number(number))) {
       return;
@@ -38,8 +35,8 @@ function CollectionMainContentPagination() {
 }
 
 export default {
-  tagName: 'collection-main-content-pagination',
-  renderer: CollectionMainContentPagination,
+  tagName: 'search-pagination',
+  renderer: SearchPagination,
   options: {
     observedAttributes: [],
     useShadowDOM: false,

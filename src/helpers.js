@@ -1,8 +1,64 @@
+/* eslint-disable no-nested-ternary */
 import sizeof from 'object-sizeof';
 import chunk from 'lodash.chunk';
+import { gql } from '@apollo/client/core';
+import groupBy from 'lodash.groupby';
 
 export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 10000];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 100];
+
+export const GET_PRODUCTS = gql`
+  query getProducts(
+    $first: Int
+    $after: String
+    $query: String
+    $reverse: Boolean
+    $sortKey: ProductSortKeys
+  ) {
+    products(
+      first: $first
+      after: $after
+      query: $query
+      reverse: $reverse
+      sortKey: $sortKey
+    ) {
+      edges {
+        cursor
+        node {
+          id
+          onlineStoreUrl
+          handle
+          title
+          availableForSale
+          productType
+          vendor
+          images(first: 2) {
+            edges {
+              node {
+                altText
+                originalSrc
+                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 555)
+              }
+            }
+          }
+          priceRange {
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+          tags
+          description
+        }
+      }
+    }
+  }
+`;
+
 export const addslashes = (str) =>
   `${str}`.replace(/([\\"'])/g, '\\$1').replace(/\0/g, '\\0');
 
@@ -11,12 +67,31 @@ export const removeKey = (obj, propToDelete) => {
   return objectWithoutDeletedProp;
 };
 
-export const getQueryString = (productTypes, selectedCookTypesAndBrands) => {
-  const productTypePart = `(${productTypes
-    .map((type) => `product_type:"${addslashes(type)}"`)
-    .join(' OR ')})`;
+export const getQueryString = ({
+  searchString = '',
+  productTypes = [],
+  selectedCookTypesAndBrands = {},
+} = {}) => {
+  const queryValueString =
+    searchString.trim() === ''
+      ? `*`
+      : searchString.trim().split(' ').length > 1
+      ? `"${addslashes(
+          searchString.trim().split(' ').slice(0, -1).join(' ')
+        )}*"`
+      : `${addslashes(searchString.trim())}*`;
 
-  const cookTypeAndBrandsPart = Object.keys(selectedCookTypesAndBrands ?? {})
+  const searchStringPart = `(title:${queryValueString} OR description:${queryValueString} OR tags:${queryValueString})`;
+
+  let productTypesPart = `${productTypes
+    .map((type) => `product_type:"${addslashes(type)}"`)
+    .join(' OR ')}`;
+
+  if (productTypesPart !== '') {
+    productTypesPart = ` AND (${productTypesPart})`;
+  }
+
+  let cookTypeAndBrandsPart = Object.keys(selectedCookTypesAndBrands ?? {})
     .map((cookType) => {
       const brands = selectedCookTypesAndBrands[cookType];
       const productBrandPart = `(${brands
@@ -29,20 +104,21 @@ export const getQueryString = (productTypes, selectedCookTypesAndBrands) => {
     })
     .join(' OR ');
 
-  if (cookTypeAndBrandsPart.length > 0) {
-    return `${productTypePart} AND (${cookTypeAndBrandsPart})`;
+  if (cookTypeAndBrandsPart !== '') {
+    cookTypeAndBrandsPart = ` AND (${cookTypeAndBrandsPart})`;
   }
-  return productTypePart;
+  return `${searchStringPart}${productTypesPart}${cookTypeAndBrandsPart}`;
 };
 
-export const query250ProductsCreator = (
-  client,
-  query,
-  productTypes,
+export const query250ProductsCreator = ({
+  client = window.__APOLLO_CLIENT__,
+  query = GET_PRODUCTS,
+  searchString = '',
+  productTypes = [],
   transformFunc = (a) => a,
   sortKey = 'BEST_SELLING',
-  reverse = false
-) => {
+  reverse = false,
+} = {}) => {
   let products = [];
   const query250Products = (dataWithLastPageProducts) =>
     client
@@ -50,7 +126,7 @@ export const query250ProductsCreator = (
         query,
         variables: {
           first: 250,
-          query: `${getQueryString(productTypes)}`,
+          query: `${getQueryString({ searchString, productTypes })}`,
           after:
             dataWithLastPageProducts?.data?.products?.edges?.slice(-1)?.[0]
               ?.cursor ?? null,
@@ -71,34 +147,71 @@ export const query250ProductsCreator = (
   return query250Products;
 };
 
-export const queryAllProducts = async (
-  client,
-  query,
-  productTypes,
-  transformFunc,
-  sortKey,
-  reverse
-) => {
-  let products = [];
-  try {
-    products = JSON.parse(window.sessionStorage.getItem('barbeques'));
-    if (products === null) {
-      throw new Error('barbeques has not been stored');
+export const queryAllProducts = async ({
+  client = window.__APOLLO_CLIENT__,
+  query = GET_PRODUCTS,
+  searchString = '',
+  productTypes = [],
+  transformFunc = (a) => a,
+  sortKey = 'BEST_SELLING',
+  reverse = false,
+} = {}) => {
+  if (searchString.trim() === '') {
+    let products = [];
+    try {
+      productTypes.forEach((productType) => {
+        const productsForCurrentProductType = JSON.parse(
+          window.sessionStorage.getItem(productType.toLowerCase())
+        );
+        if (productsForCurrentProductType === null) {
+          throw new Error('barbeques has not been stored');
+        }
+        products = [...products, ...productsForCurrentProductType];
+      });
+    } catch (err) {
+      const query250ProductsOfCurrentProductTypes = query250ProductsCreator({
+        client,
+        query,
+        searchString,
+        productTypes,
+        transformFunc,
+        sortKey,
+        reverse,
+      });
+      products = await query250ProductsOfCurrentProductTypes();
+      console.log(
+        'products from query250ProductsOfCurrentProductType',
+        products
+      );
+      if (sizeof(JSON.stringify(products)) < 4e6) {
+        const productsInGroups = groupBy(
+          products,
+          (product) => product.productType
+        );
+        Object.entries(productsInGroups).forEach(
+          ([productType, productsOfCurrentPage]) => {
+            window.sessionStorage.setItem(
+              productType.toLowerCase(),
+              JSON.stringify(productsOfCurrentPage)
+            );
+          }
+        );
+      }
     }
-  } catch (err) {
-    const query250ProductsOfBarbeques = query250ProductsCreator(
-      client,
-      query,
-      productTypes,
-      transformFunc,
-      sortKey,
-      reverse
-    );
-    products = await query250ProductsOfBarbeques();
-    if (sizeof(JSON.stringify(products)) < 4e6) {
-      window.sessionStorage.setItem('barbeques', JSON.stringify(products));
-    }
+    return products;
   }
+  let products = [];
+  const query250ProductsOfCurrentSearchString = query250ProductsCreator({
+    client,
+    query,
+    searchString,
+    productTypes,
+    transformFunc,
+    sortKey,
+    reverse,
+  });
+  products = await query250ProductsOfCurrentSearchString();
+  console.log('products from query250ProductsOfCurrentSearchString', products);
   return products;
 };
 
@@ -280,9 +393,9 @@ export const getSortValueFromDefaultSortBy = (defaultSortBy) => {
   }
 };
 
-export const getPageCount = (state) => {
+export const getPageCount = (state, getPartFunc = (s) => s.allProducts) => {
   const productsPerPage = state?.productsPerPage ?? 24;
-  const searchedProducts = getBarbequesCollectionSearchedProducts(state);
+  const searchedProducts = getPartFunc(state);
   const productsInChunks = chunk(searchedProducts, productsPerPage);
   return productsInChunks.length ?? 1;
 };
@@ -291,6 +404,19 @@ export const getBarbequesCollectionSearchedProductsOfCurrentPage = (state) => {
   const pageNumber = state?.pageNumber ?? 1;
   const productsPerPage = state?.productsPerPage ?? 24;
   const searchedProducts = getBarbequesCollectionSearchedProducts(state);
+  const productsInChunks = chunk(searchedProducts, productsPerPage);
+  const productsOfCurrentPage =
+    productsInChunks[pageNumber - 1] ?? productsInChunks[0] ?? [];
+  return productsOfCurrentPage;
+};
+
+export const getProductsOfCurrentPage = (
+  state,
+  getAllProducts = (s) => s.allProducts
+) => {
+  const pageNumber = state?.pageNumber ?? 1;
+  const productsPerPage = state?.productsPerPage ?? 24;
+  const searchedProducts = getAllProducts(state);
   const productsInChunks = chunk(searchedProducts, productsPerPage);
   const productsOfCurrentPage =
     productsInChunks[pageNumber - 1] ?? productsInChunks[0] ?? [];
@@ -326,7 +452,40 @@ export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
   return displayedPageNumbers;
 };
 
-export const transformFunc = ({
+export const searchResultTransformFunc = ({
+  availableForSale,
+  onlineStoreUrl,
+  description,
+  handle,
+  images,
+  priceRange,
+  tags,
+  title,
+  vendor,
+  productType,
+}) => {
+  const processedProduct = {
+    availableForSale,
+    title,
+    handle,
+    images:
+      images?.edges?.map(({ node: image }) => ({
+        imageAltText: image?.altText ?? null,
+        imageOriginalSrc: image?.originalSrc ?? null,
+        imageTransformedSrc: image?.transformedSrc ?? null,
+      })) ?? [],
+    maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
+    minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
+    tags,
+    description,
+    vendor,
+    productType,
+    onlineStoreUrl,
+  };
+  return processedProduct;
+};
+
+export const barbequesCollectionTransformFunc = ({
   availableForSale,
   onlineStoreUrl,
   description,
@@ -378,5 +537,6 @@ export default {
   getSortValueFromDefaultSortBy,
   getPageCount,
   getBarbequesCollectionSearchedProductsOfCurrentPage,
-  transformFunc,
+  barbequesCollectionTransformFunc,
+  GET_PRODUCTS,
 };
