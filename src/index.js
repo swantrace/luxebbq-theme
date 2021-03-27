@@ -1,11 +1,11 @@
 import { component } from '@apollo-elements/haunted';
+import 'paper-range-slider';
 import './apollo-client';
-import './components/index';
+import partComponents from './components';
 import pageComponents from './pages';
 import './styles.scss';
 
-console.log(pageComponents);
-document.addEventListener('DOMContentLoaded', () => {
+const start = () => {
   // add active class to menu item
   const path = window.location.pathname;
   const navigationElement = document.querySelector('#main-menu');
@@ -16,10 +16,20 @@ document.addEventListener('DOMContentLoaded', () => {
   activeParentLinkElement?.classList?.add('active');
 
   // create custom elements
-  Object.values(pageComponents).forEach((pageComponent) => {
-    customElements.define(
-      pageComponent.tagName,
-      component(pageComponent.renderer, pageComponent.options)
-    );
-  });
-});
+
+  Object.values({ ...partComponents, ...pageComponents }).forEach(
+    (pComponent) => {
+      customElements.define(
+        pComponent.tagName,
+        component(pComponent.renderer, pComponent.options)
+      );
+    }
+  );
+};
+
+if (/complete|interactive|loaded/.test(document.readyState)) {
+  console.log(document.readyState);
+  start();
+} else {
+  document.addEventListener('DOMContentLoaded', start, false);
+}
