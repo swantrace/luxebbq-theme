@@ -1,5 +1,14 @@
 {
   "current": {
+    "gas_grill_brands": "Weber",
+    "charcoal_grill_brands": "Weber,Big Green Egg,Kamado Joe",
+    "smoker_brands": "Weber",
+    "pellet_grill_brands": "Weber",
+    "oven_brands": "Weber",
+    "max_price_in_range": "15000",
+    "min_price_in_range": "1",
+    "max_grill_cooking_area": "20",
+    "min_grill_cooking_area": "1",
     "enable_rtl": false,
     "display_demo_btn": false,
     "enable_blur_lazy_load": true,
@@ -3559,13 +3568,9 @@
         "type": "collection-dtm-bbq-smoker-template",
         "settings": {
           "gas_grill_brands": "Weber,Napoleon",
-          "charcoal_grill_brands": "Weber,Napoleon",
+          "charcoal_grill_brands": "Weber,Napoleon,Big Green Egg",
           "pellet_grill_brands": "Weber,Traeger Grills",
-          "oven_brands": "Ooni,La Piazza",
-          "max_price_in_range": "10000",
-          "min_price_in_range": "1",
-          "max_grill_cooking_area": "100",
-          "min_grill_cooking_area": "1"
+          "oven_brands": "Ooni,La Piazza"
         }
       },
       "dtm-gas-grills-hero-image": {
