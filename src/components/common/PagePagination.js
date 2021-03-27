@@ -1,14 +1,14 @@
 import { html, virtual } from '@apollo-elements/haunted';
 
 const PagePagination = virtual(
-  ({ pageNumber, pageCount, displayedPageNumbers, handlePageLinkClicked }) => {
-    console.log(
-      pageNumber,
-      pageCount,
-      displayedPageNumbers,
-      handlePageLinkClicked
-    );
-    return html`<nav aria-label="Page navigation">
+  ({ pageNumber, pageCount, displayedPageNumbers, handlePageLinkClicked }) =>
+    // console.log(
+    //   pageNumber,
+    //   pageCount,
+    //   displayedPageNumbers,
+    //   handlePageLinkClicked
+    // );
+    html`<nav aria-label="Page navigation">
       <ul class="pagination">
         ${pageNumber > 1
           ? html`<li class="page-item">
@@ -49,8 +49,7 @@ const PagePagination = virtual(
             </li>`
           : null}
       </ul>
-    </nav>`;
-  }
+    </nav>`
 );
 
 export default PagePagination;

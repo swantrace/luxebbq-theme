@@ -15,7 +15,7 @@ function PerfectGrillPagination() {
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
 
-  console.log('state', state, '\n', 'pageCount: ', pageCount, pageNumber);
+  // console.log('state', state, '\n', 'pageCount: ', pageCount, pageNumber);
   const handlePageLinkClicked = (number) => {
     if (Number.isNaN(Number(number))) {
       return;

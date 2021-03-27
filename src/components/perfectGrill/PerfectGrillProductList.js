@@ -17,7 +17,7 @@ function PerfectGrillProductList() {
   );
 
   useEffect(() => {
-    console.log('change');
+    // console.log('change');
     const imgs = this.querySelectorAll('img.lazyloaded');
     imgs.forEach((img) => {
       img.removeAttribute('src');

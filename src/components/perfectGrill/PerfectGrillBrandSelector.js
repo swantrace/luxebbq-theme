@@ -5,13 +5,13 @@ const PerfectGrillBrandSelector = virtual(
     brandInfo,
     selectedCookTypesAndBrands,
     handleSelectedCookTypesAndBrandsChanged,
-  }) => {
-    console.log(
-      brandInfo,
-      selectedCookTypesAndBrands,
-      handleSelectedCookTypesAndBrandsChanged
-    );
-    return html`<select
+  }) =>
+    // console.log(
+    //   brandInfo,
+    //   selectedCookTypesAndBrands,
+    //   handleSelectedCookTypesAndBrandsChanged
+    // );
+    html`<select
       class="w-100"
       value=${Object.values(selectedCookTypesAndBrands)?.[0]}
       @change=${(e) =>
@@ -41,8 +41,7 @@ const PerfectGrillBrandSelector = virtual(
             ${brand}
           </option>`
       )}
-    </select>`;
-  }
+    </select>`
 );
 
 export default PerfectGrillBrandSelector;

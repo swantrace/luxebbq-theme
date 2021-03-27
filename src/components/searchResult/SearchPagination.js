@@ -11,7 +11,7 @@ function SearchPagination() {
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
 
-  console.log('displayedPageNumbers: ', displayedPageNumbers);
+  // console.log('displayedPageNumbers: ', displayedPageNumbers);
   const handlePageLinkClicked = (number) => {
     if (Number.isNaN(Number(number))) {
       return;

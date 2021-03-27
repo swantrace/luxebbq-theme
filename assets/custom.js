@@ -70632,7 +70632,7 @@ module.exports = groupBy;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.barbequesCollectionTransformFunc = exports.searchResultTransformFunc = exports.getDisplayedPageNumbers = exports.getProductsOfCurrentPage = exports.getBarbequesCollectionSearchedProductsOfCurrentPage = exports.getPageCount = exports.getSortValueFromDefaultSortBy = exports.getBarbequesCollectionSearchedProducts = exports.createBarbequesCollectionSorter = exports.createBarbequesCollectionFilters = exports.hasIntersectionBetweenTwoRanges = exports.queryAllProducts = exports.query250ProductsCreator = exports.getQueryString = exports.removeKey = exports.addslashes = exports.GET_PRODUCTS = exports.DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = exports.DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = void 0;
+exports.default = exports.barbequesCollectionTransformFunc = exports.searchResultTransformFunc = exports.getDisplayedPageNumbers = exports.getProductsOfCurrentPage = exports.getBarbequesCollectionSearchedProductsOfCurrentPage = exports.getPageCount = exports.getSortValueFromDefaultSortBy = exports.getBarbequesCollectionSearchedProducts = exports.getSortedSearchedProduts = exports.createBarbequesCollectionSorter = exports.createBarbequesCollectionFilters = exports.hasIntersectionBetweenTwoRanges = exports.queryAllProducts = exports.query250ProductsCreator = exports.getQueryString = exports.removeKey = exports.addslashes = exports.GET_PRODUCTS = exports.DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = exports.DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = void 0;
 
 var _objectSizeof = _interopRequireDefault(require("object-sizeof"));
 
@@ -70828,8 +70828,10 @@ const queryAllProducts = async ({
         sortKey,
         reverse
       });
-      products = await query250ProductsOfCurrentProductTypes();
-      console.log('products from query250ProductsOfCurrentProductType', products);
+      products = await query250ProductsOfCurrentProductTypes(); // console.log(
+      //   'products from query250ProductsOfCurrentProductType',
+      //   products
+      // );
 
       if ((0, _objectSizeof.default)(JSON.stringify(products)) < 4e6) {
         const productsInGroups = (0, _lodash2.default)(products, product => product.productType);
@@ -70852,8 +70854,8 @@ const queryAllProducts = async ({
     sortKey,
     reverse
   });
-  products = await query250ProductsOfCurrentSearchString();
-  console.log('products from query250ProductsOfCurrentSearchString', products);
+  products = await query250ProductsOfCurrentSearchString(); // console.log('products from query250ProductsOfCurrentSearchString', products);
+
   return products;
 };
 
@@ -70916,6 +70918,10 @@ const createBarbequesCollectionFilters = ({
       const cookTypes = Object.keys(selectedCookTypesAndBrands);
 
       if (cookTypes.length === 0) {
+        return true;
+      }
+
+      if (!(product === null || product === void 0 ? void 0 : product.cookType)) {
         return true;
       }
 
@@ -71008,19 +71014,19 @@ const createBarbequesCollectionFilters = ({
       return grillType === null || grillType === void 0 ? void 0 : grillType.includes(product === null || product === void 0 ? void 0 : product.grillType);
     },
     availability: product => {
-      if ((availability === null || availability === void 0 ? void 0 : availability.length) === 0) {
+      if (!availability || (availability === null || availability === void 0 ? void 0 : availability.length) === 0) {
         return true;
       }
 
-      if (availability.includes('true') && availability.includes('false')) {
+      if ((availability === null || availability === void 0 ? void 0 : availability.includes('true')) && (availability === null || availability === void 0 ? void 0 : availability.includes('false'))) {
         return true;
       }
 
-      if (availability.includes('true') && product.availableForSale) {
+      if ((availability === null || availability === void 0 ? void 0 : availability.includes('true')) && (product === null || product === void 0 ? void 0 : product.availableForSale)) {
         return true;
       }
 
-      if (availability.includes('false') && !product.availableForSale) {
+      if ((availability === null || availability === void 0 ? void 0 : availability.includes('false')) && !(product === null || product === void 0 ? void 0 : product.availableForSale)) {
         return true;
       }
 
@@ -71069,6 +71075,18 @@ const createBarbequesCollectionSorter = sortValue => (productA, productB) => {
 };
 
 exports.createBarbequesCollectionSorter = createBarbequesCollectionSorter;
+
+const getSortedSearchedProduts = ({
+  allProducts,
+  sortValue
+}) => {
+  const sorter = createBarbequesCollectionSorter(sortValue);
+  const products = [...allProducts];
+  products.sort(sorter);
+  return products;
+};
+
+exports.getSortedSearchedProduts = getSortedSearchedProduts;
 
 const getBarbequesCollectionSearchedProducts = ({
   allProducts = [],
@@ -71171,9 +71189,7 @@ const getProductsOfCurrentPage = (state, getAllProducts = s => s.allProducts) =>
 
   const pageNumber = (_state$pageNumber2 = state === null || state === void 0 ? void 0 : state.pageNumber) !== null && _state$pageNumber2 !== void 0 ? _state$pageNumber2 : 1;
   const productsPerPage = (_state$productsPerPag3 = state === null || state === void 0 ? void 0 : state.productsPerPage) !== null && _state$productsPerPag3 !== void 0 ? _state$productsPerPag3 : 24;
-  console.log('state:', state);
   const searchedProducts = getAllProducts(state);
-  console.log('searchedProducts:', searchedProducts);
   const productsInChunks = (0, _lodash.default)(searchedProducts, productsPerPage);
   const productsOfCurrentPage = (_ref2 = (_productsInChunks2 = productsInChunks[pageNumber - 1]) !== null && _productsInChunks2 !== void 0 ? _productsInChunks2 : productsInChunks[0]) !== null && _ref2 !== void 0 ? _ref2 : [];
   return productsOfCurrentPage;
@@ -71301,6 +71317,7 @@ var _default = {
   hasIntersectionBetweenTwoRanges,
   createBarbequesCollectionFilters,
   createBarbequesCollectionSorter,
+  getSortedSearchedProduts,
   getBarbequesCollectionSearchedProducts,
   getSortValueFromDefaultSortBy,
   getPageCount,
@@ -71335,8 +71352,7 @@ function CookTypesAndBrandsFilter() {
   const selectedCookTypesAndBrands = (_context$collectionSt = context === null || context === void 0 ? void 0 : (_context$collectionSt2 = context.collectionState) === null || _context$collectionSt2 === void 0 ? void 0 : _context$collectionSt2.selectedCookTypesAndBrands) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : {};
   const searchString = (_context$collectionSt3 = context === null || context === void 0 ? void 0 : (_context$collectionSt4 = context.collectionState) === null || _context$collectionSt4 === void 0 ? void 0 : _context$collectionSt4.searchString) !== null && _context$collectionSt3 !== void 0 ? _context$collectionSt3 : '';
   const allProducts = (_context$collectionSt5 = context === null || context === void 0 ? void 0 : (_context$collectionSt6 = context.collectionState) === null || _context$collectionSt6 === void 0 ? void 0 : _context$collectionSt6.allProducts) !== null && _context$collectionSt5 !== void 0 ? _context$collectionSt5 : [];
-  const dispatch = (_context$collectionDi = context === null || context === void 0 ? void 0 : context.collectionDispatch) !== null && _context$collectionDi !== void 0 ? _context$collectionDi : () => {};
-  console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
+  const dispatch = (_context$collectionDi = context === null || context === void 0 ? void 0 : context.collectionDispatch) !== null && _context$collectionDi !== void 0 ? _context$collectionDi : () => {}; // console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
 
   const handleCookTypeChanged = (cookType, e) => {
     const cookTypeInput = e.target;
@@ -71663,9 +71679,13 @@ const PagePagination = (0, _haunted.virtual)(({
   pageCount,
   displayedPageNumbers,
   handlePageLinkClicked
-}) => {
-  console.log(pageNumber, pageCount, displayedPageNumbers, handlePageLinkClicked);
-  return (0, _haunted.html)`<nav aria-label="Page navigation">
+}) => // console.log(
+//   pageNumber,
+//   pageCount,
+//   displayedPageNumbers,
+//   handlePageLinkClicked
+// );
+(0, _haunted.html)`<nav aria-label="Page navigation">
       <ul class="pagination">
         ${pageNumber > 1 ? (0, _haunted.html)`<li class="page-item">
               <a
@@ -71698,8 +71718,7 @@ const PagePagination = (0, _haunted.virtual)(({
               </a>
             </li>` : null}
       </ul>
-    </nav>`;
-});
+    </nav>`);
 var _default = PagePagination;
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionMainContentPagination.js":[function(require,module,exports) {
@@ -71895,8 +71914,8 @@ function CollectionMainContentTopControllers() {
   };
 
   const searchedProductsSize = searchedProducts.length;
-  const productTypeName = 'Grills';
-  console.log(searchedProducts);
+  const productTypeName = 'Grills'; // console.log(searchedProducts);
+
   return (0, _haunted.html)`<div class="row">
     <div class="col-12">
       <div class="product-filter-content collection-top-controllers">
@@ -72091,9 +72110,9 @@ function CollectionMainContentProductList() {
   }
 
   (0, _haunted.useEffect)(() => {
-    console.log('change');
-    const imgs = this.querySelectorAll('img.lazyloaded');
-    console.log(imgs);
+    // console.log('change');
+    const imgs = this.querySelectorAll('img.lazyloaded'); // console.log(imgs);
+
     imgs.forEach(img => {
       img.removeAttribute('src');
       img.classList.remove('lazyloaded');
@@ -72176,8 +72195,8 @@ function CollectionSidebar() {
   const {
     brandInfo,
     collectionHandle
-  } = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
-  console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
+  } = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)(); // console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
+
   return (0, _haunted.html)`
     <div class="coll_sidebar">
       <collection-sidebar-top-images></collection-sidebar-top-images />
@@ -72325,11 +72344,11 @@ function SearchProductList() {
   if (allProducts.length === 0) {
     products = productsOfFirstPage;
   } else {
-    products = (0, _helpers.getProductsOfCurrentPage)(state);
+    products = (0, _helpers.getProductsOfCurrentPage)(state, _helpers.getSortedSearchedProduts);
   }
 
   (0, _haunted.useEffect)(() => {
-    console.log('change');
+    // console.log('change');
     const imgs = this.querySelectorAll('img.lazyloaded');
     imgs.forEach(img => {
       img.removeAttribute('src');
@@ -72391,8 +72410,7 @@ function SearchPagination() {
   const {
     pageNumber
   } = state;
-  const displayedPageNumbers = (0, _helpers.getDisplayedPageNumbers)(pageCount, pageNumber);
-  console.log('displayedPageNumbers: ', displayedPageNumbers);
+  const displayedPageNumbers = (0, _helpers.getDisplayedPageNumbers)(pageCount, pageNumber); // console.log('displayedPageNumbers: ', displayedPageNumbers);
 
   const handlePageLinkClicked = number => {
     if (Number.isNaN(Number(number))) {
@@ -72574,8 +72592,7 @@ function PerfectGrillPagination() {
   const {
     pageNumber
   } = state;
-  const displayedPageNumbers = (0, _helpers.getDisplayedPageNumbers)(pageCount, pageNumber);
-  console.log('state', state, '\n', 'pageCount: ', pageCount, pageNumber);
+  const displayedPageNumbers = (0, _helpers.getDisplayedPageNumbers)(pageCount, pageNumber); // console.log('state', state, '\n', 'pageCount: ', pageCount, pageNumber);
 
   const handlePageLinkClicked = number => {
     if (Number.isNaN(Number(number))) {
@@ -72640,7 +72657,7 @@ function PerfectGrillProductList() {
   const emptyCollectionImage = context === null || context === void 0 ? void 0 : context.emptyCollectionImage;
   const products = (0, _helpers.getProductsOfCurrentPage)(state, _helpers.getBarbequesCollectionSearchedProducts);
   (0, _haunted.useEffect)(() => {
-    console.log('change');
+    // console.log('change');
     const imgs = this.querySelectorAll('img.lazyloaded');
     imgs.forEach(img => {
       img.removeAttribute('src');
@@ -72687,9 +72704,8 @@ var _haunted = require("@apollo-elements/haunted");
 const PerfectGrillAvailabilitySelector = (0, _haunted.virtual)(({
   availability,
   handleAvailabilityChanged
-}) => {
-  console.log(availability, handleAvailabilityChanged);
-  return (0, _haunted.html)`<div class="form-check form-check-inline">
+}) => // console.log(availability, handleAvailabilityChanged);
+(0, _haunted.html)`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
           type="checkbox"
@@ -72697,10 +72713,10 @@ const PerfectGrillAvailabilitySelector = (0, _haunted.virtual)(({
           value="true"
           ?checked=${availability.includes('true')}
           @change=${e => {
-    const bothInputs = e.target.closest('.perfect-grill-selector-input').querySelectorAll('input[type="checkbox"]');
-    const payload = bothInputs.filter(input => input.checked === true).map(input => input.value);
-    handleAvailabilityChanged(payload);
-  }}
+  const bothInputs = e.target.closest('.perfect-grill-selector-input').querySelectorAll('input[type="checkbox"]');
+  const payload = Array.from(bothInputs).filter(input => input.checked === true).map(input => input.value);
+  handleAvailabilityChanged(payload);
+}}
         />
         <label class="form-check-label" for="In-stock">In-stock</label>
       </div>
@@ -72712,14 +72728,13 @@ const PerfectGrillAvailabilitySelector = (0, _haunted.virtual)(({
           value="false"
           ?checked=${availability.includes('false')}
           @change=${e => {
-    const bothInputs = e.target.closest('.perfect-grill-selector-input').querySelectorAll('input[type="checkbox"]');
-    const payload = bothInputs.filter(input => input.checked === true).map(input => input.value);
-    handleAvailabilityChanged(payload);
-  }}
+  const bothInputs = e.target.closest('.perfect-grill-selector-input').querySelectorAll('input[type="checkbox"]');
+  const payload = Array.from(bothInputs).filter(input => input.checked === true).map(input => input.value);
+  handleAvailabilityChanged(payload);
+}}
         />
         <label class="form-check-label" for="Pre-order">Pre-order</label>
-      </div>`;
-});
+      </div>`);
 var _default = PerfectGrillAvailabilitySelector;
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/perfectGrill/PerfectGrillBrandSelector.js":[function(require,module,exports) {
@@ -72739,17 +72754,21 @@ const PerfectGrillBrandSelector = (0, _haunted.virtual)(({
 }) => {
   var _Object$values, _Object$values$0$leng, _Object$values2, _Object$values2$, _brandInfo, _Object$keys$2, _Object$keys2;
 
-  console.log(brandInfo, selectedCookTypesAndBrands, handleSelectedCookTypesAndBrandsChanged);
-  return (0, _haunted.html)`<select
+  return (// console.log(
+    //   brandInfo,
+    //   selectedCookTypesAndBrands,
+    //   handleSelectedCookTypesAndBrandsChanged
+    // );
+    (0, _haunted.html)`<select
       class="w-100"
       value=${(_Object$values = Object.values(selectedCookTypesAndBrands)) === null || _Object$values === void 0 ? void 0 : _Object$values[0]}
       @change=${e => {
-    var _Object$keys$, _Object$keys;
+      var _Object$keys$, _Object$keys;
 
-    return handleSelectedCookTypesAndBrandsChanged({
-      [(_Object$keys$ = (_Object$keys = Object.keys(selectedCookTypesAndBrands)) === null || _Object$keys === void 0 ? void 0 : _Object$keys[0]) !== null && _Object$keys$ !== void 0 ? _Object$keys$ : 'Gas Grill']: e.target.value ? [e.target.value] : null
-    });
-  }}
+      return handleSelectedCookTypesAndBrandsChanged({
+        [(_Object$keys$ = (_Object$keys = Object.keys(selectedCookTypesAndBrands)) === null || _Object$keys === void 0 ? void 0 : _Object$keys[0]) !== null && _Object$keys$ !== void 0 ? _Object$keys$ : 'Gas Grill']: e.target.value ? [e.target.value] : null
+      });
+    }}
     >
       <option
         value
@@ -72758,16 +72777,17 @@ const PerfectGrillBrandSelector = (0, _haunted.virtual)(({
         Select a brand
       </option>
       ${brandInfo === null || brandInfo === void 0 ? void 0 : (_brandInfo = brandInfo[(_Object$keys$2 = (_Object$keys2 = Object.keys(selectedCookTypesAndBrands)) === null || _Object$keys2 === void 0 ? void 0 : _Object$keys2[0]) !== null && _Object$keys$2 !== void 0 ? _Object$keys$2 : 'Gas Grills']) === null || _brandInfo === void 0 ? void 0 : _brandInfo.map(brand => {
-    var _Object$values3;
+      var _Object$values3;
 
-    return (0, _haunted.html)`<option
+      return (0, _haunted.html)`<option
             ?selected=${brand === ((_Object$values3 = Object.values(selectedCookTypesAndBrands)) === null || _Object$values3 === void 0 ? void 0 : _Object$values3[0])}
             value=${brand}
           >
             ${brand}
           </option>`;
-  })}
-    </select>`;
+    })}
+    </select>`
+  );
 });
 var _default = PerfectGrillBrandSelector;
 exports.default = _default;
@@ -72788,7 +72808,11 @@ const PerfectGrillCookTypeSelector = (0, _haunted.virtual)(({
 }) => {
   var _Object$keys$, _Object$keys;
 
-  console.log(cookTypeLogos, selectedCookTypesAndBrands, handleSelectedCookTypesAndBrandsChanged);
+  // console.log(
+  //   cookTypeLogos,
+  //   selectedCookTypesAndBrands,
+  //   handleSelectedCookTypesAndBrandsChanged
+  // );
   const selectedCookType = (_Object$keys$ = (_Object$keys = Object.keys(selectedCookTypesAndBrands)) === null || _Object$keys === void 0 ? void 0 : _Object$keys[0]) !== null && _Object$keys$ !== void 0 ? _Object$keys$ : 'Gas Grill';
   return (0, _haunted.html)` ${Object.entries(cookTypeLogos).map(([cookType, icon]) => (0, _haunted.html)`
         <div
@@ -73766,17 +73790,25 @@ const PerfectGrillKeyFeaturesSelector = (0, _haunted.virtual)(({
   handleSearBurnerChanged,
   handleRearRotisserieChanged,
   handleGrillTypeChanged
-}) => {
-  console.log(sideBurner, searBurner, rearRotisserie, grillType, handleSideBurnerChanged, handleSearBurnerChanged, handleRearRotisserieChanged, handleGrillTypeChanged);
-  return (0, _haunted.html)`<div class="form-check form-check-inline">
+}) => // console.log(
+//   sideBurner,
+//   searBurner,
+//   rearRotisserie,
+//   grillType,
+//   handleSideBurnerChanged,
+//   handleSearBurnerChanged,
+//   handleRearRotisserieChanged,
+//   handleGrillTypeChanged
+// );
+(0, _haunted.html)`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
           type="checkbox"
           id="sideBurner"
           ?checked=${!!sideBurner}
           @change=${e => {
-    handleSideBurnerChanged(e.target.checked);
-  }}
+  handleSideBurnerChanged(e.target.checked);
+}}
         />
         <label class="form-check-label" for="sideBurner">Side Burner</label>
       </div>
@@ -73787,8 +73819,8 @@ const PerfectGrillKeyFeaturesSelector = (0, _haunted.virtual)(({
           id="searBurner"
           ?checked=${searBurner}
           @change=${e => {
-    handleSearBurnerChanged(e.target.checked);
-  }}
+  handleSearBurnerChanged(e.target.checked);
+}}
         />
         <label class="form-check-label" for="searBurner">Sear Burner</label>
       </div>
@@ -73799,8 +73831,8 @@ const PerfectGrillKeyFeaturesSelector = (0, _haunted.virtual)(({
           id="rearRotisserie"
           ?checked=${rearRotisserie}
           @change=${e => {
-    handleRearRotisserieChanged(e.target.checked);
-  }}
+  handleRearRotisserieChanged(e.target.checked);
+}}
         />
         <label class="form-check-label" for="rearRotisserie"
           >Rear Rotisserie</label
@@ -73813,8 +73845,8 @@ const PerfectGrillKeyFeaturesSelector = (0, _haunted.virtual)(({
           id="stainlessSteelGrill"
           ?checked=${grillType.includes('Stainless Steel Grill')}
           @change=${() => {
-    handleGrillTypeChanged((0, _lodash.default)([...grillType, 'Stainless Steel Grill']));
-  }}
+  handleGrillTypeChanged((0, _lodash.default)([...grillType, 'Stainless Steel Grill']));
+}}
         />
         <label class="form-check-label" for="stainlessSteelGrill"
           >Stainless Steel Grill</label
@@ -73827,14 +73859,13 @@ const PerfectGrillKeyFeaturesSelector = (0, _haunted.virtual)(({
           id="ceramicCoatedGrill"
           ?checked=${grillType.includes('Ceramic Coated Grill')}
           @change=${() => {
-    handleGrillTypeChanged((0, _lodash.default)([...grillType, 'Ceramic Coated Grill']));
-  }}
+  handleGrillTypeChanged((0, _lodash.default)([...grillType, 'Ceramic Coated Grill']));
+}}
         />
         <label class="form-check-label" for="ceramicCoatedGrill"
           >Ceramic Coated Grill</label
         >
-      </div>`;
-});
+      </div>`);
 var _default = PerfectGrillKeyFeaturesSelector;
 exports.default = _default;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","lodash.uniq":"../node_modules/lodash.uniq/index.js"}],"components/perfectGrill/PerfectGrillPriceRangeSelector.js":[function(require,module,exports) {
@@ -73922,7 +73953,7 @@ function PerfectGrillSelectors() {
   const sideBurner = (_state$sideBurner = state === null || state === void 0 ? void 0 : state.sideBurner) !== null && _state$sideBurner !== void 0 ? _state$sideBurner : false;
   const searBurner = (_state$searBurner = state === null || state === void 0 ? void 0 : state.searBurner) !== null && _state$searBurner !== void 0 ? _state$searBurner : false;
   const rearRotisserie = (_state$rearRotisserie = state === null || state === void 0 ? void 0 : state.rearRotisserie) !== null && _state$rearRotisserie !== void 0 ? _state$rearRotisserie : false;
-  const grillType = (_state$grillType = state === null || state === void 0 ? void 0 : state.grillType) !== null && _state$grillType !== void 0 ? _state$grillType : false;
+  const grillType = (_state$grillType = state === null || state === void 0 ? void 0 : state.grillType) !== null && _state$grillType !== void 0 ? _state$grillType : [];
   (0, _haunted.useEffect)(() => {
     dispatch({
       type: 'changeCookTypesAndBrands',
@@ -73940,7 +73971,7 @@ function PerfectGrillSelectors() {
   };
 
   const handlePriceRangeChanged = (newPriceRange, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changePriceRange',
       payload: newPriceRange
@@ -73948,7 +73979,7 @@ function PerfectGrillSelectors() {
   };
 
   const handleGrillCookingAreaRangeChanged = (newGrillCookingAreaRange, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changeGrillCookingAreaRange',
       payload: newGrillCookingAreaRange
@@ -73956,7 +73987,7 @@ function PerfectGrillSelectors() {
   };
 
   const handleAvailabilityChanged = (newAvailability, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changeAvailability',
       payload: newAvailability
@@ -73964,7 +73995,7 @@ function PerfectGrillSelectors() {
   };
 
   const handleSideBurnerChanged = (newSideBurner, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changeSideBurner',
       payload: newSideBurner
@@ -73972,7 +74003,7 @@ function PerfectGrillSelectors() {
   };
 
   const handleSearBurnerChanged = (newSearBurner, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changeSearBurner',
       payload: newSearBurner
@@ -73980,7 +74011,7 @@ function PerfectGrillSelectors() {
   };
 
   const handleRearRotisserieChanged = (newRearRotisserie, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changeRearRotisserie',
       payload: newRearRotisserie
@@ -73988,7 +74019,7 @@ function PerfectGrillSelectors() {
   };
 
   const handleGrillTypeChanged = (newGrillType, e) => {
-    console.log(e);
+    // console.log(e);
     dispatch({
       type: 'changeGrillType',
       payload: newGrillType
@@ -74590,8 +74621,8 @@ function SearchResult({
     const products = await (0, _helpers.queryAllProducts)({
       searchString,
       transformFunc: _helpers.searchResultTransformFunc
-    });
-    console.log('allProducts:', products);
+    }); // console.log('allProducts:', products);
+
     dispatch({
       type: 'setAllProducts',
       payload: products
@@ -74661,8 +74692,7 @@ function PerfectGrill({
   defaultSortBy,
   emptyCollectionImage
 }) {
-  console.log('cookTypeLogos', cookTypeLogos);
-
+  // console.log('cookTypeLogos', cookTypeLogos);
   const perfectGrillReducer = (previousState, action) => {
     switch (action.type) {
       case 'setAllProducts':

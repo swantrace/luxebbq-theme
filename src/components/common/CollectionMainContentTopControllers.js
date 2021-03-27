@@ -37,7 +37,7 @@ function CollectionMainContentTopControllers() {
   const searchedProductsSize = searchedProducts.length;
   const productTypeName = 'Grills';
 
-  console.log(searchedProducts);
+  // console.log(searchedProducts);
   return html`<div class="row">
     <div class="col-12">
       <div class="product-filter-content collection-top-controllers">

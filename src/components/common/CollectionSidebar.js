@@ -3,7 +3,7 @@ import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmoker
 
 function CollectionSidebar() {
   const { brandInfo, collectionHandle } = useBarbequeSmokerCollectionContext();
-  console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
+  // console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
   return html`
     <div class="coll_sidebar">
       <collection-sidebar-top-images></collection-sidebar-top-images />

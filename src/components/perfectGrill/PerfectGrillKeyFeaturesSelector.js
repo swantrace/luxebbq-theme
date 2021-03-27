@@ -11,18 +11,18 @@ const PerfectGrillKeyFeaturesSelector = virtual(
     handleSearBurnerChanged,
     handleRearRotisserieChanged,
     handleGrillTypeChanged,
-  }) => {
-    console.log(
-      sideBurner,
-      searBurner,
-      rearRotisserie,
-      grillType,
-      handleSideBurnerChanged,
-      handleSearBurnerChanged,
-      handleRearRotisserieChanged,
-      handleGrillTypeChanged
-    );
-    return html`<div class="form-check form-check-inline">
+  }) =>
+    // console.log(
+    //   sideBurner,
+    //   searBurner,
+    //   rearRotisserie,
+    //   grillType,
+    //   handleSideBurnerChanged,
+    //   handleSearBurnerChanged,
+    //   handleRearRotisserieChanged,
+    //   handleGrillTypeChanged
+    // );
+    html`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
           type="checkbox"
@@ -91,8 +91,7 @@ const PerfectGrillKeyFeaturesSelector = virtual(
         <label class="form-check-label" for="ceramicCoatedGrill"
           >Ceramic Coated Grill</label
         >
-      </div>`;
-  }
+      </div>`
 );
 
 export default PerfectGrillKeyFeaturesSelector;

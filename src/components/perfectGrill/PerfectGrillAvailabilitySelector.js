@@ -1,9 +1,9 @@
 import { html, virtual } from '@apollo-elements/haunted';
 
 const PerfectGrillAvailabilitySelector = virtual(
-  ({ availability, handleAvailabilityChanged }) => {
-    console.log(availability, handleAvailabilityChanged);
-    return html`<div class="form-check form-check-inline">
+  ({ availability, handleAvailabilityChanged }) =>
+    // console.log(availability, handleAvailabilityChanged);
+    html`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
           type="checkbox"
@@ -14,7 +14,7 @@ const PerfectGrillAvailabilitySelector = virtual(
             const bothInputs = e.target
               .closest('.perfect-grill-selector-input')
               .querySelectorAll('input[type="checkbox"]');
-            const payload = bothInputs
+            const payload = Array.from(bothInputs)
               .filter((input) => input.checked === true)
               .map((input) => input.value);
             handleAvailabilityChanged(payload);
@@ -33,15 +33,14 @@ const PerfectGrillAvailabilitySelector = virtual(
             const bothInputs = e.target
               .closest('.perfect-grill-selector-input')
               .querySelectorAll('input[type="checkbox"]');
-            const payload = bothInputs
+            const payload = Array.from(bothInputs)
               .filter((input) => input.checked === true)
               .map((input) => input.value);
             handleAvailabilityChanged(payload);
           }}
         />
         <label class="form-check-label" for="Pre-order">Pre-order</label>
-      </div>`;
-  }
+      </div>`
 );
 
 export default PerfectGrillAvailabilitySelector;

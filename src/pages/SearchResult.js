@@ -92,7 +92,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
       searchString,
       transformFunc: searchResultTransformFunc,
     });
-    console.log('allProducts:', products);
+    // console.log('allProducts:', products);
     dispatch({ type: 'setAllProducts', payload: products });
   }, []);
 

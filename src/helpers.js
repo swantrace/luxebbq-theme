@@ -180,10 +180,10 @@ export const queryAllProducts = async ({
         reverse,
       });
       products = await query250ProductsOfCurrentProductTypes();
-      console.log(
-        'products from query250ProductsOfCurrentProductType',
-        products
-      );
+      // console.log(
+      //   'products from query250ProductsOfCurrentProductType',
+      //   products
+      // );
       if (sizeof(JSON.stringify(products)) < 4e6) {
         const productsInGroups = groupBy(
           products,
@@ -212,7 +212,7 @@ export const queryAllProducts = async ({
     reverse,
   });
   products = await query250ProductsOfCurrentSearchString();
-  console.log('products from query250ProductsOfCurrentSearchString', products);
+  // console.log('products from query250ProductsOfCurrentSearchString', products);
   return products;
 };
 
@@ -267,6 +267,9 @@ export const createBarbequesCollectionFilters = ({
       }
       const cookTypes = Object.keys(selectedCookTypesAndBrands);
       if (cookTypes.length === 0) {
+        return true;
+      }
+      if (!product?.cookType) {
         return true;
       }
       const currentProductCookType = cookTypes.find(
@@ -353,16 +356,16 @@ export const createBarbequesCollectionFilters = ({
       return grillType?.includes(product?.grillType);
     },
     availability: (product) => {
-      if (availability?.length === 0) {
+      if (!availability || availability?.length === 0) {
         return true;
       }
-      if (availability.includes('true') && availability.includes('false')) {
+      if (availability?.includes('true') && availability?.includes('false')) {
         return true;
       }
-      if (availability.includes('true') && product.availableForSale) {
+      if (availability?.includes('true') && product?.availableForSale) {
         return true;
       }
-      if (availability.includes('false') && !product.availableForSale) {
+      if (availability?.includes('false') && !product?.availableForSale) {
         return true;
       }
       return false;
@@ -395,6 +398,13 @@ export const createBarbequesCollectionSorter = (sortValue) => (
       return 0;
     }
   }
+};
+
+export const getSortedSearchedProduts = ({ allProducts, sortValue }) => {
+  const sorter = createBarbequesCollectionSorter(sortValue);
+  const products = [...allProducts];
+  products.sort(sorter);
+  return products;
 };
 
 export const getBarbequesCollectionSearchedProducts = (
@@ -480,9 +490,7 @@ export const getProductsOfCurrentPage = (
 ) => {
   const pageNumber = state?.pageNumber ?? 1;
   const productsPerPage = state?.productsPerPage ?? 24;
-  console.log('state:', state);
   const searchedProducts = getAllProducts(state);
-  console.log('searchedProducts:', searchedProducts);
   const productsInChunks = chunk(searchedProducts, productsPerPage);
   const productsOfCurrentPage =
     productsInChunks[pageNumber - 1] ?? productsInChunks[0] ?? [];
@@ -609,6 +617,7 @@ export default {
   hasIntersectionBetweenTwoRanges,
   createBarbequesCollectionFilters,
   createBarbequesCollectionSorter,
+  getSortedSearchedProduts,
   getBarbequesCollectionSearchedProducts,
   getSortValueFromDefaultSortBy,
   getPageCount,

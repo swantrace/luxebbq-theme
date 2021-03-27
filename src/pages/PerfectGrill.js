@@ -17,7 +17,7 @@ function PerfectGrill({
   defaultSortBy,
   emptyCollectionImage,
 }) {
-  console.log('cookTypeLogos', cookTypeLogos);
+  // console.log('cookTypeLogos', cookTypeLogos);
   const perfectGrillReducer = (previousState, action) => {
     switch (action.type) {
       case 'setAllProducts': {

@@ -11,7 +11,7 @@ function CookTypesAndBrandsFilter() {
   const searchString = context?.collectionState?.searchString ?? '';
   const allProducts = context?.collectionState?.allProducts ?? [];
   const dispatch = context?.collectionDispatch ?? (() => {});
-  console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
+  // console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
   const handleCookTypeChanged = (cookType, e) => {
     const cookTypeInput = e.target;
     if (cookTypeInput.checked) {
