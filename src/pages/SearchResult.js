@@ -4,7 +4,7 @@ import {
   useQuery,
   useReducer,
 } from '@apollo-elements/haunted';
-import SearchBar from '../components/common/SearchBar';
+import SearchBar from '../components/searchResult/SearchBar';
 import TitleBanner from '../components/common/TitleBanner';
 import { SearchResultWrapper } from '../context/searchResult';
 import {

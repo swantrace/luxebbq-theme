@@ -1,7 +1,7 @@
 import { html, useEffect } from '@apollo-elements/haunted';
 import { useSearchResultContext } from '../../context/searchResult';
 import { getProductsOfCurrentPage } from '../../helpers';
-import ProductList from './ProductList';
+import ProductList from '../common/ProductList';
 
 function SearchProductList() {
   const context = useSearchResultContext();

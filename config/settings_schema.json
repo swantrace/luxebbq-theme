@@ -8,6 +8,93 @@
     "theme_support_url": "https:\/\/help.shopify.com\/"
   },
   {
+    "name": "datomar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Cook Types and Brands"
+      },
+      {
+        "type": "text",
+        "id": "gas_grill_brands",
+        "label": "Gas Grill's Brands"
+      },
+      {
+        "type": "image_picker",
+        "id": "gas_grill_logo",
+        "label": "Gas Grill's Logo"
+      },
+      {
+        "type": "text",
+        "id": "charcoal_grill_brands",
+        "label": "Charcoal Grill's Brands"
+      },
+      {
+        "type": "image_picker",
+        "id": "charcoal_grill_logo",
+        "label": "Charcoal Grill's Logo"
+      },
+      {
+        "type": "text",
+        "id": "smoker_brands",
+        "label": "Smoker's Brands"
+      },
+      {
+        "type": "image_picker",
+        "id": "smoker_logo",
+        "label": "Smoker's Logo"
+      },
+      {
+        "type": "text",
+        "id": "pellet_grill_brands",
+        "label": "Pellet Grill's Brands"
+      },
+      {
+        "type": "image_picker",
+        "id": "pellet_grill_logo",
+        "label": "Pellet Grill's Logo"
+      },
+      {
+        "type": "text",
+        "id": "oven_brands",
+        "label": "Oven's brands"
+      },
+      {
+        "type": "image_picker",
+        "id": "oven_logo",
+        "label": "Oven's Logo"
+      },
+      {
+        "type": "header",
+        "content": "Price Range(C$)"
+      },
+      {
+        "type": "text",
+        "id": "max_price_in_range",
+        "label": "Max price in range"
+      },
+      {
+        "type": "text",
+        "id": "min_price_in_range",
+        "label": "Min price in range"
+      },
+      {
+        "type": "header",
+        "content": "Grill Cooking Area(ppl)"
+      },
+      {
+        "type": "text",
+        "id": "max_grill_cooking_area",
+        "label": "Max grill cooking area"
+      },
+      {
+        "type": "text",
+        "id": "min_grill_cooking_area",
+        "label": "Min grill cooking area"
+      }
+    ]
+  },
+  {
     "name": "General",
     "settings": [
       {

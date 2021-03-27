@@ -1,6 +1,6 @@
 import { html } from '@apollo-elements/haunted';
 import { useSearchResultContext } from '../../context/searchResult';
-import TopControllers from './TopControllers';
+import TopControllers from '../common/TopControllers';
 
 function SearchTopControllers() {
   const context = useSearchResultContext();

@@ -1,17 +1,21 @@
 import { html } from '@apollo-elements/haunted';
-import { useSearchResultContext } from '../../context/searchResult';
-import { getDisplayedPageNumbers, getPageCount } from '../../helpers';
-import PagePagination from './PagePagination';
+import { usePerfectGrillContext } from '../../context/perfectGrill';
+import {
+  getBarbequesCollectionSearchedProducts,
+  getDisplayedPageNumbers,
+  getPageCount,
+} from '../../helpers';
+import PagePagination from '../common/PagePagination';
 
-function SearchPagination() {
-  const context = useSearchResultContext();
-  const dispatch = context?.searchResultDispatch ?? (() => {});
-  const state = context?.searchResultState ?? {};
-  const pageCount = getPageCount(state);
+function PerfectGrillPagination() {
+  const context = usePerfectGrillContext();
+  const dispatch = context?.dispatch ?? (() => {});
+  const state = context?.state ?? {};
+  const pageCount = getPageCount(state, getBarbequesCollectionSearchedProducts);
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
 
-  console.log('displayedPageNumbers: ', displayedPageNumbers);
+  console.log('state', state, '\n', 'pageCount: ', pageCount, pageNumber);
   const handlePageLinkClicked = (number) => {
     if (Number.isNaN(Number(number))) {
       return;
@@ -35,8 +39,8 @@ function SearchPagination() {
 }
 
 export default {
-  tagName: 'search-pagination',
-  renderer: SearchPagination,
+  tagName: 'perfect-grill-pagination',
+  renderer: PerfectGrillPagination,
   options: {
     observedAttributes: [],
     useShadowDOM: false,
