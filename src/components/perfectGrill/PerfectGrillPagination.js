@@ -1,17 +1,13 @@
 import { html } from '@apollo-elements/haunted';
 import { usePerfectGrillContext } from '../../context/perfectGrill';
-import {
-  getBarbequesCollectionSearchedProducts,
-  getDisplayedPageNumbers,
-  getPageCount,
-} from '../../helpers';
+import { getDisplayedPageNumbers, getPageCount } from '../../helpers';
 import PagePagination from '../common/PagePagination';
 
 function PerfectGrillPagination() {
   const context = usePerfectGrillContext();
   const dispatch = context?.dispatch ?? (() => {});
   const state = context?.state ?? {};
-  const pageCount = getPageCount(state, getBarbequesCollectionSearchedProducts);
+  const pageCount = getPageCount(state, 'Barbeques');
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
 

@@ -57,6 +57,8 @@ function PerfectGrillSelectors() {
     });
   };
   const handleAvailabilityChanged = (newAvailability, e) => {
+    // debugger;
+    console.log('new', newAvailability);
     // console.log(e);
     dispatch({
       type: 'changeAvailability',

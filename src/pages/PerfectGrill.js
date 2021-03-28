@@ -4,7 +4,6 @@ import {
   DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
   getSortValueFromDefaultSortBy,
   queryAllProducts,
-  barbequesCollectionTransformFunc,
 } from '../helpers';
 import { perfectGrillWrapper } from '../context/perfectGrill';
 import TitleBanner from '../components/common/TitleBanner';
@@ -78,31 +77,37 @@ function PerfectGrill({
       case 'changeAvailability': {
         return {
           ...previousState,
-          availability: action.availability,
+          availability: action.payload,
         };
       }
       case 'changeSideBurner': {
         return {
           ...previousState,
-          sideBurner: action.sideBurner,
+          sideBurner: action.payload,
         };
       }
       case 'changeSearBurner': {
         return {
           ...previousState,
-          searBurner: action.searBurner,
+          searBurner: action.payload,
         };
       }
       case 'changeRearRotisserie': {
         return {
           ...previousState,
-          rearRotisserie: action.rearRotisserie,
+          rearRotisserie: action.payload,
         };
       }
       case 'changeGrillType': {
         return {
           ...previousState,
-          grillType: action.grillType,
+          grillType: action.payload,
+        };
+      }
+      case 'changeOnlineStoreOnly': {
+        return {
+          ...previousState,
+          onlineStoreOnly: action.payload,
         };
       }
       default:
@@ -123,12 +128,12 @@ function PerfectGrill({
     rearRotisserie: false,
     grillType: [],
     sortValue: 'BEST_SELLING_ASC',
+    onlineStoreOnly: false,
   });
 
   useEffect(async () => {
     const products = await queryAllProducts({
       productTypes: ['Barbeques'],
-      transformFunc: barbequesCollectionTransformFunc,
     });
     dispatch({ type: 'setAllProducts', payload: products });
   }, []);

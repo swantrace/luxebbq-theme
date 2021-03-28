@@ -11,7 +11,7 @@ import {
   getQueryString,
   getSortValueFromDefaultSortBy,
   queryAllProducts,
-  barbequesCollectionTransformFunc,
+  barbequesTransformFunc,
 } from '../helpers';
 import { BarbequeSmokerCollectionWrapper } from '../context/barbequeSmokerCollection';
 
@@ -99,6 +99,12 @@ function BarbequeSmokerCollection({
           viewMode: action.payload,
         };
       }
+      case 'changeOnlineStoreOnly': {
+        return {
+          ...previousState,
+          onlineStoreOnly: action.payload,
+        };
+      }
       default:
         return { ...previousState };
     }
@@ -113,6 +119,7 @@ function BarbequeSmokerCollection({
     pageNumber: 1,
     viewMode: 'grid',
     sortValue: 'BEST_SELLING_ASC',
+    onlineStoreOnly: false,
   });
 
   const { data: dataWithFirstPageProducts } = useQuery(GET_PRODUCTS, {
@@ -131,13 +138,12 @@ function BarbequeSmokerCollection({
   });
   const productsOfFirstPage =
     dataWithFirstPageProducts?.products?.edges?.map(({ node }) =>
-      barbequesCollectionTransformFunc(node)
+      barbequesTransformFunc(node)
     ) ?? [];
 
   useEffect(async () => {
     const products = await queryAllProducts({
       productTypes: ['Barbeques'],
-      transformFunc: barbequesCollectionTransformFunc,
     });
     dispatch({ type: 'setAllProducts', payload: products });
   }, []);

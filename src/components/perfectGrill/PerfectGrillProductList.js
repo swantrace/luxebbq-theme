@@ -1,9 +1,6 @@
 import { html, useEffect } from '@apollo-elements/haunted';
 import { usePerfectGrillContext } from '../../context/perfectGrill';
-import {
-  getBarbequesCollectionSearchedProducts,
-  getProductsOfCurrentPage,
-} from '../../helpers';
+import { getFilteredSortedProductsOfCurrentPage } from '../../helpers';
 import ProductList from '../common/ProductList';
 
 function PerfectGrillProductList() {
@@ -11,10 +8,7 @@ function PerfectGrillProductList() {
   const state = context?.state ?? {};
   const viewMode = state?.viewMode ?? 'grid';
   const emptyCollectionImage = context?.emptyCollectionImage;
-  const products = getProductsOfCurrentPage(
-    state,
-    getBarbequesCollectionSearchedProducts
-  );
+  const products = getFilteredSortedProductsOfCurrentPage(state, 'Barbeques');
 
   useEffect(() => {
     // console.log('change');

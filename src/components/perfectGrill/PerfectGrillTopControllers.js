@@ -1,13 +1,13 @@
 import { html } from '@apollo-elements/haunted';
 import { usePerfectGrillContext } from '../../context/perfectGrill';
-import { getBarbequesCollectionSearchedProducts } from '../../helpers';
+import { getFilteredSortedProducts } from '../../helpers';
 import TopControllers from '../common/TopControllers';
 
 function PerfectGrillTopControllers() {
   const context = usePerfectGrillContext();
   const state = context?.state ?? {};
   const dispatch = context?.dispatch ?? (() => {});
-  const searchedProducts = getBarbequesCollectionSearchedProducts(state);
+  const searchedProducts = getFilteredSortedProducts(state, 'Barbeques');
 
   const viewMode = state?.viewMode ?? 'grid';
   const productsPerPage = state?.productsPerPage ?? 24;

@@ -11,8 +11,8 @@ import {
   getQueryString,
   getSortValueFromDefaultSortBy,
   queryAllProducts,
-  searchResultTransformFunc,
   GET_PRODUCTS,
+  transformFunc,
 } from '../helpers';
 
 function SearchResult({ defaultSortBy, emptyCollectionImage }) {
@@ -55,6 +55,12 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
           viewMode: action.payload,
         };
       }
+      case 'changeOnlineStoreOnly': {
+        return {
+          ...previousState,
+          onlineStoreOnly: action.payload,
+        };
+      }
       default:
         return { ...previousState };
     }
@@ -67,6 +73,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
     pageNumber: 1,
     viewMode: 'grid',
     sortValue: 'BEST_SELLING_ASC',
+    onlineStoreOnly: false,
   });
 
   window.state = state;
@@ -84,13 +91,12 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
 
   const productsOfFirstPage =
     dataWithFirstPageProducts?.products?.edges?.map(({ node }) =>
-      searchResultTransformFunc(node)
+      transformFunc(node)
     ) ?? [];
 
   useEffect(async () => {
     const products = await queryAllProducts({
       searchString,
-      transformFunc: searchResultTransformFunc,
     });
     // console.log('allProducts:', products);
     dispatch({ type: 'setAllProducts', payload: products });

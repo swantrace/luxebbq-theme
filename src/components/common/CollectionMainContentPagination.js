@@ -1,17 +1,13 @@
 import { html } from '@apollo-elements/haunted';
 import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
-import {
-  getBarbequesCollectionSearchedProducts,
-  getDisplayedPageNumbers,
-  getPageCount,
-} from '../../helpers';
+import { getDisplayedPageNumbers, getPageCount } from '../../helpers';
 import PagePagination from './PagePagination';
 
 function CollectionMainContentPagination() {
   const context = useBarbequeSmokerCollectionContext();
   const dispatch = context?.collectionDispatch ?? (() => {});
   const state = context?.collectionState ?? {};
-  const pageCount = getPageCount(state, getBarbequesCollectionSearchedProducts);
+  const pageCount = getPageCount(state, 'Barbeques');
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
 

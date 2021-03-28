@@ -1,9 +1,6 @@
 import { html, useEffect } from '@apollo-elements/haunted';
 import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
-import {
-  getBarbequesCollectionSearchedProducts,
-  getProductsOfCurrentPage,
-} from '../../helpers';
+import { getFilteredSortedProductsOfCurrentPage } from '../../helpers';
 import ProductList from './ProductList';
 
 function CollectionMainContentProductList() {
@@ -17,10 +14,7 @@ function CollectionMainContentProductList() {
   if (allProducts.length === 0) {
     products = productsOfFirstPage;
   } else {
-    products = getProductsOfCurrentPage(
-      state,
-      getBarbequesCollectionSearchedProducts
-    );
+    products = getFilteredSortedProductsOfCurrentPage(state, 'Barbeques');
   }
   useEffect(() => {
     // console.log('change');

@@ -1,10 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import sizeof from 'object-sizeof';
 import chunk from 'lodash.chunk';
 import { gql } from '@apollo/client/core';
 import groupBy from 'lodash.groupby';
 
-export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 10000];
+export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 30000];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 20];
 
 export const GET_PRODUCTS = gql`
@@ -60,6 +59,70 @@ export const GET_PRODUCTS = gql`
   }
 `;
 
+export const transformFunc = ({
+  availableForSale,
+  totalInventory,
+  onlineStoreUrl,
+  description,
+  handle,
+  images,
+  priceRange,
+  tags,
+  title,
+  vendor,
+  productType,
+}) => ({
+  availableForSale,
+  inStock: totalInventory > 0,
+  totalInventory,
+  title,
+  handle,
+  images:
+    images?.edges?.map(({ node: image }) => ({
+      imageAltText: image?.altText ?? null,
+      imageOriginalSrc: image?.originalSrc ?? null,
+      imageTransformedSrc: image?.transformedSrc ?? null,
+    })) ?? [],
+  maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
+  minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
+  tags,
+  description,
+  vendor,
+  productType,
+  onlineStoreUrl,
+});
+
+// todo: transformFunc and filter for grill cooking area
+export const barbequesTransformFunc = (rawProduct) => ({
+  ...transformFunc(rawProduct),
+  cookType:
+    rawProduct.tags
+      ?.find((tag) => tag.includes('dtm_cook-type_'))
+      ?.replace('dtm_cook-type_', '') ?? null,
+  grillCookingArea:
+    rawProduct.tags
+      ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
+      ?.replace('dtm_grill-cooking-area_', '') ?? null,
+  sideBurner: !!rawProduct.tags?.includes('dtm_side-burner'),
+  searBurner: !!rawProduct.tags?.includes('dtm_sear-burner'),
+  rearRotisserie: !!rawProduct.tags?.includes('dtm_rear-rotisserie'),
+  grillType: rawProduct.tags
+    ?.find((tag) => tag.includes('dtm_grill-type'))
+    ?.replace('dtm_grill-type_', ''),
+  standType: rawProduct.tags
+    ?.find((tag) => tag.includes('dtm_stand-type'))
+    ?.replace('dtm_stand-type_', ''),
+});
+
+export const transformFuncCreator = (productType) => {
+  switch (productType.toLowerCase()) {
+    case 'barbeques':
+      return barbequesTransformFunc;
+    default:
+      return transformFunc;
+  }
+};
+
 export const addslashes = (str) =>
   `${str}`.replace(/([\\"'])/g, '\\$1').replace(/\0/g, '\\0');
 
@@ -67,7 +130,7 @@ export const removeKey = (obj, propToDelete) => {
   const { [propToDelete]: deleted, ...objectWithoutDeletedProp } = obj;
   return objectWithoutDeletedProp;
 };
-
+// used to generate query string which to be used in graphql request
 export const getQueryString = ({
   searchString = '',
   productTypes = [],
@@ -111,28 +174,22 @@ export const getQueryString = ({
   return `${searchStringPart}${productTypesPart}${cookTypeAndBrandsPart}`;
 };
 
-export const query250ProductsCreator = ({
-  client = window.__APOLLO_CLIENT__,
-  query = GET_PRODUCTS,
+export const queryAllProductsThroughGraphqlCreator = ({
   searchString = '',
   productTypes = [],
-  transformFunc = (a) => a,
-  sortKey = 'BEST_SELLING',
-  reverse = false,
 } = {}) => {
   let products = [];
   const query250Products = (dataWithLastPageProducts) =>
-    client
+    window.__APOLLO_CLIENT__
       .query({
-        query,
+        query: GET_PRODUCTS,
         variables: {
           first: 250,
           query: `${getQueryString({ searchString, productTypes })}`,
           after:
             dataWithLastPageProducts?.data?.products?.edges?.slice(-1)?.[0]
               ?.cursor ?? null,
-          sortKey,
-          reverse,
+          sortKey: 'BEST_SELLING',
         },
       })
       .then((data) => {
@@ -141,7 +198,7 @@ export const query250ProductsCreator = ({
           ...(data?.data?.products?.edges?.map(({ node }) => node) ?? []),
         ];
         if ((data?.data?.products?.edges?.length ?? 0) < 250) {
-          return Promise.resolve(products.map(transformFunc));
+          return Promise.resolve(products);
         }
         return query250Products(data);
       });
@@ -149,70 +206,59 @@ export const query250ProductsCreator = ({
 };
 
 export const queryAllProducts = async ({
-  client = window.__APOLLO_CLIENT__,
-  query = GET_PRODUCTS,
   searchString = '',
   productTypes = [],
-  transformFunc = (a) => a,
-  sortKey = 'BEST_SELLING',
-  reverse = false,
 } = {}) => {
-  if (searchString.trim() === '') {
-    let products = [];
-    try {
-      productTypes.forEach((productType) => {
-        const productsForCurrentProductType = JSON.parse(
-          window.sessionStorage.getItem(productType.toLowerCase())
-        );
-        if (productsForCurrentProductType === null) {
-          throw new Error('barbeques has not been stored');
-        }
-        products = [...products, ...productsForCurrentProductType];
-      });
-    } catch (err) {
-      const query250ProductsOfCurrentProductTypes = query250ProductsCreator({
-        client,
-        query,
-        searchString,
-        productTypes,
-        transformFunc,
-        sortKey,
-        reverse,
-      });
-      products = await query250ProductsOfCurrentProductTypes();
-      // console.log(
-      //   'products from query250ProductsOfCurrentProductType',
-      //   products
-      // );
-      if (sizeof(JSON.stringify(products)) < 4e6) {
-        const productsInGroups = groupBy(
-          products,
-          (product) => product.productType
-        );
-        Object.entries(productsInGroups).forEach(
-          ([productType, productsOfCurrentPage]) => {
-            window.sessionStorage.setItem(
-              productType.toLowerCase(),
-              JSON.stringify(productsOfCurrentPage)
-            );
-          }
-        );
-      }
-    }
-    return products;
-  }
   let products = [];
-  const query250ProductsOfCurrentSearchString = query250ProductsCreator({
-    client,
-    query,
-    searchString,
-    productTypes,
-    transformFunc,
-    sortKey,
-    reverse,
-  });
-  products = await query250ProductsOfCurrentSearchString();
-  // console.log('products from query250ProductsOfCurrentSearchString', products);
+
+  try {
+    if (searchString?.trim() !== '') {
+      throw new Error(
+        'when searchString is not empty, we should send a new graphql request'
+      );
+    }
+    productTypes.forEach((productType) => {
+      const productsForCurrentProductType = JSON.parse(
+        window.sessionStorage.getItem(productType.toLowerCase())
+      );
+      if (productsForCurrentProductType === null) {
+        throw new Error(`${productType} has not been stored`);
+      }
+      products = [...products, ...productsForCurrentProductType];
+    });
+  } catch (err) {
+    const rawProducts = await queryAllProductsThroughGraphqlCreator({
+      searchString,
+      productTypes,
+    })();
+    const productsInGroups = groupBy(
+      rawProducts,
+      (product) => product.productType
+    );
+    Object.entries(productsInGroups).forEach(
+      ([productType, rawProductsOfCurrentProductType]) => {
+        const productsOfCurrentProductType = rawProductsOfCurrentProductType.map(
+          transformFuncCreator(productType)
+        );
+        products = [...products, ...productsOfCurrentProductType];
+        console.log(
+          'size',
+          JSON.stringify(productsOfCurrentProductType).length +
+            JSON.stringify(window.sessionStorage).length
+        );
+        if (
+          JSON.stringify(productsOfCurrentProductType).length +
+            JSON.stringify(window.sessionStorage).length <
+          2500000
+        ) {
+          window.sessionStorage.setItem(
+            productType.toLowerCase(),
+            JSON.stringify(productsOfCurrentProductType)
+          );
+        }
+      }
+    );
+  }
   return products;
 };
 
@@ -227,26 +273,31 @@ export const hasIntersectionBetweenTwoRanges = (arr1 = [], arr2 = []) => {
   return false;
 };
 
-export const createBarbequesCollectionFilters = ({
-  searchString,
-  selectedCookTypesAndBrands,
-  currentPriceRange,
-  currentGrillCookingAreaRange,
-  onlineStoreOnly,
-  sideBurner,
-  searBurner,
-  rearRotisserie,
-  grillType,
-  availability,
-}) => {
+export const productsFilters = (state) => ({
+  onlineStoreOnly: (product) => {
+    if (!state.onlineStoreOnly) {
+      return true;
+    }
+    return !!product.onlineStoreUrl;
+  },
+});
+
+export const barbequesProductsFilters = (state) => {
+  const {
+    searchString,
+    selectedCookTypesAndBrands,
+    currentPriceRange,
+    currentGrillCookingAreaRange,
+    sideBurner,
+    searBurner,
+    rearRotisserie,
+    grillType,
+    standType,
+    availability,
+  } = state;
   const st = searchString?.trim() ?? '';
   return {
-    onlineStoreOnly: (product) => {
-      if (!onlineStoreOnly) {
-        return true;
-      }
-      return !!product.onlineStoreUrl;
-    },
+    ...productsFilters(state),
     searchString: (product) => {
       if (st.length === 0) {
         return true;
@@ -355,6 +406,12 @@ export const createBarbequesCollectionFilters = ({
       }
       return grillType?.includes(product?.grillType);
     },
+    standType: (product) => {
+      if ((standType?.length ?? 0) === 0) {
+        return true;
+      }
+      return standType?.includes(product?.standType);
+    },
     availability: (product) => {
       if (!availability || availability?.length === 0) {
         return true;
@@ -362,10 +419,10 @@ export const createBarbequesCollectionFilters = ({
       if (availability?.includes('true') && availability?.includes('false')) {
         return true;
       }
-      if (availability?.includes('true') && product?.availableForSale) {
+      if (availability?.includes('true') && product?.inStock) {
         return true;
       }
-      if (availability?.includes('false') && !product?.availableForSale) {
+      if (availability?.includes('false') && !product?.inStock) {
         return true;
       }
       return false;
@@ -373,11 +430,8 @@ export const createBarbequesCollectionFilters = ({
   };
 };
 
-export const createBarbequesCollectionSorter = (sortValue) => (
-  productA,
-  productB
-) => {
-  switch (sortValue) {
+export const productsSorter = (state) => (productA, productB) => {
+  switch (state.sortValue) {
     case 'TITLE_ASC': {
       return productA?.title?.localeCompare(productB?.title, undefined, {
         base: true,
@@ -400,48 +454,38 @@ export const createBarbequesCollectionSorter = (sortValue) => (
   }
 };
 
-export const getSortedSearchedProduts = ({ allProducts, sortValue }) => {
-  const sorter = createBarbequesCollectionSorter(sortValue);
-  const products = [...allProducts];
-  products.sort(sorter);
-  return products;
+export const productsFiltersCreator = (productType) => {
+  switch (productType.toLowerCase()) {
+    case 'barbeques':
+      return barbequesProductsFilters;
+    default:
+      return productsFilters;
+  }
 };
 
-export const getBarbequesCollectionSearchedProducts = (
-  {
-    allProducts = [],
-    searchString = '',
-    selectedCookTypesAndBrands = {},
-    currentPriceRange = DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
-    currentGrillCookingAreaRange = DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
-    sortValue,
-    sideBurner,
-    searBurner,
-    rearRotisserie,
-    grillType,
-    availability,
-  } = {},
-  onlineStoreOnly = false
-) => {
-  const filters = createBarbequesCollectionFilters({
-    searchString,
-    selectedCookTypesAndBrands,
-    currentPriceRange,
-    currentGrillCookingAreaRange,
-    onlineStoreOnly,
-    sideBurner,
-    searBurner,
-    rearRotisserie,
-    grillType,
-    availability,
-  });
-  const sorter = createBarbequesCollectionSorter(sortValue);
-  let products = [...allProducts];
+export const productsSorterCreator = (productType) => {
+  switch (productType.toLowerCase()) {
+    default:
+      return productsSorter;
+  }
+};
+
+export const getFilteredSortedProducts = (state, productType) => {
+  const filters = productsFiltersCreator(productType)(state);
+  const sorter = productsSorterCreator(productType)(state);
+  let products = [...state.allProducts];
   Object.values(filters).forEach((f) => {
     products = products.filter(f);
   });
   products.sort(sorter);
   return products;
+};
+
+export const getFilteredSortedProductsOfCurrentPage = (state, productType) => {
+  const { pageNumber, productsPerPage } = state;
+  const allProducts = getFilteredSortedProducts(state, productType);
+  const productsInChunks = chunk(allProducts, productsPerPage);
+  return productsInChunks[pageNumber - 1];
 };
 
 export const getSortValueFromDefaultSortBy = (defaultSortBy) => {
@@ -467,34 +511,11 @@ export const getSortValueFromDefaultSortBy = (defaultSortBy) => {
   }
 };
 
-export const getPageCount = (state, getPartFunc = (s) => s.allProducts) => {
-  const productsPerPage = state?.productsPerPage ?? 24;
-  const searchedProducts = getPartFunc(state);
-  const productsInChunks = chunk(searchedProducts, productsPerPage);
-  return productsInChunks.length ?? 1;
-};
-
-export const getBarbequesCollectionSearchedProductsOfCurrentPage = (state) => {
-  const pageNumber = state?.pageNumber ?? 1;
-  const productsPerPage = state?.productsPerPage ?? 24;
-  const searchedProducts = getBarbequesCollectionSearchedProducts(state);
-  const productsInChunks = chunk(searchedProducts, productsPerPage);
-  const productsOfCurrentPage =
-    productsInChunks[pageNumber - 1] ?? productsInChunks[0] ?? [];
-  return productsOfCurrentPage;
-};
-
-export const getProductsOfCurrentPage = (
-  state,
-  getAllProducts = (s) => s.allProducts
-) => {
-  const pageNumber = state?.pageNumber ?? 1;
-  const productsPerPage = state?.productsPerPage ?? 24;
-  const searchedProducts = getAllProducts(state);
-  const productsInChunks = chunk(searchedProducts, productsPerPage);
-  const productsOfCurrentPage =
-    productsInChunks[pageNumber - 1] ?? productsInChunks[0] ?? [];
-  return productsOfCurrentPage;
+export const getPageCount = (state, productType) => {
+  const { productsPerPage } = state;
+  const allProducts = getFilteredSortedProducts(state, productType);
+  const productsInChunks = chunk(allProducts, productsPerPage);
+  return productsInChunks.length;
 };
 
 export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
@@ -526,102 +547,16 @@ export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
   return displayedPageNumbers;
 };
 
-export const searchResultTransformFunc = ({
-  availableForSale,
-  totalInventory,
-  onlineStoreUrl,
-  description,
-  handle,
-  images,
-  priceRange,
-  tags,
-  title,
-  vendor,
-  productType,
-}) => {
-  const processedProduct = {
-    availableForSale,
-    totalInventory,
-    title,
-    handle,
-    images:
-      images?.edges?.map(({ node: image }) => ({
-        imageAltText: image?.altText ?? null,
-        imageOriginalSrc: image?.originalSrc ?? null,
-        imageTransformedSrc: image?.transformedSrc ?? null,
-      })) ?? [],
-    maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
-    minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
-    tags,
-    description,
-    vendor,
-    productType,
-    onlineStoreUrl,
-  };
-  return processedProduct;
-};
-// todo: transformFunc and filter for grill cooking area
-export const barbequesCollectionTransformFunc = ({
-  availableForSale,
-  onlineStoreUrl,
-  description,
-  handle,
-  images,
-  priceRange,
-  tags,
-  title,
-  vendor,
-  productType,
-  totalInventory,
-}) => {
-  const processedProduct = {
-    availableForSale,
-    totalInventory,
-    title,
-    handle,
-    images:
-      images?.edges?.map(({ node: image }) => ({
-        imageAltText: image?.altText ?? null,
-        imageOriginalSrc: image?.originalSrc ?? null,
-        imageTransformedSrc: image?.transformedSrc ?? null,
-      })) ?? [],
-    maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
-    minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
-    cookType:
-      tags
-        ?.find((tag) => tag.includes('dtm_cook-type_'))
-        ?.replace('dtm_cook-type_', '') ?? null,
-    grillCookingArea:
-      tags
-        ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
-        ?.replace('dtm_grill-cooking-area_', '') ?? null,
-    sideBurner: !!tags?.includes('dtm_side-burner'),
-    searBurner: !!tags?.includes('dtm_sear-burner'),
-    rearRotisserie: !!tags?.includes('dtm_rear-rotisserie'),
-    grillType: tags
-      ?.filter((tag) => tag.includes('dtm_grill-type'))
-      .map((tag) => tag.replace('dtm_grill-type_', '')),
-    tags,
-    description,
-    vendor,
-    productType,
-    onlineStoreUrl,
-  };
-  return processedProduct;
-};
-
 export default {
   removeKey,
   getQueryString,
   queryAllProducts,
   hasIntersectionBetweenTwoRanges,
-  createBarbequesCollectionFilters,
-  createBarbequesCollectionSorter,
-  getSortedSearchedProduts,
-  getBarbequesCollectionSearchedProducts,
+  barbequesProductsFilters,
+  productsSorter,
   getSortValueFromDefaultSortBy,
   getPageCount,
-  getBarbequesCollectionSearchedProductsOfCurrentPage,
-  barbequesCollectionTransformFunc,
+  transformFunc,
+  barbequesTransformFunc,
   GET_PRODUCTS,
 };

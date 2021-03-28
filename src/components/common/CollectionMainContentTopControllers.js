@@ -1,6 +1,6 @@
 import { html } from '@apollo-elements/haunted';
 import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
-import { getBarbequesCollectionSearchedProducts } from '../../helpers';
+import { getFilteredSortedProducts } from '../../helpers';
 import TopControllers from './TopControllers';
 
 function CollectionMainContentTopControllers() {
@@ -8,7 +8,7 @@ function CollectionMainContentTopControllers() {
   const state = context?.collectionState ?? {};
   const dispatch = context?.collectionDispatch ?? (() => {});
   const productsOfFirstPage = context?.productsOfFirstPage ?? [];
-  let searchedProducts = getBarbequesCollectionSearchedProducts(state);
+  let searchedProducts = getFilteredSortedProducts(state, 'Barbeques');
   if (searchedProducts.length === 0) {
     searchedProducts = productsOfFirstPage ?? [];
   }
