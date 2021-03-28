@@ -70592,16 +70592,11 @@ const PerfectGrillCookTypeSelector = (0, _haunted.virtual)(({
 }) => {
   var _Object$keys$, _Object$keys;
 
-  // console.log(
-  //   cookTypeLogos,
-  //   selectedCookTypesAndBrands,
-  //   handleSelectedCookTypesAndBrandsChanged
-  // );
   const selectedCookType = (_Object$keys$ = (_Object$keys = Object.keys(selectedCookTypesAndBrands)) === null || _Object$keys === void 0 ? void 0 : _Object$keys[0]) !== null && _Object$keys$ !== void 0 ? _Object$keys$ : 'Gas Grill';
   return (0, _haunted.html)` ${Object.entries(cookTypeLogos).map(([cookType, icon]) => (0, _haunted.html)`
         <div
           class=${`cook-type-logo-wrapper${selectedCookType === cookType ? ' active' : ''}`}
-          @click=${e => handleSelectedCookTypesAndBrandsChanged(selectedCookTypesAndBrands[cookType] ? selectedCookTypesAndBrands : {
+          @click=${() => handleSelectedCookTypesAndBrandsChanged(selectedCookTypesAndBrands[cookType] ? selectedCookTypesAndBrands : {
     [cookType]: []
   })}
         >
@@ -71574,17 +71569,7 @@ const PerfectGrillKeyFeaturesSelector = (0, _haunted.virtual)(({
   handleSearBurnerChanged,
   handleRearRotisserieChanged,
   handleGrillTypeChanged
-}) => // console.log(
-//   sideBurner,
-//   searBurner,
-//   rearRotisserie,
-//   grillType,
-//   handleSideBurnerChanged,
-//   handleSearBurnerChanged,
-//   handleRearRotisserieChanged,
-//   handleGrillTypeChanged
-// );
-(0, _haunted.html)`<div class="form-check form-check-inline">
+}) => (0, _haunted.html)`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
           type="checkbox"
@@ -71754,7 +71739,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handlePriceRangeChanged = (newPriceRange, e) => {
+  const handlePriceRangeChanged = newPriceRange => {
     // console.log(e);
     dispatch({
       type: 'changePriceRange',
@@ -71762,7 +71747,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handleGrillCookingAreaRangeChanged = (newGrillCookingAreaRange, e) => {
+  const handleGrillCookingAreaRangeChanged = newGrillCookingAreaRange => {
     // console.log(e);
     dispatch({
       type: 'changeGrillCookingAreaRange',
@@ -71770,7 +71755,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handleAvailabilityChanged = (newAvailability, e) => {
+  const handleAvailabilityChanged = newAvailability => {
     // debugger;
     console.log('new', newAvailability); // console.log(e);
 
@@ -71780,7 +71765,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handleSideBurnerChanged = (newSideBurner, e) => {
+  const handleSideBurnerChanged = newSideBurner => {
     // console.log(e);
     dispatch({
       type: 'changeSideBurner',
@@ -71788,7 +71773,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handleSearBurnerChanged = (newSearBurner, e) => {
+  const handleSearBurnerChanged = newSearBurner => {
     // console.log(e);
     dispatch({
       type: 'changeSearBurner',
@@ -71796,7 +71781,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handleRearRotisserieChanged = (newRearRotisserie, e) => {
+  const handleRearRotisserieChanged = newRearRotisserie => {
     // console.log(e);
     dispatch({
       type: 'changeRearRotisserie',
@@ -71804,7 +71789,7 @@ function PerfectGrillSelectors() {
     });
   };
 
-  const handleGrillTypeChanged = (newGrillType, e) => {
+  const handleGrillTypeChanged = newGrillType => {
     // console.log(e);
     dispatch({
       type: 'changeGrillType',

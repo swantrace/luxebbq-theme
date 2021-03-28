@@ -42,21 +42,21 @@ function PerfectGrillSelectors() {
       payload: newCookTypesAndBrands,
     });
   };
-  const handlePriceRangeChanged = (newPriceRange, e) => {
+  const handlePriceRangeChanged = (newPriceRange) => {
     // console.log(e);
     dispatch({
       type: 'changePriceRange',
       payload: newPriceRange,
     });
   };
-  const handleGrillCookingAreaRangeChanged = (newGrillCookingAreaRange, e) => {
+  const handleGrillCookingAreaRangeChanged = (newGrillCookingAreaRange) => {
     // console.log(e);
     dispatch({
       type: 'changeGrillCookingAreaRange',
       payload: newGrillCookingAreaRange,
     });
   };
-  const handleAvailabilityChanged = (newAvailability, e) => {
+  const handleAvailabilityChanged = (newAvailability) => {
     // debugger;
     console.log('new', newAvailability);
     // console.log(e);
@@ -65,28 +65,28 @@ function PerfectGrillSelectors() {
       payload: newAvailability,
     });
   };
-  const handleSideBurnerChanged = (newSideBurner, e) => {
+  const handleSideBurnerChanged = (newSideBurner) => {
     // console.log(e);
     dispatch({
       type: 'changeSideBurner',
       payload: newSideBurner,
     });
   };
-  const handleSearBurnerChanged = (newSearBurner, e) => {
+  const handleSearBurnerChanged = (newSearBurner) => {
     // console.log(e);
     dispatch({
       type: 'changeSearBurner',
       payload: newSearBurner,
     });
   };
-  const handleRearRotisserieChanged = (newRearRotisserie, e) => {
+  const handleRearRotisserieChanged = (newRearRotisserie) => {
     // console.log(e);
     dispatch({
       type: 'changeRearRotisserie',
       payload: newRearRotisserie,
     });
   };
-  const handleGrillTypeChanged = (newGrillType, e) => {
+  const handleGrillTypeChanged = (newGrillType) => {
     // console.log(e);
     dispatch({
       type: 'changeGrillType',

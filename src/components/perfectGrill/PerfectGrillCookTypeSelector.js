@@ -6,11 +6,6 @@ const PerfectGrillCookTypeSelector = virtual(
     selectedCookTypesAndBrands,
     handleSelectedCookTypesAndBrandsChanged,
   }) => {
-    // console.log(
-    //   cookTypeLogos,
-    //   selectedCookTypesAndBrands,
-    //   handleSelectedCookTypesAndBrandsChanged
-    // );
     const selectedCookType =
       Object.keys(selectedCookTypesAndBrands)?.[0] ?? 'Gas Grill';
     return html` ${Object.entries(cookTypeLogos).map(
@@ -19,7 +14,7 @@ const PerfectGrillCookTypeSelector = virtual(
           class=${`cook-type-logo-wrapper${
             selectedCookType === cookType ? ' active' : ''
           }`}
-          @click=${(e) =>
+          @click=${() =>
             handleSelectedCookTypesAndBrandsChanged(
               selectedCookTypesAndBrands[cookType]
                 ? selectedCookTypesAndBrands

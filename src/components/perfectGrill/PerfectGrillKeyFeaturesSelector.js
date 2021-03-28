@@ -12,16 +12,6 @@ const PerfectGrillKeyFeaturesSelector = virtual(
     handleRearRotisserieChanged,
     handleGrillTypeChanged,
   }) =>
-    // console.log(
-    //   sideBurner,
-    //   searBurner,
-    //   rearRotisserie,
-    //   grillType,
-    //   handleSideBurnerChanged,
-    //   handleSearBurnerChanged,
-    //   handleRearRotisserieChanged,
-    //   handleGrillTypeChanged
-    // );
     html`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
