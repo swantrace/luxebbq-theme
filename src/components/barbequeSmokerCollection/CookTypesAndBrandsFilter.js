@@ -1,6 +1,6 @@
 import { html } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
+import { usePageContext as useBarbequeSmokerCollectionContext } from '../../context';
 import { removeKey } from '../../helpers';
 
 function CookTypesAndBrandsFilter() {

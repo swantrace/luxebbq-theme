@@ -1,5 +1,5 @@
 import { html, useEffect } from '@apollo-elements/haunted';
-import { usePerfectGrillContext } from '../../context/perfectGrill';
+import { usePageContext as usePerfectGrillContext } from '../../context';
 import { getFilteredSortedProductsOfCurrentPage } from '../../helpers';
 import ProductList from '../common/ProductList';
 

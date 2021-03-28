@@ -1,5 +1,5 @@
 import { html } from '@apollo-elements/haunted';
-import { usePerfectGrillContext } from '../../context/perfectGrill';
+import { usePageContext as usePerfectGrillContext } from '../../context';
 import { getFilteredSortedProducts } from '../../helpers';
 import TopControllers from '../common/TopControllers';
 

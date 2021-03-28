@@ -1,5 +1,5 @@
 import { html, useEffect } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
+import { usePageContext as useBarbequeSmokerCollectionContext } from '../../context';
 import { getFilteredSortedProductsOfCurrentPage } from '../../helpers';
 import ProductList from './ProductList';
 

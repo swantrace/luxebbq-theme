@@ -1,5 +1,5 @@
 import { html } from '@apollo-elements/haunted';
-import { usePerfectGrillContext } from '../../context/perfectGrill';
+import { usePageContext as usePerfectGrillContext } from '../../context';
 import { getDisplayedPageNumbers, getPageCount } from '../../helpers';
 import PagePagination from '../common/PagePagination';
 

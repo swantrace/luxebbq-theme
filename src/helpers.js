@@ -115,7 +115,7 @@ export const barbequesTransformFunc = (rawProduct) => ({
 });
 
 export const transformFuncCreator = (productType) => {
-  switch (productType.toLowerCase()) {
+  switch (productType?.toLowerCase() ?? '') {
     case 'barbeques':
       return barbequesTransformFunc;
     default:
@@ -455,7 +455,7 @@ export const productsSorter = (state) => (productA, productB) => {
 };
 
 export const productsFiltersCreator = (productType) => {
-  switch (productType.toLowerCase()) {
+  switch (productType?.toLowerCase() ?? '') {
     case 'barbeques':
       return barbequesProductsFilters;
     default:
@@ -464,7 +464,7 @@ export const productsFiltersCreator = (productType) => {
 };
 
 export const productsSorterCreator = (productType) => {
-  switch (productType.toLowerCase()) {
+  switch (productType?.toLowerCase() ?? '') {
     default:
       return productsSorter;
   }

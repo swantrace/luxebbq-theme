@@ -1,5 +1,5 @@
 import { html } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
+import { usePageContext as useBarbequeSmokerCollectionContext } from '../../context';
 
 function CollectionSidebarSearchInput() {
   const context = useBarbequeSmokerCollectionContext();

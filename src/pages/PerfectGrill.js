@@ -5,7 +5,7 @@ import {
   getSortValueFromDefaultSortBy,
   queryAllProducts,
 } from '../helpers';
-import { perfectGrillWrapper } from '../context/perfectGrill';
+import { pageWrapper as perfectGrillWrapper } from '../context';
 import TitleBanner from '../components/common/TitleBanner';
 
 function PerfectGrill({

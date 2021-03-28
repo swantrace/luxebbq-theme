@@ -1,8 +1,6 @@
 import { html } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
 
 function CollectionSidebar() {
-  const { brandInfo, collectionHandle } = useBarbequeSmokerCollectionContext();
   // console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
   return html`
     <div class="coll_sidebar">

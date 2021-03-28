@@ -1,6 +1,6 @@
 import { html, useEffect } from '@apollo-elements/haunted';
-import { useSearchResultContext } from '../../context/searchResult';
-import { getFilteredSortedProducts } from '../../helpers';
+import { usePageContext as useSearchResultContext } from '../../context';
+import { getFilteredSortedProductsOfCurrentPage } from '../../helpers';
 import ProductList from '../common/ProductList';
 
 function SearchProductList() {
@@ -14,7 +14,7 @@ function SearchProductList() {
   if (allProducts.length === 0) {
     products = productsOfFirstPage;
   } else {
-    products = getFilteredSortedProducts(state);
+    products = getFilteredSortedProductsOfCurrentPage(state);
   }
 
   useEffect(() => {

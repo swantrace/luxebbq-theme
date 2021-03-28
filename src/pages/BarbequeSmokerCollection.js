@@ -13,7 +13,7 @@ import {
   queryAllProducts,
   barbequesTransformFunc,
 } from '../helpers';
-import { BarbequeSmokerCollectionWrapper } from '../context/barbequeSmokerCollection';
+import { pageWrapper as BarbequeSmokerCollectionWrapper } from '../context';
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,

@@ -1,5 +1,5 @@
 import { html, useEffect } from '@apollo-elements/haunted';
-import { usePerfectGrillContext } from '../../context/perfectGrill';
+import { usePageContext as usePerfectGrillContext } from '../../context';
 import {
   DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
   DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,

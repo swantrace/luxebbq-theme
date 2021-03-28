@@ -4,8 +4,8 @@ import ProductItem from './ProductItem';
 const ProductList = virtual(
   ({
     viewMode,
-    products,
     emptyCollectionImage,
+    products = [],
     itemClassList = {
       grid: 'col-lg-4 col-md-6 col-grid-box',
       list: 'col-lg-12',

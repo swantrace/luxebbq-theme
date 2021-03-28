@@ -6,7 +6,7 @@ import {
 } from '@apollo-elements/haunted';
 import SearchBar from '../components/searchResult/SearchBar';
 import TitleBanner from '../components/common/TitleBanner';
-import { SearchResultWrapper } from '../context/searchResult';
+import { pageWrapper as SearchResultWrapper } from '../context';
 import {
   getQueryString,
   getSortValueFromDefaultSortBy,

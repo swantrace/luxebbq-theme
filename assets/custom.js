@@ -130,12 +130,12 @@ exports.__param = __param;
 exports.__metadata = __metadata;
 exports.__awaiter = __awaiter;
 exports.__generator = __generator;
-exports.__createBinding = __createBinding;
 exports.__exportStar = __exportStar;
 exports.__values = __values;
 exports.__read = __read;
 exports.__spread = __spread;
 exports.__spreadArrays = __spreadArrays;
+exports.__spreadArray = __spreadArray;
 exports.__await = __await;
 exports.__asyncGenerator = __asyncGenerator;
 exports.__asyncDelegator = __asyncDelegator;
@@ -145,7 +145,7 @@ exports.__importStar = __importStar;
 exports.__importDefault = __importDefault;
 exports.__classPrivateFieldGet = __classPrivateFieldGet;
 exports.__classPrivateFieldSet = __classPrivateFieldSet;
-exports.__assign = void 0;
+exports.__createBinding = exports.__assign = void 0;
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -169,13 +169,14 @@ var extendStatics = function (d, b) {
   } instanceof Array && function (d, b) {
     d.__proto__ = b;
   } || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
   };
 
   return extendStatics(d, b);
 };
 
 function __extends(d, b) {
+  if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
   extendStatics(d, b);
 
   function __() {
@@ -371,13 +372,23 @@ function __generator(thisArg, body) {
   }
 }
 
-function __createBinding(o, m, k, k2) {
+var __createBinding = Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function () {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   o[k2] = m[k];
-}
+};
 
-function __exportStar(m, exports) {
-  for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
+exports.__createBinding = __createBinding;
+
+function __exportStar(m, o) {
+  for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p)) __createBinding(o, m, p);
 }
 
 function __values(o) {
@@ -421,12 +432,16 @@ function __read(o, n) {
 
   return ar;
 }
+/** @deprecated */
+
 
 function __spread() {
   for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
 
   return ar;
 }
+/** @deprecated */
+
 
 function __spreadArrays() {
   for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
@@ -436,7 +451,11 @@ function __spreadArrays() {
   return r;
 }
 
-;
+function __spreadArray(to, from) {
+  for (var i = 0, il = from.length, j = to.length; i < il; i++, j++) to[j] = from[i];
+
+  return to;
+}
 
 function __await(v) {
   return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -542,11 +561,22 @@ function __makeTemplateObject(cooked, raw) {
 
 ;
 
+var __setModuleDefault = Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+};
+
 function __importStar(mod) {
   if (mod && mod.__esModule) return mod;
   var result = {};
-  if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-  result.default = mod;
+  if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+
+  __setModuleDefault(result, mod);
+
   return result;
 }
 
@@ -65593,41 +65623,34 @@ var define;
 
   return replace;
 });
-},{}],"context/barbequeSmokerCollection.js":[function(require,module,exports) {
+},{}],"context/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.useBarbequeSmokerCollectionContext = exports.BarbequeSmokerCollectionWrapper = void 0;
+exports.usePageContext = exports.pageWrapper = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-const barbequeSmokerCollectionContext = (0, _haunted.createContext)();
-customElements.define('barbeque-smoker-collection-provider', barbequeSmokerCollectionContext.Provider);
-const BarbequeSmokerCollectionWrapper = (0, _haunted.virtual)(({
+const context = (0, _haunted.createContext)();
+customElements.define('context-provider', context.Provider);
+const pageWrapper = (0, _haunted.virtual)(({
   children,
   ...rest
 }) => {
   const sharedState = {};
-  return (0, _haunted.html)`<barbeque-smoker-collection-provider
-      .value=${{ ...rest,
+  return (0, _haunted.html)`<context-provider .value=${{ ...rest,
     ...sharedState
   }}
-    >
-      ${(0, _haunted.html)`${children}`}
-    </barbeque-smoker-collection-provider>`;
+    >${(0, _haunted.html)`${children}`}</context-provider
+  >`;
 });
-exports.BarbequeSmokerCollectionWrapper = BarbequeSmokerCollectionWrapper;
+exports.pageWrapper = pageWrapper;
 
-const useBarbequeSmokerCollectionContext = () => (0, _haunted.useContext)(barbequeSmokerCollectionContext);
+const usePageContext = () => (0, _haunted.useContext)(context);
 
-exports.useBarbequeSmokerCollectionContext = useBarbequeSmokerCollectionContext;
-var _default = {
-  useBarbequeSmokerCollectionContext,
-  BarbequeSmokerCollectionWrapper
-};
-exports.default = _default;
+exports.usePageContext = usePageContext;
 },{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"../node_modules/lodash.chunk/index.js":[function(require,module,exports) {
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -68614,7 +68637,9 @@ const barbequesTransformFunc = rawProduct => {
 exports.barbequesTransformFunc = barbequesTransformFunc;
 
 const transformFuncCreator = productType => {
-  switch (productType.toLowerCase()) {
+  var _productType$toLowerC;
+
+  switch ((_productType$toLowerC = productType === null || productType === void 0 ? void 0 : productType.toLowerCase()) !== null && _productType$toLowerC !== void 0 ? _productType$toLowerC : '') {
     case 'barbeques':
       return barbequesTransformFunc;
 
@@ -68986,7 +69011,9 @@ const productsSorter = state => (productA, productB) => {
 exports.productsSorter = productsSorter;
 
 const productsFiltersCreator = productType => {
-  switch (productType.toLowerCase()) {
+  var _productType$toLowerC2;
+
+  switch ((_productType$toLowerC2 = productType === null || productType === void 0 ? void 0 : productType.toLowerCase()) !== null && _productType$toLowerC2 !== void 0 ? _productType$toLowerC2 : '') {
     case 'barbeques':
       return barbequesProductsFilters;
 
@@ -68998,7 +69025,9 @@ const productsFiltersCreator = productType => {
 exports.productsFiltersCreator = productsFiltersCreator;
 
 const productsSorterCreator = productType => {
-  switch (productType.toLowerCase()) {
+  var _productType$toLowerC3;
+
+  switch ((_productType$toLowerC3 = productType === null || productType === void 0 ? void 0 : productType.toLowerCase()) !== null && _productType$toLowerC3 !== void 0 ? _productType$toLowerC3 : '') {
     default:
       return productsSorter;
   }
@@ -69122,7 +69151,7 @@ var _haunted = require("@apollo-elements/haunted");
 
 var _slugify = _interopRequireDefault(require("slugify"));
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -69131,7 +69160,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function CookTypesAndBrandsFilter() {
   var _context$brandInfo, _context$collectionSt, _context$collectionSt2, _context$collectionSt3, _context$collectionSt4, _context$collectionSt5, _context$collectionSt6, _context$collectionDi;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const brandInfo = (_context$brandInfo = context === null || context === void 0 ? void 0 : context.brandInfo) !== null && _context$brandInfo !== void 0 ? _context$brandInfo : {};
   const selectedCookTypesAndBrands = (_context$collectionSt = context === null || context === void 0 ? void 0 : (_context$collectionSt2 = context.collectionState) === null || _context$collectionSt2 === void 0 ? void 0 : _context$collectionSt2.selectedCookTypesAndBrands) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : {};
   const searchString = (_context$collectionSt3 = context === null || context === void 0 ? void 0 : (_context$collectionSt4 = context.collectionState) === null || _context$collectionSt4 === void 0 ? void 0 : _context$collectionSt4.searchString) !== null && _context$collectionSt3 !== void 0 ? _context$collectionSt3 : '';
@@ -69253,7 +69282,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","slugify":"../node_modules/slugify/slugify.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../../helpers":"helpers.js"}],"components/barbequeSmokerCollection/GrillCookingAreaFilter.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","slugify":"../node_modules/slugify/slugify.js","../../context":"context/index.js","../../helpers":"helpers.js"}],"components/barbequeSmokerCollection/GrillCookingAreaFilter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69263,14 +69292,14 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
 function GrillCookingAreaFilter() {
   var _context$grillCooking, _context$collectionSt, _context$collectionSt2, _context$collectionSt3, _context$collectionSt4, _context$collectionDi;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const [min, max] = (_context$grillCooking = context === null || context === void 0 ? void 0 : context.grillCookingAreaMinAndMax) !== null && _context$grillCooking !== void 0 ? _context$grillCooking : _helpers.DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE;
   const [valueMin, valueMax] = (_context$collectionSt = context === null || context === void 0 ? void 0 : (_context$collectionSt2 = context.collectionState) === null || _context$collectionSt2 === void 0 ? void 0 : _context$collectionSt2.currentGrillCookingAreaRange) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : _helpers.DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE;
   const allProducts = (_context$collectionSt3 = context === null || context === void 0 ? void 0 : (_context$collectionSt4 = context.collectionState) === null || _context$collectionSt4 === void 0 ? void 0 : _context$collectionSt4.allProducts) !== null && _context$collectionSt3 !== void 0 ? _context$collectionSt3 : [];
@@ -69307,7 +69336,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../../helpers":"helpers.js"}],"components/barbequeSmokerCollection/PriceRangeFilter.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js"}],"components/barbequeSmokerCollection/PriceRangeFilter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69317,14 +69346,14 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
 function PriceRangeFilter() {
   var _context$priceRangeMi, _context$collectionSt, _context$collectionSt2, _context$collectionSt3, _context$collectionSt4, _context$collectionDi;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const [min, max] = (_context$priceRangeMi = context === null || context === void 0 ? void 0 : context.priceRangeMinAndMax) !== null && _context$priceRangeMi !== void 0 ? _context$priceRangeMi : _helpers.DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
   const [valueMin, valueMax] = (_context$collectionSt = context === null || context === void 0 ? void 0 : (_context$collectionSt2 = context.collectionState) === null || _context$collectionSt2 === void 0 ? void 0 : _context$collectionSt2.currentPriceRange) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : _helpers.DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
   const allProducts = (_context$collectionSt3 = context === null || context === void 0 ? void 0 : (_context$collectionSt4 = context.collectionState) === null || _context$collectionSt4 === void 0 ? void 0 : _context$collectionSt4.allProducts) !== null && _context$collectionSt3 !== void 0 ? _context$collectionSt3 : [];
@@ -69361,7 +69390,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../../helpers":"helpers.js"}],"components/common/BackToTopBanner.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js"}],"components/common/BackToTopBanner.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69515,7 +69544,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -69526,7 +69555,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function CollectionMainContentPagination() {
   var _context$collectionDi, _context$collectionSt;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const dispatch = (_context$collectionDi = context === null || context === void 0 ? void 0 : context.collectionDispatch) !== null && _context$collectionDi !== void 0 ? _context$collectionDi : () => {};
   const state = (_context$collectionSt = context === null || context === void 0 ? void 0 : context.collectionState) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : {};
   const pageCount = (0, _helpers.getPageCount)(state, 'Barbeques');
@@ -69571,7 +69600,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../../helpers":"helpers.js","./PagePagination":"components/common/PagePagination.js"}],"components/common/TopControllers.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","./PagePagination":"components/common/PagePagination.js"}],"components/common/TopControllers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69651,7 +69680,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -69662,7 +69691,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function CollectionMainContentTopControllers() {
   var _context$collectionSt, _context$collectionDi, _context$productsOfFi, _state$viewMode, _context$collectionSt2, _context$collectionSt3, _state$sortValue;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const state = (_context$collectionSt = context === null || context === void 0 ? void 0 : context.collectionState) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : {};
   const dispatch = (_context$collectionDi = context === null || context === void 0 ? void 0 : context.collectionDispatch) !== null && _context$collectionDi !== void 0 ? _context$collectionDi : () => {};
   const productsOfFirstPage = (_context$productsOfFi = context === null || context === void 0 ? void 0 : context.productsOfFirstPage) !== null && _context$productsOfFi !== void 0 ? _context$productsOfFi : [];
@@ -69727,7 +69756,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../../helpers":"helpers.js","./TopControllers":"components/common/TopControllers.js"}],"components/common/ProductItem.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","./TopControllers":"components/common/TopControllers.js"}],"components/common/ProductItem.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69833,8 +69862,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const ProductList = (0, _haunted.virtual)(({
   viewMode,
-  products,
   emptyCollectionImage,
+  products = [],
   itemClassList = {
     grid: 'col-lg-4 col-md-6 col-grid-box',
     list: 'col-lg-12'
@@ -69868,7 +69897,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -69879,7 +69908,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function CollectionMainContentProductList() {
   var _context$collectionSt, _state$viewMode, _state$allProducts;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const state = (_context$collectionSt = context === null || context === void 0 ? void 0 : context.collectionState) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : {};
   const viewMode = (_state$viewMode = state === null || state === void 0 ? void 0 : state.viewMode) !== null && _state$viewMode !== void 0 ? _state$viewMode : 'grid';
   const emptyCollectionImage = context === null || context === void 0 ? void 0 : context.emptyCollectionImage;
@@ -69919,7 +69948,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js","../../helpers":"helpers.js","./ProductList":"components/common/ProductList.js"}],"components/common/CollectionSidebarSearchInput.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","./ProductList":"components/common/ProductList.js"}],"components/common/CollectionSidebarSearchInput.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69929,12 +69958,12 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 function CollectionSidebarSearchInput() {
   var _context$collectionSt, _context$collectionSt2, _context$collectionSt3, _context$collectionSt4;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const searchString = (_context$collectionSt = context === null || context === void 0 ? void 0 : (_context$collectionSt2 = context.collectionState) === null || _context$collectionSt2 === void 0 ? void 0 : _context$collectionSt2.searchString) !== null && _context$collectionSt !== void 0 ? _context$collectionSt : '';
   const allProducts = (_context$collectionSt3 = context === null || context === void 0 ? void 0 : (_context$collectionSt4 = context.collectionState) === null || _context$collectionSt4 === void 0 ? void 0 : _context$collectionSt4.allProducts) !== null && _context$collectionSt3 !== void 0 ? _context$collectionSt3 : [];
   const collectionDispatch = context === null || context === void 0 ? void 0 : context.collectionDispatch;
@@ -69963,7 +69992,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js"}],"components/common/CollectionSidebar.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js"}],"components/common/CollectionSidebar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -69973,14 +70002,8 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
-
 function CollectionSidebar() {
-  const {
-    brandInfo,
-    collectionHandle
-  } = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)(); // console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
-
+  // console.log('brandInfo', brandInfo, 'collectionHandle', collectionHandle);
   return (0, _haunted.html)`
     <div class="coll_sidebar">
       <collection-sidebar-top-images></collection-sidebar-top-images />
@@ -69999,7 +70022,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js"}],"components/common/CollectionSidebarFilter.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/common/CollectionSidebarFilter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -70036,12 +70059,12 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _barbequeSmokerCollection = require("../../context/barbequeSmokerCollection");
+var _context = require("../../context");
 
 function CollectionSidebarTopImages() {
   var _context$collectionIm;
 
-  const context = (0, _barbequeSmokerCollection.useBarbequeSmokerCollectionContext)();
+  const context = (0, _context.usePageContext)();
   const collectionImages = (_context$collectionIm = context === null || context === void 0 ? void 0 : context.collectionImages) !== null && _context$collectionIm !== void 0 ? _context$collectionIm : [];
   return (0, _haunted.html)`<div class="collection-images-wrapper">
     ${collectionImages.map(image => (0, _haunted.html)`
@@ -70063,40 +70086,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js"}],"context/searchResult.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.useSearchResultContext = exports.SearchResultWrapper = void 0;
-
-var _haunted = require("@apollo-elements/haunted");
-
-const searchResultContext = (0, _haunted.createContext)();
-customElements.define('search-result-provider', searchResultContext.Provider);
-const SearchResultWrapper = (0, _haunted.virtual)(({
-  children,
-  ...rest
-}) => {
-  const sharedState = {};
-  return (0, _haunted.html)`<search-result-provider .value=${{ ...rest,
-    ...sharedState
-  }}>
-    ${(0, _haunted.html)`${children}`}
-  </search-result-provider>`;
-});
-exports.SearchResultWrapper = SearchResultWrapper;
-
-const useSearchResultContext = () => (0, _haunted.useContext)(searchResultContext);
-
-exports.useSearchResultContext = useSearchResultContext;
-var _default = {
-  useSearchResultContext,
-  SearchResultWrapper
-};
-exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/searchResult/SearchProductList.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js"}],"components/searchResult/SearchProductList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -70106,7 +70096,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _searchResult = require("../../context/searchResult");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -70117,7 +70107,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function SearchProductList() {
   var _context$searchResult, _state$viewMode, _state$allProducts;
 
-  const context = (0, _searchResult.useSearchResultContext)();
+  const context = (0, _context.usePageContext)();
   const state = (_context$searchResult = context === null || context === void 0 ? void 0 : context.searchResultState) !== null && _context$searchResult !== void 0 ? _context$searchResult : {};
   const viewMode = (_state$viewMode = state === null || state === void 0 ? void 0 : state.viewMode) !== null && _state$viewMode !== void 0 ? _state$viewMode : 'grid';
   const emptyCollectionImage = context === null || context === void 0 ? void 0 : context.emptyCollectionImage;
@@ -70128,7 +70118,7 @@ function SearchProductList() {
   if (allProducts.length === 0) {
     products = productsOfFirstPage;
   } else {
-    products = (0, _helpers.getFilteredSortedProducts)(state);
+    products = (0, _helpers.getFilteredSortedProductsOfCurrentPage)(state);
   }
 
   (0, _haunted.useEffect)(() => {
@@ -70166,7 +70156,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/searchResult":"context/searchResult.js","../../helpers":"helpers.js","../common/ProductList":"components/common/ProductList.js"}],"components/searchResult/SearchPagination.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","../common/ProductList":"components/common/ProductList.js"}],"components/searchResult/SearchPagination.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -70176,7 +70166,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _searchResult = require("../../context/searchResult");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -70187,7 +70177,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function SearchPagination() {
   var _context$searchResult, _context$searchResult2;
 
-  const context = (0, _searchResult.useSearchResultContext)();
+  const context = (0, _context.usePageContext)();
   const dispatch = (_context$searchResult = context === null || context === void 0 ? void 0 : context.searchResultDispatch) !== null && _context$searchResult !== void 0 ? _context$searchResult : () => {};
   const state = (_context$searchResult2 = context === null || context === void 0 ? void 0 : context.searchResultState) !== null && _context$searchResult2 !== void 0 ? _context$searchResult2 : {};
   const pageCount = (0, _helpers.getPageCount)(state);
@@ -70232,7 +70222,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/searchResult":"context/searchResult.js","../../helpers":"helpers.js","../common/PagePagination":"components/common/PagePagination.js"}],"components/searchResult/SearchTopControllers.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","../common/PagePagination":"components/common/PagePagination.js"}],"components/searchResult/SearchTopControllers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -70242,7 +70232,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _searchResult = require("../../context/searchResult");
+var _context = require("../../context");
 
 var _TopControllers = _interopRequireDefault(require("../common/TopControllers"));
 
@@ -70251,7 +70241,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function SearchTopControllers() {
   var _context$searchResult, _context$searchResult2, _context$productsOfFi, _state$allProducts, _state$viewMode, _state$productsPerPag, _state$sortValue;
 
-  const context = (0, _searchResult.useSearchResultContext)();
+  const context = (0, _context.usePageContext)();
   const state = (_context$searchResult = context === null || context === void 0 ? void 0 : context.searchResultState) !== null && _context$searchResult !== void 0 ? _context$searchResult : {};
   const dispatch = (_context$searchResult2 = context === null || context === void 0 ? void 0 : context.searchResultDispatch) !== null && _context$searchResult2 !== void 0 ? _context$searchResult2 : () => {};
   const productsOfFirstPage = (_context$productsOfFi = context === null || context === void 0 ? void 0 : context.productsOfFirstPage) !== null && _context$productsOfFi !== void 0 ? _context$productsOfFi : [];
@@ -70315,40 +70305,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/searchResult":"context/searchResult.js","../common/TopControllers":"components/common/TopControllers.js"}],"context/perfectGrill.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = exports.usePerfectGrillContext = exports.perfectGrillWrapper = void 0;
-
-var _haunted = require("@apollo-elements/haunted");
-
-const perfectGrillContext = (0, _haunted.createContext)();
-customElements.define('perfect-grill-provider', perfectGrillContext.Provider);
-const perfectGrillWrapper = (0, _haunted.virtual)(({
-  children,
-  ...rest
-}) => {
-  const sharedState = {};
-  return (0, _haunted.html)`<perfect-grill-provider .value=${{ ...rest,
-    ...sharedState
-  }}>
-    ${(0, _haunted.html)`${children}`}
-  </perfect-grill-provider>`;
-});
-exports.perfectGrillWrapper = perfectGrillWrapper;
-
-const usePerfectGrillContext = () => (0, _haunted.useContext)(perfectGrillContext);
-
-exports.usePerfectGrillContext = usePerfectGrillContext;
-var _default = {
-  usePerfectGrillContext,
-  perfectGrillWrapper
-};
-exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js"}],"components/perfectGrill/PerfectGrillPagination.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../common/TopControllers":"components/common/TopControllers.js"}],"components/perfectGrill/PerfectGrillPagination.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -70358,7 +70315,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _perfectGrill = require("../../context/perfectGrill");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -70369,7 +70326,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function PerfectGrillPagination() {
   var _context$dispatch, _context$state;
 
-  const context = (0, _perfectGrill.usePerfectGrillContext)();
+  const context = (0, _context.usePageContext)();
   const dispatch = (_context$dispatch = context === null || context === void 0 ? void 0 : context.dispatch) !== null && _context$dispatch !== void 0 ? _context$dispatch : () => {};
   const state = (_context$state = context === null || context === void 0 ? void 0 : context.state) !== null && _context$state !== void 0 ? _context$state : {};
   const pageCount = (0, _helpers.getPageCount)(state, 'Barbeques');
@@ -70414,7 +70371,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/perfectGrill":"context/perfectGrill.js","../../helpers":"helpers.js","../common/PagePagination":"components/common/PagePagination.js"}],"components/perfectGrill/PerfectGrillProductList.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","../common/PagePagination":"components/common/PagePagination.js"}],"components/perfectGrill/PerfectGrillProductList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -70424,7 +70381,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _perfectGrill = require("../../context/perfectGrill");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -70435,7 +70392,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function PerfectGrillProductList() {
   var _context$state, _state$viewMode;
 
-  const context = (0, _perfectGrill.usePerfectGrillContext)();
+  const context = (0, _context.usePageContext)();
   const state = (_context$state = context === null || context === void 0 ? void 0 : context.state) !== null && _context$state !== void 0 ? _context$state : {};
   const viewMode = (_state$viewMode = state === null || state === void 0 ? void 0 : state.viewMode) !== null && _state$viewMode !== void 0 ? _state$viewMode : 'grid';
   const emptyCollectionImage = context === null || context === void 0 ? void 0 : context.emptyCollectionImage;
@@ -70475,7 +70432,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/perfectGrill":"context/perfectGrill.js","../../helpers":"helpers.js","../common/ProductList":"components/common/ProductList.js"}],"components/perfectGrill/PerfectGrillAvailabilitySelector.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","../common/ProductList":"components/common/ProductList.js"}],"components/perfectGrill/PerfectGrillAvailabilitySelector.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -71687,7 +71644,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _perfectGrill = require("../../context/perfectGrill");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -71708,7 +71665,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function PerfectGrillSelectors() {
   var _context$dispatch, _context$state, _context$cookTypeLogo, _context$brandInfo, _state$selectedCookTy, _state$availability, _state$currentPriceRa, _state$currentGrillCo, _state$sideBurner, _state$searBurner, _state$rearRotisserie, _state$grillType;
 
-  const context = (0, _perfectGrill.usePerfectGrillContext)();
+  const context = (0, _context.usePageContext)();
   const dispatch = (_context$dispatch = context === null || context === void 0 ? void 0 : context.dispatch) !== null && _context$dispatch !== void 0 ? _context$dispatch : () => {};
   const state = (_context$state = context === null || context === void 0 ? void 0 : context.state) !== null && _context$state !== void 0 ? _context$state : {};
   const cookTypeLogos = (_context$cookTypeLogo = context === null || context === void 0 ? void 0 : context.cookTypeLogos) !== null && _context$cookTypeLogo !== void 0 ? _context$cookTypeLogo : {};
@@ -71903,7 +71860,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/perfectGrill":"context/perfectGrill.js","../../helpers":"helpers.js","./PerfectGrillAvailabilitySelector":"components/perfectGrill/PerfectGrillAvailabilitySelector.js","./PerfectGrillBrandSelector":"components/perfectGrill/PerfectGrillBrandSelector.js","./PerfectGrillCookTypeSelector":"components/perfectGrill/PerfectGrillCookTypeSelector.js","./PerfectGrillGrillCookingAreaSelector":"components/perfectGrill/PerfectGrillGrillCookingAreaSelector.js","./PerfectGrillKeyFeaturesSelector":"components/perfectGrill/PerfectGrillKeyFeaturesSelector.js","./PerfectGrillPriceRangeSelector":"components/perfectGrill/PerfectGrillPriceRangeSelector.js"}],"components/perfectGrill/PerfectGrillTopControllers.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","./PerfectGrillAvailabilitySelector":"components/perfectGrill/PerfectGrillAvailabilitySelector.js","./PerfectGrillBrandSelector":"components/perfectGrill/PerfectGrillBrandSelector.js","./PerfectGrillCookTypeSelector":"components/perfectGrill/PerfectGrillCookTypeSelector.js","./PerfectGrillGrillCookingAreaSelector":"components/perfectGrill/PerfectGrillGrillCookingAreaSelector.js","./PerfectGrillKeyFeaturesSelector":"components/perfectGrill/PerfectGrillKeyFeaturesSelector.js","./PerfectGrillPriceRangeSelector":"components/perfectGrill/PerfectGrillPriceRangeSelector.js"}],"components/perfectGrill/PerfectGrillTopControllers.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -71913,7 +71870,7 @@ exports.default = void 0;
 
 var _haunted = require("@apollo-elements/haunted");
 
-var _perfectGrill = require("../../context/perfectGrill");
+var _context = require("../../context");
 
 var _helpers = require("../../helpers");
 
@@ -71924,7 +71881,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function PerfectGrillTopControllers() {
   var _context$state, _context$dispatch, _state$viewMode, _state$productsPerPag, _state$sortValue;
 
-  const context = (0, _perfectGrill.usePerfectGrillContext)();
+  const context = (0, _context.usePageContext)();
   const state = (_context$state = context === null || context === void 0 ? void 0 : context.state) !== null && _context$state !== void 0 ? _context$state : {};
   const dispatch = (_context$dispatch = context === null || context === void 0 ? void 0 : context.dispatch) !== null && _context$dispatch !== void 0 ? _context$dispatch : () => {};
   const searchedProducts = (0, _helpers.getFilteredSortedProducts)(state, 'Barbeques');
@@ -71982,7 +71939,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context/perfectGrill":"context/perfectGrill.js","../../helpers":"helpers.js","../common/TopControllers":"components/common/TopControllers.js"}],"components/index.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../../context":"context/index.js","../../helpers":"helpers.js","../common/TopControllers":"components/common/TopControllers.js"}],"components/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -72064,7 +72021,7 @@ var _haunted = require("@apollo-elements/haunted");
 
 var _helpers = require("../helpers");
 
-var _barbequeSmokerCollection = require("../context/barbequeSmokerCollection");
+var _context = require("../context");
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -72224,7 +72181,7 @@ function BarbequeSmokerCollection({
       payload: JSON.parse(grillCookingAreaMinAndMax !== null && grillCookingAreaMinAndMax !== void 0 ? grillCookingAreaMinAndMax : `[${_helpers.DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE.join(',')}]`).map(p => Math.floor(Number(p)))
     });
   }, [grillCookingAreaMinAndMax]);
-  return (0, _haunted.html)`${(0, _barbequeSmokerCollection.BarbequeSmokerCollectionWrapper)({
+  return (0, _haunted.html)`${(0, _context.pageWrapper)({
     children: (0, _haunted.html)`<section class="section-b-space">
       <div class="collection-wrapper">
         <div class="container">
@@ -72260,7 +72217,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../helpers":"helpers.js","../context/barbequeSmokerCollection":"context/barbequeSmokerCollection.js"}],"components/searchResult/SearchBar.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../helpers":"helpers.js","../context":"context/index.js"}],"components/searchResult/SearchBar.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -72309,7 +72266,7 @@ var _SearchBar = _interopRequireDefault(require("../components/searchResult/Sear
 
 var _TitleBanner = _interopRequireDefault(require("../components/common/TitleBanner"));
 
-var _searchResult = require("../context/searchResult");
+var _context = require("../context");
 
 var _helpers = require("../helpers");
 
@@ -72413,7 +72370,7 @@ function SearchResult({
       payload: products
     });
   }, []);
-  return (0, _haunted.html)`${(0, _searchResult.SearchResultWrapper)({
+  return (0, _haunted.html)`${(0, _context.pageWrapper)({
     children: (0, _haunted.html)` <section class="authentication-page section-b-space">
       <div class="container">
         <section class="p-0">
@@ -72451,7 +72408,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../components/searchResult/SearchBar":"components/searchResult/SearchBar.js","../components/common/TitleBanner":"components/common/TitleBanner.js","../context/searchResult":"context/searchResult.js","../helpers":"helpers.js"}],"pages/PerfectGrill.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../components/searchResult/SearchBar":"components/searchResult/SearchBar.js","../components/common/TitleBanner":"components/common/TitleBanner.js","../context":"context/index.js","../helpers":"helpers.js"}],"pages/PerfectGrill.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -72463,7 +72420,7 @@ var _haunted = require("@apollo-elements/haunted");
 
 var _helpers = require("../helpers");
 
-var _perfectGrill = require("../context/perfectGrill");
+var _context = require("../context");
 
 var _TitleBanner = _interopRequireDefault(require("../components/common/TitleBanner"));
 
@@ -72634,7 +72591,7 @@ function PerfectGrill({
       payload: JSON.parse(grillCookingAreaMinAndMax !== null && grillCookingAreaMinAndMax !== void 0 ? grillCookingAreaMinAndMax : `[${_helpers.DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE.join(',')}]`).map(p => Math.floor(Number(p)))
     });
   }, [grillCookingAreaMinAndMax]);
-  return (0, _haunted.html)`${(0, _perfectGrill.perfectGrillWrapper)({
+  return (0, _haunted.html)`${(0, _context.pageWrapper)({
     children: (0, _haunted.html)`<section class="section-b-space">
       <div class="collection-wrapper">
         <div class="container">
@@ -72680,7 +72637,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../helpers":"helpers.js","../context/perfectGrill":"context/perfectGrill.js","../components/common/TitleBanner":"components/common/TitleBanner.js"}],"pages/index.js":[function(require,module,exports) {
+},{"@apollo-elements/haunted":"../node_modules/@apollo-elements/haunted/index.js","../helpers":"helpers.js","../context":"context/index.js","../components/common/TitleBanner":"components/common/TitleBanner.js"}],"pages/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

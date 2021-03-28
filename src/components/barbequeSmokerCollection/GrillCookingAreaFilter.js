@@ -1,5 +1,5 @@
 import { html } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
+import { usePageContext as useBarbequeSmokerCollectionContext } from '../../context';
 import { DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE } from '../../helpers';
 
 function GrillCookingAreaFilter() {
