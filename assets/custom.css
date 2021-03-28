@@ -75,6 +75,9 @@ perfect-grill perfect-grill-selectors .cook-type-logo-wrapper {
   margin-right: 10px;
   padding: 5px;
 }
+perfect-grill perfect-grill-selectors .cook-type-logo-wrapper:last-child {
+  margin-right: 0;
+}
 perfect-grill perfect-grill-selectors .cook-type-logo-wrapper.active {
   color: #fb711c;
 }
@@ -91,6 +94,18 @@ perfect-grill .perfect-grill-selectors-wrapper .banner-name.dtm-banner-name {
   color: #fb711c;
   flex-basis: 500px;
   flex-grow: 45;
+}
+perfect-grill .perfect-grill-selectors-wrapper perfect-grill-selectors .label-input-wrapper {
+  flex-wrap: wrap;
+}
+perfect-grill .perfect-grill-selectors-wrapper perfect-grill-selectors .label-input-wrapper .perfect-grill-selector-label {
+  flex-basis: 185px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+perfect-grill .perfect-grill-selectors-wrapper perfect-grill-selectors .label-input-wrapper .perfect-grill-selector-input {
+  flex-grow: 0;
+  flex-basis: 610px;
 }
 
 /*# sourceMappingURL=/custom.css.map */
