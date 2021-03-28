@@ -10,9 +10,13 @@ import CollectionSidebarSearchInput from './common/CollectionSidebarSearchInput'
 import CollectionSidebar from './common/CollectionSidebar';
 import CollectionSidebarFilter from './common/CollectionSidebarFilter';
 import CollectionSidebarTopImages from './common/CollectionSidebarTopImages';
-import SearchProductList from './common/SearchProductList';
-import SearchPagination from './common/SearchPagination';
-import SearchTopControllers from './common/SearchTopControllers';
+import SearchProductList from './searchResult/SearchProductList';
+import SearchPagination from './searchResult/SearchPagination';
+import SearchTopControllers from './searchResult/SearchTopControllers';
+import PerfectGrillPagination from './perfectGrill/PerfectGrillPagination';
+import PerfectGrillProductList from './perfectGrill/PerfectGrillProductList';
+import PerfectGrillSelectors from './perfectGrill/PerfectGrillSelectors';
+import PerfectGrillTopController from './perfectGrill/PerfectGrillTopControllers';
 
 export default {
   CookTypesAndBrandsFilter,
@@ -30,4 +34,8 @@ export default {
   SearchTopControllers,
   SearchProductList,
   SearchPagination,
+  PerfectGrillPagination,
+  PerfectGrillProductList,
+  PerfectGrillSelectors,
+  PerfectGrillTopController,
 };

@@ -1,7 +1,10 @@
 import { html, useEffect } from '@apollo-elements/haunted';
 import { useSearchResultContext } from '../../context/searchResult';
-import { getProductsOfCurrentPage } from '../../helpers';
-import ProductList from './ProductList';
+import {
+  getProductsOfCurrentPage,
+  getSortedSearchedProduts,
+} from '../../helpers';
+import ProductList from '../common/ProductList';
 
 function SearchProductList() {
   const context = useSearchResultContext();
@@ -14,11 +17,11 @@ function SearchProductList() {
   if (allProducts.length === 0) {
     products = productsOfFirstPage;
   } else {
-    products = getProductsOfCurrentPage(state);
+    products = getProductsOfCurrentPage(state, getSortedSearchedProduts);
   }
 
   useEffect(() => {
-    console.log('change');
+    // console.log('change');
     const imgs = this.querySelectorAll('img.lazyloaded');
     imgs.forEach((img) => {
       img.removeAttribute('src');

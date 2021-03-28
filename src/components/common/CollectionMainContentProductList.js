@@ -23,9 +23,9 @@ function CollectionMainContentProductList() {
     );
   }
   useEffect(() => {
-    console.log('change');
+    // console.log('change');
     const imgs = this.querySelectorAll('img.lazyloaded');
-    console.log(imgs);
+    // console.log(imgs);
     imgs.forEach((img) => {
       img.removeAttribute('src');
       img.classList.remove('lazyloaded');

@@ -1,19 +1,16 @@
 import { html } from '@apollo-elements/haunted';
-import { useBarbequeSmokerCollectionContext } from '../../context/barbequeSmokerCollection';
+import { usePerfectGrillContext } from '../../context/perfectGrill';
 import { getBarbequesCollectionSearchedProducts } from '../../helpers';
-import TopControllers from './TopControllers';
+import TopControllers from '../common/TopControllers';
 
-function CollectionMainContentTopControllers() {
-  const context = useBarbequeSmokerCollectionContext();
-  const state = context?.collectionState ?? {};
-  const dispatch = context?.collectionDispatch ?? (() => {});
-  const productsOfFirstPage = context?.productsOfFirstPage ?? [];
-  let searchedProducts = getBarbequesCollectionSearchedProducts(state);
-  if (searchedProducts.length === 0) {
-    searchedProducts = productsOfFirstPage ?? [];
-  }
+function PerfectGrillTopControllers() {
+  const context = usePerfectGrillContext();
+  const state = context?.state ?? {};
+  const dispatch = context?.dispatch ?? (() => {});
+  const searchedProducts = getBarbequesCollectionSearchedProducts(state);
+
   const viewMode = state?.viewMode ?? 'grid';
-  const productsPerPage = context?.collectionState?.productsPerPage ?? 24;
+  const productsPerPage = state?.productsPerPage ?? 24;
   const sortValue = state?.sortValue ?? 'BEST_SELLING_ASC';
 
   const handleViewModeIconClicked = (newViewMode) => {
@@ -35,12 +32,11 @@ function CollectionMainContentTopControllers() {
   };
 
   const searchedProductsSize = searchedProducts.length;
-  const productTypeName = 'Grills';
+  const productTypeName = 'Items';
 
-  // console.log(searchedProducts);
   return html`<div class="row">
-    <div class="col-12">
-      <div class="product-filter-content collection-top-controllers">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="product-filter-content search-top-controllers">
         ${TopControllers({
           searchedProductsSize,
           productTypeName,
@@ -56,8 +52,8 @@ function CollectionMainContentTopControllers() {
   </div>`;
 }
 export default {
-  tagName: 'collection-main-content-top-controllers',
-  renderer: CollectionMainContentTopControllers,
+  tagName: 'perfect-grill-top-controllers',
+  renderer: PerfectGrillTopControllers,
   options: {
     observedAttributes: [],
     useShadowDOM: false,

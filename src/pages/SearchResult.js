@@ -4,7 +4,7 @@ import {
   useQuery,
   useReducer,
 } from '@apollo-elements/haunted';
-import SearchBar from '../components/common/SearchBar';
+import SearchBar from '../components/searchResult/SearchBar';
 import TitleBanner from '../components/common/TitleBanner';
 import { SearchResultWrapper } from '../context/searchResult';
 import {
@@ -92,7 +92,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
       searchString,
       transformFunc: searchResultTransformFunc,
     });
-    console.log('allProducts:', products);
+    // console.log('allProducts:', products);
     dispatch({ type: 'setAllProducts', payload: products });
   }, []);
 

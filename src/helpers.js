@@ -5,7 +5,7 @@ import { gql } from '@apollo/client/core';
 import groupBy from 'lodash.groupby';
 
 export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 10000];
-export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 100];
+export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 20];
 
 export const GET_PRODUCTS = gql`
   query getProducts(
@@ -32,6 +32,7 @@ export const GET_PRODUCTS = gql`
           availableForSale
           productType
           vendor
+          totalInventory
           images(first: 2) {
             edges {
               node {
@@ -179,10 +180,10 @@ export const queryAllProducts = async ({
         reverse,
       });
       products = await query250ProductsOfCurrentProductTypes();
-      console.log(
-        'products from query250ProductsOfCurrentProductType',
-        products
-      );
+      // console.log(
+      //   'products from query250ProductsOfCurrentProductType',
+      //   products
+      // );
       if (sizeof(JSON.stringify(products)) < 4e6) {
         const productsInGroups = groupBy(
           products,
@@ -211,7 +212,7 @@ export const queryAllProducts = async ({
     reverse,
   });
   products = await query250ProductsOfCurrentSearchString();
-  console.log('products from query250ProductsOfCurrentSearchString', products);
+  // console.log('products from query250ProductsOfCurrentSearchString', products);
   return products;
 };
 
@@ -226,13 +227,18 @@ export const hasIntersectionBetweenTwoRanges = (arr1 = [], arr2 = []) => {
   return false;
 };
 
-export const createBarbequesCollectionFilters = (
+export const createBarbequesCollectionFilters = ({
   searchString,
   selectedCookTypesAndBrands,
   currentPriceRange,
   currentGrillCookingAreaRange,
-  onlineStoreOnly
-) => {
+  onlineStoreOnly,
+  sideBurner,
+  searBurner,
+  rearRotisserie,
+  grillType,
+  availability,
+}) => {
   const st = searchString?.trim() ?? '';
   return {
     onlineStoreOnly: (product) => {
@@ -261,6 +267,9 @@ export const createBarbequesCollectionFilters = (
       }
       const cookTypes = Object.keys(selectedCookTypesAndBrands);
       if (cookTypes.length === 0) {
+        return true;
+      }
+      if (!product?.cookType) {
         return true;
       }
       const currentProductCookType = cookTypes.find(
@@ -313,6 +322,54 @@ export const createBarbequesCollectionFilters = (
       }
       return false;
     },
+    sideBurner: (product) => {
+      if (!sideBurner) {
+        return true;
+      }
+      if (sideBurner === product?.sideBurner) {
+        return true;
+      }
+      return false;
+    },
+    searBurner: (product) => {
+      if (!searBurner) {
+        return true;
+      }
+      if (searBurner === product?.searBurner) {
+        return true;
+      }
+      return false;
+    },
+    rearRotisserie: (product) => {
+      if (!rearRotisserie) {
+        return true;
+      }
+      if (rearRotisserie === product?.rearRotisserie) {
+        return true;
+      }
+      return false;
+    },
+    grillType: (product) => {
+      if ((grillType?.length ?? 0) === 0) {
+        return true;
+      }
+      return grillType?.includes(product?.grillType);
+    },
+    availability: (product) => {
+      if (!availability || availability?.length === 0) {
+        return true;
+      }
+      if (availability?.includes('true') && availability?.includes('false')) {
+        return true;
+      }
+      if (availability?.includes('true') && product?.availableForSale) {
+        return true;
+      }
+      if (availability?.includes('false') && !product?.availableForSale) {
+        return true;
+      }
+      return false;
+    },
   };
 };
 
@@ -343,6 +400,13 @@ export const createBarbequesCollectionSorter = (sortValue) => (
   }
 };
 
+export const getSortedSearchedProduts = ({ allProducts, sortValue }) => {
+  const sorter = createBarbequesCollectionSorter(sortValue);
+  const products = [...allProducts];
+  products.sort(sorter);
+  return products;
+};
+
 export const getBarbequesCollectionSearchedProducts = (
   {
     allProducts = [],
@@ -351,16 +415,26 @@ export const getBarbequesCollectionSearchedProducts = (
     currentPriceRange = DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
     currentGrillCookingAreaRange = DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
     sortValue,
+    sideBurner,
+    searBurner,
+    rearRotisserie,
+    grillType,
+    availability,
   } = {},
   onlineStoreOnly = false
 ) => {
-  const filters = createBarbequesCollectionFilters(
+  const filters = createBarbequesCollectionFilters({
     searchString,
     selectedCookTypesAndBrands,
     currentPriceRange,
     currentGrillCookingAreaRange,
-    onlineStoreOnly
-  );
+    onlineStoreOnly,
+    sideBurner,
+    searBurner,
+    rearRotisserie,
+    grillType,
+    availability,
+  });
   const sorter = createBarbequesCollectionSorter(sortValue);
   let products = [...allProducts];
   Object.values(filters).forEach((f) => {
@@ -454,6 +528,7 @@ export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
 
 export const searchResultTransformFunc = ({
   availableForSale,
+  totalInventory,
   onlineStoreUrl,
   description,
   handle,
@@ -466,6 +541,7 @@ export const searchResultTransformFunc = ({
 }) => {
   const processedProduct = {
     availableForSale,
+    totalInventory,
     title,
     handle,
     images:
@@ -484,7 +560,7 @@ export const searchResultTransformFunc = ({
   };
   return processedProduct;
 };
-
+// todo: transformFunc and filter for grill cooking area
 export const barbequesCollectionTransformFunc = ({
   availableForSale,
   onlineStoreUrl,
@@ -496,9 +572,11 @@ export const barbequesCollectionTransformFunc = ({
   title,
   vendor,
   productType,
+  totalInventory,
 }) => {
   const processedProduct = {
     availableForSale,
+    totalInventory,
     title,
     handle,
     images:
@@ -517,6 +595,12 @@ export const barbequesCollectionTransformFunc = ({
       tags
         ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
         ?.replace('dtm_grill-cooking-area_', '') ?? null,
+    sideBurner: !!tags?.includes('dtm_side-burner'),
+    searBurner: !!tags?.includes('dtm_sear-burner'),
+    rearRotisserie: !!tags?.includes('dtm_rear-rotisserie'),
+    grillType: tags
+      ?.filter((tag) => tag.includes('dtm_grill-type'))
+      .map((tag) => tag.replace('dtm_grill-type_', '')),
     tags,
     description,
     vendor,
@@ -533,6 +617,7 @@ export default {
   hasIntersectionBetweenTwoRanges,
   createBarbequesCollectionFilters,
   createBarbequesCollectionSorter,
+  getSortedSearchedProduts,
   getBarbequesCollectionSearchedProducts,
   getSortValueFromDefaultSortBy,
   getPageCount,

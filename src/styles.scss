@@ -1,3 +1,5 @@
+@import 'https://at.alicdn.com/t/font_2427781_epekzyeovgf.css';
+
 .banner-name.dtm-banner-name {
   color: #fb711c;
   flex-basis: 250px;
@@ -91,4 +93,54 @@ collection-view-mode-changer {
 
 .row.search-title-banner-row {
   margin-top: 40px;
+}
+
+perfect-grill {
+  perfect-grill-selectors {
+    .cook-type-logo-wrapper {
+      width: 114px;
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 4px;
+      margin-right: 10px;
+      padding: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+      &.active {
+        color: #fb711c;
+      }
+      .iconfont {
+        line-height: 1;
+        font-size: 79px;
+      }
+    }
+  }
+  .search-top-controllers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .perfect-grill-selectors-wrapper {
+    .banner-name.dtm-banner-name {
+      color: #fb711c;
+      flex-basis: 500px;
+      flex-grow: 45;
+    }
+    perfect-grill-selectors {
+      .label-input-wrapper {
+        flex-wrap: wrap;
+        .perfect-grill-selector-label {
+          flex-basis: 185px;
+          flex-grow: 0;
+          flex-shrink: 0;
+        }
+        .perfect-grill-selector-input {
+          flex-grow: 0;
+          flex-basis: 610px;
+        }
+      }
+    }
+  }
 }
