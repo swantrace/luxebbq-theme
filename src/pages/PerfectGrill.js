@@ -181,7 +181,13 @@ function PerfectGrill({
               <product-list-top-controllers
                 .productType=${'Barbeques'}
               ></product-list-top-controllers>
-              <perfect-grill-product-list></perfect-grill-product-list>
+              <product-list
+                .productType=${'Barbeques'}
+                .itemClassList=${{
+                  grid: 'col-lg-3 col-md-6 col-grid-box',
+                  list: 'col-lg-12',
+                }}
+              ></product-list>
               <product-list-pagination
                 .productType=${'Barbeques'}
               ></product-list-pagination>

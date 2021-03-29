@@ -14,6 +14,9 @@ import {
   barbequesTransformFunc,
 } from '../helpers';
 import { pageWrapper as BarbequeSmokerCollectionWrapper } from '../context';
+import CollectionMainContent from '../components/common/CollectionMainContent';
+import CollectionSidebar from '../components/common/CollectionSidebar';
+import BarbequesSidebarFilter from '../components/barbequeSmokerCollection/BarbequesSidebarFilter';
 
 function BarbequeSmokerCollection({
   cookTypesAndBrands,
@@ -178,12 +181,13 @@ function BarbequeSmokerCollection({
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
-            <collection-sidebar
-              class="collection-filter col-sm-3"
-            ></collection-sidebar>
-            <collection-main-content
-              class="collection-content col"
-            ></collection-main-content>
+            ${CollectionSidebar({
+              FilterForTheProductType: BarbequesSidebarFilter,
+            })}
+            ${CollectionMainContent({
+              title: 'Grills / Smokers',
+              productType: 'Barbeques',
+            })}
           </div>
         </div>
       </div>
