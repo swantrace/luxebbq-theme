@@ -94,7 +94,7 @@ function PerfectGrillSelectors() {
     });
   };
   return html`<div
-      class="d-flex justify-content-between align-items-center label-input-wrapper"
+      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">Cook Type</h3>
       <div
@@ -108,7 +108,7 @@ function PerfectGrillSelectors() {
       </div>
     </div>
     <div
-      class="d-flex justify-content-between align-items-center label-input-wrapper"
+      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">Brand</h3>
       <div
@@ -122,7 +122,7 @@ function PerfectGrillSelectors() {
       </div>
     </div>
     <div
-      class="d-flex justify-content-between align-items-center label-input-wrapper"
+      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">Price Range</h3>
       <div
@@ -139,7 +139,7 @@ function PerfectGrillSelectors() {
       min: ${currentPriceRange[0]}, max: ${currentPriceRange[1]}
     </div>
     <div
-      class="d-flex justify-content-between align-items-center label-input-wrapper"
+      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">
         Grill Cooking Area
@@ -159,7 +159,7 @@ function PerfectGrillSelectors() {
       ${currentGrillCookingAreaRange[1]}
     </div>
     <div
-      class="d-flex justify-content-between align-items-center label-input-wrapper"
+      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">Availability</h3>
       <div class="d-flex text-right perfect-grill-selector-input">
@@ -170,7 +170,7 @@ function PerfectGrillSelectors() {
       </div>
     </div>
     <div
-      class="d-flex justify-content-between align-items-center label-input-wrapper"
+      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">Key Features</h3>
       <div

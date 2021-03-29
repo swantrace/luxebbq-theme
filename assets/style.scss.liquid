@@ -3960,7 +3960,7 @@ header {
 ==========================*/
 .collection-banner {
   position: relative;
-  overflow: hidden;
+  {% comment %} overflow: hidden; {% endcomment %}
   img {
     transition: all 0.5s ease;
     width: 100%;
@@ -6935,7 +6935,7 @@ footer{
   display: none;
   color: #fff;
   text-align: center;
-  background: $theme-deafult;
+  background: #fb711c;
   border: none;
   font-size: 22px;
   padding: 7px;
@@ -7128,7 +7128,7 @@ footer{
 .collection-filter-block {
   margin-bottom: 29px;
   padding: 0 30px;
-  border: 1px solid lighten($black, 86.5%);
+  border: 1px solid #fb711cb3;
   background-color: $white;
   .product-service {
     padding: 30px 0;
@@ -7156,28 +7156,28 @@ footer{
   }
 }
 .collection-collapse-block {
-  border-bottom: 1px solid lighten($black, 86.5%);
+  {% comment %} border-bottom: 1px solid #fb711c; {% endcomment %}
   margin-bottom: 12px;
   padding-bottom: 24px;
   &:last-child{
-    border-bottom: none;
+    {% comment %} border-bottom: none; {% endcomment %}
   }
   .collapse-block-title {
     position: relative;
     cursor: pointer;
-    text-transform: uppercase;
-    font-size: 16px;
+    font-size: 17px;
+    font-style: italic;
     color: lighten($black, 26.5%);
     font-weight: 600;
     margin: 30px 0 0 0;
     &:after {
-      position: absolute;
+      {% comment %} position: absolute;
       display: block;
       top: 0;
       right: -3px;
       content: "\f0d7";
       font-family: $font-awesome;
-      color: lighten($black, 26.5%);
+      color: lighten($black, 26.5%); {% endcomment %}
     }
   }
   .collection-collapse-block-content {
@@ -7652,20 +7652,20 @@ footer{
 
 // pagination start here
 .product-pagination {
-  border-bottom: 1px solid lighten($black, 86.5%);
-  border-top: 1px solid lighten($black, 86.5%);
+  {% comment %} border-bottom: 1px solid lighten($black, 86.5%);
+  border-top: 1px solid lighten($black, 86.5%); {% endcomment %}
   margin: 50px 20px 0 20px;
   .pagination {
     border-radius: 0;
     .page-item {
       border-radius: 0;
       a {
-        padding: 18px;
-        border-bottom: 0;
-        border-top: 0;
+        {% comment %} padding: 18px; {% endcomment %}
+        margin: 5px 3px 5px;
         color: lighten($black, 46.5%);
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
+        border: 2px solid #e9ecef;
       }
       &:last-child {
         .page-link {
@@ -7678,7 +7678,7 @@ footer{
       a {
         color: $theme-deafult;
         background-color: $white;
-        border-color: lighten($black, 86.5%);
+        border: 2px solid #e9ecef;
       }
     }
   }

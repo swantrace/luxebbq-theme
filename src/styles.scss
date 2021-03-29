@@ -4,9 +4,11 @@
   color: #fb711c;
   flex-basis: 250px;
   flex-grow: 45;
+  font-size: 33px;;
 }
+
 .parallelograms-group.dtm-parallelograms-group {
-  flex-basis: 55%;
+  flex-basis: 50%;
   flex-grow: 55;
   flex-shrink: 100;
   .parallelograms.dtm-parallelograms {
@@ -21,30 +23,59 @@
 }
 
 barbeque-smoker-collection {
-  .collection-image-wrapper {
-    img {
-      width: 100%;
+    .collection-image-wrapper {
+      img {
+        width: 100%;
+      }
     }
-  }
 
-  collection-sidebar-filter {
+    cook-types-and-brands-filter{
+      .collection-collapse-block{
+        border-bottom: 1px solid #fb711c;
+      }
+
+    }
+
     .collection-collapse-block .collapse-block-title {
       &:after {
         content: '';
       }
     }
+
+    collection-sidebar-search-input{
+        #collection-search-input{
+          border: 1px solid #FB711C;;
+        }
+    }
+
+    .collection-brand-filter{
+      li{display: block;}
+      .form-control{
+        border: none;
+        padding-left: 0;
+      }
+
+      .form-control-label{
+        font-size: 14px !important;
+        color: #fb711c !important;
+        margin-left: 5px;
+      }
+
+    }
+
+    .collection-filter-checkbox{margin-bottom: 0 !important; }
+
     ul#cook_types_filter {
       li {
         display: block;
         ul#brands_filter {
-          margin-top: 15px;
+          margin-top: 0;
           li {
             display: block;
           }
         }
       }
     }
-  }
 }
 
 search-result {
@@ -65,6 +96,52 @@ collection-view-mode-changer {
     }
   }
 }
+
+product-list-top-controllers{
+  .search-count{
+    border-right: 1px solid #dddddd;
+    padding: 5px;
+    text-transform: capitalize;
+    width: 35%;
+  }
+
+  .collection-view{
+    padding: 5px;
+    width: 10%;
+    border-right: 1px solid #dddddd;
+  }
+
+  .product-page-per-view{
+    position: relative;
+    width: 20%;
+    select{
+      border: 0;
+      padding: 5px;
+      border-right: 1px solid #dddddd;
+      width: 100%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      background: url('https://cdn.shopify.com/s/files/1/0549/1346/6525/t/4/assets/dropdown.png') no-repeat 95%;
+    }
+  }
+
+  .product-page-filter{
+    width: 15%;
+    select{
+      border: 0;
+      padding: 5px;
+      border-right: 1px solid #dddddd;
+      width: 100%;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      background: url('https://cdn.shopify.com/s/files/1/0549/1346/6525/t/4/assets/dropdown.png') no-repeat 95%;
+    }
+  }
+
+}
+
 
 .product-pagination .pagination {
   .page-item {
@@ -112,7 +189,7 @@ perfect-grill {
       }
       .iconfont {
         line-height: 1;
-        font-size: 79px;
+        font-size: 55px;
       }
     }
   }
@@ -123,11 +200,21 @@ perfect-grill {
   }
 
   .perfect-grill-selectors-wrapper {
+
+    box-shadow: 0 2px 5px #dddddd;
+
+    .collection-banner{
+      padding-bottom: 3rem;
+      padding-top: 2rem;
+    }
+
     .banner-name.dtm-banner-name {
       color: #fb711c;
       flex-basis: 500px;
       flex-grow: 45;
+      font-size: 29px;
     }
+
     perfect-grill-selectors {
       .label-input-wrapper {
         flex-wrap: wrap;
@@ -135,6 +222,8 @@ perfect-grill {
           flex-basis: 185px;
           flex-grow: 0;
           flex-shrink: 0;
+          font-size: 20px;
+          color: #111;
         }
         .perfect-grill-selector-input {
           flex-grow: 0;

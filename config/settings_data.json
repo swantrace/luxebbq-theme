@@ -5,7 +5,7 @@
     "smoker_brands": "Weber",
     "pellet_grill_brands": "Weber",
     "oven_brands": "Weber",
-    "max_price_in_range": "15000",
+    "max_price_in_range": "30000",
     "min_price_in_range": "1",
     "max_grill_cooking_area": "20",
     "min_grill_cooking_area": "1",

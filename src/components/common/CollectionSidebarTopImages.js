@@ -8,7 +8,7 @@ function CollectionSidebarTopImages() {
   return html`<div class="collection-images-wrapper">
     ${collectionImages.map(
       (image) => html`
-      <div class="collection-image-wrapper" style="width: 100%; padding: 5px; border: 1px solid black; min-height: 100px;">
+      <div class="collection-image-wrapper py-2" style="width: 100%; min-height: 100px;">
         <a href=${image.imageTarget}
           ><img src=${image.imageUrl} alt=${image.imageText}
         /></a>

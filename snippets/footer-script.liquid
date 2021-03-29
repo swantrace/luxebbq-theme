@@ -173,7 +173,10 @@
     {% endif %}
   });
   function openSearch() {
-    document.getElementById("search-overlay").style.display = "block";
+    
+    //document.getElementById("search-overlay").style.display = "block";
+    window.location.href = "/search";
+
   }
 
   function closeSearch() {

@@ -70,7 +70,7 @@ function CookTypesAndBrandsFilter() {
             ([cookType, brands]) => html`
               <li>
                 <div
-                  class="form-control custom-checkbox collection-filter-checkbox"
+                  class="form-control custom-checkbox collection-filter-checkbox first-level"
                 >
                   <input
                     ?disabled=${allProducts.length === 0 ||
@@ -96,7 +96,7 @@ function CookTypesAndBrandsFilter() {
                       (brand) => html`
                         <li>
                           <div
-                            class="form-control custom-checkbox collection-filter-checkbox"
+                            class="form-control custom-checkbox collection-filter-checkbox ml-3"
                           >
                             <input
                               ?disabled=${allProducts.length === 0 ||

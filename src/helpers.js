@@ -37,7 +37,7 @@ export const GET_PRODUCTS = gql`
               node {
                 altText
                 originalSrc
-                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 555)
+                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 340)
               }
             }
           }

@@ -36,7 +36,7 @@ function ProductListTopControllers({ productType }) {
   const searchedProductsSize = searchedProducts.length;
 
   // console.log(searchedProducts);
-  return html`<div class="row">
+  return html`<div class="row py-5">
     <div class="col-12">
       <div class="product-filter-content collection-top-controllers">
         <div class="search-count">

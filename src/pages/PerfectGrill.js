@@ -164,18 +164,18 @@ function PerfectGrill({
   }, [grillCookingAreaMinAndMax]);
 
   return html`${perfectGrillWrapper({
-    children: html`<section class="section-b-space">
+    children: html`<section class="section-b-space pt-0">
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 offset-lg-2 perfect-grill-selectors-wrapper">
+            <div class="col-lg-8 mx-auto perfect-grill-selectors-wrapper pt-5 px-md-5 pb-md-5">
               ${TitleBanner({ title: "WHAT'S YOUR PERFECT GRILL?" })}
               <perfect-grill-selectors></perfect-grill-selectors>
             </div>
           </div>
-          <div class="row">
+          <div class="row pt-md-5">
             <div
-              class="col-lg-8 offset-lg-2 perfect-grill-product-list-wrapper"
+              class="col-lg-8 offset-lg-2 perfect-grill-product-list-wrapper pt-md-5"
             >
               ${TitleBanner({ title: 'MATCHING GRILLS' })}
               <product-list-top-controllers

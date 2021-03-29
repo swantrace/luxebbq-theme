@@ -16,7 +16,7 @@ const SearchBar = virtual(
             <div class="input-group-append">
               <button class="btn btn-solid">
                 <span class="search-text">Search</span
-                ><span class="search-icon">»</span>
+                ><span class="search-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   »</span>
               </button>
             </div>
           </div>

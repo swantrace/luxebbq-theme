@@ -9,7 +9,7 @@ function CollectionSidebarSearchInput() {
   return html`<input
     type="text"
     ?disabled=${allProducts?.length === 0}
-    class="form-control"
+    class="form-control my-3"
     id="collection-search-input"
     placeholder="Search"
     value=${searchString}
