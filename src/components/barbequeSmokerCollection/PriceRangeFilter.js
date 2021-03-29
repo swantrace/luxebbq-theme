@@ -7,10 +7,10 @@ function PriceRangeFilter() {
   const [min, max] =
     context?.priceRangeMinAndMax ?? DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
   const [valueMin, valueMax] =
-    context?.collectionState?.currentPriceRange ??
+    context?.state?.currentPriceRange ??
     DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
-  const allProducts = context?.collectionState?.allProducts ?? [];
-  const dispatch = context?.collectionDispatch ?? (() => {});
+  const allProducts = context?.state?.allProducts ?? [];
+  const dispatch = context?.dispatch ?? (() => {});
   return html`<div class="collection-collapse-block">
     <h3 class="collapse-block-title">Price Range</h3>
     <div class="collection-collapse-block-content">

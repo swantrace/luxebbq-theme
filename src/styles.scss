@@ -14,13 +14,13 @@
   }
 }
 
-barbeque-smoker-collection {
-  .collection-top-controllers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+.collection-top-controllers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
+barbeque-smoker-collection {
   .collection-image-wrapper {
     img {
       width: 100%;

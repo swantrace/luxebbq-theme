@@ -200,8 +200,8 @@ function BarbequeSmokerCollection({
     productsOfFirstPage,
     collectionHandle,
     collectionImages,
-    collectionState: state,
-    collectionDispatch: dispatch,
+    state,
+    dispatch,
     emptyCollectionImage,
   })}`;
 }

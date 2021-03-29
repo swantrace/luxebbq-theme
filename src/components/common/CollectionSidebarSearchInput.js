@@ -3,9 +3,9 @@ import { usePageContext as useBarbequeSmokerCollectionContext } from '../../cont
 
 function CollectionSidebarSearchInput() {
   const context = useBarbequeSmokerCollectionContext();
-  const searchString = context?.collectionState?.searchString ?? '';
-  const allProducts = context?.collectionState?.allProducts ?? [];
-  const collectionDispatch = context?.collectionDispatch;
+  const searchString = context?.state?.searchString ?? '';
+  const allProducts = context?.state?.allProducts ?? [];
+  const dispatch = context?.dispatch;
   return html`<input
     type="text"
     ?disabled=${allProducts?.length === 0}
@@ -14,7 +14,7 @@ function CollectionSidebarSearchInput() {
     placeholder="Search"
     value=${searchString}
     @keyup=${(e) => {
-      collectionDispatch({
+      dispatch({
         type: 'changeSearchString',
         payload: e.target.value,
       });

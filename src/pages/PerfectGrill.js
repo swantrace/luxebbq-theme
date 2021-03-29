@@ -178,9 +178,13 @@ function PerfectGrill({
               class="col-lg-8 offset-lg-2 perfect-grill-product-list-wrapper"
             >
               ${TitleBanner({ title: 'MATCHING GRILLS' })}
-              <perfect-grill-top-controllers></perfect-grill-top-controllers>
+              <product-list-top-controllers
+                .productType=${'Barbeques'}
+              ></product-list-top-controllers>
               <perfect-grill-product-list></perfect-grill-product-list>
-              <perfect-grill-pagination></perfect-grill-pagination>
+              <product-list-pagination
+                .productType=${'Barbeques'}
+              ></product-list-pagination>
             </div>
           </div>
         </div>

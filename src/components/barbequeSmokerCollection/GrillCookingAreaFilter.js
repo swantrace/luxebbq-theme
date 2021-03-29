@@ -8,10 +8,10 @@ function GrillCookingAreaFilter() {
     context?.grillCookingAreaMinAndMax ??
     DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE;
   const [valueMin, valueMax] =
-    context?.collectionState?.currentGrillCookingAreaRange ??
+    context?.state?.currentGrillCookingAreaRange ??
     DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE;
-  const allProducts = context?.collectionState?.allProducts ?? [];
-  const dispatch = context?.collectionDispatch ?? (() => {});
+  const allProducts = context?.state?.allProducts ?? [];
+  const dispatch = context?.dispatch ?? (() => {});
   return html`<div class="collection-collapse-block">
     <h3 class="collapse-block-title">Grill Cooking Area</h3>
     <div class="collection-collapse-block-content">

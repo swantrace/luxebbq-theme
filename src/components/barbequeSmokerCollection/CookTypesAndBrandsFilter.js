@@ -7,10 +7,10 @@ function CookTypesAndBrandsFilter() {
   const context = useBarbequeSmokerCollectionContext();
   const brandInfo = context?.brandInfo ?? {};
   const selectedCookTypesAndBrands =
-    context?.collectionState?.selectedCookTypesAndBrands ?? {};
-  const searchString = context?.collectionState?.searchString ?? '';
-  const allProducts = context?.collectionState?.allProducts ?? [];
-  const dispatch = context?.collectionDispatch ?? (() => {});
+    context?.state?.selectedCookTypesAndBrands ?? {};
+  const searchString = context?.state?.searchString ?? '';
+  const allProducts = context?.state?.allProducts ?? [];
+  const dispatch = context?.dispatch ?? (() => {});
   // console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
   const handleCookTypeChanged = (cookType, e) => {
     const cookTypeInput = e.target;

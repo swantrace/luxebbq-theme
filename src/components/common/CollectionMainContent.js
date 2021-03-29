@@ -9,9 +9,13 @@ function CollectionMainContent() {
           ${TitleBanner({
             title: 'Grills / Smokers',
           })}
-          <collection-main-content-top-controllers></collection-main-content-top-controllers>
+          <product-list-top-controllers
+            .productType=${'Barbeques'}
+          ></product-list-top-controllers>
           <collection-main-content-product-list></collection-main-content-product-list>
-          <collection-main-content-pagination></collection-main-content-pagination>
+          <product-list-pagination
+            .productType=${'Barbeques'}
+          ></product-list-pagination>
         </div>
       </div>
     </div>

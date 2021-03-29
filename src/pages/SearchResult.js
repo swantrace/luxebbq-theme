@@ -113,16 +113,16 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
                 ${TitleBanner({ title: 'SEARCH RESULTS' })}
               </div>
             </div>
-            <search-top-controllers></search-top-controllers>
+            <product-list-top-controllers></product-list-top-controllers>
             <search-product-list></search-product-list>
-            <search-pagination></search-pagination>
+            <product-list-pagination></product-list-pagination>
           </div>
         </section>
       </div>
     </section>`,
     productsOfFirstPage,
-    searchResultState: state,
-    searchResultDispatch: dispatch,
+    state,
+    dispatch,
     emptyCollectionImage,
   })}`;
 }

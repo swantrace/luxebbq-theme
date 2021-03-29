@@ -5,7 +5,7 @@ import ProductList from './ProductList';
 
 function CollectionMainContentProductList() {
   const context = useBarbequeSmokerCollectionContext();
-  const state = context?.collectionState ?? {};
+  const state = context?.state ?? {};
   const viewMode = state?.viewMode ?? 'grid';
   const emptyCollectionImage = context?.emptyCollectionImage;
   const allProducts = state?.allProducts ?? [];

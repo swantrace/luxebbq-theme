@@ -5,7 +5,7 @@ import ProductList from '../common/ProductList';
 
 function SearchProductList() {
   const context = useSearchResultContext();
-  const state = context?.searchResultState ?? {};
+  const state = context?.state ?? {};
   const viewMode = state?.viewMode ?? 'grid';
   const emptyCollectionImage = context?.emptyCollectionImage;
   const allProducts = state?.allProducts ?? [];
