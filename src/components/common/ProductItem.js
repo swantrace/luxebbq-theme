@@ -12,7 +12,7 @@ const ProductItem = virtual(
                   <div class="front">
                     <a href=${`/products/${product.handle}`}>
                       <img
-                        data-src=${product?.images?.[0]?.imageTransformedSrc}
+                        src=${product?.images?.[0]?.imageTransformedSrc}
                         class="blur-up img-fluid w-100 lazyload"
                         alt=${product?.images?.[0]?.imageAltText ??
                         product.title}
@@ -23,7 +23,7 @@ const ProductItem = virtual(
               : html`<div class="front">
                   <a href=${`/products/${product.handle}`}>
                     <img
-                      data-src="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_340x340.gif"
+                      src="//cdn.shopify.com/shopifycloud/shopify/assets/no-image-2048-5e88c1b20e087fb7bbe9a3771824e743c244f437e4f8ba93bbf7b11b53f7824c_340x340.gif"
                       class="blur-up img-fluid w-100 lazyload"
                       alt=${product.title}
                     />

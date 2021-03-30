@@ -1,16 +1,13 @@
 import { html } from '@apollo-elements/haunted';
 import { usePageContext } from '../../context';
 import { getFilteredSortedProducts } from '../../helpers';
+import ProductListLoading from './ProductListLoading';
 
 function ProductListTopControllers({ productType }) {
   const context = usePageContext();
   const state = context?.state ?? {};
   const dispatch = context?.dispatch ?? (() => {});
-  const productsOfFirstPage = context?.productsOfFirstPage ?? [];
-  let searchedProducts = getFilteredSortedProducts(state, productType);
-  if (searchedProducts.length === 0) {
-    searchedProducts = productsOfFirstPage ?? [];
-  }
+  const searchedProducts = getFilteredSortedProducts(state, productType);
   const viewMode = state?.viewMode ?? 'grid';
   const productsPerPage = context?.state?.productsPerPage ?? 24;
   const sortValue = state?.sortValue ?? 'BEST_SELLING_ASC';
@@ -33,17 +30,16 @@ function ProductListTopControllers({ productType }) {
     });
   };
 
-  const searchedProductsSize = searchedProducts.length;
+  const productsSize = searchedProducts.length;
 
   // console.log(searchedProducts);
   return html`<div class="row py-5">
     <div class="col-12">
       <div class="product-filter-content collection-top-controllers">
         <div class="search-count">
-          <h5>
-            ${searchedProductsSize} ${productType ?? 'items'} match your search
-            criteria
-          </h5>
+          ${productsSize > 0
+            ? html`<h5>${productsSize} Products match your search criteria</h5>`
+            : html`${ProductListLoading()}`}
         </div>
         <div class="collection-view">
           <ul>

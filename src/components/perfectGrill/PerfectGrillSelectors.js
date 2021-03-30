@@ -30,6 +30,7 @@ function PerfectGrillSelectors() {
   const searBurner = state?.searBurner ?? false;
   const rearRotisserie = state?.rearRotisserie ?? false;
   const grillType = state?.grillType ?? [];
+  const standType = state?.standType ?? [];
   useEffect(() => {
     dispatch({
       type: 'changeCookTypesAndBrands',
@@ -80,17 +81,21 @@ function PerfectGrillSelectors() {
     });
   };
   const handleRearRotisserieChanged = (newRearRotisserie) => {
-    // console.log(e);
     dispatch({
       type: 'changeRearRotisserie',
       payload: newRearRotisserie,
     });
   };
   const handleGrillTypeChanged = (newGrillType) => {
-    // console.log(e);
     dispatch({
       type: 'changeGrillType',
       payload: newGrillType,
+    });
+  };
+  const handleStandTypeChanged = (newStandType) => {
+    dispatch({
+      type: 'changeStandType',
+      payload: newStandType,
     });
   };
   return html`<div
@@ -162,7 +167,9 @@ function PerfectGrillSelectors() {
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-right perfect-grill-selector-label">Availability</h3>
-      <div class="d-flex text-right perfect-grill-selector-input">
+      <div
+        class="d-flex text-right justify-content-start perfect-grill-selector-input flex-wrap"
+      >
         ${PerfectGrillAvailabilitySelector({
           availability,
           handleAvailabilityChanged,
@@ -174,17 +181,19 @@ function PerfectGrillSelectors() {
     >
       <h3 class="text-right perfect-grill-selector-label">Key Features</h3>
       <div
-        class="d-flex text-right justify-content-end perfect-grill-selector-input"
+        class="d-flex text-right justify-content-start perfect-grill-selector-input flex-wrap"
       >
         ${PerfectGrillKeyFeaturesSelector({
           sideBurner,
           searBurner,
           rearRotisserie,
           grillType,
+          standType,
           handleSideBurnerChanged,
           handleSearBurnerChanged,
           handleRearRotisserieChanged,
           handleGrillTypeChanged,
+          handleStandTypeChanged,
         })}
       </div>
     </div>`;

@@ -23,11 +23,8 @@ function ProductList({
     products = getFilteredSortedProductsOfCurrentPage(state, productType) ?? [];
   }
   useEffect(() => {
-    // console.log('change');
     const imgs = this.querySelectorAll('img.lazyloaded');
-    // console.log(imgs);
     imgs.forEach((img) => {
-      img.removeAttribute('src');
       img.classList.remove('lazyloaded');
       img.classList.add('lazyload');
     });

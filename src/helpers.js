@@ -241,15 +241,12 @@ export const queryAllProducts = async ({
           transformFuncCreator(productType)
         );
         products = [...products, ...productsOfCurrentProductType];
-        console.log(
-          'size',
-          JSON.stringify(productsOfCurrentProductType).length +
-            JSON.stringify(window.sessionStorage).length
-        );
+
         if (
           JSON.stringify(productsOfCurrentProductType).length +
             JSON.stringify(window.sessionStorage).length <
-          2500000
+            2500000 &&
+          searchString.trim() === ''
         ) {
           window.sessionStorage.setItem(
             productType.toLowerCase(),

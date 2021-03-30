@@ -7,10 +7,12 @@ const PerfectGrillKeyFeaturesSelector = virtual(
     searBurner,
     rearRotisserie,
     grillType,
+    standType,
     handleSideBurnerChanged,
     handleSearBurnerChanged,
     handleRearRotisserieChanged,
     handleGrillTypeChanged,
+    handleStandTypeChanged,
   }) =>
     html`<div class="form-check form-check-inline">
         <input
@@ -54,6 +56,20 @@ const PerfectGrillKeyFeaturesSelector = virtual(
         <input
           class="form-check-input"
           type="checkbox"
+          id="castIronGrill"
+          ?checked=${grillType.includes('Cast Iron Grill')}
+          @change=${() => {
+            handleGrillTypeChanged(uniq([...grillType, 'Cast Iron Grill']));
+          }}
+        />
+        <label class="form-check-label" for="castIronGrill"
+          >Cast Iron Grill</label
+        >
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
           id="stainlessSteelGrill"
           ?checked=${grillType.includes('Stainless Steel Grill')}
           @change=${() => {
@@ -81,6 +97,42 @@ const PerfectGrillKeyFeaturesSelector = virtual(
         <label class="form-check-label" for="ceramicCoatedGrill"
           >Ceramic Coated Grill</label
         >
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="freeStanding"
+          ?checked=${standType.includes('Free Standing')}
+          @change=${() => {
+            handleStandTypeChanged(uniq([...standType, 'Free Standing']));
+          }}
+        />
+        <label class="form-check-label" for="freeStanding">Free Standing</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="builtIn"
+          ?checked=${standType.includes('Built In')}
+          @change=${() => {
+            handleStandTypeChanged(uniq([...standType, 'Built In']));
+          }}
+        />
+        <label class="form-check-label" for="builtIn">Built In</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="portable"
+          ?checked=${standType.includes('Portable')}
+          @change=${() => {
+            handleStandTypeChanged(uniq([...standType, 'Portable']));
+          }}
+        />
+        <label class="form-check-label" for="portable">Portable</label>
       </div>`
 );
 

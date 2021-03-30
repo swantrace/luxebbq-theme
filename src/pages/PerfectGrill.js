@@ -104,6 +104,12 @@ function PerfectGrill({
           grillType: action.payload,
         };
       }
+      case 'changeStandType': {
+        return {
+          ...previousState,
+          standType: action.payload,
+        };
+      }
       case 'changeOnlineStoreOnly': {
         return {
           ...previousState,
@@ -127,6 +133,7 @@ function PerfectGrill({
     searBurner: false,
     rearRotisserie: false,
     grillType: [],
+    standType: [],
     sortValue: 'BEST_SELLING_ASC',
     onlineStoreOnly: false,
   });
@@ -168,7 +175,9 @@ function PerfectGrill({
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8 mx-auto perfect-grill-selectors-wrapper pt-5 px-md-5 pb-md-5">
+            <div
+              class="col-lg-8 mx-auto perfect-grill-selectors-wrapper pt-5 px-md-5 pb-md-5"
+            >
               ${TitleBanner({ title: "WHAT'S YOUR PERFECT GRILL?" })}
               <perfect-grill-selectors></perfect-grill-selectors>
             </div>
