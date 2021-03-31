@@ -5,7 +5,6 @@
   <!-- header Phone call out -->
   <div class="header-phone-banner container">
     <div class="header-phone-block"> 
-       <span class="trapezoid left"> </span>
         <span class="call-text"> Call Now: 1-204-888-LUXE </span>
         <div class="header_social">
               <ul>
@@ -41,7 +40,6 @@
                 {% endif %}
               </ul>
         </div>
-            <span class="trapezoid right"> </span>
       </div>
   </div>
    <!-- END header Phone call out -->
@@ -373,7 +371,7 @@
                 {% if section.settings.enable_search %}
                 <li class="onhover-div mobile-search">
                   <div>
-                    <i class="bi bi-search dtm-header-icon" style="color: white;"></i>
+                    <i class="bi bi-search dtm-header-icon" style="color: white;" onclick="openSearch()"></i>
                     <i class="ti-search search-open" onclick="openSearch()"></i>
                   </div>
                   <div id="search-overlay" class="search-overlay">

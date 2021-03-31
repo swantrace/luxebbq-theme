@@ -173,10 +173,10 @@ function PerfectGrill({
   return html`${perfectGrillWrapper({
     children: html`<section class="section-b-space pt-0">
       <div class="collection-wrapper">
-        <div class="container">
+        <div class="container dtm">
           <div class="row">
             <div
-              class="col-lg-8 mx-auto perfect-grill-selectors-wrapper pt-5 px-md-5 pb-md-5"
+              class="col-lg-10 mx-auto perfect-grill-selectors-wrapper pt-5 px-md-5 pb-md-5"
             >
               ${TitleBanner({ title: "WHAT'S YOUR PERFECT GRILL?" })}
               <perfect-grill-selectors></perfect-grill-selectors>
@@ -184,7 +184,7 @@ function PerfectGrill({
           </div>
           <div class="row pt-md-5">
             <div
-              class="col-lg-8 offset-lg-2 perfect-grill-product-list-wrapper pt-md-5"
+              class="col-lg-10 mx-auto perfect-grill-product-list-wrapper pt-md-5"
             >
               ${TitleBanner({ title: 'MATCHING GRILLS' })}
               <product-list-top-controllers

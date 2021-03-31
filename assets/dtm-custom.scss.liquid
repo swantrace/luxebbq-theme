@@ -58,12 +58,26 @@ Header & Footer
     z-index: 999999;
 
 
-    /* .trapezoid.left {
-        // width: 0;
-        // height: 0;
-        // border-top: 100px solid red;
-        // border-right: 100px solid transparent;
-    } */
+    .header-phone-block:before{
+        left: -6px;
+        transform: skewX(12deg);
+    }
+
+    .header-phone-block:after, .header-phone-block:before{
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: 0;
+        width: 20px;
+        background-color: inherit;
+    }
+
+    .header-phone-block:after{
+        right: -6px;
+        transform: skewX(-12deg);
+    }
+
 
     .header-phone-block{
         background: $theme-deafult;
@@ -71,6 +85,8 @@ Header & Footer
         display: inline-flex;
         position: absolute;
         right: 0;
+
+
     
         .header_social{
             margin-left: 15px;

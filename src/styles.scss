@@ -7,6 +7,25 @@
   font-size: 33px;
 }
 
+
+.collection-filter-block, .perfect-grill-selectors-wrapper{
+    /*** custom checkboxes ***/
+    input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+    input[type=checkbox] + label:before {
+      font-family: FontAwesome;
+      display: inline-block;
+      font-size: 18px;
+    }
+
+    input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
+    input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+    input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
+    input[type=checkbox]:checked + label:before { letter-spacing: 10px; } /* allow space for check mark */
+
+}
+
+
 .parallelograms-group.dtm-parallelograms-group {
   flex-basis: 50%;
   flex-grow: 55;
@@ -20,6 +39,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  color: #808080;
+  h5, select{color: #808080;}
+
+  .collection-view li{
+    padding: 0 5px;
+  }
 }
 
 barbeque-smoker-collection {
@@ -179,7 +204,7 @@ perfect-grill {
     .cook-type-logo-wrapper {
       width: 114px;
       text-align: center;
-      border: 1px solid black;
+      border: 1px solid #dee2e6;
       border-radius: 4px;
       margin-right: 10px;
       padding: 5px;
@@ -232,6 +257,8 @@ perfect-grill {
         .perfect-grill-selector-input {
           flex-grow: 0;
           flex-basis: 610px;
+          select{ border: 1px solid #dee2e6 ; color: #777777 ; }
+
           .form-check-inline {
             flex-basis: 30%;
             flex-shrink: 0;
