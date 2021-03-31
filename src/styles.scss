@@ -1,4 +1,4 @@
-@import 'https://at.alicdn.com/t/font_2427781_epekzyeovgf.css';
+@import 'https://at.alicdn.com/t/font_2427781_vkhkyykglh.css';
 
 .banner-name.dtm-banner-name {
   color: #fb711c;
@@ -186,12 +186,15 @@ perfect-grill {
       &:last-child {
         margin-right: 0;
       }
+      &.inactive {
+        color: #cccccc;
+      }
       &.active {
         color: #fb711c;
       }
       .iconfont {
         line-height: 1;
-        font-size: 55px;
+        font-size: 100px;
       }
     }
   }
