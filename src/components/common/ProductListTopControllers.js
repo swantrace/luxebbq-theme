@@ -31,7 +31,6 @@ function ProductListTopControllers({ productType }) {
   };
 
   const productsSize = searchedProducts.length;
-
   // console.log(searchedProducts);
   return html`<div class="row py-5">
     <div class="col-12">

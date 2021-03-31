@@ -17,7 +17,7 @@ import {
 
 function SearchResult({ defaultSortBy, emptyCollectionImage }) {
   const params = new URLSearchParams(window.location.search);
-  const searchString = decodeURI(params.get('q') ?? '');
+  const searchString = decodeURI(params.get('q')?.trim() ?? '');
 
   const searchResultReducer = (previousState, action) => {
     switch (action.type) {
@@ -113,18 +113,20 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
                 ${TitleBanner({ title: 'SEARCH RESULTS' })}
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-10 offset-lg-1">
-                <product-list-top-controllers></product-list-top-controllers>
-                <product-list
-                  .itemClassList=${{
-                    grid: 'col-lg-3 col-md-6 col-grid-box',
-                    list: 'col-lg-12',
-                  }}
-                ></product-list>
-                <product-list-pagination></product-list-pagination>
-              </div>
-            </div>
+            ${searchString
+              ? html` <div class="row">
+                  <div class="col-lg-10 offset-lg-1">
+                    <product-list-top-controllers></product-list-top-controllers>
+                    <product-list
+                      .itemClassList=${{
+                        grid: 'col-lg-3 col-md-6 col-grid-box',
+                        list: 'col-lg-12',
+                      }}
+                    ></product-list>
+                    <product-list-pagination></product-list-pagination>
+                  </div>
+                </div>`
+              : null}
           </div>
         </section>
       </div>
