@@ -1,10 +1,10 @@
 {
   "current": {
-    "gas_grill_brands": "Weber",
-    "charcoal_grill_brands": "Weber,Big Green Egg,Kamado Joe",
-    "smoker_brands": "Weber",
-    "pellet_grill_brands": "Weber",
-    "oven_brands": "Weber",
+    "gas_grill_brands": "Weber,Napoleon,Broil King",
+    "charcoal_grill_brands": "Weber,Kamado Joe,Sunterra,Napoleon,Big Green Egg",
+    "smoker_brands": "Weber,Traeger,Kamado Joe,Yoder,Big Green Egg,Masterbuilt",
+    "pellet_grill_brands": "Traeger,Louisiana,Broil King",
+    "oven_brands": "Ooni,Fontana",
     "max_price_in_range": "30000",
     "min_price_in_range": "1",
     "max_grill_cooking_area": "20",
