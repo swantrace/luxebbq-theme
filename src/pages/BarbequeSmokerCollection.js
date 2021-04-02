@@ -31,10 +31,8 @@ function BarbequeSmokerCollection({
   const selectedCookTypesAndBrandsFromQueryString = JSON.parse(
     decodeURI(params.get('selected') ?? '{}')
   );
-  const brandInfo = JSON.parse(
-    cookTypesAndBrands ??
-      '{"Gas Grill":[], "Charcoal Grill":[], "Pellet Grill":[], "Oven":[]}'
-  );
+  const brandInfo = JSON.parse(cookTypesAndBrands);
+
   const collectionImages =
     JSON.parse(collectionMetafields ?? '{}')?.images ?? [];
 

@@ -5,14 +5,15 @@ import { removeKey } from '../../helpers';
 
 function CookTypesAndBrandsFilter() {
   const context = useBarbequeSmokerCollectionContext();
-  const brandInfo = context?.brandInfo ?? {};
+  const brandInfo = context?.brandInfo;
   const selectedCookTypesAndBrands =
     context?.state?.selectedCookTypesAndBrands ?? {};
   const searchString = context?.state?.searchString ?? '';
   const allProducts = context?.state?.allProducts ?? [];
   const dispatch = context?.dispatch ?? (() => {});
-  // console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
   const handleCookTypeChanged = (cookType, e) => {
+    console.log('brandInfo', brandInfo);
+    console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
     const cookTypeInput = e.target;
     if (cookTypeInput.checked) {
       dispatch({
@@ -37,6 +38,8 @@ function CookTypesAndBrandsFilter() {
     }
   };
   const handleBrandChanged = (cookType, brand, e) => {
+    console.log('brandInfo', brandInfo);
+    console.log('selectedCookTypesAndBrands', selectedCookTypesAndBrands);
     const brandInput = e.target;
     if (brandInput.checked) {
       dispatch({
@@ -92,8 +95,9 @@ function CookTypesAndBrandsFilter() {
                       : ' hidden'}"
                     id="brands_filter"
                   >
-                    ${brands.map(
-                      (brand) => html`
+                    ${brands.map((brand) => {
+                      const inputId = `${slugify(cookType)}-${slugify(brand)}`;
+                      return html`
                         <li>
                           <div
                             class="form-control custom-checkbox collection-filter-checkbox ml-3"
@@ -103,22 +107,20 @@ function CookTypesAndBrandsFilter() {
                               searchString.trim().length > 0}
                               type="checkbox"
                               class="custom-checkbox collection-filter-checkbox"
-                              id=${slugify(brand)}
+                              id=${inputId}
                               ?checked=${!!selectedCookTypesAndBrands?.[
                                 cookType
                               ]?.includes(brand)}
                               @change=${(e) =>
                                 handleBrandChanged(cookType, brand, e)}
                             />
-                            <label
-                              class="form-control-label"
-                              for=${slugify(brand)}
+                            <label class="form-control-label" for=${inputId}
                               >${brand}</label
                             >
                           </div>
                         </li>
-                      `
-                    )}
+                      `;
+                    })}
                   </ul>
                 </div>
               </li>
