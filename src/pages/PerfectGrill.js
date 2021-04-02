@@ -182,7 +182,7 @@ function PerfectGrill({
               <perfect-grill-selectors></perfect-grill-selectors>
             </div>
           </div>
-          <div class="row pt-md-5">
+          <div class="row pt-5">
             <div
               class="col-lg-10 mx-auto perfect-grill-product-list-wrapper pt-md-5"
             >

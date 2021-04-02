@@ -101,7 +101,7 @@ function PerfectGrillSelectors() {
   return html`<div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-right perfect-grill-selector-label">Cook Type</h3>
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">Cook Type</h3>
       <div
         class="d-flex text-right justify-content-end perfect-grill-selector-input"
       >
@@ -115,7 +115,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-right perfect-grill-selector-label">Brand</h3>
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">Brand</h3>
       <div
         class="d-flex text-right justify-content-end perfect-grill-selector-input"
       >
@@ -129,7 +129,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-right perfect-grill-selector-label">Price Range</h3>
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">Price Range</h3>
       <div
         class="d-flex text-right justify-content-end perfect-grill-selector-input"
       >
@@ -146,7 +146,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
         Grill Cooking Area
       </h3>
       <div
@@ -166,7 +166,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-right perfect-grill-selector-label">Availability</h3>
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">Availability</h3>
       <div
         class="d-flex text-right justify-content-start perfect-grill-selector-input flex-wrap"
       >
@@ -179,7 +179,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-right perfect-grill-selector-label">Key Features</h3>
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">Key Features</h3>
       <div
         class="d-flex text-right justify-content-start perfect-grill-selector-input flex-wrap"
       >

@@ -113,16 +113,20 @@ search-result {
   }
 }
 
-collection-view-mode-changer {
-  .collection-view {
-    li.active i {
-      color: #111;
-    }
-    li:not(.active) i {
-      color: #555;
-    }
+
+.collection-view {
+
+  width: 15% !important;
+  text-align: center;
+
+  li.active i {
+    color: #111;
+  }
+  li:not(.active) i {
+    color: #555;
   }
 }
+
 
 product-list-top-controllers {
   .search-count {
@@ -140,7 +144,7 @@ product-list-top-controllers {
 
   .product-page-per-view {
     position: relative;
-    width: 20%;
+    width: 25%;
     select {
       border: 0;
       padding: 5px;
@@ -155,10 +159,10 @@ product-list-top-controllers {
   }
 
   .product-page-filter {
-    width: 15%;
+    width: 25%;
     select {
       border: 0;
-      padding: 5px;
+      padding: 5px 30px;
       border-right: 1px solid #dddddd;
       width: 100%;
       -webkit-appearance: none;
@@ -268,3 +272,15 @@ perfect-grill {
     }
   }
 }
+
+
+
+@media screen and (max-width:767px){
+  perfect-grill-selectors {
+    .form-check-inline {
+      flex-basis: 100% !important;
+    }
+  }
+
+}
+
