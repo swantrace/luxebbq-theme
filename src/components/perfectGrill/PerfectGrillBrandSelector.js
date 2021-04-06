@@ -15,23 +15,18 @@ const PerfectGrillBrandSelector = virtual(
       class="w-100"
       value=${Object.values(selectedCookTypesAndBrands)?.[0]}
       @change=${(e) =>
-        handleSelectedCookTypesAndBrandsChanged({
-          [Object.keys(selectedCookTypesAndBrands)?.[0] ?? 'Gas Grill']: e
-            .target.value
-            ? [e.target.value]
-            : null,
-        })}
+        handleSelectedCookTypesAndBrandsChanged([
+          selectedCookTypesAndBrands[0][0],
+          [e.target.value],
+        ])}
     >
       <option
         value
-        ?selected=${(Object.values(selectedCookTypesAndBrands)?.[0]?.length ??
-          0) === 0}
+        ?selected=${(selectedCookTypesAndBrands?.[0]?.[1] ?? []).length === 0}
       >
         Select a brand
       </option>
-      ${brandInfo?.[
-        Object.keys(selectedCookTypesAndBrands)?.[0] ?? 'Gas Grills'
-      ]?.map(
+      ${brandInfo?.[selectedCookTypesAndBrands?.[0]?.[0] ?? 'Gas Grill']?.map(
         (brand) =>
           html`<option
             ?selected=${brand ===

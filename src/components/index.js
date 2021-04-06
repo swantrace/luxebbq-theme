@@ -2,12 +2,13 @@ import CookTypesAndBrandsFilter from './barbequeSmokerCollection/CookTypesAndBra
 import GrillCookingAreaFilter from './barbequeSmokerCollection/GrillCookingAreaFilter';
 import PriceRangeFilter from './barbequeSmokerCollection/PriceRangeFilter';
 import BackToTopBanner from './common/BackToTopBanner';
-import CollectionSidebarSearchInput from './common/CollectionSidebarSearchInput';
-import CollectionSidebarTopImages from './common/CollectionSidebarTopImages';
 import PerfectGrillSelectors from './perfectGrill/PerfectGrillSelectors';
 import ProductListPagination from './common/ProductListPagination';
 import ProductListTopControllers from './common/ProductListTopControllers';
 import ProductList from './common/ProductList';
+import BarbequesSidebarFilters from './barbeques/SidebarFilters';
+import ProductTypeSidebar from './productTypeCollection/ProductTypeSidebar';
+import ProductTypeMainContent from './productTypeCollection/ProductTypeMainContent';
 
 export default {
   ProductList,
@@ -17,7 +18,8 @@ export default {
   GrillCookingAreaFilter,
   PriceRangeFilter,
   BackToTopBanner,
-  CollectionSidebarSearchInput,
-  CollectionSidebarTopImages,
   PerfectGrillSelectors,
+  BarbequesSidebarFilters,
+  ProductTypeSidebar,
+  ProductTypeMainContent,
 };

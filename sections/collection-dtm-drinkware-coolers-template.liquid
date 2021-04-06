@@ -1,0 +1,39 @@
+<script>
+const defaultFilters = [{
+    stateKey: "selectedDrinkwareAndCoolersTypes",
+    actionType: "changeDrinkwareAndCoolersTypes",
+    title: "Types",
+    type: "SimpleFilter",
+    info: [
+        "Coolers",
+        "Cooler Accessories",
+        "Drinkware",
+        "Drinkware Accessories"   
+    ],
+    selected: []
+}, ]
+const filters = [...defaultFilters];
+const pelement = document.createElement('product-type-collection');
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
+pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('product-type', {{collection.all_types|first|json}});
+pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
+pelement.setAttribute('collection-title', "Drinkware & Coolers");
+pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
+pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
+document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+</script>
+{% schema %}
+{
+  "name": "Drinkware & Coolers",
+  "class": "dtm-collection-section dtm-drinkware-coolers-collection-section dtm-product-type-collection-section",
+  "settings": []
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

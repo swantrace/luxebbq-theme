@@ -126,6 +126,9 @@ export const transformFuncCreator = (productType) => {
 export const addslashes = (str) =>
   `${str}`.replace(/([\\"'])/g, '\\$1').replace(/\0/g, '\\0');
 
+export const addQuotesIfNecessary = (cur) =>
+  cur.split(/\s+/).length > 1 ? `"${cur}"` : cur;
+
 export const removeKey = (obj, propToDelete) => {
   const { [propToDelete]: deleted, ...objectWithoutDeletedProp } = obj;
   return objectWithoutDeletedProp;
@@ -427,6 +430,30 @@ export const barbequesProductsFilters = (state) => {
   };
 };
 
+export const grillingAccessoriesFilters = (state) => {
+  console.log(state);
+};
+
+export const lifestyleAccessoriesFilters = (state) => {
+  console.log(state);
+};
+
+export const fuelFilters = (state) => {
+  console.log(state);
+};
+
+export const partsFilters = (state) => {
+  console.log(state);
+};
+
+export const rubsSaucesFilters = (state) => {
+  console.log(state);
+};
+
+export const furnitureFilters = (state) => {
+  console.log(state);
+};
+
 export const productsSorter = (state) => (productA, productB) => {
   switch (state.sortValue) {
     case 'TITLE_ASC': {
@@ -455,6 +482,18 @@ export const productsFiltersCreator = (productType) => {
   switch (productType?.toLowerCase() ?? '') {
     case 'barbeques':
       return barbequesProductsFilters;
+    case 'grilling accessories':
+      return grillingAccessoriesFilters;
+    case 'lifestyle accessories':
+      return lifestyleAccessoriesFilters;
+    case 'fuel':
+      return fuelFilters;
+    case 'parts':
+      return partsFilters;
+    case 'rubs & sauces':
+      return rubsSaucesFilters;
+    case 'furniture':
+      return furnitureFilters;
     default:
       return productsFilters;
   }

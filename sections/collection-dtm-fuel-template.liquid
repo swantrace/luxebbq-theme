@@ -1,0 +1,68 @@
+<script>
+const defaultFilters = [{
+    stateKey: "selectedBrands",
+    actionType: "changeBrands",
+    title: "SimpleFilter",
+    type: "Brands",
+    info: [
+        "A-Maze-N Products", 
+        "Big Green Egg", 
+        "Blues Hog", 
+        "Bradley", 
+        "Broil King", 
+        "Fogo", 
+        "Grill Pro", 
+        "Jealous Devil", 
+        "Kamado Joe", 
+        "Louisiana Grills", 
+        "Napoleon", 
+        "Pitmasters Choice", 
+        "Tank Traders", 
+        "TerraFlame", 
+        "Traeger Grills", 
+        "Weber", 
+    ],
+    selected: []
+}, {
+    stateKey: "selectedFuelTypes",
+    actionType: "changeFuelTypes",
+    title: "Fuel Types",
+    type: "SimpleFilter",
+    info: [
+        "Charcoal Briquettes",
+        "Lump Charcoal",
+        "Propane",
+        "Smoking Bisquettes",
+        "Wood Chips",
+        "Wood Chunks",
+        "Wood Planks",
+        "Wood Logs",
+        "Wood Pellets",
+    ],
+    selected: []
+}, ]
+const filters = [...defaultFilters];
+const pelement = document.createElement('product-type-collection');
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
+pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('product-type', {{collection.all_types|first|json}});
+pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
+pelement.setAttribute('collection-title', "Fuel");
+pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
+pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
+document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+</script>
+{% schema %}
+{
+  "name": "Fuel",
+  "class": "dtm-collection-section dtm-fuel-collection-section dtm-product-type-collection-section",
+  "settings": []
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

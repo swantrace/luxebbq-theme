@@ -1,0 +1,100 @@
+<script>
+const defaultFilters = [{
+    stateKey: "selectedBrands",
+    actionType: "changeBrands",
+    title: "Brands",
+    type: "SimpleFilter",
+    info: [
+        "303 Products",  
+        "A-Maze-N Products",  
+        "Arteflame",  
+        "Big Green Egg",  
+        "Bradley",  
+        "Broil King",  
+        "Bulldog",  
+        "Cookina",  
+        "Fireboad",  
+        "Flame Boss",  
+        "Flammers",  
+        "Fornetto",  
+        "GI Metal",  
+        "Grill Floss",  
+        "Grill Grate",  
+        "Grill Pro",  
+        "Hardcore Carnivore",  
+        "Ice Shaker",  
+        "Ireuse2",  
+        "Island Grillstone",  
+        "Jealous Devil",  
+        "Kamado Joe",  
+        "Kick Ash",  
+        "Kindling Cracker",  
+        "La Piazza",  
+        "Lodge",  
+        "Looft Lighter",  
+        "Louisiana Grills",  
+        "Master Built",  
+        "Mopeka",  
+        "Napoleon",  
+        "Napoleon Gourmet Grills",  
+        "Ooni",  
+        "Pit Barrel",  
+        "Pit Boss",  
+        "PK Grills",  
+        "RTE 83",  
+        "Shun",  
+        "Smokeware",  
+        "The Rib-o-lator",  
+        "Thermoworks",  
+        "Traeger Grills",  
+        "VSSL",  
+        "VSSL.",  
+        "Weber",  
+        "Yeti", 
+        "Yoder Smokers"    
+    ],
+    selected: []
+}, {
+    stateKey: "selectedGrillingAccessoriesTypes",
+    actionType: "changeGrillingAccessoriesTypes",
+    title: "Grilling Accessories Types",
+    type: "SimpleFilter",
+    info: [
+        "BBQ Tools",
+        "Cleaning & Maintenance",
+        "Cookware",
+        "Covers",
+        "Disposable Pans",
+        "Rotisseries",
+        "Smoking Accessories",
+        "Textiles",
+        "Thermometers",
+        "Cookware",
+    ],
+    selected: []
+}, ]
+const filters = [...defaultFilters];
+const pelement = document.createElement('product-type-collection');
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
+pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('product-type', {{collection.all_types|first|json}});
+pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
+pelement.setAttribute('collection-title', "Grilling Accessories");
+pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
+pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
+document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+</script>
+{% schema %}
+{
+  "name": "Grilling Accessories",
+  "class": "dtm-collection-section dtm-barbeques-collection-section dtm-product-type-collection-section",
+  "settings": []
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

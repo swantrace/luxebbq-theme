@@ -1,0 +1,18 @@
+{% assign productType = collection.all_types | first | handleize %}
+{% if productType == 'barbeques' %}
+{% section 'collection-dtm-barbeques-template' %}
+{% elsif productType == 'drinkware-coolers' %}
+{% section 'collection-dtm-drinkware-coolers-template' %}
+{% elsif productType == 'fuel' %}
+{% section 'collection-dtm-fuel-template' %}
+{% elsif productType == 'furniture' %}
+{% section 'collection-dtm-furniture-template' %}
+{% elsif productType == 'grilling-accessories' %}
+{% section 'collection-dtm-grilling-accessories-template' %}
+{% elsif productType == 'lifestyle-accessories' %}
+{% section 'collection-dtm-lifestyle-accessories-template' %}
+{% elsif productType == 'parts' %}
+{% section 'collection-dtm-parts-template' %}
+{% elsif productType == 'rubs-sauces' %}
+{% section 'collection-dtm-rubs-sauces-template' %}
+{% endif %}

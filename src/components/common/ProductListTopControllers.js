@@ -7,6 +7,7 @@ function ProductListTopControllers({ productType }) {
   const context = usePageContext();
   const state = context?.state ?? {};
   const dispatch = context?.dispatch ?? (() => {});
+  const fetchIsFinished = state?.fetchIsFinished ?? false;
   const searchedProducts = getFilteredSortedProducts(state, productType);
   const viewMode = state?.viewMode ?? 'grid';
   const productsPerPage = context?.state?.productsPerPage ?? 24;
@@ -31,12 +32,12 @@ function ProductListTopControllers({ productType }) {
   };
 
   const productsSize = searchedProducts.length;
-  // console.log(searchedProducts);
+
   return html`<div class="row py-5">
     <div class="col-12">
       <div class="product-filter-content collection-top-controllers">
         <div class="search-count">
-          ${productsSize > 0
+          ${fetchIsFinished
             ? html`<h5>${productsSize} Products match your search criteria</h5>`
             : html`${ProductListLoading()}`}
         </div>

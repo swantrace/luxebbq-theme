@@ -1,0 +1,50 @@
+<script>
+const defaultFilters = [{
+    stateKey: "selectedBrands",
+    actionType: "changeBrands",
+    title: "Brands",
+    type: "SimpleFilter",
+    info: [
+        "Napoleon", 
+        "TerraFlam"
+    ],
+    selected: []
+},{
+    stateKey: "selectedFurnitureTypes",
+    actionType: "changeFurnitureTypes",
+    title: "Furniture Types",
+    type: "SimpleFilter",
+    info: [
+      "Fire Tables", 
+      "Outdoor Furniture",
+      "Patio Heaters",
+      "Umbrella",
+      "Outdoor Accessories"
+    ],
+    selected: []
+}, ]
+const filters = [...defaultFilters];
+const pelement = document.createElement('product-type-collection');
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
+pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('product-type', {{collection.all_types|first|json}});
+pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
+pelement.setAttribute('collection-title', "Furniture");
+pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
+pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
+document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+</script>
+{% schema %}
+{
+  "name": "Furniture",
+  "class": "dtm-collection-section dtm-furniture-collection-section dtm-product-type-collection-section",
+  "settings": []
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

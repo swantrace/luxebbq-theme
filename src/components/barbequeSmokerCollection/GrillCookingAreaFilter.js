@@ -33,9 +33,17 @@ function GrillCookingAreaFilter() {
             });
           }}
         ></paper-range-slider>
+        <style>
+          .collection-grill-cooking-filter > paper-range-slider:before {
+            content: '${valueMin}';
+          }
+          .collection-grill-cooking-filter > paper-range-slider:after {
+            content: '${valueMax}';
+          }
+        </style>
       </div>
     </div>
-  </div>`;
+  </div> `;
 }
 
 export default {

@@ -32,6 +32,14 @@ function PriceRangeFilter() {
             });
           }}
         ></paper-range-slider>
+        <style>
+          .collection-price-filter > paper-range-slider:before {
+            content: '${valueMin}';
+          }
+          .collection-price-filter > paper-range-slider:after {
+            content: '${valueMax}';
+          }
+        </style>
       </div>
     </div>
   </div>`;

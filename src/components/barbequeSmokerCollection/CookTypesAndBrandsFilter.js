@@ -64,7 +64,7 @@ function CookTypesAndBrandsFilter() {
   return html` <div class="collection-collapse-block">
     <h3 class="collapse-block-title">Cook Type / Brands</h3>
     <div class="collection-collapse-block-content">
-      <div class="collection-brand-filter">
+      <div class="collection-sidebar-filter">
         <ul
           class="sidebar_filter_cls sidebar_cook_types"
           id="cook_types_filter"

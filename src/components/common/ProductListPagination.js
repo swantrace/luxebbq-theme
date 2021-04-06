@@ -1,17 +1,13 @@
 import { html } from '@apollo-elements/haunted';
 import { usePageContext } from '../../context';
-import {
-  getDisplayedPageNumbers,
-  getFilteredSortedProducts,
-  getPageCount,
-} from '../../helpers';
+import { getDisplayedPageNumbers, getPageCount } from '../../helpers';
 import ProductListLoading from './ProductListLoading';
 
 function ProductListPagination({ productType }) {
   const context = usePageContext();
   const state = context?.state ?? {};
   const dispatch = context?.dispatch ?? (() => {});
-  const searchedProducts = getFilteredSortedProducts(state, productType);
+  const fetchIsFinished = state?.fetchIsFinished ?? false;
   const pageCount = getPageCount(state, productType);
   const { pageNumber } = state;
   const displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
@@ -23,14 +19,12 @@ function ProductListPagination({ productType }) {
     dispatch({ type: 'changePageNumber', payload: number });
   };
 
-  const productsSize = searchedProducts.length;
-
   return html`<div class="product-pagination">
     <div class="theme-paggination-block">
       <div class="container-fluid p-0">
         <div class="row justify-content-center">
           <nav aria-label="Page navigation">
-            ${productsSize > 0
+            ${fetchIsFinished
               ? html`<ul class="pagination">
                   ${pageNumber > 1
                     ? html`<li class="page-item">

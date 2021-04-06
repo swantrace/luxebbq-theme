@@ -7,24 +7,32 @@
   font-size: 33px;
 }
 
+.collection-filter-block,
+.perfect-grill-selectors-wrapper {
+  /*** custom checkboxes ***/
+  input[type='checkbox'] {
+    display: none;
+  } /* to hide the checkbox itself */
+  input[type='checkbox'] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    font-size: 18px;
+  }
 
-.collection-filter-block, .perfect-grill-selectors-wrapper{
-    /*** custom checkboxes ***/
-    input[type=checkbox] { display:none; } /* to hide the checkbox itself */
-    input[type=checkbox] + label:before {
-      font-family: FontAwesome;
-      display: inline-block;
-      font-size: 18px;
-    }
+  input[type='checkbox'] + label:before {
+    content: '\f096';
+  } /* unchecked icon */
+  input[type='checkbox'] + label:before {
+    letter-spacing: 10px;
+  } /* space between checkbox and label */
 
-    input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
-    input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
-
-    input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
-    input[type=checkbox]:checked + label:before { letter-spacing: 10px; } /* allow space for check mark */
-
+  input[type='checkbox']:checked + label:before {
+    content: '\f046';
+  } /* checked icon */
+  input[type='checkbox']:checked + label:before {
+    letter-spacing: 10px;
+  } /* allow space for check mark */
 }
-
 
 .parallelograms-group.dtm-parallelograms-group {
   flex-basis: 50%;
@@ -40,24 +48,25 @@
   flex-wrap: wrap;
   justify-content: space-between;
   color: #808080;
-  h5, select{color: #808080;}
+  h5,
+  select {
+    color: #808080;
+  }
 
-  .collection-view li{
+  .collection-view li {
     padding: 0 5px;
   }
 }
 
-barbeque-smoker-collection {
+product-type-collection {
   .collection-image-wrapper {
     img {
       width: 100%;
     }
   }
 
-  cook-types-and-brands-filter {
-    .collection-collapse-block {
-      border-bottom: 1px solid #fb711c;
-    }
+  .selectedCookTypesAndBrands-nested-filter {
+    border-bottom: 1px solid #fb711c;
   }
 
   .collection-collapse-block .collapse-block-title {
@@ -66,13 +75,11 @@ barbeque-smoker-collection {
     }
   }
 
-  collection-sidebar-search-input {
-    #collection-search-input {
-      border: 1px solid #fb711c;
-    }
+  #collection-search-input {
+    border: 1px solid #fb711c;
   }
 
-  .collection-brand-filter {
+  .collection-sidebar-filter {
     li {
       display: block;
     }
@@ -92,11 +99,11 @@ barbeque-smoker-collection {
     margin-bottom: 0 !important;
   }
 
-  ul#cook_types_filter {
+  ul.first_level_options {
     li {
       display: block;
-      ul#brands_filter {
-        margin-top: 0;
+      ul.second_level_options {
+        margin-top: 0 !important;
         li {
           display: block;
         }
@@ -257,7 +264,10 @@ perfect-grill {
         .perfect-grill-selector-input {
           flex-grow: 0;
           flex-basis: 610px;
-          select{ border: 1px solid #dee2e6 ; color: #777777 ; }
+          select {
+            border: 1px solid #dee2e6;
+            color: #777777;
+          }
 
           .form-check-inline {
             flex-basis: 30%;

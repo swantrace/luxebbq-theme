@@ -103,7 +103,7 @@
 
   </head>
 
-  <body class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
+  <body hidden class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
                {% if settings.enable_box_layout and settings.box_layout == 'box_layout_1' and template == 'index' %}box-layout-body{% endif %}
                {% if settings.enable_box_layout and settings.box_layout == 'box_layout_2' and template == 'index' %}layout-20{% endif %}
                {% if settings.enable_rtl %} rtl{% endif %}

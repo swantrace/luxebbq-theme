@@ -27,6 +27,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
           allProducts: action.payload,
           searchString: '',
           pageNumber: 1,
+          fetchIsFinished: true,
         };
       }
       case 'changeSortValue': {
@@ -68,6 +69,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
 
   const [state, dispatch] = useReducer(searchResultReducer, {
     allProducts: [],
+    fetchIsFinished: false,
     searchString: '',
     productsPerPage: 24,
     pageNumber: 1,
