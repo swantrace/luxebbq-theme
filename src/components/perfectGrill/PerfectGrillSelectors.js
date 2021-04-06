@@ -83,6 +83,7 @@ function PerfectGrillSelectors() {
       payload: newGrillType,
     });
   };
+
   const handleStandTypeChanged = (newStandType) => {
     dispatch({
       type: 'changeStandType',
