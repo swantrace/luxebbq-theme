@@ -663,6 +663,8 @@
 					if (!$a.length) {
 						$a = $ul.prevAll().find('a').eq(-1);
 					}
+					
+
 					$a.addClass('has-submenu').dataSM('sub', $ul);
 					$ul.dataSM('parent-a', $a)
 						.dataSM('level', level)

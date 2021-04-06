@@ -33,25 +33,10 @@ $theme-deafult: #fb711c;
 /*=====================
 Header & Footer
 ==========================*/
-.header-phone-banner:before
-{
-    content: "";
-    display: block;
-    top: 0;
-    bottom: 0;
-    width: 20px;
-    transform: skewX(-12deg);
+
+.dtm .pixelstrap a .sub-arrow{
+  display:none;  
 }
-
-/* // .header-phone-banner:before
-// {
-//     display: block;
-//     top: 0;
-//     bottom: 0;
-//     width: 20px;
-//     transform: skewX(-12deg);
-// } */
-
 
 .header-phone-banner{
     position: relative;
@@ -82,7 +67,7 @@ Header & Footer
     .header-phone-block{
         background: $theme-deafult;
         padding: 8px 25px;
-        display: inline-flex;
+        display: flex;
         position: absolute;
         right: 0;
 
@@ -310,11 +295,6 @@ Homepage
 
 }
 
-
-// .dtm.dtm-title{
-//     padding: 30px 0;
-// }
-
 .dtm .parallelograms-group {
     width: 70%;
     display: flex;
@@ -379,4 +359,35 @@ Homepage
 @media (max-width: 1199px){
     .title1 .title-inner1{   font-size: 25px;}
     .dtm .parallelograms-group{width: 60%;}
+
+    header.dtm.header-5 {
+        background-color: #111111;
+    }
+
+    .toggle-nav i{color:#fff}
+
+    .pixelstrap.sm-horizontal li a{color: #111111  }
+
+    .dtm .pixelstrap a .sub-arrow{
+        display:block;  
+    }
+
+    #main-menu > li > a.active::after{
+        width: 20% !important;
+    }
+
+    .header-phone-banner .header-phone-block{
+        position: inherit; 
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 480px){
+    .header-phone-banner{display:none;}
 }
