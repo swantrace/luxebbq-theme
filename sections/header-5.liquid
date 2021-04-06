@@ -4,6 +4,7 @@
   
   <!-- header Phone call out -->
   <div class="header-phone-banner container">
+
     <div class="header-phone-block"> 
         <span class="call-text"> Call Now: 1-204-888-LUXE </span>
         <div class="header_social">
@@ -42,7 +43,7 @@
         </div>
       </div>
   </div>
-   <!-- END header Phone call out -->
+   <!-- END header Phone call out-->
   
   <div class="mobile-fix-option"></div>
   <div class="container">
@@ -59,9 +60,9 @@
             {% else %}
             <h2 itemprop="logo"><a href="/" itemprop="url">{{ shop.name }}</a></h2>
             {% endif %}
-            {% if settings.eneble_header_sidebar %}
+            {% comment %} {% if settings.eneble_header_sidebar %}
             {% include 'header-sidebar' %}
-            {% endif %}
+            {% endif %} {% endcomment %}
           </div>
           <div class="menu-right pull-right main-navigation">
             <div class="menu-for-dekstopp">
@@ -69,7 +70,7 @@
                 <div class="toggle-nav">
                   <i class="fa fa-bars sidebar-bar"></i>
                 </div>
-                <!-- Horizontal menu -->
+                <!-- Horizontal menu-->
                 <ul id="main-menu" class="sm pixelstrap sm-horizontal {% if settings.enable_rtl %} sm-rtl{% endif %}">
                   <li>
                     <div class="mobile-back text-right">
@@ -101,12 +102,13 @@
                       {% endif %}
                     </a>
                   </li>
+                  
                   {% elsif block.type == 'parent-child-item' %}
 
                   <li><a href="{{ block.settings.menu_link }}">
-                    <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_menu_name"{% endif %}>
+                    {% comment %} <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_menu_name"{% endif %}>
                       {{ block.settings.menu_name }}
-                    </span>
+                    </span> {% endcomment %}
                     {% if settings.enable_lang_switcher %}
                     <span class="hide" id="header1_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
                     {% endif %}   
@@ -277,16 +279,17 @@
                   
                   {% elsif block.type == 'select-nav-menu' %}
 
+                      <!-- TEST -- {{ block.type }} -->
                     {% assign sidebar_menu_id = block.settings.mainmenu -%}
                     {% for mainlink in linklists[sidebar_menu_id].links %}
                     {% assign child_list_handle = mainlink.title | handleize %}     
 
                     {% if linklists[child_list_handle].links != blank %}
 
-                    <li>
+                    <li class="select-nav-menu  ">
                       {% assign data_title = mainlink.title | split: '|' | first %}
                       {% assign data_json = mainlink.title | split: '|' | last %}
-                      <a href="{{ block.settings.menu_link }}">
+                      <a href="{{ mainlink.url }}">
                         <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_menu_name"{% endif %}>
                           {{ data_title }}
                         </span>
@@ -339,7 +342,7 @@
                         {% endfor %}
                       </ul>
                     </li>
-
+                    <!-- END TEST -- {{ block.type }} -->
                     {% else %}
 
                     <li>
