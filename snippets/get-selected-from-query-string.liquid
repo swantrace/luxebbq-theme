@@ -6,5 +6,7 @@ const params = Array.from((new URLSearchParams(location.search)).entries()).redu
     }  
     return acc;
 }, {});
+
 console.log(params);
+
 history.replaceState(null, "", location.href.split("?")[0]);
