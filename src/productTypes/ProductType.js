@@ -211,9 +211,8 @@ class ProductType {
     const productTypePart = `product_type:${addslashes(
       addQuotesIfNecessary(this.name)
     )}`;
-    const tagsAndBrandsPart = Object.keys(tagsAndBrands ?? {})
-      .map((tag) => {
-        const brands = tagsAndBrands[tag];
+    const tagsAndBrandsPart = tagsAndBrands
+      .map(([tag, brands]) => {
         const productBrandPart = `${brands
           .map((brand) => `vendor:${addslashes(addQuotesIfNecessary(brand))}`)
           .join(' OR ')}`;
