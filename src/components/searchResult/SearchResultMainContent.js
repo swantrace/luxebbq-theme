@@ -1,40 +1,40 @@
 import { html, useRef } from '@apollo-elements/haunted';
+import chunk from 'lodash.chunk';
 import { usePageContext } from '../../context';
 import Pagination from '../common/Pagination';
-import TitleBanner from '../common/TitleBanner';
 import TopControllers from '../common/TopControllers';
 import Products from '../common/Products';
+import { getDisplayedPageNumbers, productsSorter } from '../../helpers';
 
-function ProductTypeMainContent() {
+function SearchResultMainContent() {
   const {
-    collectionTitle,
-    emptyCollectionImage,
-    getFilteredSortedProducts,
-    getFilteredSortedProductsOfCurrentPage,
-    getPageCount,
-    getDisplayedPageNumbers,
     productsOfFirstPage,
     state,
     dispatch,
+    emptyCollectionImage,
   } = usePageContext();
   const {
+    allProducts,
     fetchIsFinished,
     viewMode,
     sortValue,
     productsPerPage,
     pageNumber,
   } = state;
-  const searchedProducts = getFilteredSortedProducts();
+  const searchedProducts = allProducts.sort(productsSorter(state));
   const productsSize = searchedProducts.length;
   let productsOfCurrentPage = [];
+  let pageCount = 1;
+  let displayedPageNumbers = [1];
   if (!fetchIsFinished) {
     productsOfCurrentPage = productsOfFirstPage ?? [];
   } else {
-    productsOfCurrentPage = getFilteredSortedProductsOfCurrentPage();
+    const productsInChunk = chunk(searchedProducts, productsPerPage);
+    productsOfCurrentPage = productsInChunk?.[pageNumber - 1] ?? [];
+    pageCount = productsInChunk?.length ?? 1;
+    displayedPageNumbers = getDisplayedPageNumbers(pageCount, pageNumber);
   }
 
-  const pageCount = getPageCount();
-  const displayedPageNumbers = getDisplayedPageNumbers();
   const thisRef = useRef(this);
   const handleViewModeIconClicked = (newViewMode) => {
     dispatch({ type: 'changeViewMode', payload: newViewMode });
@@ -57,10 +57,8 @@ function ProductTypeMainContent() {
     }
     dispatch({ type: 'changePageNumber', payload: number });
   };
-  console.log('collectionTitle', collectionTitle);
-  return html`${TitleBanner({
-    title: collectionTitle,
-  })}${TopControllers({
+
+  return html`${TopControllers({
     fetchIsFinished,
     productsSize,
     viewMode,
@@ -74,6 +72,10 @@ function ProductTypeMainContent() {
     productsOfCurrentPage,
     viewMode,
     emptyCollectionImage,
+    itemClassList: {
+      grid: 'col-lg-3 col-md-6 col-grid-box',
+      list: 'col-lg-12',
+    },
   })}${Pagination({
     fetchIsFinished,
     pageNumber,
@@ -84,8 +86,8 @@ function ProductTypeMainContent() {
 }
 
 export default {
-  tagName: 'product-type-main-content',
-  renderer: ProductTypeMainContent,
+  tagName: 'search-result-main-content',
+  renderer: SearchResultMainContent,
   options: {
     observedAttributes: [],
     useShadowDOM: false,
