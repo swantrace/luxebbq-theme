@@ -43,7 +43,7 @@ class LifestyleAccessories extends ProductType {
   transformStateToFirstPageGraphqlRequestVariables() {
     const otherTag = this.state
       ?.SelectedlifestyleAccessoriesTypesAndBrands?.[0]?.[0]
-      ? `dtm_lifestyle-accessories_${this.state?.SelectedlifestyleAccessoriesTypesAndBrands?.[0]?.[0]}`
+      ? `dtm_lifestyle-accessories-type_${this.state?.SelectedlifestyleAccessoriesTypesAndBrands?.[0]?.[0]}`
       : '';
     return {
       first: this.state?.productsPerPage ?? 24,

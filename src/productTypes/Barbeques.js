@@ -133,10 +133,10 @@ class Barbeques extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
-      cookType:
+      cookTypes:
         product.tags
-          ?.find((tag) => tag.includes('dtm_cook-type_'))
-          ?.replace('dtm_cook-type_', '') ?? null,
+          ?.filter((tag) => tag.includes('dtm_cook-type_'))
+          ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
       grillCookingArea:
         product.tags
           ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
@@ -194,25 +194,34 @@ class Barbeques extends ProductType {
           return true;
         }
 
-        if (!product?.cookType) {
+        if (!product?.cookTypes || (product?.cookTypes?.length ?? 0) === 0) {
           return false;
         }
-        const currentProductCookType = cookTypes.find(
-          (t) => product.cookType === t
+        const currentProductCookTypes = cookTypes.filter((t) =>
+          product.cookTypes.includes(t)
         );
-        if (!currentProductCookType) {
+
+        if (!currentProductCookTypes.length === 0) {
           return false;
         }
 
-        const brands =
-          selectedCookTypesAndBrands.find(
-            ([cookType]) => cookType === currentProductCookType
-          )?.[1] ?? [];
+        const booleanArr = currentProductCookTypes.map(
+          (currentProductCookType) => {
+            const brands =
+              selectedCookTypesAndBrands.find(
+                ([cookType]) => cookType === currentProductCookType
+              )?.[1] ?? [];
+            if (brands.length === 0) {
+              return true;
+            }
+            return !!brands.includes(product.vendor);
+          }
+        );
 
-        if (brands.length === 0) {
+        if (booleanArr.find((a) => a === true)) {
           return true;
         }
-        return !!brands.includes(product.vendor);
+        return false;
       },
       price: (product) => {
         if (st.length > 0) {
