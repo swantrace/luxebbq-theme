@@ -1,5 +1,9 @@
-import BarbequeSmokerCollection from './BarbequeSmokerCollection';
 import SearchResult from './SearchResult';
 import PerfectGrill from './PerfectGrill';
+import ProductTypeCollection from './ProductTypeCollection';
 
-export default { BarbequeSmokerCollection, SearchResult, PerfectGrill };
+export default {
+  SearchResult,
+  PerfectGrill,
+  ProductTypeCollection,
+};

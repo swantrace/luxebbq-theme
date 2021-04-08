@@ -16,11 +16,17 @@ const PerfectGrillGrillCookingAreaSelector = virtual(
     return html`<style is="custom-style">
         .price-paper-range-slider {
           --paper-range-slider-width: 610px;
-          max-width: 100%;
+          max-width: 600px;
           --primary-color: #fb711c;
+        }
+        paper-range-slider.cooking-area-paper-range-slider:before {
+          content: '${valueMin}';
+        }
+        paper-range-slider.cooking-area-paper-range-slider:after {
+          content: '${valueMax}';
         }</style
       ><paper-range-slider
-        class="price-paper-range-slider"
+        class="cooking-area-paper-range-slider price-paper-range-slider"
         id="price-range-slider"
         step="1"
         min=${min}

@@ -25,6 +25,7 @@ const start = () => {
       );
     }
   );
+  document.body.removeAttribute('hidden');
 };
 
 if (/complete|interactive|loaded/.test(document.readyState)) {

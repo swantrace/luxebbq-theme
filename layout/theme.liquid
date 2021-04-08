@@ -84,6 +84,8 @@
     {% comment %} dtm added {% endcomment %}
     {{ 'custom.js' | asset_url | script_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'custom.min.css' | asset_url | stylesheet_tag }}
+    <script defer src="{{ 'custom.min.js' | asset_url}}"></script> {% endcomment %}
     {{ 'bootstrap-icon.css' | asset_url |  stylesheet_tag  }}
     {% comment %} dtm added {% endcomment %}
     {{ 'TweenMax.min.js' | asset_url | script_tag }}

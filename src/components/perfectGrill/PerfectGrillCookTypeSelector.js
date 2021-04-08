@@ -7,7 +7,7 @@ const PerfectGrillCookTypeSelector = virtual(
     handleSelectedCookTypesAndBrandsChanged,
   }) => {
     const selectedCookType =
-      Object.keys(selectedCookTypesAndBrands)?.[0] ?? 'Gas Grill';
+      selectedCookTypesAndBrands?.[0]?.[0] ?? 'Gas Grill';
     return html` ${Object.entries(cookTypeLogos).map(
       ([cookType, iconClass]) => html`
         <div
@@ -16,9 +16,9 @@ const PerfectGrillCookTypeSelector = virtual(
           }`}
           @click=${() =>
             handleSelectedCookTypesAndBrandsChanged(
-              selectedCookTypesAndBrands[cookType]
+              selectedCookTypesAndBrands?.[0]?.[0] === cookType
                 ? selectedCookTypesAndBrands
-                : { [cookType]: [] }
+                : [[cookType, []]]
             )}
         >
           <i class="icon-${iconClass} iconfont text-center"></i>

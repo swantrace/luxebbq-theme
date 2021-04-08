@@ -6,8 +6,8 @@ const PerfectGrillKeyFeaturesSelector = virtual(
     sideBurner,
     searBurner,
     rearRotisserie,
-    grillType,
-    standType,
+    selectedGrillTypes,
+    selectedStandTypes,
     handleSideBurnerChanged,
     handleSearBurnerChanged,
     handleRearRotisserieChanged,
@@ -57,9 +57,11 @@ const PerfectGrillKeyFeaturesSelector = virtual(
           class="form-check-input"
           type="checkbox"
           id="castIronGrill"
-          ?checked=${grillType.includes('Cast Iron Grill')}
+          ?checked=${selectedGrillTypes.includes('Cast Iron Grill')}
           @change=${() => {
-            handleGrillTypeChanged(uniq([...grillType, 'Cast Iron Grill']));
+            handleGrillTypeChanged(
+              uniq([...selectedGrillTypes, 'Cast Iron Grill'])
+            );
           }}
         />
         <label class="form-check-label" for="castIronGrill"
@@ -71,10 +73,10 @@ const PerfectGrillKeyFeaturesSelector = virtual(
           class="form-check-input"
           type="checkbox"
           id="stainlessSteelGrill"
-          ?checked=${grillType.includes('Stainless Steel Grill')}
+          ?checked=${selectedGrillTypes.includes('Stainless Steel Grill')}
           @change=${() => {
             handleGrillTypeChanged(
-              uniq([...grillType, 'Stainless Steel Grill'])
+              uniq([...selectedGrillTypes, 'Stainless Steel Grill'])
             );
           }}
         />
@@ -87,10 +89,10 @@ const PerfectGrillKeyFeaturesSelector = virtual(
           class="form-check-input"
           type="checkbox"
           id="ceramicCoatedGrill"
-          ?checked=${grillType.includes('Ceramic Coated Grill')}
+          ?checked=${selectedGrillTypes.includes('Ceramic Coated Grill')}
           @change=${() => {
             handleGrillTypeChanged(
-              uniq([...grillType, 'Ceramic Coated Grill'])
+              uniq([...selectedGrillTypes, 'Ceramic Coated Grill'])
             );
           }}
         />
@@ -103,9 +105,11 @@ const PerfectGrillKeyFeaturesSelector = virtual(
           class="form-check-input"
           type="checkbox"
           id="freeStanding"
-          ?checked=${standType.includes('Free Standing')}
+          ?checked=${selectedStandTypes.includes('Free Standing')}
           @change=${() => {
-            handleStandTypeChanged(uniq([...standType, 'Free Standing']));
+            handleStandTypeChanged(
+              uniq([...selectedStandTypes, 'Free Standing'])
+            );
           }}
         />
         <label class="form-check-label" for="freeStanding">Free Standing</label>
@@ -115,9 +119,9 @@ const PerfectGrillKeyFeaturesSelector = virtual(
           class="form-check-input"
           type="checkbox"
           id="builtIn"
-          ?checked=${standType.includes('Built In')}
+          ?checked=${selectedStandTypes.includes('Built In')}
           @change=${() => {
-            handleStandTypeChanged(uniq([...standType, 'Built In']));
+            handleStandTypeChanged(uniq([...selectedStandTypes, 'Built In']));
           }}
         />
         <label class="form-check-label" for="builtIn">Built In</label>
@@ -127,9 +131,9 @@ const PerfectGrillKeyFeaturesSelector = virtual(
           class="form-check-input"
           type="checkbox"
           id="portable"
-          ?checked=${standType.includes('Portable')}
+          ?checked=${selectedStandTypes.includes('Portable')}
           @change=${() => {
-            handleStandTypeChanged(uniq([...standType, 'Portable']));
+            handleStandTypeChanged(uniq([...selectedStandTypes, 'Portable']));
           }}
         />
         <label class="form-check-label" for="portable">Portable</label>

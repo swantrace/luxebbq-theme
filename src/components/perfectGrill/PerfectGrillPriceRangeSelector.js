@@ -10,8 +10,14 @@ const PerfectGrillPriceRangeSelector = virtual(
     return html`<style is="custom-style">
         .price-paper-range-slider {
           --paper-range-slider-width: 610px;
-          max-width: 100%;
+          max-width: 600px
           --primary-color: #fb711c;
+        }
+        paper-range-slider.price-paper-range-slider:before {
+          content: '${valueMin}';
+        }
+        paper-range-slider.price-paper-range-slider:after {
+          content: '${valueMax}';
         }</style
       ><paper-range-slider
         class="price-paper-range-slider"

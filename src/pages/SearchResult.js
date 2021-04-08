@@ -10,7 +10,7 @@ import { pageWrapper as SearchResultWrapper } from '../context';
 import {
   getQueryString,
   getSortValueFromDefaultSortBy,
-  queryAllProducts,
+  queryAllProductsFromSearchTerm,
   GET_PRODUCTS,
   transformFunc,
 } from '../helpers';
@@ -25,8 +25,12 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
         return {
           ...previousState,
           allProducts: action.payload,
-          searchString: '',
-          pageNumber: 1,
+        };
+      }
+      case 'setFetchIsFinished': {
+        return {
+          ...previousState,
+          fetchIsFinished: action.payload,
         };
       }
       case 'changeSortValue': {
@@ -68,6 +72,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
 
   const [state, dispatch] = useReducer(searchResultReducer, {
     allProducts: [],
+    fetchIsFinished: false,
     searchString: '',
     productsPerPage: 24,
     pageNumber: 1,
@@ -75,8 +80,6 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
     sortValue: 'BEST_SELLING_ASC',
     onlineStoreOnly: false,
   });
-
-  window.state = state;
 
   const { data: dataWithFirstPageProducts } = useQuery(GET_PRODUCTS, {
     variables: {
@@ -95,11 +98,10 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
     ) ?? [];
 
   useEffect(async () => {
-    const products = await queryAllProducts({
-      searchString,
-    });
+    const products = await queryAllProductsFromSearchTerm(searchString);
     // console.log('allProducts:', products);
     dispatch({ type: 'setAllProducts', payload: products });
+    dispatch({ type: 'setFetchIsFinished', payload: true });
   }, []);
 
   return html`${SearchResultWrapper({
@@ -116,14 +118,7 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
             ${searchString
               ? html` <div class="row">
                   <div class="col-lg-10 offset-lg-1">
-                    <product-list-top-controllers></product-list-top-controllers>
-                    <product-list
-                      .itemClassList=${{
-                        grid: 'col-lg-3 col-md-6 col-grid-box',
-                        list: 'col-lg-12',
-                      }}
-                    ></product-list>
-                    <product-list-pagination></product-list-pagination>
+                    <search-result-main-content></search-result-main-content>
                   </div>
                 </div>`
               : null}
