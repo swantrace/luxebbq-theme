@@ -31,7 +31,7 @@ const defaultFilters = [{
       "Rubs/Spices",
       "Sauces"
     ],
-    selected: []
+    selected: params?.['selectedFoodTypes'] ?? []
 }, {
     stateKey: "selectedSpecialtyFoods",
     actionType: "changeSelectedSpecialtyFoods",

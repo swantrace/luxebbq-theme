@@ -1,5 +1,6 @@
 <script>
-const defaultFilters = [{
+{% render 'get-selected-from-query-string' %}
+const filters = [{
     stateKey: "selectedBrands",
     actionType: "changeBrands",
     title: "SimpleFilter",
@@ -39,9 +40,8 @@ const defaultFilters = [{
         "Wood Logs",
         "Wood Pellets",
     ],
-    selected: []
+    selected: params?.['selectedFuelTypes'] ?? []
 }, ]
-const filters = [...defaultFilters];
 const pelement = document.createElement('product-type-collection');
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));

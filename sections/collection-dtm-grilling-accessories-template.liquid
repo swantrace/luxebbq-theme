@@ -71,7 +71,7 @@ const defaultFilters = [{
         "Thermometers",
         "Cookware",
     ],
-    selected: []
+    selected: params?.['selectedGrillingAccessoriesTypes'] ?? []
 }, ]
 const filters = [...defaultFilters];
 const pelement = document.createElement('product-type-collection');

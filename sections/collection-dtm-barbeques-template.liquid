@@ -1,5 +1,6 @@
 <script>
-const defaultFilters = [{
+{% render 'get-selected-from-query-string' %}
+const filters = [{
     stateKey: "searchString",
     actionType: "changeSearchString",
     title: "Search",
@@ -53,7 +54,7 @@ const defaultFilters = [{
             ]
         ]
     ],
-    selected: []
+    selected: params?.['selectedCookTypesAndBrands'] ?? []
 }, {
     stateKey: "currentPriceRange",
     actionType: "changePriceRange",
@@ -74,16 +75,16 @@ const defaultFilters = [{
     title: "Stand Types",
     type: "SimpleFilter",
     info: ['Portable','Free Standing','Built In'],
-    selected: []
+    selected: params?.['selectedStandTypes'] ?? []
 }, {
     stateKey: "clearance",
     actionType: "changeClearance",
     title: "Clearance",
     type: "Checkbox",
     info: [],
-    selected: false
+    selected: params?.['clearance'] ?? false
 }, ]
-const filters = [...defaultFilters];
+
 const pelement = document.createElement('product-type-collection');
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));
