@@ -1,0 +1,111 @@
+<script>
+{% render 'get-selected-from-query-string' %}
+const filters = [{
+    stateKey: "searchString",
+    actionType: "changeSearchString",
+    title: "Search",
+    type: "SearchInput",
+    info: [],
+    selected: ""
+}, {
+    stateKey: "selectedCookTypesAndBrands",
+    actionType: "changeCookTypesAndBrands",
+    title: "Cook Types\/Brands",
+    type: "NestedFilter",
+    info: [
+        [
+            'Gas Grill', [
+                'Weber', 
+                'Napoleon', 
+                'Broil King'
+            ]
+        ],
+        [
+            'Charcoal Grill', [
+                'Weber', 
+                'Kamado Joe', 
+                'Sunterra', 
+                'Napolean'
+            ]
+        ],
+        [
+            'Pellet Grill', [
+                'Traeger', 
+                'Louisiana', 
+                'Broil King'
+            ]
+        ],
+        [
+            'Electric Grill', []],
+        [
+            'Offset Smoker', [
+                'Weber', 
+                'Traeger', 
+                'Kamado Joe', 
+                'Yoder', 
+                'Big Green Egg', 
+                'Masterbuilt'
+            ]
+        ],
+        [
+            'Pizza Oven', [
+                'Ooni', 
+                'Fontana'
+            ]
+        ]
+    ],
+    selected: params?.['selectedCookTypesAndBrands'] ?? []
+}, {
+    stateKey: "currentPriceRange",
+    actionType: "changePriceRange",
+    title: "Price Range",
+    type: "RangeSlider",
+    info: [1, 30000],
+    selected: [1, 30000]
+}, {
+    stateKey: "currentGrillCookingAreaRange",
+    actionType: "changeGrillCookingAreaRange",
+    title: "Grill Cooking Area",
+    type: "RangeSlider",
+    info: [1, 20],
+    selected: [1, 20]
+}, {
+    stateKey: "selectedStandTypes",
+    actionType: "changeStandTypes",
+    title: "Stand Types",
+    type: "SimpleFilter",
+    info: ['Portable','Free Standing','Built In'],
+    selected: params?.['selectedStandTypes'] ?? []
+}, {
+    stateKey: "clearance",
+    actionType: "changeClearance",
+    title: "Clearance",
+    type: "Checkbox",
+    info: [],
+    selected: params?.['clearance'] ?? false
+}, ]
+
+const pelement = document.createElement('product-type-collection');
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
+pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('product-type', {{collection.all_types|first|json}});
+pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
+pelement.setAttribute('collection-title', "GRILLS / SMOKERS");
+pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
+pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
+document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+</script>
+{% schema %}
+{
+  "name": "Barbeques",
+  "class": "dtm-collection-section dtm-barbeques-collection-section dtm-product-type-collection-section",
+  "settings": []
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

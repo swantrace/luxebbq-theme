@@ -1,0 +1,10 @@
+const params = Array.from((new URLSearchParams(location.search)).entries()).reduce((acc, [key, value]) => {
+    try{
+        acc[key] = JSON.parse(value); 
+    } catch(err) {
+        acc[key] = value;
+    }  
+    return acc;
+}, {});
+console.log(params);
+history.replaceState(null, "", location.href.split("?")[0]);

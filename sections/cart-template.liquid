@@ -4,6 +4,7 @@
     {% if cart.item_count > 0 %}
     <div class="row">
       <div class="col-sm-12">
+        {% comment %} 
         <div class="cart_counter"></div>
 
         <script>
@@ -61,7 +62,8 @@
             timer();
             var inti = setInterval(timer, 1000);                    
 
-          }                  
+          }  
+
           var pdm = crtmedir('<div class="countdownholder"><div id="countdownhere">'+ timer_text +'<span id="time"></span> minutes!</div><a href="/checkout" class="cart_checkout">check out</a></div>');
           if (window.location.href.indexOf('cart') > -1) {
             window.onload = function() {
@@ -84,7 +86,8 @@
               startTimer(starttime, ten, display);                       
             };
           }
-        </script>
+        </script> 
+        {% endcomment %}
       </div>
       <div class="col-sm-12">
         <form action="/cart" method="post" novalidate class="cart" id="cart_form">
@@ -184,12 +187,13 @@
     </div>
     <div class="row cart-buttons">
       <div class="col-lg-8 col-md-12">
-        {% include 'shipping-calculater' %}
+        {% comment %} {% include 'shipping-calculater' %} {% endcomment %}
       </div>
+
       <div class="col-lg-4 col-md-12">
         <a href="/cart/clear" id="clear_cart" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.clear_cart"{%endif%}>{{ 'cart.general.clear_cart' | t }}</a>
         <a href="/checkout" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.checkout"{%endif%}>{{ 'cart.general.checkout' | t }}</a>
-        <a href="/collections/all" class="btn btn-solid mt-1" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.continue_shopping"{%endif%}>{{ 'cart.general.continue_shopping' | t }}</a>
+        {% comment %} <a href="/collections/all" class="btn btn-solid mt-1" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.continue_shopping"{%endif%}>{{ 'cart.general.continue_shopping' | t }}</a> {% endcomment %}
       </div>
     </div>
     {% else %}

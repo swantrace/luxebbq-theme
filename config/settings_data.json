@@ -3258,8 +3258,7 @@
         "type": "announcement-bar",
         "settings": {
           "enabled": true,
-          "covidresponse_text": "Click Here for our COVID-19 Response",
-          "covidresponse_url": "#"
+          "covidresponse_text": "Click Here for our COVID-19 Response"
         }
       },
       "161552166845bd5aa7": {

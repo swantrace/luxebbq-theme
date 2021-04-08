@@ -1,20 +1,62 @@
-{% assign gas_grill_brands = '"Gas Grill":["' | append: settings.gas_grill_brands | split: ',' | join: '","' | append: '"]' %}
-{% assign charcoal_grill_brands = '"Charcoal Grill":["' | append: settings.charcoal_grill_brands | split: ',' | join: '","' | append: '"]' %}
-{% assign pellet_grill_brands = '"Pellet Grill":["' | append: settings.pellet_grill_brands | split: ',' | join: '","' | append: '"]' %}
-{% assign smoker_brands = '"Smoker":["' | append: settings.smoker_brands | split: ',' | join: '","' | append: '"]' %}
-{% assign oven_brands = '"Oven":["' | append: settings.oven_brands | split: ',' | join: '","' | append: '"]' %}
-{% assign cook_types_and_brands = '{' | append: gas_grill_brands | append: ',' | append: charcoal_grill_brands | append: ',' | append: smoker_brands | append: ',' | append: pellet_grill_brands | append: ',' | append: oven_brands | append: '}' %}
-{% assign cook_type_images = '{' | append: '"Gas Grill":"' | append: settings.gas_grill_icon_font_class | append: '",' | append: '"Charcoal Grill":"' | append: settings.charcoal_grill_icon_font_class | append: '",' | append: '"Smoker":"' | append: settings.smoker_icon_font_class | append: '",' | append: '"Pellet Grill":"' | append: settings.pellet_grill_icon_font_class | append: '",' |append: '"Oven":"' | append: settings.oven_icon_font_class | append: '"}' %}
-
 {% section 'dtm-find-grill-hero' %}
 {% section 'announcement-bar' %}
+<script>
+const cookTypesAndBrands = [
+        [
+            'Gas Grill', [
+                'Weber', 
+                'Napoleon', 
+                'Broil King'
+            ]
+        ],
+        [
+            'Charcoal Grill', [
+                'Weber', 
+                'Kamado Joe', 
+                'Sunterra', 
+                'Napolean'
+            ]
+        ],
+        [
+            'Pellet Grill', [
+                'Traeger', 
+                'Louisiana', 
+                'Broil King'
+            ]
+        ],
+        [
+            'Offset Smoker', [
+                'Weber', 
+                'Traeger', 
+                'Kamado Joe', 
+                'Yoder', 
+                'Big Green Egg', 
+                'Masterbuilt'
+            ]
+        ],
+        [
+            'Pizza Oven', [
+                'Ooni', 
+                'Fontana'
+            ]
+        ]
+    ];
 
-<perfect-grill 
-  class='dtm' 
-  default-sort-by='title-ascending' 
-  cook-types-and-brands='{{cook_types_and_brands|escape}}'
-  cook-type-logos='{{cook_type_images|escape}}'
-  empty-collection-image='{{ "empty-collection.png" | asset_url }}'
-  price-range-min-and-max='[{{settings.min_price_in_range}}, {{settings.max_price_in_range}}]'
-  grill-cooking-area-min-and-max='[{{settings.min_grill_cooking_area}}, {{settings.max_grill_cooking_area}}]'  
-></perfect-grill>
+const cookTypeLogos = {
+  "Gas Grill":"gas-grill",
+  "Charcoal Grill":"charcoal-grill",
+  "Offset Smoker":"smoker",
+  "Pellet Grill":"pellet-grill",
+  "Pizza Oven":"oven"
+}
+
+const pelement = document.createElement('perfect-grill');
+pelement.setAttribute('class', 'dtm dtm-find-perfect-grill');
+pelement.setAttribute('cook-types-and-brands', JSON.stringify(cookTypesAndBrands));
+pelement.setAttribute('default-sort-by', 'title-ascending');
+pelement.setAttribute('cook-type-logos', JSON.stringify(cookTypeLogos));
+pelement.setAttribute('price-range-min-and-max', JSON.stringify([0,30000]));
+pelement.setAttribute('grill-cooking-area-min-and-max', JSON.stringify([0,20]));
+pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
+document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+</script>
