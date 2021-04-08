@@ -26,6 +26,7 @@ const start = () => {
     }
   );
   document.body.removeAttribute('hidden');
+  document.dispatchEvent(new CustomEvent('customElementsPrepared'));
 };
 
 if (/complete|interactive|loaded/.test(document.readyState)) {
