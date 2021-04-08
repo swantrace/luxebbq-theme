@@ -1,6 +1,6 @@
 <script>
 {% render 'get-selected-from-query-string' %}
-const defaultFilters = [{
+const filters = [{
     stateKey: "selectedBrands",
     actionType: "changeBrands",
     title: "Brands",
@@ -48,7 +48,6 @@ const defaultFilters = [{
     ],
     selected: []
 }, ]
-const filters = [...defaultFilters];
 const pelement = document.createElement('product-type-collection');
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));
