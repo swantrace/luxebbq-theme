@@ -194,7 +194,7 @@
   Wishlist.init = function () {
     bindUIActions();
     activateItemsInWishlist();
-    loadWishlist();
+    // loadWishlist();
     updateWishlistItemCount();
   };
 

@@ -12,6 +12,43 @@ const filters = [{
         "Drinkware Accessories"   
     ],
     selected: params?.['selectedDrinkwareAndCoolersTypes'] ?? []
+}, {
+    stateKey: "selectedColours",
+    actionType: "changeColours",
+    title: "Colours",
+    type: "SimpleFilter",
+    info: [
+      "Aquifer Blue",
+      "Black",
+      "Brick Red",
+      "Camo",
+      "Canyon Red",
+      "Caribbean Blue",
+      "Charcoal",
+      "Chartreuse",
+      "Clay",
+      "Copper",
+      "Coral",
+      "Granite Grey",
+      "Graphite",
+      "Harbour Pink",
+      "Lilac",
+      "Mermaid",
+      "Mint",
+      "Fog Grey",
+      "Navy",
+      "Prickly Pear Pink",
+      "Reef Blue",
+      "River Green",
+      "Rose Gold",
+      "Stainless",
+      "Sagebrush Green",
+      "Seafoam",
+      "Tan",
+      "White",
+      "Sagebrush Green"
+    ],
+    selected: params?.['selectedColors'] ?? []
 }, ]
 const pelement = document.createElement('product-type-collection');
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');

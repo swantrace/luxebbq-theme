@@ -48,6 +48,13 @@ class ProductType {
           pageNumber: 1,
         };
       }
+      case 'changeColours': {
+        return {
+          ...previousState,
+          selectedColours: action.payload,
+          pageNumber: 1,
+        };
+      }
       case 'changeSortValue': {
         return {
           ...previousState,
@@ -129,6 +136,7 @@ class ProductType {
       onlineStoreOnly: false,
       availability: [],
       selectedBrands: initialValueFilterKeyPairs?.selectedBrands ?? [],
+      selectedColours: initialValueFilterKeyPairs?.selectedColours ?? [],
       clearance: false,
       initialValueFilterKeyPairs,
       ...rest,
@@ -225,12 +233,19 @@ class ProductType {
       })
       .join(' OR ');
     const pricePart = `(variants.price:>${priceRange[0]} AND variants.price:<${priceRange[1]})`;
-    const otherTagPart =
-      otherTag === ''
-        ? ''
-        : `(tag:${addslashes(addQuotesIfNecessary(otherTag))})`;
+    let otherTagPart = '';
+    if (typeof otherTag === 'string') {
+      otherTagPart =
+        otherTag === ''
+          ? ''
+          : `(tag:${addslashes(addQuotesIfNecessary(otherTag))})`;
+    } else if (Array.isArray(otherTag)) {
+      otherTagPart = `${otherTag
+        .map((tag) => `tag:${addslashes(addQuotesIfNecessary(tag))}`)
+        .join(' OR ')}`;
+    }
 
-    return `${productTypePart} ${tagsAndBrandsPart} ${pricePart} ${otherTagPart}`;
+    return `available_for_sale:true ${productTypePart} ${tagsAndBrandsPart} ${pricePart} ${otherTagPart}`;
   }
 
   transformStateToFirstPageGraphqlRequestVariables() {
@@ -289,6 +304,10 @@ class ProductType {
       brand: vendor,
       productType,
       onlineStoreUrl,
+      colour:
+        tags
+          ?.find((tag) => tag.includes('dtm_product-colour_'))
+          ?.replace('dtm_product-colour_', '') ?? null,
     };
   }
 
@@ -310,6 +329,15 @@ class ProductType {
           return true;
         }
         return !!this.state.selectedBrands.includes(product.brand);
+      },
+      colour: (product) => {
+        if (!(this.state?.selectedColours ?? false)) {
+          return true;
+        }
+        if (this.state.selectedColours.length === 0) {
+          return true;
+        }
+        return !!this.state.selectedColours.includes(product.colour);
       },
       onlineStoreOnly: (product) => {
         if (!(this.state?.onlineStoreOnly ?? false)) {
