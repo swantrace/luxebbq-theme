@@ -120,9 +120,7 @@ search-result {
   }
 }
 
-
 .collection-view {
-
   width: 15% !important;
   text-align: center;
 
@@ -133,7 +131,6 @@ search-result {
     color: #555;
   }
 }
-
 
 product-list-top-controllers {
   .search-count {
@@ -283,14 +280,31 @@ perfect-grill {
   }
 }
 
-
-
-@media screen and (max-width:767px){
+@media screen and (max-width: 767px) {
   perfect-grill-selectors {
     .form-check-inline {
       flex-basis: 100% !important;
     }
   }
-
 }
 
+compare-table.dtm {
+  .modal-header {
+    padding: 30px 15px !important;
+  }
+  .modal-body {
+    .table-wrapper {
+      .table.table-responsive {
+        max-height: 500px;
+        tbody {
+          width: 100%;
+          display: block;
+          td {
+            word-wrap: break-word;
+            word-break: break-all;
+          }
+        }
+      }
+    }
+  }
+}

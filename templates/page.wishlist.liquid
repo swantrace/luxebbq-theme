@@ -4,157 +4,25 @@
 
 <section class="wishlist-section section-b-space wishlist-container">
   <div class="container">
+    <div class="row dtm dtm-title pt-2 pb-5">
+      <div class="title1 d-flex justify-content-between align-items-center  flex-column flex-md-row " style="flex-grow: 1;">
+          <div style="flex-grow: 1;" >
+            <h2 class="title-inner1 pb-0 mb-0" style="color: #fb711c;">
+              Favourites
+            </h2>
+          </div>
 
-  <div class="row dtm dtm-title pt-2 pb-5">
-    <div class="title1 d-flex justify-content-between align-items-center  flex-column flex-md-row " style="flex-grow: 1;">
-        <div style="flex-grow: 1;" >
-          <h2 class="title-inner1 pb-0 mb-0" style="color: #fb711c;">
-            Favourites
-          </h2>
-        </div>
-
-        <div class="parallelograms-group d-none d-sm-flex">
-          <span class="parallelograms parallelogram-lt"> </span>
-          <span class="parallelograms parallelogram-rt"> </span>
-          <span class="parallelograms parallelogram-br"> </span>
-        </div>
-    </div>
-  </div>
-
-
-    <div class="row pt-5">
-      <div class="col-sm-12 wishlist-grid flex">
-        <div class="wishlist-grid flex">
-          <table class="table cart-table table-responsive-xs wishlist_table wishlist-grid">
-            <thead>
-              <tr class="table-head">
-                <th scope="col">{{ 'general.wishlist.image' | t }}</th>
-                <th scope="col">{{ 'general.wishlist.product_name' | t }}</th>
-                <th scope="col">{{ 'general.wishlist.price' | t }}</th>
-                <th scope="col">{{ 'general.wishlist.avalibility' | t }}</th>
-                <th scope="col">{{ 'general.wishlist.action' | t }}</th>
-              </tr>
-            </thead>
-            {% paginate collections.all.products by 9999 %}
-            {% for product in collections.all.products %}
-            <tbody  class="product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
-              <tr>
-                <td>
-                  <a href="{{ product.url }}"><img  class="image--main" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title }}"></a>
-                </td>
-                <td>
-                  <a href="{{ product.url }}">
-                    {% assign data_title = product.title | split: '|' | first %}
-                    {% assign data_json = product.title | split: '|' | last %}
-                    <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
-                      {{ data_title }}
-                    </h4>
-                  </a>
-                  <div class="mobile-cart-content row">
-                    <div class="col-xs-3">
-                      <p>{% if product.available %}<span class="instock-lable"><i class="fa fa-check-circle" aria-hidden="true"></i>Instock</span>{% else %}<span class="outofstock-lable">Out of stock</span>{% endif %}</p>
-                    </div>
-                    <div class="col-xs-3">
-                      <h2 class="td-color">{{ product.variants[0].price | money }}</h2>
-                    </div>
-                    <div class="col-xs-3">
-                      <h2 class="td-color product-tile--tile-actions">
-                        {% include 'wishlist-button'%}
-                        <a href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1" class="icon mr-1 action--quick-cart tile-actions--btn flex cart-btn"><i class="ti-close"></i> </a>
-                      </h2>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <h2 class="td-color">{{ product.variants[0].price | money }}</h2>
-                <td>
-                  <p>{% if product.available %}<span class="instock-lable"><i class="fa fa-check-circle" aria-hidden="true"></i>Instock</span>{% else %}<span class="outofstock-lable">Out of stock</span>{% endif %}</p>
-                </td>
-                <td>
-
-                  <a href="/cart/add?id={{ product.selected_or_first_available_variant.id }}&quantity=1" class="btn btn-solid">
-                    Add to cart &nbsp;&nbsp;&nbsp;>>
-                  </a>
-
-                  <div class="share-buttons py-3 d-flex flex-column">
-
-                      <div class="product-icon">
-                          <div class="share-btn">
-                              <a class="action--wishlist tile-actions--btn flex " href="javascript:void(0)">
-                              <i class="ti-sharethis btn--main pl-0 ml-0" aria-hidden="true"></i>
-                              </a>
-                            <span class="title-font" style="">Share</span>
-                          </div>
-                      </div>
-
-                      <div class="product-icon">
-                           <div class="compare-btn">
-                              <a class="action--wishlist tile-actions--btn flex" href="javascript:void(0)" data-product-handle="{{ product.handle }}">
-                              <i class="fa fa-balance-scale btn--main" aria-hidden="true"></i>
-                              </a>
-                             <span class="title-font" style="">Compare</span>
-                           </div>
-                      </div>
-
-                  {% comment %} <a class="action--wishlist tile-actions--btn flex wishlist-btn icon mr-3 " style="font-size:18px">
-                    <i class="ti-trash" aria-hidden="true"></i>
-                  </a> {% endcomment %}
-
-                      <div class="product-icon">
-                           <div class="remove-btn">
-                              <a class="action--wishlist tile-actions--btn flex" href="#" data-product-handle="{{ product.handle }}">
-                              <i class="fa fa-times btn--main" aria-hidden="true"></i>
-                              </a>
-                             <span class="title-font" style="">Remove</span>
-                           </div>
-                      </div>
-
-                  </div>
-
-                </td>
-              </tr>
-            </tbody>
-
-            {% endfor %}
-            
-            
-            {% endpaginate %}
-            
-           
-          </table>
-        </div>
-        <div class="text-right mt-5 checkout wishlist-grid ">
-          <a href="/checkout" class="btn btn-solid" >{{ 'cart.general.checkout' | t }}</a>
-        </div>
+          <div class="parallelograms-group d-none d-sm-flex">
+            <span class="parallelograms parallelogram-lt"> </span>
+            <span class="parallelograms parallelogram-rt"> </span>
+            <span class="parallelograms parallelogram-br"> </span>
+          </div>
       </div>
     </div>
-    <div class="row cart-buttons wishlist-grid--empty-list">
-      <div class="col-12">
-        <div class="text-center">
-          <img class="" src="{{ 'empty-search.jpg' | asset_url }}" alt="Wishlist loading">
-          <h5 class="title-font mb-3 empty-list--text " {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.empty_wishlist"{%endif%}>{{ 'general.wishlist.empty_wishlist' | t }}</h5>
-          <a href="/collections/all" class="btn btn-solid">Start Shopping</a>
-        </div>
-      </div>
-    </div>
-    <!-- Loader -->
-    <div class="wishlist-loader">
-      <h5 class="wishlist-loader--text">Loading your customized wishlist...</h5>
-    </div>
+    <wishlist-container 
+      empty-image="{{'empty-collection.png'|img_url: '600x600', crop: 'center'}}" 
+      empty-search-image={{ 'empty-search.jpg' | asset_url }}"
+    ></wishlist-container>
   </div>
 </section>
 <!--section end-->
-<script>
-  $( document ).ready(function() {
-    var rowCount = $('.wishlist_table tbody').length;
-    //alert(rowCount);
-    if(rowCount == 0){
-      $('.wishlist-grid').hide();
-      $('.checkout').hide();
-    }
-    else{
-      $('.wishlist-grid').show(); 
-       $('.checkout').show();
-    }
-  });
-</script>
