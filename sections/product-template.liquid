@@ -432,7 +432,10 @@
 {% include 'related-products' %}
 {% endif %}
 
-
+<product-page 
+  product-handle="{{product.handle}}"
+  show-related-products="{{section.settings.show_related_products}}"
+></product-page>
 
 
 <!-- product section end -->
@@ -524,7 +527,7 @@
 
 
 <script type="text/javascript">
-$(document).ready(function () {
+document.addEventListener('customElementsPrepared', function () {
   $('.product-slick').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -770,7 +773,7 @@ $(document).ready(function () {
   {% endif %}
   {% endif %}
 
-  // $(document).ready(function () {
+  // document.addEventListener('customElementsPrepared', function () {
   //   $('.image-360').click(function(){
   //     $('body').addClass('show-360');
 

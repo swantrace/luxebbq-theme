@@ -437,7 +437,7 @@
 {% endunless %}
 
 <script type="text/javascript">
- $(document).ready(function () {
+ document.addEventListener('customElementsPrepared', function () {
   $('.product-slick').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -619,7 +619,7 @@
   {% endif %}
   {% endif %}
   
-  $(document).ready(function () {
+  document.addEventListener('customElementsPrepared', function () {
     $('.image-360').click(function(){
       $('body').addClass('show-360');
 

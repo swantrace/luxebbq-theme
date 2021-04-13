@@ -24,7 +24,7 @@ var __extends=this&&this.__extends||function(e,t){function i(){this.constructor=
 /* ======================= ajax pagination ================== */
 
 (function($) {
-  $(document).ready(function() {
+  document.addEventListener('customElementsPrepared', function() {
     wst.go()
   });
   var wst = {
@@ -182,11 +182,11 @@ var shop_currency_val = $('#shop-currency').text();
     },
 
     compare_to_table: function(data) {
-
       if (Object.keys(data).length <= 0) {
         return '';
       }
-      var html = '';
+      window.productsToCompare = data;
+      {% comment %} var html = '';
       var i = 0;
 
       var end_check = (Object.keys(data).length - 1);
@@ -298,8 +298,8 @@ var shop_currency_val = $('#shop-currency').text();
 
       }
       e(".th-compare").html('<td>Action</td>'+data_html);
-      e("#table-compare").html(html);  
-
+      e("#table-compare").html(html); {% endcomment %}
+      e("#compare-modal").html('<compare-table class="dtm"></compare-table>');
 
       e(document).on('click','.add-to-cart', function(event) {
         event.preventDefault();
@@ -332,24 +332,25 @@ var shop_currency_val = $('#shop-currency').text();
       var valueSelected = $('#translate').find(':selected').attr('data-val');
         var item = $('.compare_lang_trans');
         var data_trans = $('.compare_lang_trans').attr('data-trans');
-        var data_trans_val = data_trans.replace('#', '');
-        var trans_id = $(item).next().attr('id');
-        var trans_content = $(item).next().text();
-        var array = trans_content.split(',');
-        $.each(array,function(i){
-          var val = array[i];
-          var _name = val.split(':')[0];
-          var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
-          var _content = val.substr(val.indexOf(":") + 1);
-          var lang_content = _content.toString().replace(/"/g, "");
-          var lang_content = lang_content.toString().replace(/[{}]/g, "");
-          if(data_trans_val == trans_id){
-            if(valueSelected == lang_name){
-              item.text(lang_content);
+        if(data_trans && data_trans.replace){
+          var data_trans_val = data_trans.replace('#', '');
+          var trans_id = $(item).next().attr('id');
+          var trans_content = $(item).next().text();
+          var array = trans_content.split(',');
+          $.each(array,function(i){
+            var val = array[i];
+            var _name = val.split(':')[0];
+            var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
+            var _content = val.substr(val.indexOf(":") + 1);
+            var lang_content = _content.toString().replace(/"/g, "");
+            var lang_content = lang_content.toString().replace(/[{}]/g, "");
+            if(data_trans_val == trans_id){
+              if(valueSelected == lang_name){
+                item.text(lang_content);
+              }
             }
-          }
-        });
-
+          });
+        }
     },
 
     compareAjaxAddToCart: function(n, r, a, p, amt) {
@@ -389,15 +390,26 @@ var shop_currency_val = $('#shop-currency').text();
         var check_end = 0;
         var compare_size = (Object.keys(compare).length - 1);
         e.each(compare, function(index, el) {
-          var json_url = "/products/" + el + ".js";
+          {% comment %} var json_url = "/products/" + el + ".js"; {% endcomment %}
+          var json_url = `/products/${el}?view=json`;
           if (e.trim(el) != "") {
-            jQuery.getJSON(json_url, function(product) {
+            {% comment %} jQuery.getJSON(json_url, function(product) {
+              console.log(product);
               json_compare[check_end] = product;
               if (check_end >= compare_size) {
                 t.compare_to_table(json_compare);
               }
               check_end += 1;
-            });
+            });  {% endcomment %}
+            jQuery.get(json_url, function(rawProduct) {
+              const product = JSON.parse(rawProduct);
+              console.log("product2", product);
+              json_compare[check_end] = product;
+              if (check_end >= compare_size) {
+                t.compare_to_table(json_compare);
+              }
+              check_end += 1;
+            }) 
           }
         });
         e("#moda-compare").fadeIn();       
@@ -498,7 +510,7 @@ var shop_currency_val = $('#shop-currency').text();
 
 var loadIcon = "{{ 'loading.gif' | asset_url }}";
 
-$(document).ready(function() {
+document.addEventListener('customElementsPrepared', function() {
   initQuickView();
   productImage();
 });

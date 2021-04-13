@@ -1,3 +1,4 @@
+{% comment %} {{ collection.all_products_count }} total products in this collection {% endcomment %}
 {% assign productType = collection.all_types | first | handleize %}
 {% if productType == 'barbeques' %}
 {% section 'collection-dtm-barbeques-template' %}

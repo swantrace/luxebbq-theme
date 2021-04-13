@@ -137,7 +137,7 @@
     {% endif %}
 
     {% if settings.add_cart_btn == 'advanced' %}
-    $(document).ready(function(e) {
+    document.addEventListener('customElementsPrepared', function(e) {
       $('.variantsList').on('change', function() {
         var _val = $(this).val();
         $(this).next('.product_grid_cart_form').find('.variant_val').val(_val);
