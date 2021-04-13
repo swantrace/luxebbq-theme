@@ -9,6 +9,7 @@ export const GET_PRODUCT_BY_HANDLE = gql`
     productByHandle(handle: $handle) {
       id
       onlineStoreUrl
+      availableForSale
       handle
       title
       totalInventory

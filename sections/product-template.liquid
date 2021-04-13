@@ -432,7 +432,10 @@
 {% include 'related-products' %}
 {% endif %}
 
-
+<product-page 
+  product-handle="{{product.handle}}"
+  show-related-products="{{section.settings.show_related_products}}"
+></product-page>
 
 
 <!-- product section end -->

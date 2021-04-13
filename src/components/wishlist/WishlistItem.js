@@ -139,7 +139,13 @@ const WishlistItem = virtual(({ product, productHandles }) => {
               </div>
               <div class="col-xs-3">
                 <h2 class="td-color product-tile--tile-actions">
-                  {% include 'wishlist-button'%}
+                  <a
+                    class="action--wishlist tile-actions--btn flex wishlist-btn hidden"
+                    href="javascript:void(0)"
+                    data-product-handle=${product.handle}
+                  >
+                    <i class="ti-heart btn--main" aria-hidden="true"></i>
+                  </a>
                   <a
                     href=${product.addToCartButtonUrl}
                     class="icon mr-1 action--quick-cart tile-actions--btn flex cart-btn"

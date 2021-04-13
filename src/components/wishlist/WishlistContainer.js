@@ -11,6 +11,8 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
   );
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [sortBy, setSortBy] = useState('default'); // default | name | price | availability
+  const [reverse, setReverse] = useState(false);
   const transformFunc = (rawProduct) => {
     let product = null;
     if (rawProduct) {
@@ -18,6 +20,12 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
       product = {
         id: atob(rawProduct.id).replace('gid://shopify/Product/', ''),
         handle: rawProduct.handle,
+        availability:
+          rawProduct.totalInventory > 0
+            ? rawProduct.totalInventory
+            : rawProduct.availableForSale
+            ? 0
+            : -1,
         url: rawProduct.onlineStoreUrl
           ? rawProduct.onlineStoreUrl
           : `/products/${rawProduct.handle}`,
@@ -29,14 +37,20 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
           rawProduct.totalInventory > 0
             ? html`<span class="instock-lable"
                 ><i class="fa fa-check-circle" aria-hidden="true"></i
-                >Instock</span
+                >INSTOCK</span
               >`
-            : html`<span class="outofstock-lable">Out of stock</span>`,
+            : rawProduct.availableForSale
+            ? html`<span class="instock-lable"
+                ><i class="fa fa-check-circle" aria-hidden="true"></i
+                >PREORDER</span
+              >`
+            : html`<span class="outofstock-lable">OUTOFSTOCK</span>`,
         price: `$${rawProduct.variants.edges?.[0]?.node?.priceV2?.amount}`,
         variantId: atob(rawProduct?.variants?.edges?.[0]?.node?.id).replace(
           'gid://shopify/ProductVariant/',
           ''
         ),
+        unformattedPrice: rawProduct.variants.edges?.[0]?.node?.priceV2?.amount,
       };
       if ((rawProduct?.variants?.edges?.length ?? 0) > 1) {
         product.addToCartButtonUrl = rawProduct.onlineStoreUrl
@@ -80,6 +94,33 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
     getProducts();
   }, []);
 
+  const sorter = (a, b) => {
+    switch (sortBy) {
+      case 'name': {
+        if (reverse) {
+          return a.handle.localeCompare(b.handle);
+        }
+        return b.handle.localeCompare(a.handle);
+      }
+      case 'price': {
+        if (reverse) {
+          return Number(a.unformattedPrice) - Number(b.unformattedPrice);
+        }
+        return Number(b.unformattedPrice) - Number(a.unformattedPrice);
+      }
+      case 'availability': {
+        if (reverse) {
+          return Number(a.availability) - Number(b.availability);
+        }
+        return Number(b.availability) - Number(a.availability);
+      }
+      default:
+        return 0;
+    }
+  };
+
+  console.log(products.sort(sorter));
+
   const handleCheckoutButtonClicked = (e) => {
     e.preventDefault();
     const productElements = Array.from(
@@ -102,6 +143,16 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
     }
   };
 
+  const handleSorterChanged = (type) => {
+    console.log('type', type);
+    if (sortBy === type) {
+      setReverse((oldReverse) => !oldReverse);
+    } else {
+      setSortBy(type);
+      setReverse(false);
+    }
+  };
+
   return html`<div class="row pt-5">
       ${!isLoading && products.length > 0
         ? html`<div class="col-sm-12 wishlist-grid flex">
@@ -112,25 +163,37 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
                 <thead>
                   <tr class="table-head">
                     <th scope="col">Image</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Avalibility</th>
+                    <th scope="col">
+                      Product Name
+                      <i
+                        class="icon-shangxiajiantou iconfont text-center"
+                        @click=${() => handleSorterChanged('name')}
+                      ></i>
+                    </th>
+                    <th scope="col">
+                      Price
+                      <i
+                        class="icon-shangxiajiantou iconfont text-center"
+                        @click=${() => handleSorterChanged('price')}
+                      ></i>
+                    </th>
+                    <th scope="col">
+                      Avalibility
+                      <i
+                        class="icon-shangxiajiantou iconfont text-center"
+                        @click=${() => handleSorterChanged('availability')}
+                      ></i>
+                    </th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
-                ${products.map(
-                  (product) =>
-                    html`${WishlistItem({ product, productHandles })}`
-                )}
+                ${products
+                  .sort(sorter)
+                  .map(
+                    (product) =>
+                      html`${WishlistItem({ product, productHandles })}`
+                  )}
               </table>
-            </div>
-            <div class="text-right mt-5 checkout wishlist-grid ">
-              <button
-                @click=${handleCheckoutButtonClicked}
-                class="btn btn-solid"
-              >
-                Check out
-              </button>
             </div>
           </div>`
         : null}

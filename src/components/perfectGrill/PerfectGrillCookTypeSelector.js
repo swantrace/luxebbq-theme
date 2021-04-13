@@ -11,6 +11,7 @@ const PerfectGrillCookTypeSelector = virtual(
     return html` ${Object.entries(cookTypeLogos).map(
       ([cookType, iconClass]) => html`
         <div
+          style="cursor:pointer;"
           class=${`cook-type-logo-wrapper${
             selectedCookType === cookType ? ' active' : ' inactive'
           }`}
