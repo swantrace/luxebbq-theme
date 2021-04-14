@@ -3563,15 +3563,6 @@
           "covidresponse_text": "Click Here for our COVID-19 Respons    >>"
         }
       },
-      "collection-dtm-bbq-smoker-template": {
-        "type": "collection-dtm-bbq-smoker-template",
-        "settings": {
-          "gas_grill_brands": "Weber,Napoleon",
-          "charcoal_grill_brands": "Weber,Napoleon,Big Green Egg",
-          "pellet_grill_brands": "Weber,Traeger Grills",
-          "oven_brands": "Ooni,La Piazza"
-        }
-      },
       "dtm-gas-grills-hero-image": {
         "type": "dtm-gas-grills-hero-image",
         "settings": {

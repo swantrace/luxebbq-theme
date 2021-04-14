@@ -44,7 +44,8 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
                 ><i class="fa fa-check-circle" aria-hidden="true"></i
                 >PREORDER</span
               >`
-            : html`<span class="outofstock-lable">OUTOFSTOCK</span>`,
+            : html`<span class="outofstock-lable"><i class="fa fa-ban" aria-hidden="true"></i
+            >OUT OF STOCK</span>`,
         price: `$${rawProduct.variants.edges?.[0]?.node?.priceV2?.amount}`,
         variantId: atob(rawProduct?.variants?.edges?.[0]?.node?.id).replace(
           'gid://shopify/ProductVariant/',
