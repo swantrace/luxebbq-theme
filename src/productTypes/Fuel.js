@@ -47,7 +47,7 @@ class Fuel extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
-      fuleType:
+      fuelType:
         product.tags
           ?.find((tag) => tag.includes('dtm_fuel-type_'))
           ?.replace('dtm_fuel-type_', '') ?? null,
@@ -59,14 +59,20 @@ class Fuel extends ProductType {
     const { selectedFuelTypes } = this.state;
     return {
       ...super.createFiltersFromState(),
-      fuleType: (product) => {
+      fuelType: (product) => {
         if (selectedFuelTypes.length === 0) {
           return true;
         }
         if (!product?.fuelType) {
           return false;
         }
-        return !!selectedFuelTypes.includes(product.furnitureType);
+        console.log(
+          'selectedFuelTypes',
+          selectedFuelTypes,
+          'product.fuelType',
+          product.fuelType
+        );
+        return !!selectedFuelTypes.includes(product.fuelType);
       },
     };
   }

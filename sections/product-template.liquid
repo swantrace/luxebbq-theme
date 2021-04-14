@@ -433,7 +433,8 @@
 {% endif %}
 
 <product-page 
-  product-handle="{{product.handle}}"
+  product-json="{{product | json | escape }}"
+  similar-metafield="{{shop.metafields.dtm.similar | json | escape}}"
   show-related-products="{{section.settings.show_related_products}}"
 ></product-page>
 

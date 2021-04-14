@@ -36,6 +36,7 @@ function PerfectGrillSelectors() {
     });
   }, []);
   const handleSelectedCookTypesAndBrandsChanged = (newCookTypesAndBrands) => {
+    console.log('newCookTypesAndBrands', newCookTypesAndBrands);
     dispatch({
       type: 'changeCookTypesAndBrands',
       payload: newCookTypesAndBrands,

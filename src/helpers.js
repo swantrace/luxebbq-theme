@@ -4,6 +4,37 @@ import { gql } from '@apollo/client/core';
 export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 30000];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 20];
 
+export const GET_PRODUCT_BY_HANDLE = gql`
+  query getProductByHandle($handle: String!) {
+    productByHandle(handle: $handle) {
+      id
+      onlineStoreUrl
+      availableForSale
+      handle
+      title
+      totalInventory
+      variants(first: 2) {
+        edges {
+          node {
+            id
+            image {
+              altText
+              originalSrc
+              transformedSrc(crop: CENTER, maxWidth: 600, maxHeight: 600)
+            }
+            priceV2 {
+              amount
+              currencyCode
+            }
+            quantityAvailable
+            availableForSale
+          }
+        }
+      }
+    }
+  }
+`;
+
 export const GET_PRODUCTS = gql`
   query getProducts(
     $first: Int
@@ -90,6 +121,8 @@ export const transformFunc = ({
   onlineStoreUrl,
 });
 
+export const stripHTML = (str) => str.replace(/(<([^>]+)>)/gi, '');
+
 export const addslashes = (str) =>
   `${str}`.replace(/([\\"'])/g, '\\$1').replace(/\0/g, '\\0');
 
@@ -105,6 +138,7 @@ export const getQueryString = ({
   searchString = '',
   productTypes = [],
 } = {}) => {
+  let searchStringPart = '';
   const queryValueString =
     searchString.trim() === ''
       ? `*`
@@ -114,7 +148,9 @@ export const getQueryString = ({
         )}*"`
       : `${addslashes(searchString.trim())}*`;
 
-  const searchStringPart = `(title:${queryValueString} OR description:${queryValueString} OR tags:${queryValueString})`;
+  if (searchString.trim() !== '') {
+    searchStringPart = ` AND (title:${queryValueString} OR description:${queryValueString} OR tags:${queryValueString})`;
+  }
 
   let productTypesPart = `${productTypes
     .map((type) => `product_type:"${addslashes(type)}"`)
@@ -124,7 +160,7 @@ export const getQueryString = ({
     productTypesPart = ` AND (${productTypesPart})`;
   }
 
-  return `${searchStringPart}${productTypesPart}`;
+  return `available_for_sale:true${searchStringPart}${productTypesPart}`;
 };
 
 export const queryAllProductsThroughGraphqlCreator = ({
