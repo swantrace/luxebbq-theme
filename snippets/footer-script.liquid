@@ -15,7 +15,7 @@
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   });
-  $(document).ready(function() {
+  document.addEventListener('customElementsPrepared', function() {
     $('#ageModal').modal({
       backdrop: 'static',
       keyboard: false

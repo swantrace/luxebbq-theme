@@ -57,7 +57,7 @@ function ProductTypeMainContent() {
     }
     dispatch({ type: 'changePageNumber', payload: number });
   };
-  console.log('collectionTitle', collectionTitle);
+  // console.log('collectionTitle', collectionTitle);
   return html`${TitleBanner({
     title: collectionTitle,
   })}${TopControllers({

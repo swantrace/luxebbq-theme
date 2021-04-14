@@ -14,7 +14,7 @@ function ProductTypeSidebar() {
     arrayOfFilters,
     collectionImages,
   } = usePageContext();
-  console.log('state', state);
+  // console.log('state', state);
   const handleSearchStringChanged = (filter, e) => {
     dispatch({
       type: filter.actionType,
@@ -56,7 +56,7 @@ function ProductTypeSidebar() {
       const secondLevelInputs = firstLevelInput.parentNode.querySelectorAll(
         'ul li input'
       );
-      console.log('secondLevelInputs', secondLevelInputs);
+      // console.log('secondLevelInputs', secondLevelInputs);
       secondLevelInputs.forEach((input) => {
         // eslint-disable-next-line no-param-reassign
         input.checked = false;
@@ -69,7 +69,7 @@ function ProductTypeSidebar() {
     filter,
     e
   ) => {
-    console.log(firstLevelOption, secondLevelOption, filter, e);
+    // console.log(firstLevelOption, secondLevelOption, filter, e);
     const secondLevelInput = e.target;
     if (secondLevelInput.checked) {
       dispatch({

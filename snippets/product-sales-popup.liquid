@@ -29,7 +29,7 @@
 
   });
 
-  $(document).ready(function() {
+  document.addEventListener('customElementsPrepared', function() {
     $('.close_sales_popup').click(function(){
       $(this).parent().closest('div').hide();
     });

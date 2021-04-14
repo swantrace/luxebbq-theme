@@ -175,10 +175,10 @@ class ProductType {
         );
       }
     }
-    console.log(
-      'this.transformProductFromQuery',
-      this.transformProductFromQuery
-    );
+    // console.log(
+    //   'this.transformProductFromQuery',
+    //   this.transformProductFromQuery
+    // );
     return products;
   }
 

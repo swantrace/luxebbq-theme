@@ -24,7 +24,7 @@ var __extends=this&&this.__extends||function(e,t){function i(){this.constructor=
 /* ======================= ajax pagination ================== */
 
 (function($) {
-  $(document).ready(function() {
+  document.addEventListener('customElementsPrepared', function() {
     wst.go()
   });
   var wst = {
@@ -510,7 +510,7 @@ var shop_currency_val = $('#shop-currency').text();
 
 var loadIcon = "{{ 'loading.gif' | asset_url }}";
 
-$(document).ready(function() {
+document.addEventListener('customElementsPrepared', function() {
   initQuickView();
   productImage();
 });

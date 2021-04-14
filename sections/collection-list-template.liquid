@@ -420,7 +420,7 @@
     }
   });
 
-  $(document).ready(function() {
+  document.addEventListener('customElementsPrepared', function() {
     if ($(window).width() > 991) {
       $(".coll_sidebar, .collection-content").stick_in_parent();
     }

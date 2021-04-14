@@ -16,7 +16,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
   const transformFunc = (rawProduct) => {
     let product = null;
     if (rawProduct) {
-      console.log('rawProduct', rawProduct);
+      // console.log('rawProduct', rawProduct);
       product = {
         id: atob(rawProduct.id).replace('gid://shopify/Product/', ''),
         handle: rawProduct.handle,
@@ -88,7 +88,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
       setIsLoading(true);
       const ps = await Promise.all(promiseArr);
       setIsLoading(false);
-      console.log('products', ps);
+      // console.log('products', ps);
       setProducts(ps);
     };
     getProducts();
@@ -119,32 +119,32 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
     }
   };
 
-  console.log(products.sort(sorter));
+  // console.log(products.sort(sorter));
 
-  const handleCheckoutButtonClicked = (e) => {
-    e.preventDefault();
-    const productElements = Array.from(
-      this.querySelectorAll('[data-product-variant-id]')
-    );
-    if (productElements.length > 0) {
-      axios
-        .post('/cart/add', {
-          items: productElements.map(() => {
-            const variantId = e.getAttribute('data-product-variant-id');
-            return {
-              id: variantId,
-              quantity: 1,
-            };
-          }),
-        })
-        .then(() => {
-          window.location.href = '/checkout';
-        });
-    }
-  };
+  // const handleCheckoutButtonClicked = (e) => {
+  //   e.preventDefault();
+  //   const productElements = Array.from(
+  //     this.querySelectorAll('[data-product-variant-id]')
+  //   );
+  //   if (productElements.length > 0) {
+  //     axios
+  //       .post('/cart/add', {
+  //         items: productElements.map(() => {
+  //           const variantId = e.getAttribute('data-product-variant-id');
+  //           return {
+  //             id: variantId,
+  //             quantity: 1,
+  //           };
+  //         }),
+  //       })
+  //       .then(() => {
+  //         window.location.href = '/checkout';
+  //       });
+  //   }
+  // };
 
   const handleSorterChanged = (type) => {
-    console.log('type', type);
+    // console.log('type', type);
     if (sortBy === type) {
       setReverse((oldReverse) => !oldReverse);
     } else {

@@ -314,3 +314,19 @@ wishlist-container {
     cursor: pointer;
   }
 }
+
+product-page {
+  .banner-name.dtm-banner-name {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  table {
+    th {
+      background-color: #ccc;
+    }
+    td {
+      text-align: center;
+    }
+  }
+}
