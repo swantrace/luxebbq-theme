@@ -1,5 +1,5 @@
 import { html, virtual } from '@apollo-elements/haunted';
-import { DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE } from '../../helpers';
+import { DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE } from '../../shared/helpers';
 
 const PerfectGrillPriceRangeSelector = virtual(
   ({ currentPriceRange, priceRangeMinAndMax, handlePriceRangeChanged }) => {

@@ -1,5 +1,5 @@
 import { html, useRef } from '@apollo-elements/haunted';
-import { usePageContext } from '../../context';
+import { usePageContext } from '../../shared/context';
 import Pagination from '../common/Pagination';
 import TitleBanner from '../common/TitleBanner';
 import TopControllers from '../common/TopControllers';

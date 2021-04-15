@@ -1,7 +1,11 @@
 <!--Wishlist Page section start-->
 
 {% section 'announcement-bar' %}
-
+{% if enable_development_mode == true %}
+<script src="{{'WishlistContainer.js'|asset_url}}" type="module"></script>
+{% else %}
+<script src="{{'WishlistContainer.min.js'|asset_url}}" type="module"></script>
+{% endif %}
 <section class="wishlist-section section-b-space wishlist-container">
   <div class="container">
     <div class="row dtm dtm-title pt-2 pb-5">

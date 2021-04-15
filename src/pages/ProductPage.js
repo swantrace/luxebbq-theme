@@ -1,12 +1,12 @@
 /* eslint-disable no-nested-ternary */
-import { html, useEffect } from '@apollo-elements/haunted';
+import { html, useEffect, useState, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { capitalCase } from 'capital-case';
+import { CompareTable } from '../shared/index';
 import RelatedProducts from '../components/productPage/RelatedProducts';
 import Specifications from '../components/productPage/Specifications';
 import useProductType from '../productTypes';
 
-window.capitalCase = capitalCase;
 function ProductPage({
   productJson,
   similarMetafield,
@@ -16,7 +16,7 @@ function ProductPage({
   const product = JSON.parse(productJson);
   product.totalInventory = Number(productTotalInventory);
   const metafield = JSON.parse(productMetafield);
-  console.log('product', product);
+  // console.log('product', product);
 
   const specificationList = [
     { Brand: product.vendor },
@@ -49,7 +49,7 @@ function ProductPage({
     return acc;
   }, {});
 
-  console.log(specificationList);
+  // console.log(specificationList);
 
   const similar = JSON.parse(similarMetafield);
   const { state, dispatch, queryAllProducts } = new (useProductType(
@@ -57,6 +57,11 @@ function ProductPage({
   ))({
     defaultSortBy: 'best-selling',
     initialValueFilterKeyPairs: {},
+  });
+
+  const [count, setCount] = useState(1);
+  useEffect(() => {
+    setTimeout(() => setCount(count + 1), 1000);
   });
 
   useEffect(async () => {
@@ -128,16 +133,24 @@ function ProductPage({
     </section>`;
 }
 
-export default {
-  tagName: 'product-page',
-  renderer: ProductPage,
-  options: {
-    observedAttributes: [
-      'product-json',
-      'product-total-inventory',
-      'similar-metafield',
-      'product-metafield',
-    ],
-    useShadowDOM: false,
+[
+  CompareTable,
+  {
+    tagName: 'product-page',
+    renderer: ProductPage,
+    options: {
+      observedAttributes: [
+        'product-json',
+        'product-total-inventory',
+        'similar-metafield',
+        'product-metafield',
+      ],
+      useShadowDOM: false,
+    },
   },
-};
+].forEach((pComponent) => {
+  customElements.define(
+    pComponent.tagName,
+    component(pComponent.renderer, pComponent.options)
+  );
+});

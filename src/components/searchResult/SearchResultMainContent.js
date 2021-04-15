@@ -1,10 +1,10 @@
 import { html, useRef } from '@apollo-elements/haunted';
 import chunk from 'lodash.chunk';
-import { usePageContext } from '../../context';
+import { usePageContext } from '../../shared/context';
 import Pagination from '../common/Pagination';
 import TopControllers from '../common/TopControllers';
 import Products from '../common/Products';
-import { getDisplayedPageNumbers, productsSorter } from '../../helpers';
+import { getDisplayedPageNumbers, productsSorter } from '../../shared/helpers';
 
 function SearchResultMainContent() {
   const {

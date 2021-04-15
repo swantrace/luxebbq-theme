@@ -1,5 +1,5 @@
 import { html, useEffect } from '@apollo-elements/haunted';
-import { usePageContext } from '../../context';
+import { usePageContext } from '../../shared/context';
 import PerfectGrillAvailabilitySelector from './PerfectGrillAvailabilitySelector';
 import PerfectGrillBrandSelector from './PerfectGrillBrandSelector';
 import PerfectGrillCookTypeSelector from './PerfectGrillCookTypeSelector';

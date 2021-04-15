@@ -9,7 +9,7 @@ import {
   GET_PRODUCTS,
   productsSorter,
   queryAllProductsThroughGraphqlCreator,
-} from '../helpers';
+} from '../shared/helpers';
 
 class ProductType {
   constructor(name, rawInitialState) {

@@ -1,10 +1,10 @@
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { html, useEffect, virtual } from '@apollo-elements/haunted';
 import TitleBanner from '../common/TitleBanner';
-import { createFragmentFromString } from '../../helpers';
+import { createFragmentFromString } from '../../shared/helpers';
 
 const Specifications = virtual(({ specificationList, description }) => {
-  console.log(specificationList, description);
+  // console.log(specificationList, description);
   const regexp = /<iframe\s+[^>]+><\/iframe>/g;
   const iframeHTMLString = description.match(regexp)?.[0] ?? '';
   const cleanedDescription = description.replace(iframeHTMLString, '');

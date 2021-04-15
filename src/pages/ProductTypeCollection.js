@@ -1,7 +1,10 @@
-import { html, useEffect, useState } from '@apollo-elements/haunted';
+import { html, useEffect, useState, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { pageWrapper } from '../context';
+import { CompareTable } from '../shared/index';
+import { pageWrapper } from '../shared/context';
 import useProductType from '../productTypes';
+import ProductTypeSidebar from '../components/productTypeCollection/ProductTypeSidebar';
+import ProductTypeMainContent from '../components/productTypeCollection/ProductTypeMainContent';
 
 function ProductTypeCollection({
   productType,
@@ -94,18 +97,28 @@ function ProductTypeCollection({
   })}`;
 }
 
-export default {
-  tagName: 'product-type-collection',
-  renderer: ProductTypeCollection,
-  options: {
-    observedAttributes: [
-      'product-type',
-      'all-filters',
-      'default-sort-by',
-      'collection-title',
-      'collection-metafield',
-      'empty-collection-image',
-    ],
-    useShadowDOM: false,
+[
+  ProductTypeSidebar,
+  ProductTypeMainContent,
+  CompareTable,
+  {
+    tagName: 'product-type-collection',
+    renderer: ProductTypeCollection,
+    options: {
+      observedAttributes: [
+        'product-type',
+        'all-filters',
+        'default-sort-by',
+        'collection-title',
+        'collection-metafield',
+        'empty-collection-image',
+      ],
+      useShadowDOM: false,
+    },
   },
-};
+].forEach((pComponent) => {
+  customElements.define(
+    pComponent.tagName,
+    component(pComponent.renderer, pComponent.options)
+  );
+});

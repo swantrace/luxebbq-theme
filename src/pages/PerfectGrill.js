@@ -1,9 +1,10 @@
-import { html, useEffect } from '@apollo-elements/haunted';
+import { html, useEffect, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-
-import { pageWrapper as perfectGrillWrapper } from '../context';
+import { CompareTable } from '../shared/index';
+import { pageWrapper as perfectGrillWrapper } from '../shared/context';
 import TitleBanner from '../components/common/TitleBanner';
 import useProductType from '../productTypes';
+import PerfectGrillSelectors from '../components/perfectGrill/PerfectGrillSelectors';
 
 function PerfectGrill({
   cookTypesAndBrands,
@@ -80,18 +81,27 @@ function PerfectGrill({
   })}`;
 }
 
-export default {
-  tagName: 'perfect-grill',
-  renderer: PerfectGrill,
-  options: {
-    observedAttributes: [
-      'cook-types-and-brands',
-      'cook-type-logos',
-      'price-range-min-and-max',
-      'grill-cooking-area-min-and-max',
-      'default-sort-by',
-      'empty-collection-image',
-    ],
-    useShadowDOM: false,
+[
+  PerfectGrillSelectors,
+  CompareTable,
+  {
+    tagName: 'perfect-grill',
+    renderer: PerfectGrill,
+    options: {
+      observedAttributes: [
+        'cook-types-and-brands',
+        'cook-type-logos',
+        'price-range-min-and-max',
+        'grill-cooking-area-min-and-max',
+        'default-sort-by',
+        'empty-collection-image',
+      ],
+      useShadowDOM: false,
+    },
   },
-};
+].forEach((pComponent) => {
+  customElements.define(
+    pComponent.tagName,
+    component(pComponent.renderer, pComponent.options)
+  );
+});

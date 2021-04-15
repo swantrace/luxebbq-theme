@@ -1,4 +1,4 @@
-import { hasIntersectionBetweenTwoRanges } from '../helpers';
+import { hasIntersectionBetweenTwoRanges } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Barbeques extends ProductType {

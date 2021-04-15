@@ -429,10 +429,12 @@
 
 <!-- product section start -->
 
-{% comment %} {% if section.settings.show_related_products %}
-{% include 'related-products' %}
-{% endif %} {% endcomment %}
 
+{% if enable_development_mode == true %}
+<script src="{{'ProductPage.js'|asset_url}}" type="module"></script>
+{% else %}
+<script src="{{'ProductPage.min.js'|asset_url}}" type="module"></script>
+{% endif %}
 {% assign totalInventory = 0 %}
 {%for variant in product.variants %}
 {% capture i %}{{ total | plus:variant.inventory_quantity }}{%endcapture%}

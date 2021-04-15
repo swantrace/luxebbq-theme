@@ -1,5 +1,5 @@
 import { html, virtual } from '@apollo-elements/haunted';
-import { DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE } from '../../helpers';
+import { DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE } from '../../shared/helpers';
 
 const PerfectGrillGrillCookingAreaSelector = virtual(
   ({

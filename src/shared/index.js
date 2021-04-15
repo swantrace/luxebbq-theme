@@ -1,9 +1,7 @@
-import { component } from '@apollo-elements/haunted';
+/* eslint-disable import/prefer-default-export */
 import 'paper-range-slider';
 import './apollo-client';
-import partComponents from './components';
-import pageComponents from './pages';
-import './styles.scss';
+import CompareTable from '../components/common/CompareTable';
 
 const start = () => {
   // add active class to menu item
@@ -14,17 +12,6 @@ const start = () => {
   );
   const activeParentLinkElement = activeLinkElement?.closest('#main-menu>li>a');
   activeParentLinkElement?.classList?.add('active');
-
-  // create custom elements
-
-  Object.values({ ...partComponents, ...pageComponents }).forEach(
-    (pComponent) => {
-      customElements.define(
-        pComponent.tagName,
-        component(pComponent.renderer, pComponent.options)
-      );
-    }
-  );
   document.body.removeAttribute('hidden');
   document.dispatchEvent(new CustomEvent('customElementsPrepared'));
 };
@@ -35,3 +22,5 @@ if (/complete|interactive|loaded/.test(document.readyState)) {
 } else {
   document.addEventListener('DOMContentLoaded', start, false);
 }
+
+export { CompareTable };

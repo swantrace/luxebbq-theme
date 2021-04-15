@@ -82,7 +82,7 @@
     </script>
 
     {% comment %} dtm added {% endcomment %}
-    {{ 'custom.js' | asset_url | script_tag }}
+    {% comment %} {{ 'custom.js' | asset_url | script_tag }} {% endcomment %}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'bootstrap-icon.css' | asset_url |  stylesheet_tag  }}
     {% comment %} dtm added {% endcomment %}

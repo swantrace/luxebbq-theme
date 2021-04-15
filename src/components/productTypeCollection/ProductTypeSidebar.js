@@ -1,5 +1,5 @@
 import { html } from '@apollo-elements/haunted';
-import { usePageContext } from '../../context';
+import { usePageContext } from '../../shared/context';
 import SidebarCheckbox from './SidebarCheckbox';
 import SidebarNestedFilter from './SidebarNestedFilter';
 import SidebarRangeSlider from './SidebarRangeSlider';
