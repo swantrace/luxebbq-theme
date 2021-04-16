@@ -1,4 +1,4 @@
-{% if enable_development_mode == true %}
+{% if settings.enable_development_mode == true %}
 <script src="{{'SearchResult.js'|asset_url}}" type="module"></script>
 {% else %}
 <script src="{{'SearchResult.min.js'|asset_url}}" type="module"></script>

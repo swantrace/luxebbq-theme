@@ -57,21 +57,29 @@ class GrillingAccessories extends ProductType {
   }
 
   createFiltersFromState() {
+    console.log(this.state);
     const { selectedGrillingAccessoriesTypes } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            grillingAccessoriesType: (product) => {
+              if (selectedGrillingAccessoriesTypes.length === 0) {
+                return true;
+              }
+              if (!product?.grillingAccessoriesType) {
+                return false;
+              }
+
+              return !!selectedGrillingAccessoriesTypes.includes(
+                product.grillingAccessoriesType
+              );
+            },
+          };
     return {
       ...super.createFiltersFromState(),
-      grillingAccessoriesType: (product) => {
-        if (selectedGrillingAccessoriesTypes.length === 0) {
-          return true;
-        }
-        if (!product?.grillingAccessoriesType) {
-          return false;
-        }
-
-        return !!selectedGrillingAccessoriesTypes.includes(
-          product.grillingAccessoriesType
-        );
-      },
+      ...typeFilters,
     };
   }
 }

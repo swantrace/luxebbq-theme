@@ -58,19 +58,26 @@ class DrinkwareAndCoolers extends ProductType {
 
   createFiltersFromState() {
     const { selectedDrinkwareAndCoolersTypes } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            drinkwareAndCoolersType: (product) => {
+              if (selectedDrinkwareAndCoolersTypes.length === 0) {
+                return true;
+              }
+              if (!product?.drinkwareAndCoolersType) {
+                return false;
+              }
+              return !!selectedDrinkwareAndCoolersTypes.includes(
+                product.drinkwareAndCoolersType
+              );
+            },
+          };
     return {
       ...super.createFiltersFromState(),
-      drinkwareAndCoolersType: (product) => {
-        if (selectedDrinkwareAndCoolersTypes.length === 0) {
-          return true;
-        }
-        if (!product?.drinkwareAndCoolersType) {
-          return false;
-        }
-        return !!selectedDrinkwareAndCoolersTypes.includes(
-          product.drinkwareAndCoolersType
-        );
-      },
+      ...typeFilters,
     };
   }
 }

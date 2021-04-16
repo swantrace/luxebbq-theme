@@ -48,6 +48,13 @@ class ProductType {
           pageNumber: 1,
         };
       }
+      case 'changeSearchString': {
+        return {
+          ...previousState,
+          searchString: action.payload,
+          pageNumber: 1,
+        };
+      }
       case 'changeColours': {
         return {
           ...previousState,
@@ -135,6 +142,7 @@ class ProductType {
       viewMode: 'grid',
       onlineStoreOnly: false,
       availability: [],
+      searchString: initialValueFilterKeyPairs?.searchString ?? '',
       selectedBrands: initialValueFilterKeyPairs?.selectedBrands ?? [],
       selectedColours: initialValueFilterKeyPairs?.selectedColours ?? [],
       clearance: false,
@@ -320,6 +328,7 @@ class ProductType {
         `You cannot use an abstract function directly in ${this}`
       );
     }
+
     return {
       brand: (product) => {
         if (!(this.state?.selectedBrands ?? false)) {
@@ -329,6 +338,27 @@ class ProductType {
           return true;
         }
         return !!this.state.selectedBrands.includes(product.brand);
+      },
+      searchString: (product) => {
+        if (this.state.searchString.length === 0) {
+          return true;
+        }
+        if (
+          this.state.searchString.length > 0 &&
+          (product.title
+            .toLowerCase()
+            .includes(this.state.searchString.toLowerCase()) ||
+            product.tags
+              .join(' ')
+              .toLowerCase()
+              .includes(this.state.searchString.toLowerCase()) ||
+            product.description
+              .toLowerCase()
+              .includes(this.state.searchString.toLowerCase()))
+        ) {
+          return true;
+        }
+        return false;
       },
       colour: (product) => {
         if (!(this.state?.selectedColours ?? false)) {

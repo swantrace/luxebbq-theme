@@ -2,6 +2,7 @@ import { html, virtual } from '@apollo-elements/haunted';
 
 const SidebarSearchInput = virtual(
   ({ state, filter, handleSearchStringChanged }) => {
+    console.log('state', state);
     const { searchString, fetchIsFinished } = state;
     return html`<input
       type="text"

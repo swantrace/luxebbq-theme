@@ -1,6 +1,6 @@
 {% section 'dtm-find-grill-hero' %}
 {% section 'announcement-bar' %}
-{% if enable_development_mode == true %}
+{% if settings.enable_development_mode == true %}
 <script src="{{'PerfectGrill.js'|asset_url}}" type="module"></script>
 {% else %}
 <script src="{{'PerfectGrill.min.js'|asset_url}}" type="module"></script>

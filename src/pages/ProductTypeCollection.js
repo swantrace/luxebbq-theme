@@ -54,7 +54,6 @@ function ProductTypeCollection({
 
   useEffect(async () => {
     const products = await queryAllProducts();
-    console.log('products from queryAllProducts', products);
     dispatch({ type: 'setAllProducts', payload: products });
     dispatch({ type: 'setFetchIsFinished', payload: true });
   }, []);

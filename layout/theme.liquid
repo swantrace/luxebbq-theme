@@ -82,8 +82,6 @@
     </script>
 
     {% comment %} dtm added {% endcomment %}
-    {% comment %} {{ 'custom.js' | asset_url | script_tag }} {% endcomment %}
-    {{ 'custom.css' | asset_url | stylesheet_tag }}
     {{ 'bootstrap-icon.css' | asset_url |  stylesheet_tag  }}
     {% comment %} dtm added {% endcomment %}
     {{ 'TweenMax.min.js' | asset_url | script_tag }}
@@ -320,7 +318,11 @@
     </span>
 
     {% include 'footer-script' %}
-
+    {% if settings.enable_development_mode == true %}
+      {{ 'custom.css' | asset_url |  stylesheet_tag  }}
+    {% else %}
+      {{ 'custom.min.css' | asset_url |  stylesheet_tag  }}
+    {% endif %}
     <!-- Footer Scripts ================================ -->
   </body>
 </html>

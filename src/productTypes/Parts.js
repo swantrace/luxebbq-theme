@@ -68,26 +68,34 @@ class Parts extends ProductType {
 
   createFiltersFromState() {
     const { selectedPartsType, selectedMaterials } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            partsType: (product) => {
+              if (selectedPartsType.length === 0) {
+                return true;
+              }
+              if (!product?.partsType) {
+                return false;
+              }
+              return !!selectedPartsType.includes(product.partsType);
+            },
+            material: (product) => {
+              if (selectedMaterials.length === 0) {
+                return true;
+              }
+              if (!product?.material) {
+                return false;
+              }
+              return selectedMaterials.includes(product.material);
+            },
+          };
+
     return {
       ...super.createFiltersFromState(),
-      partsType: (product) => {
-        if (selectedPartsType.length === 0) {
-          return true;
-        }
-        if (!product?.partsType) {
-          return false;
-        }
-        return !!selectedPartsType.includes(product.partsType);
-      },
-      material: (product) => {
-        if (selectedMaterials.length === 0) {
-          return true;
-        }
-        if (!product?.material) {
-          return false;
-        }
-        return selectedMaterials.includes(product.material);
-      },
+      ...typeFilters,
     };
   }
 }
