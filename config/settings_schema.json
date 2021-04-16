@@ -8,94 +8,13 @@
     "theme_support_url": "https:\/\/help.shopify.com\/"
   },
   {
-    "name": "Barbeques",
+    "name": "DTM Global Settings",
     "settings": [
       {
-        "type": "header",
-        "content": "Cook Types and Brands"
-      },
-      {
-        "type": "text",
-        "id": "gas_grill_brands",
-        "label": "Gas grill's brands"
-      },
-      {
-        "type": "text",
-        "id": "gas_grill_icon_font_class",
-        "label": "Gas grill's icon font class",
-        "default": "gas-grill"
-      },
-      {
-        "type": "text",
-        "id": "charcoal_grill_brands",
-        "label": "Charcoal grill's brands"
-      },
-      {
-        "type": "text",
-        "id": "charcoal_grill_icon_font_class",
-        "label": "Charcoal grill's icon font class",
-        "default": "charcoal-grill"
-      },
-      {
-        "type": "text",
-        "id": "smoker_brands",
-        "label": "Smoker's brands"
-      },
-      {
-        "type": "text",
-        "id": "smoker_icon_font_class",
-        "label": "Smoker's icon font class",
-        "default": "smoker"
-      },
-      {
-        "type": "text",
-        "id": "pellet_grill_brands",
-        "label": "Pellet grill's brands"
-      },
-      {
-        "type": "text",
-        "id": "pellet_grill_icon_font_class",
-        "label": "Pellet grill's icon font class",
-        "default": "pellet-grill"
-      },
-      {
-        "type": "text",
-        "id": "oven_brands",
-        "label": "Oven's brands"
-      },
-      {
-        "type": "text",
-        "id": "oven_icon_font_class",
-        "label": "Oven's icon font class",
-        "default": "oven"
-      },
-      {
-        "type": "header",
-        "content": "Price Range(C$)"
-      },
-      {
-        "type": "text",
-        "id": "max_price_in_range",
-        "label": "Max price in range"
-      },
-      {
-        "type": "text",
-        "id": "min_price_in_range",
-        "label": "Min price in range"
-      },
-      {
-        "type": "header",
-        "content": "Grill Cooking Area(ppl)"
-      },
-      {
-        "type": "text",
-        "id": "max_grill_cooking_area",
-        "label": "Max grill cooking area"
-      },
-      {
-        "type": "text",
-        "id": "min_grill_cooking_area",
-        "label": "Min grill cooking area"
+        "type": "checkbox",
+        "id": "enable_development_mode",
+        "label": "Enable development mode",
+        "default": false
       }
     ]
   },

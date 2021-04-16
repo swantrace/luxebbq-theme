@@ -1,6 +1,13 @@
 <script>
 {% render 'get-selected-from-query-string' %}
 const filters = [{
+    stateKey: "searchString",
+    actionType: "changeSearchString",
+    title: "Search",
+    type: "SearchInput",
+    info: [],
+    selected: ""
+}, {
     stateKey: "selectedDrinkwareAndCoolersTypes",
     actionType: "changeDrinkwareAndCoolersTypes",
     title: "Types",

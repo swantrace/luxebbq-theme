@@ -1,1 +1,6 @@
+{% if enable_development_mode == true %}
+<script src="{{'SearchResult.js'|asset_url}}" type="module"></script>
+{% else %}
+<script src="{{'SearchResult.min.js'|asset_url}}" type="module"></script>
+{% endif %}
 <search-result class='dtm' default-sort-by='title-ascending' empty-collection-image='{{ "empty-collection.png" | asset_url }}'></search-result>

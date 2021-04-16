@@ -333,8 +333,8 @@
                           {% endif %}
                         </div>
                         {% endif %}
-                        
-                        
+                        <div id="video-wrapper" class="embed-responsive embed-responsive-16by9"></div>  
+                        {% if product.type != 'Barbeques' %}                      
                         <div class="">
                           {% if section.settings.show_product_desc %}
                           <div>
@@ -348,6 +348,7 @@
                           </div>
                           {% endif %}
                         </div>
+                        {% endif %}
                       </form>
                       
 
@@ -428,12 +429,23 @@
 
 <!-- product section start -->
 
-{% if section.settings.show_related_products %}
-{% include 'related-products' %}
-{% endif %}
 
-<product-page 
+{% if enable_development_mode == true %}
+<script src="{{'ProductPage.js'|asset_url}}" type="module"></script>
+{% else %}
+<script src="{{'ProductPage.min.js'|asset_url}}" type="module"></script>
+{% endif %}
+{% assign totalInventory = 0 %}
+{%for variant in product.variants %}
+{% capture i %}{{ total | plus:variant.inventory_quantity }}{%endcapture%}
+{% assign totalInventory = i %}
+{%endfor%}
+<product-page
+  class="dtm"
+  product-total-inventory="{{totalInventory}}"
+  product-handle="{{product.handle}}" 
   product-json="{{product | json | escape }}"
+  product-metafield="{{product.metafields.dtm.info | json | escape}}"
   similar-metafield="{{shop.metafields.dtm.similar | json | escape}}"
   show-related-products="{{section.settings.show_related_products}}"
 ></product-page>

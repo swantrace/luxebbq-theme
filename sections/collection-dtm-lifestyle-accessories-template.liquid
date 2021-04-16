@@ -1,24 +1,16 @@
 <script>
 {% render 'get-selected-from-query-string' %}
 const filters = [{
-    stateKey: "selectedBrands",
-    actionType: "changeBrands",
-    title: "Brands",
-    type: "SimpleFilter",
-    info: [
-        "Big Green Egg",
-        "Bradley", 
-        "Broil King", 
-        "Hardcore Carnivore",
-        "Luxe Barbeque Company", 
-        "Napoleon", 
-        "Traeger Grills", 
-        "Weber",
-    ]
-},{
+    stateKey: "searchString",
+    actionType: "changeSearchString",
+    title: "Search",
+    type: "SearchInput",
+    info: [],
+    selected: ""
+}, {
     stateKey: "selectedLifestyleAccessoriesTypes",
     actionType: "changeLifestyleAccessoriesTypes",
-    title: "Types \/ Brands",
+    title: "Types",
     type: "SimpleFilter",
     info: [
         "Apparel",
@@ -26,17 +18,7 @@ const filters = [{
         "LUXE Buckets"
     ],
     selected: params?.['selectedLifestyleAccessoriesTypes'] ?? []
-}, {
-    stateKey: "selectedColours",
-    actionType: "changeColours",
-    title: "Colours",
-    type: "SimpleFilter",
-    info: [
-       "Black",
-       "Red"
-    ],
-    selected: []
-}, ]
+},]
 const pelement = document.createElement('product-type-collection');
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));
