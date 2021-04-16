@@ -45,11 +45,39 @@
   </div>
    <!-- END header Phone call out-->
   
-  <div class="mobile-fix-option"></div>
+  {% comment %} <div class="mobile-fix-option"></div> {% endcomment %}
+
+  <ul class="mobile-bottom-icons fixed-bottom d-flex d-sm-none justify-content-around bg-white border-top border-dark">
+    <li>
+      <a class="nav-link" href="/search">
+        <i class="bi bi-search dtm-header-icon" style="color: black;" ></i>     
+      </a>
+    </li>
+    <li>
+      <a class="nav-link" href="{% if customer %}/account{% else %}/account/login{% endif %}">
+        <i class="bi bi-person-fill dtm-header-icon" style="color: black"></i>
+      </a>
+    </li>
+    <li>
+      <a class="nav-link" href="/pages/wishlist">
+        <i class="bi bi-heart dtm-header-icon" style="color: black"></i>
+      </a>
+    </li>
+    <li>
+      <a class="nav-link" href="/cart">
+        <i class="bi bi-cart3 dtm-header-icon" style="color: black;"></i>
+      </a>
+    </li>
+    <style>
+      .mobile-bottom-icons li{
+
+      }
+    </style>
+  </ul>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <div class="main-menu">
+        <div class=" main-menu mb-2 mb-sm-0">
           <div class="menu-left">
             {% if section.settings.logo %}
             <div class="brand-logo" itemscope itemtype="http://schema.org/Organization">
@@ -368,14 +396,14 @@
               </nav>
             </div>
           </div>
-          <div class="menu-right pull-right main-icons">
+          <div class="menu-right pull-right main-icons d-none d-sm-flex">
             <div class="top-header">
               <ul class="header-dropdown">
                 {% if section.settings.enable_search %}
                 <li class="onhover-div mobile-search">
                   <div>
                     <i class="bi bi-search dtm-header-icon" style="color: white;" onclick="openSearch()"></i>
-                    <i class="ti-search search-open" onclick="openSearch()"></i>
+                    {% comment %} <i class="ti-search search-open" onclick="openSearch()"></i> {% endcomment %}
                   </div>
                   <div id="search-overlay" class="search-overlay">
                     <div>
@@ -443,7 +471,7 @@
                     <a href="/cart">
                       {% endif %}
                       <i class="bi bi-cart3 dtm-header-icon" style="color: white;"></i>
-                      <i class="ti-shopping-cart"></i>
+                      {% comment %} <i class="ti-shopping-cart"></i> {% endcomment %}
                       {% if settings.cart_redirect == 'redirect_to_cart'%}
                     </a>
                     {% endif %}
@@ -461,7 +489,7 @@
                 {% endif %}
               </ul>
             </div>
-            <div class="original-wrapper-for-search-and-cart">
+            {% comment %} <div class="original-wrapper-for-search-and-cart">
               <div class="icon-nav">
                 <ul>
                   {% if section.settings.enable_search %}
@@ -534,7 +562,7 @@
                   {% endif %}
                 </ul>
               </div>
-            </div>
+            </div> {% endcomment %}
           </div>
         </div>
       </div>
