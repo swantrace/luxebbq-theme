@@ -19,5 +19,10 @@
     {%- section 'custom-smokers-page-collections-grid' -%}
 
 {% endif %}
+{% if settings.enable_development_mode == true %}
+<script src="{{'OtherPage.js'|asset_url}}" type="module"></script>
+{% else %}
+<script src="{{'OtherPage.min.js'|asset_url}}" type="module"></script>
+{% endif %}
 
 

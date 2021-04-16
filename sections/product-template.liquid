@@ -234,48 +234,7 @@
                             {% endif %}
                           </h6>
                           {% endif %}
-
-                       <div class="share-buttons py-3">
-
-                        <!-- ========================= share button ========================= -->
-                          <div class="product-icon">
-                            <div class="share-btn">
-                                <a class="action--wishlist tile-actions--btn flex " href="javascript:void(0)">
-                                <i class="ti-sharethis btn--main pl-0 ml-0" aria-hidden="true"></i>
-                                </a>
-                              <span class="title-font" style="">Share</span>
-                            </div>
-                          </div>
-                
-                         {% comment %} {% if section.settings.show_share_buttons %}
-                          <h6 class="product-title" {% if settings.enable_lang_switcher %}data-trans-key="products.product.social_share"{%endif%}>{{ 'products.product.social_share' | t }}</h6>
-                         {% endif %} {% endcomment %}
-
-
-                         <div class="product-icon">
-
-                           {% comment %} {% if section.settings.show_share_buttons %}
-                            {% include 'social-sharing' , share_title: product.title, share_permalink: product.url, share_image: product %}
-                           {% endif %} {% endcomment %}
-
-                           <!-- ========================= wishlist button ========================= -->
-                           <div class="wishlist-btn">
-                             {% include 'wishlist-button' %}
-                             <span class="title-font" style="">Added To Favourite</span>
-                           </div>
-                         </div>
-                        
-                        <!-- ========================= compare button ========================= -->
-                        <div class="product-icon">
-                           <div class="compare-btn">
-                              <a class="action--wishlist tile-actions--btn flex" href="javascript:void(0)" data-product-handle="{{ product.handle }}">
-                              <i class="fa fa-balance-scale btn--main" aria-hidden="true"></i>
-                              </a>
-                             <span class="title-font" style="">Compare</span>
-                           </div>
-                          </div>
-
-                      </div>
+                          {% render 'share-buttons' %}
                        <!-- ========================= END All buttons ========================= -->
 
                           {% if section.settings.show_product_inventory %}
@@ -333,7 +292,9 @@
                           {% endif %}
                         </div>
                         {% endif %}
-                        <div id="video-wrapper" class="embed-responsive embed-responsive-16by9"></div>  
+                        {% comment %} dtm added {% endcomment %}
+                        <div id="video-wrapper" class="embed-responsive embed-responsive-16by9"></div>
+                        {% comment %} dtm added {% endcomment %}  
                         {% if product.type != 'Barbeques' %}                      
                         <div class="">
                           {% if section.settings.show_product_desc %}

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable camelcase */
 import { html, useState } from '@apollo-elements/haunted';
 import pickBy from 'lodash.pickby';
@@ -117,7 +118,11 @@ function CompareTable() {
           : null}`;
       }
       default: {
-        return product?.[item.key] ?? '';
+        return !product?.[item.key]
+          ? ''
+          : Array.isArray(product[item.key])
+          ? product[item.key].join(', ')
+          : product[item.key];
       }
     }
   };

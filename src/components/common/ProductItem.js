@@ -52,7 +52,10 @@ const ProductItem = virtual(
             href="javascript:void(0)"
             data-product-handle=${product.handle}
           >
-            <i class="ti-heart btn--main" aria-hidden="true"></i>
+            <i
+              class="icon-heart-outline iconfont btn--main"
+              aria-hidden="true"
+            ></i>
           </a>
           <a
             href="#"
@@ -62,7 +65,7 @@ const ProductItem = virtual(
             title=""
             class="compare"
             data-original-title="Compare"
-            ><i class="ti-reload" aria-hidden="true"></i
+            ><i class="fa fa-balance-scale" aria-hidden="true"></i
           ></a>
         </div>
       </div>

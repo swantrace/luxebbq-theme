@@ -187,10 +187,10 @@
 .ti-image:before {
 	content: "\e633";
 }
-.ti-heart:before {
+.icon-heart-outline iconfont:before {
 	content: "\e634";
 }
-.ti-heart-broken:before {
+.icon-heart-outline iconfont-broken:before {
 	content: "\e635";
 }
 .ti-hand-stop:before {

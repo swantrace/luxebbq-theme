@@ -46,7 +46,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
       title: () => `<div class="social-icons">
           <a
             class="social-link"
-            href="//www.facebook.com/sharer.php?u={{ shop.url }}"
+            href="//www.facebook.com/sharer.php?u=https://luxebbq.ca/products/${product.handle}"
             target="_blank"
           >
             <svg
@@ -67,7 +67,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
           </a>
           <a
             class="social-link"
-            href="//twitter.com/share?text={{ shop.name | url_param_escape }}&amp;url={{ shop.url }}"
+            href="//twitter.com/share?url=https://luxebbq.ca/products/${product.handle}&amp;text=${product.title}"
             target="_blank"
           >
             <svg
@@ -88,7 +88,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
           </a>
           <a
             class="social-link"
-            href="http://pinterest.com/pin/create/button/?url={{ shop.url }}&description={{ shop.name | url_param_escape }}"
+            href="//pinterest.com/pin/create/button/?url=https://luxebbq.ca/products/${product.handle}&amp;media=${product.featuredImageUrl}&amp;description=${product.title}"
             target="_blank"
           >
             <svg
@@ -144,7 +144,10 @@ const WishlistItem = virtual(({ product, productHandles }) => {
                     href="javascript:void(0)"
                     data-product-handle=${product.handle}
                   >
-                    <i class="ti-heart btn--main" aria-hidden="true"></i>
+                    <i
+                      class="icon-heart-outline iconfont btn--main"
+                      aria-hidden="true"
+                    ></i>
                   </a>
                   <a
                     href=${product.addToCartButtonUrl}

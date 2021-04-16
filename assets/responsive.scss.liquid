@@ -846,9 +846,9 @@ $color-success-bg: #def6e1;
       background-color: #fff;
       .menu-right{
         &.main-navigation{
-          position: absolute;
+          {% comment %} position: absolute;
           right: 32%;
-          top: 0;
+          top: 0; {% endcomment %}
         }
       }
     }
@@ -1959,9 +1959,9 @@ $color-success-bg: #def6e1;
     &.header-5{
       .menu-right{
         &.main-navigation{
-          position: absolute;
+          {% comment %} position: absolute;
           right: 38%;
-          top: 0;
+          top: 0; {% endcomment %}
         }
       }
     }
@@ -4905,7 +4905,7 @@ $color-success-bg: #def6e1;
     padding-left:0px !important 
   } 
 }
-@media (max-width: 577px) {
+@media (max-width: 576px) {
   .home-slider{
     .slider-contain{
       margin-left: 20px;
@@ -6122,7 +6122,7 @@ $color-success-bg: #def6e1;
   }
 }
 
-@media (min-width: 577px) {
+@media (min-width: 576px) {
 
   .rtl {
     .onhover-dropdown {
@@ -6181,7 +6181,7 @@ $color-success-bg: #def6e1;
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 576px) {
    .shipping-info{
     padding-top: 10px !important;
     .free_shipping_bar{

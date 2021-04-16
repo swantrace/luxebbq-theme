@@ -39,7 +39,7 @@ function ProductPage({
       .map((tag) => ({
         [capitalCase(tag.split('_')[1])]: tag.split('_')?.[2] ?? true,
       })),
-    ...Object.entries(metafield).map(([key, value]) => ({
+    ...Object.entries(metafield ?? {}).map(([key, value]) => ({
       [capitalCase(key)]: value,
     })),
   ].reduce((acc, cur) => {
