@@ -1,7 +1,7 @@
 <!--Wishlist Page section start-->
 
 {% section 'announcement-bar' %}
-{% if enable_development_mode == true %}
+{% if settings.enable_development_mode == true %}
 <script src="{{'WishlistContainer.js'|asset_url}}" type="module"></script>
 {% else %}
 <script src="{{'WishlistContainer.min.js'|asset_url}}" type="module"></script>

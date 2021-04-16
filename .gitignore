@@ -3,3 +3,9 @@ node_modules
 .env
 config.yml
 assets/custom*
+assets/chunk*
+assets/PerfectGrill*
+assets/ProductPage*
+assets/ProductTypeCollection*
+assets/SearchResult*
+assets/WishlistContainer*

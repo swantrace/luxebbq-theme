@@ -58,17 +58,24 @@ class Furniture extends ProductType {
 
   createFiltersFromState() {
     const { selectedFurnitureTypes } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            furnitureType: (product) => {
+              if (selectedFurnitureTypes.length === 0) {
+                return true;
+              }
+              if (!product?.furnitureType) {
+                return false;
+              }
+              return !!selectedFurnitureTypes.includes(product.furnitureType);
+            },
+          };
     return {
       ...super.createFiltersFromState(),
-      furnitureType: (product) => {
-        if (selectedFurnitureTypes.length === 0) {
-          return true;
-        }
-        if (!product?.furnitureType) {
-          return false;
-        }
-        return !!selectedFurnitureTypes.includes(product.furnitureType);
-      },
+      ...typeFilters,
     };
   }
 }

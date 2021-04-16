@@ -1,5 +1,5 @@
 import { html, virtual } from '@apollo-elements/haunted';
-import { DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE } from '../../helpers';
+import { DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE } from '../../shared/helpers';
 
 const PerfectGrillPriceRangeSelector = virtual(
   ({ currentPriceRange, priceRangeMinAndMax, handlePriceRangeChanged }) => {
@@ -10,19 +10,16 @@ const PerfectGrillPriceRangeSelector = virtual(
     return html`<style is="custom-style">
         .price-paper-range-slider {
           --paper-range-slider-width: 610px;
-          max-width: 600px
+          max-width: 600px;
           --primary-color: #fb711c;
+          --paper-single-range-slider-height: 4px;
         }
-        paper-range-slider.price-paper-range-slider:before {
-          content: '${valueMin}';
-        }
-        paper-range-slider.price-paper-range-slider:after {
-          content: '${valueMax}';
-        }</style
-      ><paper-range-slider
+      </style>
+      <paper-range-slider
         class="price-paper-range-slider"
         id="price-range-slider"
         step="1"
+        always-show-pin
         min=${min}
         max=${max}
         value-min=${valueMin}

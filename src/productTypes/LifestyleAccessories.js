@@ -69,28 +69,36 @@ class LifestyleAccessories extends ProductType {
 
   createFiltersFromState() {
     const { selectedLifestyleAccessoriesTypes, selectedColours } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            lifestyleAccessoriesType: (product) => {
+              if (selectedLifestyleAccessoriesTypes.length === 0) {
+                return true;
+              }
+              if (!product?.lifestyleAccessoriesType) {
+                return false;
+              }
+              return !!selectedLifestyleAccessoriesTypes?.includes(
+                product.lifestyleAccessoriesType
+              );
+            },
+            colour: (product) => {
+              if (selectedColours.length === 0) {
+                return true;
+              }
+              if (!product?.colour) {
+                return false;
+              }
+              return !!selectedColours?.includes(product.colour);
+            },
+          };
+
     return {
       ...super.createFiltersFromState(),
-      lifestyleAccessoriesType: (product) => {
-        if (selectedLifestyleAccessoriesTypes.length === 0) {
-          return true;
-        }
-        if (!product?.lifestyleAccessoriesType) {
-          return false;
-        }
-        return !!selectedLifestyleAccessoriesTypes?.includes(
-          product.lifestyleAccessoriesType
-        );
-      },
-      colour: (product) => {
-        if (selectedColours.length === 0) {
-          return true;
-        }
-        if (!product?.colour) {
-          return false;
-        }
-        return !!selectedColours?.includes(product.colour);
-      },
+      ...typeFilters,
     };
   }
 }

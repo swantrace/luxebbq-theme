@@ -69,26 +69,34 @@ class RubsAndSauces extends ProductType {
 
   createFiltersFromState() {
     const { selectedFoodTypes, selectedSpecialtyFoods } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            foodType: (product) => {
+              if (selectedFoodTypes.length === 0) {
+                return true;
+              }
+              if (!product?.foodType) {
+                return false;
+              }
+              return !!selectedFoodTypes.includes(product.foodType);
+            },
+            specialtyFoods: (product) => {
+              if (selectedSpecialtyFoods.length === 0) {
+                return true;
+              }
+              if (!product?.specialtyFoods) {
+                return false;
+              }
+              return !!selectedSpecialtyFoods.includes(product.specialtyFoods);
+            },
+          };
+
     return {
       ...super.createFiltersFromState(),
-      foodType: (product) => {
-        if (selectedFoodTypes.length === 0) {
-          return true;
-        }
-        if (!product?.foodType) {
-          return false;
-        }
-        return !!selectedFoodTypes.includes(product.foodType);
-      },
-      specialtyFoods: (product) => {
-        if (selectedSpecialtyFoods.length === 0) {
-          return true;
-        }
-        if (!product?.specialtyFoods) {
-          return false;
-        }
-        return !!selectedSpecialtyFoods.includes(product.specialtyFoods);
-      },
+      ...typeFilters,
     };
   }
 }

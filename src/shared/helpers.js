@@ -13,6 +13,9 @@ export const GET_PRODUCT_BY_HANDLE = gql`
       handle
       title
       totalInventory
+      tags
+      vendor
+      productType
       variants(first: 2) {
         edges {
           node {
@@ -120,6 +123,9 @@ export const transformFunc = ({
   productType,
   onlineStoreUrl,
 });
+
+export const createFragmentFromString = (str) =>
+  document.createRange().createContextualFragment(str);
 
 export const stripHTML = (str) => str.replace(/(<([^>]+)>)/gi, '');
 

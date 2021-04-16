@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { html, useState } from '@apollo-elements/haunted';
 import pickBy from 'lodash.pickby';
-import { stripHTML } from '../../helpers';
+import { stripHTML } from '../../shared/helpers';
 import TitleBanner from './TitleBanner';
 
 function CompareTable() {

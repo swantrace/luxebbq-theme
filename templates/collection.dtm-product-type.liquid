@@ -1,5 +1,5 @@
 {% comment %} {{ collection.all_products_count }} total products in this collection {% endcomment %}
-{% if enable_development_mode == true %}
+{% if settings.enable_development_mode == true %}
 <script src="{{'ProductTypeCollection.js'|asset_url}}" type="module"></script>
 {% else %}
 <script src="{{'ProductTypeCollection.min.js'|asset_url}}" type="module"></script>

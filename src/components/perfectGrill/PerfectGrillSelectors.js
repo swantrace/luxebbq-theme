@@ -1,5 +1,5 @@
 import { html, useEffect } from '@apollo-elements/haunted';
-import { usePageContext } from '../../context';
+import { usePageContext } from '../../shared/context';
 import PerfectGrillAvailabilitySelector from './PerfectGrillAvailabilitySelector';
 import PerfectGrillBrandSelector from './PerfectGrillBrandSelector';
 import PerfectGrillCookTypeSelector from './PerfectGrillCookTypeSelector';
@@ -36,7 +36,7 @@ function PerfectGrillSelectors() {
     });
   }, []);
   const handleSelectedCookTypesAndBrandsChanged = (newCookTypesAndBrands) => {
-    console.log('newCookTypesAndBrands', newCookTypesAndBrands);
+    // console.log('newCookTypesAndBrands', newCookTypesAndBrands);
     dispatch({
       type: 'changeCookTypesAndBrands',
       payload: newCookTypesAndBrands,

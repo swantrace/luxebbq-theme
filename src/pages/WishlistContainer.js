@@ -1,8 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import { html, useEffect, useState } from '@apollo-elements/haunted';
-import axios from 'axios';
-import { GET_PRODUCT_BY_HANDLE } from '../../helpers';
-import WishlistItem from './WishlistItem';
+import { html, useEffect, useState, component } from '@apollo-elements/haunted';
+import { CompareTable } from '../shared/index';
+// import axios from 'axios';
+import { GET_PRODUCT_BY_HANDLE } from '../shared/helpers';
+import WishlistItem from '../components/wishlist/WishlistItem';
 
 function WishlistContainer({ emptyImage, emptySearchImage }) {
   const client = window.__APOLLO_CLIENT__;
@@ -16,7 +17,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
   const transformFunc = (rawProduct) => {
     let product = null;
     if (rawProduct) {
-      console.log('rawProduct', rawProduct);
+      // console.log('rawProduct', rawProduct);
       product = {
         id: atob(rawProduct.id).replace('gid://shopify/Product/', ''),
         handle: rawProduct.handle,
@@ -44,8 +45,9 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
                 ><i class="fa fa-check-circle" aria-hidden="true"></i
                 >PREORDER</span
               >`
-            : html`<span class="outofstock-lable"><i class="fa fa-ban" aria-hidden="true"></i
-            >OUT OF STOCK</span>`,
+            : html`<span class="outofstock-lable"
+                ><i class="fa fa-ban" aria-hidden="true"></i>OUT OF STOCK</span
+              >`,
         price: `$${rawProduct.variants.edges?.[0]?.node?.priceV2?.amount}`,
         variantId: atob(rawProduct?.variants?.edges?.[0]?.node?.id).replace(
           'gid://shopify/ProductVariant/',
@@ -89,7 +91,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
       setIsLoading(true);
       const ps = await Promise.all(promiseArr);
       setIsLoading(false);
-      console.log('products', ps);
+      // console.log('products', ps);
       setProducts(ps);
     };
     getProducts();
@@ -120,32 +122,32 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
     }
   };
 
-  console.log(products.sort(sorter));
+  // console.log(products.sort(sorter));
 
-  const handleCheckoutButtonClicked = (e) => {
-    e.preventDefault();
-    const productElements = Array.from(
-      this.querySelectorAll('[data-product-variant-id]')
-    );
-    if (productElements.length > 0) {
-      axios
-        .post('/cart/add', {
-          items: productElements.map(() => {
-            const variantId = e.getAttribute('data-product-variant-id');
-            return {
-              id: variantId,
-              quantity: 1,
-            };
-          }),
-        })
-        .then(() => {
-          window.location.href = '/checkout';
-        });
-    }
-  };
+  // const handleCheckoutButtonClicked = (e) => {
+  //   e.preventDefault();
+  //   const productElements = Array.from(
+  //     this.querySelectorAll('[data-product-variant-id]')
+  //   );
+  //   if (productElements.length > 0) {
+  //     axios
+  //       .post('/cart/add', {
+  //         items: productElements.map(() => {
+  //           const variantId = e.getAttribute('data-product-variant-id');
+  //           return {
+  //             id: variantId,
+  //             quantity: 1,
+  //           };
+  //         }),
+  //       })
+  //       .then(() => {
+  //         window.location.href = '/checkout';
+  //       });
+  //   }
+  // };
 
   const handleSorterChanged = (type) => {
-    console.log('type', type);
+    // console.log('type', type);
     if (sortBy === type) {
       setReverse((oldReverse) => !oldReverse);
     } else {
@@ -223,11 +225,19 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
       : null}`;
 }
 
-export default {
-  tagName: 'wishlist-container',
-  renderer: WishlistContainer,
-  options: {
-    observedAttributes: ['empty-image', 'empty-search-image'],
-    useShadowDOM: false,
+[
+  CompareTable,
+  {
+    tagName: 'wishlist-container',
+    renderer: WishlistContainer,
+    options: {
+      observedAttributes: ['empty-image', 'empty-search-image'],
+      useShadowDOM: false,
+    },
   },
-};
+].forEach((pComponent) => {
+  customElements.define(
+    pComponent.tagName,
+    component(pComponent.renderer, pComponent.options)
+  );
+});

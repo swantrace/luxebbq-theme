@@ -1,4 +1,4 @@
-import { hasIntersectionBetweenTwoRanges } from '../helpers';
+import { hasIntersectionBetweenTwoRanges } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Barbeques extends ProductType {
@@ -21,13 +21,6 @@ class Barbeques extends ProductType {
         return {
           ...stateFromSuper,
           currentGrillCookingAreaRange: action.payload,
-          pageNumber: 1,
-        };
-      }
-      case 'changeSearchString': {
-        return {
-          ...previousState,
-          searchString: action.payload,
           pageNumber: 1,
         };
       }
@@ -98,7 +91,6 @@ class Barbeques extends ProductType {
         4,
         6,
       ],
-      searchString: initialValueFilterKeyPairs?.searchString ?? '',
       sideBurner: initialValueFilterKeyPairs?.sideBurner ?? false,
       searBurner: initialValueFilterKeyPairs?.searBurner ?? false,
       rearRotisserie: initialValueFilterKeyPairs?.rearRotisserie ?? false,
@@ -167,135 +159,133 @@ class Barbeques extends ProductType {
       selectedStandTypes,
     } = this.state;
     const st = searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            cookTypesAndBrands: (product) => {
+              if (st.length > 0) {
+                return true;
+              }
+              const cookTypes = selectedCookTypesAndBrands.map(
+                ([cookType]) => cookType
+              );
+              if (cookTypes.length === 0) {
+                return true;
+              }
+
+              if (
+                !product?.cookTypes ||
+                (product?.cookTypes?.length ?? 0) === 0
+              ) {
+                return false;
+              }
+              const currentProductCookTypes = cookTypes.filter((t) =>
+                product.cookTypes.includes(t)
+              );
+
+              if (!currentProductCookTypes.length === 0) {
+                return false;
+              }
+
+              const booleanArr = currentProductCookTypes.map(
+                (currentProductCookType) => {
+                  const brands =
+                    selectedCookTypesAndBrands.find(
+                      ([cookType]) => cookType === currentProductCookType
+                    )?.[1] ?? [];
+                  if (brands.length === 0) {
+                    return true;
+                  }
+                  return !!brands.includes(product.vendor);
+                }
+              );
+
+              if (booleanArr.find((a) => a === true)) {
+                return true;
+              }
+              return false;
+            },
+            price: (product) => {
+              if (st.length > 0) {
+                return true;
+              }
+              const productPriceRange = [
+                product.minVariantPrice,
+                product.maxVariantPrice,
+              ];
+              if (
+                hasIntersectionBetweenTwoRanges(
+                  productPriceRange,
+                  currentPriceRange
+                )
+              ) {
+                return true;
+              }
+              return false;
+            },
+            grillCookingArea: (product) => {
+              if (st.length > 0) {
+                return true;
+              }
+              const [
+                minGrillCookingArea,
+                maxGrillCookingArea,
+              ] = currentGrillCookingAreaRange;
+              if (!product?.grillCookingArea) {
+                return true;
+              }
+              if (
+                product?.grillCookingArea >= minGrillCookingArea &&
+                product?.grillCookingArea <= maxGrillCookingArea
+              ) {
+                return true;
+              }
+              return false;
+            },
+            sideBurner: (product) => {
+              if (!sideBurner) {
+                return true;
+              }
+              if (sideBurner === product?.sideBurner) {
+                return true;
+              }
+              return false;
+            },
+            searBurner: (product) => {
+              if (!searBurner) {
+                return true;
+              }
+              if (searBurner === product?.searBurner) {
+                return true;
+              }
+              return false;
+            },
+            rearRotisserie: (product) => {
+              if (!rearRotisserie) {
+                return true;
+              }
+              if (rearRotisserie === product?.rearRotisserie) {
+                return true;
+              }
+              return false;
+            },
+            grillType: (product) => {
+              if ((selectedGrillTypes?.length ?? 0) === 0) {
+                return true;
+              }
+              return selectedGrillTypes?.includes(product?.grillType);
+            },
+            standType: (product) => {
+              if ((selectedStandTypes?.length ?? 0) === 0) {
+                return true;
+              }
+              return selectedStandTypes?.includes(product?.standType);
+            },
+          };
     return {
       ...super.createFiltersFromState(),
-      searchString: (product) => {
-        if (st.length === 0) {
-          return true;
-        }
-        if (
-          st.length > 0 &&
-          (product.title.toLowerCase().includes(st.toLowerCase()) ||
-            product.tags.join(' ').toLowerCase().includes(st.toLowerCase()) ||
-            product.description.toLowerCase().includes(st.toLowerCase()))
-        ) {
-          return true;
-        }
-        return false;
-      },
-      cookTypesAndBrands: (product) => {
-        if (st.length > 0) {
-          return true;
-        }
-        const cookTypes = selectedCookTypesAndBrands.map(
-          ([cookType]) => cookType
-        );
-        if (cookTypes.length === 0) {
-          return true;
-        }
-
-        if (!product?.cookTypes || (product?.cookTypes?.length ?? 0) === 0) {
-          return false;
-        }
-        const currentProductCookTypes = cookTypes.filter((t) =>
-          product.cookTypes.includes(t)
-        );
-
-        if (!currentProductCookTypes.length === 0) {
-          return false;
-        }
-
-        const booleanArr = currentProductCookTypes.map(
-          (currentProductCookType) => {
-            const brands =
-              selectedCookTypesAndBrands.find(
-                ([cookType]) => cookType === currentProductCookType
-              )?.[1] ?? [];
-            if (brands.length === 0) {
-              return true;
-            }
-            return !!brands.includes(product.vendor);
-          }
-        );
-
-        if (booleanArr.find((a) => a === true)) {
-          return true;
-        }
-        return false;
-      },
-      price: (product) => {
-        if (st.length > 0) {
-          return true;
-        }
-        const productPriceRange = [
-          product.minVariantPrice,
-          product.maxVariantPrice,
-        ];
-        if (
-          hasIntersectionBetweenTwoRanges(productPriceRange, currentPriceRange)
-        ) {
-          return true;
-        }
-        return false;
-      },
-      grillCookingArea: (product) => {
-        if (st.length > 0) {
-          return true;
-        }
-        const [
-          minGrillCookingArea,
-          maxGrillCookingArea,
-        ] = currentGrillCookingAreaRange;
-        if (!product?.grillCookingArea) {
-          return true;
-        }
-        if (
-          product?.grillCookingArea >= minGrillCookingArea &&
-          product?.grillCookingArea <= maxGrillCookingArea
-        ) {
-          return true;
-        }
-        return false;
-      },
-      sideBurner: (product) => {
-        if (!sideBurner) {
-          return true;
-        }
-        if (sideBurner === product?.sideBurner) {
-          return true;
-        }
-        return false;
-      },
-      searBurner: (product) => {
-        if (!searBurner) {
-          return true;
-        }
-        if (searBurner === product?.searBurner) {
-          return true;
-        }
-        return false;
-      },
-      rearRotisserie: (product) => {
-        if (!rearRotisserie) {
-          return true;
-        }
-        if (rearRotisserie === product?.rearRotisserie) {
-          return true;
-        }
-        return false;
-      },
-      grillType: (product) => {
-        if ((selectedGrillTypes?.length ?? 0) === 0) {
-          return true;
-        }
-        return selectedGrillTypes?.includes(product?.grillType);
-      },
-      standType: (product) => {
-        if ((selectedStandTypes?.length ?? 0) === 0) {
-          return true;
-        }
-        return selectedStandTypes?.includes(product?.standType);
-      },
+      ...typeFilters,
     };
   }
 }

@@ -1,5 +1,5 @@
 import { html, useRef } from '@apollo-elements/haunted';
-import { usePageContext } from '../../context';
+import { usePageContext } from '../../shared/context';
 import Pagination from '../common/Pagination';
 import TitleBanner from '../common/TitleBanner';
 import TopControllers from '../common/TopControllers';
@@ -57,7 +57,7 @@ function ProductTypeMainContent() {
     }
     dispatch({ type: 'changePageNumber', payload: number });
   };
-  console.log('collectionTitle', collectionTitle);
+  // console.log('collectionTitle', collectionTitle);
   return html`${TitleBanner({
     title: collectionTitle,
   })}${TopControllers({

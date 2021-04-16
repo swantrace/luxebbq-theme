@@ -3,17 +3,20 @@ import {
   useEffect,
   useQuery,
   useReducer,
+  component,
 } from '@apollo-elements/haunted';
+import { CompareTable } from '../shared/index';
 import SearchBar from '../components/searchResult/SearchBar';
 import TitleBanner from '../components/common/TitleBanner';
-import { pageWrapper as SearchResultWrapper } from '../context';
+import { pageWrapper as SearchResultWrapper } from '../shared/context';
 import {
   getQueryString,
   getSortValueFromDefaultSortBy,
   queryAllProductsFromSearchTerm,
   GET_PRODUCTS,
   transformFunc,
-} from '../helpers';
+} from '../shared/helpers';
+import SearchResultMainContent from '../components/searchResult/SearchResultMainContent';
 
 function SearchResult({ defaultSortBy, emptyCollectionImage }) {
   const params = new URLSearchParams(window.location.search);
@@ -133,11 +136,20 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
   })}`;
 }
 
-export default {
-  tagName: 'search-result',
-  renderer: SearchResult,
-  options: {
-    observedAttributes: ['default-sort-by', 'empty-collection-image'],
-    useShadowDOM: false,
+[
+  SearchResultMainContent,
+  CompareTable,
+  {
+    tagName: 'search-result',
+    renderer: SearchResult,
+    options: {
+      observedAttributes: ['default-sort-by', 'empty-collection-image'],
+      useShadowDOM: false,
+    },
   },
-};
+].forEach((pComponent) => {
+  customElements.define(
+    pComponent.tagName,
+    component(pComponent.renderer, pComponent.options)
+  );
+});

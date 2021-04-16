@@ -57,23 +57,30 @@ class Fuel extends ProductType {
 
   createFiltersFromState() {
     const { selectedFuelTypes } = this.state;
+    const st = this.state.searchString?.trim() ?? '';
+    const typeFilters =
+      st !== ''
+        ? {}
+        : {
+            fuelType: (product) => {
+              if (selectedFuelTypes.length === 0) {
+                return true;
+              }
+              if (!product?.fuelType) {
+                return false;
+              }
+              // console.log(
+              //   'selectedFuelTypes',
+              //   selectedFuelTypes,
+              //   'product.fuelType',
+              //   product.fuelType
+              // );
+              return !!selectedFuelTypes.includes(product.fuelType);
+            },
+          };
     return {
       ...super.createFiltersFromState(),
-      fuelType: (product) => {
-        if (selectedFuelTypes.length === 0) {
-          return true;
-        }
-        if (!product?.fuelType) {
-          return false;
-        }
-        console.log(
-          'selectedFuelTypes',
-          selectedFuelTypes,
-          'product.fuelType',
-          product.fuelType
-        );
-        return !!selectedFuelTypes.includes(product.fuelType);
-      },
+      ...typeFilters,
     };
   }
 }

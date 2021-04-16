@@ -8,7 +8,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
         'mouseenter',
         (e) => {
           if (e?.target?.closest('.share-button')) {
-            console.log(e);
+            // console.log(e);
             e.preventDefault();
             e.stopImmediatePropagation();
             e.stopPropagation();
@@ -20,7 +20,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
         'mouseout',
         (e) => {
           if (e?.target?.closest('.share-button')) {
-            console.log(e);
+            // console.log(e);
             e.preventDefault();
             e.stopImmediatePropagation();
             e.stopPropagation();
@@ -32,7 +32,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
         'mouseover',
         (e) => {
           if (e?.target?.closest('.share-button')) {
-            console.log(e);
+            // console.log(e);
             e.preventDefault();
             e.stopImmediatePropagation();
             e.stopPropagation();
@@ -182,7 +182,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
                     class="title-font share-button"
                     id=${`share-button-${product.id}`}
                     @click=${() => {
-                      console.log(`#share-button-${product.id}`);
+                      // console.log(`#share-button-${product.id}`);
                       window.$(`#share-button-${product.id}`).tooltip('toggle');
                     }}
                   >

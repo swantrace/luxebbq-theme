@@ -31,7 +31,9 @@ const Products = virtual(
           ${productsOfCurrentPage.length > 0
             ? productsOfCurrentPage.map(
                 (product) =>
-                  html`${ProductItem({ viewMode, product, itemClassList })}`
+                  html`<div class=${itemClassList[viewMode]}>
+                    ${ProductItem({ product })}
+                  </div>`
               )
             : html`<div class="col-sm-12 text-center mt-5">
                 <img src=${emptyCollectionImage} class="img-fluid mb-5" />
