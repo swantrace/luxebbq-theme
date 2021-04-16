@@ -5,6 +5,7 @@ import { pageWrapper as perfectGrillWrapper } from '../shared/context';
 import TitleBanner from '../components/common/TitleBanner';
 import useProductType from '../productTypes';
 import PerfectGrillSelectors from '../components/perfectGrill/PerfectGrillSelectors';
+import ProductTypeMainContent from '../components/productTypeCollection/ProductTypeMainContent';
 
 function PerfectGrill({
   cookTypesAndBrands,
@@ -83,6 +84,7 @@ function PerfectGrill({
 
 [
   PerfectGrillSelectors,
+  ProductTypeMainContent,
   CompareTable,
   {
     tagName: 'perfect-grill',

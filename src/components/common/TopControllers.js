@@ -43,7 +43,7 @@ const MainContentTopControllers = virtual(
 
     html`<div class="row py-5">
       <div class="col-12">
-        <div class="product-filter-content collection-top-controllers">
+        <div class="product-filter-content collection-top-controllers mx-3">
           <div class="search-count">
             ${fetchIsFinished
               ? html`<h5>

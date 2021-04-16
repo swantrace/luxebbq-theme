@@ -76,18 +76,20 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
 
   useEffect(() => {
     const getProducts = async () => {
-      const promiseArr = productHandles.map((handle) =>
-        client
-          .query({
-            query: GET_PRODUCT_BY_HANDLE,
-            variables: {
-              handle,
-            },
-          })
-          .then(({ data: { productByHandle: rawProduct } }) =>
-            transformFunc(rawProduct)
-          )
-      );
+      const promiseArr = productHandles
+        .filter((a) => a)
+        .map((handle) =>
+          client
+            .query({
+              query: GET_PRODUCT_BY_HANDLE,
+              variables: {
+                handle,
+              },
+            })
+            .then(({ data: { productByHandle: rawProduct } }) =>
+              transformFunc(rawProduct)
+            )
+        );
       setIsLoading(true);
       const ps = await Promise.all(promiseArr);
       setIsLoading(false);
