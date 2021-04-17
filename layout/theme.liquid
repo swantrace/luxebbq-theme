@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="{{ settings.color_button }}">
     <link rel="canonical" href="{{ canonical_url }}">
-
     {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
     {%- endif -%}
@@ -90,7 +89,12 @@
     {{ 'head.js' | asset_url | script_tag }}
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
     {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
-
+    {{ 'wishlist.js' | asset_url | script_tag }}
+    <script>
+      $(window).on('load',function(){
+        Wishlist.init();
+      });
+    </script>
     {%- if template.directory == 'customers' -%}
     <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
     <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
@@ -288,24 +292,6 @@
     {% include 'product-compare' %}
     {% include 'currencies' %}
     {% include 'swatch-script' %}
-
-    {% comment %} {{ 'wishlist.js' | asset_url | script_tag }}
-    <script>
-      $(window).on('load',function(){
-        Wishlist.init();
-      });
-    </script> {% endcomment %}
-    <script>
-      document.addEventListener('customElementsPrepared', function(e){
-        let wishlistScript = document.createElement("script");
-        wishlistScript.setAttribute("src", "{{ 'wishlist.js' | asset_url}}");
-        wishlistScript.onload = () => {
-          Wishlist.init();
-        }
-        document.body.appendChild(wishlistScript);
-      })
-    </script>
-
     {% if settings.display_demo_btn %}
     {% include 'demo-popup' %}
     {% endif %}
