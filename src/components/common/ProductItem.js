@@ -59,13 +59,11 @@ const ProductItem = virtual(
           </a>
           <a
             href="#"
-            data-toggle="tooltip"
             data-placement="top"
             data-pid=${product.handle}
-            title=""
             class="compare"
             data-original-title="Compare"
-            ><i class="fa fa-balance-scale" aria-hidden="true"></i
+            ><i class="iconfont icon-balance" aria-hidden="true"></i
           ></a>
         </div>
       </div>

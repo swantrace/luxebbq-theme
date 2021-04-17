@@ -5,6 +5,7 @@ import CompareTable from '../components/common/CompareTable';
 
 const start = () => {
   // add active class to menu item
+
   const path = window.location.pathname;
   const navigationElement = document.querySelector('#main-menu');
   const activeLinkElement = navigationElement?.querySelector(
@@ -12,6 +13,7 @@ const start = () => {
   );
   const activeParentLinkElement = activeLinkElement?.closest('#main-menu>li>a');
   activeParentLinkElement?.classList?.add('active');
+  console.log('move hidden attribute');
   document.body.removeAttribute('hidden');
   document.dispatchEvent(new CustomEvent('customElementsPrepared'));
 };

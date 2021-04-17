@@ -41,6 +41,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
         true
       );
     }
+    console.log('init tooltip');
     window.$(`#share-button-${product.id}`).tooltip({
       html: true,
       title: () => `<div class="social-icons">
@@ -172,42 +173,36 @@ const WishlistItem = virtual(({ product, productHandles }) => {
             <div class="share-buttons py-3 d-flex flex-column">
               <div class="product-icon">
                 <div class="share-btn">
-                  <a
-                    class="action--wishlist tile-actions--btn flex "
-                    href="javascript:void(0)"
-                  >
-                    <i
-                      class="ti-sharethis btn--main pl-0 ml-0"
-                      aria-hidden="true"
-                    ></i>
-                  </a>
                   <span
-                    class="title-font share-button"
+                    class="action--wishlist tile-actions--btn flex share-button"
+                    style="cursor: pointer"
                     id=${`share-button-${product.id}`}
                     @click=${() => {
-                      // console.log(`#share-button-${product.id}`);
                       window.$(`#share-button-${product.id}`).tooltip('toggle');
                     }}
                   >
-                    Share
+                    <i
+                      class="icon-share iconfont btn--main"
+                      aria-hidden="true"
+                    ></i>
+                    <span class="title-font">Share</span>
                   </span>
                 </div>
               </div>
               <div class="product-icon">
                 <div class="compare-btn">
                   <a
-                    class="action--wishlist tile-actions--btn flex"
+                    class="action--wishlist tile-actions--btn flex compare"
                     href="javascript:void(0)"
                     data-product-handle=${product.handle}
+                    data-pid=${product.handle}
                   >
                     <i
-                      class="fa fa-balance-scale btn--main"
+                      class="iconfont icon-balance btn--main"
                       aria-hidden="true"
                     ></i>
+                    <span class="title-font">Compare</span>
                   </a>
-                  <span class="title-font compare" data-pid=${product.handle}>
-                    Compare
-                  </span>
                 </div>
               </div>
               <div class="product-icon">
@@ -216,12 +211,6 @@ const WishlistItem = virtual(({ product, productHandles }) => {
                     class="action--wishlist tile-actions--btn flex"
                     href="#"
                     data-product-handle=${product.handle}
-                  >
-                    <i class="fa fa-times btn--main" aria-hidden="true"></i>
-                  </a>
-                  <span
-                    class="title-font"
-                    style=""
                     @click=${(e) => {
                       const tbodyElement = e.target.closest('tbody');
                       const updatedProductHandles = productHandles.filter(
@@ -233,8 +222,13 @@ const WishlistItem = virtual(({ product, productHandles }) => {
                       );
                       tbodyElement.remove();
                     }}
-                    >Remove</span
                   >
+                    <i
+                      class="iconfont icon-close-circle btn--main"
+                      aria-hidden="true"
+                    ></i>
+                    <span class="title-font">Remove</span>
+                  </a>
                 </div>
               </div>
             </div>

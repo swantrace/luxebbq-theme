@@ -20,6 +20,7 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
           id=${`${slugify(rangeTitle, {
             lower: true,
           })}-range-slider`}
+          always-show-pin
           min=${min}
           max=${max}
           value-min=${valueMin}
@@ -30,14 +31,9 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
           .${slugify(rangeTitle, {
               lower: true,
             })}-range-slider-wrapper
-            > paper-range-slider:before {
-            content: '${valueMin}';
-          }
-          .${slugify(rangeTitle, {
-              lower: true,
-            })}-range-slider-wrapper
-            > paper-range-slider:after {
-            content: '${valueMax}';
+            > paper-range-slider {
+            --primary-color: #fb711c;
+            --paper-single-range-slider-height: 4px;
           }
         </style>
       </div>
