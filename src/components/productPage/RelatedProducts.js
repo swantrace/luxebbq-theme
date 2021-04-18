@@ -1,10 +1,17 @@
-import { html, virtual } from '@apollo-elements/haunted';
+import { html, useEffect, virtual } from '@apollo-elements/haunted';
 import ProductItem from '../common/ProductItem';
 import ProductListLoading from '../common/ProductListLoading';
 import TitleBanner from '../common/TitleBanner';
 
-const RelatedProducts = virtual(
-  ({ relatedProducts, fetchIsFinished }) => html`<div class="container">
+const RelatedProducts = virtual(({ relatedProducts, fetchIsFinished }) => {
+  useEffect(() => {
+    if (fetchIsFinished) {
+      if (window.Wishlist && window.Wishlist.init) {
+        window.Wishlist.init();
+      }
+    }
+  }, [relatedProducts]);
+  return html`<div class="container">
     <div class="row">
       <div class="col">
         ${TitleBanner({ title: 'RELATED PRODUCTS' })}
@@ -24,7 +31,7 @@ const RelatedProducts = virtual(
           : html`${ProductListLoading()}`}
       </div>
     </div>
-  </div>`
-);
+  </div>`;
+});
 
 export default RelatedProducts;

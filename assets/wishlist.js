@@ -1,8 +1,8 @@
 (function (Wishlist, $) {
-  var $wishlistButton = $('.wishlist-btn');
-  var $wishlistTile = $('.wishlist-tile-container');
-  var $wishlistItemCount = $('.wishlist-item-count');
-  var numProductTiles = $wishlistTile.length;
+  // var $wishlistButton = $('.wishlist-btn');
+  // var $wishlistTile = $('.wishlist-tile-container');
+  // var $wishlistItemCount = $('.wishlist-item-count');
+  // var numProductTiles = $wishlistTile.length;
   var wishlist = localStorage.getItem('user_wishlist') || [];
 
   if (wishlist.length > 0) {
@@ -47,7 +47,7 @@
    * Run on initialization
    */   
   var activateItemsInWishlist = function () {
-    $wishlistButton.each(function () {
+    $('.wishlist-btn').each(function () {
       var productHandle = $(this).attr('data-product-handle');
       if (wishlist.indexOf(productHandle) > -1) {
         $(this).addClass('is-active');
@@ -56,18 +56,8 @@
     });
   };
 
-  /**
-   * Display number of items in the wishlist
-   * Must set the $wishlistItemCount variable
-   */
-  var updateWishlistItemCount = function () {
-    if (wishlist) {
-      $wishlistItemCount.text(wishlist.length + ' item');
-    }
-  };
-
   var bindUIActions = function () {
-    $wishlistButton.click(function (e) {
+    $('.wishlist-btn').off('click').click(function (e) {
       e.preventDefault();
       if($(this).hasClass('is-active')){
       	$.notify({
@@ -153,8 +143,6 @@
   Wishlist.init = function () {
     bindUIActions();
     activateItemsInWishlist();
-    // loadWishlist();
-    updateWishlistItemCount();
   };
 
 }(window.Wishlist = window.Wishlist || {}, jQuery, undefined));

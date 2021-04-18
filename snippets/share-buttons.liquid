@@ -2,7 +2,7 @@
   <div class="product-icon">
     <div class="share-btn real-share-btn">
       <span class="title-font share-button" id="{{ 'share-button-' | append: product.id }}" style="cursor: pointer;">
-        <i class="ti-sharethis btn--main pl-0 ml-0" aria-hidden="true"></i>
+        <i class="icon-share iconfont btn--main pl-0 ml-0" aria-hidden="true"></i>
          <span class="title-font" style="">Share</span>
       </span>
     </div>
@@ -105,12 +105,14 @@
       {% render 'wishlist-button' %}
     </div>
   </div>
+  {% if product.type == 'Barbeques' %}
   <div class="product-icon">
     <div class="compare-btn">
-      <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="" class="compare" data-original-title="Compare" data-pid="{{ product.handle }}" tabindex="0">
-      <i class="fa fa-balance-scale btn--main" aria-hidden="true"></i>
+      <a href="javascript:void(0)" class="compare" data-original-title="Compare" data-pid="{{ product.handle }}" tabindex="0">
+      <i class="iconfont icon-balance btn--main" aria-hidden="true"></i>
       <span class="title-font" style="">Compare</span>
       </a>
     </div>
   </div>
+  {% endif %}
 </div>
