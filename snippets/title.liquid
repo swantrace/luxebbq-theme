@@ -1,35 +1,37 @@
-<div class="container px-lg-0 py-4">
+<div class="container py-4">
   {% if settings.title_layout == 'title_1' %}
   <div class="row dtm dtm-title">
-    <div class="title1 d-flex justify-content-between align-items-center  flex-column flex-md-row " style="flex-grow: 1;">
-     
-      {% comment %} 
-      {% if section.settings.subtitle != blank %}
-      <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
-        {{ section.settings.subtitle }}
-      </h4>
-      {% if settings.enable_lang_switcher %}
-      <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
-      {% endif %}
-      {% endif %} {% endcomment %}
+    <div class="col">
+      <div class="title1 d-flex justify-content-between align-items-center  flex-column flex-md-row " style="flex-grow: 1;">
+      
+        {% comment %} 
+        {% if section.settings.subtitle != blank %}
+        <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#FeaturePro1_{{sectionId}}_subtitle"{% endif %} style="color: {{ section.settings.subtitle_color_color }};">
+          {{ section.settings.subtitle }}
+        </h4>
+        {% if settings.enable_lang_switcher %}
+        <span class="hide" id="FeaturePro1_{{sectionId}}_subtitle">{{ section.settings.trans_subtitle | raw }}</span>
+        {% endif %}
+        {% endif %} {% endcomment %}
 
-      <! -- DTM Title Style -->
-      {% if section.settings.title != blank %}
-        <div style="flex-grow: 1;" >
-          <h2 class="title-inner1 pb-0 mb-0" style="color: {{ section.settings.title_color }};">
-            {{ section.settings.title }}
-          </h2>
-        </div>
+        <! -- DTM Title Style -->
+        {% if section.settings.title != blank %}
+          <div style="flex-grow: 1;" >
+            <h2 class="title-inner1 pb-0 mb-0" style="color: {{ section.settings.title_color }};">
+              {{ section.settings.title }}
+            </h2>
+          </div>
 
-        <div class="parallelograms-group d-none d-sm-flex">
-          <span class="parallelograms parallelogram-lt"> </span>
-          <span class="parallelograms parallelogram-rt"> </span>
-          <span class="parallelograms parallelogram-br"> </span>
+          <div class="parallelograms-group d-none d-sm-flex">
+            <span class="parallelograms parallelogram-lt"> </span>
+            <span class="parallelograms parallelogram-rt"> </span>
+            <span class="parallelograms parallelogram-br"> </span>
 
-        </div>
-      {% endif %}
-      <! --END DTM Title Style -->
+          </div>
+        {% endif %}
+        <! --END DTM Title Style -->
 
+      </div>
     </div>
   </div>
   {% elsif settings.title_layout == 'title_2' %}

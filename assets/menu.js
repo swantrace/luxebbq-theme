@@ -11,7 +11,6 @@
 		factory(jQuery);
 	}
 } (function($) {
-
 	var menuTrees = [],
 		mouse = false, // optimize for touch by default - we will detect for mouse input
 		touchEvents = 'ontouchstart' in window, // we use this just to choose between toucn and pointer events, not for touch screen detection
@@ -654,7 +653,7 @@
 					// get level (much faster than, for example, using parentsUntil)
 					var level = 2,
 						par = $ul[0];
-					while ((par = par.parentNode.parentNode) != this.$root[0]) {
+					while ((par = par.closest('li').parentNode) != this.$root[0]) {
 						level++;
 					}
 					// cache stuff for quick access
@@ -668,7 +667,8 @@
 					$a.addClass('has-submenu').dataSM('sub', $ul);
 					$ul.dataSM('parent-a', $a)
 						.dataSM('level', level)
-						.parent().dataSM('sub', $ul);
+						.closest('li').dataSM('sub', $ul);
+						// .parent().dataSM('sub', $ul);
 					// accessibility
 					var aId = $a.attr('id') || this.accessIdPrefix + (++this.idInc),
 						ulId = $ul.attr('id') || this.accessIdPrefix + (++this.idInc);

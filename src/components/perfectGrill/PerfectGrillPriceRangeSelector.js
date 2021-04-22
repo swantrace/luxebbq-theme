@@ -9,8 +9,8 @@ const PerfectGrillPriceRangeSelector = virtual(
       currentPriceRange ?? DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE;
     return html`<style is="custom-style">
         .price-paper-range-slider {
-          --paper-range-slider-width: 610px;
-          max-width: 600px;
+          width: 100%;
+          --paper-range-slider-width: 100%;
           --primary-color: #fb711c;
           --paper-single-range-slider-height: 4px;
         }

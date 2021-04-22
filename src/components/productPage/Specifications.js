@@ -4,16 +4,26 @@ import TitleBanner from '../common/TitleBanner';
 import { createFragmentFromString } from '../../shared/helpers';
 
 const Specifications = virtual(({ specificationList, description }) => {
-  // console.log(specificationList, description);
   const regexp = /<iframe\s+[^>]+><\/iframe>/g;
+  const videoRegexp = /<video\s*[^>]*>(.|\n)*<\/video>/g;
   const iframeHTMLString = description.match(regexp)?.[0] ?? '';
-  const cleanedDescription = description.replace(iframeHTMLString, '');
+  const videoHTMLString = description.match(videoRegexp)?.[0] ?? '';
+  const cleanedDescription = description
+    .replace(iframeHTMLString, '')
+    .replace(videoHTMLString, '');
 
+  console.log(
+    specificationList,
+    description,
+    '\n',
+    'videoHTMLString',
+    videoHTMLString
+  );
   useEffect(() => {
+    const videoWrapper = document.querySelector('#video-wrapper');
     if (iframeHTMLString !== '') {
       const iframeFragment = createFragmentFromString(iframeHTMLString);
       const iframeSrc = iframeFragment?.firstElementChild?.getAttribute('src');
-      const videoWrapper = document.querySelector('#video-wrapper');
       if (videoWrapper && iframeSrc && !videoWrapper.firstElementChild) {
         videoWrapper.appendChild(
           createFragmentFromString(
@@ -21,6 +31,13 @@ const Specifications = virtual(({ specificationList, description }) => {
           )
         );
       }
+    } else if (videoHTMLString !== '') {
+      const videoFragment = createFragmentFromString(videoHTMLString);
+      if (videoWrapper && !videoWrapper.firstElementChild) {
+        videoWrapper.appendChild(videoFragment);
+      }
+    } else {
+      videoWrapper.remove();
     }
   }, []);
 

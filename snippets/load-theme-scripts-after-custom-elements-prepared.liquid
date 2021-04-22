@@ -1,0 +1,24 @@
+<script>
+document.addEventListener('customElementsPrepared', () => {
+  const menuScript = document.createElement('script');
+  menuScript.src = {{ 'menu.js' | asset_url | json }};
+  const slickScript = document.createElement('script');
+  slickScript.src = {{ 'slick.js' | asset_url | json }};
+  const scriptLoadedPromise = (scriptElement) => {
+    return new Promise((resolve, reject) => {
+      scriptElement.onload = () => {
+        resolve(scriptElement);
+      }
+      document.body.appendChild(scriptElement);
+    })
+  }
+  Promise.all([scriptLoadedPromise(menuScript), scriptLoadedPromise(slickScript)]).then((scripts) => {
+      const scriptScript = document.createElement('script');
+      scriptScript.src = {{ 'script.js' | asset_url | json }};
+      scriptScript.onload = () => {
+        document.dispatchEvent(new CustomEvent('scriptJSLoaded'));
+      }
+      document.body.append(scriptScript);
+  })
+});
+</script>

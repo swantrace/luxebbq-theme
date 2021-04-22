@@ -15,44 +15,63 @@ function CompareTable() {
     tags,
     price,
     handle,
+    variants,
     first_available_variant_id,
-  }) => ({
-    availability: available ? 'INSTOCK' : 'OUTOFSTOCK',
-    name: title,
-    image: featured_image,
-    brand: vendor,
-    description: stripHTML(description),
-    handle,
-    variantId: first_available_variant_id,
-    price: `$${(price / 1000).toFixed(2)}`,
-    'cook-type':
-      tags
-        ?.filter((tag) => tag.includes('dtm_cook-type_'))
-        ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
-    'total-btu':
-      tags
-        ?.find((tag) => tag.includes('dtm_total-btu'))
-        ?.replace('dtm_total-btu_', '') ?? '',
-    'cooking-temperature-range':
-      tags
-        ?.find((tag) => tag.includes('dtm_cooking-temperature-range'))
-        ?.replace('dtm_cooking-temperature-range_', '') ?? '',
-    'total-grill-size':
-      tags
-        ?.find((tag) => tag.includes('dtm_total-grill-size'))
-        ?.replace('dtm_total-grill-size_', '') ?? '',
-    'primary-cooking-space':
-      tags
-        ?.find((tag) => tag.includes('dtm_primary-cooking-space'))
-        ?.replace('dtm_primary-cooking-space_', '') ?? '',
-    'number-of-racks':
-      tags
-        ?.find((tag) => tag.includes('dtm_number-of-racks'))
-        ?.replace('dtm_number-of-racks_', '') ?? '',
-    'rear-rotisserie-burner': !!tags?.includes('dtm_rear-rotisserie-burner'),
-    'side-burner': !!tags?.includes('dtm_side-burner'),
-    'sear-functionality': !!tags?.includes('dtm_sear-functionality'),
-  });
+  }) => {
+    const product = {
+      available,
+      totalInventory: variants
+        .map((variant) => Number(variant.inventory_quantity))
+        .reduce((acc, cur) => acc + cur, 0),
+      name: title,
+      image: featured_image,
+      brand: vendor,
+      description: stripHTML(description),
+      handle,
+      variantId: first_available_variant_id,
+      price: `$${(price / 100).toFixed(2)}`,
+      'cook-type':
+        tags
+          ?.filter((tag) => tag.includes('dtm_cook-type_'))
+          ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
+      'total-btu':
+        tags
+          ?.find((tag) => tag.includes('dtm_total-btu'))
+          ?.replace('dtm_total-btu_', '') ?? '',
+      'cooking-temperature-range':
+        tags
+          ?.find((tag) => tag.includes('dtm_cooking-temperature-range'))
+          ?.replace('dtm_cooking-temperature-range_', '') ?? '',
+      'total-grill-size':
+        tags
+          ?.find((tag) => tag.includes('dtm_total-grill-size'))
+          ?.replace('dtm_total-grill-size_', '') ?? '',
+      'primary-cooking-space':
+        tags
+          ?.find((tag) => tag.includes('dtm_primary-cooking-space'))
+          ?.replace('dtm_primary-cooking-space_', '') ?? '',
+      'number-of-racks':
+        tags
+          ?.find((tag) => tag.includes('dtm_number-of-racks'))
+          ?.replace('dtm_number-of-racks_', '') ?? '',
+      'rear-rotisserie-burner': !!tags?.includes('dtm_rear-rotisserie-burner'),
+      'side-burner': !!tags?.includes('dtm_side-burner'),
+      'sear-functionality': !!tags?.includes('dtm_sear-functionality'),
+    };
+    product.stockInfo =
+      product.totalInventory > 0
+        ? html`<span class="instock-lable"
+            ><i class="fa fa-check-circle" aria-hidden="true"></i>INSTOCK</span
+          >`
+        : product.available
+        ? html`<span class="instock-lable"
+            ><i class="fa fa-check-circle" aria-hidden="true"></i>PREORDER</span
+          >`
+        : html`<span class="outofstock-lable"
+            ><i class="fa fa-ban" aria-hidden="true"></i>OUT OF STOCK</span
+          >`;
+    return product;
+  };
   const currentCompareProducts = JSON.parse(
     localStorage.getItem('compare') ?? '{}'
   );
@@ -63,7 +82,7 @@ function CompareTable() {
     { label: 'Product Name & Image', key: 'name_image' },
     { label: 'Product Description', key: 'description' },
     { label: 'Brand', key: 'brand' },
-    { label: 'Availability', key: 'availability' },
+    { label: 'Availability', key: 'stockInfo' },
     { label: 'Cook Type', key: 'cook-type' },
     { label: 'Total BTU', key: 'total-btu' },
     { label: 'Cooking Temperature Range', key: 'cooking-temperature-range' },
@@ -111,7 +130,7 @@ function CompareTable() {
         return html`${product.variantId
           ? html`<a
               href=${`/cart/add?id=${product.variantId}&quantity=1`}
-              class="btn btn-solid"
+              class="btn btn-solid${product.available ? '' : ' disabled'}"
             >
               Add to cart >>
             </a>`

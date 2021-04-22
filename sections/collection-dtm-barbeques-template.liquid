@@ -15,16 +15,18 @@ const filters = [{
     info: [
         [
             'Gas Grill', [
-                'Black Earth',
+                'Big Green Egg',
+                'Black Earth Grills',
                 'Broil King',
-                'Chunckwagon',
-                'Delta',
+                'Chuckwagon',
+                'Delta Heat',
                 'Hestan',
                 'Huntington',
-                'Lynx',
+                'Lynx Grills',
                 'Napoleon',
-                'Weber',  
-
+                'Pit Boss',
+                'Twin Eagles',
+                'Weber',
             ]
         ],
         [
@@ -32,31 +34,49 @@ const filters = [{
                 'Big Green Egg',
                 'Broil King',
                 'Bulldog',
-                'Kamado',
-                'MasterBuilt',
+                'Delta Heat',
+                'Hestan',
+                'Kamado Joe',
+                'Lynx Grills',
+                'Masterbuilt',
                 'Napolean',
-                'Pit Barrel',
-                'PK',
-                'Regal',
+                'Pit Barrel Cooker',
+                'PK Grills',
+                'Regal', // doesn't exist
                 'Sunterra',
+                'Twin Eagles',
                 'Weber', 
             ]
         ],
         [
             'Pellet Grill', [
-                'Black Earth',
+                'Big Green Egg',
+                'Black Earth Grills',
                 'Broil King',
+                'Delta Heat',
+                'Hestan',
                 'Kamado Joe',
-                'Louisiana',
+                'Louisiana Grills',
+                'Lynx Grills',
+                'Napoleon',
                 'Pit Boss', 
-                'Traeger Grill', 
+                'Traeger',
+                'Twin Eagles', 
                 'Weber',
-                'Yoder',
+                'Yoder Smokers',
             ]
         ],
         [
             'Electric Grill', [
+                'Big Green Egg',
+                'Broil King',
                 'Bradley',
+                'Bulldog',
+                'Delta Heat',
+                'Hestan',
+                'Lynx Grills',
+                'Napoleon',
+                'Twin Eagles', 
                 'Weber',
             ]
         ],
@@ -66,17 +86,28 @@ const filters = [{
                 'Bradley',
                 'Broil King',
                 'Bulldog',
-                'Egg Modular',
+                'Delta Heat',
+                'Hestan',
+                'Lynx Grills',
+                'Egg Modular', // doesn't exist
                 'Kamado Joe', 
-                'Louisiana', 
-                'MasterBuild',
+                'Louisiana Grills',
+                'Masterbuilt',
+                'Napoleon',
+                'Twin Eagles',
+                'Yoder Smokers',                
             ]
         ],
         [
             'Pizza Oven', [
+                'Big Green Egg',
+                'Delta Heat',
                 'Fontana',
+                'Hestan',
+                'LaPiazza Wood Ovens',
+                'Lynx Grills',
                 'Ooni', 
-                'La Pizza',
+                'Twin Eagles',
             ]
         ]
     ],
@@ -86,8 +117,8 @@ const filters = [{
     actionType: "changePriceRange",
     title: "Price Range",
     type: "RangeSlider",
-    info: [1, 30000],
-    selected: [1, 30000]
+    info: [1, 25000],
+    selected: [1, 25000]
 }, {
     stateKey: "currentGrillCookingAreaRange",
     actionType: "changeGrillCookingAreaRange",

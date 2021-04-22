@@ -108,7 +108,13 @@ function ProductTypeSidebar() {
       payload: e.target.checked,
     });
   };
-  return html`<div class="coll_sidebar">
+  return html`<div class="coll_sidebar px-2 px-lg-0">
+    <div class="collection-mobile-back">
+      <span class="filter-back">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        <span data-trans-key="layout.navigation.back">back</span>
+      </span>
+    </div>
     ${SidebarTopImages({ collectionImages })}
     ${arrayOfFilters.find((filter) => filter.type === 'SearchInput')
       ? html`

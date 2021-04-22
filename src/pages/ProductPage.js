@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import { html, useEffect, useState, component } from '@apollo-elements/haunted';
+import { html, useEffect, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { capitalCase } from 'capital-case';
-import { CompareTable } from '../shared/index';
+import { CompareTable, MegaMenu } from '../shared/index';
 import RelatedProducts from '../components/productPage/RelatedProducts';
 import Specifications from '../components/productPage/Specifications';
 import useProductType from '../productTypes';
@@ -59,10 +59,12 @@ function ProductPage({
     initialValueFilterKeyPairs: {},
   });
 
-  const [count, setCount] = useState(1);
-  useEffect(() => {
-    setTimeout(() => setCount(count + 1), 1000);
-  });
+  useEffect(async () => {
+    if (product.type !== 'Barbeques') {
+      const videoWrapper = document.querySelector('#video-wrapper');
+      videoWrapper?.remove();
+    }
+  }, []);
 
   useEffect(async () => {
     const products = await queryAllProducts();
@@ -135,6 +137,7 @@ function ProductPage({
 
 [
   CompareTable,
+  MegaMenu,
   {
     tagName: 'product-page',
     renderer: ProductPage,
@@ -151,6 +154,7 @@ function ProductPage({
 ].forEach((pComponent) => {
   customElements.define(
     pComponent.tagName,
-    component(pComponent.renderer, pComponent.options)
+    component(pComponent.renderer, pComponent.options),
+    pComponent?.elementOptions
   );
 });

@@ -13,18 +13,19 @@ const filters = [{
     title: "Brands",
     type: "SimpleFilter",
     info: [
-      "Ass Kickin'", 
+      'Luxe Barbeque Company',
+      'Blues Hog', 
+      'Meat Church', 
       "Aubrey D.", 
-      "Bad Byron's",  
-      "Bart",  
-      "Big Green Egg",   
-      "Blues Hog",   
-      "Bon Vivant!",   
-      "Bone Doctor",   
-      "Broil King",   
-      "Busters BBQ",  
+      "Lane's BBQ",  
+      "Hardcore Carnivore",  
+      "Jealous Devil",     
+      "John Henry's",   
+      "Killer Hogs",   
+      "Kosmos",   
+      "Guy Fierri",  
     ],
-    selected: []
+    selected: params?.['selectedBrands'] ?? []
 }, {
     stateKey: "selectedFoodTypes",
     actionType: "changeFoodTypes",
@@ -36,7 +37,8 @@ const filters = [{
       "Condiments",
       "Cooking Spray",
       "Drink Mixes",
-      "Rubs/Spices",
+      "Rubs",
+      "Spices",
       "Sauces"
     ],
     selected: params?.['selectedFoodTypes'] ?? []

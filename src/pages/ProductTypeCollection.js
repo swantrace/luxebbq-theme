@@ -1,6 +1,6 @@
 import { html, useEffect, useState, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { CompareTable } from '../shared/index';
+import { CompareTable, MegaMenu } from '../shared/index';
 import { pageWrapper } from '../shared/context';
 import useProductType from '../productTypes';
 import ProductTypeSidebar from '../components/productTypeCollection/ProductTypeSidebar';
@@ -100,6 +100,7 @@ function ProductTypeCollection({
   ProductTypeSidebar,
   ProductTypeMainContent,
   CompareTable,
+  MegaMenu,
   {
     tagName: 'product-type-collection',
     renderer: ProductTypeCollection,
@@ -118,6 +119,7 @@ function ProductTypeCollection({
 ].forEach((pComponent) => {
   customElements.define(
     pComponent.tagName,
-    component(pComponent.renderer, pComponent.options)
+    component(pComponent.renderer, pComponent.options),
+    pComponent?.elementOptions
   );
 });

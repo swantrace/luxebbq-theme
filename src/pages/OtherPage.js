@@ -1,9 +1,10 @@
 import { component } from '@apollo-elements/haunted';
-import { CompareTable } from '../shared/index';
+import { CompareTable, MegaMenu } from '../shared/index';
 
-[CompareTable].forEach((pComponent) => {
+[CompareTable, MegaMenu].forEach((pComponent) => {
   customElements.define(
     pComponent.tagName,
-    component(pComponent.renderer, pComponent.options)
+    component(pComponent.renderer, pComponent.options),
+    pComponent?.elementOptions
   );
 });

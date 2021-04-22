@@ -1,5 +1,38 @@
 @import 'https://at.alicdn.com/t/font_2427781_3i3s4sxq76a.css';
 
+ul[is='mega-menu'] {
+  @media (max-width: 1199.99px) {
+    .barbeques-submenu {
+      .col {
+        max-width: 100%;
+      }
+    }
+    .grilling-accessories-submenu {
+      .col {
+        max-width: 100%;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .barbeques-submenu {
+      .col {
+        max-width: 14%;
+      }
+    }
+    .grilling-accessories-submenu {
+      .col {
+        max-width: 16%;
+      }
+    }
+  }
+  .is-header {
+    a {
+      font-weight: bolder;
+      font-size: 1.1rem;
+    }
+  }
+}
+
 .banner-name.dtm-banner-name {
   color: #fb711c;
   flex-basis: 250px;
@@ -77,6 +110,30 @@ product-type-collection {
 
   #collection-search-input {
     border: 1px solid #fb711c;
+  }
+
+  product-type-main-content {
+    .product-filter-content {
+      @media (max-width: 576.99px) {
+        .collection-view {
+          flex-basis: 100%;
+        }
+        .product-page-per-view {
+          flex-basis: 100%;
+          margin: 5px 0;
+          [name='pro_limit'] {
+            width: 100%;
+          }
+        }
+        .product-page-filter {
+          flex-basis: 100%;
+          margin: 5px 0;
+          [name='sortBy'] {
+            width: 100%;
+          }
+        }
+      }
+    }
   }
 
   .collection-sidebar-filter {
@@ -273,6 +330,30 @@ perfect-grill {
           .form-check-inline {
             flex-basis: 30%;
             flex-shrink: 0;
+          }
+        }
+      }
+    }
+  }
+
+  product-type-main-content {
+    .product-filter-content {
+      @media (max-width: 576.99px) {
+        .collection-view {
+          flex-basis: 100%;
+        }
+        .product-page-per-view {
+          flex-basis: 100%;
+          margin: 5px 0;
+          [name='pro_limit'] {
+            width: 100%;
+          }
+        }
+        .product-page-filter {
+          flex-basis: 100%;
+          margin: 5px 0;
+          [name='sortBy'] {
+            width: 100%;
           }
         }
       }

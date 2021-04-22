@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { html, useEffect, useState, component } from '@apollo-elements/haunted';
-import { CompareTable } from '../shared/index';
+import { CompareTable, MegaMenu } from '../shared/index';
 // import axios from 'axios';
 import { GET_PRODUCT_BY_HANDLE } from '../shared/helpers';
 import WishlistItem from '../components/wishlist/WishlistItem';
@@ -65,7 +65,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
           'gid://shopify/Product/',
           ''
         )}&quantity=1`;
-        product.addToCartButtonText = html`Add to cart &nbsp;&nbsp;&nbsp;>>`;
+        product.addToCartButtonText = html`Add to cart`;
       } else {
         product.addToCartButtonUrl = '';
         product.addToCartButtonText = 'Not available';
@@ -229,6 +229,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
 
 [
   CompareTable,
+  MegaMenu,
   {
     tagName: 'wishlist-container',
     renderer: WishlistContainer,
@@ -240,6 +241,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
 ].forEach((pComponent) => {
   customElements.define(
     pComponent.tagName,
-    component(pComponent.renderer, pComponent.options)
+    component(pComponent.renderer, pComponent.options),
+    pComponent?.elementOptions
   );
 });

@@ -9,40 +9,99 @@
 const cookTypesAndBrands = [
         [
             'Gas Grill', [
-                'Weber', 
-                'Napoleon', 
-                'Broil King'
+                'Big Green Egg',
+                'Black Earth Grills',
+                'Broil King',
+                'Chuckwagon',
+                'Delta Heat',
+                'Hestan',
+                'Huntington',
+                'Lynx Grills',
+                'Napoleon',
+                'Pit Boss',
+                'Twin Eagles',
+                'Weber',
             ]
         ],
         [
             'Charcoal Grill', [
+                'Big Green Egg',
+                'Broil King',
+                'Bulldog',
+                'Delta Heat',
+                'Hestan',
+                'Kamado Joe',
+                'Lynx Grills',
+                'Masterbuilt',
+                'Napolean',
+                'Pit Barrel Cooker',
+                'PK Grills',
+                'Regal', // doesn't exist
+                'Sunterra',
+                'Twin Eagles',
                 'Weber', 
-                'Kamado Joe', 
-                'Sunterra', 
-                'Napolean'
             ]
         ],
         [
             'Pellet Grill', [
-                'Traeger', 
-                'Louisiana', 
-                'Broil King'
+                'Big Green Egg',
+                'Black Earth Grills',
+                'Broil King',
+                'Delta Heat',
+                'Hestan',
+                'Kamado Joe',
+                'Louisiana Grills',
+                'Lynx Grills',
+                'Napoleon',
+                'Pit Boss', 
+                'Traeger',
+                'Twin Eagles', 
+                'Weber',
+                'Yoder Smokers',
+            ]
+        ],
+        [
+            'Electric Grill', [
+                'Big Green Egg',
+                'Broil King',
+                'Bradley',
+                'Bulldog',
+                'Delta Heat',
+                'Hestan',
+                'Lynx Grills',
+                'Napoleon',
+                'Twin Eagles', 
+                'Weber',
             ]
         ],
         [
             'Offset Smoker', [
-                'Weber', 
-                'Traeger', 
+                'Big Green Egg',
+                'Bradley',
+                'Broil King',
+                'Bulldog',
+                'Delta Heat',
+                'Hestan',
+                'Lynx Grills',
+                'Egg Modular', // doesn't exist
                 'Kamado Joe', 
-                'Yoder', 
-                'Big Green Egg', 
-                'Masterbuilt'
+                'Louisiana Grills',
+                'Masterbuilt',
+                'Napoleon',
+                'Twin Eagles',
+                'Yoder Smokers',                
             ]
         ],
         [
             'Pizza Oven', [
+                'Big Green Egg',
+                'Delta Heat',
+                'Fontana',
+                'Hestan',
+                'LaPiazza Wood Ovens',
+                'Lynx Grills',
                 'Ooni', 
-                'Fontana'
+                'Twin Eagles',
             ]
         ]
     ];
@@ -60,7 +119,7 @@ pelement.setAttribute('class', 'dtm dtm-find-perfect-grill');
 pelement.setAttribute('cook-types-and-brands', JSON.stringify(cookTypesAndBrands));
 pelement.setAttribute('default-sort-by', 'title-ascending');
 pelement.setAttribute('cook-type-logos', JSON.stringify(cookTypeLogos));
-pelement.setAttribute('price-range-min-and-max', JSON.stringify([0,30000]));
+pelement.setAttribute('price-range-min-and-max', JSON.stringify([0,25000]));
 pelement.setAttribute('grill-cooking-area-min-and-max', JSON.stringify([0,20]));
 pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
 document.currentScript.parentNode.insertBefore(pelement, document.currentScript);

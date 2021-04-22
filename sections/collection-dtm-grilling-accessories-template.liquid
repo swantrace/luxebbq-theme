@@ -9,6 +9,123 @@ const filters = [{
     info: [],
     selected: ""
 }, {
+    stateKey: "selectedCookTypesAndBrands",
+    actionType: "changeCookTypesAndBrands",
+    title: "Cook Types\/Brands",
+    type: "NestedFilter",
+    info: [
+        [
+            'Gas Grill', [
+                'Napoleon',
+                'Weber',
+                'Broil King',
+                'Traeger',
+                'Louisiana Grills',
+                'Big Green Egg',
+                'Kamado Joe',
+                'Grill Pro',
+                'Ooni',
+                'Pit Barrel Cooker',
+                'Black Earth Grills',
+                'Chuckwagon',
+                'Delta Heat',
+                'Hestan',
+                'Huntington',
+                'Lynx Grills',
+            ]
+        ],
+        [
+            'Charcoal Grill', [
+                'Napoleon',
+                'Weber',
+                'Broil King',
+                'Traeger',
+                'Louisiana Grills',
+                'Big Green Egg',
+                'Kamado Joe',
+                'Grill Pro',
+                'Ooni',
+                'Pit Barrel Cooker',
+                'Bulldog',
+                'Masterbuilt',
+                'PK Grills',
+                'Regal', // doesn't exist
+                'Sunterra',
+            ]
+        ],
+        [
+            'Pellet Grill', [
+                'Napoleon',
+                'Weber',
+                'Broil King',
+                'Traeger',
+                'Louisiana Grills',
+                'Big Green Egg',
+                'Kamado Joe',
+                'Grill Pro',
+                'Ooni',
+                'Pit Barrel Cooker',
+                'Black Earth Grills',
+                'Louisiana Grills',
+                'Pit Boss', 
+                'Traeger',
+                'Yoder Smokers',
+            ]
+        ],
+        [
+            'Electric Grill', [
+                'Napoleon',
+                'Weber',
+                'Broil King',
+                'Traeger',
+                'Louisiana Grills',
+                'Big Green Egg',
+                'Kamado Joe',
+                'Grill Pro',
+                'Ooni',
+                'Pit Barrel Cooker',
+                'Bradley',
+            ]
+        ],
+        [
+            'Offset Smoker', [
+                'Napoleon',
+                'Weber',
+                'Broil King',
+                'Traeger',
+                'Louisiana Grills',
+                'Big Green Egg',
+                'Kamado Joe',
+                'Grill Pro',
+                'Ooni',
+                'Pit Barrel Cooker',
+                'Bradley',
+                'Bulldog',
+                'Egg Modular', // doesn't exist
+                'Masterbuilt',          
+            ]
+        ],
+        [
+            'Pizza Oven', [
+                'Napoleon',
+                'Weber',
+                'Broil King',
+                'Traeger',
+                'Louisiana Grills',
+                'Big Green Egg',
+                'Kamado Joe',
+                'Grill Pro',
+                'Ooni',
+                'Pit Barrel Cooker',
+                'Fontana',
+                'LaPiazza Wood Ovens',
+                'Ooni', 
+            ]
+        ]
+    ],
+    selected: params?.['selectedCookTypesAndBrands'] ?? []
+}, 
+{% comment %} {
     stateKey: "selectedBrands",
     actionType: "changeBrands",
     title: "Brands",
@@ -63,7 +180,8 @@ const filters = [{
         "Yoder Smokers"    
     ],
     selected: []
-}, {
+},  {% endcomment %}
+{
     stateKey: "selectedGrillingAccessoriesTypes",
     actionType: "changeGrillingAccessoriesTypes",
     title: "Grilling Accessories Types",

@@ -15,8 +15,8 @@ const PerfectGrillGrillCookingAreaSelector = virtual(
       DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE;
     return html`<style is="custom-style">
         .cooking-area-paper-range-slider {
-          --paper-range-slider-width: 610px;
-          max-width: 600px;
+          width: 100%;
+          --paper-range-slider-width: 100%;
           --primary-color: #fb711c;
           --paper-single-range-slider-height: 4px;
         }

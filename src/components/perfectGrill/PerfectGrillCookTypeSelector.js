@@ -12,7 +12,7 @@ const PerfectGrillCookTypeSelector = virtual(
       ([cookType, iconClass]) => html`
         <div
           style="cursor:pointer;"
-          class=${`cook-type-logo-wrapper${
+          class=${`cook-type-logo-wrapper mb-2 ${
             selectedCookType === cookType ? ' active' : ' inactive'
           }`}
           @click=${() =>

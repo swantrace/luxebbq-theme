@@ -94,11 +94,11 @@ function PerfectGrillSelectors() {
   return html`<div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-3">
         Cook Type
       </h3>
       <div
-        class="d-flex text-right justify-content-end perfect-grill-selector-input"
+        class="d-flex text-sm-left text-xl-right justify-content-center justify-content-lg-between perfect-grill-selector-input flex-wrap"
       >
         ${PerfectGrillCookTypeSelector({
           cookTypeLogos,
@@ -110,7 +110,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-3">
         Brand
       </h3>
       <div
@@ -126,7 +126,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-5">
         Price Range
       </h3>
       <div
@@ -142,7 +142,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-5">
         Grill Cooking Area
       </h3>
       <div
@@ -158,7 +158,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-3">
         Availability
       </h3>
       <div
@@ -173,7 +173,7 @@ function PerfectGrillSelectors() {
     <div
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
-      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label">
+      <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-3">
         Key Features
       </h3>
       <div

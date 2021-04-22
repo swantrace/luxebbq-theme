@@ -59,6 +59,7 @@ function SearchResultMainContent() {
   };
 
   return html`${TopControllers({
+    displaySidebarToggler: false,
     fetchIsFinished,
     productsSize,
     viewMode,

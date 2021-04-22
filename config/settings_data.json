@@ -984,19 +984,19 @@
         "type": "blog-template",
         "settings": {
           "blog_limit": "3",
-          "blog_sidebar_position": "left",
+          "blog_sidebar_position": "none",
           "blog_date": true,
-          "blog_auther": true,
+          "blog_auther": false,
           "blog_comment": true,
-          "blog_sidebar_tags": true,
+          "blog_sidebar_tags": false,
           "blog_sidebar_tags_title": "recent tags",
           "trans_blog_sidebar_tags_title": "{\"en\":\"recent tags\", \"fr\":\"balises récentes\", \"ar\":\"العلامات الحديثة\", de\":\"aktuelle Tags\", \"it\":\"tag recenti\"}",
-          "blog_sidebar_content": true,
+          "blog_sidebar_content": false,
           "blog_sidebar_abt_title": "About",
           "trans_blog_sidebar_abt_title": "{\"en\":\"About\", \"fr\":\"Sur\", \"ar\":\"حول\", de\":\"Über\", \"it\":\"Di\"}",
           "blog_sidebar_abt_text": "Fusce scelerisque augue a viverra semper. Etiam nisi nibh, vestibulum quis augue id, imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue vel  nec justo viverra.",
           "trans_blog_sidebar_abt_text": "{\"en\":\"Fusce scelerisque augue a viverra semper. Etiam nisi nibh, vestibulum quis augue id, imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue vel  nec justo viverra.\", \"fr\":\"Fusce scelerisque augue a viverra sempre. Etiam nisi nibh، vestibulum quis augue id، imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue vel nec justo viverra.\", \"ar\":\"Fusce scelerisque augue a viverra sempre. Etiam nisi nibh، vestibulum quis augue id، imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue vel nec justo viverra.\", de\":\"Fusce scelerisque erwecken ein viverra semper. Etiam nisi nibh, vestibulum quis augue id, imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue vel nec justo viverra.\", \"it\":\"Fusce scelerisque augura un viverra semper. Etiam nisi nibh, vestibulum quis augue id, imperdiet fringilla dolor. Nulla sed nisl vel nisi cursus finibus. Vivamus ut augue vel nec justo viverra.\"}",
-          "blog_sidebar_recent_post": true,
+          "blog_sidebar_recent_post": false,
           "blog_sidebar_recentpost_title": "Recent Post",
           "trans_blog_sidebar_recentpost_title": "{\"en\":\"Recent Post\", \"fr\":\"Post récent\", \"ar\":\"المنشور الاخير\", de\":\"Letzter Beitrag\", \"it\":\"Post recente\"}",
           "img_width": "full",
@@ -1802,12 +1802,12 @@
       "article-template": {
         "type": "article-template",
         "settings": {
-          "blog_show_author": true,
+          "blog_show_author": false,
           "blog_show_date": true,
           "blog_show_comment": true,
           "img_width": "auto",
           "use_equal_height": false,
-          "image_ratio": "ratio_square",
+          "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
         }
@@ -2018,15 +2018,128 @@
       "header-5": {
         "type": "header-5",
         "blocks": {
-          "d2d0d108-f6c5-45bc-9874-7720f31668b6": {
-            "type": "select-nav-menu",
+          "5864b6fd-34b7-484d-ad64-d863a877b1be": {
+            "type": "custom-megamenu",
             "settings": {
-              "mainmenu": "main-menu"
+              "menu_name": "barbeques\/smokers",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/barbeques",
+              "li_class_name": "mega hover-cls",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Barbeques\" class=\"mega-menu full-mega-menu\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "d59a9d46-8f9c-4d0e-9b71-09aa482a0a89": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Grilling Accessories",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/grilling-accessories",
+              "li_class_name": "mega hover-cls",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Grilling Accessories\" class=\"mega-menu full-mega-menu\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "351e279a-26bf-4e44-8963-18c08f7e760f": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Lifestyle Accessories",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/lifestyle-accessories",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Lifestyle Accessories\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "38511643-a2d2-4bcb-b83b-0b8132252221": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Drinkware & coolers",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/drinkware-coolers",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Drinkware & Coolers\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "cc8ecd2e-2d63-4ea5-9d0b-091942ba2e3a": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Fuel",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/fuel",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Fuel\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "98967f61-e44c-42bb-8503-48f8763895bf": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Parts",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/parts",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Parts\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "3c5b0387-807c-4d73-91af-3f972f226854": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Rubs & Sauces",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/sauces-rubs-spices",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Rubs & Sauces\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "8f0243db-f7d8-4f57-a37a-dd7f56b4300d": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Furniture",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/furniture",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Furniture\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
             }
           }
         },
         "block_order": [
-          "d2d0d108-f6c5-45bc-9874-7720f31668b6"
+          "5864b6fd-34b7-484d-ad64-d863a877b1be",
+          "d59a9d46-8f9c-4d0e-9b71-09aa482a0a89",
+          "351e279a-26bf-4e44-8963-18c08f7e760f",
+          "38511643-a2d2-4bcb-b83b-0b8132252221",
+          "cc8ecd2e-2d63-4ea5-9d0b-091942ba2e3a",
+          "98967f61-e44c-42bb-8503-48f8763895bf",
+          "3c5b0387-807c-4d73-91af-3f972f226854",
+          "8f0243db-f7d8-4f57-a37a-dd7f56b4300d"
         ],
         "settings": {
           "logo": "shopify:\/\/shop_images\/lbc_logo.png",
@@ -3788,6 +3901,10 @@
           "image_size": "cover",
           "image_position": "8"
         }
+      },
+      "collection-dtm-barbeques-template": {
+        "type": "collection-dtm-barbeques-template",
+        "settings": {}
       }
     },
     "content_for_index": [

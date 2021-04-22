@@ -3,6 +3,7 @@ import ProductListLoading from './ProductListLoading';
 
 const MainContentTopControllers = virtual(
   ({
+    displaySidebarToggler = true,
     fetchIsFinished,
     productsSize,
     viewMode,
@@ -41,7 +42,21 @@ const MainContentTopControllers = virtual(
 
     // const productsSize = searchedProducts.length;
 
-    html`<div class="row py-5">
+    html`<div class="row py-5 product-top-controllers-wrapper">
+      ${displaySidebarToggler
+        ? html`
+            <div class="col-12 d-sm-none d-md-block">
+              <div class="filter-main-btn mx-3 mb-3">
+                <span class="filter-btn btn btn-theme"
+                  ><i class="fa fa-filter" aria-hidden="true"></i>
+                  <span data-trans-key="collections.filters.title_tags"
+                    >Filter</span
+                  >
+                </span>
+              </div>
+            </div>
+          `
+        : null}
       <div class="col-12">
         <div class="product-filter-content collection-top-controllers mx-3">
           <div class="search-count">

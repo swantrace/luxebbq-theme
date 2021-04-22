@@ -106,13 +106,12 @@
   </head>
 
   <body hidden class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
-               {% if settings.enable_box_layout and settings.box_layout == 'box_layout_1' and template == 'index' %}box-layout-body{% endif %}
-               {% if settings.enable_box_layout and settings.box_layout == 'box_layout_2' and template == 'index' %}layout-20{% endif %}
-               {% if settings.enable_rtl %} rtl{% endif %}
-               ">
-
+    {% if settings.enable_box_layout and settings.box_layout == 'box_layout_1' and template == 'index' %}box-layout-body{% endif %}
+    {% if settings.enable_box_layout and settings.box_layout == 'box_layout_2' and template == 'index' %}layout-20{% endif %}
+    {% if settings.enable_rtl %} rtl{% endif %}"
+  >
+    {% render 'megamenu-rules' %}
     <div id="shop-currency" style="display:none !important">{{ shop.money_with_currency_format }}</div>
-
     <!-- pre-loader start -->
     {% if settings.enable_loader %}
     {% if template == 'index' %}
@@ -248,13 +247,15 @@
 
     {% if settings.enable_fb_chat %}
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     <!-- Your customer chat code -->
     <div class="fb-customerchat"
@@ -270,16 +271,16 @@
     <script src="{{ 'jquery.elevatezoom.js' | asset_url }}" ></script>
     <script src="{{ 'handlebars-v4.0.5.js' | asset_url }}" ></script>
     <script src="{{ 'popper.min.js' | asset_url }}" ></script>    
-    <script src="{{ 'slick.js' | asset_url }}" ></script>
-    <script src="{{ 'menu.js' | asset_url }}" ></script>
+    {% comment %} <script src="{{ 'slick.js' | asset_url }}" ></script> {% endcomment %}
+    {% comment %} <script src="{{ 'menu.js' | asset_url }}" ></script> {% endcomment %}
     <script src="{{ 'bootstrap.js' | asset_url }}" ></script>
     <script src="{{ 'jquery.vide.min.js' | asset_url }}" ></script>
     <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" ></script>
     <script src="{{ 'isotope.min.js' | asset_url }}" ></script>
     <script src="{{ 'plugins.js' | asset_url }}" ></script>
-    <script src="{{ 'script.js' | asset_url }}" ></script>
+    {% comment %} <script src="{{ 'script.js' | asset_url }}" ></script> {% endcomment %}
     <script src="{{ 'theme.min.js' | asset_url }}" ></script>    
-
+    {% render 'load-theme-scripts-after-custom-elements-prepared' %}
     {% include 'exit-popup' %}
     {% if settings.add_to_cart_style == 'popup' %}
     {% include 'cart-upsell-popup' %}

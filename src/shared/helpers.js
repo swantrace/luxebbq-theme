@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { gql } from '@apollo/client/core';
 
-export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 30000];
+export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 25000];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 20];
 
 export const GET_PRODUCT_BY_HANDLE = gql`

@@ -16,7 +16,7 @@ const filters = [{
         "Napoleon", 
         "TerraFlam"
     ],
-    selected: []
+    selected: params?.['selectedBrands'] ?? []
 },{
     stateKey: "selectedFurnitureTypes",
     actionType: "changeFurnitureTypes",
@@ -29,7 +29,7 @@ const filters = [{
       "Umbrella",
       "Outdoor Accessories"
     ],
-    selected: []
+    selected: params?.['selectedFurnitureTypes'] ?? []
 }, ]
 const pelement = document.createElement('product-type-collection');
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');

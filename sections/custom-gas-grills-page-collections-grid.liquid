@@ -3,8 +3,8 @@
 <section class=" {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding:{{ section.settings.section_padding }}">
   {%- include 'title' -%}
 
-  <div class="container p-0">
-    <div class="row category-border p-0">
+  <div class="container">
+    <div class="row category-border">
 
       {% for block in section.blocks %}
       {% capture blockId %}{{ block.id }}{% endcapture %}
@@ -12,7 +12,7 @@
 
       {% assign column_grid_width = 'col-sm-12 col-md-6 col-lg-3' -%}
 
-      <div class="{{ column_grid_width }} p-2">
+      <div class="{{ column_grid_width }}">
         <div class="category-banner">
           {% if block.settings.image == blank %}
           {% capture current %}{% cycle 1, 2 %}{% endcapture %}

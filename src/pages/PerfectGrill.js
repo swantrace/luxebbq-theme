@@ -1,6 +1,6 @@
 import { html, useEffect, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { CompareTable } from '../shared/index';
+import { CompareTable, MegaMenu } from '../shared/index';
 import { pageWrapper as perfectGrillWrapper } from '../shared/context';
 import TitleBanner from '../components/common/TitleBanner';
 import useProductType from '../productTypes';
@@ -54,7 +54,9 @@ function PerfectGrill({
             <div
               class="col-lg-10 mx-auto perfect-grill-product-list-wrapper pt-md-5"
             >
-              <product-type-main-content></product-type-main-content>
+              <product-type-main-content
+                .displaySidebarToggler=${false}
+              ></product-type-main-content>
             </div>
           </div>
         </div>
@@ -86,6 +88,7 @@ function PerfectGrill({
   PerfectGrillSelectors,
   ProductTypeMainContent,
   CompareTable,
+  MegaMenu,
   {
     tagName: 'perfect-grill',
     renderer: PerfectGrill,
@@ -104,6 +107,7 @@ function PerfectGrill({
 ].forEach((pComponent) => {
   customElements.define(
     pComponent.tagName,
-    component(pComponent.renderer, pComponent.options)
+    component(pComponent.renderer, pComponent.options),
+    pComponent?.elementOptions
   );
 });

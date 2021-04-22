@@ -131,30 +131,45 @@ const WishlistItem = virtual(({ product, productHandles }) => {
             <a href=${product.url}>
               <h4>${product.title}</h4>
             </a>
-            <div class="mobile-cart-content row">
-              <div class="col-xs-3">
+            <div class="mobile-cart-content d-block d-sm-none text-center">
+              <div class="py-2">
                 <p>${product.stockInfo}</p>
               </div>
-              <div class="col-xs-3">
+              <div class="py-2">
                 <h2 class="td-color">${product.price}</h2>
               </div>
-              <div class="col-xs-3">
+              <div class="py-2">
                 <h2 class="td-color product-tile--tile-actions">
                   <a
-                    class="action--wishlist tile-actions--btn flex wishlist-btn hidden"
-                    href="javascript:void(0)"
+                    class="d-block btn btn-solid${product.availability === -1
+                      ? ' disabled'
+                      : ''}"
+                    href=${product.addToCartButtonUrl}
                     data-product-handle=${product.handle}
                   >
-                    <i
-                      class="icon-heart-outline iconfont btn--main"
-                      aria-hidden="true"
-                    ></i>
+                    ${product.addToCartButtonText}
                   </a>
+                </h2>
+              </div>
+              <div class="py-2">
+                <h2 class="td-color product-title--tile-actions">
                   <a
                     href=${product.addToCartButtonUrl}
-                    class="icon mr-1 action--quick-cart tile-actions--btn flex cart-btn"
+                    class="d-block btn btn-solid color-danger"
+                    @click=${(e) => {
+                      e.preventDefault();
+                      const tbodyElement = e.target.closest('tbody');
+                      const updatedProductHandles = productHandles.filter(
+                        (handle) => handle !== product.handle
+                      );
+                      window.localStorage.setItem(
+                        'user_wishlist',
+                        JSON.stringify(updatedProductHandles)
+                      );
+                      tbodyElement.remove();
+                    }}
                   >
-                    <i class="ti-close"></i>
+                    Remove
                   </a>
                 </h2>
               </div>
@@ -167,7 +182,12 @@ const WishlistItem = virtual(({ product, productHandles }) => {
             <p>${product.stockInfo}</p>
           </td>
           <td>
-            <a href=${product.addToCartButtonUrl} class="btn btn-solid">
+            <a
+              href=${product.addToCartButtonUrl}
+              class="btn btn-solid${product.availability === -1
+                ? ' disabled'
+                : ''}"
+            >
               ${product.addToCartButtonText}
             </a>
             <div class="share-buttons py-3 d-flex flex-column">
@@ -212,6 +232,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
                     href="#"
                     data-product-handle=${product.handle}
                     @click=${(e) => {
+                      e.preventDefault();
                       const tbodyElement = e.target.closest('tbody');
                       const updatedProductHandles = productHandles.filter(
                         (handle) => handle !== product.handle

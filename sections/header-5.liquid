@@ -107,7 +107,6 @@
                     </div>
                   </li>
                   {% for block in section.blocks %}
-                  <h1>{{ block.settings.menu_link }}</h1>
                   {% capture blockId %}{{ block.id }}{% endcapture %}
                   {% if block.type == 'parent-item' %}
                   <li class="{%- if forloop.index == 1 -%}current{%- endif -%}" >
@@ -197,8 +196,29 @@
                   </li>
 
                   {% elsif block.type == 'custom-megamenu' %}
+                  <li class="{{ block.settings.li_class_name }}">
+                    <a href="{{ block.settings.menu_link }}">
+                      <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_menu_name"{% endif %}>
+                        {{ block.settings.menu_name }}
+                      </span>
+                      {% if settings.enable_lang_switcher %}
+                      <span class="hide" id="header1_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
+                      {% endif %}
+                      {% if block.settings.show_label %}
+                      <span class="lable-nav {{ block.settings.label_text }}">
+                        <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_label_text"{% endif %}>
+                          {{ block.settings.label_text }}
+                        </span>
+                        {% if settings.enable_lang_switcher %}
+                        <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
+                        {% endif %} 
+                      </span>
+                      {% endif %}
+                    </a>
+                    {{ block.settings.custom_menu_html }}
+                  </li>
 
-                  <li>
+                  {% comment %} <li>
                     <a href="{{ block.settings.menu_link }}">
                       <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_menu_name"{% endif %}>
                         {{ block.settings.menu_name }}
@@ -218,7 +238,7 @@
                       {% endif %}
                     </a>
                     {{ block.settings.custom_menu_html }}
-                  </li>
+                  </li> {% endcomment %}
 
                   {% elsif block.type == 'megamenu' %}
 
@@ -884,6 +904,12 @@
                "type":"url",
                "id":"menu_link",
                "label":"Menu Link"
+            },
+            {  
+               "type":"text",
+               "id":"li_class_name",
+               "label":"Li Class Name",
+               "default": "mega hover-cls"
             },
             {  
                "type":"textarea",

@@ -1,11 +1,11 @@
-import { html, useRef } from '@apollo-elements/haunted';
+import { html, useEffect, useRef } from '@apollo-elements/haunted';
 import { usePageContext } from '../../shared/context';
 import Pagination from '../common/Pagination';
 import TitleBanner from '../common/TitleBanner';
 import TopControllers from '../common/TopControllers';
 import Products from '../common/Products';
 
-function ProductTypeMainContent() {
+function ProductTypeMainContent({ displaySidebarToggler = true }) {
   const {
     collectionTitle,
     emptyCollectionImage,
@@ -58,9 +58,11 @@ function ProductTypeMainContent() {
     dispatch({ type: 'changePageNumber', payload: number });
   };
   // console.log('collectionTitle', collectionTitle);
+
   return html`${TitleBanner({
     title: collectionTitle,
   })}${TopControllers({
+    displaySidebarToggler,
     fetchIsFinished,
     productsSize,
     viewMode,

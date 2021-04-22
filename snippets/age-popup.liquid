@@ -63,7 +63,7 @@
 
   });
 
-  document.addEventListener('customElementsPrepared', function() {
+  document.addEventListener('scriptJSLoaded', function() {
     if(localStorage.getItem('popState') != 'shown'){
       $('#ageModal').modal({
         backdrop: 'static',
