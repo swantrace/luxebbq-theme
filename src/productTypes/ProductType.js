@@ -253,7 +253,7 @@ class ProductType {
         .join(' OR ')}`;
     }
 
-    return `available_for_sale:true ${productTypePart} ${tagsAndBrandsPart} ${pricePart} ${otherTagPart}`;
+    return `${productTypePart} ${tagsAndBrandsPart} ${pricePart} ${otherTagPart}`;
   }
 
   transformStateToFirstPageGraphqlRequestVariables() {

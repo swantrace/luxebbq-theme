@@ -166,7 +166,7 @@ export const getQueryString = ({
     productTypesPart = ` AND (${productTypesPart})`;
   }
 
-  return `available_for_sale:true${searchStringPart}${productTypesPart}`;
+  return `${searchStringPart}${productTypesPart}`;
 };
 
 export const queryAllProductsThroughGraphqlCreator = ({

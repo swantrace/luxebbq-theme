@@ -42,10 +42,10 @@ const Specifications = virtual(({ specificationList, description }) => {
   }, []);
 
   return html`<div class="container">
-    <div class="row">
+    <div class="row mb-5">
       <div class="col">${TitleBanner({ title: 'SPECIFICATIONS' })}</div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
       <div class="col-12 col-md-6 table-responsive"">
         <table class="table table-bordered">
           <tbody>
@@ -54,8 +54,8 @@ const Specifications = virtual(({ specificationList, description }) => {
               .map(
                 ([key, value]) =>
                   html`<tr>
-                    <th scope="row">${key}</th>
-                    <td>
+                    <th scope="row" width="30%">${key}</th>
+                    <td width="70%">
                       ${Array.isArray(value)
                         ? value.map(
                             (line, idx) =>
@@ -78,8 +78,8 @@ const Specifications = virtual(({ specificationList, description }) => {
               .map(
                 ([key, value]) =>
                   html`<tr>
-                    <th scope="row">${key}</th>
-                    <td>
+                    <th scope="row" width="30%">${key}</th>
+                    <td width="70%">
                       ${Array.isArray(value)
                         ? value.map(
                             (line, idx) =>

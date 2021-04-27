@@ -2065,7 +2065,7 @@
             "settings": {
               "menu_name": "Drinkware & coolers",
               "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/drinkware-coolers",
+              "menu_link": "shopify:\/\/collections\/drinkware-and-coolers",
               "li_class_name": "",
               "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Drinkware & Coolers\"><\/ul>",
               "trans_custom_menu_html": "",
@@ -2107,7 +2107,7 @@
             "settings": {
               "menu_name": "Rubs & Sauces",
               "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/sauces-rubs-spices",
+              "menu_link": "shopify:\/\/collections\/rubs-and-sauces",
               "li_class_name": "",
               "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Rubs & Sauces\"><\/ul>",
               "trans_custom_menu_html": "",
@@ -3564,7 +3564,7 @@
         "settings": {
           "section_padding": "80px 10px 80px 10px",
           "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
-          "video_url": "https:\/\/youtu.be\/yAoLSRbwxL8",
+          "video_url": "https:\/\/www.youtube.com\/embed\/WhY7uyc56ms",
           "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
           "custom_desc": "",
           "img_width": "full",
@@ -3688,7 +3688,7 @@
         "type": "dtm-gas-grills-landing-page-text-with-video",
         "settings": {
           "section_padding": "80px 10px 80px 10px",
-          "video_url": "https:\/\/www.youtube.com\/embed\/FRIDLxM8Roc",
+          "video_url": "https:\/\/www.youtube.com\/embed\/WhY7uyc56ms",
           "desc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium",
           "custom_desc": "",
           "img_width": "full",
@@ -3803,7 +3803,7 @@
         "settings": {
           "section_padding": "80px 10px 80px 10px",
           "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
-          "video_url": "https:\/\/www.youtube.com\/embed\/FRIDLxM8Roc",
+          "video_url": "https:\/\/www.youtube.com\/embed\/WhY7uyc56ms",
           "desc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiumSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiumSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantiumSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium",
           "custom_desc": "",
           "img_width": "full",

@@ -4,12 +4,12 @@ ul[is='mega-menu'] {
   @media (max-width: 1199.99px) {
     .barbeques-submenu {
       .col {
-        max-width: 100%;
+        flex-basis: 100%;
       }
     }
     .grilling-accessories-submenu {
       .col {
-        max-width: 100%;
+        flex-basis: 100%;
       }
     }
   }
@@ -27,8 +27,8 @@ ul[is='mega-menu'] {
   }
   .is-header {
     a {
-      font-weight: bolder;
-      font-size: 1.1rem;
+      font-weight: bold;
+      font-size: 12px;
     }
   }
 }

@@ -660,7 +660,7 @@ document.addEventListener('scriptJSLoaded', function () {
     }
   };
 
-  jQuery(function($){
+  document.addEventListener('scriptJSLoaded', function () {
     new Shopify.OptionSelectors('productSelect',{
       product: {{ product | json }},
       onVariantSelected: selectCallback,

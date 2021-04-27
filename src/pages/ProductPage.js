@@ -129,7 +129,7 @@ function ProductPage({
         </section>`
       : null}
     <section
-      class="related-products-wrapper ratio_square product-related equal_height"
+      class="related-products-wrapper section-b-space ratio_square product-related equal_height"
     >
       ${RelatedProducts({ relatedProducts, fetchIsFinished })}
     </section>`;

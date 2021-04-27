@@ -80,14 +80,14 @@ function PerfectGrillSelectors() {
   };
   const handleGrillTypeChanged = (newGrillType) => {
     dispatch({
-      type: 'changeGrillType',
+      type: 'changeGrillTypes',
       payload: newGrillType,
     });
   };
 
   const handleStandTypeChanged = (newStandType) => {
     dispatch({
-      type: 'changeStandType',
+      type: 'changeStandTypes',
       payload: newStandType,
     });
   };
