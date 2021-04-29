@@ -5,11 +5,15 @@ import slugify from 'slugify';
 
 function MegaMenu({ productType }) {
   const megaMenuForProductType = window?.dtmMegaMenu?.[productType] ?? [];
-  const urlBase = `/collections/${slugify(productType, { lower: true })}?`;
+  const urlBase = `/collections/${slugify(productType ?? 'general', {
+    lower: true,
+  })}?`;
   return html`${megaMenuForProductType.length > 1
-    ? html`<li class="${slugify(productType, { lower: true })}-submenu">
+    ? html`<li
+        class="${slugify(productType ?? 'general', { lower: true })}-submenu"
+      >
         <div class="container">
-          <div class="row">
+          <div class="row" style="overflow: hidden;">
             ${megaMenuForProductType.map(
               (megaMenuCol) =>
                 html` <div class="col">

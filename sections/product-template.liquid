@@ -370,7 +370,7 @@
 
 
 <!-- product-tab starts -->
-{% if section.settings.tab_layout == 'horizontal' %}
+{% comment %} {% if section.settings.tab_layout == 'horizontal' %}
 <div class="container section-b-space">
   {% include 'product-horizontal-tabs' %}
 </div>
@@ -384,7 +384,7 @@
   {% include 'product-accordian' %}
 </div>
 {% endif %}
-{% endif %}
+{% endif %} {% endcomment %}
 <!-- product-tab ends -->
 
 

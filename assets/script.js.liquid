@@ -83,7 +83,7 @@
         return false;
       });
 
-      var contentwidth = jQuery(window).width();
+      {% comment %} var contentwidth = jQuery(window).width();
       if ((contentwidth) < '750') {
         jQuery('.footer-title h4').append('<span class="according-menu"></span>');
         jQuery('.footer-title').click(function () {
@@ -97,7 +97,7 @@
         jQuery('.footer-contant').hide();
       } else {
         jQuery('.footer-contant').show();
-      }
+      } {% endcomment %}
 
       var contentwidth = jQuery(window).width();
       if ((contentwidth) < '1183') {

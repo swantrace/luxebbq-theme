@@ -46,15 +46,15 @@ const Specifications = virtual(({ specificationList, description }) => {
       <div class="col">${TitleBanner({ title: 'SPECIFICATIONS' })}</div>
     </div>
     <div class="row mb-5">
-      <div class="col-12 col-md-6 table-responsive"">
-        <table class="table table-bordered">
+      <div class="col-12 col-md-6">
+        <table class="table border-0">
           <tbody>
             ${Object.entries(specificationList)
               .slice(0, Object.keys(specificationList).length / 2 + 1)
               .map(
                 ([key, value]) =>
                   html`<tr>
-                    <th scope="row" width="30%">${key}</th>
+                    <th scope="row" width="30%" class="text-white">${key}</th>
                     <td width="70%">
                       ${Array.isArray(value)
                         ? value.map(
@@ -70,15 +70,15 @@ const Specifications = virtual(({ specificationList, description }) => {
           </tbody>
         </table>
       </div>
-      <div class="col-12 col-md-6 table-responsive"">
-        <table class="table table-bordered">
+      <div class="col-12 col-md-6">
+        <table class="table border-0">
           <tbody>
             ${Object.entries(specificationList)
               .slice(Object.keys(specificationList).length / 2 + 1)
               .map(
                 ([key, value]) =>
                   html`<tr>
-                    <th scope="row" width="30%">${key}</th>
+                    <th scope="row" width="30%" class="text-white">${key}</th>
                     <td width="70%">
                       ${Array.isArray(value)
                         ? value.map(

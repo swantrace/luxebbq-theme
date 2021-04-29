@@ -75,7 +75,7 @@ $font-themify: themify;
 $font-awesome: FontAwesome;
 //colors
 $white: #ffffff;
-$white-dark: #eeeeee;
+$white-dark: #ccc;
 $black: #000000;
 $grey01:#111111;
 $theme-deafult: {{ settings.primary_color }};
@@ -11527,6 +11527,8 @@ body.rtl {
             border-top: 1px solid $white-dark;
             border-right: 1px solid $white-dark;
             text-transform: capitalize;
+            border-spacing: 6px 2px;
+            border-collapse: separate;
             color: #222;
             border-bottom: 1px solid $white-dark;
             thead{
@@ -11564,6 +11566,7 @@ body.rtl {
                   vertical-align: top;
                   border-bottom: 1px solid $white-dark;
                   border-top: 1px solid $white-dark;
+                  border: 1px solid $white-dark;
                 }
                 .grid-link__title{
                   font-size: 15px;

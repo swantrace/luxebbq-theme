@@ -159,17 +159,22 @@ function CompareTable() {
     ${products && (products?.length ?? 0) > 0
       ? html`<div class="modal-body">
           <div class="table-wrapper">
-            <table class="table table-responsive">
+            <table class="table table-responsive border-0">
               <tbody id="table-compare">
                 ${compareItems.map(
                   (item) => html`
                     <tr>
-                      <th width="10%" class=${item.key}>${item.label}</th>
+                      <th width="10%" class="text-white ${item.key}">
+                        ${item.label}
+                      </th>
                       ${products.map(
                         (product) => html`
                           <td
                             width="${90 / products.length}%"
-                            class=${`${product.handle}-${item.key}`}
+                            class="${product.handle}-${item.key}${item.key !==
+                              'name-image' && item.key !== 'description'
+                              ? ' text-center'
+                              : ''}"
                           >
                             ${getCellContent(item, product)}
                           </td>
