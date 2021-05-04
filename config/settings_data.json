@@ -3332,7 +3332,7 @@
           "16154475014ba4bd75-0": {
             "type": "Image",
             "settings": {
-              "slider": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "slider": "shopify:\/\/shop_images\/dummy.png",
               "slider_content_height": 100,
               "alignment": "text-left",
               "position": "p-left",
@@ -3381,53 +3381,57 @@
           "161552166845bd5aa7-0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/fireplace-close-up-flames.jpg",
+              "image": "shopify:\/\/shop_images\/2_-_Pellet.jpg",
               "page_url": "shopify:\/\/pages\/pellet-grills",
-              "title": "Pellet Grills"
+              "title": "Wood Pellet Grills & Smokers"
             }
           },
           "161552166845bd5aa7-2": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "image": "shopify:\/\/shop_images\/3_-_Gas.jpg",
               "page_url": "shopify:\/\/pages\/gas-grills",
-              "title": "Gas Grills"
+              "title": "Gas Grills & Smokers"
             }
           },
           "161552166845bd5aa7-1": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/brushing-bbq-sauce-on-grilled-steak.jpg",
+              "image": "shopify:\/\/shop_images\/4_-_Charcoal.jpg",
               "page_url": "shopify:\/\/pages\/smokers",
-              "title": "Smokers"
+              "title": "Charcoal Grills & Smokers"
             }
           },
           "ff2d3360-f26a-4ec8-a89c-c04e4d18510f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+              "image": "shopify:\/\/shop_images\/fff.png",
+              "page_url": "shopify:\/\/collections\/rubs-and-sauces",
               "title": "Rubs & Sauces"
             }
           },
           "fb2f41c2-a0c6-4342-bf81-a969a10ec2cb": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
-              "title": "Traeger"
+              "image": "shopify:\/\/shop_images\/6_-_Pizza_135d1531-a90b-45a2-a828-45230f9117f8.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Pizza%20Oven%22,%5B%5D%5D%5D",
+              "title": "Pizza Ovens"
             }
           },
           "789bffd9-dfb3-44df-971f-d81e04fe5dc0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/roasting-corn-cobs.jpg",
-              "title": "Napoleon"
+              "image": "shopify:\/\/shop_images\/fff.png",
+              "page_url": "shopify:\/\/collections\/drinkware-and-coolers",
+              "title": "Drinkware & Coolers"
             }
           },
           "d26702db-4914-4327-ae98-c788f23e019c": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/close-up-grilled-corn.jpg",
-              "title": "Weber"
+              "image": "shopify:\/\/shop_images\/8_-_Grilling_Accessories.jpg",
+              "page_url": "shopify:\/\/collections\/grilling-accessories",
+              "title": "GRILLING ACCESSORIES"
             }
           }
         },
@@ -3454,69 +3458,73 @@
           "1615529853a3d387ef-0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/close-up-grilled-corn.jpg",
-              "page_url": "shopify:\/\/pages\/find-your-girll",
+              "image": "shopify:\/\/shop_images\/9_-_Weber.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Weber%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Weber%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Furniture"
+              "title": "Weber"
             }
           },
           "1615529853a3d387ef-1": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/roasting-corn-cobs.jpg",
-              "page_url": "shopify:\/\/pages\/find-your-girll",
+              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Napoleon%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Napoleon%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Heaters & Fire Tables"
+              "title": "Napoleon"
             }
           },
           "1615529853a3d387ef-2": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Broil%20King%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Broil%20King%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Accessories"
+              "title": "Broil King"
             }
           },
           "a4d43a0c-6bf1-48c7-88b0-0d90886a70f3": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
+              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Traeger%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Traeger%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Yetti"
+              "title": "Trager"
             }
           },
           "c4e6d5bb-8799-432e-bfc6-897aa5529e65": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
-              "page_url": "shopify:\/\/pages\/find-your-girll",
+              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Louisiana%20Grills%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Charcoal Grills"
+              "title": "Louisiana Grills"
             }
           },
           "41f248a5-f086-4cb4-9bf6-411cb27cefcc": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/brushing-cooking-oil-on-bbq-corn.jpg",
-              "page_url": "shopify:\/\/collections\/frontpage",
+              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Big%20Green%20Egg%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Portable Grills"
+              "title": "Big Green Egg"
             }
           },
           "b0984531-813d-4178-98a3-635f099e12d9": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
+              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Kamado%20Joe%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Ooni Pizza Ovens"
+              "title": "Kamado Joe"
             }
           },
           "219a8aa4-936e-41a0-891d-9d2b61cc26f0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/brushing-bbq-sauce-on-grilled-steak.jpg",
+              "image": "shopify:\/\/shop_images\/16_-_Pit_Barrel.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D%5D",
               "enabled_info": true,
-              "title": "Fontana Pizza Ovens"
+              "title": "Pit barrel"
             }
           }
         },

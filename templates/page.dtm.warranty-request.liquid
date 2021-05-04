@@ -1,0 +1,236 @@
+{% include 'breadcrumb' %}
+
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<section class="section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 offset-lg-2 col-lg-8">
+        <form class="theme-form" id="warranty-request-form" method="post">
+          <div class="tab-content mb-3" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-first" role="tabpanel" aria-labelledby="pills-first-tab">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <label for="first_name">First Name</label>
+                  <input type="text" class="form-control" id="first_name" name="First Name" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" class="form-control" id="last_name" name="Last Name" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="email_input">Email</label>
+                  <input type="email" class="form-control" id="email_input" name="Email" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="tel_input">Phone (10 digit number)</label>
+                  <input type="tel" maxlength="10" minlength="10" pattern="[0-9]{10}" placeholder="1234567890" class="form-control" id="tel_input" name="Phone" required>
+                </div>
+                <div class="col-md-12 form-group">
+                  <label for="address_input">Shipping Address</label>
+                  <input type="text"  class="form-control" id="address_input" name="Address" required>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label for="city_input">City</label>
+                  <input type="text" class="form-control" id="city_input" name="City" required>
+                </div>
+                <div class="col-md-4 form-group">
+                  <label for="province_select">Province</label>
+                  <select class="form-control" id="province_select" name="Province" required>
+                    <option value="AB">Alberta</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="MB">Manitoba</option>
+                    <option value="NB">New Brunswick</option>
+                    <option value="NL">Newfoundland and Labrador</option>
+                    <option value="NS">Nova Scotia</option>
+                    <option value="NT">Northwest Territories</option>
+                    <option value="NU">Nunavut</option>
+                    <option value="ON">Ontario</option>
+                    <option value="PE">Prince Edward Island</option>
+                    <option value="QC">Quebec</option>
+                    <option value="SK">Saskatchewan</option>
+                    <option value="YT">Yukon</option>
+                  </select>
+                </div>
+                <div class="col-md-4 form-group mb-3">
+                  <label for="postal_code_input">Postal Code</label>
+                  <input type="text" class="form-control" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" placeholder="A0A 0A0" minlength="7" maxlength="7" id="postal_code_input" name="Postal Code" required>
+                </div>
+                <div class="offset-md-8 col-md-4 form-group justify-content-end d-flex">
+                  <button id="warranty-request-next-page" class="btn">Next Page</button>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="pills-second" role="tabpanel" aria-labelledby="pills-second-tab">
+              <div class="form-row">
+                <div class="col-md-6 form-group">
+                  <label for="model_number">Model Number</label>
+                  <input type="text" class="form-control" id="model_number" name="Model Number" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="serial_number">Serial Number</label>
+                  <input type="text" class="form-control" id="serial_number" name="Serial Number" required>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="fuel_type_select">Fuel Type</label>
+                  <select class="form-control" id="fuel_type_select" name="Fuel Type" required>
+                    <option value="Propane">Propane</option>
+                    <option value="Natural Gas">Natural Gas</option>
+                    <option value="Charcoal">Charcoal</option>
+                    <option value="Electic">Electic</option>
+                  </select>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="date_of_purchase">Date of Purchase</label>
+                  <input type="date" class="form-control" id="date_of_purchase" name="Date of Purchase" required>
+                </div>
+                <div class="col-12 form-group">
+                  <label for="proof_of_purchase">Please attach proof of purchase</label>
+                  <input type="file" id="proof_of_purchase" name="purchase_file" class="form-control" accept="image/*,.pdf" />
+                </div>
+                <div class="col-12 form-group">
+                  <label for="image_of_unit">Front image of unit</label>
+                  <input type="file" id="image_of_unit" name="unit_file" class="form-control" accept="image/*,.pdf" />
+                </div>
+                <div class="col-12 form-group">
+                  <label for="damaged_part">Image of damaged part</label>
+                  <input type="file" id="damaged_part" name="damaged_part_file" class="form-control" accept="image/*,.pdf" />
+                </div>
+                <div class="col-12 form-check d-flex align-items-baseline mb-3">
+                  <input type="checkbox" id="notice_checkbox" class="form-checkbox-input mr-3" />
+                  <label for="notice_checkbox" name="notice_checkbox" class="form-check-label">I am aware that the manufacturer may request the part to be returned for examination. As such I will not dispose of the item for at least 90 days or until otherwise instructed</label>
+                </div>
+                <div class="col-12 form-group justify-content-between d-flex">
+                  <button id="warranty-request-previous-page" class="btn">Last Page</button>
+                  <button type="submit" class="btn" id="warranty-request-send">Send</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="nav nav-pills justify-content-center d-none" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="warranty-first-tab" data-toggle="pill" href="#pills-first" role="tab" aria-controls="pills-first" aria-selected="true">1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="warranty-second-tab" data-toggle="pill" href="#pills-second" role="tab" aria-controls="pills-second" aria-selected="false">2</a>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (() => {
+
+    const SecureToken = '4b1dd007-eaeb-4b3a-9b9a-e55795bab068';
+
+    const convertImageFileToDataUrl = (input) => {
+      const file = input?.files?.[0];
+      const reader = new FileReader();
+      
+      reader.addEventListener("load", () => {
+        input.setAttribute('data-image', reader.result);
+      }, false);
+      
+      if(file){
+        reader.readAsDataURL(file);
+      }
+    }
+
+    const warrantyForm = document.querySelector('#warranty-request-form');
+
+    const firstTab = warrantyForm.querySelector('#warranty-first-tab');
+    const secondTab = warrantyForm.querySelector('#warranty-second-tab');
+
+    const firstTabInputs = Array.from(warrantyForm.querySelectorAll('#pills-first input, #pills-first select') ?? []);
+    const secondTabInputs = Array.from(warrantyForm.querySelectorAll('#pills-second input, #pills-second select') ?? []);
+    
+    const nextPageButton = warrantyForm.querySelector('#warranty-request-next-page');
+    const previousPageButton = warrantyForm.querySelector('#warranty-request-previous-page');
+    const sendButton = warrantyForm.querySelector('#warranty-request-send');
+
+    const purchaseFileInput = warrantyForm.querySelector('#proof_of_purchase');
+    const unitFileInput = warrantyForm.querySelector('#image_of_unit');
+    const damagedPartFileInput = warrantyForm.querySelector('#damaged_part');
+
+    [purchaseFileInput, unitFileInput, damagedPartFileInput].forEach(input => input?.addEventListener('change', (e) => {
+      const fileInput = e.target;
+      const file = fileInput.files?.[0];
+      if(!file?.type?.includes('image') && !file?.type?.includes('pdf')){
+        e.target.value = '';
+      } else {
+        convertImageFileToDataUrl(fileInput);
+      }
+    }));
+    
+    nextPageButton?.addEventListener('click', (e) => {
+      let validity = true;
+      for(const input of firstTabInputs){
+        if(!input.checkValidity()){
+          validity = false;
+        }
+      }
+      if(validity){
+        $(secondTab).tab('show');
+      }
+    });
+
+    previousPageButton?.addEventListener('click', (e) => {
+      let validity = true;
+      for(const input of secondTabInputs){
+        if(!input.checkValidity()){
+          validity = false;
+        }
+      }
+      if(validity){
+        $(firstTab).tab('show');
+      }
+    });
+
+    sendButton?.addEventListener('click', (e) => {
+      let validity = true;
+      for (const input of [...firstTabInputs, ...secondTabInputs]){
+        if(!input.checkValidity()){
+          validity = false;
+        }
+      }
+      if(validity){
+        e.preventDefault();
+        const processedIputs = [...firstTabInputs, ...secondTabInputs].map(i => ({
+          name: i.name,
+          data: i.type === 'file'?i.getAttribute('data-image'):i.value,
+          type: i.type,
+          value: i.value
+        }));
+        Email?.send({
+            Host: 'smtp.gmail.com',
+            Username: 'frederickhong.5@gmail.com',
+            Password: 'Renwoxing5%%',
+            To : "frederickhong.5@gmail.com, zdn.zhang@gmail.com",
+            From : (processedIputs?.find(i => i.name?.toLowerCase()?.includes('email')))?.value ?? 'frederickhong.5@gmail.com',
+            Subject : "Warranty request from submit",
+            Body : `<ul>${processedIputs.filter(i => i.type !== 'file').map(i => `<li>${i.name}: ${i.value}</li>`)}</ul>`,
+            Attachments: `${processedIputs.filter(i => i.type === 'file').map(i => {
+              return {
+                name: `${i.name}.${i.value.split('.')?.[i.value.split('.').length - 1]}`,
+                data: i.data
+              }
+            })}`
+        }).then(
+          message => alert(message)
+        );
+      }
+    })
+  })();
+
+</script>
+<style>
+  #warranty-request-form input::placeholder {
+    color: #bbb;
+  }
+</style>
+{% if settings.enable_development_mode == true %}
+<script src="{{'OtherPage.js'|asset_url}}" type="module"></script>
+{% else %}
+<script src="{{'OtherPage.min.js'|asset_url}}" type="module"></script>
+{% endif %}
