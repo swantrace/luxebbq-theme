@@ -96,8 +96,8 @@
                   <input type="file" id="damaged_part" name="damaged_part_file" class="form-control" accept="image/*,.pdf" />
                 </div>
                 <div class="col-12 form-check d-flex align-items-baseline mb-3">
-                  <input type="checkbox" id="notice_checkbox" class="form-checkbox-input mr-3" />
-                  <label for="notice_checkbox" name="notice_checkbox" class="form-check-label">I am aware that the manufacturer may request the part to be returned for examination. As such I will not dispose of the item for at least 90 days or until otherwise instructed</label>
+                  <input type="checkbox" name="notice_checkbox" id="notice_checkbox" class="form-checkbox-input mr-3" />
+                  <label for="notice_checkbox" class="form-check-label">I am aware that the manufacturer may request the part to be returned for examination. As such I will not dispose of the item for at least 90 days or until otherwise instructed</label>
                 </div>
                 <div class="col-12 form-group justify-content-between d-flex">
                   <button id="warranty-request-previous-page" class="btn">Last Page</button>
@@ -122,7 +122,7 @@
 <script>
   (() => {
 
-    const SecureToken = '4b1dd007-eaeb-4b3a-9b9a-e55795bab068';
+    const SecureToken = '9eb6daa9-5e78-403f-9420-ca94c2d6b532';
 
     const convertImageFileToDataUrl = (input) => {
       const file = input?.files?.[0];
@@ -202,21 +202,22 @@
           type: i.type,
           value: i.value
         }));
-        Email?.send({
-            Host: 'smtp.gmail.com',
-            Username: 'frederickhong.5@gmail.com',
-            Password: 'Renwoxing5%%',
-            To : "frederickhong.5@gmail.com, zdn.zhang@gmail.com",
-            From : (processedIputs?.find(i => i.name?.toLowerCase()?.includes('email')))?.value ?? 'frederickhong.5@gmail.com',
+        const emailInfo = {
+            SecureToken: SecureToken,
+            To : "zdn.zhang@gmail.com",
+            From : "frederickhong.5@gmail.com",
             Subject : "Warranty request from submit",
             Body : `<ul>${processedIputs.filter(i => i.type !== 'file').map(i => `<li>${i.name}: ${i.value}</li>`)}</ul>`,
-            Attachments: `${processedIputs.filter(i => i.type === 'file').map(i => {
+            Attachments: processedIputs.filter(i => i.type === 'file').map(i => {
               return {
                 name: `${i.name}.${i.value.split('.')?.[i.value.split('.').length - 1]}`,
                 data: i.data
               }
-            })}`
-        }).then(
+            })
+        };
+        console.log(emailInfo.Attachments);
+
+        Email?.send(emailInfo).then(
           message => alert(message)
         );
       }
