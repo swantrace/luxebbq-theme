@@ -1,5 +1,8 @@
+/* eslint-disable global-require */
 /* eslint-disable no-nested-ternary */
 import { gql } from '@apollo/client/core';
+
+// const { pluralize } = require('pluralize');
 
 export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [1, 25000];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 20];
@@ -303,3 +306,16 @@ export const getDisplayedPageNumbers = (pageCount, pageNumber) => {
     }, []);
   return displayedPageNumbers;
 };
+
+export const arrayIncludesItem = (arr, item) =>
+  !!arr.find((i) =>
+    // console.log(
+    //   pluralize.singular,
+    //   i.replace(/\s/g, '').toLowerCase(),
+    //   item.replace(/\s/g, '').toLowerCase()
+    // );
+    i
+      .replace(/\s/g, '')
+      .toLowerCase()
+      .includes(item?.replace(/\s/g, '')?.toLowerCase())
+  );

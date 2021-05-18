@@ -1,3 +1,4 @@
+import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Fuel extends ProductType {
@@ -69,13 +70,8 @@ class Fuel extends ProductType {
               if (!product?.fuelType) {
                 return false;
               }
-              // console.log(
-              //   'selectedFuelTypes',
-              //   selectedFuelTypes,
-              //   'product.fuelType',
-              //   product.fuelType
-              // );
-              return !!selectedFuelTypes.includes(product.fuelType);
+              // return !!selectedFuelTypes.includes(product.fuelType);
+              return arrayIncludesItem(selectedFuelTypes, product.fuelType);
             },
           };
     return {

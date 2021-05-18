@@ -21,13 +21,13 @@ const useProductType = (type) => {
       return Fuel;
     case 'parts':
       return Parts;
-    case 'rubs-and-sauces':
+    case 'sauces-rubs-and-spices':
       return RubsAndSauces;
     case 'furniture':
       return Furniture;
     default:
       throw new Error(
-        `${type} is not valid parameter, you can choose one among barbeques, grilling-accessories, lifestyle-accessories, drinkware-and-coolers, fuel, parts, rubs-and-sauces, furniture`
+        `${type} is not valid parameter, you can choose one among barbeques, grilling-accessories, lifestyle-accessories, drinkware-and-coolers, fuel, parts, sauces-rubs-and-spices, furniture`
       );
   }
 };

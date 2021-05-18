@@ -21,6 +21,7 @@
     "lodash.uniq": "^4.5.0",
     "object-sizeof": "^1.6.1",
     "paper-range-slider": "^3.0.0",
+    "pluralize": "^8.0.0",
     "slugify": "^1.5.0"
   },
   "devDependencies": {

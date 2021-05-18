@@ -2,7 +2,7 @@
 import { html, useEffect, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { capitalCase } from 'capital-case';
-import { CompareTable, MegaMenu } from '../shared/index';
+import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 import RelatedProducts from '../components/productPage/RelatedProducts';
 import Specifications from '../components/productPage/Specifications';
 import useProductType from '../productTypes';
@@ -59,6 +59,8 @@ function ProductPage({
     initialValueFilterKeyPairs: {},
   });
 
+  const { allProducts, fetchIsFinished } = state;
+
   useEffect(async () => {
     if (product.type !== 'Barbeques') {
       const videoWrapper = document.querySelector('#video-wrapper');
@@ -71,9 +73,10 @@ function ProductPage({
     // console.log('allProducts:', products);
     dispatch({ type: 'setAllProducts', payload: products });
     dispatch({ type: 'setFetchIsFinished', payload: true });
+    document.dispatchEvent(
+      new CustomEvent('allProductsPreparedForRelatedProducts')
+    );
   }, []);
-
-  const { allProducts, fetchIsFinished } = state;
 
   const sorter = (a, b) => {
     let compareResult = 0;
@@ -111,7 +114,8 @@ function ProductPage({
 
   const filterFunc = (p) =>
     p.title !== product.title &&
-    Math.abs(p.minVariantPrice - product.price / 100) <= 200;
+    Math.abs(p.minVariantPrice - product.price / 100) / (product.price / 100) <=
+      0.3;
 
   const relatedProducts = allProducts
     .sort(sorter)
@@ -158,3 +162,5 @@ function ProductPage({
     pComponent?.elementOptions
   );
 });
+
+setupStart();

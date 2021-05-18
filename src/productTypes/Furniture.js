@@ -1,3 +1,4 @@
+import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Furniture extends ProductType {
@@ -70,7 +71,11 @@ class Furniture extends ProductType {
               if (!product?.furnitureType) {
                 return false;
               }
-              return !!selectedFurnitureTypes.includes(product.furnitureType);
+              // return !!selectedFurnitureTypes.includes(product.furnitureType);
+              return arrayIncludesItem(
+                selectedFurnitureTypes,
+                product.furnitureType
+              );
             },
           };
     return {

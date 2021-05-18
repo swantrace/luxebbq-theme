@@ -61,7 +61,7 @@ const PerfectGrillKeyFeaturesSelector = virtual(
         >
       </div>
       ${[
-        'Cart Iron Grill',
+        'Cast Iron Grill',
         'Stainless Steel Grill',
         'Ceramic Coated Grill',
       ].map(

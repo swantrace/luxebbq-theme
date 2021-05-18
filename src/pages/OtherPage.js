@@ -1,5 +1,5 @@
 import { component } from '@apollo-elements/haunted';
-import { CompareTable, MegaMenu } from '../shared/index';
+import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 
 [CompareTable, MegaMenu].forEach((pComponent) => {
   customElements.define(
@@ -8,3 +8,5 @@ import { CompareTable, MegaMenu } from '../shared/index';
     pComponent?.elementOptions
   );
 });
+
+setupStart();

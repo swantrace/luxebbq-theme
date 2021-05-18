@@ -1,11 +1,6 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "prettier.packageManager": "yarn",
-  "prettier.disableLanguages": ["liquid"],
   "files.associations": {
     "*.liquid": "liquid"
   }

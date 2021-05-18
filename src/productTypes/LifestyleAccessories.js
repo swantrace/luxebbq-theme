@@ -1,3 +1,4 @@
+import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class LifestyleAccessories extends ProductType {
@@ -41,9 +42,8 @@ class LifestyleAccessories extends ProductType {
   }
 
   transformStateToFirstPageGraphqlRequestVariables() {
-    const otherTag = this.state
-      ?.SelectedlifestyleAccessoriesTypesAndBrands?.[0]?.[0]
-      ? `dtm_lifestyle-accessories-type_${this.state?.SelectedlifestyleAccessoriesTypesAndBrands?.[0]?.[0]}`
+    const otherTag = this.state?.selectedLifestyleAccessoriesTypes?.[0]
+      ? `dtm_lifestyle-accessories-type_${this.state?.SelectedlifestyleAccessoriesTypesAndBrands?.[0]}`
       : '';
     return {
       first: this.state?.productsPerPage ?? 24,
@@ -60,15 +60,20 @@ class LifestyleAccessories extends ProductType {
         product.tags
           ?.find((tag) => tag.includes('dtm_lifestyle-accessories-type_'))
           ?.replace('dtm_lifestyle-accessories-type_', '') ?? null,
-      colour: product.tags
-        ?.find((tag) => tag.includes('dtm_product-colour_'))
-        ?.replace('dtm_product-colour_', ''),
+      colour:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_product-colour_'))
+          ?.replace('dtm_product-colour_', '') ?? null,
     };
     return transformedProduct;
   }
 
   createFiltersFromState() {
     const { selectedLifestyleAccessoriesTypes, selectedColours } = this.state;
+    console.log(
+      'selectedLifestyleAccessoriesTypes',
+      selectedLifestyleAccessoriesTypes
+    );
     const st = this.state.searchString?.trim() ?? '';
     const typeFilters =
       st !== ''
@@ -81,7 +86,11 @@ class LifestyleAccessories extends ProductType {
               if (!product?.lifestyleAccessoriesType) {
                 return false;
               }
-              return !!selectedLifestyleAccessoriesTypes?.includes(
+              // return !!selectedLifestyleAccessoriesTypes?.includes(
+              //   product.lifestyleAccessoriesType
+              // );
+              return arrayIncludesItem(
+                selectedLifestyleAccessoriesTypes,
                 product.lifestyleAccessoriesType
               );
             },

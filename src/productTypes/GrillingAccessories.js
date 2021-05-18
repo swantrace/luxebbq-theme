@@ -1,3 +1,4 @@
+import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class GrillingAccessories extends ProductType {
@@ -66,8 +67,8 @@ class GrillingAccessories extends ProductType {
           ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
       grillingAccessoriesType:
         product.tags
-          ?.find((tag) => tag.includes('placeholder'))
-          ?.replace('placeholder', '') ?? null,
+          ?.find((tag) => tag.includes('dtm_grilling-accessories-type_'))
+          ?.replace('dtm_grilling-accessories-type_', '') ?? null,
     };
     return transformedProduct;
   }
@@ -134,7 +135,11 @@ class GrillingAccessories extends ProductType {
                 return false;
               }
 
-              return !!selectedGrillingAccessoriesTypes.includes(
+              // return !!selectedGrillingAccessoriesTypes.includes(
+              //   product.grillingAccessoriesType
+              // );
+              return arrayIncludesItem(
+                selectedGrillingAccessoriesTypes,
                 product.grillingAccessoriesType
               );
             },

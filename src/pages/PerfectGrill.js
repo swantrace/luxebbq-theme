@@ -1,6 +1,6 @@
 import { html, useEffect, component } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { CompareTable, MegaMenu } from '../shared/index';
+import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 import { pageWrapper as perfectGrillWrapper } from '../shared/context';
 import TitleBanner from '../components/common/TitleBanner';
 import useProductType from '../productTypes';
@@ -64,11 +64,11 @@ function PerfectGrill({
     </section>`,
     brandInfo: JSON.parse(
       cookTypesAndBrands ??
-        '[["Gas Grill",[]], ["Charcoal Grill",[]], ["Offset Smoker",[]], ["Pellet Grill",[]], ["Pizza Oven",[]]}'
+        '[["Gas Grill",[]], ["Charcoal Grill",[]], ["Electric Grill",[]],["Offset Smoker",[]], ["Pellet Grill",[]], ["Pizza Oven",[]]}'
     ),
     cookTypeLogos: JSON.parse(
       cookTypeLogos ??
-        '{"Gas Grill":"", "Charcoal Grill":"", "Smokers":"", "Pellet Grill":"", "Oven":""}'
+        '{"Gas Grill":"", "Charcoal Grill":"", "Electric Grill":"","Offset Smoker":"", "Pellet Grill":"", "Pizza Oven":""}'
     ),
     currentPriceRange: JSON.parse(priceRangeMinAndMax),
     currentGrillCookingAreaRange: JSON.parse(grillCookingAreaMinAndMax),
@@ -111,3 +111,5 @@ function PerfectGrill({
     pComponent?.elementOptions
   );
 });
+
+setupStart();

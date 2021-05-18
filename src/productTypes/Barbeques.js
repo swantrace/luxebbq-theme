@@ -1,4 +1,7 @@
-import { hasIntersectionBetweenTwoRanges } from '../shared/helpers';
+import {
+  arrayIncludesItem,
+  hasIntersectionBetweenTwoRanges,
+} from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Barbeques extends ProductType {
@@ -136,12 +139,14 @@ class Barbeques extends ProductType {
       sideBurner: !!product.tags?.includes('dtm_side-burner'),
       searBurner: !!product.tags?.includes('dtm_sear-burner'),
       rearRotisserie: !!product.tags?.includes('dtm_rear-rotisserie'),
-      grillType: product.tags
-        ?.find((tag) => tag.includes('dtm_grill-type'))
-        ?.replace('dtm_grill-type_', ''),
-      standType: product.tags
-        ?.find((tag) => tag.includes('dtm_stand-type'))
-        ?.replace('dtm_stand-type_', ''),
+      grillType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_grill-type'))
+          ?.replace('dtm_grill-type_', '') ?? null,
+      standType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_stand-type'))
+          ?.replace('dtm_stand-type_', '') ?? null,
     };
     return transformedProduct;
   }
@@ -274,13 +279,15 @@ class Barbeques extends ProductType {
               if ((selectedGrillTypes?.length ?? 0) === 0) {
                 return true;
               }
-              return selectedGrillTypes?.includes(product?.grillType);
+              // return selectedGrillTypes?.includes(product?.grillType);
+              return arrayIncludesItem(selectedGrillTypes, product.grillType);
             },
             standType: (product) => {
               if ((selectedStandTypes?.length ?? 0) === 0) {
                 return true;
               }
-              return selectedStandTypes?.includes(product?.standType);
+              // return selectedStandTypes?.includes(product?.standType);
+              return arrayIncludesItem(selectedStandTypes, product.standType);
             },
           };
     return {

@@ -2105,11 +2105,11 @@
           "3c5b0387-807c-4d73-91af-3f972f226854": {
             "type": "custom-megamenu",
             "settings": {
-              "menu_name": "Rubs & Sauces",
+              "menu_name": "Sauces, Rubs & Spices",
               "trans_menu_name": "",
               "menu_link": "shopify:\/\/collections\/rubs-and-sauces",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Rubs & Sauces\"><\/ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Sauces, Rubs & Spices\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -3407,7 +3407,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/fff.png",
               "page_url": "shopify:\/\/collections\/rubs-and-sauces",
-              "title": "Rubs & Sauces"
+              "title": "Sauces, Rubs & Spices"
             }
           },
           "fb2f41c2-a0c6-4342-bf81-a969a10ec2cb": {

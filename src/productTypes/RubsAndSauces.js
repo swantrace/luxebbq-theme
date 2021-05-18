@@ -1,8 +1,9 @@
+import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class RubsAndSauces extends ProductType {
   constructor(rawInitialState) {
-    super('Rubs & Sauces', rawInitialState);
+    super('Sauces, Rubs & Spices', rawInitialState);
   }
 
   reducer(previousState, action) {
@@ -81,7 +82,8 @@ class RubsAndSauces extends ProductType {
               if (!product?.foodType) {
                 return false;
               }
-              return !!selectedFoodTypes.includes(product.foodType);
+              // return !!selectedFoodTypes.includes(product.foodType);
+              return arrayIncludesItem(selectedFoodTypes, product.foodType);
             },
             specialtyFoods: (product) => {
               if (selectedSpecialtyFoods.length === 0) {
@@ -90,7 +92,11 @@ class RubsAndSauces extends ProductType {
               if (!product?.specialtyFoods) {
                 return false;
               }
-              return !!selectedSpecialtyFoods.includes(product.specialtyFoods);
+              // return !!selectedSpecialtyFoods.includes(product.specialtyFoods);
+              return arrayIncludesItem(
+                selectedSpecialtyFoods,
+                product.specialtyFoods
+              );
             },
           };
 

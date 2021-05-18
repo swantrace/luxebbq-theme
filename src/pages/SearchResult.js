@@ -5,7 +5,7 @@ import {
   useReducer,
   component,
 } from '@apollo-elements/haunted';
-import { CompareTable, MegaMenu } from '../shared/index';
+import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 import SearchBar from '../components/searchResult/SearchBar';
 import TitleBanner from '../components/common/TitleBanner';
 import { pageWrapper as SearchResultWrapper } from '../shared/context';
@@ -155,3 +155,5 @@ function SearchResult({ defaultSortBy, emptyCollectionImage }) {
     pComponent?.elementOptions
   );
 });
+
+setupStart();

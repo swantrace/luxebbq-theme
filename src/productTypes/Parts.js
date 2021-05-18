@@ -1,3 +1,4 @@
+import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Parts extends ProductType {
@@ -80,7 +81,8 @@ class Parts extends ProductType {
               if (!product?.partsType) {
                 return false;
               }
-              return !!selectedPartsType.includes(product.partsType);
+              // return !!selectedPartsType.includes(product.partsType);
+              return arrayIncludesItem(selectedPartsType, product.partsType);
             },
             material: (product) => {
               if (selectedMaterials.length === 0) {
@@ -89,7 +91,8 @@ class Parts extends ProductType {
               if (!product?.material) {
                 return false;
               }
-              return selectedMaterials.includes(product.material);
+              // return selectedMaterials.includes(product.material);
+              return arrayIncludesItem(selectedMaterials, product.material);
             },
           };
 

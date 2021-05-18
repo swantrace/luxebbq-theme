@@ -73,10 +73,10 @@
                 <div class="col-md-6 form-group">
                   <label for="fuel_type_select">Fuel Type</label>
                   <select class="form-control" id="fuel_type_select" name="Fuel Type" required>
-                    <option value="Propane">Propane</option>
+                    <option value="Propane">Propane</option>r
                     <option value="Natural Gas">Natural Gas</option>
                     <option value="Charcoal">Charcoal</option>
-                    <option value="Electic">Electic</option>
+                    <option value="Electric">Electric</option>
                   </select>
                 </div>
                 <div class="col-md-6 form-group">
@@ -85,15 +85,15 @@
                 </div>
                 <div class="col-12 form-group">
                   <label for="proof_of_purchase">Please attach proof of purchase</label>
-                  <input type="file" id="proof_of_purchase" name="purchase_file" class="form-control" accept="image/*,.pdf" />
+                  <input multiple type="file" id="proof_of_purchase" name="purchase_file" class="form-control" accept="image/*,.pdf" />
                 </div>
                 <div class="col-12 form-group">
                   <label for="image_of_unit">Front image of unit</label>
-                  <input type="file" id="image_of_unit" name="unit_file" class="form-control" accept="image/*,.pdf" />
+                  <input multiple type="file" id="image_of_unit" name="unit_file" class="form-control" accept="image/*,.pdf" />
                 </div>
                 <div class="col-12 form-group">
                   <label for="damaged_part">Image of damaged part</label>
-                  <input type="file" id="damaged_part" name="damaged_part_file" class="form-control" accept="image/*,.pdf" />
+                  <input multiple type="file" id="damaged_part" name="damaged_part_file" class="form-control" accept="image/*,.pdf" />
                 </div>
                 <div class="col-12 form-check d-flex align-items-baseline mb-3">
                   <input type="checkbox" name="notice_checkbox" id="notice_checkbox" class="form-checkbox-input mr-3" />
@@ -125,17 +125,16 @@
     const SecureToken = '9eb6daa9-5e78-403f-9420-ca94c2d6b532';
 
     const convertImageFileToDataUrl = (input) => {
-      const file = input?.files?.[0];
-      const reader = new FileReader();
-      
-      reader.addEventListener("load", () => {
-        input.setAttribute('data-image', reader.result);
-      }, false);
-      
-      if(file){
+
+      Array.from(input?.files ?? []).filter(file => file?.type?.includes('image') || file?.type?.includes('pdf')).forEach((file, index) => {
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+          input.setAttribute(`data-image-${index+1}`, reader.result);
+        }, false);
         reader.readAsDataURL(file);
-      }
-    }
+      });
+
+    };
 
     const warrantyForm = document.querySelector('#warranty-request-form');
 
@@ -155,12 +154,7 @@
 
     [purchaseFileInput, unitFileInput, damagedPartFileInput].forEach(input => input?.addEventListener('change', (e) => {
       const fileInput = e.target;
-      const file = fileInput.files?.[0];
-      if(!file?.type?.includes('image') && !file?.type?.includes('pdf')){
-        e.target.value = '';
-      } else {
-        convertImageFileToDataUrl(fileInput);
-      }
+      convertImageFileToDataUrl(fileInput);
     }));
     
     nextPageButton?.addEventListener('click', (e) => {
@@ -194,18 +188,32 @@
           validity = false;
         }
       }
+
       if(validity){
         e.preventDefault();
-        const processedIputs = [...firstTabInputs, ...secondTabInputs].map(i => ({
-          name: i.name,
-          data: i.type === 'file'?i.getAttribute('data-image'):i.value,
-          type: i.type,
-          value: i.value
-        }));
+        const processedIputs = [...firstTabInputs, ...secondTabInputs].reduce((acc, i) => {
+          if(i.type !== 'file'){
+            acc = [...acc, {
+              name: i.name,
+              data: i.value,
+              type: i.type,
+              value: i.value
+            }]
+          } else {
+            acc = [...acc, ...Array.from(i.files).map((file, index) => ({
+              name: `${i.name}_${index+1}`,
+              data: i.getAttribute(`data-image-${index+1}`),
+              type: i.type,
+              value: i.value
+            }))]
+          }
+          return acc;
+        }, []);
+        console.log('processedInputs', processedIputs);
         const emailInfo = {
             SecureToken: SecureToken,
             To : "zdn.zhang@gmail.com",
-            From : "frederickhong.5@gmail.com",
+            From : "zdn.zhang@gmail.com",
             Subject : "Warranty request from submit",
             Body : `<ul>${processedIputs.filter(i => i.type !== 'file').map(i => `<li>${i.name}: ${i.value}</li>`)}</ul>`,
             Attachments: processedIputs.filter(i => i.type === 'file').map(i => {
@@ -217,9 +225,10 @@
         };
         console.log(emailInfo.Attachments);
 
-        Email?.send(emailInfo).then(
-          message => alert(message)
-        );
+        Email?.send(emailInfo).then((message) => {
+          alert(message)
+          Array.from(warrantyForm.elements).forEach(input => input.value = '')
+        });
       }
     })
   })();
