@@ -127,7 +127,7 @@ const filters = [{
     ],
     selected: (params?.['selectedCookTypesAndBrands'] ?? []).filter(
         ([cookType, [firstBrand, ...otherBrands]]) => {
-            return brandsOfCookType[cookType]?.includes(firstBrand) ?? false;
+            return firstBrand === undefined || brandsOfCookType[cookType]?.includes(firstBrand);
         }
     )
 }, {
