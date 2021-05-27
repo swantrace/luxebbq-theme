@@ -9,7 +9,7 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
   } = filter;
   const [valueMin, valueMax] = state[stateKey];
   return html`<div class="collection-collapse-block">
-    <h3 class="collapse-block-title">${rangeTitle}</h3>
+    <h3 class="collapse-block-title pb-3">${rangeTitle}</h3>
     <div class="collection-collapse-block-content">
       <div
         class="collection-range-slider-wrapper ${slugify(rangeTitle, {
