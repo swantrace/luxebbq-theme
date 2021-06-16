@@ -18,7 +18,7 @@ const PerfectGrillPriceRangeSelector = virtual(
       <paper-range-slider
         class="price-paper-range-slider"
         id="price-range-slider"
-        step="1"
+        step="100"
         always-show-pin
         min=${min}
         max=${max}

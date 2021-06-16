@@ -23,7 +23,7 @@ const charcoalGrillBrands = [
     'Kamado Joe',
     'Lynx Grills',
     'Masterbuilt',
-    'Napolean',
+    'Napoleon',
     'Pit Barrel Cooker',
     'PK Grills',
     'Regal', // doesn't exist
@@ -135,14 +135,14 @@ const filters = [{
     actionType: "changePriceRange",
     title: "Price Range",
     type: "RangeSlider",
-    info: [1, 25000],
-    selected: [1, 25000]
+    info: [0, 16700, 100],
+    selected: [0, 16700]
 }, {
     stateKey: "currentGrillCookingAreaRange",
     actionType: "changeGrillCookingAreaRange",
     title: "Grill Cooking Area",
     type: "RangeSlider",
-    info: [1, 20],
+    info: [1, 20, 1],
     selected: [1, 20]
 }, {
     stateKey: "selectedStandTypes",

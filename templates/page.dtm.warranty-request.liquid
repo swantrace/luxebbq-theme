@@ -226,7 +226,11 @@
         console.log(emailInfo.Attachments);
 
         Email?.send(emailInfo).then((message) => {
-          alert(message)
+          if(message.toLowerCase() === 'ok'){
+            alert('Thank you for submitting your claim. Someone from the LUXE BBQ Team will be in touch with you soon.')
+          } else {
+            alert(message)
+          }
           Array.from(warrantyForm.elements).forEach(input => input.value = '')
         });
       }

@@ -46,12 +46,15 @@ const setupStart = () => {
               background-color: transparent !important;
               width: 30px !important;
               height: 45.8px !important;
-              top: -50px !important;
+              top: -54px !important;
               margin-left: -15px !important;
             }
-            
+            #sliderContainer {
+              margin-left: 0!important;
+              margin-right: 0!important;
+            }
             .pin > .slider-knob > .slider-knob-inner::after {
-              top: 4px !important;
+              top: 1px !important;
             }`;
             styleElement.appendChild(document.createTextNode(newStyles));
           });
