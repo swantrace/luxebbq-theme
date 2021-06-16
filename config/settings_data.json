@@ -3383,7 +3383,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/2_-_Pellet.jpg",
               "page_url": "shopify:\/\/pages\/pellet-grills",
-              "title": "Wood Pellet Grills & Smokers"
+              "title": "Pellet Grills & Smokers"
             }
           },
           "161552166845bd5aa7-2": {
@@ -3407,7 +3407,7 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/fff.png",
               "page_url": "shopify:\/\/collections\/rubs-and-sauces",
-              "title": "Sauces, Rubs & Spices"
+              "title": "Offset Smokers"
             }
           },
           "fb2f41c2-a0c6-4342-bf81-a969a10ec2cb": {
@@ -3422,8 +3422,7 @@
             "type": "Collection",
             "settings": {
               "image": "shopify:\/\/shop_images\/fff.png",
-              "page_url": "shopify:\/\/collections\/drinkware-and-coolers",
-              "title": "Drinkware & Coolers"
+              "title": "Builtin Grills & Components"
             }
           },
           "d26702db-4914-4327-ae98-c788f23e019c": {
