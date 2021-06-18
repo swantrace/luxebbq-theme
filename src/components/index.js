@@ -4,6 +4,7 @@ import ProductTypeMainContent from './productTypeCollection/ProductTypeMainConte
 import SearchResultMainContent from './searchResult/SearchResultMainContent';
 import CompareTable from './common/CompareTable';
 import MegaMenu from './common/MegaMenu';
+import LandingPageCollectionLink from './common/LandingPageCollectionLink';
 
 export default {
   PerfectGrillSelectors,
@@ -12,4 +13,5 @@ export default {
   SearchResultMainContent,
   CompareTable,
   MegaMenu,
+  LandingPageCollectionLink,
 };

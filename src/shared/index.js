@@ -3,6 +3,7 @@ import 'paper-range-slider';
 import './apollo-client';
 import CompareTable from '../components/common/CompareTable';
 import MegaMenu from '../components/common/MegaMenu';
+import LandingPageCollectionLink from '../components/common/LandingPageCollectionLink';
 
 const setupStart = () => {
   const start = () => {
@@ -22,11 +23,6 @@ const setupStart = () => {
     document.dispatchEvent(new CustomEvent('customElementsPrepared'));
 
     document.addEventListener('scriptJSLoaded', () => {
-      console.log(
-        'testComponent2',
-        document.getElementsByTagName('paper-range-slider')[0].shadowRoot
-          .firstChild
-      );
       Array.from(document.getElementsByTagName('paper-range-slider')).forEach(
         (sliderElement) => {
           Array.from(
@@ -81,4 +77,4 @@ const setupStart = () => {
   }
 };
 
-export { CompareTable, MegaMenu, setupStart };
+export { CompareTable, MegaMenu, LandingPageCollectionLink, setupStart };

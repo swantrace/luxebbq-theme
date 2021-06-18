@@ -1,7 +1,12 @@
 import { component } from '@apollo-elements/haunted';
-import { CompareTable, MegaMenu, setupStart } from '../shared/index';
+import {
+  CompareTable,
+  MegaMenu,
+  setupStart,
+  LandingPageCollectionLink,
+} from '../shared/index';
 
-[CompareTable, MegaMenu].forEach((pComponent) => {
+[CompareTable, MegaMenu, LandingPageCollectionLink].forEach((pComponent) => {
   customElements.define(
     pComponent.tagName,
     component(pComponent.renderer, pComponent.options),

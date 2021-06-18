@@ -35,13 +35,7 @@
 
           {% endif %}
           {% if block.settings.enabled_info %}
-          <div class="category-box">
-            <a href="{{ block.settings.page_url }}">
-              <h6>
-                {{ block.settings.title }}
-              </h6>
-            </a>
-          </div>
+          <div is="landing-page-collection-link" class="category-box" cook-type="Gas Grill" bbq-brand="{{ block.settings.brand }}" title="{{ block.settings.title }}"></div>
           {% endif %}
         </div>
       </div>
@@ -216,7 +210,7 @@
               "label": "Brand",
               "options": [
                 {
-                  "value": "Black Earth",
+                  "value": "Black Earth Grills",
                   "label": "Black Earth"
                 },
                 {
