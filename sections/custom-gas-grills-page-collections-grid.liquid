@@ -200,11 +200,6 @@
                "label":"Collection Image"
             },
             {
-               "type": "url",
-               "id": "page_url",
-               "label": "Select Page"
-            },
-            {
                "type":"checkbox",
                "id":"enabled_info",
                "default":true,
@@ -214,23 +209,45 @@
                "type": "text",
                "id": "title",
                "label": "Heading"
-            }
-         ]
-      }
-   ],
-   "presets":[
-      {
-         "name":"Gas Grills Page Collections",
-         "category":"DTM",
-         "blocks":[
-            {
-               "type":"Collection"
             },
             {
-               "type":"Collection"
-            },
-            {
-               "type":"Collection"
+              "type": "select",
+              "id": "brand",
+              "label": "Brand",
+              "options": [
+                {
+                  "value": "Black Earth",
+                  "label": "Black Earth"
+                },
+                {
+                  "value": "Broil King",
+                  "label": "Broil King"
+                },
+                {
+                  "value": "Kamado Joe",
+                  "label": "Kamado Joe"
+                },
+                {
+                  "value": "Louisiana Grills",
+                  "label": "Louisiana Grills"
+                },
+                {
+                  "value": "Pit Boss",
+                  "label": "Pit Boss"
+                },
+                {
+                  "value": "Traeger",
+                  "label": "Traeger"
+                },
+                {
+                  "value": "Weber",
+                  "label": "Weber"
+                },
+                {
+                  "value": "Yoder Smokers",
+                  "label": "Yoder Smokers"
+                }
+              ]
             }
          ]
       }

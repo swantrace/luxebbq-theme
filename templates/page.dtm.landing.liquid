@@ -1,10 +1,15 @@
-
-
 {% if template contains 'page' and page.url == '/pages/pellet-grills' %}
 
     {% section 'dtm-hero-image' %}
     {%- section 'dtm-landing-page-text-with-video' -%}
-    {%- section 'custom-more-collections-grid' -%}
+    {% section 'custom-pellet-grills-page-collections-grid' %}
+
+{% elsif template contains 'page' and page.url == '/pages/charcoal-grills'  %}
+
+    {% section 'dtm-charcoal-grills-hero-image' %}
+    {%- section 'dtm-charcoal-grills-landing-page-text-with-video' -%}
+    {%- section 'custom-charcoal-grills-page-collections-grid' -%}
+
 
 {% elsif template contains 'page' and page.url == '/pages/gas-grills'  %}
 
@@ -17,6 +22,18 @@
     {% section 'dtm-smokers-hero-image' %}
     {%- section 'dtm-smokers-landing-page-text-with-video' -%}
     {%- section 'custom-smokers-page-collections-grid' -%}
+
+{% elsif template contains 'page' and page.url == '/pages/pizza-ovens'  %}
+
+    {% section 'dtm-pizza-ovens-hero-image' %}
+    {%- section 'dtm-pizza-ovens-landing-page-text-with-video' -%}
+    {%- section 'custom-pizza-ovens-page-collections-grid' -%}
+
+{% elsif template contains 'page' and page.url == '/pages/builtin-grills-and-components'  %}
+
+    {% section 'dtm-builtin-grills-and-components-hero-image' %}
+    {%- section 'dtm-bgc-landing-page-text-with-video' -%}
+    {%- section 'custom-bgc-page-collections-grid' -%}
 
 {% endif %}
 {% if settings.enable_development_mode == true %}

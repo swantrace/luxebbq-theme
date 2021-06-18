@@ -1,10 +1,10 @@
-<!-- Smokers Landing Page collections grid -->
+<!-- custom more collections grid -->
 {% if section.settings.enabled %}
 <section class=" {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding:{{ section.settings.section_padding }}">
   {%- include 'title' -%}
 
   <div class="container">
-    <div class="row category-border">
+    <div class="row category-border no-gutters">
 
       {% for block in section.blocks %}
       {% capture blockId %}{{ block.id }}{% endcapture %}
