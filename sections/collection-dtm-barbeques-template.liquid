@@ -126,7 +126,7 @@ const filters = [{
         ]
     ],
     selected: (params?.['selectedCookTypesAndBrands'] ?? []).filter(
-        ([cookType, [firstBrand, ...otherBrands]]) => {
+        ([cookType, [firstBrand]]) => {
             return firstBrand === undefined || brandsOfCookType[cookType]?.includes(firstBrand);
         }
     )

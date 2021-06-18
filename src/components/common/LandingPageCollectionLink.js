@@ -16,7 +16,7 @@ function LandingPageCollectionLink({ cookType, standType, bbqBrand, title }) {
           ['Gas Grill', [bbqBrand]],
           ['Charcoal Grill', [bbqBrand]],
           ['Pellet Grill', [bbqBrand]],
-          [['Electric Grill', [bbqBrand]]],
+          ['Electric Grill', [bbqBrand]],
           ['Offset Smoker', [bbqBrand]],
           ['Pizza Oven', [bbqBrand]],
         ],
