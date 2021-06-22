@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { html, useEffect, virtual } from '@apollo-elements/haunted';
 import TitleBanner from '../common/TitleBanner';
@@ -54,7 +55,13 @@ const Specifications = virtual(({ specificationList, description }) => {
               .map(
                 ([key, value]) =>
                   html`<tr>
-                    <th scope="row" width="30%" class="text-white">${key}</th>
+                    <th scope="row" width="30%" class="text-white">
+                      ${key === 'Cook Type'
+                        ? 'Grill Type'
+                        : key === 'Grill Type'
+                        ? 'Grill Plates'
+                        : key}
+                    </th>
                     <td width="70%">
                       ${Array.isArray(value)
                         ? value.map(
@@ -78,7 +85,13 @@ const Specifications = virtual(({ specificationList, description }) => {
               .map(
                 ([key, value]) =>
                   html`<tr>
-                    <th scope="row" width="30%" class="text-white">${key}</th>
+                    <th scope="row" width="30%" class="text-white">
+                      ${key === 'Cook Type'
+                        ? 'Grill Type'
+                        : key === 'Grill Type'
+                        ? 'Grill Plates'
+                        : key}
+                    </th>
                     <td width="70%">
                       ${Array.isArray(value)
                         ? value.map(

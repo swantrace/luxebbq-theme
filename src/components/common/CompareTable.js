@@ -83,7 +83,7 @@ function CompareTable() {
     { label: 'Product Description', key: 'description' },
     { label: 'Brand', key: 'brand' },
     { label: 'Availability', key: 'stockInfo' },
-    { label: 'Cook Type', key: 'cook-type' },
+    { label: 'Grill Type', key: 'cook-type' },
     { label: 'Total BTU', key: 'total-btu' },
     { label: 'Cooking Temperature Range', key: 'cooking-temperature-range' },
     { label: 'Total Grill Size', key: 'total-grill-size' },

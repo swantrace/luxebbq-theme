@@ -24,15 +24,15 @@ function ProductPage({
       Availability:
         product.totalInventory > 0
           ? html`<span class="instock-lable"
-              ><i class="fa fa-check-circle" aria-hidden="true"></i
-              >INSTOCK</span
+              ><i class="fa fa-check-circle" aria-hidden="true"></i>IN
+              STOCK</span
             >`
           : product.available
           ? html`<span class="instock-lable"
-              ><i class="fa fa-check-circle" aria-hidden="true"></i
-              >PREORDER</span
+              ><i class="fa fa-check-circle" aria-hidden="true"></i>PRE
+              ORDER</span
             >`
-          : html`<span class="outofstock-lable">OUTOFSTOCK</span>`,
+          : html`<span class="outofstock-lable">OUT OF STOCK</span>`,
     },
     ...product.tags
       .filter((t) => t.startsWith('dtm_'))
@@ -112,10 +112,18 @@ function ProductPage({
     return compareResult;
   };
 
-  const filterFunc = (p) =>
-    p.title !== product.title &&
-    Math.abs(p.minVariantPrice - product.price / 100) / (product.price / 100) <=
-      0.3;
+  const filterFunc = (p) => {
+    console.log(p.minVariantPrice);
+    return (
+      p.title !== product.title &&
+      ((p.productType !== 'Barbeques' &&
+        Math.abs(p.minVariantPrice - product.price / 100) /
+          (product.price / 100) <=
+          0.3) ||
+        (p.productType === 'Barbeques' &&
+          Math.abs(p.minVariantPrice - product.price / 100) <= 600))
+    );
+  };
 
   const relatedProducts = allProducts
     .sort(sorter)

@@ -14,7 +14,7 @@ const RelatedProducts = virtual(({ relatedProducts, fetchIsFinished }) => {
   return html`<div class="container">
     <div class="row">
       <div class="col">
-        ${TitleBanner({ title: 'RELATED PRODUCTS' })}
+        ${TitleBanner({ title: 'SIMILAR PRODUCTS' })}
         ${fetchIsFinished
           ? html` <div
               class="slick_carousel product-m"

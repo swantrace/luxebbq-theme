@@ -8,12 +8,8 @@ import SidebarSimpleFilter from './SidebarSimpleFIlter';
 import SidebarTopImages from './SidebarTopImages';
 
 function ProductTypeSidebar() {
-  const {
-    state,
-    dispatch,
-    arrayOfFilters,
-    collectionImages,
-  } = usePageContext();
+  const { state, dispatch, arrayOfFilters, collectionImages } =
+    usePageContext();
   // console.log('state', state);
   const handleSearchStringChanged = (filter, e) => {
     dispatch({
@@ -53,9 +49,8 @@ function ProductTypeSidebar() {
           ([fOption]) => fOption !== firstLevelOption
         ),
       });
-      const secondLevelInputs = firstLevelInput.parentNode.querySelectorAll(
-        'ul li input'
-      );
+      const secondLevelInputs =
+        firstLevelInput.parentNode.querySelectorAll('ul li input');
       // console.log('secondLevelInputs', secondLevelInputs);
       secondLevelInputs.forEach((input) => {
         // eslint-disable-next-line no-param-reassign
@@ -129,6 +124,7 @@ function ProductTypeSidebar() {
       : null}
     <div class="collection-filter-block custom_filter mt-4">
       ${arrayOfFilters.map((filter) => {
+        console.log(filter);
         switch (filter.type) {
           case 'SimpleFilter': {
             return html`${SidebarSimpleFilter({

@@ -76,10 +76,8 @@ class Barbeques extends ProductType {
   }
 
   transformInitialState(raw) {
-    const {
-      initialValueFilterKeyPairs,
-      ...stateFromSuper
-    } = super.transformInitialState(raw);
+    const { initialValueFilterKeyPairs, ...stateFromSuper } =
+      super.transformInitialState(raw);
 
     const typeState = {
       selectedCookTypesAndBrands:
@@ -87,13 +85,10 @@ class Barbeques extends ProductType {
       selectedStandTypes: initialValueFilterKeyPairs?.selectedStandTypes ?? [],
       selectedGrillTypes: initialValueFilterKeyPairs?.selectedGrillTypes ?? [],
       currentPriceRange: initialValueFilterKeyPairs?.currentPriceRange ?? [
-        1000,
-        5000,
+        0, 6500,
       ],
-      currentGrillCookingAreaRange: initialValueFilterKeyPairs?.currentGrillCookingAreaRange ?? [
-        4,
-        6,
-      ],
+      currentGrillCookingAreaRange:
+        initialValueFilterKeyPairs?.currentGrillCookingAreaRange ?? [4, 6],
       sideBurner: initialValueFilterKeyPairs?.sideBurner ?? false,
       searBurner: initialValueFilterKeyPairs?.searBurner ?? false,
       rearRotisserie: initialValueFilterKeyPairs?.rearRotisserie ?? false,
@@ -233,10 +228,8 @@ class Barbeques extends ProductType {
               if (st.length > 0) {
                 return true;
               }
-              const [
-                minGrillCookingArea,
-                maxGrillCookingArea,
-              ] = currentGrillCookingAreaRange;
+              const [minGrillCookingArea, maxGrillCookingArea] =
+                currentGrillCookingAreaRange;
               if (!product?.grillCookingArea) {
                 return true;
               }

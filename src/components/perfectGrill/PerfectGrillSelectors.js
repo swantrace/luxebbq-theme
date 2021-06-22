@@ -95,7 +95,7 @@ function PerfectGrillSelectors() {
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-3">
-        Cook Type
+        Grill Type
       </h3>
       <div
         class="d-flex text-sm-left text-xl-right justify-content-center justify-content-lg-between perfect-grill-selector-input flex-wrap"
@@ -124,13 +124,13 @@ function PerfectGrillSelectors() {
       </div>
     </div>
     <div
-      class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
+      class="d-flex justify-content-between align-items-center label-input-wrapper pt-5 pb-3"
     >
       <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-5">
         Price Range
       </h3>
       <div
-        class="d-flex text-right justify-content-end perfect-grill-selector-input"
+        class="d-flex flex-wrap text-right justify-content-end perfect-grill-selector-input"
       >
         ${PerfectGrillPriceRangeSelector({
           currentPriceRange,
@@ -143,7 +143,8 @@ function PerfectGrillSelectors() {
       class="d-flex justify-content-between align-items-center label-input-wrapper py-3"
     >
       <h3 class="text-sm-left text-xl-right perfect-grill-selector-label mb-5">
-        Grill Cooking Area
+        Grill Cooking Area <br />
+        <small>(# of Burgers)</small>
       </h3>
       <div
         class="d-flex text-right justify-content-end perfect-grill-selector-input"

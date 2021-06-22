@@ -10,7 +10,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": ["off"],
     "no-underscore-dangle": ["error", { "allow": ["__APOLLO_CLIENT__"] }],
     "no-console": ["off"],
     "no-debugger": ["off"]

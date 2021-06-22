@@ -4,7 +4,7 @@ import { gql } from '@apollo/client/core';
 
 // const { pluralize } = require('pluralize');
 
-export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [0, 16700];
+export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [0, 6500];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [1, 20];
 
 export const GET_PRODUCT_BY_HANDLE = gql`

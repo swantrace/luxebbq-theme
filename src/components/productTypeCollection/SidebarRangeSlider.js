@@ -47,6 +47,26 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
             --paper-single-range-slider-height: 4px;
           }
         </style>
+        ${filter.actionType === 'changePriceRange'
+          ? html`<div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="show-over-6500"
+                @change=${(e) =>
+                  e.target.checked
+                    ? handleValueUpdated(filter, {
+                        target: { valueMin: 6500, valueMax: Infinity },
+                      })
+                    : handleValueUpdated(filter, {
+                        target: { valueMin: 0, valueMax: 6500 },
+                      })}
+              />
+              <label class="form-check-label" for="show-over-6500"
+                >Show Grills Over $6500</label
+              >
+            </div>`
+          : null}
       </div>
     </div>
   </div>`;

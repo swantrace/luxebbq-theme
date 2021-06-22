@@ -24,9 +24,8 @@ class ProductType {
     this.queryAllProducts = this.queryAllProducts.bind(this);
     this.queryFirstPageProducts = this.queryFirstPageProducts.bind(this);
     this.getFilteredSortedProducts = this.getFilteredSortedProducts.bind(this);
-    this.getFilteredSortedProductsOfCurrentPage = this.getFilteredSortedProductsOfCurrentPage.bind(
-      this
-    );
+    this.getFilteredSortedProductsOfCurrentPage =
+      this.getFilteredSortedProductsOfCurrentPage.bind(this);
     this.getPageCount = this.getPageCount.bind(this);
     this.getDisplayedPageNumbers = this.getDisplayedPageNumbers.bind(this);
   }
@@ -141,7 +140,7 @@ class ProductType {
       pageNumber: 1,
       viewMode: 'grid',
       onlineStoreOnly: false,
-      availability: [],
+      availability: ['true', 'false'],
       searchString: initialValueFilterKeyPairs?.searchString ?? '',
       selectedBrands: initialValueFilterKeyPairs?.selectedBrands ?? [],
       selectedColours: initialValueFilterKeyPairs?.selectedColours ?? [],
