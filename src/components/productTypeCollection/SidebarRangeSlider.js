@@ -1,4 +1,5 @@
 import { html, virtual } from '@apollo-elements/haunted';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import slugify from 'slugify';
 
 const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
@@ -8,16 +9,26 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
     stateKey,
   } = filter;
   const [valueMin, valueMax] = state[stateKey];
+
+  console.log(
+    slugify(rangeTitle.split('br')[0], {
+      lower: true,
+    })
+  );
+
   return html`<div class="collection-collapse-block">
-    <h3 class="collapse-block-title pb-4">${rangeTitle}</h3>
+    <h3 class="collapse-block-title pb-4">${unsafeHTML(rangeTitle)}</h3>
     <div class="collection-collapse-block-content">
       <div
-        class="collection-range-slider-wrapper ${slugify(rangeTitle, {
-          lower: true,
-        })}-range-slider-wrapper collection-sidebar-filter mt-4"
+        class="collection-range-slider-wrapper ${slugify(
+          rangeTitle.split('br')[0],
+          {
+            lower: true,
+          }
+        )}-range-slider-wrapper collection-sidebar-filter mt-4"
       >
         <style is="custom-style">
-          #${slugify(rangeTitle, {
+          #${slugify(rangeTitle.split('br')[0], {
               lower: true,
             })}-range-slider {
             width: 100%;
@@ -27,7 +38,7 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
           }
         </style>
         <paper-range-slider
-          id=${`${slugify(rangeTitle, {
+          id=${`${slugify(rangeTitle.split('br')[0], {
             lower: true,
           })}-range-slider`}
           always-show-pin

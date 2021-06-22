@@ -88,7 +88,7 @@ class Barbeques extends ProductType {
         0, 6500,
       ],
       currentGrillCookingAreaRange:
-        initialValueFilterKeyPairs?.currentGrillCookingAreaRange ?? [4, 6],
+        initialValueFilterKeyPairs?.currentGrillCookingAreaRange ?? [4, 20],
       sideBurner: initialValueFilterKeyPairs?.sideBurner ?? false,
       searBurner: initialValueFilterKeyPairs?.searBurner ?? false,
       rearRotisserie: initialValueFilterKeyPairs?.rearRotisserie ?? false,
