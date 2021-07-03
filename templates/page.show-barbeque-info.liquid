@@ -1,0 +1,93 @@
+{% layout none %}
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/string-strip-html/dist/string-strip-html.umd.js"></script>
+</head>
+<body>
+  <a id="dowload-link" download="barbeque-info.json" style="text-align: center; padding: 10px 0; display: none;">下载</a>
+  <table id="info-table" class="table table-dark table-hover" width="100%">
+    <thead>
+      <tr>
+        <th scope="col" width="15%">handle</th>
+        <th scope="col" width="65%">body</th>
+        <th scope="col" width="20%">tags</th>
+      </tr>
+    </thead>
+    <tbody hidden></tbody>
+  </table>
+<script>
+  const table = document.getElementById('info-table');
+  const tbody = table.querySelector('tbody');
+  
+  getBarbequeInfo().then(products => {
+    const jsonToExport = []
+    for(let i = 0; i < products.length; i++){
+      const product = products[i];
+      jsonToExport.push({handle: product.handle, description: product.description, tags: product.tags.join(',')})
+      const row = tbody.insertRow(i);
+      const handleCell = row.insertCell(0);
+      const bodyCell = row.insertCell(1);
+      const tagsCell = row.insertCell(2);
+
+      handleCell.style.verticalAlign = "middle";
+      {% comment %} bodyCell.style.verticalAlign = "middle";{% endcomment %}
+      tagsCell.style.verticalAlign = "middle"; 
+      handleCell.innerHTML = `<a href="/products/${product.handle}" style="color: white;" target="_blank">${product.handle}</a>`;
+      bodyCell.innerHTML = `<h2 class="text-light pb-4">${product.title}</h2>${product.body}<div class="py-2"></div>`;
+      tagsCell.innerHTML = product.tags.join('<br />');
+    }
+
+    let iframe, video, h1;
+
+    while(h1 = document.querySelector('h1')){
+      h1.remove();
+    }
+
+    while(iframe = document.querySelector('iframe')){
+      iframe.parentElement.remove();
+    }
+
+    while(video = document.querySelector('video')){
+      video.remove();
+    }
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(jsonToExport));
+    const downloadLinkElement = document.querySelector("#dowload-link");
+    downloadLinkElement.setAttribute("href", dataStr);
+    tbody.hidden = false;
+    downloadLinkElement.style.display = "block";
+  });
+
+  async function getBarbequeInfo() {
+    const { stripHtml } = stringStripHtml;
+    const promise1 = fetch('/collections/barbeques/products.json?limit=500&page=1').then(response => response.json());
+    const promise2 = fetch('/collections/barbeques/products.json?limit=500&page=2').then(response => response.json());
+
+    const barbequeInfo = await Promise.all([promise1, promise2]).then(([{products: arr1}, {products: arr2}]) => {
+      const rawArr = [...arr1, ...arr2];
+      return rawArr.map(p => ({
+        handle: p.handle, 
+        body: p.body_html,
+        description: stripHtml(p.body_html??'', {
+          stripTogetherWithTheirContents: [
+            "script", // default
+            "style", // default
+            "xml", // default
+            "pre", // <-- custom-added
+          ],
+        }).result,
+        title: p.title, 
+        tags: p.tags
+      }));
+    });
+
+    return barbequeInfo
+  };
+
+  function getElementFromString(string){
+    return document.createRange().createContextualFragment(string);
+  } 
+</script>
+</body>
+</html>

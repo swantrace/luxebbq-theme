@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { html, virtual } from '@apollo-elements/haunted';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import slugify from 'slugify';
@@ -77,6 +78,8 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
                 >Show Grills Over $6500</label
               >
             </div>`
+          : filter.actionType === 'changeGrillCookingAreaRange'
+          ? html`<h3 class="collapse-block-title mt-0">(# of Burgers)</h3>`
           : null}
       </div>
     </div>
