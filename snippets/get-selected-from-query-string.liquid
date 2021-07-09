@@ -9,4 +9,4 @@ const params = Array.from((new URLSearchParams(location.search)).entries()).redu
 
 console.log(params);
 
-{% comment %} history.replaceState(null, "", location.href.split("?")[0]); {% endcomment %}
+history.replaceState(null, "", location.href.split("?")[0]);
