@@ -2,11 +2,11 @@ import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class GrillingAccessories extends ProductType {
-  constructor(rawInitialState) {
-    super('Grilling Accessories', rawInitialState);
+  constructor(state) {
+    super('Grilling Accessories', state);
   }
 
-  reducer(previousState, action) {
+  static reducer(previousState, action) {
     const stateFromSuper = super.reducer(previousState, action);
     switch (action.type) {
       case 'changeCookTypesAndBrands': {
@@ -28,11 +28,9 @@ class GrillingAccessories extends ProductType {
     }
   }
 
-  transformInitialState(raw) {
-    const {
-      initialValueFilterKeyPairs,
-      ...stateFromSuper
-    } = super.transformInitialState(raw);
+  static transformInitialState(raw) {
+    const { initialValueFilterKeyPairs, ...stateFromSuper } =
+      super.transformInitialState(raw);
 
     const typeState = {
       selectedCookTypesAndBrands:
@@ -74,11 +72,8 @@ class GrillingAccessories extends ProductType {
   }
 
   createFiltersFromState() {
-    console.log(this.state);
-    const {
-      selectedGrillingAccessoriesTypes,
-      selectedCookTypesAndBrands,
-    } = this.state;
+    const { selectedGrillingAccessoriesTypes, selectedCookTypesAndBrands } =
+      this.state;
     const st = this.state.searchString?.trim() ?? '';
     const typeFilters =
       st !== ''

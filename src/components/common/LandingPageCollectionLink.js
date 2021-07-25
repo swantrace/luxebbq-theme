@@ -24,13 +24,12 @@ function LandingPageCollectionLink({ cookType, standType, bbqBrand, title }) {
     : {};
 
   return html`<a
-    href=${window.encodeURI(
-      `${urlBase}${Object.entries(rules)
-        .map(
-          ([ruleKey, ruleValue]) => `${ruleKey}=${JSON.stringify(ruleValue)}`
-        )
-        .join('&')}`
-    )}
+    href=${`${urlBase}${Object.entries(rules)
+      .map(
+        ([ruleKey, ruleValue]) =>
+          `${ruleKey}=${encodeURIComponent(JSON.stringify(ruleValue))}`
+      )
+      .join('&')}`}
   >
     <h6>${title}</h6>
   </a>`;

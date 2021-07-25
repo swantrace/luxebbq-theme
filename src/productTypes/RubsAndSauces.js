@@ -2,11 +2,11 @@ import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class RubsAndSauces extends ProductType {
-  constructor(rawInitialState) {
-    super('Sauces, Rubs & Spices', rawInitialState);
+  constructor(state) {
+    super('Sauces, Rubs & Spices', state);
   }
 
-  reducer(previousState, action) {
+  static reducer(previousState, action) {
     const stateFromSuper = super.reducer(previousState, action);
     switch (action.type) {
       case 'changeFoodTypes': {
@@ -27,11 +27,9 @@ class RubsAndSauces extends ProductType {
     }
   }
 
-  transformInitialState(raw) {
-    const {
-      initialValueFilterKeyPairs,
-      ...stateFromSuper
-    } = super.transformInitialState(raw);
+  static transformInitialState(raw) {
+    const { initialValueFilterKeyPairs, ...stateFromSuper } =
+      super.transformInitialState(raw);
 
     const typeState = {
       selectedFoodTypes: initialValueFilterKeyPairs?.selectedFoodTypes ?? [],

@@ -24,7 +24,7 @@ const PerfectGrillGrillCookingAreaSelector = virtual(
       <paper-range-slider
         class="cooking-area-paper-range-slider price-paper-range-slider"
         id="price-range-slider"
-        step="2"
+        step="5"
         always-show-pin
         min=${min}
         max=${max}

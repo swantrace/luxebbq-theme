@@ -1,16 +1,18 @@
 import {
   arrayIncludesItem,
+  DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
+  DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
   hasIntersectionBetweenTwoRanges,
 } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Barbeques extends ProductType {
-  constructor(rawInitialState) {
-    super('Barbeques', rawInitialState);
+  constructor(state) {
+    super('Barbeques', state);
   }
 
   // eslint-disable-next-line class-methods-use-this
-  reducer(previousState, action) {
+  static reducer(previousState, action) {
     const stateFromSuper = super.reducer(previousState, action);
     switch (action.type) {
       case 'changeCookTypesAndBrands': {
@@ -75,7 +77,8 @@ class Barbeques extends ProductType {
     }
   }
 
-  transformInitialState(raw) {
+  static transformInitialState(raw) {
+    console.log('barbeque transformInitialState raw: ', raw);
     const { initialValueFilterKeyPairs, ...stateFromSuper } =
       super.transformInitialState(raw);
 
@@ -84,11 +87,12 @@ class Barbeques extends ProductType {
         initialValueFilterKeyPairs?.selectedCookTypesAndBrands ?? [],
       selectedStandTypes: initialValueFilterKeyPairs?.selectedStandTypes ?? [],
       selectedGrillTypes: initialValueFilterKeyPairs?.selectedGrillTypes ?? [],
-      currentPriceRange: initialValueFilterKeyPairs?.currentPriceRange ?? [
-        0, 6500,
-      ],
+      currentPriceRange:
+        initialValueFilterKeyPairs?.currentPriceRange ??
+        DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE,
       currentGrillCookingAreaRange:
-        initialValueFilterKeyPairs?.currentGrillCookingAreaRange ?? [4, 20],
+        initialValueFilterKeyPairs?.currentGrillCookingAreaRange ??
+        DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE,
       sideBurner: initialValueFilterKeyPairs?.sideBurner ?? false,
       searBurner: initialValueFilterKeyPairs?.searBurner ?? false,
       rearRotisserie: initialValueFilterKeyPairs?.rearRotisserie ?? false,
@@ -121,16 +125,29 @@ class Barbeques extends ProductType {
   }
 
   transformProductFromQuery(product) {
+    let grillCookingArea = 15;
+    if (
+      product.tags?.find((tag) => tag.includes('dtm_primary-cooking-space'))
+    ) {
+      const primaryCookingSpaceTag = product.tags
+        ?.find((tag) => tag.includes('dtm_primary-cooking-space'))
+        ?.replace('dtm_primary-cooking-space_', '');
+
+      const primaryCookingSpace = Number.isNaN(
+        parseInt(primaryCookingSpaceTag, 10)
+      )
+        ? 240
+        : parseInt(primaryCookingSpaceTag, 10);
+
+      grillCookingArea = Math.ceil(primaryCookingSpace / 16);
+    }
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
       cookTypes:
         product.tags
           ?.filter((tag) => tag.includes('dtm_cook-type_'))
           ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
-      grillCookingArea:
-        product.tags
-          ?.find((tag) => tag.includes('dtm_grill-cooking-area'))
-          ?.replace('dtm_grill-cooking-area_', '') ?? null,
+      grillCookingArea,
       sideBurner: !!product.tags?.includes('dtm_side-burner'),
       searBurner: !!product.tags?.includes('dtm_sear-burner'),
       rearRotisserie: !!product.tags?.includes('dtm_rear-rotisserie'),

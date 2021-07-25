@@ -26,16 +26,16 @@ function MegaMenu({ productType }) {
                               class="${menuItem.header ? 'is-header' : ''}"
                             >
                               <a
-                                href=${window.encodeURI(
-                                  `${urlBase}${Object.entries(menuItem.rules)
-                                    .map(
-                                      ([ruleKey, ruleValue]) =>
-                                        `${ruleKey}=${JSON.stringify(
-                                          ruleValue
-                                        )}`
-                                    )
-                                    .join('&')}`
-                                )}
+                                href=${`${urlBase}${Object.entries(
+                                  menuItem.rules
+                                )
+                                  .map(
+                                    ([ruleKey, ruleValue]) =>
+                                      `${ruleKey}=${encodeURIComponent(
+                                        JSON.stringify(ruleValue)
+                                      )}`
+                                  )
+                                  .join('&')}`}
                                 >${menuItem.label}</a
                               >
                             </li>`
@@ -53,14 +53,14 @@ function MegaMenu({ productType }) {
         (menuItem) => html`
           <li class="${menuItem.header ? 'is-header' : ''}">
             <a
-              href=${window.encodeURI(
-                `${urlBase}${Object.entries(menuItem.rules)
-                  .map(
-                    ([ruleKey, ruleValue]) =>
-                      `${ruleKey}=${JSON.stringify(ruleValue)}`
-                  )
-                  .join('&')}`
-              )}
+              href=${`${urlBase}${Object.entries(menuItem.rules)
+                .map(
+                  ([ruleKey, ruleValue]) =>
+                    `${ruleKey}=${encodeURIComponent(
+                      JSON.stringify(ruleValue)
+                    )}`
+                )
+                .join('&')}`}
               >${menuItem.label}</a
             >
           </li>

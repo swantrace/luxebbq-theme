@@ -1,11 +1,11 @@
 import ProductType from './ProductType';
 
 class DrinkwareAndCoolers extends ProductType {
-  constructor(rawInitialState) {
-    super('Drinkware & Coolers', rawInitialState);
+  constructor(state) {
+    super('Drinkware & Coolers', state);
   }
 
-  reducer(previousState, action) {
+  static reducer(previousState, action) {
     const stateFromSuper = super.reducer(previousState, action);
     switch (action.type) {
       case 'changeDrinkwareAndCoolersTypes': {
@@ -20,11 +20,9 @@ class DrinkwareAndCoolers extends ProductType {
     }
   }
 
-  transformInitialState(raw) {
-    const {
-      initialValueFilterKeyPairs,
-      ...stateFromSuper
-    } = super.transformInitialState(raw);
+  static transformInitialState(raw) {
+    const { initialValueFilterKeyPairs, ...stateFromSuper } =
+      super.transformInitialState(raw);
 
     const typeState = {
       selectedDrinkwareAndCoolersTypes:

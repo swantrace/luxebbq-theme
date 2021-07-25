@@ -3,7 +3,7 @@ import slugify from 'slugify';
 
 const SidebarCheckbox = virtual(
   ({ state, filter, handleCheckboxInputChanged }) => {
-    const { fetchIsFinished } = state;
+    const { fetchIsFinished, searchString } = state;
     const { title: filterTitle, stateKey } = filter;
     const checked = state[stateKey];
     return html` <div class="collection-collapse-block">
@@ -18,7 +18,8 @@ const SidebarCheckbox = virtual(
               @change=${(e) => handleCheckboxInputChanged(filter, e)}
               id=${slugify(stateKey, { lower: true })}
               ?checked=${checked}
-              ?disabled=${!fetchIsFinished}
+              ?disabled=${!fetchIsFinished || searchString}
+              class="form-control-input"
             />
             <label
               class="form-control-label"

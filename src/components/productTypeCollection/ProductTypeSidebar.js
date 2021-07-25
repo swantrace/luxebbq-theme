@@ -11,6 +11,7 @@ function ProductTypeSidebar() {
   const { state, dispatch, arrayOfFilters, collectionImages } =
     usePageContext();
   // console.log('state', state);
+  const { fetchIsFinished, searchString } = state;
   const handleSearchStringChanged = (filter, e) => {
     dispatch({
       type: filter.actionType,
@@ -122,9 +123,12 @@ function ProductTypeSidebar() {
           })}
         `
       : null}
-    <div class="collection-filter-block custom_filter mt-4">
+    <div
+      class=${`collection-filter-block custom_filter mt-4${
+        !fetchIsFinished || searchString ? ' should-be-disabled' : ''
+      }`}
+    >
       ${arrayOfFilters.map((filter) => {
-        console.log(filter);
         switch (filter.type) {
           case 'SimpleFilter': {
             return html`${SidebarSimpleFilter({

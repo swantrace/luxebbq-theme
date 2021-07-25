@@ -1,5 +1,11 @@
 /* eslint-disable no-nested-ternary */
-import { html, useEffect, component } from '@apollo-elements/haunted';
+import {
+  html,
+  useEffect,
+  component,
+  useMemo,
+  useReducer,
+} from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { capitalCase } from 'capital-case';
 import { CompareTable, MegaMenu, setupStart } from '../shared/index';
@@ -52,12 +58,25 @@ function ProductPage({
   // console.log(specificationList);
 
   const similar = JSON.parse(similarMetafield);
-  const { state, dispatch, queryAllProducts } = new (useProductType(
-    slugify(product.type, { lower: true })
-  ))({
+
+  const CurrentProductTypeClass = useMemo(() =>
+    useProductType(slugify(product.type, { lower: true }), [product.type])
+  );
+
+  const initialState = CurrentProductTypeClass.transformInitialState({
     defaultSortBy: 'best-selling',
     initialValueFilterKeyPairs: {},
   });
+
+  const [state, dispatch] = useReducer(
+    CurrentProductTypeClass.reducer,
+    initialState
+  );
+
+  const { queryAllProducts } = useMemo(
+    () => new CurrentProductTypeClass(state),
+    [CurrentProductTypeClass, state]
+  );
 
   const { allProducts, fetchIsFinished } = state;
 
@@ -112,18 +131,14 @@ function ProductPage({
     return compareResult;
   };
 
-  const filterFunc = (p) => {
-    console.log(p.minVariantPrice);
-    return (
-      p.title !== product.title &&
-      ((p.productType !== 'Barbeques' &&
-        Math.abs(p.minVariantPrice - product.price / 100) /
-          (product.price / 100) <=
-          0.3) ||
-        (p.productType === 'Barbeques' &&
-          Math.abs(p.minVariantPrice - product.price / 100) <= 600))
-    );
-  };
+  const filterFunc = (p) =>
+    p.title !== product.title &&
+    ((p.productType !== 'Barbeques' &&
+      Math.abs(p.minVariantPrice - product.price / 100) /
+        (product.price / 100) <=
+        0.3) ||
+      (p.productType === 'Barbeques' &&
+        Math.abs(p.minVariantPrice - product.price / 100) <= 600));
 
   const relatedProducts = allProducts
     .sort(sorter)

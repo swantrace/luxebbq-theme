@@ -18,7 +18,7 @@ const Products = virtual(
         img.classList.remove('lazyloaded');
         img.classList.add('lazyload');
       });
-      console.log('Wishlist', window.Wishlist);
+      // console.log('Wishlist', window.Wishlist);
       if (window.Wishlist && window.Wishlist.init) {
         window.Wishlist.init();
       }

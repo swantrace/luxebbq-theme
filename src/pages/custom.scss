@@ -67,6 +67,14 @@ ul[is='mega-menu'] {
   } /* allow space for check mark */
 }
 
+.collection-filter-block.should-be-disabled {
+  pointer-events: none;
+  cursor: none;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  filter: blur(2px);
+}
+
 .parallelograms-group.dtm-parallelograms-group {
   flex-basis: 50%;
   flex-grow: 55;

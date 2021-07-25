@@ -1,6 +1,6 @@
 import slugify from 'slugify';
 import chunk from 'lodash.chunk';
-import { useReducer } from '@apollo-elements/haunted';
+// import { useReducer } from '@apollo-elements/haunted';
 import {
   addQuotesIfNecessary,
   addslashes,
@@ -12,15 +12,12 @@ import {
 } from '../shared/helpers';
 
 class ProductType {
-  constructor(name, rawInitialState) {
+  constructor(name, state) {
     if (new.target === ProductType) {
       throw new Error('You cannot initiated an abstract class');
     }
-    const initialState = this.transformInitialState(rawInitialState);
-    const [state, dispatch] = useReducer(this.reducer, initialState);
     this.name = name;
     this.state = state;
-    this.dispatch = dispatch;
     this.queryAllProducts = this.queryAllProducts.bind(this);
     this.queryFirstPageProducts = this.queryFirstPageProducts.bind(this);
     this.getFilteredSortedProducts = this.getFilteredSortedProducts.bind(this);
@@ -30,7 +27,7 @@ class ProductType {
     this.getDisplayedPageNumbers = this.getDisplayedPageNumbers.bind(this);
   }
 
-  reducer(previousState, action) {
+  static reducer(previousState, action) {
     if (
       this instanceof ProductType &&
       this.constructor.name === 'ProductType'
@@ -122,7 +119,7 @@ class ProductType {
     }
   }
 
-  transformInitialState(raw) {
+  static transformInitialState(raw) {
     if (
       this instanceof ProductType &&
       this.constructor.name === 'ProductType'

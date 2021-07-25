@@ -1,4 +1,10 @@
-import { html, useEffect, component } from '@apollo-elements/haunted';
+import {
+  html,
+  useEffect,
+  component,
+  useMemo,
+  useReducer,
+} from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 import { pageWrapper as perfectGrillWrapper } from '../shared/context';
@@ -15,28 +21,37 @@ function PerfectGrill({
   defaultSortBy,
   emptyCollectionImage,
 }) {
+  const CurrentProductTypeClass = useMemo(() =>
+    useProductType(slugify('Barbeques', { lower: true }), [])
+  );
+
+  const initialState = CurrentProductTypeClass.transformInitialState({
+    defaultSortBy,
+    initiaValueFilterKeyPairs: {},
+  });
+
+  const [state, dispatch] = useReducer(
+    CurrentProductTypeClass.reducer,
+    initialState
+  );
+
   const {
-    state,
-    dispatch,
     queryAllProducts,
     queryFirstPageProducts,
     getFilteredSortedProducts,
     getFilteredSortedProductsOfCurrentPage,
     getPageCount,
     getDisplayedPageNumbers,
-  } = new (useProductType(slugify('Barbeques', { lower: true })))({
-    defaultSortBy,
-    initiaValueFilterKeyPairs: {},
-  });
+  } = useMemo(
+    () => new CurrentProductTypeClass(state),
+    [CurrentProductTypeClass, state]
+  );
 
   useEffect(async () => {
     const products = await queryAllProducts();
-    console.log('products from queryAllProducts', products);
     dispatch({ type: 'setAllProducts', payload: products });
     dispatch({ type: 'setFetchIsFinished', payload: true });
   }, []);
-
-  console.log('state', state);
 
   return html`${perfectGrillWrapper({
     children: html`<section class="section-b-space pt-0">

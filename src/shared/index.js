@@ -29,7 +29,6 @@ const setupStart = () => {
             sliderElement.shadowRoot.querySelectorAll('[role="slider"]')
           ).forEach((singleSliderElement) => {
             const styleElement = singleSliderElement.shadowRoot.firstChild;
-            console.log('styleElement', styleElement);
             const newStyles = `.pin > .slider-knob > .slider-knob-inner::before {
               transform: none !important;
               border-radius: unset !important;

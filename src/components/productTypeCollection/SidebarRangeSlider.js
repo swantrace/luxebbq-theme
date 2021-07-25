@@ -11,12 +11,6 @@ const SidebarRangeSlider = virtual(({ state, filter, handleValueUpdated }) => {
   } = filter;
   const [valueMin, valueMax] = state[stateKey];
 
-  console.log(
-    slugify(rangeTitle.split('br')[0], {
-      lower: true,
-    })
-  );
-
   return html`<div class="collection-collapse-block">
     <h3 class="collapse-block-title pb-4">${unsafeHTML(rangeTitle)}</h3>
     <div class="collection-collapse-block-content">

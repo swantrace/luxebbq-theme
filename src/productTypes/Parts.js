@@ -2,11 +2,11 @@ import { arrayIncludesItem } from '../shared/helpers';
 import ProductType from './ProductType';
 
 class Parts extends ProductType {
-  constructor(rawInitialState) {
-    super('Parts', rawInitialState);
+  constructor(state) {
+    super('Parts', state);
   }
 
-  reducer(previousState, action) {
+  static reducer(previousState, action) {
     const stateFromSuper = super.reducer(previousState, action);
     switch (action.type) {
       case 'changePartTypes': {
@@ -27,11 +27,9 @@ class Parts extends ProductType {
     }
   }
 
-  transformInitialState(raw) {
-    const {
-      initialValueFilterKeyPairs,
-      ...stateFromSuper
-    } = super.transformInitialState(raw);
+  static transformInitialState(raw) {
+    const { initialValueFilterKeyPairs, ...stateFromSuper } =
+      super.transformInitialState(raw);
 
     const typeState = {
       selectedPartsType: initialValueFilterKeyPairs?.selectedPartsType ?? [],

@@ -1,4 +1,12 @@
-import { html, useEffect, useState, component } from '@apollo-elements/haunted';
+import {
+  html,
+  useEffect,
+  useState,
+  component,
+  useLayoutEffect,
+  useMemo,
+  useReducer,
+} from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 import { pageWrapper } from '../shared/context';
@@ -14,36 +22,54 @@ function ProductTypeCollection({
   collectionMetafield,
   emptyCollectionImage,
 }) {
-  const arrayOfFilters = JSON.parse(allFilters)
-    .map((filter) => {
-      const { selected, ...rest } = filter;
-      return rest;
-    })
-    .filter((filter) => filter.stateKey);
-  const initialValueFilterKeyPairs = JSON.parse(allFilters).reduce(
-    (acc, cur) => {
-      acc[cur.stateKey] = cur.selected;
-      return acc;
-    },
-    {}
+  const CurrentProductTypeClass = useMemo(() =>
+    useProductType(slugify(productType, { lower: true }), [productType])
+  );
+
+  const arrayOfFilters = useMemo(
+    () =>
+      JSON.parse(allFilters)
+        .map((filter) => {
+          const { selected, ...rest } = filter;
+          return rest;
+        })
+        .filter((filter) => filter.stateKey),
+    [allFilters]
+  );
+
+  const initialValueFilterKeyPairs = useMemo(
+    () =>
+      JSON.parse(allFilters).reduce((acc, cur) => {
+        acc[cur.stateKey] = cur.selected;
+        return acc;
+      }, {}),
+    [allFilters]
   );
 
   const collectionImages =
     JSON.parse(collectionMetafield ?? '{}')?.images ?? [];
 
+  const initialState = CurrentProductTypeClass.transformInitialState({
+    defaultSortBy,
+    initialValueFilterKeyPairs,
+  });
+
+  const [state, dispatch] = useReducer(
+    CurrentProductTypeClass.reducer,
+    initialState
+  );
+
   const {
-    state,
-    dispatch,
     queryAllProducts,
     queryFirstPageProducts,
     getFilteredSortedProducts,
     getFilteredSortedProductsOfCurrentPage,
     getPageCount,
     getDisplayedPageNumbers,
-  } = new (useProductType(slugify(productType, { lower: true })))({
-    defaultSortBy,
-    initialValueFilterKeyPairs,
-  });
+  } = useMemo(
+    () => new CurrentProductTypeClass(state),
+    [state, CurrentProductTypeClass]
+  );
 
   const [productsOfFirstPage, setProductsOfFirstPage] = useState([]);
 
@@ -57,6 +83,22 @@ function ProductTypeCollection({
     dispatch({ type: 'setAllProducts', payload: products });
     dispatch({ type: 'setFetchIsFinished', payload: true });
   }, []);
+
+  // useEffect(() => {
+  //   console.log(initialValueFilterKeyPairs);
+  //   if (initialValueFilterKeyPairs.selectedCookTypesAndBrands) {
+  //     dispatch({
+  //       type: 'changeCookTypesAndBrands',
+  //       payload: initialValueFilterKeyPairs.selectedCookTypesAndBrands,
+  //     });
+  //   }
+  // }, [initialValueFilterKeyPairs]);
+
+  useLayoutEffect(() => {
+    document.dispatchEvent(
+      new CustomEvent('stateChanged', { detail: { state } })
+    );
+  }, [state]);
 
   return html`${pageWrapper({
     children: html` <section class="section-b-space">
