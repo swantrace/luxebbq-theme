@@ -115,22 +115,22 @@
     "category_enable": false,
     "category_limit": 5,
     "category_menu": "category",
-    "Sidebar_service_1": "shopify://shop_images/1.png",
+    "Sidebar_service_1": "shopify:\/\/shop_images\/1.png",
     "service_title_1": "",
     "trans_service_title_1": "",
     "service_text_1": "",
     "trans_service_text_1": "",
-    "Sidebar_service_2": "shopify://shop_images/3_f0bf8007-8ed3-4f69-a5e0-d5e4491ce3cc.png",
+    "Sidebar_service_2": "shopify:\/\/shop_images\/3_f0bf8007-8ed3-4f69-a5e0-d5e4491ce3cc.png",
     "service_title_2": "",
     "trans_service_title_2": "",
     "service_text_2": "",
     "trans_service_text_2": "",
-    "Sidebar_service_3": "shopify://shop_images/2_60c0614a-a0e9-432a-b9d4-d26b4d744dbb.png",
+    "Sidebar_service_3": "shopify:\/\/shop_images\/2_60c0614a-a0e9-432a-b9d4-d26b4d744dbb.png",
     "service_title_3": "",
     "trans_service_title_3": "",
     "service_text_3": "",
     "trans_service_text_3": "",
-    "Sidebar_service_4": "shopify://shop_images/4_a0977511-2400-4e1f-8a8a-739bb3bce550.png",
+    "Sidebar_service_4": "shopify:\/\/shop_images\/4_a0977511-2400-4e1f-8a8a-739bb3bce550.png",
     "service_title_4": "Online Payment",
     "trans_service_title_4": "{\"en\":\"Online Payment\", \"fr\":\"Paiement en ligne\", \"ar\":\"الدفع الالكتروني\", \"de\":\"Onlinebezahlung\", \"it\":\"Pagamento online\"}",
     "service_text_4": "Contrary To Popular Belief.",
@@ -173,12 +173,12 @@
     "newsletter_enable": false,
     "newsletter_bg_color": "#4a4142",
     "newsletter_img": "",
-    "newsletter_bnr_img": "shopify://shop_images/newsletter_image.jpg",
+    "newsletter_bnr_img": "shopify:\/\/shop_images\/newsletter_image.jpg",
     "newsletter_heading": "newsletter",
     "trans_newsletter_heading": "{\"en\":\"newsletter\", \"fr\":\"bulletin\", \"ar\":\"النشرة الإخبارية\", \"de\":\"Newsletter\", \"it\":\"notiziario\"}",
     "newsletter_text": "Be the first to learn about our latest trends and get exclusive offers",
     "trans_newsletter_text": "",
-    "newsletter_form_url": "https://shop.us4.list-manage.com/subscribe/post?u=0e6aa8c5a2dbc4e74bacf19d3&amp;id=b123f5e917",
+    "newsletter_form_url": "https:\/\/shop.us4.list-manage.com\/subscribe\/post?u=0e6aa8c5a2dbc4e74bacf19d3&amp;id=b123f5e917",
     "age_popup_enable": false,
     "age_popup_bg_color": "#fff",
     "age_popup_heading": "age varification",
@@ -189,8 +189,8 @@
     "exit_color": "#fff",
     "exit_heading": "wait!",
     "trans_exit_heading": "{\"en\":\"wait!\", \"fr\":\"attendre!\", \"ar\":\"انتظر!\", \"de\":\"warten!\", \"it\":\"aspettare!\"}",
-    "exit_heading_sub": "We want to give you <b>10% discount</b> for your first order",
-    "trans_exit_heading_sub": "{\"en\":\"We want to give you <b>10% discount</b> for your first order\", \"fr\":\"Nous voulons vous donner 10% de réduction pour votre première commande\", \"ar\":\"نريد أن نمنحك خصمًا بنسبة 10٪ على طلبك الأول\", \"de\":\"Vogliamo darti uno sconto del 10% sul tuo primo ordine...\", \"it\":\"Vogliamo darti uno sconto del 10% sul tuo primo ordine\"}",
+    "exit_heading_sub": "We want to give you <b>10% discount<\/b> for your first order",
+    "trans_exit_heading_sub": "{\"en\":\"We want to give you <b>10% discount<\/b> for your first order\", \"fr\":\"Nous voulons vous donner 10% de réduction pour votre première commande\", \"ar\":\"نريد أن نمنحك خصمًا بنسبة 10٪ على طلبك الأول\", \"de\":\"Vogliamo darti uno sconto del 10% sul tuo primo ordine...\", \"it\":\"Vogliamo darti uno sconto del 10% sul tuo primo ordine\"}",
     "exit_popup_text": "Use discount code at checkout",
     "trans_exit_popup_text": "{\"en\":\"Use discount code at checkout\", \"fr\":\"Utilisez le code de réduction à la caisse\", \"ar\":\"استخدام رمز الخصم عند الخروج\", \"de\":\"Verwenden Sie den Rabattcode an der Kasse\", \"it\":\"Usa il codice sconto al momento del pagamento\"}",
     "exit_img": "",
@@ -212,14 +212,14 @@
     "share_pinterest": false,
     "share_linked": false,
     "share_google": false,
-    "social_twitter_link": "https://twitter.com/shopify",
-    "social_facebook_link": "https://facebook.com/shopify",
+    "social_twitter_link": "https:\/\/twitter.com\/shopify",
+    "social_facebook_link": "https:\/\/facebook.com\/shopify",
     "social_google_link": "",
     "social_linkedin_link": "",
     "social_pinterest_link": "",
-    "social_instagram_link": "http://instagram.com/shopify",
+    "social_instagram_link": "http:\/\/instagram.com\/shopify",
     "social_rss_link": "",
-    "social_youtube_link": "http://youtube.com/shopify",
+    "social_youtube_link": "http:\/\/youtube.com\/shopify",
     "enable_fb_chat": false,
     "fb_color": "#ff4c3b",
     "fb_page_id": "2123438804574660",
@@ -300,10 +300,10 @@
     "show_new_pro": "true",
     "select_new_pro_coll": "best-seller",
     "show_sidebar_banner": "true",
-    "sidebar_bnr_img": "shopify://shop_images/side-banner_5694d355-91c9-48f8-ae5b-bf492141cac1.png",
+    "sidebar_bnr_img": "shopify:\/\/shop_images\/side-banner_5694d355-91c9-48f8-ae5b-bf492141cac1.png",
     "sidebar_banner_link": "",
     "shipping_value": "$300",
-    "custom_shipping_html": "<h4>only away from free shipping</h4>",
+    "custom_shipping_html": "<h4>only away from free shipping<\/h4>",
     "show_desc": "false",
     "shipping_text": "Free shippiing for orders above $500.",
     "trans_shipping_text": "",
@@ -343,7 +343,7 @@
             "settings": {
               "menu_name": "home",
               "trans_menu_name": "",
-              "custom_menu_html": "<ul>\n  <li>\n    <a href=\"#\">new demos <span class=\"new-tag\">new</span></a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67812098148\">tools</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67832873060\">game</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67843883108\">gym</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=66650275940\">marijuana</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67843915876\">left sidebar</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67844341860\">jewellery</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67858301028\">pets</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67858825316\">metro</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67858923620\">video slider</a></li>\n    </ul>\n  </li>\n  <li>\n    <a href=\"#\">clothing</a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=35133390946\">fashion 1</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44492030050\">fashion 2</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44492128354\">fashion 3</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44496814178\">kids</a></li>\n    </ul>\n  </li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44496552034\">watch</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44492259426\">shoes</a></li>\n  <li>\n    <a href=\"#\">electronics</a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44532531298\">electronic 1</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44532596834\">electronic 2</a></li>\n    </ul>\n  </li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44492161122\">bags</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44496846946\">nursery</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44521422946\">vegetable</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44522864738\">beauty</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44521226338\">light</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44521881698\">furniture</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44522602594\">googles</a></li>\n  <li><a target=\"_blank\" href=\"https://multikart-fashion.myshopify.com/?fts=0&preview_theme_id=44496879714\">Flower</a></li>\n  <li>\n    <a href=\"#\">basics</a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67884712036\">lookbook</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/\">instagram</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67884482660\">video</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67885695076\">parallax</a></li>\n      <li><a target=\"_blank\" href=\"https://multikart-instashop.myshopify.com/?fts=0&preview_theme_id=67885727844\">full page</a></li>\n    </ul>\n  </li>\n</ul>",
+              "custom_menu_html": "<ul>\n  <li>\n    <a href=\"#\">new demos <span class=\"new-tag\">new<\/span><\/a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67812098148\">tools<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67832873060\">game<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67843883108\">gym<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=66650275940\">marijuana<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67843915876\">left sidebar<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67844341860\">jewellery<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67858301028\">pets<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67858825316\">metro<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67858923620\">video slider<\/a><\/li>\n    <\/ul>\n  <\/li>\n  <li>\n    <a href=\"#\">clothing<\/a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=35133390946\">fashion 1<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44492030050\">fashion 2<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44492128354\">fashion 3<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44496814178\">kids<\/a><\/li>\n    <\/ul>\n  <\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44496552034\">watch<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44492259426\">shoes<\/a><\/li>\n  <li>\n    <a href=\"#\">electronics<\/a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44532531298\">electronic 1<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44532596834\">electronic 2<\/a><\/li>\n    <\/ul>\n  <\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44492161122\">bags<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44496846946\">nursery<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44521422946\">vegetable<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44522864738\">beauty<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44521226338\">light<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44521881698\">furniture<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44522602594\">googles<\/a><\/li>\n  <li><a target=\"_blank\" href=\"https:\/\/multikart-fashion.myshopify.com\/?fts=0&preview_theme_id=44496879714\">Flower<\/a><\/li>\n  <li>\n    <a href=\"#\">basics<\/a>\n    <ul>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67884712036\">lookbook<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/\">instagram<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67884482660\">video<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67885695076\">parallax<\/a><\/li>\n      <li><a target=\"_blank\" href=\"https:\/\/multikart-instashop.myshopify.com\/?fts=0&preview_theme_id=67885727844\">full page<\/a><\/li>\n    <\/ul>\n  <\/li>\n<\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -355,7 +355,7 @@
             "settings": {
               "menu_name": "shop",
               "trans_menu_name": "",
-              "custom_menu_html": "<ul>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">left sidebar</a></li>\n  <li><a href=\"https://multikart-instashop.myshopify.com/collections/all\">right sidebar</a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">no sidebar</a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">sidebar popup</a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">metro <span class=\"new-tag\">new</span></a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">full width <span class=\"new-tag\">new</span></a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">infinite scroll</a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">three grid</a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">six grid</a></li>\n  <li><a href=\"https://multikart-fashion.myshopify.com/collections/all\">list view</a></li>\n</ul>",
+              "custom_menu_html": "<ul>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">left sidebar<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-instashop.myshopify.com\/collections\/all\">right sidebar<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">no sidebar<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">sidebar popup<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">metro <span class=\"new-tag\">new<\/span><\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">full width <span class=\"new-tag\">new<\/span><\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">infinite scroll<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">three grid<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">six grid<\/a><\/li>\n  <li><a href=\"https:\/\/multikart-fashion.myshopify.com\/collections\/all\">list view<\/a><\/li>\n<\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -403,7 +403,7 @@
             "settings": {
               "menu_name": "blog",
               "trans_menu_name": "",
-              "menu_link": "shopify://blogs/fashion",
+              "menu_link": "shopify:\/\/blogs\/fashion",
               "show_label": false,
               "label_text": "hot",
               "trans_label_text": ""
@@ -458,14 +458,14 @@
             "settings": {
               "title": "Newsletter",
               "trans_title": "",
-              "form_url": "",
+              "form_url": "###",
               "show_social": false
             }
           },
           "1536581092978": {
             "type": "Copyright-footer",
             "settings": {
-              "copyright_text": "<p>©2021 Luxe Barbeque Company</p>",
+              "copyright_text": "<p>©2021 Luxe Barbeque Company<\/p>",
               "trans_copyright_text": "",
               "show_payment_icons": true
             }
@@ -480,7 +480,7 @@
         "settings": {
           "show_transparent_sticky": false,
           "footer_width": "standard-width",
-          "logo": "shopify://shop_images/lbc_logo.png",
+          "logo": "shopify:\/\/shop_images\/lbc_logo.png",
           "logo_max_width": "150",
           "section_padding": "70px 0px 70px 0px",
           "enabled_parallax_bg": false,
@@ -513,7 +513,10 @@
             }
           }
         },
-        "block_order": ["1536581781491", "1536581790668"],
+        "block_order": [
+          "1536581781491",
+          "1536581790668"
+        ],
         "settings": {
           "show_transparent_sticky": false,
           "header_width": "standard-width",
@@ -579,7 +582,7 @@
           "1536646244914": {
             "type": "Copyright-footer",
             "settings": {
-              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap</p>",
+              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
               "show_payment_icons": true
             }
@@ -605,7 +608,7 @@
             "settings": {
               "menu_name": "home",
               "trans_menu_name": "",
-              "custom_menu_html": "<ul>\n                                            <li>\n                                                <a href=\"#\">new demos <span class=\"new-tag\">new</span></a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"tools.html\">tools</a></li>\n                                                    <li><a target=\"_blank\" href=\"game.html\">game</a></li>\n                                                    <li><a target=\"_blank\" href=\"gym-product.html\">gym</a></li>\n                                                    <li><a target=\"_blank\" href=\"marijuana.html\">marijuana</a></li>\n                                                    <li><a target=\"_blank\" href=\"left_sidebar-demo.html\">left sidebar</a></li>\n                                                    <li><a target=\"_blank\" href=\"jewellery.html\">jewellery</a></li>\n                                                    <li><a target=\"_blank\" href=\"pets.html\">pets</a></li>\n                                                    <li><a target=\"_blank\" href=\"metro.html\">metro</a></li>\n                                                    <li><a target=\"_blank\" href=\"video-slider.html\">video slider</a></li>\n                                                </ul>\n                                            </li>\n                                            <li>\n                                                <a href=\"#\">clothing</a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"index.html\">fashion 1</a></li>\n                                                    <li><a target=\"_blank\" href=\"fashion-2.html\">fashion 2</a></li>\n                                                    <li><a target=\"_blank\" href=\"fashion-3.html\">fashion 3</a></li>\n                                                    <li><a target=\"_blank\" href=\"kids.html\">kids</a></li>\n                                                </ul>\n                                            </li>\n                                            <li><a target=\"_blank\" href=\"watch.html\">watch</a></li>\n                                            <li><a target=\"_blank\" href=\"shoes.html\">shoes</a></li>\n                                            <li>\n                                                <a href=\"#\">electronics</a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"electronic-1.html\">electronic 1</a></li>\n                                                    <li><a target=\"_blank\" href=\"electronic-2.html\">electronic 2</a></li>\n                                                </ul>\n                                            </li>\n                                            <li><a target=\"_blank\" href=\"bags.html\">bags</a></li>\n                                            <li><a target=\"_blank\" href=\"nursery.html\">nursery</a></li>\n                                            <li><a target=\"_blank\" href=\"vegetables.html\">vegetable</a></li>\n                                            <li><a target=\"_blank\" href=\"beauty.html\">beauty</a></li>\n                                            <li><a target=\"_blank\" href=\"light.html\">light</a></li>\n                                            <li><a target=\"_blank\" href=\"furniture.html\">furniture</a></li>\n                                            <li><a target=\"_blank\" href=\"goggles.html\">googles</a></li>\n                                            <li>\n                                                <a href=\"#\">basics</a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"lookbook-demo.html\">lookbook</a></li>\n                                                    <li><a target=\"_blank\" href=\"instagram-shop.html\">instagram</a></li>\n                                                    <li><a target=\"_blank\" href=\"video.html\">video</a></li>\n                                                    <li><a target=\"_blank\" href=\"parallax.html\">parallax</a></li>\n                                                    <li><a target=\"_blank\" href=\"full-page.html\">full page</a></li>\n                                                </ul>\n                                            </li>\n                                        </ul>",
+              "custom_menu_html": "<ul>\n                                            <li>\n                                                <a href=\"#\">new demos <span class=\"new-tag\">new<\/span><\/a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"tools.html\">tools<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"game.html\">game<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"gym-product.html\">gym<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"marijuana.html\">marijuana<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"left_sidebar-demo.html\">left sidebar<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"jewellery.html\">jewellery<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"pets.html\">pets<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"metro.html\">metro<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"video-slider.html\">video slider<\/a><\/li>\n                                                <\/ul>\n                                            <\/li>\n                                            <li>\n                                                <a href=\"#\">clothing<\/a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"index.html\">fashion 1<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"fashion-2.html\">fashion 2<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"fashion-3.html\">fashion 3<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"kids.html\">kids<\/a><\/li>\n                                                <\/ul>\n                                            <\/li>\n                                            <li><a target=\"_blank\" href=\"watch.html\">watch<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"shoes.html\">shoes<\/a><\/li>\n                                            <li>\n                                                <a href=\"#\">electronics<\/a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"electronic-1.html\">electronic 1<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"electronic-2.html\">electronic 2<\/a><\/li>\n                                                <\/ul>\n                                            <\/li>\n                                            <li><a target=\"_blank\" href=\"bags.html\">bags<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"nursery.html\">nursery<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"vegetables.html\">vegetable<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"beauty.html\">beauty<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"light.html\">light<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"furniture.html\">furniture<\/a><\/li>\n                                            <li><a target=\"_blank\" href=\"goggles.html\">googles<\/a><\/li>\n                                            <li>\n                                                <a href=\"#\">basics<\/a>\n                                                <ul>\n                                                    <li><a target=\"_blank\" href=\"lookbook-demo.html\">lookbook<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"instagram-shop.html\">instagram<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"video.html\">video<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"parallax.html\">parallax<\/a><\/li>\n                                                    <li><a target=\"_blank\" href=\"full-page.html\">full page<\/a><\/li>\n                                                <\/ul>\n                                            <\/li>\n                                        <\/ul>",
               "show_label": false,
               "label_text": "hot",
               "trans_label_text": ""
@@ -637,7 +640,10 @@
             }
           }
         },
-        "block_order": ["1554720396862", "1554720463750"],
+        "block_order": [
+          "1554720396862",
+          "1554720463750"
+        ],
         "settings": {
           "show_transparent_sticky": false,
           "header_width": "standard-width",
@@ -728,7 +734,7 @@
           "1547547824582"
         ],
         "settings": {
-          "banner_url": "shopify://collections/trading-collections",
+          "banner_url": "shopify:\/\/collections\/trading-collections",
           "product_per_page": "24",
           "product_per_row_product": "3",
           "pagination_option": "default",
@@ -746,7 +752,7 @@
         "type": "about-page",
         "settings": {
           "about_enable": true,
-          "about_description": "<h4>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</h4>\n                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</p>\n                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.</p>",
+          "about_description": "<h4>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium<\/h4>\n                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,<\/p>\n                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying through shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these matters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid worse pains.<\/p>",
           "trans_about_description": "",
           "abt_img": "",
           "img_width": "full",
@@ -838,7 +844,7 @@
           "1536992182888": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify://shop_images/6_806e6bf5-4ecf-4f0e-a764-09b83a367dee.jpg",
+              "team_image": "shopify:\/\/shop_images\/6_806e6bf5-4ecf-4f0e-a764-09b83a367dee.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -848,7 +854,7 @@
           "1536992184454": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify://shop_images/5_76e08329-db64-4cc8-8451-0449d8ea467d.jpg",
+              "team_image": "shopify:\/\/shop_images\/5_76e08329-db64-4cc8-8451-0449d8ea467d.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -858,7 +864,7 @@
           "1536992185663": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify://shop_images/4_453c870f-0d4f-47f1-b98f-c8352b5adf15.jpg",
+              "team_image": "shopify:\/\/shop_images\/4_453c870f-0d4f-47f1-b98f-c8352b5adf15.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -868,7 +874,7 @@
           "1536992187004": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify://shop_images/3_49da575b-ef96-4cdf-934f-0f16778269b2.jpg",
+              "team_image": "shopify:\/\/shop_images\/3_49da575b-ef96-4cdf-934f-0f16778269b2.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -878,7 +884,7 @@
           "1536992188204": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify://shop_images/2_80e616eb-ed32-4fb4-bc33-f09e34363200.jpg",
+              "team_image": "shopify:\/\/shop_images\/2_80e616eb-ed32-4fb4-bc33-f09e34363200.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -888,7 +894,7 @@
           "1595338573861": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify://shop_images/3_49da575b-ef96-4cdf-934f-0f16778269b2.jpg",
+              "team_image": "shopify:\/\/shop_images\/3_49da575b-ef96-4cdf-934f-0f16778269b2.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -935,7 +941,7 @@
           "1536992283259": {
             "type": "Service",
             "settings": {
-              "services_image": "shopify://shop_images/4_3_a4568c73-a384-4644-a296-fa50a9f5f94d.png",
+              "services_image": "shopify:\/\/shop_images\/4_3_a4568c73-a384-4644-a296-fa50a9f5f94d.png",
               "services_title": "free shipping",
               "trans_services_title": "",
               "services_desc": "Free Shipping World Wide",
@@ -945,7 +951,7 @@
           "1536992284547": {
             "type": "Service",
             "settings": {
-              "services_image": "shopify://shop_images/3_3_bbd2f6a0-8e89-48d8-9586-75251bf22ec9.png",
+              "services_image": "shopify:\/\/shop_images\/3_3_bbd2f6a0-8e89-48d8-9586-75251bf22ec9.png",
               "services_title": "24 X 7 SERVICE",
               "trans_services_title": "",
               "services_desc": "Online Service For New Customer",
@@ -955,7 +961,7 @@
           "1536992285691": {
             "type": "Service",
             "settings": {
-              "services_image": "shopify://shop_images/2_2_385a77f3-4d1d-4e0c-9e7a-10d53f2bb634.png",
+              "services_image": "shopify:\/\/shop_images\/2_2_385a77f3-4d1d-4e0c-9e7a-10d53f2bb634.png",
               "services_title": "FESTIVAL OFFER",
               "trans_services_title": "",
               "services_desc": "New Online Special Festival Offer",
@@ -963,7 +969,11 @@
             }
           }
         },
-        "block_order": ["1536992283259", "1536992284547", "1536992285691"],
+        "block_order": [
+          "1536992283259",
+          "1536992284547",
+          "1536992285691"
+        ],
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
@@ -1016,7 +1026,7 @@
           "1537356143926": {
             "type": "Image",
             "settings": {
-              "image": "shopify://shop_images/1_bac08438-35e0-4b57-9808-9125fdadfa64.jpg",
+              "image": "shopify:\/\/shop_images\/1_bac08438-35e0-4b57-9808-9125fdadfa64.jpg",
               "product_1": "fitted-dress",
               "setposition_1": "top:38%; left:45%;",
               "position_1": "left",
@@ -1034,7 +1044,7 @@
           "1537358328174": {
             "type": "Image",
             "settings": {
-              "image": "shopify://shop_images/5_575df351-b3b8-438c-bcd6-caed52b51585.jpg",
+              "image": "shopify:\/\/shop_images\/5_575df351-b3b8-438c-bcd6-caed52b51585.jpg",
               "product_1": "denim-pant",
               "setposition_1": "top:50%; left:40%;",
               "position_1": "left",
@@ -1052,7 +1062,7 @@
           "1596089319839": {
             "type": "Image",
             "settings": {
-              "image": "shopify://shop_images/4_bb41b01e-541f-4363-8d4d-5247c341e22a.jpg",
+              "image": "shopify:\/\/shop_images\/4_bb41b01e-541f-4363-8d4d-5247c341e22a.jpg",
               "product_1": "cut-dress",
               "setposition_1": "top:50%; left:45%;",
               "position_1": "left",
@@ -1070,7 +1080,7 @@
           "1596089345048": {
             "type": "Image",
             "settings": {
-              "image": "shopify://shop_images/2_9072b5e7-d6ae-4ab8-ac6e-917df2b164e3.jpg",
+              "image": "shopify:\/\/shop_images\/2_9072b5e7-d6ae-4ab8-ac6e-917df2b164e3.jpg",
               "product_1": "denim-pant",
               "setposition_1": "top:22%; left:45%;",
               "position_1": "left",
@@ -1088,7 +1098,7 @@
           "1596089412870": {
             "type": "Image",
             "settings": {
-              "image": "shopify://shop_images/6_da5fafba-a930-4e48-bd86-7ff3b6c6114f.jpg",
+              "image": "shopify:\/\/shop_images\/6_da5fafba-a930-4e48-bd86-7ff3b6c6114f.jpg",
               "product_1": "floral-top",
               "setposition_1": "top:22%; left:45%;",
               "position_1": "left",
@@ -1106,7 +1116,7 @@
           "1596089479893": {
             "type": "Image",
             "settings": {
-              "image": "shopify://shop_images/7_8dc84954-31a2-40d8-aa84-a734186d4de4.jpg",
+              "image": "shopify:\/\/shop_images\/7_8dc84954-31a2-40d8-aa84-a734186d4de4.jpg",
               "product_1": "knit-dress",
               "setposition_1": "top:32%; left:45%;",
               "position_1": "left",
@@ -1175,7 +1185,7 @@
           "1537518191052": {
             "type": "Copyright-footer",
             "settings": {
-              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap</p>",
+              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
               "show_payment_icons": true
             }
@@ -1244,7 +1254,7 @@
           "1537530724450": {
             "type": "Copyright-footer",
             "settings": {
-              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap</p>",
+              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
               "show_payment_icons": true
             }
@@ -1612,7 +1622,7 @@
           "enable_tab_2": true,
           "tab_title_2": "Return Policy",
           "trans_tab_title_2": "{\"en\":\"Return Policy\", \"fr\":\"Politique de retour\", \"ar\":\"سياسة العائدات\", de\":\"Rücknahmegarantie\", \"it\":\"Post Politica di ritorno\"}",
-          "tab_content_2": "<p>Enjoy the flexibility of our 30-day free returns policy! Simply pack the item, with its original packaging and tags,\n              and the returns slip into the iOne delivery package. Feel free to drop the package of at any counter!</p>  \n\n            <p>For more details, please see our FAQs <a href=\"#return-policy\" target=\"_blank\">here</a>.</p>\n\n            <p>Should you have any questions regarding this product, please feel free to get in touch with our friendly Customer Experience Team at customer@ione.com,\n              or call us at +84 1234 5678 daily, 9am - 6pm.</p>",
+          "tab_content_2": "<p>Enjoy the flexibility of our 30-day free returns policy! Simply pack the item, with its original packaging and tags,\n              and the returns slip into the iOne delivery package. Feel free to drop the package of at any counter!<\/p>  \n\n            <p>For more details, please see our FAQs <a href=\"#return-policy\" target=\"_blank\">here<\/a>.<\/p>\n\n            <p>Should you have any questions regarding this product, please feel free to get in touch with our friendly Customer Experience Team at customer@ione.com,\n              or call us at +84 1234 5678 daily, 9am - 6pm.<\/p>",
           "enable_tab_3": true,
           "tab_title_3": "Reviews",
           "trans_tab_title_3": "{\"en\":\"reviews\", \"fr\":\"avis\", \"ar\":\"استعراض\" , \"de\":\"Bewertungen\", \"it\":\"recensioni\"}",
@@ -1686,7 +1696,7 @@
               "services_image": "",
               "service_title": "CONTACT US",
               "trans_service_title": "",
-              "service_desc": "<p>+91 123 - 456 - 7890</p><p>+86 163 - 451 - 7894</p>"
+              "service_desc": "<p>+91 123 - 456 - 7890<\/p><p>+86 163 - 451 - 7894<\/p>"
             }
           },
           "1543297051597": {
@@ -1695,7 +1705,7 @@
               "services_image": "",
               "service_title": "address",
               "trans_service_title": "",
-              "service_desc": "<p>ABC Complex,Near xyz, New York</p>\n<p>USA 123456</p>"
+              "service_desc": "<p>ABC Complex,Near xyz, New York<\/p>\n<p>USA 123456<\/p>"
             }
           },
           "1543297053441": {
@@ -1704,7 +1714,7 @@
               "services_image": "",
               "service_title": "email",
               "trans_service_title": "",
-              "service_desc": "<p>info@pixelstrep.com</p>        <p>info@pixelstrep.com</p>"
+              "service_desc": "<p>info@pixelstrep.com<\/p>        <p>info@pixelstrep.com<\/p>"
             }
           },
           "1543297055067": {
@@ -1713,7 +1723,7 @@
               "services_image": "",
               "service_title": "fax",
               "trans_service_title": "",
-              "service_desc": "<p>Support@Shopcart.com</p>                    <p>info@shopcart.com</p>"
+              "service_desc": "<p>Support@Shopcart.com<\/p>                    <p>info@shopcart.com<\/p>"
             }
           }
         },
@@ -1726,7 +1736,7 @@
         "settings": {
           "contact_enable": true,
           "page_heading": "CONTACT US",
-          "google_map_iframe": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48268.42814447844!2d-74.33242129241454!3d40.876773104347066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c300d85ec5c1fd%3A0x18faa489c8175fa!2sFairfield%2C+NJ%2C+USA!5e0!3m2!1sen!2sin!4v1543296980565\" frameborder=\"0\" style=\"border:0\" allowfullscreen=\"\"></iframe>"
+          "google_map_iframe": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d48268.42814447844!2d-74.33242129241454!3d40.876773104347066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c300d85ec5c1fd%3A0x18faa489c8175fa!2sFairfield%2C+NJ%2C+USA!5e0!3m2!1sen!2sin!4v1543296980565\" frameborder=\"0\" style=\"border:0\" allowfullscreen=\"\"><\/iframe>"
         }
       },
       "faq-template": {
@@ -1818,112 +1828,112 @@
           "1549270889061": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/1_91fcc786-b7ee-4518-8a94-c1c305d14549.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/1_91fcc786-b7ee-4518-8a94-c1c305d14549.jpg",
               "portfolio_tab_title": "fashion"
             }
           },
           "1549270875811": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/18.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/18.jpg",
               "portfolio_tab_title": "fashion"
             }
           },
           "1549268718009": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/5_3cf01d53-6b14-4ccf-9ef5-95adab61a3ab.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/5_3cf01d53-6b14-4ccf-9ef5-95adab61a3ab.jpg",
               "portfolio_tab_title": "shoes"
             }
           },
           "1549268714286": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/20.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/20.jpg",
               "portfolio_tab_title": "fashion"
             }
           },
           "1549270902067": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/6_3afbe1b1-b8ef-45d4-a3ef-f669fc6edaf9.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/6_3afbe1b1-b8ef-45d4-a3ef-f669fc6edaf9.jpg",
               "portfolio_tab_title": "bag"
             }
           },
           "1549272263921": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/7_b9b4ddfb-ca24-48d6-bb3e-f99a800aa72a.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/7_b9b4ddfb-ca24-48d6-bb3e-f99a800aa72a.jpg",
               "portfolio_tab_title": "bag"
             }
           },
           "1549272265930": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/8_dde726eb-d9f4-449a-87db-fa8115618b30.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/8_dde726eb-d9f4-449a-87db-fa8115618b30.jpg",
               "portfolio_tab_title": "watch"
             }
           },
           "1549272271241": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/14.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/14.jpg",
               "portfolio_tab_title": "shoes"
             }
           },
           "1549268720346": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/15.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/15.jpg",
               "portfolio_tab_title": "bag"
             }
           },
           "1549272272760": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/16.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/16.jpg",
               "portfolio_tab_title": "fashion"
             }
           },
           "1549272276707": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/13.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/13.jpg",
               "portfolio_tab_title": "shoes"
             }
           },
           "1595339507771": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/12.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/12.jpg",
               "portfolio_tab_title": ""
             }
           },
           "1596089752254": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/11_d288366c-93e8-4a62-89d6-0f0d64784c7c.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/11_d288366c-93e8-4a62-89d6-0f0d64784c7c.jpg",
               "portfolio_tab_title": "shoes"
             }
           },
           "1596089783618": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/4_b31649b0-bc8b-4df3-adfa-008cabc4bc61.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/4_b31649b0-bc8b-4df3-adfa-008cabc4bc61.jpg",
               "portfolio_tab_title": ""
             }
           },
           "1596089755953": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/10_934a52c7-b5d5-4694-85dd-b65e5dbec76d.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/10_934a52c7-b5d5-4694-85dd-b65e5dbec76d.jpg",
               "portfolio_tab_title": "fashion"
             }
           },
           "1596089803425": {
             "type": "image",
             "settings": {
-              "portfolio_img": "shopify://shop_images/3_5728f4c2-7b2b-4194-818d-6e8b3034fbd1.jpg",
+              "portfolio_img": "shopify:\/\/shop_images\/3_5728f4c2-7b2b-4194-818d-6e8b3034fbd1.jpg",
               "portfolio_tab_title": ""
             }
           }
@@ -2011,11 +2021,11 @@
           "5864b6fd-34b7-484d-ad64-d863a877b1be": {
             "type": "custom-megamenu",
             "settings": {
-              "menu_name": "barbeques/smokers",
+              "menu_name": "barbeques\/smokers",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/barbeques",
+              "menu_link": "shopify:\/\/collections\/barbeques",
               "li_class_name": "mega hover-cls",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Barbeques\" class=\"mega-menu full-mega-menu\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Barbeques\" class=\"mega-menu full-mega-menu\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2027,9 +2037,9 @@
             "settings": {
               "menu_name": "Grilling Accessories",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/grilling-accessories",
+              "menu_link": "shopify:\/\/collections\/grilling-accessories",
               "li_class_name": "mega hover-cls",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Grilling Accessories\" class=\"mega-menu full-mega-menu\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Grilling Accessories\" class=\"mega-menu full-mega-menu\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2041,9 +2051,9 @@
             "settings": {
               "menu_name": "Lifestyle Accessories",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/lifestyle-accessories",
+              "menu_link": "shopify:\/\/collections\/lifestyle-accessories",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Lifestyle Accessories\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Lifestyle Accessories\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2055,9 +2065,9 @@
             "settings": {
               "menu_name": "Drinkware & coolers",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/drinkware-and-coolers",
+              "menu_link": "shopify:\/\/collections\/drinkware-and-coolers",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Drinkware & Coolers\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Drinkware & Coolers\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2069,9 +2079,9 @@
             "settings": {
               "menu_name": "Fuel",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/fuel",
+              "menu_link": "shopify:\/\/collections\/fuel",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Fuel\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Fuel\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2083,9 +2093,9 @@
             "settings": {
               "menu_name": "Parts",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/parts",
+              "menu_link": "shopify:\/\/collections\/parts",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Parts\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Parts\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2097,9 +2107,9 @@
             "settings": {
               "menu_name": "Sauces, Rubs & Spices",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/rubs-and-sauces",
+              "menu_link": "shopify:\/\/collections\/sauces-rubs-and-spices",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Sauces, Rubs & Spices\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Sauces, Rubs & Spices\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2111,9 +2121,9 @@
             "settings": {
               "menu_name": "Furniture",
               "trans_menu_name": "",
-              "menu_link": "shopify://collections/furniture",
+              "menu_link": "shopify:\/\/collections\/furniture",
               "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Furniture\"></ul>",
+              "custom_menu_html": "<ul is=\"mega-menu\" product-type=\"Furniture\"><\/ul>",
               "trans_custom_menu_html": "",
               "show_label": false,
               "label_text": "hot",
@@ -2132,7 +2142,7 @@
           "8f0243db-f7d8-4f57-a37a-dd7f56b4300d"
         ],
         "settings": {
-          "logo": "shopify://shop_images/lbc_logo.png",
+          "logo": "shopify:\/\/shop_images\/lbc_logo.png",
           "logo_max_width": "200",
           "enable_search": true,
           "show_wishlist": true,
@@ -2160,7 +2170,9 @@
             }
           }
         },
-        "block_order": ["1553500942366"],
+        "block_order": [
+          "1553500942366"
+        ],
         "settings": {
           "show_topbar": true,
           "announcement_text": "Announce something here",
@@ -2191,7 +2203,9 @@
             }
           }
         },
-        "block_order": ["1551075072650"],
+        "block_order": [
+          "1551075072650"
+        ],
         "settings": {
           "show_topbar": true,
           "topbar_padding": "10px 0px",
@@ -2219,7 +2233,7 @@
           "title": "Links",
           "trans_title": "",
           "footer_linklist": "footer",
-          "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap</p>",
+          "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
           "trans_copyright_text": "",
           "show_payment_icons": true
         }
@@ -2241,7 +2255,7 @@
           "1551533036706": {
             "type": "Copyright-footer",
             "settings": {
-              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap</p>",
+              "copyright_text": "<p>2018 - 19 Copy Right by Themeforest Powered by Pixelstrap<\/p>",
               "trans_copyright_text": "",
               "show_payment_icons": true
             }
@@ -2676,11 +2690,11 @@
           "enable_product_active_view": false,
           "active_product_text": "",
           "show_payment_badges": true,
-          "payment_img_1": "shopify://shop_images/visa.png",
-          "payment_img_2": "shopify://shop_images/discover.png",
-          "payment_img_3": "shopify://shop_images/american-express.png",
-          "payment_img_4": "shopify://shop_images/paypal.png",
-          "payment_img_5": "shopify://shop_images/mastercard.png",
+          "payment_img_1": "shopify:\/\/shop_images\/visa.png",
+          "payment_img_2": "shopify:\/\/shop_images\/discover.png",
+          "payment_img_3": "shopify:\/\/shop_images\/american-express.png",
+          "payment_img_4": "shopify:\/\/shop_images\/paypal.png",
+          "payment_img_5": "shopify:\/\/shop_images\/mastercard.png",
           "show_trust_badges": false,
           "trust_badge_img": "",
           "show_countdown_timer": true,
@@ -2747,11 +2761,11 @@
           "enable_product_active_view": false,
           "active_product_text": "",
           "show_payment_badges": true,
-          "payment_img_1": "shopify://shop_images/mastercard.png",
-          "payment_img_2": "shopify://shop_images/paypal.png",
-          "payment_img_3": "shopify://shop_images/american-express.png",
-          "payment_img_4": "shopify://shop_images/discover.png",
-          "payment_img_5": "shopify://shop_images/visa.png",
+          "payment_img_1": "shopify:\/\/shop_images\/mastercard.png",
+          "payment_img_2": "shopify:\/\/shop_images\/paypal.png",
+          "payment_img_3": "shopify:\/\/shop_images\/american-express.png",
+          "payment_img_4": "shopify:\/\/shop_images\/discover.png",
+          "payment_img_5": "shopify:\/\/shop_images\/visa.png",
           "show_trust_badges": false,
           "trust_badge_img": "",
           "show_countdown_timer": true,
@@ -2889,7 +2903,7 @@
           "1595336707610": {
             "type": "testimonial",
             "settings": {
-              "testi_image": "shopify://shop_images/image_3_157x_cd66d049-8474-4279-9440-ccb3d28b1666.png",
+              "testi_image": "shopify:\/\/shop_images\/image_3_157x_cd66d049-8474-4279-9440-ccb3d28b1666.png",
               "testi_title": "Mark Jecno",
               "trans_testi_title": "",
               "testi_position": "Web Designer",
@@ -2901,7 +2915,7 @@
           "1595336712278": {
             "type": "testimonial",
             "settings": {
-              "testi_image": "shopify://shop_images/image_1_157x_eb088775-c653-4523-827a-f26c09276b82.png",
+              "testi_image": "shopify:\/\/shop_images\/image_1_157x_eb088775-c653-4523-827a-f26c09276b82.png",
               "testi_title": "Mark Jecno",
               "trans_testi_title": "",
               "testi_position": "Web Designer",
@@ -2911,10 +2925,13 @@
             }
           }
         },
-        "block_order": ["1595336707610", "1595336712278"],
+        "block_order": [
+          "1595336707610",
+          "1595336712278"
+        ],
         "settings": {
           "banner_enable": true,
-          "image": "shopify://shop_images/testimonial_banner_9433727e-8338-41ff-9e19-9fba1af9ed03.jpg",
+          "image": "shopify:\/\/shop_images\/testimonial_banner_9433727e-8338-41ff-9e19-9fba1af9ed03.jpg",
           "testimonial_enable": true,
           "section_padding": "100px 0px 100px 0px",
           "test_back_img": "",
@@ -2997,8 +3014,8 @@
           "1595340381751"
         ],
         "settings": {
-          "banner_img": "shopify://shop_images/2_a0e932d6-8e8d-463d-a6b5-ffbfcab1792b.jpg",
-          "banner_url": "shopify://collections/frontpage",
+          "banner_img": "shopify:\/\/shop_images\/2_a0e932d6-8e8d-463d-a6b5-ffbfcab1792b.jpg",
+          "banner_url": "shopify:\/\/collections\/frontpage",
           "product_per_page": "12",
           "product_per_row_product": "3",
           "pagination_option": "default",
@@ -3014,8 +3031,8 @@
       "collection-no-sidebar-template": {
         "type": "collection-no-sidebar-template",
         "settings": {
-          "banner_img": "shopify://shop_images/2_a0e932d6-8e8d-463d-a6b5-ffbfcab1792b.jpg",
-          "banner_url": "shopify://collections/latest-collection",
+          "banner_img": "shopify:\/\/shop_images\/2_a0e932d6-8e8d-463d-a6b5-ffbfcab1792b.jpg",
+          "banner_url": "shopify:\/\/collections\/latest-collection",
           "product_per_page": "12",
           "product_per_row_product": "4",
           "pagination_option": "default",
@@ -3031,8 +3048,8 @@
       "collection-4-grid-template": {
         "type": "collection-4-grid-template",
         "settings": {
-          "banner_img": "shopify://shop_images/2_a0e932d6-8e8d-463d-a6b5-ffbfcab1792b.jpg",
-          "banner_url": "shopify://collections/trading-collections",
+          "banner_img": "shopify:\/\/shop_images\/2_a0e932d6-8e8d-463d-a6b5-ffbfcab1792b.jpg",
+          "banner_url": "shopify:\/\/collections\/trading-collections",
           "product_per_page": "12",
           "product_per_row_product": "3",
           "pagination_option": "auto_loadmore",
@@ -3048,8 +3065,8 @@
       "collection-list-template": {
         "type": "collection-list-template",
         "settings": {
-          "banner_img": "shopify://shop_images/1_465047ac-b5a0-477d-bc62-a5c18f0d3104.jpg",
-          "banner_url": "shopify://collections/offer-deal",
+          "banner_img": "shopify:\/\/shop_images\/1_465047ac-b5a0-477d-bc62-a5c18f0d3104.jpg",
+          "banner_url": "shopify:\/\/collections\/offer-deal",
           "product_per_page": "12",
           "product_per_row_product": "4",
           "pagination_option": "default",
@@ -3124,8 +3141,8 @@
           "1595340861142"
         ],
         "settings": {
-          "banner_img": "shopify://shop_images/1_465047ac-b5a0-477d-bc62-a5c18f0d3104.jpg",
-          "banner_url": "shopify://collections/frontpage",
+          "banner_img": "shopify:\/\/shop_images\/1_465047ac-b5a0-477d-bc62-a5c18f0d3104.jpg",
+          "banner_url": "shopify:\/\/collections\/frontpage",
           "product_per_page": "12",
           "product_per_row_product": "2",
           "pagination_option": "click_loadmore",
@@ -3162,11 +3179,11 @@
           "enable_product_active_view": false,
           "active_product_text": "",
           "show_payment_badges": true,
-          "payment_img_1": "shopify://shop_images/mastercard.png",
-          "payment_img_2": "shopify://shop_images/paypal.png",
-          "payment_img_3": "shopify://shop_images/american-express.png",
-          "payment_img_4": "shopify://shop_images/discover.png",
-          "payment_img_5": "shopify://shop_images/visa.png",
+          "payment_img_1": "shopify:\/\/shop_images\/mastercard.png",
+          "payment_img_2": "shopify:\/\/shop_images\/paypal.png",
+          "payment_img_3": "shopify:\/\/shop_images\/american-express.png",
+          "payment_img_4": "shopify:\/\/shop_images\/discover.png",
+          "payment_img_5": "shopify:\/\/shop_images\/visa.png",
           "show_trust_badges": false,
           "trust_badge_img": "",
           "show_countdown_timer": true,
@@ -3216,7 +3233,7 @@
           "99583c74-03f2-4370-a4a3-efd08415eae0": {
             "type": "Image",
             "settings": {
-              "slider": "shopify://shop_images/steak-and-flames-on-the-grill.jpg",
+              "slider": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
               "slider_content_height": 75,
               "alignment": "text-center",
               "position": "p-left",
@@ -3231,7 +3248,9 @@
             }
           }
         },
-        "block_order": ["99583c74-03f2-4370-a4a3-efd08415eae0"],
+        "block_order": [
+          "99583c74-03f2-4370-a4a3-efd08415eae0"
+        ],
         "settings": {
           "enabled": true,
           "enabled_fullpage": true,
@@ -3290,7 +3309,7 @@
           "section_padding": "100px 10px",
           "enabled_torn_section": false,
           "enabled_overlay": true,
-          "banner_img": "shopify://shop_images/fireplace-close-up-flames.jpg",
+          "banner_img": "shopify:\/\/shop_images\/fireplace-close-up-flames.jpg",
           "title": "",
           "trans_title": "",
           "title_color": "#ff4c3b",
@@ -3301,7 +3320,7 @@
           "trans_bottom_title": "Luxe Barbeque Company is a locally owned and operated business. We have the largest selection in Manitoba, we service what we sell, have educated & knowledgeable staff who like to help and NOBODY will beat our prices.",
           "bottom_title_color": "#aaaaaa",
           "enabled_button": true,
-          "link": "/page/about-us",
+          "link": "\/page\/about-us",
           "text_layout": "style-2",
           "alignment": "text-center",
           "position": "p-center"
@@ -3313,7 +3332,7 @@
           "16154475014ba4bd75-0": {
             "type": "Image",
             "settings": {
-              "slider": "shopify://shop_images/dummy.png",
+              "slider": "shopify:\/\/shop_images\/luxe-bbq-1.jpg",
               "slider_content_height": 100,
               "alignment": "text-left",
               "position": "p-left",
@@ -3326,11 +3345,13 @@
               "button_text": "Find your grill",
               "trans_slide_text": "",
               "slide_text_color": "#ffffff",
-              "shop_btn_url": "shopify://pages/find-your-girll"
+              "shop_btn_url": "shopify:\/\/pages\/find-your-girll"
             }
           }
         },
-        "block_order": ["16154475014ba4bd75-0"],
+        "block_order": [
+          "16154475014ba4bd75-0"
+        ],
         "settings": {
           "enabled": true,
           "enabled_fullpage": true,
@@ -3360,56 +3381,56 @@
           "161552166845bd5aa7-0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/2_-_Pellet.jpg",
-              "page_url": "shopify://pages/pellet-grills",
-              "title": "Pellet Grills & Smokers"
+              "image": "shopify:\/\/shop_images\/2_-_Pellet.jpg",
+              "page_url": "shopify:\/\/pages\/pellet-grills",
+              "title": "PELLET GRILLS"
             }
           },
           "161552166845bd5aa7-2": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/3_-_Gas.jpg",
-              "page_url": "shopify://pages/gas-grills",
-              "title": "Gas Grills & Smokers"
+              "image": "shopify:\/\/shop_images\/GAS-GRILLS-landing-page.jpg",
+              "page_url": "shopify:\/\/pages\/gas-grills",
+              "title": "PROPANE & NATURAL GAS BBQ’S"
             }
           },
           "161552166845bd5aa7-1": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/4_-_Charcoal.jpg",
-              "page_url": "shopify://pages/charcoal-grills",
-              "title": "Charcoal Grills & Smokers"
+              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
+              "page_url": "shopify:\/\/pages\/charcoal-grills",
+              "title": "CHARCOAL GRILLS & SMOKERS"
             }
           },
           "ff2d3360-f26a-4ec8-a89c-c04e4d18510f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/fff.png",
-              "page_url": "shopify://pages/smokers",
-              "title": "Offset Smokers"
+              "image": "shopify:\/\/shop_images\/offset-smoker.jpg",
+              "page_url": "shopify:\/\/pages\/smokers",
+              "title": "WOOD FIRED SMOKERS"
             }
           },
           "fb2f41c2-a0c6-4342-bf81-a969a10ec2cb": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/6_-_Pizza_135d1531-a90b-45a2-a828-45230f9117f8.jpg",
-              "page_url": "shopify://pages/pizza-ovens",
-              "title": "Pizza Ovens"
+              "image": "shopify:\/\/shop_images\/OoniKoda16-2-1_1_1080x1080_05a45578-dec3-400d-844d-06fe26dbce8e.jpg",
+              "page_url": "shopify:\/\/pages\/pizza-ovens",
+              "title": "PIZZA OVENS"
             }
           },
           "789bffd9-dfb3-44df-971f-d81e04fe5dc0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/fff.png",
-              "page_url": "shopify://pages/builtin-grills-and-components",
+              "image": "shopify:\/\/shop_images\/built-in-homepage.jpg",
+              "page_url": "shopify:\/\/pages\/builtin-grills-and-components",
               "title": "Builtin Grills & Components"
             }
           },
           "d26702db-4914-4327-ae98-c788f23e019c": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/8_-_Grilling_Accessories.jpg",
-              "page_url": "shopify://collections/grilling-accessories",
+              "image": "shopify:\/\/shop_images\/8_-_Grilling_Accessories.jpg",
+              "page_url": "shopify:\/\/collections\/grilling-accessories",
               "title": "GRILLING ACCESSORIES"
             }
           }
@@ -3437,8 +3458,8 @@
           "1615529853a3d387ef-0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/9_-_Weber.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Weber%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Weber%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/9_-_Weber.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Weber%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Weber%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Weber%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Weber"
             }
@@ -3446,8 +3467,8 @@
           "1615529853a3d387ef-1": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/10_-_Napoleon.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Napoleon%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Napoleon%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Napoleon%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Napoleon%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Napoleon%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Napoleon"
             }
@@ -3455,8 +3476,8 @@
           "1615529853a3d387ef-2": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Broil%20King%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Broil%20King%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Broil%20King%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Broil%20King%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Broil%20King%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Broil King"
             }
@@ -3464,8 +3485,8 @@
           "a4d43a0c-6bf1-48c7-88b0-0d90886a70f3": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/12_-_Traeger.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Traeger%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Traeger%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Traeger%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Traeger%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Traeger%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Trager"
             }
@@ -3473,8 +3494,8 @@
           "c4e6d5bb-8799-432e-bfc6-897aa5529e65": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/13_-_Louisiana_Grills.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Louisiana%20Grills%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Louisiana%20Grills%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Louisiana%20Grills%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Louisiana Grills"
             }
@@ -3482,8 +3503,8 @@
           "41f248a5-f086-4cb4-9bf6-411cb27cefcc": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/14_-_BGE.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Big%20Green%20Egg%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Big%20Green%20Egg%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Big%20Green%20Egg%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Big Green Egg"
             }
@@ -3491,8 +3512,8 @@
           "b0984531-813d-4178-98a3-635f099e12d9": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/15_-_Kamado_Joe.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Kamado%20Joe%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Kamado%20Joe%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Kamado%20Joe%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Kamado Joe"
             }
@@ -3500,8 +3521,8 @@
           "219a8aa4-936e-41a0-891d-9d2b61cc26f0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/16_-_Pit_Barrel.jpg",
-              "page_url": "https://luxe-bbq-dev.myshopify.com/collections/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D%5D",
+              "image": "shopify:\/\/shop_images\/16_-_Pit_Barrel.jpg",
+              "page_url": "https:\/\/luxe-bbq-dev.myshopify.com\/collections\/barbeques?selectedCookTypesAndBrands=%5B%5B%22Gas%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Charcoal%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Pellet%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Electric%20Grill%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Offset%20Smoker%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D,%5B%22Pizza%20Oven%22,%5B%22Pit%20Barrel%20Cooker%22%5D%5D%5D",
               "enabled_info": true,
               "title": "Pit barrel"
             }
@@ -3533,7 +3554,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "50px 0 50px 10px",
-          "image": "shopify://shop_images/LuxeBBQ_brand-02.png",
+          "image": "shopify:\/\/shop_images\/LuxeBBQ_brand-02.png",
           "title": "FEATURED BRANDS",
           "title2": "LUXE BBQ INSTAGRAM",
           "title_color": "#fb711c"
@@ -3542,16 +3563,16 @@
       "dtm-hero-image": {
         "type": "dtm-hero-image",
         "settings": {
-          "hero_image": "shopify://shop_images/rib-eye-steak-on-bbq.jpg",
-          "text_on_image": "Pellet Grills & Smokers"
+          "hero_image": "shopify:\/\/shop_images\/rib-eye-steak-on-bbq.jpg",
+          "text_on_image": "PELLET GRILLS"
         }
       },
       "dtm-landing-page-text-with-video": {
         "type": "dtm-landing-page-text-with-video",
         "settings": {
           "section_padding": "80px 10px 80px 10px",
-          "image": "shopify://shop_images/flipping-a-big-steak-on-a-grill.jpg",
-          "video_url": "https://www.youtube.com/embed/WhY7uyc56ms",
+          "image": "shopify:\/\/shop_images\/traeger-PELLET_GRILL.jpg",
+          "video_url": "",
           "desc": "Driven by flavor, innovation and a culture unlike anything else in the bbq community.  Pellet grills and smokers are your easiest way to achieve the wood fired flavor that everyone craves.  With a set it and forget it system, these grills are easy to use and can turn the rookie griller into someone the neighbours envy.  Available in an arrange of brands, sizes and price ranges, we can certainly help you find the Pellet grill that is a perfect fit for you, your family and your lifestyle.",
           "custom_desc": "",
           "img_width": "full",
@@ -3567,7 +3588,7 @@
           "3f904787-f725-4cbf-9d28-d181e318446f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/flipping-a-big-steak-on-a-grill.jpg",
+              "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
               "enabled_info": true,
               "title": "Black Earth"
             }
@@ -3575,7 +3596,7 @@
           "a1bd3f89-6307-427d-bb52-bd2a1b683d9b": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/berries-granola.jpg",
+              "image": "shopify:\/\/shop_images\/berries-granola.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Broil King"
@@ -3584,7 +3605,7 @@
           "9b793614-7460-4f70-adbf-d5114a06fba7": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/preparing-meat-to-grill.jpg",
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Kamada Joe"
@@ -3593,7 +3614,7 @@
           "1788b4d9-3f65-41e0-a350-453072fce18c": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/steak-and-flames-on-the-grill.jpg",
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Louisiana"
@@ -3602,7 +3623,7 @@
           "9f603776-42ca-465d-ab06-0f8def2e49e2": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/bbq-tools-flatlay.jpg",
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Pit Boss"
@@ -3611,7 +3632,7 @@
           "92922651-584f-426e-af8b-6d38eb84b50f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/piece-of-grilled-salmon.jpg",
+              "image": "shopify:\/\/shop_images\/piece-of-grilled-salmon.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Traeger Grill"
@@ -3620,7 +3641,7 @@
           "34193726-609d-4877-8b6e-bec3d91837e6": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/steaks-ready-to-be-seasoned-and-grilled.jpg",
+              "image": "shopify:\/\/shop_images\/steaks-ready-to-be-seasoned-and-grilled.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Weber"
@@ -3629,7 +3650,7 @@
           "2cbfbfc9-bc3a-4851-a421-76de618628f0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "page_url": "#",
               "enabled_info": true,
               "title": "Yoder"
@@ -3667,15 +3688,16 @@
       "dtm-gas-grills-hero-image": {
         "type": "dtm-gas-grills-hero-image",
         "settings": {
-          "hero_image": "shopify://shop_images/brushing-bbq-sauce-on-grilled-steak.jpg",
-          "text_on_image": "Gas grills & Smokers"
+          "hero_image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
+          "text_on_image": "PROPANE & NATURAL GAS BBQ’S"
         }
       },
       "dtm-gas-grills-landing-page-text-with-video": {
         "type": "dtm-gas-grills-landing-page-text-with-video",
         "settings": {
           "section_padding": "80px 10px 80px 10px",
-          "video_url": "https://www.youtube.com/embed/WhY7uyc56ms",
+          "image": "shopify:\/\/shop_images\/GAS-GRILLS-landing-page.jpg",
+          "video_url": "",
           "desc": "The tried and true, the old reliable, the grill or smoker everyone trusts to prepare a worry free meal for family, friends and who ever happens to wander into the backyard when the smell of grilled steak or veggies lingers in the air.  We have a huge selection of brands, that not only look great, but have features you didn’t even know you needed.  We select the grills and smokers specifically for our stores to ensure that we have a grill or smoker for everyone.",
           "custom_desc": "",
           "img_width": "full",
@@ -3691,7 +3713,7 @@
           "4a5fc804-d6e2-4ea9-bf2c-22dd475b1d73": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/steak-and-flames-on-the-grill.jpg",
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
               "enabled_info": true,
               "title": "Black Earth",
               "brand": "Black Earth Grills"
@@ -3700,7 +3722,7 @@
           "ba093fe4-b986-4623-8dfb-874daa4312ef": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -3709,7 +3731,7 @@
           "1543d424-ea6e-4182-a1e2-87cf333410db": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/bbq-tools-flatlay.jpg",
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -3718,7 +3740,7 @@
           "d8159180-7449-4d44-b1aa-68ea770cc52d": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/turkey-legs-on-bbq.jpg",
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
               "enabled_info": true,
               "title": "Louisiana",
               "brand": "Louisiana Grills"
@@ -3727,7 +3749,7 @@
           "e01e073d-94db-4f9b-8d9b-6814f68b4c8d": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/preparing-meat-to-grill.jpg",
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -3736,7 +3758,7 @@
           "74e8fed2-2a9a-474b-8514-8c2871a16a49": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
@@ -3745,7 +3767,7 @@
           "03663663-03e3-4d48-8624-332622af57ee": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/turkey-legs-on-bbq.jpg",
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
               "enabled_info": true,
               "title": "Weber",
               "brand": "Weber"
@@ -3754,7 +3776,7 @@
           "abe51f15-9bf5-4385-adf0-79d5cbd7e7ea": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/full-grill-full-of-meat-and-veggies.jpg",
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
@@ -3785,16 +3807,16 @@
       "dtm-smokers-hero-image": {
         "type": "dtm-smokers-hero-image",
         "settings": {
-          "hero_image": "shopify://shop_images/fireplace-close-up-flames.jpg",
-          "text_on_image": "Offset Smokers"
+          "hero_image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
+          "text_on_image": "WOOD FIRED SMOKERS"
         }
       },
       "dtm-smokers-landing-page-text-with-video": {
         "type": "dtm-smokers-landing-page-text-with-video",
         "settings": {
           "section_padding": "80px 10px 80px 10px",
-          "image": "shopify://shop_images/turkey-legs-on-bbq.jpg",
-          "video_url": "https://www.youtube.com/embed/WhY7uyc56ms",
+          "image": "shopify:\/\/shop_images\/offset-smoker.jpg",
+          "video_url": "",
           "desc": "Authenticity is the best way to describe an offset smoker.  Its as hands on as it gets in the world of smoking.  Tending the fire, adjusting the temperature, if you want southern que the offset is for you.  Built to last and as basic as it comes these will hold up for years and you will be able to not only make food that is remembered, but the memories built around the cooker will be ones you will always look back on and smile….and maybe drool a bit too!",
           "custom_desc": "",
           "img_width": "full",
@@ -3810,7 +3832,7 @@
           "d4727c51-0c93-425e-9c1a-54c53a12f4a9": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/piece-of-grilled-salmon.jpg",
+              "image": "shopify:\/\/shop_images\/piece-of-grilled-salmon.jpg",
               "enabled_info": true,
               "title": "Black Earth",
               "brand": "Black Earth Grills"
@@ -3819,7 +3841,7 @@
           "97f57610-b4ea-49a2-aed7-44763415ccf7": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -3828,7 +3850,7 @@
           "80790712-cb33-43ce-9002-613cc3629e00": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/brushing-cooking-oil-on-bbq-corn.jpg",
+              "image": "shopify:\/\/shop_images\/brushing-cooking-oil-on-bbq-corn.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -3837,7 +3859,7 @@
           "625b71a9-c767-48b2-a7f2-19ce50d3cc94": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/preparing-meat-to-grill.jpg",
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
               "enabled_info": true,
               "title": "Louisiana",
               "brand": "Louisiana Grills"
@@ -3846,7 +3868,7 @@
           "0a72b2a3-19f8-4b43-8622-94aa350e8e46": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/full-grill-full-of-meat-and-veggies.jpg",
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -3855,7 +3877,7 @@
           "f04106fd-3d33-4581-88bc-4d48578e4d14": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/bbq-tools-flatlay.jpg",
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
@@ -3864,7 +3886,7 @@
           "21315c28-6219-4fb2-a91e-fdba89f28495": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/flipping-a-big-steak-on-a-grill.jpg",
+              "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
               "enabled_info": true,
               "title": "Weber",
               "brand": "Weber"
@@ -3873,7 +3895,7 @@
           "0c29aef4-c2a4-43e8-abe1-c2d885277af0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/sneaky-treats.jpg",
+              "image": "shopify:\/\/shop_images\/sneaky-treats.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
@@ -3908,6 +3930,7 @@
       "dtm-charcoal-grills-hero-image": {
         "type": "dtm-charcoal-grills-hero-image",
         "settings": {
+          "hero_image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
           "text_on_image": "Charcoal Grills & Smokers"
         }
       },
@@ -3915,7 +3938,8 @@
         "type": "dtm-charcoal-grills-landing-page-text-with-video",
         "settings": {
           "section_padding": "0px 0px 0px 0px",
-          "video_url": "https://www.youtube.com/embed/lNx4lg5uAms",
+          "image": "shopify:\/\/shop_images\/weber_-_charcoal_grills_and_smokers-landing_page.png",
+          "video_url": "",
           "desc": "The grill everyone remembers as a kid.  The smell in the air, the char on the food and the taste of that charcoal flavor that everyone craves.  Charcoal grills are as versatile as they come and with a selection as large as we have you are sure to find the grill of your dreams…. Or childhood memories.",
           "custom_desc": "",
           "img_width": "full",
@@ -3931,7 +3955,7 @@
           "e1fafab3-4a82-4b26-b08c-8a563581eb41": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/16_-_Pit_Barrel.jpg",
+              "image": "shopify:\/\/shop_images\/16_-_Pit_Barrel.jpg",
               "enabled_info": true,
               "title": "Black Earth",
               "brand": "Black Earth Grills"
@@ -3940,7 +3964,7 @@
           "24319e8e-ab83-470a-a536-6c17484e033e": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/15_-_Kamado_Joe.jpg",
+              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -3949,7 +3973,7 @@
           "d088b3ae-e481-4b5d-8197-01d3d356aa6e": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/14_-_BGE.jpg",
+              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -3958,7 +3982,7 @@
           "c9a283dc-7cad-4556-80c7-e01c33fbebf8": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/13_-_Louisiana_Grills.jpg",
+              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
               "enabled_info": true,
               "title": "Louisiana",
               "brand": "Louisiana Grills"
@@ -3967,7 +3991,7 @@
           "c3927876-93c6-448b-aca2-326dbf83008a": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -3976,7 +4000,7 @@
           "84847572-f45f-46e0-b77e-0686fe7f513e": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/12_-_Traeger.jpg",
+              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
@@ -3985,7 +4009,7 @@
           "bbb7d359-d46e-4c34-9cef-b4ff5e2b34cc": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
               "title": "Weber",
               "brand": "Weber"
@@ -3994,7 +4018,7 @@
           "418a2e5b-ba68-4583-b1f2-70aa8657ce6a": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/10_-_Napoleon.jpg",
+              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
@@ -4025,14 +4049,16 @@
       "dtm-builtin-grills-and-components-hero-image": {
         "type": "dtm-builtin-grills-and-components-hero-image",
         "settings": {
+          "hero_image": "shopify:\/\/shop_images\/BUILTIN-GRILLS-outdoor-header-bg_f77f314a-6ea8-4eb4-b7c9-7e919fd363a6.jpg",
           "text_on_image": "Builtin Grills and components"
         }
       },
       "dtm-bgc-landing-page-text-with-video": {
         "type": "dtm-bgc-landing-page-text-with-video",
         "settings": {
-          "section_padding": "0px 0px 0px 0px",
-          "video_url": "https://www.youtube.com/embed/lNx4lg5uAms",
+          "section_padding": "80px 10px 80px 10px",
+          "image": "shopify:\/\/shop_images\/built-in-homepage.jpg",
+          "video_url": "",
           "desc": "Designing the perfect backyard oasis….?  Let us help!  We have a selection of styles, sizes and price ranges that will fit with any outdoor kitchen your planning.  Grills, smokers, pizza ovens, components and full islands, let us help you never want to leave the yard again.",
           "custom_desc": "",
           "img_width": "full",
@@ -4048,7 +4074,7 @@
           "991794c6-9714-4a84-bd1d-6d9fc7a78892": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/16_-_Pit_Barrel.jpg",
+              "image": "shopify:\/\/shop_images\/16_-_Pit_Barrel.jpg",
               "enabled_info": true,
               "title": "Black Earth",
               "brand": "Black Earth Grills"
@@ -4057,7 +4083,7 @@
           "e37d8feb-020d-4b9d-a913-5d2bda503599": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/15_-_Kamado_Joe.jpg",
+              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -4066,7 +4092,7 @@
           "483e554c-9ade-460b-b128-60a2008a0ead": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/14_-_BGE.jpg",
+              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -4075,7 +4101,7 @@
           "a64d9dff-4b8e-4404-acc9-62d34aba0020": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/13_-_Louisiana_Grills.jpg",
+              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
               "enabled_info": true,
               "title": "Louisiana",
               "brand": "Louisiana Grills"
@@ -4084,7 +4110,7 @@
           "6b3c72c1-3789-4722-857e-79cc3fe76544": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -4093,7 +4119,7 @@
           "6a893bc6-cc88-406e-8873-121d4c8a1421": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/12_-_Traeger.jpg",
+              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
@@ -4102,7 +4128,7 @@
           "8916ace9-013c-4d43-a991-ef8da7634e76": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
               "title": "Weber",
               "brand": "Weber"
@@ -4111,7 +4137,7 @@
           "569333e1-6c1d-4411-bbde-68fc26c66b8f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/10_-_Napoleon.jpg",
+              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
@@ -4142,14 +4168,16 @@
       "dtm-pizza-ovens-hero-image": {
         "type": "dtm-pizza-ovens-hero-image",
         "settings": {
+          "hero_image": "shopify:\/\/shop_images\/pizza-and-wine-for-two.jpg",
           "text_on_image": "Pizza Ovens"
         }
       },
       "dtm-pizza-ovens-landing-page-text-with-video": {
         "type": "dtm-pizza-ovens-landing-page-text-with-video",
         "settings": {
-          "section_padding": "0px 0px 0px 0px",
-          "video_url": "https://www.youtube.com/embed/lNx4lg5uAms",
+          "section_padding": "80px 10px 80px 10px",
+          "image": "shopify:\/\/shop_images\/fontana-pizza-e-cucina_1_2000x_9a731234-878c-4cff-8b13-1ad23422306a.jpg",
+          "video_url": "",
           "desc": "Built in, portable, and free standing, we have all the wood fired, and gas pizza ovens you could dream of.  Do you want to be the talk of the town, the house hold everyone wants to visit?  Its simple, make some pizza, who doesn’t love it?  With all sizes, fuel types and accessories available, you struggle to order take out again.",
           "custom_desc": "",
           "img_width": "full",
@@ -4173,7 +4201,7 @@
           "451cf9ce-93d3-4cb2-9922-c5c395ab4114": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/15_-_Kamado_Joe.jpg",
+              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -4182,7 +4210,7 @@
           "76771e4c-ad7e-43b6-8dfe-dd52a58e0d28": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/14_-_BGE.jpg",
+              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -4191,7 +4219,7 @@
           "7bb0f06e-0af6-4604-a56d-43e028499e3f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/13_-_Louisiana_Grills.jpg",
+              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
               "enabled_info": true,
               "title": "Louisiana",
               "brand": "Louisiana Grills"
@@ -4200,7 +4228,7 @@
           "b0c04e50-2056-4c6f-acd3-068277918416": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -4209,7 +4237,7 @@
           "735bc40e-f327-43fd-8cfb-b2d0fa96aa8c": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/12_-_Traeger.jpg",
+              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
@@ -4218,7 +4246,7 @@
           "3e88d352-33a2-471d-ac06-9c25093e19a6": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/11_-_Broil_King.jpg",
+              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
               "title": "Weber",
               "brand": "Weber"
@@ -4227,7 +4255,7 @@
           "c9a435ef-bb5e-4a15-a301-0fc95693fd73": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/10_-_Napoleon.jpg",
+              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
@@ -4261,7 +4289,7 @@
           "ce696e80-bc4f-4c9e-b1fe-cdc9f9de2915": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/steak-and-flames-on-the-grill.jpg",
+              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
               "enabled_info": true,
               "title": "Black Earth",
               "brand": "Black Earth Grills"
@@ -4270,7 +4298,7 @@
           "54998367-d1fb-49b9-b1e9-94d02549ff39": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -4279,7 +4307,7 @@
           "77344526-5e31-4ed2-ba31-a57a628b46f6": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/bbq-tools-flatlay.jpg",
+              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -4288,7 +4316,7 @@
           "d5eeae39-d967-4049-82dc-3a0d21c38903": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/turkey-legs-on-bbq.jpg",
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
               "enabled_info": true,
               "title": "Louisiana",
               "brand": "Louisiana Grills"
@@ -4297,7 +4325,7 @@
           "ac73a9e1-5718-4c10-9f4d-3e473029e2c6": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/preparing-meat-to-grill.jpg",
+              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -4306,7 +4334,7 @@
           "b8a084b5-cb69-4d3a-ad77-54f330fe7a25": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/gas-cooking-range-in-a-large-home-kitchen.jpg",
+              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
@@ -4315,7 +4343,7 @@
           "e3c4f7c8-5350-4701-8ce8-e13c9283c89d": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/turkey-legs-on-bbq.jpg",
+              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
               "enabled_info": true,
               "title": "Weber",
               "brand": "Weber"
@@ -4324,7 +4352,7 @@
           "57b292b0-1f5b-4993-bebb-90e66ba22bac": {
             "type": "Collection",
             "settings": {
-              "image": "shopify://shop_images/full-grill-full-of-meat-and-veggies.jpg",
+              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
