@@ -7,125 +7,8 @@ const filters = [{
     title: "Search",
     type: "SearchInput",
     info: [],
-    selected: ""
+    selected: params?.['searchString'] ?? ""
 }, {
-    stateKey: "selectedCookTypesAndBrands",
-    actionType: "changeCookTypesAndBrands",
-    title: "Grill Types\/Brands",
-    type: "NestedFilter",
-    info: [
-        [
-            'Gas Grill', [
-                'Napoleon',
-                'Weber',
-                'Broil King',
-                'Traeger',
-                'Louisiana Grills',
-                'Big Green Egg',
-                'Kamado Joe',
-                'Grill Pro',
-                'Ooni',
-                'Pit Barrel Cooker',
-                'Black Earth Grills',
-                'Chuckwagon',
-                'Delta Heat',
-                'Hestan',
-                'Huntington',
-                'Lynx Grills',
-            ]
-        ],
-        [
-            'Charcoal Grill', [
-                'Napoleon',
-                'Weber',
-                'Broil King',
-                'Traeger',
-                'Louisiana Grills',
-                'Big Green Egg',
-                'Kamado Joe',
-                'Grill Pro',
-                'Ooni',
-                'Pit Barrel Cooker',
-                'Bulldog',
-                'Masterbuilt',
-                'PK Grills',
-                'Regal', // doesn't exist
-                'Sunterra',
-            ]
-        ],
-        [
-            'Pellet Grill', [
-                'Napoleon',
-                'Weber',
-                'Broil King',
-                'Traeger',
-                'Louisiana Grills',
-                'Big Green Egg',
-                'Kamado Joe',
-                'Grill Pro',
-                'Ooni',
-                'Pit Barrel Cooker',
-                'Black Earth Grills',
-                'Louisiana Grills',
-                'Pit Boss', 
-                'Traeger',
-                'Yoder Smokers',
-            ]
-        ],
-        [
-            'Electric Grill', [
-                'Napoleon',
-                'Weber',
-                'Broil King',
-                'Traeger',
-                'Louisiana Grills',
-                'Big Green Egg',
-                'Kamado Joe',
-                'Grill Pro',
-                'Ooni',
-                'Pit Barrel Cooker',
-                'Bradley',
-            ]
-        ],
-        [
-            'Offset Smoker', [
-                'Napoleon',
-                'Weber',
-                'Broil King',
-                'Traeger',
-                'Louisiana Grills',
-                'Big Green Egg',
-                'Kamado Joe',
-                'Grill Pro',
-                'Ooni',
-                'Pit Barrel Cooker',
-                'Bradley',
-                'Bulldog',
-                'Egg Modular', // doesn't exist
-                'Masterbuilt',          
-            ]
-        ],
-        [
-            'Pizza Oven', [
-                'Napoleon',
-                'Weber',
-                'Broil King',
-                'Traeger',
-                'Louisiana Grills',
-                'Big Green Egg',
-                'Kamado Joe',
-                'Grill Pro',
-                'Ooni',
-                'Pit Barrel Cooker',
-                'Fontana',
-                'LaPiazza Wood Ovens',
-                'Ooni', 
-            ]
-        ]
-    ],
-    selected: params?.['selectedCookTypesAndBrands'] ?? []
-}, 
-{% comment %} {
     stateKey: "selectedBrands",
     actionType: "changeBrands",
     title: "Brands",
@@ -172,15 +55,15 @@ const filters = [{
         "Smokeware",  
         "The Rib-o-lator",  
         "Thermoworks",  
-        "Traeger Grills",  
+        "Traeger",  
         "VSSL",  
         "VSSL.",  
         "Weber",  
         "Yeti", 
         "Yoder Smokers"    
     ],
-    selected: []
-},  {% endcomment %}
+    selected: params?.['selectedBrands'] ?? []
+}, 
 {
     stateKey: "selectedGrillingAccessoriesTypes",
     actionType: "changeGrillingAccessoriesTypes",
@@ -201,15 +84,19 @@ const filters = [{
     ],
     selected: params?.['selectedGrillingAccessoriesTypes'] ?? []
 }, ]
+
+
 const pelement = document.createElement('product-type-collection');
-pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('product-type', {{collection.all_types|first|json}});
 pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
 pelement.setAttribute('collection-title', "Grilling Accessories");
 pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
 pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
 document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+
+document.addEventListener('stateChanged', getStateChangeHandler(filters.map(f => f.stateKey)));
 </script>
 {% schema %}
 {

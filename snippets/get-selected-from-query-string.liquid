@@ -1,12 +1,43 @@
-const params = Array.from((new URLSearchParams(location.search)).entries()).reduce((acc, [key, value]) => {
-    try{
-        acc[key] = JSON.parse(value); 
-    } catch(err) {
-        acc[key] = value;
-    }  
-    return acc;
+const params = Array.from(
+  new URLSearchParams(location.search).entries()
+).reduce((acc, [key, value]) => {
+  try {
+    acc[key] = JSON.parse(value);
+  } catch (err) {
+    acc[key] = value;
+  }
+  return acc;
 }, {});
 
-console.log(params);
+console.log('params: ', params);
 
-history.replaceState(null, "", location.href.split("?")[0]);
+function getStateChangeHandler(relevantKeys) {
+  return (e) => {
+    const rawState = e.detail.state;
+    const state = Object.fromEntries(
+      Object.entries(rawState).filter(([key, value]) =>
+        relevantKeys.includes(key)
+      )
+    );
+    const newURL = `${`${location.pathname}?${Object.entries(state)
+      .map(
+        ([ruleKey, ruleValue]) =>
+          `${ruleKey}=${encodeURIComponent(JSON.stringify(ruleValue))}`
+      )
+      .join('&')}`}`;
+
+    if (
+      `?${newURL.split('?')?.[1]}` !== location.search &&
+      `?${newURL.split('?')?.[1]}` !== '?'
+    ) {
+      history.replaceState(state, '', newURL);
+    }
+  };
+}
+// window.addEventListener('popstate', (e) => {
+//   console.log('popstate state: ', e.state);
+//   const pelement = document.querySelector('product-type-collection');
+//   if (pelement && e.state) {
+//     setFilters(e.state, pelement);
+//   }
+// });

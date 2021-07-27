@@ -26,7 +26,7 @@
               </a>
               <div class="media-body">
                 <a href="{{ product.url }}">
-                  {% assign data_title = product.title | split: '|' | first %}
+                  {% assign data_title = product.title | split: '|' | first | escape %}
                   {% assign data_json = product.title | split: '|' | last %}
                   <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                     {{ data_title }}

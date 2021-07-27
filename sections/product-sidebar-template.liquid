@@ -87,7 +87,7 @@
               <div class="col-lg-6">
                 {% include 'random-sale'  %}
                 <div class="product-right product-content">
-                  {% assign data_title = product.title | split: '|' | first %}
+                  {% assign data_title = product.title | split: '|' | first | escape %}
                   {% assign data_json = product.title | split: '|' | last %}
                   <h2 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %} style="font-size: {{ section.settings.pro_title_fontsize}};">
                     {{ data_title }}
@@ -139,7 +139,7 @@
                       <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
                       {% else %}
                       <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when 
-                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_title = product.title | split: '|' | first | escape %}
                         {% assign data_json = product.title | split: '|' | last %}
                         <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                           {{ data_title }}
@@ -413,7 +413,7 @@
     <div class="modal-content">
       <div class="modal-header">
 
-        {% assign data_title = product.title | split: '|' | first %}
+        {% assign data_title = product.title | split: '|' | first | escape %}
         {% assign data_json = product.title | split: '|' | last %}
         <h5 id="exampleModalLabel" class="modal-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product.id}}_pro_title"{% endif %}>
           {{ data_title }}

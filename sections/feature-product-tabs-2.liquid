@@ -82,14 +82,14 @@
                                data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
                                data-aspectratio="{{ block_image.aspect_ratio }}" 
                                data-sizes="auto" 
-                               class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product.title | split: '|' | first }}" >
+                               class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product.title | split: '|' | first | escape }}" >
                         </a>
                         <div class="media-body align-self-center">
                           <div class="rating">
                             <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
                           </div>
                           <a href="{{ product.url | within: collection }}">
-                            {% assign data_title = product.title | split: '|' | first %}
+                            {% assign data_title = product.title | split: '|' | first | escape %}
                             {% assign data_json = product.title | split: '|' | last %}
                             <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                               {{ data_title | truncatewords: 10 }}

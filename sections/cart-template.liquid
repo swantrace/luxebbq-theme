@@ -125,7 +125,7 @@
                 </td>
                 <td>                 
 
-                  {% assign data_title = item.product.title | split: '|' | first %}
+                  {% assign data_title = item.product.title | split: '|' | first | escape %}
                   {% assign data_json = item.product.title | split: '|' | last %}
                   <a href="{{ item.url }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{item.id}}_cartItem_title"{% endif %}>
                     {{ data_title | truncatewords: 10 }}

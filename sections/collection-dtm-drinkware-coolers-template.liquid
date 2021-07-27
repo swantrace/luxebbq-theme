@@ -1,12 +1,13 @@
 <script>
 {% render 'get-selected-from-query-string' %}
+
 const filters = [{
     stateKey: "searchString",
     actionType: "changeSearchString",
     title: "Search",
     type: "SearchInput",
     info: [],
-    selected: ""
+    selected: params?.['searchString'] ?? ""
 }, {
     stateKey: "selectedDrinkwareAndCoolersTypes",
     actionType: "changeDrinkwareAndCoolersTypes",
@@ -56,15 +57,19 @@ const filters = [{
     ],
     selected: params?.['selectedColors'] ?? []
 }, ]
+
+
 const pelement = document.createElement('product-type-collection');
-pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('product-type', {{collection.all_types|first|json}});
 pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
 pelement.setAttribute('collection-title', "Drinkware & Coolers");
 pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
 pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
 document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+
+document.addEventListener('stateChanged', getStateChangeHandler(filters.map(f => f.stateKey)));
 </script>
 {% schema %}
 {

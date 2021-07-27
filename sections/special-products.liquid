@@ -106,7 +106,7 @@
             <div class="contain-right">
               <div>
                  <a href="{{ product.url | within: collection }}">
-                        {% assign data_title = product.title | split: '|' | first %}
+                        {% assign data_title = product.title | split: '|' | first | escape %}
                         {% assign data_json = product.title | split: '|' | last %}
                         <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                           {{ data_title | truncatewords: 10 }}

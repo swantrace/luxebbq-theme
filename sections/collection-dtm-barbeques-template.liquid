@@ -1,5 +1,7 @@
 <script>
 {% render 'get-selected-from-query-string' %}
+
+
 const gasGrillBrands = [
     'Big Green Egg',
     'Black Earth Grills',
@@ -99,7 +101,7 @@ const filters = [{
     title: "Search",
     type: "SearchInput",
     info: [],
-    selected: ""
+    selected: params?.['searchString'] ?? ""
 }, {
     stateKey: "selectedCookTypesAndBrands",
     actionType: "changeCookTypesAndBrands",
@@ -136,14 +138,14 @@ const filters = [{
     title: "Price Range",
     type: "RangeSlider",
     info: [0, 6500, 250],
-    selected: [0, 6500]
+    selected: params?.['currentPriceRange'] ?? [0, 6500]
 }, {
     stateKey: "currentGrillCookingAreaRange",
     actionType: "changeGrillCookingAreaRange",
     title: "Grill Cooking Area",
     type: "RangeSlider",
-    info: [0, 20, 2],
-    selected: [4, 20]
+    info: [15, 75, 5],
+    selected: params?.['currentGrillCookingAreaRange'] ?? [15, 75]
 }, {
     stateKey: "selectedStandTypes",
     actionType: "changeStandTypes",
@@ -160,15 +162,19 @@ const filters = [{
     selected: params?.['clearance'] ?? false
 }, ]
 
+
 const pelement = document.createElement('product-type-collection');
-pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('all-filters', JSON.stringify(filters));
+pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('product-type', {{collection.all_types|first|json}});
 pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
 pelement.setAttribute('collection-title', "GRILLS / SMOKERS");
 pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
 pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
 document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
+
+document.addEventListener('stateChanged', getStateChangeHandler(filters.map(f => f.stateKey)));
+
 </script>
 {% schema %}
 {

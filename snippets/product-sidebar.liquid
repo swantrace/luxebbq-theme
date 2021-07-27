@@ -170,7 +170,7 @@
               <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
             </div>
             <a href="{{ product.url | within: collection }}">
-              {% assign data_title = product.title | split: '|' | first %}
+              {% assign data_title = product.title | split: '|' | first | escape %}
               {% assign data_json = product.title | split: '|' | last %}
               <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_pro_title"{% endif %}>
                 {{ data_title | truncatewords: 10 }}
@@ -221,7 +221,7 @@
               <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
             </div>
             <a href="{{ product.url | within: collection }}">
-              {% assign data_title = product.title | split: '|' | first %}
+              {% assign data_title = product.title | split: '|' | first | escape %}
               {% assign data_json = product.title | split: '|' | last %}
               <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_pro_title"{% endif %}>
                 {{ data_title | truncatewords: 10 }}

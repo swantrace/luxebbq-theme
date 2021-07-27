@@ -96,7 +96,7 @@
 
           <div class="bundle_product_cls bundle_active_pro">
             <label>
-              {% assign data_title = product.title | split: '|' | first %}
+              {% assign data_title = product.title | split: '|' | first | escape %}
                       {% assign data_json = product.title | split: '|' | last %}
                       <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_bundlepro_title"{% endif %}>
                         {{ data_title }}

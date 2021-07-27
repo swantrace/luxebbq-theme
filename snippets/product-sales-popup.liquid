@@ -46,7 +46,7 @@
   {% capture index %}{{ 'now' | date: '%S' | times: randomly_collection.products.size | divided_by: 60 }}{% endcapture %}
   {% for product in randomly_collection.products offset:index limit:1000 %}
   <div>
-    <img src="{{ product | img_url: '120x85' }}" alt="{{ product.title | split: '|' | first }}">
+    <img src="{{ product | img_url: '120x85' }}" alt="{{ product.title | split: '|' | first | escape }}">
     <p>
       <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sales_popup_title"{% endif %}>
         {{ settings.buttom_message }}
@@ -56,7 +56,7 @@
       {% endif %}
 
       <a href="{{ product.url | within: collection }}">
-        {% assign data_title = product.title | split: '|' | first %}
+        {% assign data_title = product.title | split: '|' | first | escape %}
         {% assign data_json = product.title | split: '|' | last %}
         <span itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
           {{ data_title | truncatewords: 10 }}

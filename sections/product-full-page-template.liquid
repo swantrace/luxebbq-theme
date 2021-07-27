@@ -71,7 +71,7 @@
         <div class="slide__wrap">
           <div class="slide__img" id="{{ img_id }}" style="background-image: url({{ image | img_url: 'master' }});"></div>
           <div class="slide__title-wrap">
-            {% assign data_title = product.title | split: '|' | first %}
+            {% assign data_title = product.title | split: '|' | first | escape %}
             {% assign data_json = product.title | split: '|' | last %}
             <h3  itemprop="name" class="slide__title mb-2{% if settings.enable_lang_switcher %} lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product.id}}_pro_title"{% endif %}>
               {{ data_title }}

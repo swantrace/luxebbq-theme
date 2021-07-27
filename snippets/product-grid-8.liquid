@@ -8,7 +8,7 @@
         </div>        
         {% else %}
         <img src="{{ product | img_url: '340x455' }}" 
-             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
         {% endif %}
       </a>
     </div>
@@ -43,7 +43,7 @@
     {% endif %}
     
     <a href="{{ product.url | within: collection }}">
-      {% assign data_title = product.title | split: '|' | first %}
+      {% assign data_title = product.title | split: '|' | first | escape %}
       {% assign data_json = product.title | split: '|' | last %}
       <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
         {{ data_title | truncatewords: 10 }}

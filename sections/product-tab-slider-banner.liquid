@@ -51,14 +51,14 @@
 
                   {% assign block_image = product.featured_image %}
                   <img src="{{ block_image | img_url: '120x' }}" 
-                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product.title | split: '|' | first }}" >
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product.title | split: '|' | first | escape }}" >
                 </a>
                 <div class="media-body align-self-center">
                   <div class="rating">
                     <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
                   </div>
                   <a href="{{ product.url | within: collection }}" class="p-0">
-                    {% assign data_title = product.title | split: '|' | first %}
+                    {% assign data_title = product.title | split: '|' | first | escape %}
                     {% assign data_json = product.title | split: '|' | last %}
                     <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                       {{ data_title | truncatewords: 10 }}
@@ -122,14 +122,14 @@
                 <a href="{{ product.url | within: collection }}" >
                   {% assign block_image = product.featured_image %}
                   <img src="{{ block_image | img_url: '120x' }}" 
-                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product.title | split: '|' | first }}" >
+                       class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product.title | split: '|' | first | escape }}" >
                 </a>
                 <div class="media-body align-self-center">
                   <div class="rating">
                     <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
                   </div>
                   <a href="{{ product.url | within: collection }}" class="p-0">
-                    {% assign data_title = product.title | split: '|' | first %}
+                    {% assign data_title = product.title | split: '|' | first | escape %}
                     {% assign data_json = product.title | split: '|' | last %}
                     <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
                       {{ data_title | truncatewords: 10 }}

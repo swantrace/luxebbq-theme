@@ -22,7 +22,7 @@
         </div>        
         {% else %}
         <img src="{{ product | img_url: '340x455' }}" 
-             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
         {% endif %}
       </a>
     </div>
@@ -36,7 +36,7 @@
         </div>        
         {% else %}
         <img src="{{ product.images[1] | img_url: '340x455' }}" 
-             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first }}" >
+             class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
         {% endif %}
       </a>
     </div>
@@ -88,7 +88,7 @@
     {% endif %}
 
     <a href="{{ product.url | within: collection }}">
-      {% assign data_title = product.title | split: '|' | first %}
+      {% assign data_title = product.title | split: '|' | first | escape %}
       {% assign data_json = product.title | split: '|' | last %}
       <h6 itemprop="name" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#{{product.id}}_pro_title"{% endif %}>
         {{ data_title | truncatewords: 10 }}
@@ -208,7 +208,7 @@
 
   </div>
 
-  <span id="pro_tags" style="display:none;">{% for tag in product.tags %}{{ tag }}{% unless forloop.last %},{% endunless %}{% endfor %}</span>
+  <span  style="display:none;">{% for tag in product.tags %}{{ tag }}{% unless forloop.last %},{% endunless %}{% endfor %}</span>
 
   {% for c in product.collections %}
   {% if forloop.last == true %}
