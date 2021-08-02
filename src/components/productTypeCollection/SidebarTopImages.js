@@ -7,7 +7,7 @@ const SidebarTopImages = virtual(({ collectionImages }) => {
   );
   console.log(topImagesPlaceHolder);
   return html`<div class="collection-images-wrapper">
-    ${topImagesPlaceHolder.innerHTML
+    ${topImagesPlaceHolder?.innerHTML
       ? html`${unsafeHTML(topImagesPlaceHolder.innerHTML)}`
       : html`${collectionImages.map(
           (image) => html`

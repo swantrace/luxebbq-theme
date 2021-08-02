@@ -144,8 +144,8 @@ const filters = [{
     actionType: "changeGrillCookingAreaRange",
     title: "Grill Cooking Area",
     type: "RangeSlider",
-    info: [15, 75, 5],
-    selected: params?.['currentGrillCookingAreaRange'] ?? [15, 75]
+    info: [0, 75, 5],
+    selected: params?.['currentGrillCookingAreaRange'] ?? [0, 75]
 }, {
     stateKey: "selectedStandTypes",
     actionType: "changeStandTypes",
@@ -176,6 +176,28 @@ document.currentScript.parentNode.insertBefore(pelement, document.currentScript)
 document.addEventListener('stateChanged', getStateChangeHandler(filters.map(f => f.stateKey)));
 
 </script>
+<template id='top-images-placeholder'>
+    <div class="top-image-wrapper d-flex align-items-center justify-content-center py-5 mb-3">
+      <a href="/pages/find-your-girll"><i class="icon-md-flame iconfont top-image-icon pr-2 pt-1"></i><span class="top-image-text">WHY LUXE BBQ</span></a>
+    </div>
+    <div class="top-image-wrapper d-flex align-items-center justify-content-center py-5">
+      <a href="/pages/find-your-girll"><i class="icon-search iconfont top-image-icon pr-2 pt-1"></i><span class="top-image-text">MY PERFECT GRILL TOOL</span></a>
+    </div>
+    <style>
+        .top-image-wrapper {
+            background-color: #fb711c;
+            color: white;
+        }
+        .top-image-text {
+            font-size: 1.6em;
+            color: white;
+        }
+        .top-image-icon.iconfont {
+            font-size: 1.5em;
+            color: white;
+        }
+    </style>
+</template>
 {% schema %}
 {
   "name": "Barbeques",
