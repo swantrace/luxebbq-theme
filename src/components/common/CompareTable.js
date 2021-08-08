@@ -106,6 +106,7 @@ function CompareTable() {
     );
   };
   const getCellContent = (item, product) => {
+    console.log('item: ', item, '\n', 'product: ', product, '\n');
     switch (item.key) {
       case 'name_image': {
         return html`<div
@@ -141,6 +142,10 @@ function CompareTable() {
           ? ''
           : Array.isArray(product[item.key])
           ? product[item.key].join(', ')
+          : product[item.key] === true
+          ? 'Yes'
+          : product[item.key] === false
+          ? 'No'
           : product[item.key];
       }
     }

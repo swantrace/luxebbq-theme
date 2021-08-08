@@ -42,6 +42,7 @@ const Specifications = virtual(({ specificationList, description }) => {
     }
   }, []);
 
+  console.log('specification list: ', specificationList);
   return html`<div class="container">
     <div class="row mb-5">
       <div class="col">${TitleBanner({ title: 'SPECIFICATIONS' })}</div>
@@ -70,6 +71,8 @@ const Specifications = virtual(({ specificationList, description }) => {
                                 ? html`${line}<br />`
                                 : line}`
                           )
+                        : value === true
+                        ? 'Yes'
                         : value}
                     </td>
                   </tr>`
@@ -100,6 +103,8 @@ const Specifications = virtual(({ specificationList, description }) => {
                                 ? html`${line}<br />`
                                 : line}`
                           )
+                        : value === true
+                        ? 'Yes'
                         : value}
                     </td>
                   </tr>`
