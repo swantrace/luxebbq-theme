@@ -3,22 +3,25 @@
 import { html } from '@apollo-elements/haunted';
 
 function LandingPageCollectionLink({ cookType, standType, bbqBrand, title }) {
+  console.log('bbqBrand: ', bbqBrand);
   const urlBase = `/collections/barbeques?`;
 
   const rules = cookType
     ? {
-        selectedCookTypesAndBrands: [[cookType, [bbqBrand]]],
+        selectedCookTypesAndBrands: [
+          [cookType, bbqBrand === 'View All' ? [] : [bbqBrand]],
+        ],
       }
     : standType
     ? {
         selectedStandTypes: [standType],
         selectedCookTypesAndBrands: [
-          ['Gas Grill', [bbqBrand]],
-          ['Charcoal Grill', [bbqBrand]],
-          ['Pellet Grill', [bbqBrand]],
-          ['Electric Grill', [bbqBrand]],
-          ['Offset Smoker', [bbqBrand]],
-          ['Pizza Oven', [bbqBrand]],
+          ['Gas Grill', bbqBrand === 'View All' ? [] : [bbqBrand]],
+          ['Charcoal Grill', bbqBrand === 'View All' ? [] : [bbqBrand]],
+          ['Pellet Grill', bbqBrand === 'View All' ? [] : [bbqBrand]],
+          ['Electric Grill', bbqBrand === 'View All' ? [] : [bbqBrand]],
+          ['Offset Smoker', bbqBrand === 'View All' ? [] : [bbqBrand]],
+          ['Pizza Oven', bbqBrand === 'View All' ? [] : [bbqBrand]],
         ],
       }
     : {};

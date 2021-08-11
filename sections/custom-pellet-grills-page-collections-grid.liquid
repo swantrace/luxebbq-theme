@@ -3,10 +3,11 @@
 <section class=" {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}" style="padding:{{ section.settings.section_padding }}">
   {%- include 'title' -%}
 
-  <div class="container">
-    <div class="row category-border no-gutters">
+    <div class="container">
+      <div class="row category-border no-gutters">
 
       {% for block in section.blocks %}
+      {% if block.settings.enabled_info %}
       {% capture blockId %}{{ block.id }}{% endcapture %}
       {% assign collection = collections[block.settings.collection] %}
 
@@ -14,34 +15,34 @@
 
       <div class="{{ column_grid_width }}">
         <div class="category-banner">
-          {% if block.settings.image == blank %}
-          {% capture current %}{% cycle 1, 2 %}{% endcapture %}
-          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          {% assign potential_collection_logo = block.settings.brand | replace: ' ', '_' | prepend: 'dtm-' | append: '-logo.jpg' %}
+          {% if block.settings.image == blank and images[potential_collection_logo] == blank %}
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
           {% else %}
 
-          {% if section.settings.use_equal_height %}
-          <div>
-            <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"></span>
-          </div>        
-          {% else %}
-            {% assign block_image = block.settings.image %}
-           <img src="{{ block.settings.image | img_url: '720x720' , crop: 'center' }}" 
-               data-src="{{ block.settings.image | img_url: '720x720'  , crop: 'center' }}" 
-               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-               data-aspectratio="1" 
-               data-sizes="full" 
-               class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
-          {% endif %}
+            {% assign block_image = block.settings.image | default: images[potential_collection_logo] %}
+            {% if section.settings.use_equal_height %}
+              <div>
+                <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block_image %}" data-sizes="auto" data-parent-fit="cover"></span>
+              </div>        
+            {% else %}
+              <img src="{{ block_image | img_url: '720x720' , crop: 'center' }}" 
+                  data-src="{{ block_image | img_url: '720x720'  , crop: 'center' }}" 
+                  data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                  data-aspectratio="1" 
+                  data-sizes="full" 
+                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
+            {% endif %}
 
           {% endif %}
-          {% if block.settings.enabled_info %}
+
           <div is="landing-page-collection-link" class="category-box" cook-type="Pellet Grill" bbq-brand="{{ block.settings.brand }}" title="{{ block.settings.title }}"></div>
-          {% endif %}
         </div>
       </div>
+      {% endif %}
       {% endfor %}
     </div>
-  </div>
 </section>
 {% endif %}
 <!-- category 2 end -->
@@ -296,6 +297,10 @@
                 {
                   "value": "Yoder Smokers",
                   "label": "Yoder Smokers"
+                },
+                {
+                  "value": "View All",
+                  "label": "View All"
                 }
               ]
             }

@@ -3713,16 +3713,14 @@
           "4a5fc804-d6e2-4ea9-bf2c-22dd475b1d73": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
               "enabled_info": true,
-              "title": "Black Earth",
-              "brand": "Black Earth Grills"
+              "title": "Napoleon",
+              "brand": "Napoleon"
             }
           },
           "ba093fe4-b986-4623-8dfb-874daa4312ef": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
@@ -3731,25 +3729,14 @@
           "1543d424-ea6e-4182-a1e2-87cf333410db": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
               "enabled_info": true,
-              "title": "Kamado Joe",
-              "brand": "Kamado Joe"
-            }
-          },
-          "d8159180-7449-4d44-b1aa-68ea770cc52d": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
-              "enabled_info": true,
-              "title": "Louisiana",
-              "brand": "Louisiana Grills"
+              "title": "Weber",
+              "brand": "Weber"
             }
           },
           "e01e073d-94db-4f9b-8d9b-6814f68b4c8d": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
               "enabled_info": true,
               "title": "Pit Boss",
               "brand": "Pit Boss"
@@ -3758,28 +3745,25 @@
           "74e8fed2-2a9a-474b-8514-8c2871a16a49": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
-              "title": "Traeger Grill",
-              "brand": "Traeger"
+              "title": "Lynx",
+              "brand": "Lynx Grills"
             }
           },
           "03663663-03e3-4d48-8624-332622af57ee": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
               "enabled_info": true,
-              "title": "Weber",
-              "brand": "Weber"
+              "title": "Hestan",
+              "brand": "Hestan"
             }
           },
           "abe51f15-9bf5-4385-adf0-79d5cbd7e7ea": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
               "enabled_info": true,
-              "title": "Yoder",
-              "brand": "Yoder Smokers"
+              "title": "View All",
+              "brand": "View All"
             }
           }
         },
@@ -3787,7 +3771,6 @@
           "4a5fc804-d6e2-4ea9-bf2c-22dd475b1d73",
           "ba093fe4-b986-4623-8dfb-874daa4312ef",
           "1543d424-ea6e-4182-a1e2-87cf333410db",
-          "d8159180-7449-4d44-b1aa-68ea770cc52d",
           "e01e073d-94db-4f9b-8d9b-6814f68b4c8d",
           "74e8fed2-2a9a-474b-8514-8c2871a16a49",
           "03663663-03e3-4d48-8624-332622af57ee",
@@ -3798,7 +3781,7 @@
           "section_padding": "0px 0px 80px 0px",
           "title": "Matching Grills",
           "title_color": "#fb711c",
-          "use_equal_height": false,
+          "use_equal_height": true,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
@@ -3829,95 +3812,51 @@
       "custom-smokers-page-collections-grid": {
         "type": "custom-smokers-page-collections-grid",
         "blocks": {
-          "d4727c51-0c93-425e-9c1a-54c53a12f4a9": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/piece-of-grilled-salmon.jpg",
-              "enabled_info": true,
-              "title": "Black Earth",
-              "brand": "Black Earth Grills"
-            }
-          },
           "97f57610-b4ea-49a2-aed7-44763415ccf7": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Broil King",
               "brand": "Broil King"
             }
           },
-          "80790712-cb33-43ce-9002-613cc3629e00": {
+          "d4727c51-0c93-425e-9c1a-54c53a12f4a9": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/brushing-cooking-oil-on-bbq-corn.jpg",
               "enabled_info": true,
-              "title": "Kamado Joe",
-              "brand": "Kamado Joe"
-            }
-          },
-          "625b71a9-c767-48b2-a7f2-19ce50d3cc94": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
-              "enabled_info": true,
-              "title": "Louisiana",
-              "brand": "Louisiana Grills"
-            }
-          },
-          "0a72b2a3-19f8-4b43-8622-94aa350e8e46": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
-              "enabled_info": true,
-              "title": "Pit Boss",
-              "brand": "Pit Boss"
-            }
-          },
-          "f04106fd-3d33-4581-88bc-4d48578e4d14": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
-              "enabled_info": true,
-              "title": "Traeger Grill",
-              "brand": "Traeger"
-            }
-          },
-          "21315c28-6219-4fb2-a91e-fdba89f28495": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/flipping-a-big-steak-on-a-grill.jpg",
-              "enabled_info": true,
-              "title": "Weber",
-              "brand": "Weber"
+              "title": "Bulldog",
+              "brand": "Bulldog"
             }
           },
           "0c29aef4-c2a4-43e8-abe1-c2d885277af0": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/sneaky-treats.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
             }
+          },
+          "80790712-cb33-43ce-9002-613cc3629e00": {
+            "type": "Collection",
+            "settings": {
+              "enabled_info": true,
+              "title": "View All",
+              "brand": "View All"
+            }
           }
         },
         "block_order": [
-          "d4727c51-0c93-425e-9c1a-54c53a12f4a9",
           "97f57610-b4ea-49a2-aed7-44763415ccf7",
-          "80790712-cb33-43ce-9002-613cc3629e00",
-          "625b71a9-c767-48b2-a7f2-19ce50d3cc94",
-          "0a72b2a3-19f8-4b43-8622-94aa350e8e46",
-          "f04106fd-3d33-4581-88bc-4d48578e4d14",
-          "21315c28-6219-4fb2-a91e-fdba89f28495",
-          "0c29aef4-c2a4-43e8-abe1-c2d885277af0"
+          "d4727c51-0c93-425e-9c1a-54c53a12f4a9",
+          "0c29aef4-c2a4-43e8-abe1-c2d885277af0",
+          "80790712-cb33-43ce-9002-613cc3629e00"
         ],
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 80px 0px",
           "title": "MATCHING GRILLS",
           "title_color": "#fb711c",
-          "use_equal_height": false,
+          "use_equal_height": true,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
@@ -3955,25 +3894,22 @@
           "e1fafab3-4a82-4b26-b08c-8a563581eb41": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/16_-_Pit_Barrel.jpg",
               "enabled_info": true,
-              "title": "Black Earth",
-              "brand": "Black Earth Grills"
+              "title": "Weber",
+              "brand": "Weber"
             }
           },
           "24319e8e-ab83-470a-a536-6c17484e033e": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
               "enabled_info": true,
-              "title": "Broil King",
-              "brand": "Broil King"
+              "title": "Big Green Egg",
+              "brand": "Big Green Egg"
             }
           },
           "d088b3ae-e481-4b5d-8197-01d3d356aa6e": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
               "enabled_info": true,
               "title": "Kamado Joe",
               "brand": "Kamado Joe"
@@ -3982,46 +3918,33 @@
           "c9a283dc-7cad-4556-80c7-e01c33fbebf8": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
               "enabled_info": true,
-              "title": "Louisiana",
-              "brand": "Louisiana Grills"
+              "title": "Pit Barrel Cooker",
+              "brand": "Pit Barrel Cooker"
             }
           },
           "c3927876-93c6-448b-aca2-326dbf83008a": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
-              "title": "Pit Boss",
-              "brand": "Pit Boss"
+              "title": "Masterbuilt",
+              "brand": "Masterbuilt"
             }
           },
           "84847572-f45f-46e0-b77e-0686fe7f513e": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
               "enabled_info": true,
-              "title": "Traeger Grill",
-              "brand": "Traeger"
+              "title": "Sunterra",
+              "brand": "Sunterra"
             }
           },
           "bbb7d359-d46e-4c34-9cef-b4ff5e2b34cc": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
-              "title": "Weber",
-              "brand": "Weber"
-            }
-          },
-          "418a2e5b-ba68-4583-b1f2-70aa8657ce6a": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
-              "enabled_info": true,
-              "title": "Yoder",
-              "brand": "Yoder Smokers"
+              "title": "View All",
+              "brand": "View All"
             }
           }
         },
@@ -4032,15 +3955,14 @@
           "c9a283dc-7cad-4556-80c7-e01c33fbebf8",
           "c3927876-93c6-448b-aca2-326dbf83008a",
           "84847572-f45f-46e0-b77e-0686fe7f513e",
-          "bbb7d359-d46e-4c34-9cef-b4ff5e2b34cc",
-          "418a2e5b-ba68-4583-b1f2-70aa8657ce6a"
+          "bbb7d359-d46e-4c34-9cef-b4ff5e2b34cc"
         ],
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
           "title": "More Collections",
           "title_color": "#fb711c",
-          "use_equal_height": false,
+          "use_equal_height": true,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
@@ -4074,73 +3996,57 @@
           "991794c6-9714-4a84-bd1d-6d9fc7a78892": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/16_-_Pit_Barrel.jpg",
               "enabled_info": true,
-              "title": "Black Earth",
-              "brand": "Black Earth Grills"
+              "title": "Napoleon",
+              "brand": "Napoleon"
             }
           },
           "e37d8feb-020d-4b9d-a913-5d2bda503599": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
               "enabled_info": true,
-              "title": "Broil King",
-              "brand": "Broil King"
+              "title": "Lynx",
+              "brand": "Lynx Grills"
             }
           },
           "483e554c-9ade-460b-b128-60a2008a0ead": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
               "enabled_info": true,
-              "title": "Kamado Joe",
-              "brand": "Kamado Joe"
+              "title": "Hestan",
+              "brand": "Hestan"
             }
           },
           "a64d9dff-4b8e-4404-acc9-62d34aba0020": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
               "enabled_info": true,
-              "title": "Louisiana",
-              "brand": "Louisiana Grills"
+              "title": "Big Green Egg",
+              "brand": "Big Green Egg"
             }
           },
           "6b3c72c1-3789-4722-857e-79cc3fe76544": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
-              "title": "Pit Boss",
-              "brand": "Pit Boss"
+              "title": "Twin Eagles",
+              "brand": "Twin Eagles"
             }
           },
           "6a893bc6-cc88-406e-8873-121d4c8a1421": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
               "enabled_info": true,
-              "title": "Traeger Grill",
-              "brand": "Traeger"
+              "title": "Delta Heat",
+              "brand": "Delta Heat"
             }
           },
           "8916ace9-013c-4d43-a991-ef8da7634e76": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
               "enabled_info": true,
-              "title": "Weber",
-              "brand": "Weber"
-            }
-          },
-          "569333e1-6c1d-4411-bbde-68fc26c66b8f": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
-              "enabled_info": true,
-              "title": "Yoder",
-              "brand": "Yoder Smokers"
+              "title": "View All",
+              "brand": "View All"
             }
           }
         },
@@ -4151,15 +4057,14 @@
           "a64d9dff-4b8e-4404-acc9-62d34aba0020",
           "6b3c72c1-3789-4722-857e-79cc3fe76544",
           "6a893bc6-cc88-406e-8873-121d4c8a1421",
-          "8916ace9-013c-4d43-a991-ef8da7634e76",
-          "569333e1-6c1d-4411-bbde-68fc26c66b8f"
+          "8916ace9-013c-4d43-a991-ef8da7634e76"
         ],
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
           "title": "More Collections",
           "title_color": "#fb711c",
-          "use_equal_height": false,
+          "use_equal_height": true,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
@@ -4194,71 +4099,32 @@
             "type": "Collection",
             "settings": {
               "enabled_info": true,
-              "title": "Black Earth",
-              "brand": "Black Earth Grills"
+              "title": "Fontana",
+              "brand": "Fontana"
             }
           },
           "451cf9ce-93d3-4cb2-9922-c5c395ab4114": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/15_-_Kamado_Joe.jpg",
               "enabled_info": true,
-              "title": "Broil King",
-              "brand": "Broil King"
+              "title": "La Piazza",
+              "brand": "La Piazza"
             }
           },
           "76771e4c-ad7e-43b6-8dfe-dd52a58e0d28": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/14_-_BGE.jpg",
               "enabled_info": true,
-              "title": "Kamado Joe",
-              "brand": "Kamado Joe"
+              "title": "Ooni",
+              "brand": "Ooni"
             }
           },
           "7bb0f06e-0af6-4604-a56d-43e028499e3f": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/13_-_Louisiana_Grills.jpg",
               "enabled_info": true,
-              "title": "Louisiana",
-              "brand": "Louisiana Grills"
-            }
-          },
-          "b0c04e50-2056-4c6f-acd3-068277918416": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
-              "enabled_info": true,
-              "title": "Pit Boss",
-              "brand": "Pit Boss"
-            }
-          },
-          "735bc40e-f327-43fd-8cfb-b2d0fa96aa8c": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/12_-_Traeger.jpg",
-              "enabled_info": true,
-              "title": "Traeger Grill",
-              "brand": "Traeger"
-            }
-          },
-          "3e88d352-33a2-471d-ac06-9c25093e19a6": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/11_-_Broil_King.jpg",
-              "enabled_info": true,
-              "title": "Weber",
-              "brand": "Weber"
-            }
-          },
-          "c9a435ef-bb5e-4a15-a301-0fc95693fd73": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/10_-_Napoleon.jpg",
-              "enabled_info": true,
-              "title": "Yoder",
-              "brand": "Yoder Smokers"
+              "title": "View All",
+              "brand": "View All"
             }
           }
         },
@@ -4266,18 +4132,14 @@
           "c38e3e11-1cf9-4e12-b265-230e8dceda68",
           "451cf9ce-93d3-4cb2-9922-c5c395ab4114",
           "76771e4c-ad7e-43b6-8dfe-dd52a58e0d28",
-          "7bb0f06e-0af6-4604-a56d-43e028499e3f",
-          "b0c04e50-2056-4c6f-acd3-068277918416",
-          "735bc40e-f327-43fd-8cfb-b2d0fa96aa8c",
-          "3e88d352-33a2-471d-ac06-9c25093e19a6",
-          "c9a435ef-bb5e-4a15-a301-0fc95693fd73"
+          "7bb0f06e-0af6-4604-a56d-43e028499e3f"
         ],
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
           "title": "More Collections",
           "title_color": "#fb711c",
-          "use_equal_height": false,
+          "use_equal_height": true,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
@@ -4286,95 +4148,78 @@
       "custom-pellet-grills-page-collections-grid": {
         "type": "custom-pellet-grills-page-collections-grid",
         "blocks": {
-          "ce696e80-bc4f-4c9e-b1fe-cdc9f9de2915": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/steak-and-flames-on-the-grill.jpg",
-              "enabled_info": true,
-              "title": "Black Earth",
-              "brand": "Black Earth Grills"
-            }
-          },
-          "54998367-d1fb-49b9-b1e9-94d02549ff39": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
-              "enabled_info": true,
-              "title": "Broil King",
-              "brand": "Broil King"
-            }
-          },
-          "77344526-5e31-4ed2-ba31-a57a628b46f6": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/bbq-tools-flatlay.jpg",
-              "enabled_info": true,
-              "title": "Kamado Joe",
-              "brand": "Kamado Joe"
-            }
-          },
-          "d5eeae39-d967-4049-82dc-3a0d21c38903": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
-              "enabled_info": true,
-              "title": "Louisiana",
-              "brand": "Louisiana Grills"
-            }
-          },
-          "ac73a9e1-5718-4c10-9f4d-3e473029e2c6": {
-            "type": "Collection",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/preparing-meat-to-grill.jpg",
-              "enabled_info": true,
-              "title": "Pit Boss",
-              "brand": "Pit Boss"
-            }
-          },
           "b8a084b5-cb69-4d3a-ad77-54f330fe7a25": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/gas-cooking-range-in-a-large-home-kitchen.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"
             }
           },
-          "e3c4f7c8-5350-4701-8ce8-e13c9283c89d": {
+          "d5eeae39-d967-4049-82dc-3a0d21c38903": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/turkey-legs-on-bbq.jpg",
               "enabled_info": true,
-              "title": "Weber",
-              "brand": "Weber"
+              "title": "Louisiana",
+              "brand": "Louisiana Grills"
             }
           },
           "57b292b0-1f5b-4993-bebb-90e66ba22bac": {
             "type": "Collection",
             "settings": {
-              "image": "shopify:\/\/shop_images\/full-grill-full-of-meat-and-veggies.jpg",
               "enabled_info": true,
               "title": "Yoder",
               "brand": "Yoder Smokers"
             }
+          },
+          "ac73a9e1-5718-4c10-9f4d-3e473029e2c6": {
+            "type": "Collection",
+            "settings": {
+              "enabled_info": true,
+              "title": "Pit Boss",
+              "brand": "Pit Boss"
+            }
+          },
+          "e3c4f7c8-5350-4701-8ce8-e13c9283c89d": {
+            "type": "Collection",
+            "settings": {
+              "enabled_info": true,
+              "title": "Weber",
+              "brand": "Weber"
+            }
+          },
+          "54998367-d1fb-49b9-b1e9-94d02549ff39": {
+            "type": "Collection",
+            "settings": {
+              "enabled_info": true,
+              "title": "Broil King",
+              "brand": "Broil King"
+            }
+          },
+          "ce696e80-bc4f-4c9e-b1fe-cdc9f9de2915": {
+            "type": "Collection",
+            "settings": {
+              "enabled_info": true,
+              "title": "View All",
+              "brand": "View All"
+            }
           }
         },
         "block_order": [
-          "ce696e80-bc4f-4c9e-b1fe-cdc9f9de2915",
-          "54998367-d1fb-49b9-b1e9-94d02549ff39",
-          "77344526-5e31-4ed2-ba31-a57a628b46f6",
-          "d5eeae39-d967-4049-82dc-3a0d21c38903",
-          "ac73a9e1-5718-4c10-9f4d-3e473029e2c6",
           "b8a084b5-cb69-4d3a-ad77-54f330fe7a25",
+          "d5eeae39-d967-4049-82dc-3a0d21c38903",
+          "57b292b0-1f5b-4993-bebb-90e66ba22bac",
+          "ac73a9e1-5718-4c10-9f4d-3e473029e2c6",
           "e3c4f7c8-5350-4701-8ce8-e13c9283c89d",
-          "57b292b0-1f5b-4993-bebb-90e66ba22bac"
+          "54998367-d1fb-49b9-b1e9-94d02549ff39",
+          "ce696e80-bc4f-4c9e-b1fe-cdc9f9de2915"
         ],
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
           "title": "More Collections",
           "title_color": "#fb711c",
-          "use_equal_height": false,
+          "use_equal_height": true,
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
