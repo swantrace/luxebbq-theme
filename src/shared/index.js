@@ -67,6 +67,13 @@ const setupStart = () => {
         }
       });
     });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.category-border .category-banner')) {
+        const link = e.target.querySelector('a');
+        if (link) link.click();
+      }
+    });
   };
 
   if (/complete|interactive|loaded/.test(document.readyState)) {

@@ -228,7 +228,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
               <div class="product-icon">
                 <div class="remove-btn">
                   <a
-                    class="action--wishlist tile-actions--btn flex"
+                    class="action--wishlist tile-actions--btn flex wishlist-remove-btn-wrapper"
                     href="#"
                     data-product-handle=${product.handle}
                     @click=${(e) => {

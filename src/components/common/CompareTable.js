@@ -105,13 +105,19 @@ function CompareTable() {
       previousProducts.filter((p) => p.handle !== product.handle)
     );
   };
+
+  const handleProductImageClicked = (product) => {
+    window.location.href = `/products/${product.handle}`;
+  };
+
   const getCellContent = (item, product) => {
-    console.log('item: ', item, '\n', 'product: ', product, '\n');
+    // console.log('item: ', item, '\n', 'product: ', product, '\n');
     switch (item.key) {
       case 'name_image': {
         return html`<div
           class="name-image-price-wrapper w-100"
           style="position: relative;"
+          @click=${() => handleProductImageClicked(product)}
         >
           <img
             class="w-100"
