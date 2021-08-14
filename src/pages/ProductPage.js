@@ -12,6 +12,10 @@ import { CompareTable, MegaMenu, setupStart } from '../shared/index';
 import RelatedProducts from '../components/productPage/RelatedProducts';
 import Specifications from '../components/productPage/Specifications';
 import useProductType from '../productTypes';
+import {
+  compareTwoStringsOrArrays,
+  getTypeUsedInRelatedProductsFromProductType,
+} from '../shared/helpers';
 
 function ProductPage({
   productJson,
@@ -34,10 +38,7 @@ function ProductPage({
               STOCK</span
             >`
           : product.available
-          ? html`<span class="instock-lable"
-              ><i class="fa fa-check-circle" aria-hidden="true"></i>PRE
-              ORDER</span
-            >`
+          ? html`<span class="preorder-lable">PREORDER</span>`
           : html`<span class="outofstock-lable">OUT OF STOCK</span>`,
     },
     ...product.tags
@@ -97,16 +98,131 @@ function ProductPage({
     );
   }, []);
 
+  console.log('product: ', product);
+  console.log('allProducts: ', allProducts);
+  const typeName = getTypeUsedInRelatedProductsFromProductType(product.type);
+  // console.log('product.tags: ', product.tags, '\n');
+  // console.log('typeName: ', typeName, '\n');
   const sorter = (a, b) => {
     let compareResult = 0;
     similar.forEach((t, idx) => {
       switch (t) {
+        // case 'collection': {
+        //   if (a.productType !== b.productType) {
+        //     if (product.type === a.productType) {
+        //       compareResult += (10 - idx) * -100;
+        //     }
+        //     if (product.type === b.productType) {
+        //       compareResult += (10 - idx) * 100;
+        //     }
+        //   }
+        //   break;
+        // }
+        // case 'type': {
+        //   if (
+        //     !compareTwoStringsOrArrays(a?.[typeName] ?? '', b?.[typeName] ?? '')
+        //   ) {
+        //     const aType = a?.[typeName];
+        //     const bType = b?.[typeName];
+        //     console.log('aType: ', aType, '\n');
+        //     console.log('bType: ', bType, '\n');
+        //     if (
+        //       product.tags.some(
+        //         (tag) =>
+        //           (typeof aType === 'string' &&
+        //             aType !== '' &&
+        //             tag.includes(aType)) ||
+        //           (typeof aType.some === 'function' &&
+        //             aType.some((type) => tag.includes(type)))
+        //       )
+        //     ) {
+        //       compareResult += (10 - idx) * -1000;
+        //     }
+        //     if (
+        //       product.tags.some(
+        //         (tag) =>
+        //           (typeof bType === 'string' &&
+        //             bType !== '' &&
+        //             tag.includes(bType)) ||
+        //           (typeof bType.some === 'function' &&
+        //             bType.some((type) => tag.includes(type)))
+        //       )
+        //     ) {
+        //       compareResult += (10 - idx) * 1000;
+        //     }
+        //   }
+        //   break;
+        // }
+        case 'price50': {
+          compareResult +=
+            (10 - idx) *
+            (Math.abs(product.price / 100 - a.minVariantPrice) -
+              Math.abs(product.price / 100 - b.minVariantPrice));
+          break;
+        }
+        // case 'brand': {
+        //   compareResult +=
+        //     (10 - idx) *
+        //     (Math.abs(product.vendor.localeCompare(a.brand)) -
+        //       Math.abs(product.vendor.localeCompare(b.brand))) *
+        //     100;
+        //   break;
+        // }
+        default:
+          break;
+      }
+    });
+    return compareResult;
+  };
+
+  const sorter2 = (a, b) => {
+    let compareResult = 0;
+    similar.forEach((t, idx) => {
+      switch (t) {
         case 'collection': {
-          compareResult += (10 - idx) * 0;
+          if (a.productType !== b.productType) {
+            if (product.type === a.productType) {
+              compareResult += (10 - idx) * -100;
+            }
+            if (product.type === b.productType) {
+              compareResult += (10 - idx) * 100;
+            }
+          }
           break;
         }
         case 'type': {
-          compareResult += (10 - idx) * 0;
+          if (
+            !compareTwoStringsOrArrays(a?.[typeName] ?? '', b?.[typeName] ?? '')
+          ) {
+            const aType = a?.[typeName];
+            const bType = b?.[typeName];
+            console.log('aType: ', aType, '\n');
+            console.log('bType: ', bType, '\n');
+            if (
+              product.tags.some(
+                (tag) =>
+                  (typeof aType === 'string' &&
+                    aType !== '' &&
+                    tag.includes(aType)) ||
+                  (typeof aType.some === 'function' &&
+                    aType.some((type) => tag.includes(type)))
+              )
+            ) {
+              compareResult += (10 - idx) * -1000;
+            }
+            if (
+              product.tags.some(
+                (tag) =>
+                  (typeof bType === 'string' &&
+                    bType !== '' &&
+                    tag.includes(bType)) ||
+                  (typeof bType.some === 'function' &&
+                    bType.some((type) => tag.includes(type)))
+              )
+            ) {
+              compareResult += (10 - idx) * 1000;
+            }
+          }
           break;
         }
         case 'price50': {
@@ -131,19 +247,42 @@ function ProductPage({
     return compareResult;
   };
 
-  const filterFunc = (p) =>
+  const filterFunc = (p) => {
+    const type = p?.[typeName];
+    console.log('type: ', type);
+    return (
+      p.title !== product.title &&
+      product.tags.some(
+        (tag) =>
+          (typeof type === 'string' && type !== '' && tag.includes(type)) ||
+          (typeof type.some === 'function' && type.some((t) => tag.includes(t)))
+      ) &&
+      p.brand === product.vendor &&
+      ((p.productType !== 'Barbeques' &&
+        Math.abs(p.minVariantPrice - product.price / 100) /
+          (product.price / 100) <=
+          0.3) ||
+        (p.productType === 'Barbeques' &&
+          Math.abs(p.minVariantPrice - product.price / 100) <= 500))
+    );
+  };
+
+  const filterFunc2 = (p) =>
     p.title !== product.title &&
     ((p.productType !== 'Barbeques' &&
       Math.abs(p.minVariantPrice - product.price / 100) /
         (product.price / 100) <=
         0.3) ||
       (p.productType === 'Barbeques' &&
-        Math.abs(p.minVariantPrice - product.price / 100) <= 600));
+        Math.abs(p.minVariantPrice - product.price / 100) <= 500));
 
-  const relatedProducts = allProducts
-    .sort(sorter)
-    .filter(filterFunc)
-    .slice(0, 10);
+  const relatedProducts = useMemo(() => {
+    let similarProducts = allProducts.filter(filterFunc).sort(sorter);
+    if (similarProducts.length === 0) {
+      similarProducts = allProducts.filter(filterFunc2).sort(sorter2);
+    }
+    return similarProducts.slice(0, 10);
+  }, [allProducts]);
 
   return html`${product.type === 'Barbeques'
       ? html`<section

@@ -73,6 +73,27 @@ const setupStart = () => {
         const link = e.target.querySelector('a');
         if (link) link.click();
       }
+
+      if (e.target.closest('button.checkout[type="submit"][name="checkout"]')) {
+        console.log(e.target);
+        window.location.href = '/checkout';
+      }
+
+      if (e.target.closest('#drinkware-and-cooler-types .form-control-input')) {
+        const colourInputs = e.target
+          .closest('.collection-filter-block')
+          .querySelectorAll('#colours input');
+        colourInputs.forEach((input) => {
+          if (input.checked) {
+            const event = new MouseEvent('click', {
+              view: window,
+              bubbles: true,
+              cancelable: true,
+            });
+            input.dispatchEvent(event);
+          }
+        });
+      }
     });
   };
 

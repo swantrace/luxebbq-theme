@@ -41,10 +41,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
                 >INSTOCK</span
               >`
             : rawProduct.availableForSale
-            ? html`<span class="instock-lable"
-                ><i class="fa fa-check-circle" aria-hidden="true"></i
-                >PREORDER</span
-              >`
+            ? html`<span class="preorder-lable">PREORDER</span>`
             : html`<span class="outofstock-lable"
                 ><i class="fa fa-ban" aria-hidden="true"></i>OUT OF STOCK</span
               >`,

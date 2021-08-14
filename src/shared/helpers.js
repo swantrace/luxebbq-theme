@@ -319,3 +319,31 @@ export const arrayIncludesItem = (arr, item) =>
       .toLowerCase()
       .includes(item?.replace(/\s/g, '')?.toLowerCase())
   );
+
+export const compareTwoStringsOrArrays = (a, b) =>
+  a.length === b.length &&
+  Array.from(a).every((e) => Array.from(b).includes(e)) &&
+  Array.from(b).every((e) => Array.from(a).includes(e));
+
+export const getTypeUsedInRelatedProductsFromProductType = (type) => {
+  switch (type) {
+    case 'Barbeques':
+      return 'cookTypes';
+    case 'Grilling Accessories':
+      return 'grillingAccessoriesType';
+    case 'Lifestyle Accessories':
+      return 'lifestyleAccessoriesType';
+    case 'Drinkware & Coolers':
+      return 'drinkwareAndCoolersType';
+    case 'Fuel':
+      return 'fuelType';
+    case 'Parts':
+      return 'partsType';
+    case 'Sauces, Rubs & Spices':
+      return 'foodType';
+    case 'Furniture':
+      return 'furnitureType';
+    default:
+      return 'cookType';
+  }
+};

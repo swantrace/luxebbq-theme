@@ -113,7 +113,7 @@ const Specifications = virtual(({ specificationList, description }) => {
         </table>
       </div>
     </div>
-    <div class="row">
+    <div class="row product-description-wrapper">
       <div class="col">${unsafeHTML(cleanedDescription)}</div>
     </div>
   </div>`;

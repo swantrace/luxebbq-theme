@@ -54,6 +54,8 @@ function ProductTypeCollection({
     initialValueFilterKeyPairs,
   });
 
+  console.log('initialState: ', initialState);
+
   const [state, dispatch] = useReducer(
     CurrentProductTypeClass.reducer,
     initialState

@@ -64,9 +64,7 @@ function CompareTable() {
             ><i class="fa fa-check-circle" aria-hidden="true"></i>INSTOCK</span
           >`
         : product.available
-        ? html`<span class="instock-lable"
-            ><i class="fa fa-check-circle" aria-hidden="true"></i>PREORDER</span
-          >`
+        ? html`<span class="preorder-lable">PREORDER</span>`
         : html`<span class="outofstock-lable"
             ><i class="fa fa-ban" aria-hidden="true"></i>OUT OF STOCK</span
           >`;
@@ -94,7 +92,8 @@ function CompareTable() {
     { label: 'Sear Functionality', key: 'sear-functionality' },
     { label: 'Action', key: 'action' },
   ];
-  const handleRemoveIconClicked = (product) => {
+  const handleRemoveIconClicked = (product, event) => {
+    event.stopPropagation();
     const newCompareProducts = pickBy(
       currentCompareProducts,
       (value) => value !== product.handle
@@ -129,7 +128,7 @@ function CompareTable() {
           <i
             class="fa fa-close"
             style="position: absolute; right: 0; top: 0; cursor: pointer;"
-            @click=${() => handleRemoveIconClicked(product)}
+            @click=${(event) => handleRemoveIconClicked(product, event)}
           ></i>
         </div>`;
       }
@@ -144,9 +143,7 @@ function CompareTable() {
           : null}`;
       }
       default: {
-        return !product?.[item.key]
-          ? ''
-          : Array.isArray(product[item.key])
+        return Array.isArray(product[item.key])
           ? product[item.key].join(', ')
           : product[item.key] === true
           ? 'Yes'

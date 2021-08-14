@@ -20,6 +20,7 @@ function ProductTypeSidebar() {
   };
   const handleSelectedOptionsChanged = (option, filter, e) => {
     const input = e.target;
+    console.log('input: ', input);
     if (input.checked) {
       dispatch({
         type: filter.actionType,
