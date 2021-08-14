@@ -8,7 +8,28 @@ const filters = [{
     type: "SearchInput",
     info: [],
     selected: params?.['searchString'] ?? ""
-}, {
+}, 
+{
+    stateKey: "selectedGrillingAccessoriesTypes",
+    actionType: "changeGrillingAccessoriesTypes",
+    title: "Grilling Accessories Types",
+    type: "SimpleFilter",
+    info: [
+        "BBQ Tools",
+        "Cleaning & Maintenance",
+        "Cookware",
+        "Covers",
+        "Disposable Pans",
+        'Pizza Tools',
+        'Pizza Peels',
+        "Rotisseries",
+        "Smoking Accessories",
+        "Textiles",
+        "Thermometers",
+    ],
+    selected: params?.['selectedGrillingAccessoriesTypes'] ?? []
+}, 
+{
     stateKey: "selectedBrands",
     actionType: "changeBrands",
     title: "Brands",
@@ -62,28 +83,55 @@ const filters = [{
         "Yeti", 
         "Yoder Smokers"    
     ],
-    selected: params?.['selectedBrands'] ?? []
+    selected: params?.['selectedBrands'] ?? [],
+    hide: [      
+        "Bradley",  
+        "Broil King",  
+        "Bulldog",  
+        "Cookina",  
+        "Fireboad",  
+        "Flame Boss",  
+        "Flammers",  
+        "Fornetto",  
+        "GI Metal",  
+        "Grill Floss",  
+        "Grill Grate",  
+        "Grill Pro",  
+        "Hardcore Carnivore",  
+        "Ice Shaker",  
+        "Ireuse2",  
+        "Island Grillstone",  
+        "Jealous Devil",  
+        "Kamado Joe",  
+        "Kick Ash",  
+        "Kindling Cracker",  
+        "La Piazza",  
+        "Lodge",  
+        "Looft Lighter",  
+        "Louisiana Grills",  
+        "Master Built",  
+        "Mopeka",  
+        "Napoleon",  
+        "Napoleon Gourmet Grills",  
+        "Ooni",  
+        "Pit Barrel",  
+        "Pit Boss",  
+        "PK Grills",  
+        "RTE 83",  
+        "Shun",  
+        "Smokeware",  
+        "The Rib-o-lator",  
+        "Thermoworks",  
+        "Traeger",  
+        "VSSL",  
+        "VSSL.",  
+        "Weber",  
+        "Yeti", 
+        "Yoder Smokers"
+    ]
 }, 
-{
-    stateKey: "selectedGrillingAccessoriesTypes",
-    actionType: "changeGrillingAccessoriesTypes",
-    title: "Grilling Accessories Types",
-    type: "SimpleFilter",
-    info: [
-        "BBQ Tools",
-        "Cleaning & Maintenance",
-        "Cookware",
-        "Covers",
-        "Disposable Pans",
-        'Pizza Tools',
-        'Pizza Peels',
-        "Rotisseries",
-        "Smoking Accessories",
-        "Textiles",
-        "Thermometers",
-    ],
-    selected: params?.['selectedGrillingAccessoriesTypes'] ?? []
-}, ]
+
+]
 
 
 const pelement = document.createElement('product-type-collection');

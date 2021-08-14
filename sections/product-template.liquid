@@ -135,6 +135,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% else %}
                       <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
                       {% endif %}
@@ -148,6 +149,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% endif %}
                       {% else  %}
                       <h4>
@@ -157,6 +159,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% endif %}
 
                       <div id="sold-out" class="sold_notify_form">
@@ -401,6 +404,7 @@
 {% capture i %}{{ total | plus:variant.inventory_quantity }}{%endcapture%}
 {% assign totalInventory = i %}
 {%endfor%}
+
 <product-page
   class="dtm"
   product-total-inventory="{{totalInventory}}"
@@ -594,6 +598,7 @@ document.addEventListener('scriptJSLoaded', function () {
       // selected a valid variant
       jQuery('#addtocart_btn_id').removeClass('disabled').removeAttr('disabled');
       jQuery('#product_price').html(Shopify.formatMoney(variant.price, shop_curr));
+      jQuery('#product_sku').html(`sku #: ${variant.sku}`);
       jQuery('#product_compare_price').html(Shopify.formatMoney(variant.compare_at_price, shop_curr));
       var var_title = variant.title;
       jQuery('.pro_sku span').text(variant.sku);

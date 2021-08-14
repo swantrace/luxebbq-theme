@@ -3541,7 +3541,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 80px 0px",
-          "title": "More Collections",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": false,
           "image_ratio": "ratio1_2",
@@ -3670,7 +3670,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 80px 0px",
-          "title": "Matching GRILLS",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": false,
           "image_ratio": "ratio_landscape",
@@ -3779,7 +3779,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 80px 0px",
-          "title": "Matching Grills",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": true,
           "image_ratio": "ratio_landscape",
@@ -3854,7 +3854,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 80px 0px",
-          "title": "MATCHING GRILLS",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": true,
           "image_ratio": "ratio_landscape",
@@ -3960,7 +3960,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
-          "title": "More Collections",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": true,
           "image_ratio": "ratio_landscape",
@@ -4062,7 +4062,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
-          "title": "More Collections",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": true,
           "image_ratio": "ratio_landscape",
@@ -4137,7 +4137,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
-          "title": "More Collections",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": true,
           "image_ratio": "ratio_landscape",
@@ -4217,7 +4217,7 @@
         "settings": {
           "enabled": true,
           "section_padding": "0px 0px 0px 0px",
-          "title": "More Collections",
+          "title": "Popular Brands",
           "title_color": "#fb711c",
           "use_equal_height": true,
           "image_ratio": "ratio_landscape",
