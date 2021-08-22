@@ -108,14 +108,56 @@ endcapture %}
 {% endif %}
 <!-- About section  end -->
 
-{% schema %} { "name": "Featured Brands & INS", "settings": [ {
-"type":"checkbox", "id":"enabled", "label":"Enabled", "default":true }, {
-"type": "text", "id": "section_padding", "label": "Padding", "default": "0px 0px
-0px 0px" }, { "type": "image_picker", "id": "image", "label": "Image", "info":
-"Will be scaled down 350x340" }, { "type": "text", "id": "title", "label": "left
-column title", "default": "FEATURED BRANDS" }, { "type": "text", "id": "title2",
-"label": "Right column title", "default": "LUXE BBQ INSTAGRAM" }, {
-"type":"color", "id":"title_color", "label":"Title color", "default":"#fb711c" }
-], "presets":[ { "name":"Featured Brands & INS", "category":"DTM" } ] } {%
-endschema %} {% stylesheet %} {% endstylesheet %} {% javascript %} {%
-endjavascript %}
+{% schema %} 
+{ 
+  "name": "Featured Brands & INS", 
+  "settings": [ 
+    {
+      "type":"checkbox", 
+      "id":"enabled", 
+      "label":"Enabled", 
+      "default":true 
+    }, 
+    {
+      "type": "text", 
+      "id": "section_padding", 
+      "label": "Padding", 
+      "default": "0px 0px 0px 0px" 
+    }, 
+    { 
+      "type": "image_picker", 
+      "id": "image", 
+      "label": "Image", 
+      "info": "Will be scaled down 350x340" 
+    }, 
+    { 
+      "type": "text", 
+      "id": "title", 
+      "label": "left column title", 
+      "default": "FEATURED BRANDS" 
+    }, 
+    { 
+      "type": "text", 
+      "id": "title2",
+      "label": "Right column title", 
+      "default": "LUXE BBQ INSTAGRAM" 
+    }, 
+    {
+      "type":"color", 
+      "id":"title_color", 
+      "label":"Title color", 
+      "default":"#fb711c" 
+    }
+  ], 
+  "presets":[ 
+    { 
+      "name":"Featured Brands & INS", 
+      "category":"DTM" 
+    }
+  ] 
+} 
+{% endschema %} 
+{% stylesheet %} 
+{% endstylesheet %} 
+{% javascript %} 
+{% endjavascript %}
