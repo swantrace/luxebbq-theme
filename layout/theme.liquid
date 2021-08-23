@@ -2,13 +2,7 @@
 <html lang="en">
   <head>
     <script src="//unpkg.com/@ungap/custom-elements"></script>
-    <script>
-      window.addEventListener('load', () => {
-        if(location.pathname === "/challenge") {
-          document.body.hidden = false;
-        }
-      });
-    </script>
+    <script src="{{ 'beforeAnything.js' | asset_url }}"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">

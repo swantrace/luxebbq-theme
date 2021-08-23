@@ -1,9 +1,9 @@
 import { html, virtual } from '@apollo-elements/haunted';
 
 const PerfectGrillAvailabilitySelector = virtual(
-  ({ availability, handleAvailabilityChanged }) => {
-    console.log(availability, handleAvailabilityChanged);
-    return html`<div class="form-check form-check-inline">
+  ({ availability, handleAvailabilityChanged }) =>
+    // console.log(availability, handleAvailabilityChanged);
+    html`<div class="form-check form-check-inline">
         <input
           class="form-check-input"
           type="radio"
@@ -35,8 +35,7 @@ const PerfectGrillAvailabilitySelector = virtual(
           }}
         />
         <label class="form-check-label" for="in-stock">In Stock Only</label>
-      </div>`;
-  }
+      </div>`
 );
 
 export default PerfectGrillAvailabilitySelector;

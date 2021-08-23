@@ -177,8 +177,9 @@ export const queryAllProductsThroughGraphqlCreator = ({
   productTypes = [],
 } = {}) => {
   let products = [];
-  const query250Products = (dataWithLastPageProducts) =>
-    window.__APOLLO_CLIENT__
+  const query250Products = (dataWithLastPageProducts) => {
+    console.log('dataWithLastPageProducts: ', dataWithLastPageProducts);
+    return window.__APOLLO_CLIENT__
       .query({
         query: GET_PRODUCTS,
         variables: {
@@ -200,6 +201,7 @@ export const queryAllProductsThroughGraphqlCreator = ({
         }
         return query250Products(data);
       });
+  };
   return query250Products;
 };
 

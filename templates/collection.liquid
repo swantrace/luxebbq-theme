@@ -10,6 +10,7 @@ window.handlesFromLiquid = [{% for product in collection.products %}{{product.ti
 {% endpaginate %}
 console.log(handlesFromLiquid);
 </script> {% endcomment %}
+
 {% if settings.enable_development_mode == true %}
 <script src="{{'ProductTypeCollection.js'|asset_url}}" type="module"></script>
 {% else %}

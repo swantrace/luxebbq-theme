@@ -98,7 +98,7 @@ function CompareTable() {
       currentCompareProducts,
       (value) => value !== product.handle
     );
-    console.log('newCompareProducts', newCompareProducts);
+    // console.log('newCompareProducts', newCompareProducts);
     localStorage.setItem('compare', JSON.stringify(newCompareProducts));
     setProducts((previousProducts) =>
       previousProducts.filter((p) => p.handle !== product.handle)

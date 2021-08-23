@@ -195,8 +195,7 @@
               </div>
               <div class="footer-contant">
                 <p style="color: {{ settings.footer_newsletter_text_color }};" class="py-3">Promotions, new products and sales. </p>
-                {% form 'customer', id: "mc-embedded-subscribe-form", name: "mc-embedded-subscribe-form", class: "validate" %}
-                	{{ form.errors | default_errors }}
+                {% form 'customer', class: "validate" %}
                   {% if form.posted_successfully? %}
                     <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
                   {% else %}

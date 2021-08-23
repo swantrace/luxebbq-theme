@@ -44,7 +44,7 @@
             } else {
               // If we have results.
               $.each(data.search_results, function(index, item) {
-                console.log("item", item);
+                // console.log("item", item);
                 var link = $('<a></a>').attr('href', `/products/${item.handle}`);
 
                 var _name = item.title;

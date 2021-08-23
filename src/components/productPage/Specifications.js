@@ -13,13 +13,13 @@ const Specifications = virtual(({ specificationList, description }) => {
     .replace(iframeHTMLString, '')
     .replace(videoHTMLString, '');
 
-  console.log(
-    specificationList,
-    description,
-    '\n',
-    'videoHTMLString',
-    videoHTMLString
-  );
+  // console.log(
+  //   specificationList,
+  //   description,
+  //   '\n',
+  //   'videoHTMLString',
+  //   videoHTMLString
+  // );
   useEffect(() => {
     const videoWrapper = document.querySelector('#video-wrapper');
     if (iframeHTMLString !== '') {
@@ -42,7 +42,7 @@ const Specifications = virtual(({ specificationList, description }) => {
     }
   }, []);
 
-  console.log('specification list: ', specificationList);
+  // console.log('specification list: ', specificationList);
 
   const getFormattedKey = (key) => {
     const formattedKey =

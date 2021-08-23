@@ -41,7 +41,7 @@ const WishlistItem = virtual(({ product, productHandles }) => {
         true
       );
     }
-    console.log('init tooltip');
+    // console.log('init tooltip');
     window.$(`#share-button-${product.id}`).tooltip({
       html: true,
       title: () => `<div class="social-icons">

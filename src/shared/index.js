@@ -75,7 +75,7 @@ const setupStart = () => {
       }
 
       if (e.target.closest('button.checkout[type="submit"][name="checkout"]')) {
-        console.log(e.target);
+        // console.log(e.target);
         window.location.href = '/checkout';
       }
 

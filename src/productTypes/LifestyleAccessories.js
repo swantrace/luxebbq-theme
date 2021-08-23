@@ -68,10 +68,10 @@ class LifestyleAccessories extends ProductType {
 
   createFiltersFromState() {
     const { selectedLifestyleAccessoriesTypes, selectedColours } = this.state;
-    console.log(
-      'selectedLifestyleAccessoriesTypes',
-      selectedLifestyleAccessoriesTypes
-    );
+    // console.log(
+    //   'selectedLifestyleAccessoriesTypes',
+    //   selectedLifestyleAccessoriesTypes
+    // );
     const st = this.state.searchString?.trim() ?? '';
     const typeFilters =
       st !== ''

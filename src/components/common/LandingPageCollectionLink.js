@@ -3,7 +3,7 @@
 import { html } from '@apollo-elements/haunted';
 
 function LandingPageCollectionLink({ cookType, standType, bbqBrand, title }) {
-  console.log('bbqBrand: ', bbqBrand);
+  // console.log('bbqBrand: ', bbqBrand);
   const urlBase = `/collections/barbeques?`;
 
   const rules = cookType

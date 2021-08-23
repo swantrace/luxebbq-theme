@@ -136,7 +136,7 @@ class ProductType {
       productsPerPage: 24,
       pageNumber: 1,
       viewMode: 'grid',
-      onlineStoreOnly: false,
+      onlineStoreOnly: true,
       availability: ['true', 'false'],
       searchString: initialValueFilterKeyPairs?.searchString ?? '',
       selectedBrands: initialValueFilterKeyPairs?.selectedBrands ?? [],
@@ -336,7 +336,7 @@ class ProductType {
         return !!this.state.selectedBrands.includes(product.brand);
       },
       searchString: (product) => {
-        console.log('searchString filter: ', this.state.searchString);
+        // console.log('searchString filter: ', this.state.searchString);
         const processedSearchString = this.state.searchString;
 
         const complexIncludes = (stringToSearch, stringWithSpace) => {

@@ -55,13 +55,13 @@
         var data_trans = $(this).attr('data-trans');
         var data_trans_val = data_trans.replace('#', '');
         var trans_id = $(this).next().attr('id');
-        console.log(trans_id);
+        // console.log(trans_id);
         var trans_content = $(this).next().html();
         var array = trans_content.split(';;');
         $.each(array,function(i){
           var val = array[i];
           var _name = val.split(':-')[0];
-          console.log('_name', _name);
+          // console.log('_name', _name);
           var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
           var _content = val.substr(val.indexOf(":") + 1);
           var lang_content = _content.toString().replace(/"/g, "");
@@ -120,7 +120,7 @@
         $.each(array,function(i){
           var val = array[i];
           var _name = val.split(':-')[0];
-          console.log('_name', _name);
+          // console.log('_name', _name);
           var lang_name = _name.replace(/[^A-Z0-9]/ig, "");
           var _content = val.substr(val.indexOf(":") + 1);
           var lang_content = _content.toString().replace(/"/g, "");

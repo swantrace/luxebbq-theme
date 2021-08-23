@@ -78,7 +78,7 @@ class Barbeques extends ProductType {
   }
 
   static transformInitialState(raw) {
-    console.log('barbeque transformInitialState raw: ', raw);
+    // console.log('barbeque transformInitialState raw: ', raw);
     const { initialValueFilterKeyPairs, ...stateFromSuper } =
       super.transformInitialState(raw);
 

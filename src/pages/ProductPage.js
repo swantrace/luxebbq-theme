@@ -99,8 +99,8 @@ function ProductPage({
     );
   }, []);
 
-  console.log('product: ', product);
-  console.log('allProducts: ', allProducts);
+  // console.log('product: ', product);
+  // console.log('allProducts: ', allProducts);
   const typeName = getTypeUsedInRelatedProductsFromProductType(product.type);
   // console.log('product.tags: ', product.tags, '\n');
   // console.log('typeName: ', typeName, '\n');
@@ -178,7 +178,7 @@ function ProductPage({
 
   const filterFunc = (p) => {
     const type = p?.[typeName];
-    console.log('type: ', type);
+    // console.log('type: ', type);
     return (
       p.title !== product.title &&
       product.tags.some(

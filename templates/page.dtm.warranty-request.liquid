@@ -216,7 +216,7 @@
           }
           return acc;
         }, []);
-        console.log('processedInputs', processedIputs);
+        // console.log('processedInputs', processedIputs);
         const emailInfo = {
             SecureToken: SecureToken,
             To : "frederickhong.5@gmail.com",
@@ -230,7 +230,7 @@
               }
             })
         };
-        console.log(emailInfo.Attachments);
+        // console.log(emailInfo.Attachments);
 
         Email?.send(emailInfo).then((message) => {
           if(message.toLowerCase() === 'ok'){
