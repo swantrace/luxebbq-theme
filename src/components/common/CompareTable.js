@@ -84,8 +84,8 @@ function CompareTable() {
     { label: 'Grill Type', key: 'cook-type' },
     { label: 'Total BTU', key: 'total-btu' },
     { label: 'Cooking Temperature Range', key: 'cooking-temperature-range' },
-    { label: 'Total Grill Size', key: 'total-grill-size' },
-    { label: 'Primary Cooking Space', key: 'primary-cooking-space' },
+    { label: 'Total Grill Size (Sq In)', key: 'total-grill-size' },
+    { label: 'Primary Cooking Space (Sq In)', key: 'primary-cooking-space' },
     { label: 'Number of racks ', key: 'number-of-racks' },
     { label: 'Rear Rotisserie Burner', key: 'rear-rotisserie-burner' },
     { label: 'Side Burner ', key: 'side-burner' },
@@ -181,7 +181,7 @@ function CompareTable() {
                             width="${90 / products.length}%"
                             class="${product.handle}-${item.key}${item.key !==
                               'name-image' && item.key !== 'description'
-                              ? ' text-center'
+                              ? ' text-center align-middle'
                               : ''}"
                           >
                             ${getCellContent(item, product)}

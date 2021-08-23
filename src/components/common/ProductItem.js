@@ -72,7 +72,7 @@ const ProductItem = virtual(
           <h6 itemprop="name">${product.title}</h6>
         </a>
         <h4 data-id="6592390725789" data-price=${product.minVariantPrice}>
-          $${product.minVariantPrice}
+          $${product.minVariantPrice.toFixed(2)}
         </h4>
       </div>
     </div>`

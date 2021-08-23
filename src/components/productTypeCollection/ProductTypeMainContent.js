@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { html, useEffect, useRef } from '@apollo-elements/haunted';
 import { usePageContext } from '../../shared/context';
 import Pagination from '../common/Pagination';
@@ -17,13 +18,8 @@ function ProductTypeMainContent({ displaySidebarToggler = true }) {
     state,
     dispatch,
   } = usePageContext();
-  const {
-    fetchIsFinished,
-    viewMode,
-    sortValue,
-    productsPerPage,
-    pageNumber,
-  } = state;
+  const { fetchIsFinished, viewMode, sortValue, productsPerPage, pageNumber } =
+    state;
   const searchedProducts = getFilteredSortedProducts();
   const productsSize = searchedProducts.length;
   let productsOfCurrentPage = [];
@@ -56,6 +52,7 @@ function ProductTypeMainContent({ displaySidebarToggler = true }) {
       return;
     }
     dispatch({ type: 'changePageNumber', payload: number });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   // console.log('collectionTitle', collectionTitle);
 

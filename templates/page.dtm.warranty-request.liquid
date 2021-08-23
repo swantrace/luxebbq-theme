@@ -122,7 +122,14 @@
 <script>
   (() => {
 
-    const SecureToken = '9eb6daa9-5e78-403f-9420-ca94c2d6b532';
+    // zdn's
+    // const SecureToken = '9eb6daa9-5e78-403f-9420-ca94c2d6b532';
+    // website@luxebbq.ca 
+    // const SecureToken = '58e390ce-2f27-4836-8c8b-1328ba9d84b0';
+
+    // dev's 
+    const SecureToken = 'b5b23f8e-8c16-45eb-9d76-6b297f43d1e5'; 
+
 
     const convertImageFileToDataUrl = (input) => {
 
@@ -212,8 +219,8 @@
         console.log('processedInputs', processedIputs);
         const emailInfo = {
             SecureToken: SecureToken,
-            To : "zdn.zhang@gmail.com",
-            From : "zdn.zhang@gmail.com",
+            To : "frederickhong.5@gmail.com",
+            From : "luxebbq.dev@gmail.com",
             Subject : "Warranty request from submit",
             Body : `<ul>${processedIputs.filter(i => i.type !== 'file').map(i => `<li>${i.name}: ${i.value}</li>`)}</ul>`,
             Attachments: processedIputs.filter(i => i.type === 'file').map(i => {

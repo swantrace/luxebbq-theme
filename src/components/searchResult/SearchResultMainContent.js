@@ -7,12 +7,8 @@ import Products from '../common/Products';
 import { getDisplayedPageNumbers, productsSorter } from '../../shared/helpers';
 
 function SearchResultMainContent() {
-  const {
-    productsOfFirstPage,
-    state,
-    dispatch,
-    emptyCollectionImage,
-  } = usePageContext();
+  const { productsOfFirstPage, state, dispatch, emptyCollectionImage } =
+    usePageContext();
   const {
     allProducts,
     fetchIsFinished,
@@ -56,6 +52,7 @@ function SearchResultMainContent() {
       return;
     }
     dispatch({ type: 'changePageNumber', payload: number });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return html`${TopControllers({

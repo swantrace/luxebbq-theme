@@ -180,6 +180,12 @@
                 <td {% if settings.enable_lang_switcher %}data-trans-key="cart.general.total"{%endif%}>{{ 'cart.general.total' | t }}</td>
                 <td><h2> {{ cart.total_price | money }} </h2></td>
               </tr>
+              <tr id="payright-wrapper">
+                <td colspan="2" style="padding-right: 45px;">
+                  <script id="paybright" src=" https://app.paybright.com/api/shopify.js?public_key=dkJXwWqz9jq7SkVXCjQuuuTcqJyCD873ctxfND8VymHTHX8UZu&financedamount=${{ cart.total_price | divided_by: 100.00 | round: 2 }}"></script>
+                  <div id="paybright-widget-container"></div> 
+                </td>
+              </tr>
             </tfoot>
           </table>
         </form>

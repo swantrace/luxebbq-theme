@@ -54,7 +54,7 @@
 
                 link.append('<span class="thumbnail" style="height: 100%; width: 90px;"><img src="' + item.featured_image + '" style="height: 100%;width: 80px;"/></span>');
                 link.append('<p class="title"><span class="lang_trans" data-trans="#'+_id+'_pro_title">' + _name_default + '</span><span class="hide" id="'+_id+'_pro_title">'+_name_json+'</span></p>');
-                link.append('<span class="price">$' + item.price + '</span>');
+                link.append('<span class="price">$' + ((item.price)/100).toFixed(2) + '</span>');
                 link.wrap('<li></li>');
                 resultsList.append(link.parent());
               });

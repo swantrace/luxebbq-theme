@@ -44,37 +44,37 @@
     <div class="row">
       <div class="col-sm-12">
 
-        {% form 'contact', class: 'theme-form' %}
+        {% form 'contact', class: 'theme-form contact-form' %}
 
-        {% if form.posted_successfully? %}
-        <p class="alert alert-success">
-          {{ 'contact.form.post_success' | t }}
-        </p>
-        {% endif %}
+          {% if form.posted_successfully? %}
+            <p class="alert alert-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+          {% endif %}
 
-        {{ form.errors | default_errors }}
+          {{ form.errors | default_errors }}
 
-        <div class="form-row">
-          <div class="col-md-6">
-            <label for="name" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.name"{%endif%}>{{ 'contact.form.name' | t }}</label>
-            <input type="text" class="form-control" placeholder="{{ 'contact.form.name' | t }}" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="">
+          <div class="form-row">
+            <div class="col-md-6">
+              <label for="name" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.name"{%endif%}>{{ 'contact.form.name' | t }}</label>
+              <input type="text" class="form-control" placeholder="{{ 'contact.form.name' | t }}" id="ContactFormName" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="">
+            </div>
+            <div class="col-md-6">
+              <label for="email" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.email"{%endif%}>{{ 'contact.form.email' | t }}</label>
+              <input type="email" required="" class="form-control" placeholder="{{ 'contact.form.email' | t }}" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+            </div>
+            <div class="col-md-12">
+              <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.phone"{%endif%}>{{ 'contact.form.phone' | t }}</label>
+              <input type="tel" class="form-control" placeholder="{{ 'contact.form.phone' | t }}" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" required="">
+            </div>
+            <div class="col-md-12">
+              <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.message"{%endif%}>{{ 'contact.form.message' | t }}</label>
+              <textarea class="form-control" placeholder="{{ 'contact.form.message' | t }}" id="ContactFormMessage" name="contact[body]" rows="6"></textarea>
+            </div>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.submit"{%endif%}>{{ 'contact.form.submit' | t }}</button>
+            </div>
           </div>
-          <div class="col-md-6">
-            <label for="email" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.email"{%endif%}>{{ 'contact.form.email' | t }}</label>
-            <input type="email" required="" class="form-control" placeholder="{{ 'contact.form.email' | t }}" id="ContactFormEmail" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
-          </div>
-          <div class="col-md-12">
-            <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.phone"{%endif%}>{{ 'contact.form.phone' | t }}</label>
-            <input type="tel" class="form-control" placeholder="{{ 'contact.form.phone' | t }}" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" required="">
-          </div>
-          <div class="col-md-12">
-            <label for="review" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.message"{%endif%}>{{ 'contact.form.message' | t }}</label>
-            <textarea class="form-control" placeholder="{{ 'contact.form.message' | t }}" id="ContactFormMessage" name="contact[body]" rows="6"></textarea>
-          </div>
-          <div class="col-md-12">
-            <button id="submit" class="btn btn-solid" name="submit" {% if settings.enable_lang_switcher %}data-trans-key="contact.form.submit"{%endif%}>{{ 'contact.form.submit' | t }}</button>
-          </div>
-        </div>
         {% endform %}
 
       </div>

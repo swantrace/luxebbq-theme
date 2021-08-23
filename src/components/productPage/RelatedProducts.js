@@ -11,6 +11,11 @@ const RelatedProducts = virtual(({ relatedProducts, fetchIsFinished }) => {
       }
     }
   }, [relatedProducts]);
+
+  if (fetchIsFinished && relatedProducts.length === 0) {
+    return null;
+  }
+
   return html`<div class="container">
     <div class="row">
       <div class="col">

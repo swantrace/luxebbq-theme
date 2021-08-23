@@ -336,21 +336,31 @@ class ProductType {
         return !!this.state.selectedBrands.includes(product.brand);
       },
       searchString: (product) => {
+        console.log('searchString filter: ', this.state.searchString);
+        const processedSearchString = this.state.searchString;
+
+        const complexIncludes = (stringToSearch, stringWithSpace) => {
+          const arr = stringWithSpace.split(' ');
+          return arr.every((str) => stringToSearch.includes(str));
+        };
+
         if (this.state.searchString.length === 0) {
           return true;
         }
         if (
-          this.state.searchString.length > 0 &&
-          (product.title
-            .toLowerCase()
-            .includes(this.state.searchString.toLowerCase()) ||
-            product.tags
-              .join(' ')
-              .toLowerCase()
-              .includes(this.state.searchString.toLowerCase()) ||
-            product.description
-              .toLowerCase()
-              .includes(this.state.searchString.toLowerCase()))
+          (this.state.searchString.length > 0 &&
+            complexIncludes(
+              product.title.toLowerCase(),
+              processedSearchString.toLowerCase()
+            )) ||
+          complexIncludes(
+            product.tags.join(' ').toLowerCase(),
+            processedSearchString.toLowerCase()
+          ) ||
+          complexIncludes(
+            product.description.toLowerCase(),
+            processedSearchString.toLowerCase()
+          )
         ) {
           return true;
         }

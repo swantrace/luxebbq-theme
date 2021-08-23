@@ -1,4 +1,5 @@
-import { html } from '@apollo-elements/haunted';
+import { html, useCallback } from '@apollo-elements/haunted';
+import debounce from 'lodash.debounce';
 import { usePageContext } from '../../shared/context';
 import SidebarCheckbox from './SidebarCheckbox';
 import SidebarNestedFilter from './SidebarNestedFilter';
@@ -12,12 +13,16 @@ function ProductTypeSidebar() {
     usePageContext();
   // console.log('state', state);
   const { fetchIsFinished, searchString } = state;
-  const handleSearchStringChanged = (filter, e) => {
-    dispatch({
-      type: filter.actionType,
-      payload: e.target.value,
-    });
-  };
+  const handleSearchStringChanged = useCallback(
+    debounce((filter, e) => {
+      const payload = e.target.value;
+      dispatch({
+        type: filter.actionType,
+        payload,
+      });
+    }, 300),
+    []
+  );
   const handleSelectedOptionsChanged = (option, filter, e) => {
     const input = e.target;
     console.log('input: ', input);
@@ -93,12 +98,15 @@ function ProductTypeSidebar() {
       });
     }
   };
-  const handleValueUpdated = (filter, e) => {
-    dispatch({
-      type: filter.actionType,
-      payload: [e.target.valueMin, e.target.valueMax],
-    });
-  };
+  const handleValueUpdated = useCallback(
+    debounce((filter, e) => {
+      dispatch({
+        type: filter.actionType,
+        payload: [e.target.valueMin, e.target.valueMax],
+      });
+    }, 300),
+    []
+  );
   const handleCheckboxInputChanged = (filter, e) => {
     dispatch({
       type: filter.actionType,

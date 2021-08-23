@@ -58,7 +58,7 @@ pelement.setAttribute('all-filters', JSON.stringify(filters));
 pelement.setAttribute('class', 'dtm dtm-product-type-collection');
 pelement.setAttribute('product-type', {{collection.all_types|first|json}});
 pelement.setAttribute('default-sort-by', {{collection.default_sort_by|json}});
-pelement.setAttribute('collection-title', "Rubs & Sources");
+pelement.setAttribute('collection-title', "Rubs & Sauces");
 pelement.setAttribute('collection-metafield', JSON.stringify({{collection.metafields.dtm.info|json}}));
 pelement.setAttribute('empty-collection-image', {{"empty-collection.png"|asset_url|json}});
 document.currentScript.parentNode.insertBefore(pelement, document.currentScript);
@@ -67,7 +67,7 @@ document.addEventListener('stateChanged', getStateChangeHandler(filters.map(f =>
 </script>
 {% schema %}
 {
-  "name": "Rubs & Sources",
+  "name": "Rubs & Sauces",
   "class": "dtm-collection-section dtm-barbeques-collection-section dtm-product-type-collection-section",
   "settings": []
 }

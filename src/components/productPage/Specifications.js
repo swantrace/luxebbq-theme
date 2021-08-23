@@ -43,6 +43,31 @@ const Specifications = virtual(({ specificationList, description }) => {
   }, []);
 
   console.log('specification list: ', specificationList);
+
+  const getFormattedKey = (key) => {
+    const formattedKey =
+      key === 'Cook Type'
+        ? 'Grill Type'
+        : key === 'Grill Type'
+        ? 'Grill Plates'
+        : key === 'Primary Cooking Space' || key === 'Total Grill Size'
+        ? `${key} (Sq In)`
+        : key;
+    return formattedKey;
+  };
+
+  const getFormattedValue = (value) => {
+    const formattedValue = Array.isArray(value)
+      ? value.map(
+          (line, idx) =>
+            html`${idx < value.length - 1 ? html`${line}<br />` : line}`
+        )
+      : value === true
+      ? 'Yes'
+      : value;
+    return formattedValue;
+  };
+
   return html`<div class="container">
     <div class="row mb-5">
       <div class="col">${TitleBanner({ title: 'SPECIFICATIONS' })}</div>
@@ -57,23 +82,10 @@ const Specifications = virtual(({ specificationList, description }) => {
                 ([key, value]) =>
                   html`<tr>
                     <th scope="row" width="30%" class="text-white">
-                      ${key === 'Cook Type'
-                        ? 'Grill Type'
-                        : key === 'Grill Type'
-                        ? 'Grill Plates'
-                        : key}
+                      ${getFormattedKey(key)}
                     </th>
-                    <td width="70%">
-                      ${Array.isArray(value)
-                        ? value.map(
-                            (line, idx) =>
-                              html`${idx < value.length - 1
-                                ? html`${line}<br />`
-                                : line}`
-                          )
-                        : value === true
-                        ? 'Yes'
-                        : value}
+                    <td width="70%" class="align-middle">
+                      ${getFormattedValue(value)}
                     </td>
                   </tr>`
               )}
@@ -89,23 +101,10 @@ const Specifications = virtual(({ specificationList, description }) => {
                 ([key, value]) =>
                   html`<tr>
                     <th scope="row" width="30%" class="text-white">
-                      ${key === 'Cook Type'
-                        ? 'Grill Type'
-                        : key === 'Grill Type'
-                        ? 'Grill Plates'
-                        : key}
+                      ${getFormattedKey(key)}
                     </th>
-                    <td width="70%">
-                      ${Array.isArray(value)
-                        ? value.map(
-                            (line, idx) =>
-                              html`${idx < value.length - 1
-                                ? html`${line}<br />`
-                                : line}`
-                          )
-                        : value === true
-                        ? 'Yes'
-                        : value}
+                    <td width="70%" class="align-middle">
+                      ${getFormattedValue(value)}
                     </td>
                   </tr>`
               )}
