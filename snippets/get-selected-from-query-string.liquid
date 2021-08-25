@@ -9,7 +9,7 @@ const params = Array.from(
   return acc;
 }, {});
 
-console.log('params: ', params);
+{% comment %} console.log('params: ', params); {% endcomment %}
 
 function getStateChangeHandler(relevantKeys) {
   return (e) => {

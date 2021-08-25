@@ -13,12 +13,14 @@ class Parts extends ProductType {
         return {
           ...stateFromSuper,
           selectedPartsType: action.payload,
+          pageNumber: 1,
         };
       }
       case 'changeMaterials': {
         return {
           ...stateFromSuper,
           selectedMaterials: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -28,8 +30,10 @@ class Parts extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedPartsType: initialValueFilterKeyPairs?.selectedPartsType ?? [],
@@ -53,6 +57,21 @@ class Parts extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      partsType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_parts-type_'))
+          ?.replace('dtm_parts-type_', '') ?? null,
+      material:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_parts-type_'))
+          ?.replace('dtm_parts-type_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       partsType:
         product.tags
           ?.find((tag) => tag.includes('dtm_parts-type_'))

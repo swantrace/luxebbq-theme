@@ -54,7 +54,7 @@ function ProductTypeCollection({
     initialValueFilterKeyPairs,
   });
 
-  console.log('initialState: ', initialState);
+  // console.log('initialState: ', initialState);
 
   const [state, dispatch] = useReducer(
     CurrentProductTypeClass.reducer,
@@ -68,10 +68,10 @@ function ProductTypeCollection({
     getFilteredSortedProductsOfCurrentPage,
     getPageCount,
     getDisplayedPageNumbers,
-  } = useMemo(
-    () => new CurrentProductTypeClass(state),
-    [state, CurrentProductTypeClass]
-  );
+  } = useMemo(() => new CurrentProductTypeClass(state), [
+    state,
+    CurrentProductTypeClass,
+  ]);
 
   const [productsOfFirstPage, setProductsOfFirstPage] = useState([]);
 

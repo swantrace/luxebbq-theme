@@ -1,9 +1,9 @@
-import slugify from 'slugify';
 import chunk from 'lodash.chunk';
 // import { useReducer } from '@apollo-elements/haunted';
 import {
   addQuotesIfNecessary,
   addslashes,
+  createSearchStringFilter,
   getDisplayedPageNumbers,
   getSortValueFromDefaultSortBy,
   GET_PRODUCTS,
@@ -21,8 +21,9 @@ class ProductType {
     this.queryAllProducts = this.queryAllProducts.bind(this);
     this.queryFirstPageProducts = this.queryFirstPageProducts.bind(this);
     this.getFilteredSortedProducts = this.getFilteredSortedProducts.bind(this);
-    this.getFilteredSortedProductsOfCurrentPage =
-      this.getFilteredSortedProductsOfCurrentPage.bind(this);
+    this.getFilteredSortedProductsOfCurrentPage = this.getFilteredSortedProductsOfCurrentPage.bind(
+      this
+    );
     this.getPageCount = this.getPageCount.bind(this);
     this.getDisplayedPageNumbers = this.getDisplayedPageNumbers.bind(this);
   }
@@ -100,18 +101,21 @@ class ProductType {
         return {
           ...previousState,
           onlineStoreOnly: action.payload,
+          pageNumber: 1,
         };
       }
       case 'changeClearance': {
         return {
           ...previousState,
           clearance: action.payload,
+          pageNumber: 1,
         };
       }
       case 'changeAvailability': {
         return {
           ...previousState,
           availability: action.payload,
+          pageNumber: 1,
         };
       }
       default:
@@ -156,33 +160,14 @@ class ProductType {
         `You cannot use an abstract function directly in ${this}`
       );
     }
-    let products = [];
-    try {
-      const productsForCurrentProductType = JSON.parse(
-        window.sessionStorage.getItem(slugify(this.name, { lower: true }))
-      );
-      products = [...productsForCurrentProductType];
-    } catch (err) {
-      const rawProducts = await queryAllProductsThroughGraphqlCreator({
-        searchString: '',
-        productTypes: [this.name],
-      })();
-      products = rawProducts.map(this.transformProductFromQuery);
-      if (
-        JSON.stringify(products).length +
-          JSON.stringify(window.sessionStorage).length <
-        5000000
-      ) {
-        window.sessionStorage.setItem(
-          slugify(this.name, { lower: true }),
-          JSON.stringify(products)
-        );
-      }
-    }
-    // console.log(
-    //   'this.transformProductFromQuery',
-    //   this.transformProductFromQuery
-    // );
+
+    const rawProducts = await queryAllProductsThroughGraphqlCreator({
+      searchString: '',
+      productTypes: [this.name],
+    });
+
+    const products = rawProducts.map(this.transformProductFromThemeQuery);
+
     return products;
   }
 
@@ -315,6 +300,55 @@ class ProductType {
     };
   }
 
+  transformProductFromThemeQuery(product) {
+    if (
+      this instanceof ProductType &&
+      this.constructor.name === 'ProductType'
+    ) {
+      return new Error(
+        `You cannot use an abstract function directly in ${this}`
+      );
+    }
+    const {
+      inStock,
+      availableForSale,
+      totalInventory,
+      onlineStoreUrl,
+      description,
+      handle,
+      images,
+      maxVariantPrice,
+      minVariantPrice,
+      tags,
+      title,
+      brand,
+      vendor,
+      productType,
+    } = product;
+
+    return {
+      availableForSale,
+      inStock,
+      totalInventory,
+      onlineStoreUrl,
+      title,
+      handle,
+      images,
+      maxVariantPrice,
+      minVariantPrice,
+      tags,
+      description,
+      vendor,
+      brand,
+      productType,
+      colour:
+        tags
+          ?.find((tag) => tag.includes('dtm_product-colour_'))
+          ?.replace('dtm_product-colour_', '') ?? null,
+      clearance: !!tags?.includes('dtm_clearance'),
+    };
+  }
+
   createFiltersFromState() {
     if (
       this instanceof ProductType &&
@@ -339,32 +373,7 @@ class ProductType {
         // console.log('searchString filter: ', this.state.searchString);
         const processedSearchString = this.state.searchString;
 
-        const complexIncludes = (stringToSearch, stringWithSpace) => {
-          const arr = stringWithSpace.split(' ');
-          return arr.every((str) => stringToSearch.includes(str));
-        };
-
-        if (this.state.searchString.length === 0) {
-          return true;
-        }
-        if (
-          (this.state.searchString.length > 0 &&
-            complexIncludes(
-              product.title.toLowerCase(),
-              processedSearchString.toLowerCase()
-            )) ||
-          complexIncludes(
-            product.tags.join(' ').toLowerCase(),
-            processedSearchString.toLowerCase()
-          ) ||
-          complexIncludes(
-            product.description.toLowerCase(),
-            processedSearchString.toLowerCase()
-          )
-        ) {
-          return true;
-        }
-        return false;
+        return createSearchStringFilter(product, processedSearchString);
       },
       colour: (product) => {
         if (!(this.state?.selectedColours ?? false)) {

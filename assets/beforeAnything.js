@@ -4,7 +4,11 @@ window.addEventListener('load', () => {
   }
 });
 
-blockScripts(['//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js']);
+blockScripts([
+  '//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
+  'upsell.js',
+]);
+
 function blockScripts(list) {
   document.createElement = (function () {
     var cached_function = document.createElement;

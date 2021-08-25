@@ -20,6 +20,7 @@ class GrillingAccessories extends ProductType {
         return {
           ...stateFromSuper,
           selectedGrillingAccessoriesTypes: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -29,8 +30,10 @@ class GrillingAccessories extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedCookTypesAndBrands:
@@ -71,9 +74,26 @@ class GrillingAccessories extends ProductType {
     return transformedProduct;
   }
 
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
+      cookTypes:
+        product.tags
+          ?.filter((tag) => tag.includes('dtm_cook-type_'))
+          ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
+      grillingAccessoriesType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_grilling-accessories-type_'))
+          ?.replace('dtm_grilling-accessories-type_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
   createFiltersFromState() {
-    const { selectedGrillingAccessoriesTypes, selectedCookTypesAndBrands } =
-      this.state;
+    const {
+      selectedGrillingAccessoriesTypes,
+      selectedCookTypesAndBrands,
+    } = this.state;
     const st = this.state.searchString?.trim() ?? '';
     const typeFilters =
       st !== ''

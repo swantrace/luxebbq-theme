@@ -50,7 +50,6 @@
     {{ 'responsive.scss.css' | asset_url | stylesheet_tag }}
 
     <link href="{{ 'dtm-custom.scss.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />  
-    {% comment %} <link href="{{ 'dtm-custom2.scss.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />   {% endcomment %}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,600;0,700;0,900;1,200;1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Courgette|Dancing+Script:400,500,600,700|Great+Vibes|Pacifico&display=swap" rel="stylesheet">
     <script>
@@ -81,7 +80,6 @@
         money_currency_format: "{{shop.money_with_currency_format}}"
       }  
     </script>
-
     {% comment %} dtm added {% endcomment %}
     {{ 'bootstrap-icon.css' | asset_url |  stylesheet_tag  }}
     {% comment %} dtm added {% endcomment %}
@@ -101,13 +99,10 @@
     <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
     <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
     {%- endif -%}
-
     {{ content_for_header }}
-    {% capture CFH %}{{ content_for_header }}{% endcapture %}
-
   </head>
 
-  <body hidden class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
+  <body hidden data-products_count="{{ shop.products_count }}" class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
     {% if settings.enable_box_layout and settings.box_layout == 'box_layout_1' and template == 'index' %}box-layout-body{% endif %}
     {% if settings.enable_box_layout and settings.box_layout == 'box_layout_2' and template == 'index' %}layout-20{% endif %}
     {% if settings.enable_rtl %} rtl{% endif %}"
@@ -273,15 +268,17 @@
     <script src="{{ 'jquery.elevatezoom.js' | asset_url }}" ></script>
     <script src="{{ 'handlebars-v4.0.5.js' | asset_url }}" ></script>
     <script src="{{ 'popper.min.js' | asset_url }}" ></script>    
-    {% comment %} <script src="{{ 'slick.js' | asset_url }}" ></script> {% endcomment %}
-    {% comment %} <script src="{{ 'menu.js' | asset_url }}" ></script> {% endcomment %}
     <script src="{{ 'bootstrap.js' | asset_url }}" ></script>
     <script src="{{ 'jquery.vide.min.js' | asset_url }}" ></script>
     <script src="{{ 'jquery.magnific-popup.js' | asset_url }}" ></script>
     <script src="{{ 'isotope.min.js' | asset_url }}" ></script>
     <script src="{{ 'plugins.js' | asset_url }}" ></script>
-    {% comment %} <script src="{{ 'script.js' | asset_url }}" ></script> {% endcomment %}
     <script src="{{ 'theme.min.js' | asset_url }}" ></script>    
+    {% comment %}
+    <script src="{{ 'slick.js' | asset_url }}" ></script>
+    <script src="{{ 'menu.js' | asset_url }}" ></script>
+    <script src="{{ 'script.js' | asset_url }}" ></script>
+    {% endcomment %}
     {% render 'load-theme-scripts-after-custom-elements-prepared' %}
     {% include 'exit-popup' %}
     {% if settings.add_to_cart_style == 'popup' %}
@@ -291,7 +288,7 @@
     {% if settings.eneble_auto_search %}
     {% include 'search-autocomplete' %}
     {% endif %}
-    {% comment %} {% include 'product-sales-popup'%} {% endcomment %}
+    {% comment %}{% include 'product-sales-popup'%}{% endcomment %}
     {% include 'product-compare' %}
     {% include 'currencies' %}
     {% include 'swatch-script' %}

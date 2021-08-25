@@ -79,8 +79,10 @@ class Barbeques extends ProductType {
 
   static transformInitialState(raw) {
     // console.log('barbeque transformInitialState raw: ', raw);
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedCookTypesAndBrands:
@@ -143,6 +145,45 @@ class Barbeques extends ProductType {
     }
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      cookTypes:
+        product.tags
+          ?.filter((tag) => tag.includes('dtm_cook-type_'))
+          ?.map((t) => t?.replace('dtm_cook-type_', '')) ?? [],
+      grillCookingArea,
+      sideBurner: !!product.tags?.includes('dtm_side-burner'),
+      searBurner: !!product.tags?.includes('dtm_sear-burner'),
+      rearRotisserie: !!product.tags?.includes('dtm_rear-rotisserie'),
+      grillType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_grill-type'))
+          ?.replace('dtm_grill-type_', '') ?? null,
+      standType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_stand-type'))
+          ?.replace('dtm_stand-type_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    let grillCookingArea = 15;
+    if (
+      product.tags?.find((tag) => tag.includes('dtm_primary-cooking-space'))
+    ) {
+      const primaryCookingSpaceTag = product.tags
+        ?.find((tag) => tag.includes('dtm_primary-cooking-space'))
+        ?.replace('dtm_primary-cooking-space_', '');
+
+      const primaryCookingSpace = Number.isNaN(
+        parseInt(primaryCookingSpaceTag, 10)
+      )
+        ? 240
+        : parseInt(primaryCookingSpaceTag, 10);
+
+      grillCookingArea = Math.ceil(primaryCookingSpace / 16);
+    }
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       cookTypes:
         product.tags
           ?.filter((tag) => tag.includes('dtm_cook-type_'))
@@ -245,8 +286,10 @@ class Barbeques extends ProductType {
               if (st.length > 0) {
                 return true;
               }
-              const [minGrillCookingArea, maxGrillCookingArea] =
-                currentGrillCookingAreaRange;
+              const [
+                minGrillCookingArea,
+                maxGrillCookingArea,
+              ] = currentGrillCookingAreaRange;
               if (!product?.grillCookingArea) {
                 return true;
               }

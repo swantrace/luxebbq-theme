@@ -184,7 +184,7 @@ function ProductPage({
       product.tags.some(
         (tag) =>
           (typeof type === 'string' && type !== '' && tag.includes(type)) ||
-          (typeof type.some === 'function' && type.some((t) => tag.includes(t)))
+          (Array.isArray(type) && type.some((t) => tag.includes(t)))
       ) &&
       p.brand === product.vendor &&
       ((p.productType !== 'Barbeques' &&
@@ -210,8 +210,7 @@ function ProductPage({
                   (typeof type === 'string' &&
                     type !== '' &&
                     tag.includes(type)) ||
-                  (typeof type.some === 'function' &&
-                    type.some((t) => tag.includes(t)))
+                  (Array.isArray(type) && type.some((t) => tag.includes(t)))
               ) && p.brand !== product.vendor
             );
           })

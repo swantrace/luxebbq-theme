@@ -13,6 +13,7 @@ class Furniture extends ProductType {
         return {
           ...stateFromSuper,
           selectedFurnitureTypes: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -22,8 +23,10 @@ class Furniture extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedFurnitureTypes:
@@ -47,6 +50,17 @@ class Furniture extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      furnitureType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_furniture-type_'))
+          ?.replace('dtm_furniture-type_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       furnitureType:
         product.tags
           ?.find((tag) => tag.includes('dtm_furniture-type_'))

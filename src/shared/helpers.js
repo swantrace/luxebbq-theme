@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
 /* eslint-disable global-require */
 /* eslint-disable no-nested-ternary */
 import { gql } from '@apollo/client/core';
@@ -127,6 +129,29 @@ export const transformFunc = ({
   onlineStoreUrl,
 });
 
+export const complexIncludes = (stringToSearch, stringWithSpace) => {
+  const arr = stringWithSpace.split(' ');
+  return arr.every((str) => stringToSearch.includes(str));
+};
+
+export const createSearchStringFilter = (product, string) => {
+  if (string.length === 0) {
+    return true;
+  }
+  if (
+    (string.length > 0 &&
+      complexIncludes(product.title.toLowerCase(), string.toLowerCase())) ||
+    complexIncludes(
+      product.tags.join(' ').toLowerCase(),
+      string.toLowerCase()
+    ) ||
+    complexIncludes(product.description.toLowerCase(), string.toLowerCase())
+  ) {
+    return true;
+  }
+  return false;
+};
+
 export const createFragmentFromString = (str) =>
   document.createRange().createContextualFragment(str);
 
@@ -172,45 +197,128 @@ export const getQueryString = ({
   return `${searchStringPart}${productTypesPart}`;
 };
 
-export const queryAllProductsThroughGraphqlCreator = ({
+export const queryAllProductsThroughGraphqlCreator = async ({
   searchString = '',
   productTypes = [],
 } = {}) => {
-  let products = [];
-  const query250Products = (dataWithLastPageProducts) => {
-    console.log('dataWithLastPageProducts: ', dataWithLastPageProducts);
-    return window.__APOLLO_CLIENT__
-      .query({
-        query: GET_PRODUCTS,
-        variables: {
-          first: 250,
-          query: `${getQueryString({ searchString, productTypes })}`,
-          after:
-            dataWithLastPageProducts?.data?.products?.edges?.slice(-1)?.[0]
-              ?.cursor ?? null,
-          sortKey: 'BEST_SELLING',
-        },
-      })
-      .then((data) => {
-        products = [
-          ...products,
-          ...(data?.data?.products?.edges?.map(({ node }) => node) ?? []),
+  let allProductsInStore = [];
+  try {
+    allProductsInStore = [
+      ...JSON.parse(window.sessionStorage.getItem('all-products')),
+    ];
+  } catch (err) {
+    const productsCount = parseInt(
+      window.document.body.dataset.products_count,
+      10
+    );
+    const pages = Math.ceil(productsCount / 250);
+    const promiseArray = Array.from(
+      { length: pages },
+      (_, i) => i + 1
+    ).map((n) =>
+      Promise.all([
+        fetch(`/products.json?limit=250&page=${n}`).then((res) => res.json()),
+        fetch(`/search?view=id-and-inventory&page=${n}`).then((res) =>
+          res.json()
+        ),
+      ])
+    );
+
+    const rawProductsInfo = await Promise.all(promiseArray);
+    const [rawProductArray, rawProductInventory] = rawProductsInfo.reduce(
+      (acc, cur) => {
+        acc[0] = [
+          ...acc[0],
+          ...cur[0].products.map(
+            ({
+              body_html,
+              handle,
+              id,
+              product_type,
+              tags,
+              vendor,
+              title,
+              variants,
+              images,
+            }) => ({
+              id,
+              handle,
+              title,
+              tags,
+              vendor,
+              onlineStoreUrl: `/products/${handle}`,
+              availableForSale: true,
+              description: stripHTML(body_html),
+              productType: product_type,
+              brand: vendor,
+              maxVariantPrice: Math.max(
+                ...variants.map((variant) => parseInt(variant.price, 10))
+              ),
+              minVariantPrice: Math.min(
+                ...variants.map((variant) => parseInt(variant.price, 10))
+              ),
+              images: (images ?? []).map(({ src }) => ({
+                imageAltText: title,
+                imageOriginalSrc: src,
+                imageTransformedSrc: src
+                  .replace('.jpg', '_340x340_crop_center.jpg')
+                  .replace('.png', '_340x340_crop_center.png'),
+              })),
+            })
+          ),
         ];
-        if ((data?.data?.products?.edges?.length ?? 0) < 250) {
-          return Promise.resolve(products);
-        }
-        return query250Products(data);
-      });
-  };
-  return query250Products;
+        acc[1] = [
+          ...acc[1],
+          ...cur[1].map(({ id, quantity }) => {
+            const variantsQties = quantity
+              .split(',')
+              .map((i) => parseInt(i, 10));
+            return {
+              id,
+              inStock: Math.max(...variantsQties) > 0,
+              totalInventory: variantsQties.reduce((a, b) => a + b, 0),
+            };
+          }),
+        ];
+        return acc;
+      },
+      [[], []]
+    );
+
+    allProductsInStore = rawProductInventory.map(
+      ({ id, inStock, totalInventory }) => ({
+        id,
+        inStock,
+        totalInventory,
+        availableForSale: true,
+        ...rawProductArray.find(({ id: id2 }) => id === id2),
+      })
+    );
+
+    if (
+      JSON.stringify(allProductsInStore).length +
+        JSON.stringify(window.sessionStorage).length <
+      5000000
+    ) {
+      window.sessionStorage.setItem(
+        'all-products',
+        JSON.stringify(allProductsInStore)
+      );
+    }
+  }
+
+  const typeFilter = (p) =>
+    productTypes.length === 0 || productTypes.includes(p.productType);
+  const searchStringFilter = (p) => createSearchStringFilter(p, searchString);
+  return allProductsInStore.filter(typeFilter).filter(searchStringFilter);
 };
 
 export const queryAllProductsFromSearchTerm = async (searchString = '') => {
-  const rawProducts = await queryAllProductsThroughGraphqlCreator({
+  debugger;
+  const products = await queryAllProductsThroughGraphqlCreator({
     searchString,
-  })();
-
-  return rawProducts.map(transformFunc);
+  });
+  return products;
 };
 
 export const hasIntersectionBetweenTwoRanges = (arr1 = [], arr2 = []) => {

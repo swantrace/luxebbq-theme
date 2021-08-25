@@ -13,12 +13,14 @@ class RubsAndSauces extends ProductType {
         return {
           ...stateFromSuper,
           selectedFoodTypes: action.payload,
+          pageNumber: 1,
         };
       }
       case 'changeSelectedSpecialtyFoods': {
         return {
           ...stateFromSuper,
           selectedSpecialtyFoods: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -28,8 +30,10 @@ class RubsAndSauces extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedFoodTypes: initialValueFilterKeyPairs?.selectedFoodTypes ?? [],
@@ -54,6 +58,21 @@ class RubsAndSauces extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      foodType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_food-type_'))
+          ?.replace('dtm_food-type_', '') ?? null,
+      specialtyFoods:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_specialty-foods_'))
+          ?.replace('dtm_specialty-foods_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       foodType:
         product.tags
           ?.find((tag) => tag.includes('dtm_food-type_'))

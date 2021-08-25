@@ -12,6 +12,7 @@ class DrinkwareAndCoolers extends ProductType {
         return {
           ...stateFromSuper,
           selectedDrinkwareAndCoolersTypes: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -21,8 +22,10 @@ class DrinkwareAndCoolers extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedDrinkwareAndCoolersTypes:
@@ -46,6 +49,17 @@ class DrinkwareAndCoolers extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      drinkwareAndCoolersType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_drinkware-coolers-type_'))
+          ?.replace('dtm_drinkware-coolers-type_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       drinkwareAndCoolersType:
         product.tags
           ?.find((tag) => tag.includes('dtm_drinkware-coolers-type_'))

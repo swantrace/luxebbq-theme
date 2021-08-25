@@ -13,12 +13,14 @@ class LifestyleAccessories extends ProductType {
         return {
           ...stateFromSuper,
           selectedLifestyleAccessoriesTypes: action.payload,
+          pageNumber: 1,
         };
       }
       case 'changeColours': {
         return {
           ...stateFromSuper,
           selectedColours: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -28,8 +30,10 @@ class LifestyleAccessories extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedLifestyleAccessoriesTypes:
@@ -54,6 +58,21 @@ class LifestyleAccessories extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      lifestyleAccessoriesType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_lifestyle-accessories-type_'))
+          ?.replace('dtm_lifestyle-accessories-type_', '') ?? null,
+      colour:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_product-colour_'))
+          ?.replace('dtm_product-colour_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       lifestyleAccessoriesType:
         product.tags
           ?.find((tag) => tag.includes('dtm_lifestyle-accessories-type_'))

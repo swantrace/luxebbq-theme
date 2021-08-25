@@ -5,7 +5,7 @@ const SidebarTopImages = virtual(({ collectionImages }) => {
   const topImagesPlaceHolder = document.querySelector(
     '#top-images-placeholder'
   );
-  console.log(topImagesPlaceHolder);
+
   return html`<div class="collection-images-wrapper">
     ${topImagesPlaceHolder?.innerHTML
       ? html`${unsafeHTML(topImagesPlaceHolder.innerHTML)}`

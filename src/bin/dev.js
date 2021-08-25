@@ -24,7 +24,7 @@ build({
   ],
   bundle: true,
   watch: true,
-  minify: true,
+  minify: false,
   sourcemap: 'inline',
   chunkNames: '[name]-[hash]',
   outdir: '../assets',

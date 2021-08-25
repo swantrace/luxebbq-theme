@@ -13,6 +13,7 @@ class Fuel extends ProductType {
         return {
           ...stateFromSuper,
           selectedFuelTypes: action.payload,
+          pageNumber: 1,
         };
       }
       default: {
@@ -22,8 +23,10 @@ class Fuel extends ProductType {
   }
 
   static transformInitialState(raw) {
-    const { initialValueFilterKeyPairs, ...stateFromSuper } =
-      super.transformInitialState(raw);
+    const {
+      initialValueFilterKeyPairs,
+      ...stateFromSuper
+    } = super.transformInitialState(raw);
 
     const typeState = {
       selectedFuelTypes: initialValueFilterKeyPairs?.selectedFuelTypes ?? [],
@@ -46,6 +49,17 @@ class Fuel extends ProductType {
   transformProductFromQuery(product) {
     const transformedProduct = {
       ...super.transformProductFromQuery(product),
+      fuelType:
+        product.tags
+          ?.find((tag) => tag.includes('dtm_fuel-type_'))
+          ?.replace('dtm_fuel-type_', '') ?? null,
+    };
+    return transformedProduct;
+  }
+
+  transformProductFromThemeQuery(product) {
+    const transformedProduct = {
+      ...super.transformProductFromThemeQuery(product),
       fuelType:
         product.tags
           ?.find((tag) => tag.includes('dtm_fuel-type_'))
