@@ -54,10 +54,13 @@ function ProductPage({
     const [value] = Object.values(cur);
     const [key] = Object.keys(cur);
     acc[key] = value;
+    if (key === 'Primary Cooking Space' && !Number.isNaN(parseInt(value, 10))) {
+      acc['Total Burgers'] = Math.ceil(parseInt(value, 10) / 16);
+    }
     return acc;
   }, {});
 
-  // console.log(specificationList);
+  console.log(specificationList);
 
   const similar = JSON.parse(similarMetafield);
 

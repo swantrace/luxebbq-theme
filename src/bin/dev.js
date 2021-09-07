@@ -25,7 +25,7 @@ build({
   bundle: true,
   watch: true,
   minify: false,
-  sourcemap: 'inline',
+  sourcemap: 'external',
   chunkNames: '[name]-[hash]',
   outdir: '../assets',
   target: ['es2020'],

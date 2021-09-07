@@ -52,6 +52,8 @@ const Specifications = virtual(({ specificationList, description }) => {
         ? 'Grill Plates'
         : key === 'Primary Cooking Space' || key === 'Total Grill Size'
         ? `${key} (Sq In)`
+        : key === 'Dimensions'
+        ? `Dimensions Closed`
         : key;
     return formattedKey;
   };

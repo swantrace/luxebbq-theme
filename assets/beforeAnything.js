@@ -4,10 +4,7 @@ window.addEventListener('load', () => {
   }
 });
 
-blockScripts([
-  '//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js',
-  'upsell.js',
-]);
+blockScripts([]);
 
 function blockScripts(list) {
   document.createElement = (function () {

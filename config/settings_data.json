@@ -1,6 +1,6 @@
 {
   "current": {
-    "enable_development_mode": false,
+    "enable_development_mode": true,
     "enable_rtl": false,
     "display_demo_btn": false,
     "enable_blur_lazy_load": true,
@@ -2008,7 +2008,7 @@
           "5864b6fd-34b7-484d-ad64-d863a877b1be": {
             "type": "custom-megamenu",
             "settings": {
-              "menu_name": "barbeques\/smokers",
+              "menu_name": "bbq's\/smokers",
               "trans_menu_name": "",
               "menu_link": "shopify:\/\/collections\/barbeques",
               "li_class_name": "mega hover-cls",
@@ -2022,7 +2022,7 @@
           "d59a9d46-8f9c-4d0e-9b71-09aa482a0a89": {
             "type": "custom-megamenu",
             "settings": {
-              "menu_name": "Grilling Accessories",
+              "menu_name": "Grill Accessories",
               "trans_menu_name": "",
               "menu_link": "shopify:\/\/collections\/grilling-accessories",
               "li_class_name": "mega hover-cls",
@@ -2092,7 +2092,7 @@
           "3c5b0387-807c-4d73-91af-3f972f226854": {
             "type": "custom-megamenu",
             "settings": {
-              "menu_name": "Sauces, Rubs & Spices",
+              "menu_name": "Sauces & Spices",
               "trans_menu_name": "",
               "menu_link": "shopify:\/\/collections\/sauces-rubs-and-spices",
               "li_class_name": "",

@@ -17,6 +17,7 @@ function CompareTable() {
     handle,
     variants,
     first_available_variant_id,
+    metafields,
   }) => {
     const product = {
       available,
@@ -57,6 +58,7 @@ function CompareTable() {
       'rear-rotisserie-burner': !!tags?.includes('dtm_rear-rotisserie-burner'),
       'side-burner': !!tags?.includes('dtm_side-burner'),
       'sear-functionality': !!tags?.includes('dtm_sear-functionality'),
+      dimensions: metafields?.dtm?.info?.dimensions ?? [],
     };
     product.stockInfo =
       product.totalInventory > 0
@@ -74,7 +76,10 @@ function CompareTable() {
     localStorage.getItem('compare') ?? '{}'
   );
   const [products, setProducts] = useState(
-    window?.productsToCompare.map((p) => transformFunc(p)) ?? []
+    window?.productsToCompare.map((p) => {
+      console.log(p);
+      return transformFunc(p);
+    }) ?? []
   );
   const compareItems = [
     { label: 'Product Name & Image', key: 'name_image' },
@@ -90,6 +95,7 @@ function CompareTable() {
     { label: 'Rear Rotisserie Burner', key: 'rear-rotisserie-burner' },
     { label: 'Side Burner ', key: 'side-burner' },
     { label: 'Sear Functionality', key: 'sear-functionality' },
+    { label: 'Dimensions Closed', key: 'dimensions' },
     { label: 'Action', key: 'action' },
   ];
   const handleRemoveIconClicked = (product, event) => {
@@ -144,7 +150,12 @@ function CompareTable() {
       }
       default: {
         return Array.isArray(product[item.key])
-          ? product[item.key].join(', ')
+          ? product[item.key].map(
+              (line, idx) =>
+                html`${idx < product[item.key].length - 1
+                  ? html`${line}<br />`
+                  : line}`
+            )
           : product[item.key] === true
           ? 'Yes'
           : product[item.key] === false

@@ -12,7 +12,13 @@
           <div class="buttons">
             <a href="/cart" class="view-cart" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.title"{%endif%}>{{ 'cart.general.title' | t }}</a>
             <button type="submit" name="checkout" class="checkout" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.checkout"{%endif%}>{{ 'cart.general.checkout' | t }}</button>
-            <a href="/" class="continue" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.continue_shopping"{%endif%}>{{ 'cart.general.continue_shopping' | t }}</a>
+            <a onclick="continueShopping()" class="continue" {% if settings.enable_lang_switcher %}data-trans-key="cart.general.continue_shopping"{%endif%} style="cursor: pointer;">{{ 'cart.general.continue_shopping' | t }}</a>
+            <script>
+              function continueShopping() {
+                const closeIcon = document.querySelector('.close_upsell');
+                closeIcon.click();
+              }
+            </script>
           </div>
           {% if settings.show_payment_img %}
           <div class="upsell_payment">
@@ -33,8 +39,7 @@
       <div class="no-arrow" id="upsell_product">  
       </div>
       {% endif %}
-      <span class="close_upsell">x
-      </span>
+      <span class="close_upsell">x</span>
     </div>
   </div>
 </div>

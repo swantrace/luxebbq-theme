@@ -7,7 +7,7 @@ import { gql } from '@apollo/client/core';
 // const { pluralize } = require('pluralize');
 
 export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [0, 6500];
-export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [0, 75];
+export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [0, 80];
 
 export const GET_PRODUCT_BY_HANDLE = gql`
   query getProductByHandle($handle: String!) {
@@ -252,10 +252,10 @@ export const queryAllProductsThroughGraphqlCreator = async ({
               productType: product_type,
               brand: vendor,
               maxVariantPrice: Math.max(
-                ...variants.map((variant) => parseInt(variant.price, 10))
+                ...variants.map((variant) => variant.price)
               ),
               minVariantPrice: Math.min(
-                ...variants.map((variant) => parseInt(variant.price, 10))
+                ...variants.map((variant) => variant.price)
               ),
               images: (images ?? []).map(({ src }) => ({
                 imageAltText: title,

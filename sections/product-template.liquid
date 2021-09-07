@@ -135,6 +135,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      {% render 'product-paybright' %}
                       <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% else %}
                       <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
@@ -149,6 +150,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      {% render 'product-paybright' %}
                       <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% endif %}
                       {% else  %}
@@ -159,6 +161,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      {% render 'product-paybright' %}
                       <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% endif %}
 
@@ -295,10 +298,6 @@
                           {% endif %}
                         </div>
                         {% endif %}
-                        <div id="payright-wrapper">
-                          <script id="paybright" src=" https://app.paybright.com/api/shopify.js?public_key=dkJXwWqz9jq7SkVXCjQuuuTcqJyCD873ctxfND8VymHTHX8UZu&financedamount=${{ product.price | divided_by: 100.00 | round: 2 }}"></script>
-                          <div id="paybright-widget-container"></div>
-                        </div>
 
                         {% comment %} dtm added {% endcomment %}
                         <div id="video-wrapper" class="embed-responsive embed-responsive-16by9"></div>

@@ -100,6 +100,9 @@
     <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
     {%- endif -%}
     {{ content_for_header }}
+{{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
+
+{%- render 'bold-common' -%}
   </head>
 
   <body hidden data-products_count="{{ shop.products_count }}" class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
@@ -310,5 +313,6 @@
       {{ 'custom.min.css' | asset_url |  stylesheet_tag  }}
     {% endif %}
     <!-- Footer Scripts ================================ -->
+  {% render 'preorder-now' %}
   </body>
 </html>
