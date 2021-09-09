@@ -219,7 +219,7 @@
         // console.log('processedInputs', processedIputs);
         const emailInfo = {
             SecureToken: SecureToken,
-            To : "website@luxebbq.ca",
+            To : "service@luxebbq.ca",
             From : "luxebbq.dev@gmail.com",
             Subject : "Warranty request from submit",
             Body : `<ul>${processedIputs.filter(i => i.type !== 'file').map(i => `<li>${i.name}: ${i.value}</li>`)}</ul>`,
