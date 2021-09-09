@@ -24,6 +24,14 @@ function ProductPage({
   productMetafield,
   productTotalInventory,
 }) {
+  const specificationOrder = [
+    'Grill Type',
+    'Cooking Temperature Range',
+    'Total Grill Size',
+    'Primary Cooking Space',
+    'Sear Functionality',
+    'Stand Type',
+  ];
   const product = JSON.parse(productJson);
   product.totalInventory = Number(productTotalInventory);
   const metafield = JSON.parse(productMetafield);
@@ -50,15 +58,26 @@ function ProductPage({
     ...Object.entries(metafield ?? {}).map(([key, value]) => ({
       [capitalCase(key)]: value,
     })),
-  ].reduce((acc, cur) => {
-    const [value] = Object.values(cur);
-    const [key] = Object.keys(cur);
-    acc[key] = value;
-    if (key === 'Primary Cooking Space' && !Number.isNaN(parseInt(value, 10))) {
-      acc['Total Burgers'] = Math.ceil(parseInt(value, 10) / 16);
-    }
-    return acc;
-  }, {});
+  ]
+    .sort((a, b) => {
+      const [keyA] = Object.keys(a);
+      const [keyB] = Object.keys(b);
+      return (
+        specificationOrder.indexOf(keyA) - specificationOrder.indexOf(keyB)
+      );
+    })
+    .reduce((acc, cur) => {
+      const [value] = Object.values(cur);
+      const [key] = Object.keys(cur);
+      acc[key] = value;
+      if (
+        key === 'Primary Cooking Space' &&
+        !Number.isNaN(parseInt(value, 10))
+      ) {
+        acc['Est. Total Burgers'] = Math.ceil(parseInt(value, 10) / 16);
+      }
+      return acc;
+    }, {});
 
   console.log(specificationList);
 
