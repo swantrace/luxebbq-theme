@@ -3810,6 +3810,7 @@
           },
           "d4727c51-0c93-425e-9c1a-54c53a12f4a9": {
             "type": "Collection",
+            "disabled": true,
             "settings": {
               "enabled_info": true,
               "title": "Bulldog",

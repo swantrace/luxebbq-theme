@@ -79,7 +79,7 @@ function ProductPage({
       return acc;
     }, {});
 
-  console.log(specificationList);
+  // console.log(specificationList);
 
   const similar = JSON.parse(similarMetafield);
 
