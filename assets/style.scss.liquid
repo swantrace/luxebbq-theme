@@ -8654,7 +8654,7 @@ footer{
     }
     .dynamic-payment-button{
       .shopify-payment-button__button{
-        padding: 7px 25px;
+        {% comment %} padding: 7px 25px; {% endcomment %}
         color: $white;
         letter-spacing: 0.05em;
         border: 2px solid $theme-deafult;
@@ -8676,6 +8676,14 @@ footer{
           background-position: 100%;
           color: $black;
           background-color: $white;
+        }
+      }
+      .shopify-payment-button__more-options {
+        border: 2px solid black;
+        border-style: outset;
+        margin-top: 0.4em;
+        &:hover:not([disabled]) {
+          text-decoration: auto;
         }
       }
       .shopify-payment-button__button--hidden{
@@ -11898,7 +11906,7 @@ body.rtl {
   {{ settings.cookie_bar_position }}:0;
   left:0;
   width:100%;
-  z-index:99;
+  z-index:1031;
   p{
     margin:0;
     padding:0;

@@ -8,6 +8,7 @@ function MegaMenu({ productType }) {
   const urlBase = `/collections/${slugify(productType ?? 'general', {
     lower: true,
   })}?`;
+
   return html`${megaMenuForProductType.length > 1
     ? html`<li
         class="${slugify(productType ?? 'general', { lower: true })}-submenu"
@@ -26,16 +27,16 @@ function MegaMenu({ productType }) {
                               class="${menuItem.header ? 'is-header' : ''}"
                             >
                               <a
-                                href=${`${urlBase}${Object.entries(
-                                  menuItem.rules
-                                )
-                                  .map(
-                                    ([ruleKey, ruleValue]) =>
-                                      `${ruleKey}=${encodeURIComponent(
-                                        JSON.stringify(ruleValue)
-                                      )}`
-                                  )
-                                  .join('&')}`}
+                                href=${menuItem?.rules?.customLink
+                                  ? menuItem.rules.customLink
+                                  : `${urlBase}${Object.entries(menuItem.rules)
+                                      .map(
+                                        ([ruleKey, ruleValue]) =>
+                                          `${ruleKey}=${encodeURIComponent(
+                                            JSON.stringify(ruleValue)
+                                          )}`
+                                      )
+                                      .join('&')}`}
                                 >${menuItem.label}</a
                               >
                             </li>`
@@ -53,14 +54,16 @@ function MegaMenu({ productType }) {
         (menuItem) => html`
           <li class="${menuItem.header ? 'is-header' : ''}">
             <a
-              href=${`${urlBase}${Object.entries(menuItem.rules)
-                .map(
-                  ([ruleKey, ruleValue]) =>
-                    `${ruleKey}=${encodeURIComponent(
-                      JSON.stringify(ruleValue)
-                    )}`
-                )
-                .join('&')}`}
+              href=${menuItem?.rules?.customLink
+                ? menuItem.rules.customLink
+                : `${urlBase}${Object.entries(menuItem.rules)
+                    .map(
+                      ([ruleKey, ruleValue]) =>
+                        `${ruleKey}=${encodeURIComponent(
+                          JSON.stringify(ruleValue)
+                        )}`
+                    )
+                    .join('&')}`}
               >${menuItem.label}</a
             >
           </li>

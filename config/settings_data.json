@@ -4111,6 +4111,15 @@
               "brand": "Ooni"
             }
           },
+          "826107be-7ec6-4fa9-82d6-abf7082727e7": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/29511378_691684244288550_4102107435887476910_n.png",
+              "enabled_info": true,
+              "title": "Oven Brothers",
+              "brand": "View All"
+            }
+          },
           "7bb0f06e-0af6-4604-a56d-43e028499e3f": {
             "type": "Collection",
             "settings": {
@@ -4125,6 +4134,7 @@
           "c38e3e11-1cf9-4e12-b265-230e8dceda68",
           "451cf9ce-93d3-4cb2-9922-c5c395ab4114",
           "76771e4c-ad7e-43b6-8dfe-dd52a58e0d28",
+          "826107be-7ec6-4fa9-82d6-abf7082727e7",
           "7bb0f06e-0af6-4604-a56d-43e028499e3f"
         ],
         "settings": {
