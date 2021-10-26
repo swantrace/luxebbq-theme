@@ -27,6 +27,7 @@ function MegaMenu({ productType }) {
                               class="${menuItem.header ? 'is-header' : ''}"
                             >
                               <a
+                                class=${menuItem?.class ? menuItem.class : ''}
                                 href=${menuItem?.rules?.customLink
                                   ? menuItem.rules.customLink
                                   : `${urlBase}${Object.entries(menuItem.rules)
@@ -54,6 +55,7 @@ function MegaMenu({ productType }) {
         (menuItem) => html`
           <li class="${menuItem.header ? 'is-header' : ''}">
             <a
+              class=${menuItem?.class ? menuItem.class : ''}
               href=${menuItem?.rules?.customLink
                 ? menuItem.rules.customLink
                 : `${urlBase}${Object.entries(menuItem.rules)

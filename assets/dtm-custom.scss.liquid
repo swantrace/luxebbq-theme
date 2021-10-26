@@ -118,13 +118,30 @@ Header & Footer
 
 .dtm .pixelstrap a, .dtm .pixelstrap a:hover, .dtm .pixelstrap a:active {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 15px;
     padding-right: 12px;
     letter-spacing: .02em;
+    &.btn.btn-solid {
+      width: fit-content;
+      padding: 5px;
+      background-color: #fb711c;
+      color: #fff;
+      text-align: left; 
+      border-style: hidden;
+      font-weight: 100;
+      &:hover {
+        text-decoration: none;
+        transition: none;
+        &:hover:before {
+          content: none;
+        }
+      }
+    }
 }
 
 .dtm .pixelstrap li.is-header a, .dtm .pixelstrap li.is-header a:hover, .dtm .pixelstrap li.is-header a:active {
     font-weight: bold;
+    color: #111;
 } 
 
 .dtm .newsletter-wrap {
@@ -394,14 +411,14 @@ Homepage
 }
 
 @media (min-width: 1500px){
-  .dtm .pixelstrap a, .dtm .pixelstrap a:hover, .dtm .pixelstrap a:active {
+  .dtm .pixelstrap#main-menu > li > a, .dtm .pixelstrap#main-menu > li > a:hover, .dtm .pixelstrap#main-menu > li > a:active {
     font-size: 18px;
   }
 }
 
 @media (max-width: 1499.99px){
 
-    .dtm .pixelstrap a, .dtm .pixelstrap a:hover, .dtm .pixelstrap a:active {
+    .dtm .pixelstrap#main-menu > li > a, .dtm .pixelstrap#main-menu > li > a:hover, .dtm .pixelstrap#main-menu > li > a:active {
       font-weight: 500;
       font-size: 14px;
       padding-right: 12px;
