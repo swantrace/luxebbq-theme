@@ -300,10 +300,14 @@ export const queryAllProductsThroughGraphqlCreator = async ({
         JSON.stringify(window.sessionStorage).length <
       5000000
     ) {
-      window.sessionStorage.setItem(
-        'all-products',
-        JSON.stringify(allProductsInStore)
-      );
+      try {
+        window.sessionStorage.setItem(
+          'all-products',
+          JSON.stringify(allProductsInStore)
+        );
+      } catch (cannotSetSessionStorageErr) {
+        console.log('cannotSetSessionStorageErr: ', cannotSetSessionStorageErr);
+      }
     }
   }
 

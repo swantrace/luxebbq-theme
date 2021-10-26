@@ -27,8 +27,8 @@ function getStateChangeHandler(relevantKeys) {
       .join('&')}`}`;
 
     if (
-      `?${newURL.split('?')?.[1]}` !== location.search &&
-      `?${newURL.split('?')?.[1]}` !== '?'
+      `?${newURL.split('?')[1]}` !== location.search &&
+      `?${newURL.split('?')[1]}` !== '?'
     ) {
       history.replaceState(state, '', newURL);
     }

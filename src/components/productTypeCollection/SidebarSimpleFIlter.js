@@ -64,7 +64,11 @@ const SidebarSimpleFilter = virtual(
             )}
           </ul>
           ${hideOptions && hideOptions.length && hideOptions.length > 0
-            ? html`<button @click=${handleViewAllButtonClicked} class="btn">
+            ? html`<button
+                @click=${handleViewAllButtonClicked}
+                class="btn"
+                style="margin-bottom: 50px;"
+              >
                 ${viewAll ? 'View All' : 'View Less'}
               </button>`
             : null}

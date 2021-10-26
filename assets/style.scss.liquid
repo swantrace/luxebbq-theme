@@ -8644,20 +8644,27 @@ footer{
   .product-buttons {
     margin-bottom: 20px;
     display: inline-flex;
+    flex-wrap: wrap;
+    max-width: 330px;
     .btn-solid, .btn-outline {
       padding: 7px 25px;
+      width: 100%;
+      flex-basis: 100%;
+      height: 44px;
     }
     button {
       &:nth-child(2) {
-        margin-left: 10px;
+        {% comment %} margin-left: 10px; {% endcomment %}
       }
     }
     .dynamic-payment-button{
+      flex-basis: 100%;
+      margin-top: 10px;
       .shopify-payment-button__button{
         {% comment %} padding: 7px 25px; {% endcomment %}
         color: $white;
         letter-spacing: 0.05em;
-        border: 2px solid $theme-deafult;
+        {% comment %} border: 2px solid $theme-deafult; {% endcomment %}
         background-image: -webkit-linear-gradient(30deg, $theme-deafult 50%, transparent 50%);
         background-image: linear-gradient(30deg, $theme-deafult 50%, transparent 50%);
         background-size: 540px;
@@ -8670,8 +8677,7 @@ footer{
         font-size: 14px;
         font-weight: 700;
         border-radius: 0;
-        width: auto;
-        display: inline-block;
+        flex-basis: 48.5%;
         &:hover{
           background-position: 100%;
           color: $black;
@@ -8679,17 +8685,29 @@ footer{
         }
       }
       .shopify-payment-button__more-options {
-        border: 2px solid black;
+        border: 1px solid #000;
         border-style: outset;
-        margin-top: 0.4em;
+        margin-top: 0;
+        height: 44px;
+        flex-basis: 48%;
         &:hover:not([disabled]) {
           text-decoration: auto;
+        }
+        &.shopify-payment-button__button--hidden {
+          display: none;
         }
       }
       .shopify-payment-button__button--hidden{
         padding: 0;
         margin: 0;
         font-size: 0;
+      }
+      .shopify-payment-button>div>div>div {
+        display: flex;
+        justify-content: space-between;
+        & > div:not(.shopify-payment-button__button) {
+          display: none !important;
+        }
       }
     }
   }

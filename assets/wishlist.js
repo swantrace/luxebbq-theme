@@ -33,7 +33,7 @@
       wishlist.splice(removeIndex, 1);
       localStorage.setItem('user_wishlist', JSON.stringify(wishlist));
     } else {
-    /* Add */
+      /* Add */
       iElement.removeClass('icon-heart-outline').addClass('icon-heart');
       wishlist.push(productHandle);
       localStorage.setItem('user_wishlist', JSON.stringify(wishlist));
@@ -52,8 +52,8 @@
         $(this).addClass('is-active');
         $(this)
           .find('i')
-          ?.removeClass('icon-heart-outline')
-          ?.addClass('icon-heart');
+          .removeClass('icon-heart-outline')
+          .addClass('icon-heart');
       }
     });
   };

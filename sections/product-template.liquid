@@ -289,7 +289,7 @@
                         <div class="product-buttons">
                           <button type="submit" id="addtocart_btn_id" class="add_to_cart_btn_cls cart_btn_class btn btn-solid" {% unless current_variant.available %}disabled="disabled"{% endunless %} {% if settings.enable_lang_switcher %}data-trans-key="products.product.add_to_cart"{%endif%}>Add to cart &nbsp;&nbsp;&nbsp;>></button>
                           {% if section.settings.show_buy_now_btn %}
-                          <div class="dynamic-payment-button ml-2">
+                          <div class="dynamic-payment-button">
                             <div data-shopify="payment-button" class="shopify-payment-button">
                               <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded">{{ 'products.product.but_now' | t }}</button>
                               <button aria-disabled="true" aria-hidden="true" class="shopify-payment-button__more-options shopify-payment-button__button--hidden" type="button">More payment options</button>
