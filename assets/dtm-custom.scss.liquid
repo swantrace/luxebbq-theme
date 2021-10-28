@@ -123,12 +123,15 @@ Header & Footer
     letter-spacing: .02em;
     &.btn.btn-solid {
       width: fit-content;
+      width: -moz-fit-content;
       padding: 5px;
       background-color: #fb711c;
       color: #fff;
       text-align: left; 
       border-style: hidden;
       font-weight: 100;
+      margin-top: 10px;
+      margin-bottom: 15px;
       &:hover {
         text-decoration: none;
         transition: none;
@@ -622,4 +625,12 @@ product-page .product-description-wrapper {
 
 .action--wishlist.wishlist-remove-btn-wrapper {
   color: red;
+}
+
+
+.mega-menu .link-section > .menu-content > ul {
+  max-width: 100%;
+  .is-header > a {
+    white-space: normal;
+  }
 }
