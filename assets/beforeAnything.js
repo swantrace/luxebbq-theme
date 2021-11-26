@@ -90,3 +90,15 @@ function blockScripts(list) {
     return false;
   }
 }
+
+document.addEventListener(
+  'click',
+  (e) => {
+    if (e.target.closest('.bold_hidden[href="/checkout"]')) {
+      setTimeout(() => {
+        location.href = '/checkout';
+      }, 200);
+    }
+  },
+  true
+);
