@@ -1,6 +1,6 @@
 {
   "current": {
-    "enable_development_mode": false,
+    "enable_development_mode": true,
     "enable_rtl": false,
     "display_demo_btn": false,
     "enable_blur_lazy_load": true,

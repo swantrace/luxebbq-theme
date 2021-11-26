@@ -6,7 +6,7 @@ import { gql } from '@apollo/client/core';
 
 // const { pluralize } = require('pluralize');
 
-export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [0, 6500];
+export const DEFAULT_BARBEQUES_COLLECTION_PRICE_RANGE = [0, 6500, 0];
 export const DEFAULT_BARBEQUES_COLLECTION_GRILL_COOKING_AREA_RANGE = [0, 80];
 
 export const GET_PRODUCT_BY_HANDLE = gql`
@@ -327,11 +327,18 @@ export const queryAllProductsFromSearchTerm = async (searchString = '') => {
 
 export const hasIntersectionBetweenTwoRanges = (arr1 = [], arr2 = []) => {
   const [el11, el12] = arr1;
-  const [el21, el22] = arr2;
+  const [el21, el22, el23] = arr2;
   const leftLimit = Math.max(el11, el21);
   const rightLimit = Math.min(el12, el22);
   if (rightLimit >= leftLimit) {
     return true;
+  }
+  if (typeof el23 === 'number' && el23 > 0 && el23 >= el22) {
+    const leftLimit2 = Math.max(el11, el23);
+    const rightLimit2 = el12;
+    if (rightLimit2 >= leftLimit2) {
+      return true;
+    }
   }
   return false;
 };

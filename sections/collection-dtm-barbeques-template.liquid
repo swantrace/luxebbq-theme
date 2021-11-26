@@ -132,19 +132,28 @@ const filters = [{
             return firstBrand === undefined || brandsOfCookType[cookType]?.includes(firstBrand);
         }
     )
-}, {
+}, 
+{% comment %} {
     stateKey: "currentPriceRange",
     actionType: "changePriceRange",
     title: "Price Range",
     type: "RangeSlider",
     info: [0, 6500, 250],
     selected: params?.['currentPriceRange'] ?? [0, 6500]
+},  {% endcomment %}
+{
+    stateKey: "currentPriceRange",
+    actionType: "changePriceRange",
+    title: "Price Range",
+    type: "RangeSliderWithCheckbox",
+    info: [0, 6500, 250, "Show Grills Over $6500"],
+    selected: params?.['currentPriceRange'] ?? [0, 6500, 0] // the third number can only be either 0 or maxLimit which 6500 here
 }, {
     stateKey: "currentGrillCookingAreaRange",
     actionType: "changeGrillCookingAreaRange",
     title: "Grill Cooking Area",
     type: "RangeSlider",
-    info: [0, 80, 5],
+    info: [0, 80, 5, "(# of Burgers)"],
     selected: params?.['currentGrillCookingAreaRange'] ?? [0, 80]
 }, {
     stateKey: "selectedStandTypes",

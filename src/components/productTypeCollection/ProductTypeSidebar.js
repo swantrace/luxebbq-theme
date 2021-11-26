@@ -7,10 +7,15 @@ import SidebarRangeSlider from './SidebarRangeSlider';
 import SidebarSearchInput from './SidebarSearchInput';
 import SidebarSimpleFilter from './SidebarSimpleFIlter';
 import SidebarTopImages from './SidebarTopImages';
+import SidebarRangeSliderWithCheckbox from './SidebarRangeSliderWithCheckbox';
 
 function ProductTypeSidebar() {
-  const { state, dispatch, arrayOfFilters, collectionImages } =
-    usePageContext();
+  const {
+    state,
+    dispatch,
+    arrayOfFilters,
+    collectionImages,
+  } = usePageContext();
   // console.log('state', state);
   const { fetchIsFinished, searchString } = state;
   const handleSearchStringChanged = useCallback(
@@ -56,8 +61,9 @@ function ProductTypeSidebar() {
           ([fOption]) => fOption !== firstLevelOption
         ),
       });
-      const secondLevelInputs =
-        firstLevelInput.parentNode.querySelectorAll('ul li input');
+      const secondLevelInputs = firstLevelInput.parentNode.querySelectorAll(
+        'ul li input'
+      );
       // console.log('secondLevelInputs', secondLevelInputs);
       secondLevelInputs.forEach((input) => {
         // eslint-disable-next-line no-param-reassign
@@ -107,6 +113,17 @@ function ProductTypeSidebar() {
     }, 300),
     []
   );
+
+  const handleRangeSliderWithCheckboxValueUpdated = useCallback(
+    debounce((filter, valueMin, valueMax, overMaxChecked) => {
+      dispatch({
+        type: filter.actionType,
+        payload: [valueMin, valueMax, overMaxChecked],
+      });
+    }, 300),
+    []
+  );
+
   const handleCheckboxInputChanged = (filter, e) => {
     dispatch({
       type: filter.actionType,
@@ -166,6 +183,13 @@ function ProductTypeSidebar() {
               state,
               filter,
               handleValueUpdated,
+            })}`;
+          }
+          case 'RangeSliderWithCheckbox': {
+            return html`${SidebarRangeSliderWithCheckbox({
+              state,
+              filter,
+              handleRangeSliderWithCheckboxValueUpdated,
             })}`;
           }
           default: {
