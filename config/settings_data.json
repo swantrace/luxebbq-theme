@@ -1,6 +1,6 @@
 {
   "current": {
-    "enable_development_mode": true,
+    "enable_development_mode": false,
     "enable_rtl": false,
     "display_demo_btn": false,
     "enable_blur_lazy_load": true,
@@ -3318,6 +3318,7 @@
         "blocks": {
           "16154475014ba4bd75-0": {
             "type": "Image",
+            "disabled": true,
             "settings": {
               "slider": "shopify:\/\/shop_images\/luxe-bbq-1.jpg",
               "slider_content_height": 100,
@@ -3334,10 +3335,30 @@
               "slide_text_color": "#ffffff",
               "shop_btn_url": "shopify:\/\/pages\/find-your-girll"
             }
+          },
+          "82299a74-72f3-4a21-bb96-c3713e0311ad": {
+            "type": "Image",
+            "settings": {
+              "slider": "shopify:\/\/shop_images\/Baskets-slide.jpg",
+              "slider_content_height": 75,
+              "alignment": "text-left",
+              "position": "p-left",
+              "slide_title": "LUXE BUCKETS",
+              "trans_slide_title": "",
+              "slide_title_color": "#ffffff",
+              "slide_subtitle": "The perfect gift for any griller on your list",
+              "trans_slide_subtitle": "",
+              "slide_subtitle_color": "#ffffff",
+              "button_text": "See selection",
+              "trans_slide_text": "",
+              "slide_text_color": "#ffffff",
+              "shop_btn_url": "https:\/\/luxebbq.ca\/collections\/lifestyle-accessories?searchString=%22%22&selectedLifestyleAccessoriesTypes=%5B%22LUXE%20Buckets%22%5D"
+            }
           }
         },
         "block_order": [
-          "16154475014ba4bd75-0"
+          "16154475014ba4bd75-0",
+          "82299a74-72f3-4a21-bb96-c3713e0311ad"
         ],
         "settings": {
           "enabled": true,
@@ -3348,10 +3369,10 @@
           "enabled_overlay": true,
           "overlay_opacity": 0,
           "slider_speed": 3,
-          "use_autoplay": false,
-          "use_arrows": false,
+          "use_autoplay": true,
+          "use_arrows": true,
           "use_dots": false,
-          "use_loop": false,
+          "use_loop": true,
           "enabled_animation": false
         }
       },
@@ -4008,6 +4029,15 @@
               "brand": "Hestan"
             }
           },
+          "64a97512-c72d-4bfd-8c41-32b65f44f869": {
+            "type": "Collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Urban_Bonfire_Logo_Black.png",
+              "enabled_info": true,
+              "title": "Urban Bonfire",
+              "brand": "View All"
+            }
+          },
           "a64d9dff-4b8e-4404-acc9-62d34aba0020": {
             "type": "Collection",
             "settings": {
@@ -4046,6 +4076,7 @@
           "991794c6-9714-4a84-bd1d-6d9fc7a78892",
           "e37d8feb-020d-4b9d-a913-5d2bda503599",
           "483e554c-9ade-460b-b128-60a2008a0ead",
+          "64a97512-c72d-4bfd-8c41-32b65f44f869",
           "a64d9dff-4b8e-4404-acc9-62d34aba0020",
           "6b3c72c1-3789-4722-857e-79cc3fe76544",
           "6a893bc6-cc88-406e-8873-121d4c8a1421",
@@ -4154,6 +4185,7 @@
           "b8a084b5-cb69-4d3a-ad77-54f330fe7a25": {
             "type": "Collection",
             "settings": {
+              "image": "shopify:\/\/shop_images\/dtm-Traeger-logo_112d322f-703e-48a8-bf6a-2bd47d8684ba.jpg",
               "enabled_info": true,
               "title": "Traeger Grill",
               "brand": "Traeger"

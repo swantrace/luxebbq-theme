@@ -10,7 +10,7 @@
   {% assign option_style = section.settings.product_opt_type -%}
   {% assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src %}
   {% assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt %}
-    <div class="collection-wrapper">
+    <div class="collection-wrapper">{% render 'preorder-now-collection-item', product: product %}
         <div class="container">
             <div class="row">
                {% if section.settings.layout == 'full-width-img' or section.settings.layout == 'thumbnails-bottom'  %}
