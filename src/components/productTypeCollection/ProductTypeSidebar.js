@@ -120,7 +120,7 @@ function ProductTypeSidebar() {
         type: filter.actionType,
         payload: [valueMin, valueMax, overMaxChecked],
       });
-    }, 300),
+    }, 50),
     []
   );
 

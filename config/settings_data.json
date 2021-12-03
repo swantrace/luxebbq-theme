@@ -74,7 +74,7 @@
     "btm_footer_color": "#111111",
     "btm_footer_text_color": "#ffffff",
     "btm_footer_payment_color": "#fb711c",
-    "header_layout": "header_5",
+    "header_layout": "header-5",
     "display_sticky_header": true,
     "cart_redirect": "redirect_to_cart",
     "other_color": "#ff4c3b",
@@ -4259,6 +4259,140 @@
           "image_ratio": "ratio_landscape",
           "image_size": "cover",
           "image_position": "8"
+        }
+      },
+      "header-10": {
+        "type": "header-10",
+        "blocks": {
+          "f4fef5e6-50e2-454e-9f67-418201722a29": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "bbq's\/smokers",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/barbeques",
+              "li_class_name": "mega hover-cls",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Barbeques\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "91f070bd-4167-4214-a020-8315fdccbdd2": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Grill Accessories",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/grilling-accessories",
+              "li_class_name": "mega hover-cls",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Grilling Accessories\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "d54b76ea-2067-4b33-91f8-8732635c588d": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Lifestyle Accessories",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/lifestyle-accessories",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Lifestyle Accessories\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "82df98b8-64b3-41fa-9312-1bc9b8ae8a0d": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Drinkware & coolers",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/drinkware-and-coolers",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Drinkware & Coolers\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "df0ac8e0-8087-4d46-863f-1be10c781ff1": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Fuel",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/fuel",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Fuel\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "6e1f2a39-91cc-42cf-afa1-dda04c8935dd": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Parts",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/parts",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Parts\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "925a65a3-6091-4c62-add6-7a615103eef9": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Sauces & Spices",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/sauces-rubs-and-spices",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Sauces, Rubs & Spices\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          },
+          "09226752-8a05-4212-8ca8-69e4ce1cf3fc": {
+            "type": "custom-megamenu",
+            "settings": {
+              "menu_name": "Furniture",
+              "trans_menu_name": "",
+              "menu_link": "shopify:\/\/collections\/furniture",
+              "li_class_name": "",
+              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Furniture\"><\/ul>",
+              "trans_custom_menu_html": "",
+              "show_label": false,
+              "label_text": "hot",
+              "trans_label_text": ""
+            }
+          }
+        },
+        "block_order": [
+          "f4fef5e6-50e2-454e-9f67-418201722a29",
+          "91f070bd-4167-4214-a020-8315fdccbdd2",
+          "d54b76ea-2067-4b33-91f8-8732635c588d",
+          "82df98b8-64b3-41fa-9312-1bc9b8ae8a0d",
+          "df0ac8e0-8087-4d46-863f-1be10c781ff1",
+          "6e1f2a39-91cc-42cf-afa1-dda04c8935dd",
+          "925a65a3-6091-4c62-add6-7a615103eef9",
+          "09226752-8a05-4212-8ca8-69e4ce1cf3fc"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/lbc_logo.png",
+          "logo_max_width": "200",
+          "enable_search": true,
+          "show_wishlist": true,
+          "enable_currency": false
         }
       }
     },

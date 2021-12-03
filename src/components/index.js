@@ -4,6 +4,7 @@ import ProductTypeMainContent from './productTypeCollection/ProductTypeMainConte
 import SearchResultMainContent from './searchResult/SearchResultMainContent';
 import CompareTable from './common/CompareTable';
 import MegaMenu from './common/MegaMenu';
+import MegaMenu2 from './common/MegaMenu2';
 import LandingPageCollectionLink from './common/LandingPageCollectionLink';
 
 export default {
@@ -13,5 +14,6 @@ export default {
   SearchResultMainContent,
   CompareTable,
   MegaMenu,
+  MegaMenu2,
   LandingPageCollectionLink,
 };

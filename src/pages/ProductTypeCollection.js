@@ -8,7 +8,7 @@ import {
   useReducer,
 } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { CompareTable, MegaMenu, setupStart } from '../shared/index';
+import { CompareTable, MegaMenu, MegaMenu2, setupStart } from '../shared/index';
 import { pageWrapper } from '../shared/context';
 import useProductType from '../productTypes';
 import ProductTypeSidebar from '../components/productTypeCollection/ProductTypeSidebar';
@@ -150,6 +150,7 @@ function ProductTypeCollection({
   ProductTypeMainContent,
   CompareTable,
   MegaMenu,
+  MegaMenu2,
   {
     tagName: 'product-type-collection',
     renderer: ProductTypeCollection,

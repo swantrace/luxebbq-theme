@@ -9,7 +9,7 @@ import {
 } from '@apollo-elements/haunted';
 import slugify from 'slugify';
 import { capitalCase } from 'capital-case';
-import { CompareTable, MegaMenu, setupStart } from '../shared/index';
+import { CompareTable, MegaMenu, MegaMenu2, setupStart } from '../shared/index';
 import RelatedProducts from '../components/productPage/RelatedProducts';
 import Specifications from '../components/productPage/Specifications';
 import useProductType from '../productTypes';
@@ -262,6 +262,7 @@ function ProductPage({
 [
   CompareTable,
   MegaMenu,
+  MegaMenu2,
   {
     tagName: 'product-page',
     renderer: ProductPage,

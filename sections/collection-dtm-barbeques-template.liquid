@@ -147,7 +147,7 @@ const filters = [{
     title: "Price Range",
     type: "RangeSliderWithCheckbox",
     info: [0, 6500, 250, "Show Grills Over $6500"],
-    selected: params?.['currentPriceRange'] ?? [0, 6500, 0] // the third number can only be either 0 or maxLimit which 6500 here
+    selected: params?.['currentPriceRange'] ?? [0, 6500, 6500] // the third number can only be either 0 or maxLimit which 6500 here
 }, {
     stateKey: "currentGrillCookingAreaRange",
     actionType: "changeGrillCookingAreaRange",

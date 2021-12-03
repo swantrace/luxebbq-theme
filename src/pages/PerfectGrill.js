@@ -6,7 +6,7 @@ import {
   useReducer,
 } from '@apollo-elements/haunted';
 import slugify from 'slugify';
-import { CompareTable, MegaMenu, setupStart } from '../shared/index';
+import { CompareTable, MegaMenu, MegaMenu2, setupStart } from '../shared/index';
 import { pageWrapper as perfectGrillWrapper } from '../shared/context';
 import TitleBanner from '../components/common/TitleBanner';
 import useProductType from '../productTypes';
@@ -42,10 +42,10 @@ function PerfectGrill({
     getFilteredSortedProductsOfCurrentPage,
     getPageCount,
     getDisplayedPageNumbers,
-  } = useMemo(
-    () => new CurrentProductTypeClass(state),
-    [CurrentProductTypeClass, state]
-  );
+  } = useMemo(() => new CurrentProductTypeClass(state), [
+    CurrentProductTypeClass,
+    state,
+  ]);
 
   useEffect(async () => {
     const products = await queryAllProducts();
@@ -104,6 +104,7 @@ function PerfectGrill({
   ProductTypeMainContent,
   CompareTable,
   MegaMenu,
+  MegaMenu2,
   {
     tagName: 'perfect-grill',
     renderer: PerfectGrill,

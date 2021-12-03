@@ -45,13 +45,28 @@ const SidebarRangeSliderWithCheckbox = virtual(
             max=${max}
             value-min=${valueMin}
             value-max=${valueMax}
-            @updateValues=${(e) =>
-              handleRangeSliderWithCheckboxValueUpdated(
-                filter,
-                e.target.valueMin,
-                e.target.valueMax,
-                overMaxChecked
-              )}
+            @updateValues=${(e) => {
+              if (e.target.valueMax !== valueMax && e.target.valueMax !== max) {
+                handleRangeSliderWithCheckboxValueUpdated(
+                  filter,
+                  e.target.valueMin,
+                  e.target.valueMax,
+                  0
+                );
+                e.target
+                  .closest('.collection-range-slider-wrapper')
+                  .querySelector(
+                    `#${slugify(checkboxLabelText)}`
+                  ).checked = false;
+              } else {
+                handleRangeSliderWithCheckboxValueUpdated(
+                  filter,
+                  e.target.valueMin,
+                  e.target.valueMax,
+                  overMaxChecked
+                );
+              }
+            }}
           ></paper-range-slider>
           <style>
             .${slugify(rangeTitle, {
@@ -72,7 +87,7 @@ const SidebarRangeSliderWithCheckbox = virtual(
                 handleRangeSliderWithCheckboxValueUpdated(
                   filter,
                   valueMin,
-                  valueMax,
+                  e.target.checked ? max : valueMax,
                   e.target.checked ? max : 0
                 )}
             />

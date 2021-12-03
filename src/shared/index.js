@@ -3,6 +3,7 @@ import 'paper-range-slider';
 import './apollo-client';
 import CompareTable from '../components/common/CompareTable';
 import MegaMenu from '../components/common/MegaMenu';
+import MegaMenu2 from '../components/common/MegaMenu2';
 import LandingPageCollectionLink from '../components/common/LandingPageCollectionLink';
 
 const setupStart = () => {
@@ -104,4 +105,10 @@ const setupStart = () => {
   }
 };
 
-export { CompareTable, MegaMenu, LandingPageCollectionLink, setupStart };
+export {
+  CompareTable,
+  MegaMenu,
+  MegaMenu2,
+  LandingPageCollectionLink,
+  setupStart,
+};

@@ -26,11 +26,18 @@ const PerfectGrillPriceRangeSelector = virtual(
         value-min=${valueMin}
         value-max=${valueMax}
         @updateValues=${(e) => {
-          handlePriceRangeChanged([
-            e.target.valueMin,
-            e.target.valueMax,
-            overMaxChecked,
-          ]);
+          if (e.target.valueMax !== valueMax && e.target.valueMax !== max) {
+            handlePriceRangeChanged([e.target.valueMin, e.target.valueMax, 0]);
+            e.target
+              .closest('.perfect-grill-selector-input')
+              .querySelector('#show-over-6500').checked = false;
+          } else {
+            handlePriceRangeChanged([
+              e.target.valueMin,
+              e.target.valueMax,
+              overMaxChecked,
+            ]);
+          }
         }}
       ></paper-range-slider>
       <div style="flex-basis: 100%; height: 0;"></div>
@@ -39,10 +46,11 @@ const PerfectGrillPriceRangeSelector = virtual(
           type="checkbox"
           class="form-check-input"
           id="show-over-6500"
+          ?checked=${overMaxChecked}
           @change=${(e) =>
             handlePriceRangeChanged([
               valueMin,
-              valueMax,
+              e.target.checked ? max : valueMax,
               e.target.checked ? max : 0,
             ])}
         />

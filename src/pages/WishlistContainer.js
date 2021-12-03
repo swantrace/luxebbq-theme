@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import { html, useEffect, useState, component } from '@apollo-elements/haunted';
-import { CompareTable, MegaMenu, setupStart } from '../shared/index';
+import { CompareTable, MegaMenu, MegaMenu2, setupStart } from '../shared/index';
 // import axios from 'axios';
 import { GET_PRODUCT_BY_HANDLE } from '../shared/helpers';
 import WishlistItem from '../components/wishlist/WishlistItem';
@@ -227,6 +227,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
 [
   CompareTable,
   MegaMenu,
+  MegaMenu2,
   {
     tagName: 'wishlist-container',
     renderer: WishlistContainer,
