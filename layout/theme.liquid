@@ -1,6 +1,33 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Verification Codes -->
+    <meta name="google-site-verification" content="Xj4RYuHm7xVJUTE49SmyPSoU7jG-UWEJ03-979J2jRI" />
+    <meta name="google-site-verification" content="T5PumxNBI-ySuhypTmG2wDtWcaQZfo6hyARF4AG1-6w" />
+    <!-- Trialfire Start -->
+    <script>
+    var s=document.createElement("script"),tf={$q:[],do:function(){tf.$q.push(
+    [].slice.call(arguments))}};["init","ready","identify","property","logout",
+    "track","optout"].forEach(function(t){tf[t]=function(){tf.do.apply(null,
+    [t].concat([].slice.call(arguments)))}}),window.Trialfire=tf,
+    s.src="//cdn.trialfire.com/tf.js",document.head.appendChild(s),
+    Trialfire.init("e7a6e214-9e71-4684-8ef5-97c07c3fdd06");
+    </script>
+    <!-- Trialfire End -->
+    <script>
+      {% comment %} window.addEventListener("touchstart", (e) => {
+        console.log('touchstart event:', e);
+        debugger;
+      }, true);
+      window.addEventListener("mousedown", (e) => {
+        console.log('mousedown event:', e);
+        debugger;
+      }, true);
+      window.addEventListener("click", (e) => {
+        console.log('click event:', e);
+        debugger;
+      }, true); {% endcomment %}
+    </script>
     <script src="//unpkg.com/@ungap/custom-elements"></script>
     <script src="{{ 'beforeAnything.js' | asset_url }}"></script>
     <meta charset="utf-8">
@@ -90,6 +117,7 @@
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
     {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
     {{ 'wishlist.js' | asset_url | script_tag }}
+    {{ 'add-to-cart-pos.js' | asset_url | script_tag }}
     <script>
       $(window).on('load',function(){
         Wishlist.init();
@@ -100,9 +128,33 @@
     <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
     {%- endif -%}
     {{ content_for_header }}
-{{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
+    {{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
 
-{%- render 'bold-common' -%}
+    {%- render 'bold-common' -%}
+    {% include 'upsellio' %}
+    {% include 'savy-offer' %}
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M8KD97Z');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- PriceSpider Pixel script --> 
+    <script async src="//cdn.pricespider.com/pathinsights/ps-pi-ps.min.js"></script> 
+    <script> 
+        var pSgetUrlParameter = function (name) { 
+              name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'); 
+              var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'); var results = regex.exec(location.search); return results === null ? '' : 
+              decodeURIComponent(results[1].replace(/\+/g, ' ')); 
+        };
+      var pSsetCookie = function (value) { 
+          pswtb.purchaseTracking.setCookie(value); 
+          document.cookie = "pswtb.psrid=" + value; } 
+    </script> 
+    <!-- PriceSpider Pixel end -->
   </head>
 
   <body hidden data-products_count="{{ shop.products_count }}" class="template-{{ template | split: '.' | first }} {% if template  == 'product.full-page' %} product_full_page {% endif %}
@@ -110,8 +162,13 @@
     {% if settings.enable_box_layout and settings.box_layout == 'box_layout_2' and template == 'index' %}layout-20{% endif %}
     {% if settings.enable_rtl %} rtl{% endif %}"
   >
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8KD97Z"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     {% render 'megamenu-rules' %}
-    {% render 'megamenu-rules-version-2' %}
     <div id="shop-currency" style="display:none !important">{{ shop.money_with_currency_format }}</div>
     <!-- pre-loader start -->
     {% if settings.enable_loader %}
@@ -315,5 +372,32 @@
     {% endif %}
     <!-- Footer Scripts ================================ -->
   {% render 'preorder-now' %}
+  {% if content_for_header contains 'bulk-discount-production.herokuapp.com' %}
+          {% render 'sbdn-now' %}
+          {% render 'sbdn-shop' %}
+          {% render 'sbdn-products' %}
+          {% render 'sbdn-badge' %}
+          {% render 'sbdn-sale-clock' %}
+          {% endif %} 
+  <!-- PriceSpider Pixel Implementation --> 
+    <script async> 
+      document.addEventListener('DOMContentLoaded', (event) => { 
+        if (pSgetUrlParameter("psrid").length > 0) { 
+          console.log(); sessionStorage.setItem("psrid", pSgetUrlParameter("psrid")) 
+        } 
+      }); 
+  </script> 
+    <!-- PriceSpider end -->
+  <script>
+    _affirm_config = {
+        public_api_key: "{DJF6J7CUEO1JLFX7}",
+        script: "https://cdn1.affirm.com/js/v2/affirm.js",
+        locale: "en_CA",
+        country_code: "CAN",
+    };
+
+(function(m,g,n,d,a,e,h,c){var b=m[n]||{},k=document.createElement(e),p=document.getElementsByTagName(e)[0],l=function(a,b,c){return function(){a[b]._.push([c,arguments])}};b[d]=l(b,d,"set");var f=b[d];b[a]={};b[a]._=[];f._=[];b._=[];b[a][h]=l(b,a,h);b[c]=function(){b._.push([h,arguments])};a=0;for(c="set add save post open empty reset on off trigger ready setProduct".split(" ");a<c.length;a++)f[c[a]]=l(b,d,c[a]);a=0;for(c=["get","token","url","items"];a<c.length;a++)f[c[a]]=function(){};k.async=
+  !0;k.src=g[e];p.parentNode.insertBefore(k,p);delete g[e];f(g);m[n]=b})(window,_affirm_config,"affirm","checkout","ui","script","ready","jsReady");
+</script>
   </body>
 </html>

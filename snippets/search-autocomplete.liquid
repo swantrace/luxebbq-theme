@@ -27,7 +27,7 @@
         // What's the search results list?
         var resultsList = form.find('.search-results');
         // If that's a new term and it contains at least 3 characters.
-        if (term.length > 3 && term != $(this).attr('data-old-term')) {
+        if (term.length > 1 && term != $(this).attr('data-old-term')) {
           // Saving old query.
           $(this).attr('data-old-term', term);
           // Killing any Ajax request that's currently being processed.

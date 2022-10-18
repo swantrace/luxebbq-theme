@@ -28,7 +28,6 @@ const charcoalGrillBrands = [
     'Napoleon',
     'Pit Barrel Cooker',
     'PK Grills',
-    'Regal', // doesn't exist
     'Sunterra',
     'Twin Eagles',
     'Weber', 
@@ -38,7 +37,7 @@ const pelletGrillBrands = [
     'Black Earth Grills',
     'Broil King',
     'Delta Heat',
-    'Hestan',
+    'Green Mountain Grills',
     'Kamado Joe',
     'Louisiana Grills',
     'Lynx Grills',
@@ -69,7 +68,6 @@ const offsetSmokerBrands = [
     'Delta Heat',
     'Hestan',
     'Lynx Grills',
-    'Egg Modular', // doesn't exist
     'Kamado Joe', 
     'Louisiana Grills',
     'Masterbuilt',
@@ -85,6 +83,7 @@ const pizzaOvenBrands = [
     'LaPiazza Wood Ovens',
     'Lynx Grills',
     'Ooni', 
+  	'Oven Brothers',
     'Twin Eagles',
 ]
 const brandsOfCookType = {
@@ -132,28 +131,19 @@ const filters = [{
             return firstBrand === undefined || brandsOfCookType[cookType]?.includes(firstBrand);
         }
     )
-}, 
-{% comment %} {
+}, {
     stateKey: "currentPriceRange",
     actionType: "changePriceRange",
     title: "Price Range",
     type: "RangeSlider",
     info: [0, 6500, 250],
     selected: params?.['currentPriceRange'] ?? [0, 6500]
-},  {% endcomment %}
-{
-    stateKey: "currentPriceRange",
-    actionType: "changePriceRange",
-    title: "Price Range",
-    type: "RangeSliderWithCheckbox",
-    info: [0, 6500, 250, "Show Grills Over $6500"],
-    selected: params?.['currentPriceRange'] ?? [0, 6500, 6500] // the third number can only be either 0 or maxLimit which 6500 here
 }, {
     stateKey: "currentGrillCookingAreaRange",
     actionType: "changeGrillCookingAreaRange",
     title: "Grill Cooking Area",
     type: "RangeSlider",
-    info: [0, 80, 5, "(# of Burgers)"],
+    info: [0, 80, 5],
     selected: params?.['currentGrillCookingAreaRange'] ?? [0, 80]
 }, {
     stateKey: "selectedStandTypes",

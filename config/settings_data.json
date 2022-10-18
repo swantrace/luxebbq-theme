@@ -1,6 +1,6 @@
 {
   "current": {
-    "enable_development_mode": true,
+    "enable_development_mode": false,
     "enable_rtl": false,
     "display_demo_btn": false,
     "enable_blur_lazy_load": true,
@@ -74,7 +74,7 @@
     "btm_footer_color": "#111111",
     "btm_footer_text_color": "#ffffff",
     "btm_footer_payment_color": "#fb711c",
-    "header_layout": "header-5",
+    "header_layout": "header_5",
     "display_sticky_header": true,
     "cart_redirect": "redirect_to_cart",
     "other_color": "#ff4c3b",
@@ -143,7 +143,7 @@
     "pro_sidebar_bnr": "",
     "pro_sidebar_bnr_link": "",
     "product_box_layout": "product_2",
-    "show_sale_tag": false,
+    "show_sale_tag": true,
     "show_new_tag": false,
     "show_quickview": false,
     "show_wishlist": true,
@@ -237,18 +237,18 @@
     "supported_currencies": "USD EUR GBP INR",
     "default_currency": "CAD",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/lbc_logo_25582111-b1de-49f5-a57c-b512d9f8e4ec.png",
     "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
+    "checkout_logo_size": "large",
     "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
-    "checkout_input_background_color_mode": "white",
+    "checkout_body_background_color": "#222222",
+    "checkout_input_background_color_mode": "transparent",
     "checkout_sidebar_background_image": "",
     "checkout_sidebar_background_color": "#fafafa",
     "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
     "checkout_accent_color": "#197bbd",
-    "checkout_button_color": "#197bbd",
+    "checkout_button_color": "#fb711c",
     "checkout_error_color": "#e32c2b",
     "gas_grill_brands": "Weber,Napoleon,Broil King",
     "charcoal_grill_brands": "Weber,Kamado Joe,Sunterra,Napoleon,Big Green Egg",
@@ -844,7 +844,6 @@
           "1536992182888": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify:\/\/shop_images\/6_806e6bf5-4ecf-4f0e-a764-09b83a367dee.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -854,7 +853,6 @@
           "1536992184454": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify:\/\/shop_images\/5_76e08329-db64-4cc8-8451-0449d8ea467d.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -864,7 +862,6 @@
           "1536992185663": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify:\/\/shop_images\/4_453c870f-0d4f-47f1-b98f-c8352b5adf15.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -874,7 +871,6 @@
           "1536992187004": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify:\/\/shop_images\/3_49da575b-ef96-4cdf-934f-0f16778269b2.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -884,7 +880,6 @@
           "1536992188204": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify:\/\/shop_images\/2_80e616eb-ed32-4fb4-bc33-f09e34363200.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -894,7 +889,6 @@
           "1595338573861": {
             "type": "Team",
             "settings": {
-              "team_image": "shopify:\/\/shop_images\/3_49da575b-ef96-4cdf-934f-0f16778269b2.jpg",
               "team_name": "Hilleri koel",
               "trans_team_name": "",
               "team_position": "Ceo & Founder at company",
@@ -941,7 +935,6 @@
           "1536992283259": {
             "type": "Service",
             "settings": {
-              "services_image": "shopify:\/\/shop_images\/4_3_a4568c73-a384-4644-a296-fa50a9f5f94d.png",
               "services_title": "free shipping",
               "trans_services_title": "",
               "services_desc": "Free Shipping World Wide",
@@ -951,7 +944,6 @@
           "1536992284547": {
             "type": "Service",
             "settings": {
-              "services_image": "shopify:\/\/shop_images\/3_3_bbd2f6a0-8e89-48d8-9586-75251bf22ec9.png",
               "services_title": "24 X 7 SERVICE",
               "trans_services_title": "",
               "services_desc": "Online Service For New Customer",
@@ -961,7 +953,6 @@
           "1536992285691": {
             "type": "Service",
             "settings": {
-              "services_image": "shopify:\/\/shop_images\/2_2_385a77f3-4d1d-4e0c-9e7a-10d53f2bb634.png",
               "services_title": "FESTIVAL OFFER",
               "trans_services_title": "",
               "services_desc": "New Online Special Festival Offer",
@@ -2800,13 +2791,15 @@
         "type": "about-image-with-text",
         "settings": {
           "enabled": true,
-          "enabled_right": true,
+          "enabled_right": false,
           "section_padding": "70px 0px7 0px 0px",
+          "image": "shopify:\/\/shop_images\/Service.png",
           "title": "",
           "trans_title": "",
           "desc": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.",
           "trans_desc": "",
           "custom_desc": "",
+          "shop_btn_url": "",
           "img_width": "full",
           "use_equal_height": false,
           "image_ratio": "ratio_landscape",
@@ -2818,13 +2811,12 @@
         "type": "feature-blog",
         "settings": {
           "enabled": true,
-          "bg_color": "#fff",
+          "bg_color": "#ffffff",
           "enable_bg_img": false,
-          "bg_img": "",
           "section_padding": "0px 0 0 0",
           "title": "From The Blog",
           "trans_title": "",
-          "title_color": "#222",
+          "title_color": "#222222",
           "subtitle": "Recent Story",
           "trans_subtitle": "",
           "blog": "news",
@@ -2852,11 +2844,11 @@
         "type": "richtext",
         "settings": {
           "enabled": true,
-          "title": "Welcome to Fashion",
+          "title": "LUXE BARBEQUE SERVICE PLANS",
           "trans_title": "",
-          "subtitle": "About Us",
+          "subtitle": "Luxe Barbeque Service Plans",
           "trans_subtitle": "",
-          "desc": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+          "desc": "Available in Winnipeg and Surrounding Area Only",
           "trans_desc": ""
         }
       },
@@ -2890,7 +2882,6 @@
           "1595336707610": {
             "type": "testimonial",
             "settings": {
-              "testi_image": "shopify:\/\/shop_images\/image_3_157x_cd66d049-8474-4279-9440-ccb3d28b1666.png",
               "testi_title": "Mark Jecno",
               "trans_testi_title": "",
               "testi_position": "Web Designer",
@@ -2902,7 +2893,6 @@
           "1595336712278": {
             "type": "testimonial",
             "settings": {
-              "testi_image": "shopify:\/\/shop_images\/image_1_157x_eb088775-c653-4523-827a-f26c09276b82.png",
               "testi_title": "Mark Jecno",
               "trans_testi_title": "",
               "testi_position": "Web Designer",
@@ -2918,10 +2908,8 @@
         ],
         "settings": {
           "banner_enable": true,
-          "image": "shopify:\/\/shop_images\/testimonial_banner_9433727e-8338-41ff-9e19-9fba1af9ed03.jpg",
           "testimonial_enable": true,
           "section_padding": "100px 0px 100px 0px",
-          "test_back_img": "",
           "test_back_color": "#f5f5f5",
           "img_width": "auto",
           "use_equal_height": false,
@@ -3318,7 +3306,6 @@
         "blocks": {
           "16154475014ba4bd75-0": {
             "type": "Image",
-            "disabled": true,
             "settings": {
               "slider": "shopify:\/\/shop_images\/luxe-bbq-1.jpg",
               "slider_content_height": 100,
@@ -3338,6 +3325,7 @@
           },
           "82299a74-72f3-4a21-bb96-c3713e0311ad": {
             "type": "Image",
+            "disabled": true,
             "settings": {
               "slider": "shopify:\/\/shop_images\/Baskets-slide.jpg",
               "slider_content_height": 75,
@@ -3354,11 +3342,32 @@
               "slide_text_color": "#ffffff",
               "shop_btn_url": "https:\/\/luxebbq.ca\/collections\/lifestyle-accessories?searchString=%22%22&selectedLifestyleAccessoriesTypes=%5B%22LUXE%20Buckets%22%5D"
             }
+          },
+          "39a433af-8485-449c-8a23-152563b26f3f": {
+            "type": "Image",
+            "disabled": true,
+            "settings": {
+              "slider": "shopify:\/\/shop_images\/IMG_04171.png",
+              "slider_content_height": 70,
+              "alignment": "text-left",
+              "position": "p-left",
+              "slide_title": "Get Ready for the Showdown!",
+              "trans_slide_title": "",
+              "slide_title_color": "#555555",
+              "slide_subtitle": "Grill Demos & more, all day long",
+              "trans_slide_subtitle": "",
+              "slide_subtitle_color": "#fb711c",
+              "button_text": "Click Here for Details",
+              "trans_slide_text": "",
+              "slide_text_color": "#ffffff",
+              "shop_btn_url": "shopify:\/\/pages\/𝐋𝐮𝐱𝐞-𝐖𝐞𝐞𝐤𝐞𝐧𝐝-𝐖𝐚𝐫𝐫𝐢𝐨𝐫-𝐁𝐁𝐐-𝐒𝐡𝐨𝐰𝐝𝐨𝐰𝐧"
+            }
           }
         },
         "block_order": [
           "16154475014ba4bd75-0",
-          "82299a74-72f3-4a21-bb96-c3713e0311ad"
+          "82299a74-72f3-4a21-bb96-c3713e0311ad",
+          "39a433af-8485-449c-8a23-152563b26f3f"
         ],
         "settings": {
           "enabled": true,
@@ -3378,6 +3387,7 @@
       },
       "16154556628bfa7323": {
         "type": "announcement-bar",
+        "disabled": true,
         "settings": {
           "enabled": true,
           "covidresponse_text": "Click Here for our COVID-19 Response"
@@ -3689,7 +3699,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "enabled": true,
+          "enabled": false,
           "covidresponse_text": "Click Here for our COVID-19 Respons    >>"
         }
       },
@@ -4261,138 +4271,73 @@
           "image_position": "8"
         }
       },
-      "header-10": {
-        "type": "header-10",
-        "blocks": {
-          "f4fef5e6-50e2-454e-9f67-418201722a29": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "bbq's\/smokers",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/barbeques",
-              "li_class_name": "mega hover-cls",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Barbeques\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "91f070bd-4167-4214-a020-8315fdccbdd2": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Grill Accessories",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/grilling-accessories",
-              "li_class_name": "mega hover-cls",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Grilling Accessories\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "d54b76ea-2067-4b33-91f8-8732635c588d": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Lifestyle Accessories",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/lifestyle-accessories",
-              "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Lifestyle Accessories\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "82df98b8-64b3-41fa-9312-1bc9b8ae8a0d": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Drinkware & coolers",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/drinkware-and-coolers",
-              "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Drinkware & Coolers\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "df0ac8e0-8087-4d46-863f-1be10c781ff1": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Fuel",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/fuel",
-              "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Fuel\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "6e1f2a39-91cc-42cf-afa1-dda04c8935dd": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Parts",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/parts",
-              "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Parts\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "925a65a3-6091-4c62-add6-7a615103eef9": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Sauces & Spices",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/sauces-rubs-and-spices",
-              "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Sauces, Rubs & Spices\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          },
-          "09226752-8a05-4212-8ca8-69e4ce1cf3fc": {
-            "type": "custom-megamenu",
-            "settings": {
-              "menu_name": "Furniture",
-              "trans_menu_name": "",
-              "menu_link": "shopify:\/\/collections\/furniture",
-              "li_class_name": "",
-              "custom_menu_html": "<ul is=\"mega-menu-2\" parent-menu=\"Furniture\"><\/ul>",
-              "trans_custom_menu_html": "",
-              "show_label": false,
-              "label_text": "hot",
-              "trans_label_text": ""
-            }
-          }
-        },
-        "block_order": [
-          "f4fef5e6-50e2-454e-9f67-418201722a29",
-          "91f070bd-4167-4214-a020-8315fdccbdd2",
-          "d54b76ea-2067-4b33-91f8-8732635c588d",
-          "82df98b8-64b3-41fa-9312-1bc9b8ae8a0d",
-          "df0ac8e0-8087-4d46-863f-1be10c781ff1",
-          "6e1f2a39-91cc-42cf-afa1-dda04c8935dd",
-          "925a65a3-6091-4c62-add6-7a615103eef9",
-          "09226752-8a05-4212-8ca8-69e4ce1cf3fc"
-        ],
+      "product-No_Sale-template": {
+        "type": "product-No_Sale-template",
         "settings": {
-          "logo": "shopify:\/\/shop_images\/lbc_logo.png",
-          "logo_max_width": "200",
-          "enable_search": true,
-          "show_wishlist": true,
-          "enable_currency": false
+          "layout": "thumbnails-bottom",
+          "eneble_img_zoom": true,
+          "pro_title_fontsize": "25px",
+          "show_wishlist_button": true,
+          "show_qty_selector": false,
+          "show_buy_now_btn": false,
+          "show_share_buttons": true,
+          "show_sku": false,
+          "show_vendor": false,
+          "show_type": false,
+          "show_avalibity_option": false,
+          "show_product_inventory": false,
+          "show_size_chart": false,
+          "size_guide_page": "",
+          "show_product_desc": true,
+          "show_inquiry_form": true,
+          "enable_random_sale": false,
+          "random_product_text": "",
+          "enable_product_active_view": false,
+          "active_product_text": "",
+          "show_trust_badges": true,
+          "show_countdown_timer": false,
+          "countdown_timer_title": "",
+          "trans_countdown_title": "",
+          "product_opt_type": "color-swatches",
+          "color_swatch_style": "color",
+          "swatches_option": "round",
+          "tab_layout": "horizontal",
+          "accordian_position": "below_product",
+          "enable_tab_1": true,
+          "tab_title_1": "Description",
+          "trans_tab_title_1": "",
+          "tab_content_1": "",
+          "enable_tab_2": true,
+          "tab_title_2": "Size Guide",
+          "trans_tab_title_2": "",
+          "tab_content_2": "Enjoy the flexibility of our 30-day free returns policy! Simply pack the item, with its original packaging and tags, and the returns slip into the iOne delivery package. Feel free to drop the package of at any counter!",
+          "enable_tab_3": true,
+          "tab_title_3": "Review",
+          "trans_tab_title_3": "",
+          "tab_content_3": "Content 3",
+          "show_resent_products": true,
+          "resent_product_title": "Recently Viewed Products",
+          "trans_resent_pro_title": "",
+          "resent_product_product_length": "6",
+          "show_related_products": true,
+          "related_product_title": "Related Products",
+          "trans_related_pro_title": "",
+          "related_product_product_length": "6",
+          "img_width": "full",
+          "use_equal_height": false,
+          "image_ratio": "ratio_landscape",
+          "image_size": "cover",
+          "image_position": "8",
+          "slider_speed": 3,
+          "use_autoplay": true,
+          "use_arrows": true,
+          "use_dots": false,
+          "use_loop": false,
+          "slidetoshow": 6,
+          "slidetoshow_1367": 5,
+          "slidetoshow_1024": 4,
+          "slidetoshow_767": 3,
+          "slidetoshow_420": 2
         }
       }
     },
@@ -4404,6 +4349,18 @@
       "1615529853a3d387ef",
       "1615445549b17595a2",
       "161579579914c45978"
-    ]
+    ],
+    "blocks": {
+      "14479319785270113485": {
+        "type": "shopify:\/\/apps\/store-pickup-delivery\/blocks\/app-embed\/5599aff0-8af1-473a-a372-ecd72a32b4d5",
+        "disabled": false,
+        "settings": {}
+      },
+      "6279071938380501511": {
+        "type": "shopify:\/\/apps\/powerful-contact-form-builder\/blocks\/app-embed\/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   }
 }

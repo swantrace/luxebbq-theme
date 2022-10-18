@@ -105,3 +105,27 @@
 {% else %}
 <script src="{{'OtherPage.min.js'|asset_url}}" type="module"></script>
 {% endif %}
+<script type='text/javascript'>
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] === sParam) {
+                return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    };
+    var autoredirect = getUrlParameter('checkout_url');
+    if (autoredirect != '') {
+        if (document.querySelector('form[action="/account/login"]') != null) {
+            document.querySelector('form[action="/account/login"]').insertAdjacentHTML('beforeend', '');
+        }
+        if (document.querySelector('form[action="/account"]') != null) {
+            document.querySelector('form[action="/account"]').insertAdjacentHTML('beforeend', '');
+        }
+    } 
+</script>

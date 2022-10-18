@@ -714,10 +714,6 @@
           {
             "value": "header_9",
             "label": "Layout 9"
-          },
-          {
-            "value": "header_10",
-            "label": "Layout 10"
           }
         ],
         "default": "header_1"

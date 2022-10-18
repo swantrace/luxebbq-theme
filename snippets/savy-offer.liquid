@@ -1,0 +1,42 @@
+<script>
+                    {% if product %}
+                        {% assign cids = product.collections | map: 'id' | join: ',' %}
+                        {% assign tids = product.tags | join: ","  | escape %}
+                        {% assign savySelectedVariant = product.selected_or_first_available_variant | map: 'id' %}
+                    {% endif %}
+                    {% if customer %}
+                        {% assign customerId = customer %}
+                    {% endif %}
+                    window.savyStore = {
+                        collections: [{{ cids }}],
+                        tags: '{{ tids }}'.split(','),
+                        productId: {{ product.id | default: 'null'}},
+                        selectedVariantId: {{ savySelectedVariant | default: 'null' }},
+                        shopifyDomain: "{{ shop.permanent_domain }}",
+                        moneyFormat: {{ shop.money_format | json }},
+                        moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }},
+                        currency: "{{ shop.currency }}",
+                        customerId: {{ customerId | json | default: 'null' }},
+                        productAvailable: {{ product.available | default: 'null'}},
+                        productMapping: []
+                    }
+
+                    {% if cart %}
+                        window.savyStore.cartTotal = {{ cart.total_price }};
+                        {% for item in cart.items %}
+                        window.savyStore.productMapping.push({
+                          	productId: '{{ item.product.id }}',
+                            variantId: '{{ item.variant_id }}',
+                          	collections: ["{{ item.product.collections | map: 'id' | join: '", "' }}"],
+                          	tags: "{{ item.product.tags | join: ',' | escape }}".split(','),
+                          	properties: {{ item.properties | json }} || [],
+                          	quantity: {{ item.quantity }},
+                          	key: '{{ item.key }}',
+                          });
+                        {% endfor %}
+                    {% endif %}
+                    {% assign isSavyInstalled = false %}
+                    {% if content_for_header contains 'admin.ultrasale.co' %} {% assign isSavyInstalled = true %} {% endif %}
+                    window.isSavyInstalled = {{ isSavyInstalled }};
+                </script>
+                {% if isSavyInstalled == true %}<script async src="https://admin.ultrasale.co/vendor/js/dist/sdk.min.js?shop={{ shop.permanent_domain  }}"></script>{% endif %}
