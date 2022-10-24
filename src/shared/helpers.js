@@ -27,8 +27,7 @@ export const GET_PRODUCT_BY_HANDLE = gql`
             id
             image {
               altText
-              originalSrc
-              transformedSrc(crop: CENTER, maxWidth: 600, maxHeight: 600)
+              url(transform: { crop: CENTER, maxWidth: 600, maxHeight: 600 })
             }
             priceV2 {
               amount
@@ -73,8 +72,7 @@ export const GET_PRODUCTS = gql`
             edges {
               node {
                 altText
-                originalSrc
-                transformedSrc(crop: CENTER, maxWidth: 340, maxHeight: 340)
+                url(transform: { crop: CENTER, maxWidth: 340, maxHeight: 340 })
               }
             }
           }
@@ -117,8 +115,7 @@ export const transformFunc = ({
   images:
     images?.edges?.map(({ node: image }) => ({
       imageAltText: image?.altText ?? null,
-      imageOriginalSrc: image?.originalSrc ?? null,
-      imageTransformedSrc: image?.transformedSrc ?? null,
+      imageTransformedSrc: image?.url ?? null,
     })) ?? [],
   maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
   minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
@@ -259,7 +256,6 @@ export const queryAllProductsThroughGraphqlCreator = async ({
               ),
               images: (images ?? []).map(({ src }) => ({
                 imageAltText: title,
-                imageOriginalSrc: src,
                 imageTransformedSrc: src
                   .replace('.jpg', '_340x340_crop_center.jpg')
                   .replace('.png', '_340x340_crop_center.png'),
@@ -318,7 +314,6 @@ export const queryAllProductsThroughGraphqlCreator = async ({
 };
 
 export const queryAllProductsFromSearchTerm = async (searchString = '') => {
-  debugger;
   const products = await queryAllProductsThroughGraphqlCreator({
     searchString,
   });

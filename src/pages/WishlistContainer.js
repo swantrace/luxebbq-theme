@@ -19,7 +19,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
     if (rawProduct) {
       // console.log('rawProduct', rawProduct);
       product = {
-        id: atob(rawProduct.id).replace('gid://shopify/Product/', ''),
+        id: rawProduct.id.replace('gid://shopify/Product/', ''),
         handle: rawProduct.handle,
         availability:
           rawProduct.totalInventory > 0
@@ -31,8 +31,7 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
           ? rawProduct.onlineStoreUrl
           : `/products/${rawProduct.handle}`,
         featuredImageUrl:
-          rawProduct.variants.edges?.[0]?.node?.image?.transformedSrc ??
-          emptyImage,
+          rawProduct.variants.edges?.[0]?.node?.image?.url ?? emptyImage,
         title: rawProduct.title,
         stockInfo:
           rawProduct.totalInventory > 0
@@ -46,10 +45,11 @@ function WishlistContainer({ emptyImage, emptySearchImage }) {
                 ><i class="fa fa-ban" aria-hidden="true"></i>OUT OF STOCK</span
               >`,
         price: `$${rawProduct.variants.edges?.[0]?.node?.priceV2?.amount}`,
-        variantId: atob(rawProduct?.variants?.edges?.[0]?.node?.id).replace(
-          'gid://shopify/ProductVariant/',
-          ''
-        ),
+        variantId:
+          rawProduct?.variants?.edges?.[0]?.node?.id?.replace(
+            'gid://shopify/ProductVariant/',
+            ''
+          ) ?? '',
         unformattedPrice: rawProduct.variants.edges?.[0]?.node?.priceV2?.amount,
       };
       if ((rawProduct?.variants?.edges?.length ?? 0) > 1) {

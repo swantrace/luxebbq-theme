@@ -281,8 +281,7 @@ class ProductType {
       images:
         images?.edges?.map(({ node: image }) => ({
           imageAltText: image?.altText ?? null,
-          imageOriginalSrc: image?.originalSrc ?? null,
-          imageTransformedSrc: image?.transformedSrc ?? null,
+          imageTransformedSrc: image?.url ?? null,
         })) ?? [],
       maxVariantPrice: Number(priceRange?.maxVariantPrice?.amount),
       minVariantPrice: Number(priceRange?.minVariantPrice?.amount),
