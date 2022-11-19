@@ -19,9 +19,9 @@
           {% if section.settings.use_equal_height %}
           <div>
             <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
-          </div>        
+          </div>
           {% else %}
-          <img src="{{ product | img_url: '340x555' }}" 
+          <img src="{{ product | img_url: '340x555' }}"
                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
           {% endif %}
         </a>
@@ -33,9 +33,9 @@
           {% if section.settings.use_equal_height %}
           <div>
             <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.images[1] %}" data-sizes="auto" data-parent-fit="cover"></span>
-          </div>        
+          </div>
           {% else %}
-          <img src="{{ product.images[1] | img_url: '340x555' }}" 
+          <img src="{{ product.images[1] | img_url: '340x555' }}"
                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
           {% endif %}
         </a>
@@ -47,7 +47,7 @@
         {% for image in product.images limit:4 %}
         <li class="grid_thumb_img {% if forloop.first == true %}active{% endif %}">
           <a href="javascript:void(0);" data-image="{{ image.src | img_url: 'original' }}">
-            <img src="{{ image.src | img_url: '40x' }}" alt="{{ product.title | split: '/' | first }}" />
+            <img src="{{ image.src | img_url: '40x' }}" alt="{{ product.title | split: '/' | first }}" loading="lazy" />
           </a>
         </li>
         {% endfor %}
@@ -60,7 +60,7 @@
       {% if settings.show_catelogue != true %}
       <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form d-inline-block" id="product_grid_id_{{ product.variants.first.id }}">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-        <button  data-toggle="tooltip" data-placement="top" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" 
+        <button  data-toggle="tooltip" data-placement="top" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart"
                 {% unless settings.add_to_cart_style == 'popup' or settings.add_to_cart_style == 'fly_cart' %}onclick="openCart()"{% endunless %}{% unless product.variants[0].available%}disabled{% endunless %}>
           <i class="ti-shopping-cart" ></i>
         </button>
@@ -97,6 +97,10 @@
       {% endif %}
     </a>
 
+    {% if product.available and product.first_available_variant.inventory_quantity > 0 %}
+      <div class="badge green"><span>In Stock</span></div>
+    {% endif %}
+
     {% if settings.eneble_login_price %}
     {% if customer %}
     <h4 data-id="{{ product.id }}" data-price="{{ product.price }}">
@@ -129,7 +133,7 @@
     {% endif %}
 
     {% if settings.add_cart_btn == 'normal' %}
-    {% if product.available and product.variants.size > 1 %}  
+    {% if product.available and product.variants.size > 1 %}
 
     {% for option in product.options %}
     {% assign downcased_option = option | downcase %}
@@ -174,7 +178,7 @@
     {% endif %}
 
     {% endfor %}
-    {% endif %}   
+    {% endif %}
     {% endif %}
 
     {% if settings.add_cart_btn == 'advanced' %}
@@ -190,7 +194,7 @@
         <option disabled="disabled" value="{{ variant.id }}">{{ variant.title }}</option>
         {% endif %}
         {% endfor %}
-      </select>     
+      </select>
 
       {% if settings.show_catelogue != true %}
       <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product.variants.first.id }}">
@@ -206,7 +210,7 @@
     {% endif %}
 
   </div>
-  
+
   <span  style="display:none;">{% for tag in product.tags %}{{ tag }}{% unless forloop.last %},{% endunless %}{% endfor %}</span>
 
   {% for c in product.collections %}
@@ -214,7 +218,7 @@
   <div class="hide">{{ c.id }}</div>
   {% endif %}
   {% endfor %}
- 
+
   <script>
     {% if settings.show_color_swatches or settings.show_size_swatches %}
     $(document).on('click', '.grid_swatch', function(){
@@ -237,7 +241,7 @@
         var _val = $(this).val();
         $(this).next('.product_grid_cart_form').find('.variant_val').val(_val);
       });
-    });  
+    });
     {% endif %}
   </script>
   {%- comment -%}

@@ -22,7 +22,7 @@
       return false;
     });
   });
-</script>	
+</script>
 
 {% if settings.exit_enable %}
 <div id="exit_popup">
@@ -30,7 +30,7 @@
     <div class ="exit-popup-body">
       <div class="close"><a href="#"><span aria-hidden="true">×</span></a></div>
       <div class="media">
-        <img src="{{ settings.exit_bnr_img | img_url: '150x150' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid mr-3" alt="{{ settings.exit_bnr_img }}">
+        <img src="{{ settings.exit_bnr_img | img_url: '150x150' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid mr-3" alt="{{ settings.exit_bnr_img }}" loading="lazy">
         <div class="media-body text-left">
           <h2 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#exit_popup_heading"{% endif %}>
             {{ settings.exit_heading }}
@@ -50,7 +50,7 @@
           {% if settings.enable_lang_switcher %}
           <span class="hide" id="exit_popup_text">{{ settings.trans_exit_popup_text | raw }}</span>
           {% endif %}
-          
+
         </div>
       </div>
     </div>

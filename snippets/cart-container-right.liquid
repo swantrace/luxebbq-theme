@@ -1,4 +1,4 @@
-<script id="CartTemplate" type="text/template"> 
+<script id="CartTemplate" type="text/template">
 	{% raw %}
       <form action="/cart" method="post" novalidate class="cart_ajax_silder_form">
       <ul class="cart_product">
@@ -6,7 +6,7 @@
         <li>
           <div class="media">
             <a href="{{url}}">
-              <img class="mr-3" src="{{img}}" alt="{{name}}">
+              <img class="mr-3" src="{{img}}" alt="{{name}}" loading="lazy">
             </a>
             <div class="media-body">
               <a href="{{url}}">

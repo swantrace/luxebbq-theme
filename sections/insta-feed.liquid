@@ -4,7 +4,7 @@
 {% assign user_id = section.settings.insta_user_id -%}
 {% assign access_token = section.settings.insta_access_token -%}
 
-<section class="instagram {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %}" 
+<section class="instagram {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %}"
          style="padding: {{ section.settings.section_padding }};background-image: url({{ section.settings.bg_image | img_url: 'master'}});">
   {% if section.settings.slideshow_width == 'standard-width' %}
   <div class="container">
@@ -58,7 +58,7 @@ $(window).on('load', function() {
           for(i=0; i<16; i++){
             if(typeof object.data[i] == "undefined"){}
             else{
-              div_lth += '<div><a href="'+object.data[i].link+'" target="_blank" id="'+object.data[i].id+'"><div class="instagram-box"><img class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="'+object.data[i].images.low_resolution.url+'" alt="instagram" /><div class="overlay"><i class="fa fa-instagram"  aria-hidden="true"></i></div></div></a></div>';
+              div_lth += '<div><a href="'+object.data[i].link+'" target="_blank" id="'+object.data[i].id+'"><div class="instagram-box"><img class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="'+object.data[i].images.low_resolution.url+'" alt="instagram" loading="lazy" /><div class="overlay"><i class="fa fa-instagram"  aria-hidden="true"></i></div></div></a></div>';
             }
           }
         } else{

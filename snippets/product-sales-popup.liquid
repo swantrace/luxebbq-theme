@@ -1,11 +1,11 @@
 <script>
   $(function() {
     $('#someone-purchased').show();
-    var mytimeAgo = ['20 seconds', '34 seconds','35 seconds', '43 seconds','1 minute', '5 minutes', '10 minutes', '12 minutes', '14 minutes', '16 minutes', '18 minutes', '20 minutes', '25 minutes', '30 minutes', '35 minutes', '40 minutes','42 minutes','45 minutes', '50 minutes', '1 hours'];  
+    var mytimeAgo = ['20 seconds', '34 seconds','35 seconds', '43 seconds','1 minute', '5 minutes', '10 minutes', '12 minutes', '14 minutes', '16 minutes', '18 minutes', '20 minutes', '25 minutes', '30 minutes', '35 minutes', '40 minutes','42 minutes','45 minutes', '50 minutes', '1 hours'];
     var randomlytimeAgo = Math.floor(Math.random() * mytimeAgo.length);
     var currentmytimeAgo = mytimeAgo[randomlytimeAgo];
 
-    $(".timeAgo").text(currentmytimeAgo+" ago"); 
+    $(".timeAgo").text(currentmytimeAgo+" ago");
     $("#someone-purchased > div:gt(0)").hide();
 
     setInterval(function() {
@@ -16,7 +16,7 @@
       .end()
       .appendTo('#someone-purchased');
 
-      var mytimeAgo = ['0 minute', '1 minute', '5 minutes', '10 minutes', '12 minutes', '14 minutes', '16 minutes', '18 minutes', '20 minutes', '25 minutes', '30 minutes', '35 minutes', '40 minutes','42 minutes','45 minutes', '50 minutes', '1 hours'];  
+      var mytimeAgo = ['0 minute', '1 minute', '5 minutes', '10 minutes', '12 minutes', '14 minutes', '16 minutes', '18 minutes', '20 minutes', '25 minutes', '30 minutes', '35 minutes', '40 minutes','42 minutes','45 minutes', '50 minutes', '1 hours'];
       var randomlytimeAgo = Math.floor(Math.random() * mytimeAgo.length);
       var currentmytimeAgo = mytimeAgo[randomlytimeAgo];
 
@@ -24,7 +24,7 @@
     },  20000);
 
     setInterval(function() {
-      $('#someone-purchased').fadeIn(function() {    $(this).removeClass("fade-out"); }).delay(5000).fadeIn( function() {  $(this).addClass("fade-out"); }).delay(15000); 
+      $('#someone-purchased').fadeIn(function() {    $(this).removeClass("fade-out"); }).delay(5000).fadeIn( function() {  $(this).addClass("fade-out"); }).delay(15000);
     }, 5000);
 
   });
@@ -46,7 +46,7 @@
   {% capture index %}{{ 'now' | date: '%S' | times: randomly_collection.products.size | divided_by: 60 }}{% endcapture %}
   {% for product in randomly_collection.products offset:index limit:1000 %}
   <div>
-    <img src="{{ product | img_url: '120x85' }}" alt="{{ product.title | split: '|' | first | escape }}">
+    <img src="{{ product | img_url: '120x85' }}" alt="{{ product.title | split: '|' | first | escape }}" loading="lazy">
     <p>
       <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sales_popup_title"{% endif %}>
         {{ settings.buttom_message }}
@@ -76,4 +76,3 @@
 </div>
 
 {% endif %}
-

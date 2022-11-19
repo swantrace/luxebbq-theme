@@ -46,11 +46,11 @@
               <a href="javascript:void(0)" onclick="openNav()">
                 <div class="bar-style"> <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i></div>
               </a>
-            </div>            
+            </div>
             {% if section.settings.logo %}
             <div class="brand-logo mobile-logo" itemscope itemtype="http://schema.org/Organization">
-              <a href="/" itemprop="url"> 
-                <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+              <a href="/" itemprop="url">
+                <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px" loading="lazy">
               </a>
             </div>
             {% else %}
@@ -67,11 +67,11 @@
               <li class="mobile-wishlist">
                 <a href="/pages/wishlist">
                   <i class="fa fa-heart" aria-hidden="true"></i>
-                  <img src="{{ 'like.png' | asset_url }}" alt=""> </a></li>
+                  <img src="{{ 'like.png' | asset_url }}" alt="" loading="lazy"> </a></li>
               {% endif %}
               {% endif %}
               <li class="onhover-dropdown mobile-account">
-                <img src="{{ 'users.png' | asset_url }}" alt="">
+                <img src="{{ 'users.png' | asset_url }}" alt="" loading="lazy">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <ul class="onhover-show-div">
                   <li>
@@ -104,7 +104,7 @@
                 <ul>
                   {% if section.settings.enable_search %}
                   <li class="onhover-div mobile-search">
-                    <div><img src="{{ 'magnifying-glass.png' | asset_url }}" onclick="openSearch()" class="img-fluid" alt="">
+                    <div><img src="{{ 'magnifying-glass.png' | asset_url }}" onclick="openSearch()" class="img-fluid" alt="" loading="lazy">
                       <i class="ti-search" onclick="openSearch()"></i></div>
                     <div id="search-overlay" class="search-overlay">
                       <div>
@@ -129,7 +129,7 @@
                   {% endif %}
                   {% if settings.enable_lang_switcher or section.settings.enable_currency %}
                   <li class="onhover-div mobile-setting">
-                    <div><img src="{{ 'settings.png' | asset_url }}" class="img-fluid" alt="">
+                    <div><img src="{{ 'settings.png' | asset_url }}" class="img-fluid" alt="" loading="lazy">
                       <i class="ti-settings"></i></div>
                     <div class="show-div setting">
 
@@ -148,7 +148,7 @@
                       {% if settings.cart_redirect == 'redirect_to_cart'%}
                       <a href="/cart">
                         {% endif %}
-                        <img src="{{ 'shopping-cart.png' | asset_url }}" class="img-fluid" alt="">
+                        <img src="{{ 'shopping-cart.png' | asset_url }}" class="img-fluid" alt="" loading="lazy">
                         <i class="ti-shopping-cart fixed_cart" ></i>
                         {% if settings.cart_redirect == 'redirect_to_cart'%}
                       </a>
@@ -156,7 +156,7 @@
 
                       <span class="cart_qty_cls">
                         {{ cart.item_count }}
-                      </span>                      
+                      </span>
                     </div>
                     {% if settings.cart_redirect == 'ajax_cart' and settings.add_to_cart_style == 'fly_cart' %}
                     <ul class="show-div shopping-cart" id="cart_container_id">
@@ -185,14 +185,14 @@
                 <nav>
                   <div  onclick="closeNav()">
                     <div class="sidebar-back text-left">
-                      <i class="fa fa-angle-left pr-2" aria-hidden="true"></i> 
+                      <i class="fa fa-angle-left pr-2" aria-hidden="true"></i>
                       <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
                     </div>
                   </div>
                    {% if section.settings.logo %}
                   <div class="brand-logo" itemscope itemtype="http://schema.org/Organization">
-                    <a href="/" itemprop="url"> 
-                      <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+                    <a href="/" itemprop="url">
+                      <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px" loading="lazy">
                     </a>
                   </div>
                   {% else %}
@@ -202,10 +202,10 @@
                     <ul id="sub-menu" class="sm pixelstrap sm-vertical">
                       {% for block in section.blocks %}
                     {% capture blockId %}{{ block.id }}{% endcapture %}
-                      
+
                       {% assign sidebar_menu_id = block.settings.mainmenu -%}
                       {% for mainlink in linklists[sidebar_menu_id].links %}
-                      {% assign child_list_handle = mainlink.title | handleize %}        
+                      {% assign child_list_handle = mainlink.title | handleize %}
                       {% assign megamenu_title = block.settings.sidebar_menu_title | handleize -%}
 
                       {% if mainlink.handle == megamenu_title %}
@@ -261,7 +261,7 @@
                               {% endfor %}
                               {% if settings.show_sidebar_menu_img %}
                               <div class="col-xl-4">
-                                <a href="javascript:void(0)" class="mega-menu-banner"><img src="{{ settings.sidebar_menu_img | img_url: 'master' }}" alt="Image" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid"></a>
+                                <a href="javascript:void(0)" class="mega-menu-banner"><img src="{{ settings.sidebar_menu_img | img_url: 'master' }}" alt="Image" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" loading="lazy"></a>
                               </div>
                               {% endif %}
                             </div>
@@ -395,81 +395,81 @@
 <!-- header end -->
 
 {% schema %}
-{  
+{
    "name":"Header",
    "max_blocks": 1,
-   "settings":[  
-      {  
+   "settings":[
+      {
          "type":"header",
          "content":"Top Bar"
       },
-      {  
+      {
          "type":"checkbox",
          "id":"show_topbar",
          "label":"Show Top bar",
          "default":true
       },
-      {  
+      {
          "type":"text",
          "id":"announcement_text",
          "label":"Announcement text",
          "default":"Announce something here"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_announcement_text",
          "label":"Translate Announcement text"
       },
-      {  
+      {
          "type":"text",
          "id":"phone_number",
          "label":"Contact Number",
          "default":"CALL US: 123-456-7890"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_phone_number",
          "label":"Translate Contact Number"
       },
-      {  
+      {
          "type":"text",
          "id":"email_address",
          "label":"Email Address",
          "default":"EMAIL: Support@Fiot.com"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_email_address",
          "label":"Translate Email Address"
       },
-      {  
+      {
          "type":"checkbox",
          "id":"show_wishlist",
          "label":"Show Wishlist",
          "default":true
       },
-      {  
+      {
          "type":"header",
          "content":"Main header"
       },
-      {  
+      {
          "type":"image_picker",
          "id":"logo",
          "label":"Logo image"
       },
-      {  
+      {
          "type":"text",
          "id":"logo_max_width",
          "label":"Custom logo width (in pixels)",
          "default":"250"
       },
-      {  
+      {
          "type":"checkbox",
          "id":"enable_search",
          "label":"Enable Search",
          "default":true
       },
-      {  
+      {
          "type":"checkbox",
          "id":"enable_currency",
          "label":"Enable Currency Switcher",
@@ -482,7 +482,7 @@
          "default": true
       }
    ],
-   "blocks":[  
+   "blocks":[
       {
       "type": "select-nav-menu",
       "name": "default nav menu",

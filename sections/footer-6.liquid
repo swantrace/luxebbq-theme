@@ -14,7 +14,7 @@
                 {% capture image_size %}{{ section.settings.footer_logo_max_width | escape }}x{% endcapture %}
                 <div class="footer-brand-logo">
                   <a href="#">
-                    <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ section.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" />
+                    <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ section.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" loading="lazy" />
                   </a>
                 </div>
                 {% else %}
@@ -62,7 +62,7 @@
                 </div>
                 <div class="footer-contant">
                   <ul>
-                    {% if section.settings.footer_linklist != blank %} 
+                    {% if section.settings.footer_linklist != blank %}
                     {% assign footer_linklist = section.settings.footer_linklist -%}
                     {% for link in linklists[footer_linklist].links %}
                     <li>
@@ -99,7 +99,7 @@
           <div class="col-xl-6 col-md-6 col-sm-12">
             {% if section.settings.copyright_text != blank %}
             <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer1_{{blockId}}_copyright_text"{% endif %}>
-              {{ section.settings.copyright_text }}              
+              {{ section.settings.copyright_text }}
             </div>
             {% if settings.enable_lang_switcher %}
             <span class="hide" id="footer1_{{blockId}}_copyright_text">{{ section.settings.trans_copyright_text | raw }}</span>

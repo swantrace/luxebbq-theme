@@ -16,18 +16,18 @@
             <li>
               <div class="contact-icon">
                 {% if block.settings.services_image != blank %}
-                <img src="{{ block.settings.services_image | img_url: 'original' }}" alt="" class="img-fluid">
+                <img src="{{ block.settings.services_image | img_url: 'original' }}" alt="" class="img-fluid" loading="lazy">
                 {% endif %}
 
                 {% if block.settings.service_title != blank %}
-                
+
                 <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#contact_{{blockId}}_service_title"{% endif %}>
                   {{ block.settings.service_title }}
                 </h6>
                 {% if settings.enable_lang_switcher %}
                 <span class="hide" id="contact_{{blockId}}_service_title">{{ block.settings.trans_service_title | raw }}</span>
                 {% endif %}
-                
+
                 {% endif %}
               </div>
               <div>

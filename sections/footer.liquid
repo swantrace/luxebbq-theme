@@ -1,7 +1,7 @@
 <!--footer section -->
-<footer class="dtm {% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %}{% if section.settings.enabled_parallax_bg %}p-0 full-banner parallax {% endif %}  bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}" 
+<footer class="dtm {% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %}{% if section.settings.enabled_parallax_bg %}p-0 full-banner parallax {% endif %}  bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}"
          style="background-image: url({{ section.settings.bg_image | img_url: 'master'}});">
-  <section class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %}light-layout{% endunless %}" 
+  <section class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %}light-layout{% endunless %}"
            style="padding: {{ section.settings.section_padding }};
                   {% unless settings.enable_gradiant_colors or section.settings.bg_image %}background-color: {{ settings.footer_bg_color }};{% endunless %}">
     {% if section.settings.footer_width == 'standard-width' %}
@@ -26,7 +26,7 @@
               {% if block.settings.footer_logo %}
               {% capture image_size %}{{ block.settings.footer_logo_max_width | escape }}x{% endcapture %}
               <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
-                <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" />
+                <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" loading="lazy" />
               </div>
               {% else %}
               <h2 itemprop="logo"><a href="/" itemprop="url">{{ shop.name }}</a></h2>
@@ -97,7 +97,7 @@
               </div> {% endcomment %}
               <div class="footer-contant">
                 <ul>
-                  {% if block.settings.footer_linklist != blank %} 
+                  {% if block.settings.footer_linklist != blank %}
                   {% assign footer_linklist = block.settings.footer_linklist -%}
                   {% for link in linklists[footer_linklist].links %}
                   <li>
@@ -184,7 +184,7 @@
                 <h2 style="color: {{ settings.footer_newsletter_text_color }};" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#footer2_{{blockId}}_newsltr_title"{% endif %}>
                   {{ block.settings.title }}
                 </h2>
- 
+
                 <div class="parallelograms-group">
                   <span class="parallelograms parallelogram-lt"> </span>
                   <span class="parallelograms parallelogram-rt"> </span>
@@ -268,15 +268,15 @@
           <div class="col-xl-12 col-md-12 col-sm-12 text-center">
 
             <div class="brand-logo" itemscope itemtype="http://schema.org/Organization">
-              <a href="/" itemprop="url"> 
-                <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+              <a href="/" itemprop="url">
+                <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px" loading="lazy">
               </a>
             </div>
 
             <!-- footer.liquid -->
             {% if block.settings.copyright_text != blank %}
             <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer1_{{blockId}}_copyright_text"{% endif %}>
-              {{ block.settings.copyright_text }}              
+              {{ block.settings.copyright_text }}
             </div>
             {% endif %}
           </div>
@@ -339,12 +339,12 @@
          ],
          "default":"standard-width"
       },
-      {  
+      {
          "type":"image_picker",
          "id":"logo",
          "label":"Logo image"
       },
-      {  
+      {
          "type":"text",
          "id":"logo_max_width",
          "label":"Custom logo width (in pixels)",

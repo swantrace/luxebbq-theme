@@ -18,7 +18,7 @@
     {% if section.settings.banner_layout == 'layout_2' %}
     <section class="banner-padding absolute-banner">
       {% endif %}
-      <div class="container {% if section.settings.banner_layout == 'layout_2' %} absolute-bg{% endif %}" 
+      <div class="container {% if section.settings.banner_layout == 'layout_2' %} absolute-bg{% endif %}"
            {% if section.settings.banner_layout == 'layout_1' %}style="padding: {{ section.settings.section_padding }};{% endif %}">
         <div class="service services-qurox">
           <div class="row">
@@ -29,7 +29,7 @@
                 {% if block.settings.services_image == blank %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                 {% else %}
-                <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.services_image | img_url: 'master' }}"  alt="{{ block.settings.services_title }}"/>
+                <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.services_image | img_url: 'master' }}"  alt="{{ block.settings.services_title }}" loading="lazy"/>
                 {% endif %}
                 <div class="media-body">
                   {% if block.settings.services_title != blank %}

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xl-12">
         <div class="filter-main-btn">
-          <span class="filter-btn btn btn-theme"><i class="fa fa-filter" aria-hidden="true"></i> 
+          <span class="filter-btn btn btn-theme"><i class="fa fa-filter" aria-hidden="true"></i>
             <span {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.title_tags"{%endif%}>{{ 'collections.filters.title_tags' | t }}</span>
           </span>
         </div>
@@ -42,16 +42,16 @@
           <div class="collection-grid-view">
             <ul>
               <li>
-                <img src="{{ '2.png' | asset_url }}" class="product-2-layout-view">
+                <img src="{{ '2.png' | asset_url }}" class="product-2-layout-view" loading="lazy">
               </li>
               <li>
-                <img src="{{ '3.png' | asset_url }}" class="product-3-layout-view">
+                <img src="{{ '3.png' | asset_url }}" class="product-3-layout-view" loading="lazy">
               </li>
               <li class="active">
-                <img src="{{ '4.png' | asset_url }}" class="product-4-layout-view">
+                <img src="{{ '4.png' | asset_url }}" class="product-4-layout-view" loading="lazy">
               </li>
               <li>
-                <img src="{{ '6.png' | asset_url }}" class="product-6-layout-view">
+                <img src="{{ '6.png' | asset_url }}" class="product-6-layout-view" loading="lazy">
               </li>
             </ul>
           </div>
@@ -63,14 +63,14 @@
               <option value="48">48 Products</option>
             </select>
           </div>
-          <script>  
+          <script>
             {% if collection.url != '' %}
             var coll_url = '{{ collection.url }}';
             {% else %}
             var coll_url = '/collections/all';
             {% endif %}
 
-            $('.product-page-per-view select').bind('change', function(){     
+            $('.product-page-per-view select').bind('change', function(){
               if($(this).val() != 'none'){
                 var limit = $(this).val();
                 var load_url = coll_url+'?view='+limit;
@@ -120,7 +120,7 @@
                 }
                 );
               });
-            </script> 
+            </script>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 <div class="product-box absolute-product">
   <div class="img-wrapper">
-    
+
     <div class="lable-block">
       {% if settings.show_new_tag %}
       {% if product.tags contains 'new' or product.tags contains 'New' %}
@@ -14,15 +14,15 @@
       {% endif %}
       {% endif %}
     </div>
-    
+
     <div class="front">
       <a href="{{ product.url | within: collection }}">
         {% if section.settings.use_equal_height %}
         <div>
           <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"></span>
-        </div>        
+        </div>
         {% else %}
-        <img src="{{ product | img_url: '340x455' }}" 
+        <img src="{{ product | img_url: '340x455' }}"
              class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
         {% endif %}
       </a>
@@ -34,32 +34,32 @@
         {% if section.settings.use_equal_height %}
         <div>
           <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: product.images[1] %}" data-sizes="auto" data-parent-fit="cover"></span>
-        </div>        
+        </div>
         {% else %}
-        <img src="{{ product.images[1] | img_url: '340x455' }}" 
+        <img src="{{ product.images[1] | img_url: '340x455' }}"
              class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{ product.title | split: '|' | first | escape }}" >
         {% endif %}
       </a>
     </div>
     {% endif %}
     {% endif %}
-    
+
     {% if settings.show_product_thumb %}
     <ul class="product-thumb-list">
       {% for image in product.images limit:4 %}
       <li class="grid_thumb_img {% if forloop.first == true %}active{% endif %}">
         <a href="javascript:void(0);" data-image="{{ image.src | img_url: 'original' }}">
-          <img src="{{ image.src | img_url: '40x' }}" alt="{{ product.title | split: '|' | first | escape }}" />
+          <img src="{{ image.src | img_url: '40x' }}" alt="{{ product.title | split: '|' | first | escape }}" loading="lazy" />
         </a>
       </li>
       {% endfor %}
     </ul>
     {% endif %}
-    
+
   </div>
-  
+
   <div class="product-detail">
-    
+
     {% if settings.show_review_rating %}
     <div class="rating">
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
@@ -106,10 +106,10 @@
       {% endif %}
     </h4>
     {% endif %}
-    
+
     {% if settings.add_cart_btn == 'normal' %}
 
-    {% if product.available and product.variants.size > 1 %}  
+    {% if product.available and product.variants.size > 1 %}
 
     {% for option in product.options %}
     {% assign downcased_option = option | downcase %}
@@ -154,17 +154,17 @@
     {% endif %}
 
     {% endfor %}
-    {% endif %}   
+    {% endif %}
 
     {% endif %}
-    
+
     <div class="cart-bottom">
-      
+
       {% if settings.add_cart_btn == 'normal' %}
       {% if settings.show_catelogue != true %}
       <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product.variants.first.id }}">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-        <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart" 
+        <button  data-toggle="tooltip" data-placement="left" title="Add to cart" class="add_to_cart_btn_cls fly_addtocart"
                 {% unless product.variants[0].available%}disabled{% endunless %}>
           <i class="fa fa-shopping-cart" ></i>
         </button>
@@ -177,13 +177,13 @@
         <i class="fa fa-plus-circle" aria-hidden="true"></i>
       </a>
       {% endif %}
-      
+
       {% if settings.show_compare %}
       <a href="#" data-pid="{{ product.handle  }}" title="Compare" class="compare"><i class="fa fa-refresh" aria-hidden="true"></i></a>
       {% endif %}
-      
+
     </div>
-    
+
     {% if settings.add_cart_btn == 'advanced' %}
     {% if product.available and product.variants.size > 1 %}
     <div class="advanced_add_cart">
@@ -197,7 +197,7 @@
         <option disabled="disabled" value="{{ variant.id }}">{{ variant.title }}</option>
         {% endif %}
         {% endfor %}
-      </select>     
+      </select>
 
       {% if settings.show_catelogue != true %}
       <form method="post" enctype="multipart/form-data" action="/cart/add" class="product_grid_cart_form" id="product_grid_id_{{ product.variants.first.id }}">
@@ -211,9 +211,9 @@
     </div>
     {% endif %}
     {% endif %}
-    
+
   </div>
-  
+
   <span  style="display:none;">{% for tag in product.tags %}{{ tag }}{% unless forloop.last %},{% endunless %}{% endfor %}</span>
 
   {% for c in product.collections %}
@@ -247,8 +247,8 @@
         var _val = $(this).val();
         $(this).next('.product_grid_cart_form').find('.variant_val').val(_val);
       });
-    });  
+    });
     {% endif %}
   </script>
-  
+
 </div>

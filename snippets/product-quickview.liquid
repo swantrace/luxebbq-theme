@@ -9,7 +9,7 @@
         <div class="clearfix image-block">
           <span class="view_full_size">
             <a class="img-product" title="" href="#">
-              <img id="product-featured-image-quickview" class="img-responsive product-featured-image-quickview" src="{{ 'productDefault.png' | asset_url | split:'?' | first }}" alt="Quickview"  />
+              <img id="product-featured-image-quickview" class="img-responsive product-featured-image-quickview" src="{{ 'productDefault.png' | asset_url | split:'?' | first }}" alt="Quickview"  loading="lazy" />
             </a>
           </span>
           <div class="loading-imgquickview" style="display:none;"></div>
@@ -68,7 +68,7 @@
                   <button type="submit" name="add" class="add_to_cart_detail ajax_addtocart btn btn-solid">
                     <span >{{ 'products.product.add_to_cart' | t }}</span>
                   </button>
-                  <a class=" btn btn-solid" title="View Detail" href="#">View Detail</a> 
+                  <a class=" btn btn-solid" title="View Detail" href="#">View Detail</a>
                 </div>
                 {% endif %}
               </form>
@@ -78,12 +78,12 @@
 
         </div>
       </div>
-    </div>      
+    </div>
     <a title="Close" class="quickview-close" href="javascript:void(0)"><i class="fa fa-close"></i></a>
-  </div>    
+  </div>
 </div>
 
-<script type="text/javascript">  
+<script type="text/javascript">
   var shop_currency_val = $('#shop-currency').text();
   Shopify.doNotTriggerClickOnThumb = false;
   function changeImageQuickView(img, selector) {
@@ -102,7 +102,7 @@
       } else {
         addToCart.addClass('disabled').attr('disabled', 'disabled');
         $(addToCart).find("span").text("sold Out");
-      }  
+      }
       var form = jQuery('#' + selector.domIdPrefix).closest('form');
       for (var i=0,length=variant.options.length; i<length; i++) {
         var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');

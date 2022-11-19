@@ -12,21 +12,21 @@
           <div>
             <div class="img-border">
             {% if block.settings.team_image == blank %}
-            <img src="{{ 'team_svg.png' | asset_url }}" alt="" class="img-fluid">
+            <img src="{{ 'team_svg.png' | asset_url }}" alt="" class="img-fluid" loading="lazy">
             {% else %}
 
             {% if section.settings.use_equal_height %}
             <div>
               <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.team_image %}" data-sizes="auto" data-parent-fit="cover"></span>
-            </div>        
+            </div>
             {% else %}
             {% assign block_image = block.settings.team_image %}
             {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-            <img src="{{ block_image | img_url: 'original' }}" 
-                 data-src="{{ img_url }}" 
-                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                 data-aspectratio="{{ block_image.aspect_ratio }}" 
-                 data-sizes="auto" 
+            <img src="{{ block_image | img_url: 'original' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block_image.aspect_ratio }}"
+                 data-sizes="auto"
                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
             {% endif %}
             {% endif %}
@@ -41,7 +41,7 @@
             {% endif %}
             {% if block.settings.team_position != blank %}
             <h6 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#team_{{blockId}}_team_position"{% endif %}>
-              {{ block.settings.team_position }} 
+              {{ block.settings.team_position }}
             </h6>
             {% if settings.enable_lang_switcher %}
             <span class="hide" id="team_{{blockId}}_team_position">{{ block.settings.trans_team_position | raw }}</span>

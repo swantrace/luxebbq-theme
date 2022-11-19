@@ -20,11 +20,11 @@
                       {% for image in product.images %}
                       <div data-match="{{ image.alt }}">
                         {% assign block_image = image.src %}
-                        <img itemprop="image" src="{{ image.src | img_url: '220x' }}" 
-                             data-src="{{ img_url }}" 
-                             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                             data-aspectratio="{{ block_image.aspect_ratio }}" 
-                             data-sizes="auto" 
+                        <img itemprop="image" src="{{ image.src | img_url: '220x' }}"
+                             data-src="{{ img_url }}"
+                             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                             data-aspectratio="{{ block_image.aspect_ratio }}"
+                             data-sizes="auto"
                              class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid " alt="{{ image.alt | escape }}" >
                       </div>
                       {% endfor %}
@@ -37,15 +37,15 @@
                   {% for image in product.images %}
                   {% capture img_id %}FeaturedImage-{{ section.id }}-{{ image.id }}{% endcapture %}
                   {% capture zoom_img_id %}FeaturedImageZoom-{{ section.id }}-{{ image.id }}{% endcapture %}
-                  {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %} 
+                  {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
                   <div id="{{ img_wrapper_id }}">
 
                     {% assign block_image = image %}
-                    <img itemprop="image" src="{{ block_image | img_url: 'original' }}" 
-                         data-src="{{ img_url }}" 
-                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                         data-aspectratio="{{ block_image.aspect_ratio }}" 
-                         data-sizes="auto" 
+                    <img itemprop="image" src="{{ block_image | img_url: 'original' }}"
+                         data-src="{{ img_url }}"
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                         data-aspectratio="{{ block_image.aspect_ratio }}"
+                         data-sizes="auto"
                          class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid image_zoom_cls-{{ forloop.index0 }} main_img" alt="{{ image.alt | escape }}" >
 
                   </div>
@@ -56,7 +56,7 @@
                 <div class="product-360view">
                   {% include 'product-360' %}
                   <div class="image-360">
-                    <img src="{{ '360-icon.png' | asset_url }}" class="img-fluid">
+                    <img src="{{ '360-icon.png' | asset_url }}" class="img-fluid" loading="lazy">
                   </div>
                 </div>
                 {% endif %}
@@ -74,7 +74,7 @@
                       {% if settings.enable_lang_switcher %}
                       <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
                       {% endif %}
-                      
+
                       <meta itemprop="priceCurrency" content="{{ shop.currency }}">
                       <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
                       {% if settings.eneble_login_price %}
@@ -116,7 +116,7 @@
                         {% if form.posted_successfully? %}
                         <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
                         {% else %}
-                        <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when 
+                        <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when
                           {% assign data_title = product.title | split: '|' | first | escape %}
                           {% assign data_json = product.title | split: '|' | last %}
                           <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#product-three-col-template{{product.id}}_pro_title"{% endif %}>
@@ -136,13 +136,13 @@
                         <div id="notify-me-wrapper" style="display:none">
                           <input required="required" type="email" name="contact[email]" placeholder="your@email.com" class="form-control {% if form.errors contains 'email' %} error{% endif %}" value="{{ contact.fields.email }}" />
                           <input type="hidden" name="contact[body]" value="Please notify me when {{ product.title | escape }} becomes available." />
-                          <input class="btn btn-solid ml-3" type="submit" value="Send" />         
+                          <input class="btn btn-solid ml-3" type="submit" value="Send" />
                         </div>
                         {% endunless %}
                         {% endform %}
                       </div>
-                      
-                      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm_id" data-section="{{ section.id }}"> 
+
+                      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm_id" data-section="{{ section.id }}">
                         {% if option_style contains 'dropdown_list' %}
                         <select name="id" id="productSelect" data-section="{{ section.id }}" class="product-form__variants no-js hide">
                           {% for variant in product.variants %}
@@ -175,12 +175,12 @@
                         {% include 'swatch' with option %}
                         {% endfor %}
                         {% endif %}
-                      {% endif %} 
+                      {% endif %}
 
                         <div class="product-description border-product">
                           {% if product.options contains 'Size' or product.options contains 'size' %}
                           <h6 class="product-title size-text">
-                            select size 
+                            select size
                             {% if section.settings.show_size_chart %}
                             <span><a href="" data-toggle="modal" data-target="#sizemodal" {% if settings.enable_lang_switcher %}data-trans-key="products.product.size_chart"{%endif%}>
                               {{ 'products.product.size_chart' | t }}</a></span>
@@ -189,7 +189,7 @@
                           {% endif %}
 
                           {% if section.settings.show_product_inventory %}
-                          <div class="pro_inventory" style="width: 80%;"> 
+                          <div class="pro_inventory" style="width: 80%;">
                             {% for variant in product.variants %}
                             {% if variant.inventory_management == "shopify" and variant.inventory_policy != "continue" and  variant.inventory_quantity <= 10 %}
                             <p data-value="{{variant.title}}">Hurry! We have only {{ variant.inventory_quantity }} product in stock.</p>
@@ -243,7 +243,7 @@
                           {% endif %}
                         </div>
                         {% endif %}
-                        
+
                         {% if section.settings.show_inquiry_form %}
                         <div class="product-title cate-mode  mb-2">
                           <h6 class="mb-1">Please <a href="mailto:{{ shop.email }}">contact us</a> if you are interested in this product.</h6>
@@ -252,7 +252,7 @@
                           </span>
                         </div>
                         {% endif %}
-                        
+
                         <div class="border-product">
                           {% if section.settings.show_product_desc %}
                           <div>
@@ -273,7 +273,7 @@
                           {% endif %}
                         </div>
                       </form>
-                      
+
                        <div class="border-product">
                          {% if section.settings.show_share_buttons %}
                          <h6 class="product-title" {% if settings.enable_lang_switcher %}data-trans-key="products.product.social_share"{%endif%}>{{ 'products.product.social_share' | t }}</h6>
@@ -313,14 +313,14 @@
                         <div class="trust-badges">
                           {% assign block_image = section.settings.trust_badge_img %}
                           {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                          <img itemprop="image" src="{{ block_image | img_url: 'original' }}" 
-                               data-src="{{ block_image | img_url: 'original' }}" 
-                               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                               data-aspectratio="{{ block_image.aspect_ratio }}" 
-                               data-sizes="auto" 
+                          <img itemprop="image" src="{{ block_image | img_url: 'original' }}"
+                               data-src="{{ block_image | img_url: 'original' }}"
+                               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                               data-aspectratio="{{ block_image.aspect_ratio }}"
+                               data-sizes="auto"
                                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="badges" >
                         </div>
-                      </div>      
+                      </div>
                       {% endif %}
 
                     </div>
@@ -332,9 +332,9 @@
                   {% endfor %}
                   {% if bundle_product %}
                   {% include 'product-bundle' %}
-                  {% endif %}  
+                  {% endif %}
               </div>
-             
+
             </div>
         </div>
     </div>
@@ -376,7 +376,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        
+
         {% assign data_title = product.title | split: '|' | first | escape %}
         {% assign data_json = product.title | split: '|' | last %}
         <h5 id="exampleModalLabel" class="modal-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product.id}}_pro_title"{% endif %}>
@@ -385,13 +385,13 @@
         {% if settings.enable_lang_switcher %}
         <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
         {% endif %}
-        
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        
+
         {% if product.metafields.size-chart.size-chart-content %}
         {{ product.metafields.size-chart.size-chart-content }}
         {% else %}
@@ -482,7 +482,7 @@ document.addEventListener('scriptJSLoaded', function () {
     focusOnSelect: true,
      autoplaySpeed:1500,
   });
-  
+
   $('.product-right-slick').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -520,7 +520,7 @@ document.addEventListener('scriptJSLoaded', function () {
       centerMode: false,
       dots: false,
       focusOnSelect: true,
-      
+
       responsive: [
         {
           breakpoint: 576,
@@ -533,7 +533,7 @@ document.addEventListener('scriptJSLoaded', function () {
     });
   }
 });
-  
+
   var selectCallback = function(variant, selector){
     {% if section.settings.variant_style == 'color-swatches' %}
     if (variant){
@@ -545,7 +545,7 @@ document.addEventListener('scriptJSLoaded', function () {
         }
       }
     }
-    {% endif %}   
+    {% endif %}
 
     if (variant && variant.available == true){
       var shop_curr = '{{shop.money_format}}';
@@ -606,9 +606,9 @@ document.addEventListener('scriptJSLoaded', function () {
           var temp_img_src = $(this).find('img').attr('src');
           var new_temp_img_src = temp_img_src.substring(0, temp_img_src.indexOf("?"));
           var temp_newImageSizedSrc = newImageSizedSrc.substring(0, newImageSizedSrc.indexOf("?"));
-          var temp_data_index = $(this).attr('data-slick-index'); 
+          var temp_data_index = $(this).attr('data-slick-index');
           if(new_temp_img_src == temp_newImageSizedSrc){
-            $('.product-right-slick, .product-slick').slick('slickGoTo', temp_data_index);  
+            $('.product-right-slick, .product-slick').slick('slickGoTo', temp_data_index);
           }
         });
       });
@@ -635,7 +635,7 @@ document.addEventListener('scriptJSLoaded', function () {
     {% unless option_style contains 'dropdown_list' %}
     $('.selector-wrapper').addClass('hide');
     {% endunless %}
-    
+
     {% assign found_one_in_stock = false %}
     {% for variant in product.variants %}
     {% if variant.available and found_one_in_stock == false %}
@@ -711,7 +711,7 @@ document.addEventListener('scriptJSLoaded', function () {
       $('body').removeClass('show-360');
     });
     $('#notify-me').click(function() {
-      jQuery('#notify-me-wrapper').fadeIn();           
+      jQuery('#notify-me-wrapper').fadeIn();
       return false;
     });
 

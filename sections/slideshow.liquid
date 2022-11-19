@@ -29,7 +29,7 @@
                     <h4 style="color: {{ block.settings.slide_subtitle_color }}" {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#slide_{{blockId}}_slide_subtitle"{% endif %}>
                       {{ block.settings.slide_subtitle }}
                     </h4>
-                  
+
                     {% if settings.enable_lang_switcher %}
                       <span class="hide" id="slide_{{blockId}}_slide_subtitle">{{ block.settings.trans_slide_subtitle | raw }}</span>
                       {% endif %}
@@ -57,7 +57,7 @@
             </div>
             {% if block.settings.item_img %}
             <div class="tools-parts" id="tool-{{ forloop.index }}">
-              <img src="{{ block.settings.item_img | img_url: 'original' }}" class="img-fluid" alt="animation">
+              <img src="{{ block.settings.item_img | img_url: 'original' }}" class="img-fluid" alt="animation" loading="lazy">
             </div>
             {% endif %}
           </div>
@@ -94,7 +94,7 @@
               {% endif %}
               {% if block.settings.shop_btn_url != blank %}
               <a href="{{ block.settings.shop_btn_url }}" class="btn btn-solid"{% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
-                {{ 'sections.featured_product.shop_now' | t }}  
+                {{ 'sections.featured_product.shop_now' | t }}
               </a>
               {% endif %}
             </div>
@@ -103,7 +103,7 @@
       </div>
       {% endif %}
       {% endfor %}
-    </div>   
+    </div>
     {% if section.settings.slideshow_width == 'standard-width' %}
   </div>
   {% endif %}
@@ -127,7 +127,7 @@ window.onload = function(){
             pageY = e.clientY - window.innerHeight/2;
         elemOne.style.transform = 'translateX(' + (5 + pageX/150) + '%) translateY(' + (1 + pageY/150) + '%)';
         elemTwo.style.transform = 'translateX(-' + (5 + pageX/160) + '%) translateY(-' + (1 + pageY/160) +  '%)';
-        
+
     });
 }
 </script>

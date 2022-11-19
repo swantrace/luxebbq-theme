@@ -1529,13 +1529,7 @@
           "enable_product_active_view": false,
           "active_product_text": "active view this product",
           "show_payment_badges": true,
-          "payment_img_1": "",
-          "payment_img_2": "",
-          "payment_img_3": "",
-          "payment_img_4": "",
-          "payment_img_5": "",
           "show_trust_badges": true,
-          "trust_badge_img": "",
           "show_countdown_timer": true,
           "countdown_timer_title": "Hurry !!! 1 day left!",
           "trans_countdown_title": "",
@@ -2123,6 +2117,7 @@
           "logo": "shopify:\/\/shop_images\/lbc_logo.png",
           "logo_max_width": "200",
           "enable_search": true,
+          "use_search_popup": true,
           "show_wishlist": true,
           "enable_currency": false
         }
@@ -2581,8 +2576,8 @@
           "eneble_img_zoom": true,
           "pro_title_fontsize": "25px",
           "show_wishlist_button": true,
-          "show_qty_selector": true,
-          "show_buy_now_btn": true,
+          "show_qty_selector": false,
+          "show_buy_now_btn": false,
           "show_share_buttons": true,
           "show_sku": false,
           "show_vendor": false,
@@ -2598,8 +2593,7 @@
           "enable_product_active_view": false,
           "active_product_text": "",
           "show_trust_badges": false,
-          "trust_badge_img": "",
-          "show_countdown_timer": true,
+          "show_countdown_timer": false,
           "countdown_timer_title": "",
           "trans_countdown_title": "",
           "product_opt_type": "color-swatches",
@@ -3314,7 +3308,7 @@
               "slide_title": "Keep Grilling.",
               "trans_slide_title": "",
               "slide_title_color": "#ffffff",
-              "slide_subtitle": "A perfect BBQ time is waiting for you.",
+              "slide_subtitle": "A perfect BBQ time is waiting for you..",
               "trans_slide_subtitle": "",
               "slide_subtitle_color": "#ffffff",
               "button_text": "Find your grill",
@@ -3343,38 +3337,80 @@
               "shop_btn_url": "https:\/\/luxebbq.ca\/collections\/lifestyle-accessories?searchString=%22%22&selectedLifestyleAccessoriesTypes=%5B%22LUXE%20Buckets%22%5D"
             }
           },
-          "39a433af-8485-449c-8a23-152563b26f3f": {
+          "bfc36ba8-ed55-492c-ab23-1d093be0a741": {
             "type": "Image",
             "disabled": true,
             "settings": {
-              "slider": "shopify:\/\/shop_images\/IMG_04171.png",
-              "slider_content_height": 70,
-              "alignment": "text-left",
+              "slider": "shopify:\/\/shop_images\/AdobeStock_339472775.jpg",
+              "slider_content_height": 75,
+              "alignment": "text-center",
               "position": "p-left",
-              "slide_title": "Get Ready for the Showdown!",
+              "slide_title": "WoMen fashion",
               "trans_slide_title": "",
-              "slide_title_color": "#555555",
-              "slide_subtitle": "Grill Demos & more, all day long",
+              "slide_title_color": "#ffffff",
+              "slide_subtitle": "Welcome to Fashion",
               "trans_slide_subtitle": "",
-              "slide_subtitle_color": "#fb711c",
-              "button_text": "Click Here for Details",
+              "slide_subtitle_color": "#ffffff",
+              "button_text": "",
               "trans_slide_text": "",
               "slide_text_color": "#ffffff",
-              "shop_btn_url": "shopify:\/\/pages\/𝐋𝐮𝐱𝐞-𝐖𝐞𝐞𝐤𝐞𝐧𝐝-𝐖𝐚𝐫𝐫𝐢𝐨𝐫-𝐁𝐁𝐐-𝐒𝐡𝐨𝐰𝐝𝐨𝐰𝐧"
+              "shop_btn_url": ""
+            }
+          },
+          "b2fdd036-ce9f-41f5-b6d8-77b96dd9e3a7": {
+            "type": "Image",
+            "disabled": true,
+            "settings": {
+              "slider": "shopify:\/\/shop_images\/AdobeStock_484930203_Editorial_Use_Only.jpg",
+              "slider_content_height": 75,
+              "alignment": "text-center",
+              "position": "p-left",
+              "slide_title": "WoMen fashion",
+              "trans_slide_title": "",
+              "slide_title_color": "#ffffff",
+              "slide_subtitle": "Welcome to Fashion",
+              "trans_slide_subtitle": "",
+              "slide_subtitle_color": "#ffffff",
+              "button_text": "",
+              "trans_slide_text": "",
+              "slide_text_color": "#ffffff",
+              "shop_btn_url": ""
+            }
+          },
+          "dbf1fcaf-cc17-4162-a3ce-4fde21c1b765": {
+            "type": "Image",
+            "disabled": true,
+            "settings": {
+              "slider": "shopify:\/\/shop_images\/AdobeStock_392376261_1.jpg",
+              "slider_content_height": 75,
+              "alignment": "text-center",
+              "position": "p-left",
+              "slide_title": "WoMen fashion",
+              "trans_slide_title": "",
+              "slide_title_color": "#ffffff",
+              "slide_subtitle": "Welcome to Fashion",
+              "trans_slide_subtitle": "",
+              "slide_subtitle_color": "#ffffff",
+              "button_text": "",
+              "trans_slide_text": "",
+              "slide_text_color": "#ffffff",
+              "shop_btn_url": ""
             }
           }
         },
         "block_order": [
           "16154475014ba4bd75-0",
           "82299a74-72f3-4a21-bb96-c3713e0311ad",
-          "39a433af-8485-449c-8a23-152563b26f3f"
+          "bfc36ba8-ed55-492c-ab23-1d093be0a741",
+          "b2fdd036-ce9f-41f5-b6d8-77b96dd9e3a7",
+          "dbf1fcaf-cc17-4162-a3ce-4fde21c1b765"
         ],
         "settings": {
           "enabled": true,
           "enabled_fullpage": true,
           "slideshow_width": "full-width",
           "enabled_torn_section": false,
-          "slider_height": 100,
+          "slider_height": 85,
           "enabled_overlay": true,
           "overlay_opacity": 0,
           "slider_speed": 3,
@@ -3382,7 +3418,7 @@
           "use_arrows": true,
           "use_dots": false,
           "use_loop": true,
-          "enabled_animation": false
+          "enabled_animation": true
         }
       },
       "16154556628bfa7323": {
@@ -4270,75 +4306,6 @@
           "image_size": "cover",
           "image_position": "8"
         }
-      },
-      "product-No_Sale-template": {
-        "type": "product-No_Sale-template",
-        "settings": {
-          "layout": "thumbnails-bottom",
-          "eneble_img_zoom": true,
-          "pro_title_fontsize": "25px",
-          "show_wishlist_button": true,
-          "show_qty_selector": false,
-          "show_buy_now_btn": false,
-          "show_share_buttons": true,
-          "show_sku": false,
-          "show_vendor": false,
-          "show_type": false,
-          "show_avalibity_option": false,
-          "show_product_inventory": false,
-          "show_size_chart": false,
-          "size_guide_page": "",
-          "show_product_desc": true,
-          "show_inquiry_form": true,
-          "enable_random_sale": false,
-          "random_product_text": "",
-          "enable_product_active_view": false,
-          "active_product_text": "",
-          "show_trust_badges": true,
-          "show_countdown_timer": false,
-          "countdown_timer_title": "",
-          "trans_countdown_title": "",
-          "product_opt_type": "color-swatches",
-          "color_swatch_style": "color",
-          "swatches_option": "round",
-          "tab_layout": "horizontal",
-          "accordian_position": "below_product",
-          "enable_tab_1": true,
-          "tab_title_1": "Description",
-          "trans_tab_title_1": "",
-          "tab_content_1": "",
-          "enable_tab_2": true,
-          "tab_title_2": "Size Guide",
-          "trans_tab_title_2": "",
-          "tab_content_2": "Enjoy the flexibility of our 30-day free returns policy! Simply pack the item, with its original packaging and tags, and the returns slip into the iOne delivery package. Feel free to drop the package of at any counter!",
-          "enable_tab_3": true,
-          "tab_title_3": "Review",
-          "trans_tab_title_3": "",
-          "tab_content_3": "Content 3",
-          "show_resent_products": true,
-          "resent_product_title": "Recently Viewed Products",
-          "trans_resent_pro_title": "",
-          "resent_product_product_length": "6",
-          "show_related_products": true,
-          "related_product_title": "Related Products",
-          "trans_related_pro_title": "",
-          "related_product_product_length": "6",
-          "img_width": "full",
-          "use_equal_height": false,
-          "image_ratio": "ratio_landscape",
-          "image_size": "cover",
-          "image_position": "8",
-          "slider_speed": 3,
-          "use_autoplay": true,
-          "use_arrows": true,
-          "use_dots": false,
-          "use_loop": false,
-          "slidetoshow": 6,
-          "slidetoshow_1367": 5,
-          "slidetoshow_1024": 4,
-          "slidetoshow_767": 3,
-          "slidetoshow_420": 2
-        }
       }
     },
     "content_for_index": [
@@ -4353,11 +4320,6 @@
     "blocks": {
       "14479319785270113485": {
         "type": "shopify:\/\/apps\/store-pickup-delivery\/blocks\/app-embed\/5599aff0-8af1-473a-a372-ecd72a32b4d5",
-        "disabled": false,
-        "settings": {}
-      },
-      "6279071938380501511": {
-        "type": "shopify:\/\/apps\/powerful-contact-form-builder\/blocks\/app-embed\/e4bcb1eb-35b2-42e6-bc37-bfe0e1542c9d",
         "disabled": false,
         "settings": {}
       }

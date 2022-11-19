@@ -1,19 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+<!-- Breeze Task Start -->
+    <link href='https://breezetask.breezesuite.com/breezetask-scripts/static/css/breezetask.css' rel='stylesheet'>
+<script>localStorage.setItem('bt_comp_id',561)</script>
+<!-- Breeze Task End -->
     <!-- Verification Codes -->
     <meta name="google-site-verification" content="Xj4RYuHm7xVJUTE49SmyPSoU7jG-UWEJ03-979J2jRI" />
-    <meta name="google-site-verification" content="T5PumxNBI-ySuhypTmG2wDtWcaQZfo6hyARF4AG1-6w" />
-    <!-- Trialfire Start -->
-    <script>
-    var s=document.createElement("script"),tf={$q:[],do:function(){tf.$q.push(
-    [].slice.call(arguments))}};["init","ready","identify","property","logout",
-    "track","optout"].forEach(function(t){tf[t]=function(){tf.do.apply(null,
-    [t].concat([].slice.call(arguments)))}}),window.Trialfire=tf,
-    s.src="//cdn.trialfire.com/tf.js",document.head.appendChild(s),
-    Trialfire.init("e7a6e214-9e71-4684-8ef5-97c07c3fdd06");
-    </script>
-    <!-- Trialfire End -->
+
     <script>
       {% comment %} window.addEventListener("touchstart", (e) => {
         console.log('touchstart event:', e);
@@ -131,6 +125,7 @@
     {{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
 
     {%- render 'bold-common' -%}
+{%- render 'bold-includes' -%}
     {% include 'upsellio' %}
     {% include 'savy-offer' %}
 
@@ -175,7 +170,7 @@
     {% if template == 'index' %}
     <div class="loader-wrapper">
       {% if settings.enable_loader_logo %}
-      <img class="loader_logo" src="{{ settings.loader_img | img_url: '250x' }}" alt="Loader" />
+      <img class="loader_logo" src="{{ settings.loader_img | img_url: '250x' }}" alt="Loader" loading="lazy" />
       {% else %}
       <div class="theme-loader">
         <div class="cssload-thecube">
@@ -396,8 +391,18 @@
         country_code: "CAN",
     };
 
-(function(m,g,n,d,a,e,h,c){var b=m[n]||{},k=document.createElement(e),p=document.getElementsByTagName(e)[0],l=function(a,b,c){return function(){a[b]._.push([c,arguments])}};b[d]=l(b,d,"set");var f=b[d];b[a]={};b[a]._=[];f._=[];b._=[];b[a][h]=l(b,a,h);b[c]=function(){b._.push([h,arguments])};a=0;for(c="set add save post open empty reset on off trigger ready setProduct".split(" ");a<c.length;a++)f[c[a]]=l(b,d,c[a]);a=0;for(c=["get","token","url","items"];a<c.length;a++)f[c[a]]=function(){};k.async=
-  !0;k.src=g[e];p.parentNode.insertBefore(k,p);delete g[e];f(g);m[n]=b})(window,_affirm_config,"affirm","checkout","ui","script","ready","jsReady");
-</script>
+  (function(m,g,n,d,a,e,h,c){var b=m[n]||{},k=document.createElement(e),p=document.getElementsByTagName(e)[0],l=function(a,b,c){return function(){a[b]._.push([c,arguments])}};b[d]=l(b,d,"set");var f=b[d];b[a]={};b[a]._=[];f._=[];b._=[];b[a][h]=l(b,a,h);b[c]=function(){b._.push([h,arguments])};a=0;for(c="set add save post open empty reset on off trigger ready setProduct".split(" ");a<c.length;a++)f[c[a]]=l(b,d,c[a]);a=0;for(c=["get","token","url","items"];a<c.length;a++)f[c[a]]=function(){};k.async=
+    !0;k.src=g[e];p.parentNode.insertBefore(k,p);delete g[e];f(g);m[n]=b})(window,_affirm_config,"affirm","checkout","ui","script","ready","jsReady");
+  </script>
+    
+    <!-- Breeze Task Start  -->
+    <script src='https://breezetask.breezesuite.com/breezetask-scripts/static/js/breezetask-run.js'></script>
+    <script src='https://breezetask.breezesuite.com/breezetask-scripts/static/js/breezetask-main.js'></script>
+    <script src='https://breezetask.breezesuite.com/breezetask-scripts/static/js/breezetask-chunk.js'></script>
+    <!-- Breeze Task End  -->
+    <!--Breeze chat Start-->
+    <script src="//code.tidio.co/2llr5geomegzei1sk3eubaex8xvqpbzc.js" async></script>
+    <!--Breeze Chat End-->
+    
   </body>
 </html>

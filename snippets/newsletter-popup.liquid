@@ -13,7 +13,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
                 <div class="col-6 pl-0 popup-image">
-                  <img src="{{ settings.newsletter_bnr_img | img_url: '820x490' }}" class="img-fluid" alt="Subscribe newsletter">       
+                  <img src="{{ settings.newsletter_bnr_img | img_url: '820x490' }}" class="img-fluid" alt="Subscribe newsletter" loading="lazy">
                 </div>
                 <div class="col-6 newsletter-wrapper-detail">
                   <div class="popup-details">
@@ -26,7 +26,7 @@
                   {% endif %}
                   {% endif %}
 
-                  {% if settings.newsletter_text != blank %}                  
+                  {% if settings.newsletter_text != blank %}
                   <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#newsltr_popup_newsletter_text"{% endif %}>
                     {{ settings.newsletter_text }}
                   </p>

@@ -16,19 +16,19 @@
             <div class="collection-banner border-0">
               <div class="img-part">
                 {% if block.settings.image == blank %}
-                <img src="{{ 'offer-banner.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" />
+                <img src="{{ 'offer-banner.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" loading="lazy" />
                 {% else %}
                 {% if section.settings.use_equal_height %}
                 <div>
-                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" 
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}"
                         data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"
                         style="background-image: url('{{ block.settings.image | img_url: 'master' }}');"></span>
-                </div>        
+                </div>
                 {% else %}
                 {% assign block_image = block.settings.image %}
-                <img src="{{ block_image | img_url: 'master' }}" 
+                <img src="{{ block_image | img_url: 'master' }}"
                      class="lazyload img-fluid  {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" {% if section.settings.img_width == "full" %} w-100{% endif %}alt="{{block_image.alt}}" >
-                {% endif %}                  
+                {% endif %}
                 {% endif %}
               </div>
               <div class="banner-contain">
@@ -71,13 +71,13 @@
                <a href="{{ product.url }}" >
                              {% if section.settings.use_equal_height %}
                 <div>
-                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" 
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}"
                         data-bgset="{% include 'bg-set', image: product.featured_image.src %}" data-sizes="auto" data-parent-fit="cover"
                         style="background-image: url('{{ product.featured_image.src | img_url: 'master' }}');"></span>
-                </div>        
+                </div>
                 {% else %}
                 {% assign block_image = product.featured_image.src %}
-                <img src="{{ block_image | img_url: 'master' }}" 
+                <img src="{{ block_image | img_url: 'master' }}"
                      class="lazyload img-fluid  {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" {% if section.settings.img_width == "full" %} w-100{% endif %}alt="{{block_image.alt}}" >
                 {% endif %}
               </a>
@@ -99,7 +99,7 @@
                 {% if settings.enable_lang_switcher %}
                 <span class="hide" id="offer-banner{{blockId}}_subtitle">{{ block.settings.trans_subtitle | raw }}</span>
                 {% endif %}
-                {% endif %}    
+                {% endif %}
                 </h4>
               </div>
             </div>
@@ -146,7 +146,7 @@
                         {% endif %}
                       </h5>
                       {% endif %}
-                
+
                 <h6><span> {{ product.description | split: '[countdowntimer-date-start]' | first | truncatewords: 3 }}</span></h6>
                 <p id="demo2"></p>
               </div>
@@ -160,19 +160,19 @@
             <div class="collection-banner border-0">
               <div class="img-part">
                 {% if block.settings.image == blank %}
-                <img src="{{ 'offer-banner.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" />
+                <img src="{{ 'offer-banner.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" loading="lazy" />
                 {% else %}
                 {% if section.settings.use_equal_height %}
                 <div>
-                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" 
+                  <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}"
                         data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"
                         style="background-image: url('{{ block.settings.image | img_url: 'master' }}');"></span>
-                </div>        
+                </div>
                 {% else %}
                 {% assign block_image = block.settings.image %}
-                <img src="{{ block_image | img_url: 'master' }}" 
+                <img src="{{ block_image | img_url: 'master' }}"
                      class="lazyload img-fluid  {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" {% if section.settings.img_width == "full" %} w-100{% endif %}alt="{{block_image.alt}}" >
-                {% endif %}                
+                {% endif %}
                 {% endif %}
               </div>
               <div class="banner-contain">
@@ -403,7 +403,7 @@
 
       ]
     },
-    
+
 	{
       "type": "product",
       "name": "product center",
@@ -485,7 +485,7 @@
           "label": "Banner Image"
         }
 
-        
+
       ]
     }
   ],

@@ -37,16 +37,16 @@
 
                       {% assign block_image = section.settings.banner_img %}
                       {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                      <img src="{{ block_image | img_url: '1000x300' }}" 
-                           data-src="{{ img_url }}" 
-                           data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                           data-aspectratio="{{ block_image.aspect_ratio }}" 
-                           data-sizes="auto" 
+                      <img src="{{ block_image | img_url: '1000x300' }}"
+                           data-src="{{ img_url }}"
+                           data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                           data-aspectratio="{{ block_image.aspect_ratio }}"
+                           data-sizes="auto"
                            class="lazyload w-100{% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
 
                     </a>
                     {% endif %}
-                    
+
                     {% if section.settings.enable_coll_info %}
                     <div class="top-banner-content small-section">
                       <h4 class="coll_title" {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.all_tags"{%endif%}>
@@ -68,7 +68,7 @@
                         </a></div>
                     </div>
                     {% endif %}
-                    
+
                   </div>
                   <div class="collection-product-wrapper">
 
@@ -112,7 +112,7 @@
 
                             {% if product_count < 1 %}
                             <div class="col-sm-12 text-center mt-5">
-                              <img src="{{ 'empty-collection.png' | asset_url }}" class="img-fluid mb-5">
+                              <img src="{{ 'empty-collection.png' | asset_url }}" class="img-fluid mb-5" loading="lazy">
                               <h3 class="text-center m-0" {% if settings.enable_lang_switcher %}data-trans-key="collections.general.no_matches"{%endif%}>
                                 {{ 'collections.general.no_matches' | t }}
                               </h3>
@@ -247,15 +247,15 @@
   $('.collapse-block-title').on('click', function(e) {
     e.preventDefault;
     var speed = 300;
-    
-    {% if settings.enable_lang_switcher %}    
+
+    {% if settings.enable_lang_switcher %}
     var thisItem = $(this).parent(),
         nextLevel = $(this).next().next('.collection-collapse-block-content');
     {% else %}
     var thisItem = $(this).parent(),
         nextLevel = $(this).next('.collection-collapse-block-content');
     {% endif %}
-    
+
     if (thisItem.hasClass('open')){
       thisItem.removeClass('open');
       nextLevel.slideUp(speed);
@@ -276,7 +276,7 @@
     $(".product-wrapper-grid").children().children().children().addClass("col-lg-12");
     {% else %}
     $(".product-wrapper-grid").children().children().children().addClass("col-lg-12 collection-product-item");
-    {% endif %}  
+    {% endif %}
     $('.product-box .img-wrapper').css({
       'min-height' : 'auto',
       'max-height' : 'inherit'
@@ -307,7 +307,7 @@
         $('.product-box .img-wrapper').each(function() {
           var minHeight = $(this).innerHeight();
           max = minHeight > max ? minHeight : max;
-        });  
+        });
         $('.product-box .img-wrapper').css({
           'min-height' : max,
           'max-height' : max
@@ -334,7 +334,7 @@
         $('.product-box .img-wrapper').each(function() {
           var minHeight = $(this).innerHeight();
           max = minHeight > max ? minHeight : max;
-        });  
+        });
         $('.product-box .img-wrapper').css({
           'min-height' : max,
           'max-height' : max
@@ -360,7 +360,7 @@
         $('.product-box .img-wrapper').each(function() {
           var minHeight = $(this).innerHeight();
           max = minHeight > max ? minHeight : max;
-        });  
+        });
         $('.product-box .img-wrapper').css({
           'min-height' : max,
           'max-height' : max
@@ -386,7 +386,7 @@
         $('.product-box .img-wrapper').each(function() {
           var minHeight = $(this).innerHeight();
           max = minHeight > max ? minHeight : max;
-        });  
+        });
         $('.product-box .img-wrapper').css({
           'min-height' : max,
           'max-height' : max
@@ -412,7 +412,7 @@
         $('.product-box .img-wrapper').each(function() {
           var minHeight = $(this).innerHeight();
           max = minHeight > max ? minHeight : max;
-        });  
+        });
         $('.product-box .img-wrapper').css({
           'min-height' : max,
           'max-height' : max
@@ -635,7 +635,7 @@
         "label": "Image Position",
         "default": "8"
       }
-   
+
   ],
   "blocks": [
     {

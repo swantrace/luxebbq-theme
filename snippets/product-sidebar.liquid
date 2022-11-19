@@ -43,7 +43,7 @@
   <div class="collection-filter-block">
     <div class="product-service">
       <div class="media">
-        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_1 | img_url: '50x' }}"  alt="{{ image.alt }}"/>
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_1 | img_url: '50x' }}"  alt="{{ image.alt }}" loading="lazy"/>
         <div class="media-body">
 
           <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_1"{% endif %}>
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="media">
-        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_2 | img_url: '50x' }}" alt="{{ image.alt }}">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_2 | img_url: '50x' }}" alt="{{ image.alt }}" loading="lazy">
         <div class="media-body">
           <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_2"{% endif %}>
             {{ settings.service_title_2 }}
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="media">
-        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_3 | img_url: '50x' }}" alt="{{ image.alt }}">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_3 | img_url: '50x' }}" alt="{{ image.alt }}" loading="lazy">
         <div class="media-body">
           <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_3"{% endif %}>
             {{ settings.service_title_3 }}
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="media border-0 m-0">
-        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_4 | img_url: '50x' }}" alt="{{ image.alt }}">
+        <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ settings.Sidebar_service_4 | img_url: '50x' }}" alt="{{ image.alt }}" loading="lazy">
         <div class="media-body">
           <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#pro_sidebar_{{product.id}}_service_title_4"{% endif %}>
             {{ settings.service_title_4 }}
@@ -163,7 +163,7 @@
         {% else %}
         <div class="media">
           <a href="{{ product.url | within: collection }}" >
-            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title }}" >
+            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title }}" loading="lazy" >
           </a>
           <div class="media-body align-self-center">
             <div class="rating">
@@ -214,7 +214,7 @@
         {% for product in collection.products limit: 3 offset:3 %}
         <div class="media">
           <a href="{{ product.url | within: collection }}" >
-            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title }}" >
+            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title }}" loading="lazy" >
           </a>
           <div class="media-body align-self-center">
             <div class="rating">
@@ -245,7 +245,7 @@
   {% if settings.show_pro_sidebar_banner %}
   <div class="collection-sidebar-banner">
     <a href="{{ settings.pro_sidebar_bnr_link }}">
-      <img src="{{ settings.pro_sidebar_bnr | img_url: 'master' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ image.alt }}">
+      <img src="{{ settings.pro_sidebar_bnr | img_url: 'master' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ image.alt }}" loading="lazy">
     </a>
   </div>
   {% endif  %}

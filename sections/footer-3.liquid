@@ -1,8 +1,8 @@
 <!-- footer -->
-<footer class="{% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %} {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %} bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}" 
+<footer class="{% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %} {% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %} bg-img-footer {% if section.settings.enabled_overlay %}overlay-cls {% endif %}{% if section.settings.enabled_torn_footer %}effect-cls footer-effect{% endif %}"
          style="padding: {{ section.settings.section_padding }};
                 {% if section.settings.bg_image != blank %}background-image: url({{ section.settings.bg_image | img_url: 'master'}});{% endif %}">
-  <div class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %} dark-layout{% endunless %}" 
+  <div class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %} dark-layout{% endunless %}"
        {% unless settings.enable_gradiant_colors or section.settings.bg_image %}style="background-color: {{ settings.footer_bg_color }};"{% endunless %}>
     {% if section.settings.footer_width == 'standard-width' %}
     <div class="container">
@@ -27,7 +27,7 @@
                 {% if block.settings.footer_logo %}
                 {% capture image_size %}{{ block.settings.footer_logo_max_width | escape }}x{% endcapture %}
                 <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
-                  <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" />
+                  <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" loading="lazy" />
                 </div>{% else %}
                 <h1 itemprop="logo"><a href="/" itemprop="url">{{ shop.name }}</a></h1>
                 {% endif %}
@@ -168,7 +168,7 @@
   {% for block in section.blocks %}
   {% capture blockId %}{{ block.id }}{% endcapture %}
   {% if block.type == 'Menu' %}
-  <div class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %}dark-layout{% endunless %}" 
+  <div class="{% unless settings.enable_gradiant_colors or section.settings.bg_image %}dark-layout{% endunless %}"
        {% unless settings.enable_gradiant_colors or section.settings.bg_image %} style="background-color: {{ settings.footer_bg_color }};"{% endunless %}>
     {% if section.settings.footer_width == 'standard-width' %}
     <div class="container">
@@ -189,7 +189,7 @@
                 </div>
                 <div class="footer-contant">
                   <ul>
-                    {% if block.settings.footer_linklist1 != blank %} 
+                    {% if block.settings.footer_linklist1 != blank %}
                     {% assign footer_linklist_1 = block.settings.footer_linklist1 -%}
                     {% for link in linklists[footer_linklist_1].links %}
                     <li>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="footer-contant">
                   <ul>
-                    {% if block.settings.footer_linklist2 != blank %} 
+                    {% if block.settings.footer_linklist2 != blank %}
                     {% assign footer_linklist_2 = block.settings.footer_linklist2 -%}
                     {% for link in linklists[footer_linklist_2].links %}
                     <li>
@@ -260,7 +260,7 @@
           <div class="col-xl-6 col-md-6 col-sm-12">
             {% if block.settings.copyright_text != blank %}
             <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer3_{{blockId}}_copyright_text"{% endif %}>
-              {{ block.settings.copyright_text }}              
+              {{ block.settings.copyright_text }}
             </div>
             {% if settings.enable_lang_switcher %}
             <span class="hide" id="footer3_{{blockId}}_copyright_text">{{ block.settings.trans_copyright_text | raw }}</span>

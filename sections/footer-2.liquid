@@ -1,5 +1,5 @@
 <!-- footer -->
-<footer class="{% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %}{% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %}" 
+<footer class="{% if section.settings.show_transparent_sticky %} full-scroll-footer{% endif %}{% if section.settings.enabled_parallax_bg %}full-banner parallax {% endif %}"
          style="background-image: url({{ section.settings.bg_image | img_url: 'master'}});">
   <div class="white-layout">
     <section class="p-0 ">
@@ -27,7 +27,7 @@
                     {% if block.settings.footer_logo %}
                     {% capture image_size %}{{ block.settings.footer_logo_max_width | escape }}x{% endcapture %}
                     <div class="footer-logo" itemscope itemtype="http://schema.org/Organization">
-                      <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" />
+                      <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" src="{{ block.settings.footer_logo | img_url: image_size }}" alt="{{ shop.name }}" loading="lazy" />
                     </div>{% else %}
                     <h1 itemprop="logo"><a href="/" itemprop="url">{{ shop.name }}</a></h1>
                     {% endif %}
@@ -196,7 +196,7 @@
                 </div>
                 <div class="footer-contant">
                   <ul>
-                    {% if block.settings.footer_linklist != blank %} 
+                    {% if block.settings.footer_linklist != blank %}
                     {% assign footer_linklist = block.settings.footer_linklist -%}
                     {% for link in linklists[footer_linklist].links %}
                     <li>
@@ -231,7 +231,7 @@
           <div class="col-xl-6 col-md-6 col-sm-12">
             {% if block.settings.copyright_text != blank %}
             <div class="footer-end {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#footer2_{{blockId}}_copyright_text"{% endif %}>
-              {{ block.settings.copyright_text }}              
+              {{ block.settings.copyright_text }}
             </div>
             {% if settings.enable_lang_switcher %}
             <span class="hide" id="footer2_{{blockId}}_copyright_text">{{ block.settings.trans_copyright_text | raw }}</span>

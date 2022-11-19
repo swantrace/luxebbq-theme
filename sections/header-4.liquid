@@ -48,7 +48,7 @@
               {% if settings.show_catelogue != true %}
               {% if section.settings.show_wishlist %}
               <li class="mobile-wishlist" style="padding: {{ section.settings.topbar_padding }};"><a href="/pages/wishlist">
-                <i class="fa fa-heart" aria-hidden="true"></i> 
+                <i class="fa fa-heart" aria-hidden="true"></i>
                 <span {% if settings.enable_lang_switcher %}data-trans-key="general.wishlist.title"{%endif%}>{{ 'general.wishlist.title' | t }}</span></a>
               </li>
               {% endif %}
@@ -105,7 +105,7 @@
               {% if section.settings.logo %}
               <div class="brand-logo">
                 <a href="/">
-                  <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+                  <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px" loading="lazy">
                 </a>
               </div>
               {% else %}
@@ -138,7 +138,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header4_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
-                        {% endif %}                        
+                        {% endif %}
                         {% if block.settings.show_label %}
                         <div class="lable-nav {{ block.settings.label_text }}">
                           <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header4_{{blockId}}_label_text"{% endif %}>
@@ -146,7 +146,7 @@
                           </span>
                           {% if settings.enable_lang_switcher %}
                           <span class="hide" id="header4_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                          {% endif %} 
+                          {% endif %}
                         </div>
                         {% endif %}
                       </a>
@@ -233,13 +233,13 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header4_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                        {% endif %} 
+                        {% endif %}
                       </div>
                       {% endif %}
                       </a>
                       {{ block.settings.custom_menu_html }}
                     </li>
-                    
+
                     {% elsif block.type == 'megamenu' %}
 
                     <li class="mega hover-cls"><a href="{{ block.settings.menu_link }}">
@@ -279,7 +279,7 @@
                                     </h5>
                                     {% if settings.enable_lang_switcher %}
                                     <span class="hide" id="header4_{{blockId}}_linklist_title">{{ block.settings[trans_linklist_title] | raw }}</span>
-                                    {% endif %} 
+                                    {% endif %}
                                   </div>
                                   <div class="menu-content">
                                     <ul>
@@ -300,7 +300,7 @@
                                 </div>
                               </div>
 
-                              {% endfor %}  
+                              {% endfor %}
 
                             </div>
                           </div>
@@ -313,7 +313,7 @@
                             {% capture menu_img_url %}img_url_{{ i }}{% endcapture %}
                             <div class="col-xl-6">
                               <a href="{{ block.settings[menu_img_url] }}" class="mega-menu-banner">
-                                <img src="{{ block.settings[menu_img] | img_url: 'master' }}" class="img-fluid d-none d-xl-block " alt="{{ image.alt }}">
+                                <img src="{{ block.settings[menu_img] | img_url: 'master' }}" class="img-fluid d-none d-xl-block " alt="{{ image.alt }}" loading="lazy">
                               </a>
                             </div>
                             {% endfor %}
@@ -322,12 +322,12 @@
                         </li>
                       </ul>
                     </li>
-                    
+
                     {% elsif block.type == 'select-nav-menu' %}
 
                     {% assign sidebar_menu_id = block.settings.mainmenu -%}
                     {% for mainlink in linklists[sidebar_menu_id].links %}
-                    {% assign child_list_handle = mainlink.title | handleize %}     
+                    {% assign child_list_handle = mainlink.title | handleize %}
 
                     {% if linklists[child_list_handle].links != blank %}
 
@@ -340,7 +340,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ data_json | raw }}</span>
-                        {% endif %}   
+                        {% endif %}
                       </a>
                       <ul>
                         {% for submenu in linklists[child_list_handle].links %}
@@ -399,7 +399,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ data_json | raw }}</span>
-                        {% endif %}      
+                        {% endif %}
                       </a>
                     </li>
 
@@ -466,7 +466,7 @@
                           {% if settings.cart_redirect == 'redirect_to_cart'%}
                         </a>
                         {% endif %}
-                        
+
                         <span class="cart_qty_cls">
                           {{ cart.item_count }}
                         </span>
@@ -540,7 +540,7 @@
          "label":"Announcement text",
          "default":"Announce something here"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_announcement_text",
          "label":"Translate Announcement text"
@@ -551,7 +551,7 @@
          "label":"Contact Number",
          "default":"CALL US: 123-456-7890"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_phone_number",
          "label":"Translate Contact Number"
@@ -562,7 +562,7 @@
          "label":"Email Address",
          "default":"EMAIL: Support@Fiot.com"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_email_address",
          "label":"Translate Email Address"
@@ -622,7 +622,7 @@
                "label":"Menu Name",
                "default":"Home"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
@@ -644,7 +644,7 @@
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"
@@ -661,7 +661,7 @@
                "label":"Menu Name",
                "default":"pages"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
@@ -688,7 +688,7 @@
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"
@@ -705,7 +705,7 @@
                "label":"Menu Name",
                "default":"Home"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
@@ -727,7 +727,7 @@
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"
@@ -746,7 +746,7 @@
                "id":"linklist_title_1",
                "label":"Linklist 1 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_1",
                "label":"Translate Title"
@@ -765,7 +765,7 @@
                "id":"linklist_title_2",
                "label":"Linklist 2 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_2",
                "label":"Translate Title"
@@ -784,7 +784,7 @@
                "id":"linklist_title_3",
                "label":"Linklist 3 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_3",
                "label":"Translate Title"
@@ -803,7 +803,7 @@
                "id":"linklist_title_4",
                "label":"Linklist 4 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_4",
                "label":"Translate Title"
@@ -822,7 +822,7 @@
                "id":"linklist_title_5",
                "label":"Linklist 5 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_5",
                "label":"Translate Title"
@@ -867,7 +867,7 @@
                "label":"Menu Name",
                "default":"shop"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
@@ -895,7 +895,7 @@
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"

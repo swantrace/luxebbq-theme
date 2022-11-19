@@ -15,7 +15,7 @@
       var input = $(this).find('input[name="q"]');
       // Adding a list for showing search results.
       var offSet = input.position().top + input.innerHeight();
-      $('<ul class="search-results"></ul>').css( { 'position': 'absolute', 'left': '0px', 'top': offSet } ).appendTo($(this)).hide();    
+      $('<ul class="search-results"></ul>').css( { 'position': 'absolute', 'left': '0px', 'top': offSet } ).appendTo($(this)).hide();
       // Listening to keyup and change on the text field within these search forms.
       input.attr('autocomplete', 'off').bind('keyup change', function() {
         // What's the search term?
@@ -52,7 +52,7 @@
                 var _name_json = _name.substr(_name.indexOf(":") + 1);
                 var _id = item.id;
 
-                link.append('<span class="thumbnail" style="height: 100%; width: 90px;"><img src="' + item.featured_image + '" style="height: 100%;width: 80px;"/></span>');
+                link.append('<span class="thumbnail" style="height: 100%; width: 90px;"><img src="' + item.featured_image + '" style="height: 100%;width: 80px;" loading="lazy"/></span>');
                 link.append('<p class="title"><span class="lang_trans" data-trans="#'+_id+'_pro_title">' + _name_default + '</span><span class="hide" id="'+_id+'_pro_title">'+_name_json+'</span></p>');
                 link.append('<span class="price">$' + ((item.price)/100).toFixed(2) + '</span>');
                 link.wrap('<li></li>');
@@ -64,7 +64,7 @@
                 resultsList.append('<li><span class="title"><a href="' + searchURL + '">See all results (' + data.results_count + ')</a></span></li>');
               }
               resultsList.fadeIn(200);
-            }        
+            }
           });
         }
       });
@@ -80,7 +80,7 @@
 <style scoped>
   .search-results {
     z-index: 8889;
-    list-style-type: none;   
+    list-style-type: none;
     width: {{ results_box_width }};
     margin: 0;
     padding: 0;
@@ -133,16 +133,16 @@
   .search-results .thumbnail {
     float: left;
     display: block;
-    width: 5%;    
+    width: 5%;
     margin: 0 8px 0;
     padding: 0;
     text-align: center;
     overflow: hidden;
   }
     .search-results .thumbnail img{
-    width: 5%;    
+    width: 5%;
 
-      
+
     }
   @media(max-width: 991px) {
     .search-results .thumbnail {

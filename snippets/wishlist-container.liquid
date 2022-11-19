@@ -22,7 +22,7 @@
             {% for product in collections.all.products %}
             <div class="media product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
               <a class="tile-media--media-link" href="{{ product.url }}">
-                <img  class="image--main" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title }}">
+                <img  class="image--main" src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title }}" loading="lazy">
               </a>
               <div class="media-body">
                 <a href="{{ product.url }}">
@@ -57,13 +57,13 @@
 
             </div>
           </li>
-          <li class=" wishlist-grid  product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}"> 
+          <li class=" wishlist-grid  product-tile-container wishlist-tile-container" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
             <div class="buttons checkout wishlist-grid d-block">
               <a href="/pages/wishlist" class="btn btn-solid btn-block btn-solid-sm view-cart">view wislist</a>
             </div>
           </li>
         </ul>
-     
+
       </div>
     </div>
   </div>

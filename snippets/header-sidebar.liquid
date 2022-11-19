@@ -3,7 +3,7 @@
 <div class="navbar">
   {% unless settings.header_layout == 'header_3' or settings.header_layout == 'header_4' %}
   <a href="javascript:void(0)" onclick="openNav()">
-    <div class="bar-style"> <img src="{{'menu.png' | asset_img_url : '30x'}}" alt="image"></div>
+    <div class="bar-style"> <img src="{{'menu.png' | asset_img_url : '30x'}}" alt="image" loading="lazy"></div>
   </a>
   {% endunless %}
   {% if settings.header_layout == 'header_3' or settings.header_layout == 'header_4' %}
@@ -16,14 +16,14 @@
     <nav>
       <div onclick="closeNav()">
         <div class="sidebar-back text-left">
-          <i class="fa fa-angle-left pr-2" aria-hidden="true"></i> 
+          <i class="fa fa-angle-left pr-2" aria-hidden="true"></i>
           <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
         </div>
       </div>
       <!-- Sample menu definition -->
       <ul id="sub-menu" class="sm pixelstrap sm-vertical">
         {% for mainlink in linklists[sidebar_menu_id].links %}
-        {% assign child_list_handle = mainlink.title | handleize %}        
+        {% assign child_list_handle = mainlink.title | handleize %}
         {% assign megamenu_title = settings.sidebar_menu_title | handleize -%}
 
         {% if mainlink.handle == megamenu_title %}
@@ -79,7 +79,7 @@
                 {% endfor %}
                 {% if settings.show_sidebar_menu_img %}
                 <div class="col-xl-4">
-                  <a href="javascript:void(0)" class="mega-menu-banner"><img src="{{ settings.sidebar_menu_img | img_url: 'master' }}" alt="Image" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid"></a>
+                  <a href="javascript:void(0)" class="mega-menu-banner"><img src="{{ settings.sidebar_menu_img | img_url: 'master' }}" alt="Image" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" loading="lazy"></a>
                 </div>
                 {% endif %}
               </div>

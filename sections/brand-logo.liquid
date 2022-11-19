@@ -11,18 +11,18 @@
             <div class="logo-block">
               <a href="{{ block.settings.link }}">
                 {% if block.settings.image == blank %}
-                <img src="{{ 'logo.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" />
+                <img src="{{ 'logo.png' | asset_url }}" alt="Brand Logo" title="Brand Logo" loading="lazy" />
                 {% else %}
 
                 {% if section.settings.use_equal_height %}
                 <div>
                   <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.image %}" data-sizes="auto" data-parent-fit="cover"></span>
-                </div>        
+                </div>
                 {% else %}
                 {% assign block_image = block.settings.image %}
-                  <img src="{{ block_image | img_url: '125x125' }}" 
+                  <img src="{{ block_image | img_url: '125x125' }}"
                        class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
-                {% endif %}                
+                {% endif %}
                 {% endif %}
               </a>
             </div>

@@ -14,7 +14,7 @@
     <ul>
       {% if section.settings.enable_random_sale %}
       <li class="border-right">
-        <img src="{{ 'gif3.gif' | asset_url }}" class="img-fluid" alt="image">
+        <img src="{{ 'gif3.gif' | asset_url }}" class="img-fluid" alt="image" loading="lazy">
         <span class="p_counter">{{randomNumber}}</span>
             {% if section.settings.random_product_text %}
             {% assign lang-array = section.settings.random_product_text | split: '|' %}
@@ -28,7 +28,7 @@
       {% endif %}
       {% if section.settings.enable_product_active_view %}
        <li>
-           <img src="{{ 'gif.gif' | asset_url }}" class="img-fluid user_img" alt="image">
+           <img src="{{ 'gif.gif' | asset_url }}" class="img-fluid user_img" alt="image" loading="lazy">
            <span class="p_counter">{{activeUser}}</span>
             {% if section.settings.active_product_text %}
             {% assign lang-array = section.settings.active_product_text | split: '|' %}
@@ -44,5 +44,3 @@
     {% endif %}
 </div>
 </div>
-
-

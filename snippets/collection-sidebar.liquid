@@ -8,12 +8,12 @@
 <div class="collection-filter col-sm-3" data-collurl="{{ collection.url }}">
   <div class="coll_sidebar" data-sticky_column>
     {% for block in section.blocks %}
-    
+
     {% if block.type == 'filter_category' %}
-    <div class="collection-filter-block">    
+    <div class="collection-filter-block">
       <div class="collection-mobile-back">
         <span class="filter-back">
-          <i class="fa fa-angle-left" aria-hidden="true"></i> 
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
           <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
         </span>
       </div>
@@ -78,7 +78,7 @@
       {% unless block.settings.filter_by_category_enable %}
       <div class="collection-mobile-back">
         <span class="filter-back">
-          <i class="fa fa-angle-left" aria-hidden="true"></i> 
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
           <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
         </span>
       </div>
@@ -86,7 +86,7 @@
 
       {% for block in section.blocks %}
     {% if block.type == 'filter_brand' %}
-      
+
       <!-- Brand filter start here -->
       {% if block.settings.filter_by_brand_enable %}
       <div class="collection-collapse-block open">
@@ -114,7 +114,7 @@
         </div>
       </div>
       {% endif %}
-      
+
       {% elsif block.type == 'filter_color' %}
 
       <!-- color filter start here -->
@@ -139,7 +139,7 @@
         </div>
       </div>
       {% endif %}
-      
+
       {% elsif block.type == 'filter_price' %}
 
       <!-- price filter start here -->
@@ -202,9 +202,9 @@
         </div>
       </div>
       {% endif %}
-      
+
       {% elsif block.type == 'filter_custom' %}
-      
+
       <!-- Custom filter start here -->
       {% if block.settings.filter_by_custom_enable %}
       <div class="collection-collapse-block open">
@@ -233,7 +233,7 @@
         </div>
       </div>
       {% endif %}
-      
+
       {% endif %}
       {% endfor %}
 
@@ -283,7 +283,7 @@
           {% else %}
           <div class="media">
             <a href="{{ product.url | within: collection }}" >
-              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title | split: '|' | first | escape }}" >
+              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title | split: '|' | first | escape }}" loading="lazy" >
             </a>
             <div class="media-body align-self-center">
               <div class="rating">
@@ -332,7 +332,7 @@
           {% for product in collection_new.products limit: 3 offset:3 %}
           <div class="media">
             <a href="{{ product.url | within: collection }}" >
-              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title | split: '|' | first | escape }}" >
+              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ product.featured_image | img_url:'master' }}" alt="{{ product.title | split: '|' | first | escape }}" loading="lazy" >
             </a>
             <div class="media-body align-self-center">
               <div class="rating">
@@ -368,14 +368,14 @@
     {% if block.settings.show_sidebar_banner %}
     <div class="collection-sidebar-banner">
       <a href="{{ block.settings.sidebar_banner_link }}">
-        <img src="{{ block.settings.sidebar_bnr_img | img_url: '295x445' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid w-100">
+        <img src="{{ block.settings.sidebar_bnr_img | img_url: '295x445' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid w-100" loading="lazy">
       </a>
     </div>
     {% endif %}
     <!-- side-bar banner end here -->
-    
+
     {% elsif block.type == 'custom_text_block' %}
-    
+
     <!-- side-bar Custom block start here -->
     {% if block.settings.show_sidebar_custom_text %}
     <div class="collection-sidebar-banner">
@@ -386,7 +386,7 @@
       {% if settings.enable_lang_switcher %}
       <span class="hide" id="coll_sidebar_{{sectionId}}_sidebar_custom_title">{{ block.settings.trans_sidebar_custom_title | raw }}</span>
       {% endif %}
-      
+
       <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#coll_sidebar_{{sectionId}}_sidebar_custom_text"{% endif %}>
         {{ block.settings.sidebar_custom_text }}
       </p>
@@ -397,7 +397,7 @@
     </div>
     {% endif %}
     <!-- side-bar Custom block end here -->
-    
+
     {% endif %}
     {% endfor %}
 
@@ -405,10 +405,10 @@
     <div class="mob-filter-bottom">
       <a href="#" class="btn btn-solid Clear_btn filter-btn" data-link-collection {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.clear_all"{%endif%}>
         {{ 'collections.filters.clear_all' | t }}
-      </a> 
+      </a>
       <a href="#" class="btn btn-solid apply_btn filter-btn" {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.apply"{%endif%}>
         {{ 'collections.filters.apply' | t }}
-      </a> 
+      </a>
     </div>
 
   </div>
@@ -436,7 +436,7 @@
         });
         setTimeout(function(){
           $('.filter-back, .clear_filter').trigger('click');
-        }, 1000); 
+        }, 1000);
       }
 
       if(click_cls == 'price_filters'){
@@ -491,13 +491,13 @@
       });
 
       if($('.product-filter-tags a').length > 1){
-        $('.product-filter-tags .clear_filter').show();  
+        $('.product-filter-tags .clear_filter').show();
       }else {
         $('.product-filter-tags .clear_filter').hide();
       }
 
       if(click_cls == 'category_filters'){
-        var cat_value = $(this).attr('data-value'); 
+        var cat_value = $(this).attr('data-value');
         $('.coll_title, .breadcrumb-item.active').text(cat_value);
         $("#category_filters li").each(function(){
           if($(this).attr('data-value') == temp_click){
@@ -518,7 +518,7 @@
         activeTags.push(selected_val);
       });
 
-      var coll_all = '/all';  
+      var coll_all = '/all';
       var coll_url = $('.collection-filter').attr('data-collurl');
 
       if(current_value){

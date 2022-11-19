@@ -14,11 +14,11 @@
     {% elsif block_size == 4 %}
     {% assign grid_width = 'col-lg-3 col-md-6' %}
     {% endif %}
-    
+
     {% if section.settings.banner_layout == 'layout_2' %}
     <section class="banner-padding absolute-banner " style="padding: {{ section.settings.section_padding }};">
       {% endif %}
-      <section class="{% if section.settings.banner_layout == 'layout_1' %}container {% endif %} {% if section.settings.banner_layout == 'layout_2' %} absolute-bg{% endif %}" 
+      <section class="{% if section.settings.banner_layout == 'layout_1' %}container {% endif %} {% if section.settings.banner_layout == 'layout_2' %} absolute-bg{% endif %}"
                style="padding: {{ section.settings.section_padding }};">
         <div class="service">
           <div class="row partition4 ">
@@ -28,7 +28,7 @@
               {% if block.settings.services_image == blank %}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
               {% else %}
-              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.services_image | img_url: 'master' }}"  alt="{{ block.settings.services_title }}"/>
+              <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.services_image | img_url: 'master' }}"  alt="{{ block.settings.services_title }}" loading="lazy"/>
               {% endif %}
               {% if block.settings.services_title != blank %}
               <h4 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#service1_{{blockId}}_services_title"{% endif %}>

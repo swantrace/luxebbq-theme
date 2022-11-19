@@ -20,10 +20,10 @@
               {% for block in section.blocks %}
 
               {% if block.type == 'filter_category' %}
-              <div class="collection-filter-block">    
+              <div class="collection-filter-block">
                 <div class="collection-mobile-back">
                   <span class="filter-back">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i> 
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
                   </span>
                 </div>
@@ -88,7 +88,7 @@
                 {% unless block.settings.filter_by_category_enable %}
                 <div class="collection-mobile-back">
                   <span class="filter-back">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i> 
+                    <i class="fa fa-angle-left" aria-hidden="true"></i>
                     <span {% if settings.enable_lang_switcher %}data-trans-key="layout.navigation.back"{%endif%}>{{ 'layout.navigation.back' | t }}</span>
                   </span>
                 </div>
@@ -254,10 +254,10 @@
               <div class="mob-popup-filter-bottom">
                 <a href="#" class="btn btn-solid Clear_btn filter-btn" data-link-collection {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.clear_all"{%endif%}>
                   {{ 'collections.filters.clear_all' | t }}
-                </a> 
+                </a>
                 <a href="#" class="btn btn-solid apply_btn filter-btn" {% if settings.enable_lang_switcher %}data-trans-key="collections.filters.apply"{%endif%}>
                   {{ 'collections.filters.apply' | t }}
-                </a>  
+                </a>
               </div>
 
             </div>
@@ -271,16 +271,16 @@
           <div class="collection-grid-view">
             <ul>
               <li>
-                <img src="{{ '2.png' | asset_url }}" class="product-2-layout-view">
+                <img src="{{ '2.png' | asset_url }}" class="product-2-layout-view" loading="lazy">
               </li>
               <li>
-                <img src="{{ '3.png' | asset_url }}" class="product-3-layout-view">
+                <img src="{{ '3.png' | asset_url }}" class="product-3-layout-view" loading="lazy">
               </li>
               <li class="active">
-                <img src="{{ '4.png' | asset_url }}" class="product-4-layout-view">
+                <img src="{{ '4.png' | asset_url }}" class="product-4-layout-view" loading="lazy">
               </li>
               <li>
-                <img src="{{ '6.png' | asset_url }}" class="product-6-layout-view">
+                <img src="{{ '6.png' | asset_url }}" class="product-6-layout-view" loading="lazy">
               </li>
             </ul>
           </div>
@@ -292,14 +292,14 @@
               <option value="48">48 Products</option>
             </select>
           </div>
-          <script>  
+          <script>
             {% if collection.url != '' %}
             var coll_url = '{{ collection.url }}';
             {% else %}
             var coll_url = '/collections/all';
             {% endif %}
 
-            $('.product-page-per-view select').bind('change', function(){     
+            $('.product-page-per-view select').bind('change', function(){
               if($(this).val() != 'none'){
                 var limit = $(this).val();
                 var load_url = coll_url+'?view='+limit;
@@ -349,7 +349,7 @@
                 }
                 );
               });
-            </script> 
+            </script>
           </div>
         </div>
       </div>
@@ -379,7 +379,7 @@
         });
         setTimeout(function(){
           $('.filter-back, .clear_filter').trigger('click');
-        }, 1000); 
+        }, 1000);
       }
 
       if(click_cls == 'price_filters'){
@@ -427,13 +427,13 @@
       });
 
       if($('.product-filter-tags a').length > 1){
-        $('.product-filter-tags .clear_filter').show();  
+        $('.product-filter-tags .clear_filter').show();
       }else {
         $('.product-filter-tags .clear_filter').hide();
       }
 
       if(click_cls == 'category_filters'){
-        var cat_value = $(this).attr('data-value'); 
+        var cat_value = $(this).attr('data-value');
         $('.coll_title, .breadcrumb-item.active').text(cat_value);
         $("#category_filters li").each(function(){
           if($(this).attr('data-value') == temp_click){
@@ -454,7 +454,7 @@
         activeTags.push(selected_val);
       });
 
-      var coll_all = '/all';  
+      var coll_all = '/all';
       var coll_url = $('.collection-filter').attr('data-collurl');
 
       if(current_value){

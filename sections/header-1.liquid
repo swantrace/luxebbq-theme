@@ -105,8 +105,8 @@
               {% endif %}
               {% if section.settings.logo %}
               <div class="brand-logo" itemscope itemtype="http://schema.org/Organization">
-                <a href="/" itemprop="url"> 
-                  <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+                <a href="/" itemprop="url">
+                  <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px" loading="lazy">
                 </a>
               </div>
               {% else %}
@@ -137,7 +137,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
-                        {% endif %}                        
+                        {% endif %}
                         {% if block.settings.show_label %}
                         <div class="lable-nav {{ block.settings.label_text }}">
                           <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_label_text"{% endif %}>
@@ -145,7 +145,7 @@
                           </span>
                           {% if settings.enable_lang_switcher %}
                           <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                          {% endif %} 
+                          {% endif %}
                         </div>
                         {% endif %}
                       </a>
@@ -158,7 +158,7 @@
                       </span>
                       {% if settings.enable_lang_switcher %}
                       <span class="hide" id="header1_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
-                      {% endif %}   
+                      {% endif %}
                       {% if block.settings.show_label %}
                       <div class="lable-nav {{ block.settings.label_text }}">
                         <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_label_text"{% endif %}>
@@ -166,7 +166,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                        {% endif %} 
+                        {% endif %}
                       </div>
                       {% endif %}
                       </a>
@@ -232,7 +232,7 @@
                           </span>
                           {% if settings.enable_lang_switcher %}
                           <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                          {% endif %} 
+                          {% endif %}
                         </div>
                         {% endif %}
                       </a>
@@ -256,7 +256,7 @@
                           </span>
                           {% if settings.enable_lang_switcher %}
                           <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                          {% endif %} 
+                          {% endif %}
                         </span>
                         {% endif %}
                       </a>
@@ -280,7 +280,7 @@
                                     </h5>
                                     {% if settings.enable_lang_switcher %}
                                     <span class="hide" id="header1_{{blockId}}_linklist_title">{{ block.settings[trans_linklist_title] | raw }}</span>
-                                    {% endif %} 
+                                    {% endif %}
                                   </div>
                                   <div class="menu-content">
                                     <ul>
@@ -301,7 +301,7 @@
                                 </div>
                               </div>
 
-                              {% endfor %}  
+                              {% endfor %}
 
                             </div>
                           </div>
@@ -314,7 +314,7 @@
                             {% capture menu_img_url %}img_url_{{ i }}{% endcapture %}
                             <div class="col-xl-6">
                               <a href="{{ block.settings[menu_img_url] }}" class="mega-menu-banner">
-                                <img src="{{ block.settings[menu_img] | img_url: 'master' }}" class="img-fluid d-none d-xl-block " alt="{{ image.alt }}">
+                                <img src="{{ block.settings[menu_img] | img_url: 'master' }}" class="img-fluid d-none d-xl-block " alt="{{ image.alt }}" loading="lazy">
                               </a>
                             </div>
                             {% endfor %}
@@ -329,7 +329,7 @@
 
                     {% assign sidebar_menu_id = block.settings.mainmenu -%}
                     {% for mainlink in linklists[sidebar_menu_id].links %}
-                    {% assign child_list_handle = mainlink.title | handleize %}     
+                    {% assign child_list_handle = mainlink.title | handleize %}
 
                     {% if linklists[child_list_handle].links != blank %}
 
@@ -342,7 +342,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ data_json | raw }}</span>
-                        {% endif %}   
+                        {% endif %}
                       </a>
                       <ul>
                         {% for submenu in linklists[child_list_handle].links %}
@@ -399,7 +399,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ data_json | raw }}</span>
-                        {% endif %}      
+                        {% endif %}
                       </a>
                     </li>
                     {% endif %}

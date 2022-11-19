@@ -29,7 +29,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 text-center section-b-space">
-      <img src="{{ 'empty-search.jpg' | asset_url }}" class="img-fluid mb-4">
+      <img src="{{ 'empty-search.jpg' | asset_url }}" class="img-fluid mb-4" loading="lazy">
       <h3 {% if settings.enable_lang_switcher %}data-trans-key="general.search.no_results_html"{%endif%}>
         {{ 'general.search.no_results_html' | t: terms: search.terms }}
       </h3>

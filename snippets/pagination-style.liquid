@@ -8,7 +8,7 @@
 {% paginate collection.products by collection_limit %}
 {% if paginate.pages > 1 %}
 <div class="infinite-scrolling loading-mores mt-3 mb-3">
-  <div class="loading-more"><img src="{{ 'ajax_loader.gif' | asset_url }}" alt="loading" /></div>
+  <div class="loading-more"><img src="{{ 'ajax_loader.gif' | asset_url }}" alt="loading" loading="lazy" /></div>
 </div>
 {% endif %}
 {% endpaginate %}
@@ -22,10 +22,10 @@
   </div>
   <a href="{{ paginate.next.url }}" title="Load more" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="collections.general.load_more_pro"{%endif%}>
     {{ 'collections.general.load_more_pro' | t }}
-  </a>  
+  </a>
   <a href="#" class="disabled" style="display:none" title="Product loded" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="collections.general.no_more_product"{%endif%}>
     {{ 'collections.general.no_more_product' | t }}
-  </a>  
+  </a>
 </div>
 {% endif %}
 {% endif %}

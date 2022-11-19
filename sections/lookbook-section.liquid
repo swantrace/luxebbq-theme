@@ -9,22 +9,22 @@
         <div class="col-12">
           <div class="lookbook-block">
             {% if block.settings.image == blank %}
-            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" loading="lazy" >
             {% else %}
             {% assign block_image = block.settings.image %}
             {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-            <img src="{{ block_image | img_url: 'original' }}" 
-                 data-src="{{ img_url }}" 
-                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                 data-aspectratio="{{ block_image.aspect_ratio }}" 
-                 data-sizes="auto" 
+            <img src="{{ block_image | img_url: 'original' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block_image.aspect_ratio }}"
+                 data-sizes="auto"
                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
             {% endif %}
 
             {% for i in (1..4) %}
             {% assign pro = "product_" | append: i %}
             {% assign product_key = block.settings[pro] %}
-            {% assign product_ = all_products[product_key] %}	
+            {% assign product_ = all_products[product_key] %}
 
             {% assign set = "setposition_" | append: i %}
             {% assign set_now = block.settings[set] %}
@@ -39,11 +39,11 @@
                 <div class="dot-showbox pos_{{ fix_pos }}">
                   {% assign block_image = product_ %}
                   {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  <img src="{{ product | img_url: 'medium' }}" 
-                       data-src="{{ img_url }}" 
-                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                       data-aspectratio="{{ block_image.aspect_ratio }}" 
-                       data-sizes="auto" 
+                  <img src="{{ product | img_url: 'medium' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ block_image.aspect_ratio }}"
+                       data-sizes="auto"
                        class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
                   <div class="dot-info">
                     {% assign data_title = product_.title | split: '|' | first %}
@@ -75,15 +75,15 @@
         <div class="col-12">
           <div class="lookbook-block">
             {% if block.settings.image == blank %}
-            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" loading="lazy" >
             {% else %}
             {% assign block_image = block.settings.image %}
             {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-            <img src="{{ block_image | img_url: 'original' }}" 
-                 data-src="{{ img_url }}" 
-                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                 data-aspectratio="{{ block_image.aspect_ratio }}" 
-                 data-sizes="auto" 
+            <img src="{{ block_image | img_url: 'original' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block_image.aspect_ratio }}"
+                 data-sizes="auto"
                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
             {% endif %}
 
@@ -91,7 +91,7 @@
 
             {% assign pro = "product_" | append: i %}
             {% assign product_key = block.settings[pro] %}
-            {% assign product_ = all_products[product_key] %}	
+            {% assign product_ = all_products[product_key] %}
 
             {% assign set = "setposition_" | append: i %}
             {% assign set_now = block.settings[set] %}
@@ -106,11 +106,11 @@
                 <div class="dot-showbox pos_{{ fix_pos }}">
                   {% assign block_image = product_ %}
                   {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  <img src="{{ product | img_url: 'medium' }}" 
-                       data-src="{{ img_url }}" 
-                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                       data-aspectratio="{{ block_image.aspect_ratio }}" 
-                       data-sizes="auto" 
+                  <img src="{{ product | img_url: 'medium' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ block_image.aspect_ratio }}"
+                       data-sizes="auto"
                        class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
                   <div class="dot-info">
                     {% assign data_title = product_.title | split: '|' | first %}
@@ -142,15 +142,15 @@
         <div class="col-12">
           <div class="lookbook-block">
             {% if block.settings.image == blank %}
-            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" loading="lazy" >
             {% else %}
             {% assign block_image = block.settings.image %}
             {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-            <img src="{{ block_image | img_url: 'original' }}" 
-                 data-src="{{ img_url }}" 
-                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                 data-aspectratio="{{ block_image.aspect_ratio }}" 
-                 data-sizes="auto" 
+            <img src="{{ block_image | img_url: 'original' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block_image.aspect_ratio }}"
+                 data-sizes="auto"
                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
             {% endif %}
 
@@ -158,7 +158,7 @@
 
             {% assign pro = "product_" | append: i %}
             {% assign product_key = block.settings[pro] %}
-            {% assign product_ = all_products[product_key] %}	
+            {% assign product_ = all_products[product_key] %}
 
             {% assign set = "setposition_" | append: i %}
             {% assign set_now = block.settings[set] %}
@@ -173,11 +173,11 @@
                 <div class="dot-showbox pos_{{ fix_pos }}">
                   {% assign block_image = product_ %}
                   {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  <img src="{{ product | img_url: 'medium' }}" 
-                       data-src="{{ img_url }}" 
-                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                       data-aspectratio="{{ block_image.aspect_ratio }}" 
-                       data-sizes="auto" 
+                  <img src="{{ product | img_url: 'medium' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ block_image.aspect_ratio }}"
+                       data-sizes="auto"
                        class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
                   <div class="dot-info">
                     {% assign data_title = product_.title | split: '|' | first %}
@@ -209,15 +209,15 @@
         <div class="col-12">
           <div class="lookbook-block">
             {% if block.settings.image == blank %}
-            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" >
+            <img src="https://dummyimage.com/600x490/e8e8e8/555" class="img-fluid" alt="Lookbook" loading="lazy" >
             {% else %}
             {% assign block_image = block.settings.image %}
             {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-            <img src="{{ block_image | img_url: 'original' }}" 
-                 data-src="{{ img_url }}" 
-                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                 data-aspectratio="{{ block_image.aspect_ratio }}" 
-                 data-sizes="auto" 
+            <img src="{{ block_image | img_url: 'original' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block_image.aspect_ratio }}"
+                 data-sizes="auto"
                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
             {% endif %}
 
@@ -225,7 +225,7 @@
 
             {% assign pro = "product_" | append: i %}
             {% assign product_key = block.settings[pro] %}
-            {% assign product_ = all_products[product_key] %}	
+            {% assign product_ = all_products[product_key] %}
 
             {% assign set = "setposition_" | append: i %}
             {% assign set_now = block.settings[set] %}
@@ -241,11 +241,11 @@
 
                   {% assign block_image = product_ %}
                   {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                  <img src="{{ product | img_url: 'medium' }}" 
-                       data-src="{{ img_url }}" 
-                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                       data-aspectratio="{{ block_image.aspect_ratio }}" 
-                       data-sizes="auto" 
+                  <img src="{{ product | img_url: 'medium' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ block_image.aspect_ratio }}"
+                       data-sizes="auto"
                        class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{ product_.title | split: '|' | first }}" >
 
                   <div class="dot-info">

@@ -11,7 +11,7 @@
             {% if block.settings.image == blank %}
             {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {% else %}
-            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.image | img_url: 'master' }}"  alt="{{ block.settings.title }}"/>
+            <img class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" src="{{ block.settings.image | img_url: 'master' }}"  alt="{{ block.settings.title }}" loading="lazy"/>
             {% endif %}
 
             {% if block.settings.title != blank %}
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      {% endfor %}  
+      {% endfor %}
     </div>
   </div>
 </section>

@@ -90,8 +90,8 @@
         <div class="main-menu border-section border-top-0">
           {% if section.settings.logo %}
           <div class="brand-logo layout2-logo" itemscope itemtype="http://schema.org/Organization">
-            <a href="/" itemprop="url"> 
-              <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px">
+            <a href="/" itemprop="url">
+              <img src="{{ section.settings.logo | img_url:'master' }}" class="img-fluid lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" alt="{{ shop.name }}" style="max-width:{{ section.settings.logo_max_width }}px" loading="lazy">
             </a>
           </div>
           {% else %}
@@ -207,7 +207,7 @@
                   </span>
                   {% if settings.enable_lang_switcher %}
                   <span class="hide" id="header1_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
-                  {% endif %}                        
+                  {% endif %}
                   {% if block.settings.show_label %}
                   <div class="lable-nav {{ block.settings.label_text }}">
                     <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_label_text"{% endif %}>
@@ -215,7 +215,7 @@
                     </span>
                     {% if settings.enable_lang_switcher %}
                     <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                    {% endif %} 
+                    {% endif %}
                   </div>
                   {% endif %}
                 </a>
@@ -228,7 +228,7 @@
                 </span>
                 {% if settings.enable_lang_switcher %}
                 <span class="hide" id="header1_{{blockId}}_menu_name">{{ block.settings.trans_menu_name | raw }}</span>
-                {% endif %}   
+                {% endif %}
                 {% if block.settings.show_label %}
                 <div class="lable-nav {{ block.settings.label_text }}">
                   <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#header1_{{blockId}}_label_text"{% endif %}>
@@ -236,7 +236,7 @@
                   </span>
                   {% if settings.enable_lang_switcher %}
                   <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                  {% endif %} 
+                  {% endif %}
                 </div>
                 {% endif %}
                 </a>
@@ -302,7 +302,7 @@
                     </span>
                     {% if settings.enable_lang_switcher %}
                     <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                    {% endif %} 
+                    {% endif %}
                   </div>
                   {% endif %}
                 </a>
@@ -326,7 +326,7 @@
                     </span>
                     {% if settings.enable_lang_switcher %}
                     <span class="hide" id="header1_{{blockId}}_label_text">{{ block.settings.trans_label_text | raw }}</span>
-                    {% endif %} 
+                    {% endif %}
                   </span>
                   {% endif %}
                 </a>
@@ -350,7 +350,7 @@
                               </h5>
                               {% if settings.enable_lang_switcher %}
                               <span class="hide" id="header1_{{blockId}}_linklist_title">{{ block.settings[trans_linklist_title] | raw }}</span>
-                              {% endif %} 
+                              {% endif %}
                             </div>
                             <div class="menu-content">
                               <ul>
@@ -371,7 +371,7 @@
                           </div>
                         </div>
 
-                        {% endfor %}  
+                        {% endfor %}
 
                       </div>
                     </div>
@@ -384,7 +384,7 @@
                       {% capture menu_img_url %}img_url_{{ i }}{% endcapture %}
                       <div class="col-xl-6">
                         <a href="{{ block.settings[menu_img_url] }}" class="mega-menu-banner">
-                          <img src="{{ block.settings[menu_img] | img_url: 'master' }}" class="img-fluid d-none d-xl-block " alt="{{ image.alt }}">
+                          <img src="{{ block.settings[menu_img] | img_url: 'master' }}" class="img-fluid d-none d-xl-block " alt="{{ image.alt }}" loading="lazy">
                         </a>
                       </div>
                       {% endfor %}
@@ -393,12 +393,12 @@
                   </li>
                 </ul>
               </li>
-              
+
               {% elsif block.type == 'select-nav-menu' %}
 
                     {% assign sidebar_menu_id = block.settings.mainmenu -%}
                     {% for mainlink in linklists[sidebar_menu_id].links %}
-                    {% assign child_list_handle = mainlink.title | handleize %}     
+                    {% assign child_list_handle = mainlink.title | handleize %}
 
                     {% if linklists[child_list_handle].links != blank %}
 
@@ -411,7 +411,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ data_json | raw }}</span>
-                        {% endif %}   
+                        {% endif %}
                       </a>
                       <ul>
                         {% for submenu in linklists[child_list_handle].links %}
@@ -470,7 +470,7 @@
                         </span>
                         {% if settings.enable_lang_switcher %}
                         <span class="hide" id="header1_{{blockId}}_menu_name">{{ data_json | raw }}</span>
-                        {% endif %}      
+                        {% endif %}
                       </a>
                     </li>
 
@@ -490,14 +490,14 @@
 <!-- header end -->
 
 {% schema %}
-{  
+{
    "name":"Header",
-   "settings":[  
-      {  
+   "settings":[
+      {
          "type":"header",
          "content":"Top Bar"
       },
-      {  
+      {
          "type":"checkbox",
          "id":"show_topbar",
          "label":"Show Top bar",
@@ -509,74 +509,74 @@
          "label": "Padding",
          "default": "10px 0px"
       },
-      {  
+      {
          "type":"text",
          "id":"announcement_text",
          "label":"Announcement text",
          "default":"Announce something here"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_announcement_text",
          "label":"Translate Announcement text"
       },
-      {  
+      {
          "type":"text",
          "id":"phone_number",
          "label":"Contact Number",
          "default":"CALL US: 123-456-7890"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_phone_number",
          "label":"Translate Contact Number"
       },
-      {  
+      {
          "type":"text",
          "id":"email_address",
          "label":"Email Address",
          "default":"EMAIL: Support@Fiot.com"
       },
-      {  
+      {
          "type":"textarea",
          "id":"trans_email_address",
          "label":"Translate Email Address"
       },
-      {  
+      {
          "type":"checkbox",
          "id":"show_wishlist",
          "label":"Show Wishlist",
          "default":true
       },
-      {  
+      {
          "type":"header",
          "content":"Main header"
       },
-      {  
+      {
          "type":"image_picker",
          "id":"logo",
          "label":"Logo image"
       },
-      {  
+      {
          "type":"text",
          "id":"logo_max_width",
          "label":"Custom logo width (in pixels)",
          "default":"250"
       },
-      {  
+      {
          "type":"checkbox",
          "id":"enable_search",
          "label":"Enable Search",
          "default":true
       },
-      {  
+      {
          "type":"checkbox",
          "id":"enable_currency",
          "label":"Enable Currency Switcher",
          "default":true
       }
    ],
-   "blocks":[  
+   "blocks":[
       {
       "type": "select-nav-menu",
       "name": "default nav menu",
@@ -587,295 +587,295 @@
           "label": "main-menu"
         }
       ]
-    },{  
+    },{
          "type":"parent-item",
          "name":"Parent Item",
-         "settings":[  
-            {  
+         "settings":[
+            {
                "type":"text",
                "id":"menu_name",
                "label":"Menu Name",
                "default":"Home"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
             },
-            {  
+            {
                "type":"url",
                "id":"menu_link",
                "label":"Menu Link"
             },
-            {  
+            {
                "type":"checkbox",
                "id":"show_label",
                "label":"Show Label",
                "default":true
             },
-            {  
+            {
                "type":"text",
                "id":"label_text",
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"
             }
          ]
       },
-      {  
+      {
          "type":"parent-child-item",
          "name":"Parent with Child Item",
-         "settings":[  
-            {  
+         "settings":[
+            {
                "type":"text",
                "id":"menu_name",
                "label":"Menu Name",
                "default":"pages"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
             },
-            {  
+            {
                "type":"url",
                "id":"menu_link",
                "label":"Menu Link"
             },
-            {  
+            {
                "type":"link_list",
                "id":"submenu_linklist",
                "label":"main-menu"
             },
-            {  
+            {
                "type":"checkbox",
                "id":"show_label",
                "label":"Show Label",
                "default":true
             },
-            {  
+            {
                "type":"text",
                "id":"label_text",
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"
             }
          ]
       },
-      {  
+      {
          "type":"megamenu",
          "name":"Megamenu",
-         "settings":[  
-            {  
+         "settings":[
+            {
                "type":"text",
                "id":"menu_name",
                "label":"Menu Name",
                "default":"Category"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
             },
-            {  
+            {
                "type":"url",
                "id":"menu_link",
                "label":"Menu Link"
             },
-            {  
+            {
                "type":"checkbox",
                "id":"show_label",
                "label":"Show Label",
                "default":true
             },
-            {  
+            {
                "type":"text",
                "id":"label_text",
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"
             },
-            {  
+            {
                "type":"header",
                "content":"Linklist grid 1"
             },
-            {  
+            {
                "type":"link_list",
                "id":"linklist_1",
                "label":"Linklist 1"
             },
-            {  
+            {
                "type":"text",
                "id":"linklist_title_1",
                "label":"Linklist 1 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_1",
                "label":"Translate Title"
             },
-            {  
+            {
                "type":"header",
                "content":"Linklist grid 2"
             },
-            {  
+            {
                "type":"link_list",
                "id":"linklist_2",
                "label":"Linklist 2"
             },
-            {  
+            {
                "type":"text",
                "id":"linklist_title_2",
                "label":"Linklist 2 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_2",
                "label":"Translate Title"
             },
-            {  
+            {
                "type":"header",
                "content":"Linklist grid 3"
             },
-            {  
+            {
                "type":"link_list",
                "id":"linklist_3",
                "label":"Linklist 3"
             },
-            {  
+            {
                "type":"text",
                "id":"linklist_title_3",
                "label":"Linklist 3 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_3",
                "label":"Translate Title"
             },
-            {  
+            {
                "type":"header",
                "content":"Linklist grid 4"
             },
-            {  
+            {
                "type":"link_list",
                "id":"linklist_4",
                "label":"Linklist 4"
             },
-            {  
+            {
                "type":"text",
                "id":"linklist_title_4",
                "label":"Linklist 4 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_4",
                "label":"Translate Title"
             },
-            {  
+            {
                "type":"header",
                "content":"Linklist grid 5"
             },
-            {  
+            {
                "type":"link_list",
                "id":"linklist_5",
                "label":"Linklist 5"
             },
-            {  
+            {
                "type":"text",
                "id":"linklist_title_5",
                "label":"Linklist 5 Title"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_linklist_title_5",
                "label":"Translate Title"
             },
-            {  
+            {
                "type":"header",
                "content":"Column 1 Image"
             },
-            {  
+            {
                "type":"image_picker",
                "id":"img_1",
                "label":"Image"
             },
-            {  
+            {
                "type":"url",
                "id":"img_url_1",
                "label":"Url"
             },
-            {  
+            {
                "type":"header",
                "content":"Column 2 Image"
             },
-            {  
+            {
                "type":"image_picker",
                "id":"img_2",
                "label":"Image"
             },
-            {  
+            {
                "type":"url",
                "id":"img_url_2",
                "label":"Url"
             }
          ]
       },
-      {  
+      {
          "type":"custom-megamenu",
          "name":"Custom Html Megamenu",
-         "settings":[  
-            {  
+         "settings":[
+            {
                "type":"text",
                "id":"menu_name",
                "label":"Menu Name",
                "default":"shop"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_menu_name",
                "label":"Translate Menu Name"
             },
-            {  
+            {
                "type":"url",
                "id":"menu_link",
                "label":"Menu Link"
             },
-            {  
+            {
                "type":"textarea",
                "id":"custom_menu_html",
                "label":"Custom Html For Megamenu",
                "info":"Add custom Html for megamenu"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_custom_menu_html",
                "label":"Translate Custom Html"
             },
-            {  
+            {
                "type":"checkbox",
                "id":"show_label",
                "label":"Show Label",
                "default":true
             },
-            {  
+            {
                "type":"text",
                "id":"label_text",
                "label":"Label Text",
                "default":"hot"
             },
-            {  
+            {
                "type":"textarea",
                "id":"trans_label_text",
                "label":"Translate Label Text"

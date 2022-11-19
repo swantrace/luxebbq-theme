@@ -3,7 +3,7 @@
     <div class="upsell-body">
       <div class="media">
         <a href="" class="pro_url">
-          <img class="img-fluid pro-img" src="" alt="" />
+          <img class="img-fluid pro-img" src="" alt="" loading="lazy" />
         </a>
         <div class="media-body align-self-center">
           <a href="" class="pro_url">
@@ -22,7 +22,7 @@
           </div>
           {% if settings.show_payment_img %}
           <div class="upsell_payment">
-            <img src="{{ settings.upsell_payment_img | img_url: '600x40' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="Upsell_payment">
+            <img src="{{ settings.upsell_payment_img | img_url: '600x40' }}" class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="Upsell_payment" loading="lazy">
           </div>
           {% endif %}
         </div>
@@ -36,11 +36,10 @@
         <span class="hide" id="cart_upsell_related_pro_title">{{ settings.trans_related_pro_title | raw }}</span>
         {% endif %}
       </div>
-      <div class="no-arrow" id="upsell_product">  
+      <div class="no-arrow" id="upsell_product">
       </div>
       {% endif %}
       <span class="close_upsell">x</span>
     </div>
   </div>
 </div>
-

@@ -1,8 +1,8 @@
 <!-- full banner section start -->
 {% capture sectionId %}{{ section.id }}{% endcapture %}
 {% if section.settings.enabled %}
-<section class="p-0 {% if section.settings.text_layout == 'style-1' %} advertise-section{% else %}pet-parallax {% endif %} lazyload blur-up" 
-         data-bgset="{% include 'bg-set', image: section.settings.banner_img %}" data-sizes="auto" data-parent-fit="cover" 
+<section class="p-0 {% if section.settings.text_layout == 'style-1' %} advertise-section{% else %}pet-parallax {% endif %} lazyload blur-up"
+         data-bgset="{% include 'bg-set', image: section.settings.banner_img %}" data-sizes="auto" data-parent-fit="cover"
          style="padding: {{ section.settings.section_padding }};">
   <div class="full-banner parallax {{ section.settings.alignment }} {{ section.settings.position }}">
     <div class="container">
@@ -36,7 +36,7 @@
             {% endif %}
             {% if section.settings.enabled_button %}
             <a href="{{ section.settings.link }}" class="btn btn-solid" {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
-              {{ 'sections.featured_product.shop_now' | t }}  
+              {{ 'sections.featured_product.shop_now' | t }}
             </a>
             {% endif %}
           </div>
@@ -68,17 +68,17 @@
             {% endif %}
             {% if section.settings.enabled_button %}
             <a href="{{ section.settings.link }}" class="btn btn-solid black-btn" {% if settings.enable_lang_switcher %}data-trans-key="sections.featured_product.shop_now"{%endif%}>
-              {{ 'sections.featured_product.shop_now' | t }}  
+              {{ 'sections.featured_product.shop_now' | t }}
             </a>
             {% endif %}
           </div>
-          {% endif %}                  
+          {% endif %}
         </div>
       </div>
     </div>
     {% if section.settings.object_img != blank %}
     <div class="pet-decor">
-      <img src="{{ section.settings.object_img | img_url: 'master' }}" alt="" class="img-fluid blur-up lazyloaded">
+      <img src="{{ section.settings.object_img | img_url: 'master' }}" alt="" class="img-fluid blur-up lazyloaded" loading="lazy">
     </div>
     {% endif %}
   </div>

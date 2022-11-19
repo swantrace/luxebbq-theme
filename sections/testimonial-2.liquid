@@ -10,11 +10,11 @@
                 {% if section.settings.image != blank %}
                 {% assign block_image = section.settings.image %}
                 {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                <img src="{{ block_image | img_url: '1370x385' }}" 
-                     data-src="{{ img_url }}" 
-                     data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                     data-aspectratio="{{ block_image.aspect_ratio }}" 
-                     data-sizes="auto" 
+                <img src="{{ block_image | img_url: '1370x385' }}"
+                     data-src="{{ img_url }}"
+                     data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ block_image.aspect_ratio }}"
+                     data-sizes="auto"
                      class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="{{block_image.alt}}" >
                 {% endif %}
               </div>
@@ -23,7 +23,7 @@
       {% endif %}
       <div class="{% if section.settings.banner_enable %}col-lg-6 col-sm-12{% else %}col-sm-12{% endif %}">
         <div class="testimonial pet-parallax lazyload {% if section.settings.use_equal_height %}equal_height {{ section.settings.image_ratio }} {{ section.settings.image_size }} bg_pos_{{ section.settings.image_position }}{% endif %}"
-         data-bgset="{% include 'bg-set', image: section.settings.test_back_img %}" data-sizes="auto" data-parent-fit="cover" 
+         data-bgset="{% include 'bg-set', image: section.settings.test_back_img %}" data-sizes="auto" data-parent-fit="cover"
          style="padding: {{ section.settings.section_padding }}; {% if section.settings.test_back_img == blank %}background: {{ section.settings.test_back_color }};{% endif %}">
         <div class="slick_carousel testimonial-slider" data-slick='{"slidesToShow": {{ section.settings.slidetoshow }},"slidesToScroll": 1, "autoplay": {{ section.settings.use_autoplay }}, "autoplaySpeed": {{ section.settings.slider_speed }}000, "infinite": {{section.settings.use_loop}}, "arrows": {{section.settings.use_arrows}},"dots": {{section.settings.use_dots}}, "responsive":[{"breakpoint": 1367,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1367}} }},{"breakpoint": 1024,"settings":{"slidesToShow": {{ section.settings.slidetoshow_1024}} }},{"breakpoint": 767,"settings":{"slidesToShow": {{ section.settings.slidetoshow_767}} }} ]}'>
           {% for block in section.blocks %}
@@ -32,26 +32,26 @@
             <div class="media">
               <div class="text-center test-img">
                 {% if block.settings.testi_image == blank %}
-                <img src="{{ '122x122.png' | asset_url }}" alt="" class="img-fluid">
+                <img src="{{ '122x122.png' | asset_url }}" alt="" class="img-fluid" loading="lazy">
                 {% else %}
-                
+
                 {% if section.settings.use_equal_height %}
             <div>
               <span class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %}" data-bgset="{% include 'bg-set', image: block.settings.testi_image %}" data-sizes="auto" data-parent-fit="cover"></span>
-            </div>        
+            </div>
             {% else %}
             {% assign block_image = block.settings.testi_image %}
             {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-            <img src="{{ block_image | img_url: 'original' }}" 
-                 data-src="{{ img_url }}" 
-                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
-                 data-aspectratio="{{ block_image.aspect_ratio }}" 
-                 data-sizes="auto" 
+            <img src="{{ block_image | img_url: 'original' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ block_image.aspect_ratio }}"
+                 data-sizes="auto"
                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid {% if section.settings.img_width == "full" %} w-100{% endif %}" alt="{{block_image.alt}}" >
             {% endif %}
-                
+
                 {% endif %}
-                
+
               </div>
               <div class="media-body">
                 <div class="qoute"></div>
@@ -63,7 +63,7 @@
                 <span class="hide" id="testimonial_{{blockId}}_testi_position">{{ block.settings.trans_testi_position | raw }}</span>
                 {% endif %}
                 {% endif %}
-                
+
                 {% if block.settings.testi_title != blank %}
                 <h5 {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#testimonial_{{blockId}}_testi_title"{% endif %}>
                   {{ block.settings.testi_title }}
@@ -72,7 +72,7 @@
                 <span class="hide" id="testimonial_{{blockId}}_testi_title">{{ block.settings.trans_testi_title | raw }}</span>
                 {% endif %}
                 {% endif %}
-                
+
                 {% if block.settings.testi_desc != blank %}
                 <p {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#testimonial_{{blockId}}_testi_desc"{% endif %}>
                   {{ block.settings.testi_desc }}
@@ -87,7 +87,7 @@
           {% endfor %}
         </div>
         </div>
-      </div>      
+      </div>
     </div>
   </div>
 </div>
