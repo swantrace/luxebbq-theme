@@ -31,6 +31,7 @@ const charcoalGrillBrands = [
     'Sunterra',
     'Twin Eagles',
     'Weber', 
+    'Oven Brothers',
 ]
 const pelletGrillBrands = [
     'Big Green Egg',
@@ -84,6 +85,16 @@ const pizzaOvenBrands = [
     'Lynx Grills',
     'Ooni', 
     'Twin Eagles',
+  'Oven Brothers',
+]
+const kitchenComponentBrands = [
+    'Napoleon', 
+    'Lynx Grills',
+    'Hestan',
+    'Blaze',
+    'Broil King',
+  'Urban Bonfire',
+    
 ]
 const brandsOfCookType = {
     'Gas Grill': gasGrillBrands,
@@ -91,7 +102,8 @@ const brandsOfCookType = {
     'Pellet Grill': pelletGrillBrands,
     'Electric Grill': electricBrands,
     'Offset Smoker': offsetSmokerBrands,
-    'Pizza Oven': pizzaOvenBrands
+    'Pizza Oven': pizzaOvenBrands,
+    'Kitchen Components': kitchenComponentBrands
 }
 const filters = [{
     stateKey: "searchString",
@@ -123,6 +135,9 @@ const filters = [{
         ],
         [
             'Pizza Oven', pizzaOvenBrands
+        ],
+        [
+            'Kitchen Components', kitchenComponentBrands
         ]
     ],
     selected: (params?.['selectedCookTypesAndBrands'] ?? []).filter(

@@ -122,7 +122,7 @@
     <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
     {%- endif -%}
     {{ content_for_header }}
-
+{% include 'globo.formbuilder.scripts' %}
     {{ 'bold-brain-widget.css' | asset_url | stylesheet_tag }}
 
     {%- render 'bold-common' -%}
@@ -367,7 +367,7 @@
       {{ 'custom.min.css' | asset_url |  stylesheet_tag  }}
     {% endif %}
     <!-- Footer Scripts ================================ -->
-  
+  {% render 'preorder-now' %}
   {% if content_for_header contains 'bulk-discount-production.herokuapp.com' %}
           {% render 'sbdn-now' %}
           {% render 'sbdn-shop' %}
@@ -405,10 +405,5 @@
     <script src="//code.tidio.co/2llr5geomegzei1sk3eubaex8xvqpbzc.js" async></script>
     <!--Breeze Chat End-->
     
-  
-{% render 'special-offers' %}
-
-
-  {% render 'preorder-now' %}
   </body>
 </html>

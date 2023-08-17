@@ -10,7 +10,7 @@
   {% assign option_style = section.settings.product_opt_type -%}
   {% assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src %}
   {% assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt %}
-    <div class="collection-wrapper">{% render 'preorder-now-collection-item', product: product %}
+    <div class="collection-wrapper">
         <div class="container">
             <div class="row">
                {% if section.settings.layout == 'full-width-img' or section.settings.layout == 'thumbnails-bottom'  %}
@@ -19,14 +19,14 @@
                       {% for image in product.images %}
                       {% capture img_id %}FeaturedImage-{{ section.id }}-{{ image.id }}{% endcapture %}
                       {% capture zoom_img_id %}FeaturedImageZoom-{{ section.id }}-{{ image.id }}{% endcapture %}
-                      {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
+                      {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %} 
                       <div id="{{ img_wrapper_id }}">
                         {% assign block_image = image %}
-                        <img itemprop="image" src="{{ block_image | img_url: 'original' }}"
-                             data-src="{{ block_image | img_url: 'original' }}"
-                             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                             data-aspectratio="{{ block_image.aspect_ratio }}"
-                             data-sizes="auto"
+                        <img itemprop="image" src="{{ block_image | img_url: 'original' }}" 
+                             data-src="{{ block_image | img_url: 'original' }}" 
+                             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                             data-aspectratio="{{ block_image.aspect_ratio }}" 
+                             data-sizes="auto" 
                              class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid image_zoom_cls-{{ forloop.index0 }} main_img" alt="{{ image.alt | escape }}" >
                         </div>
                       {% endfor %}
@@ -47,11 +47,11 @@
                           {% for image in product.images %}
                           <div data-match="{{ image.alt }}">
                             {% assign block_image = image.src %}
-                            <img itemprop="image" src="{{ image.src | img_url: '220x' }}"
-                                 data-src="{{ image.src | img_url: '220x' }}"
-                                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                                 data-aspectratio="{{ block_image.aspect_ratio }}"
-                                 data-sizes="auto"
+                            <img itemprop="image" src="{{ image.src | img_url: '220x' }}" 
+                                 data-src="{{ image.src | img_url: '220x' }}" 
+                                 data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                                 data-aspectratio="{{ block_image.aspect_ratio }}" 
+                                 data-sizes="auto" 
                                  class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid " alt="{{ image.alt | escape }}" >
                           </div>
                           {% endfor %}
@@ -67,11 +67,11 @@
                       {% for image in product.images %}
                       <div data-match="{{ image.alt }}">
                         {% assign block_image = image.src %}
-                        <img itemprop="image" src="{{ image.src | img_url: '220x' }}"
-                             data-src="{{ img_url }}"
-                             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                             data-aspectratio="{{ block_image.aspect_ratio }}"
-                             data-sizes="auto"
+                        <img itemprop="image" src="{{ image.src | img_url: '220x' }}" 
+                             data-src="{{ img_url }}" 
+                             data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                             data-aspectratio="{{ block_image.aspect_ratio }}" 
+                             data-sizes="auto" 
                              class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid " alt="{{ image.alt | escape }}" >
                       </div>
                       {% endfor %}
@@ -84,15 +84,15 @@
                   {% for image in product.images %}
                   {% capture img_id %}FeaturedImage-{{ section.id }}-{{ image.id }}{% endcapture %}
                   {% capture zoom_img_id %}FeaturedImageZoom-{{ section.id }}-{{ image.id }}{% endcapture %}
-                  {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
+                  {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %} 
                   <div id="{{ img_wrapper_id }}">
 
                     {% assign block_image = image %}
-                    <img itemprop="image" src="{{ block_image | img_url: 'original' }}"
-                         data-src="{{ img_url }}"
-                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                         data-aspectratio="{{ block_image.aspect_ratio }}"
-                         data-sizes="auto"
+                    <img itemprop="image" src="{{ block_image | img_url: 'original' }}" 
+                         data-src="{{ img_url }}" 
+                         data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                         data-aspectratio="{{ block_image.aspect_ratio }}" 
+                         data-sizes="auto" 
                          class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid image_zoom_cls-{{ forloop.index0 }} main_img" alt="{{ image.alt | escape }}" >
 
                   </div>
@@ -122,7 +122,7 @@
                       {% if settings.enable_lang_switcher %}
                       <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
                       {% endif %}
-
+                      
                       <meta itemprop="priceCurrency" content="{{ shop.currency }}">
                       <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
                       {% if settings.eneble_login_price %}
@@ -135,7 +135,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
-                      {% render 'product-paybright' %}
+                      
                       <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% else %}
                       <span class="login-price" {% if settings.enable_lang_switcher %}data-trans-key="products.product.login_to_see_price"{%endif%}>{{ 'products.product.login_to_see_price' | t }}</span>
@@ -150,7 +150,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
-                      <p class="affirm-as-low-as" data-page-type="product" data-amount="{{variant.price}}"></p>
+                     <p class="affirm-as-low-as" data-page-type="product" data-amount="{{variant.price}}"></p>
                       <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% endif %}
                       {% else  %}
@@ -161,6 +161,7 @@
                         {% endif %}
                       </h4>
                       <h3 id="product_price">{{ current_variant.price | money }} </h3>
+                      
                       <h5 id="product_sku" class="mb-0">sku #: {{ current_variant.sku }}</h5>
                       {% endif %}
 
@@ -170,7 +171,7 @@
                           <p class="accent-text">Thanks! We will notify you when this product becomes available!</p>
                         {% else %}
 
-                        {% comment %} <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when
+                        {% comment %} <p>Click <a id="notify-me" href="#"><strong>here</strong></a> to be notified by email when 
                           {% assign data_title = product.title | split: '|' | first | escape %}
                           {% assign data_json = product.title | split: '|' | last %}
                           <span {% if settings.enable_lang_switcher %}class="lang_trans" data-trans="#product-three-col-template{{product.id}}_pro_title"{% endif %}>
@@ -188,13 +189,13 @@
                         <div id="notify-me-wrapper" style="display:none">
                           <input required="required" type="email" name="contact[email]" placeholder="your@email.com" class="form-control {% if form.errors contains 'email' %} error{% endif %}" value="{{ contact.fields.email }}" />
                           <input type="hidden" name="contact[body]" value="Please notify me when {{ product.title | escape }} becomes available." />
-                          <input class="btn btn-solid ml-3" type="submit" value="Send" />
+                          <input class="btn btn-solid ml-3" type="submit" value="Send" />         
                         </div>
                         {% endunless %}
                         {% endform %}
                       </div>
-
-                      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm_id" data-section="{{ section.id }}">
+                      
+                      <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm_id" data-section="{{ section.id }}"> 
                         {% if option_style contains 'dropdown_list' %}
                         <select name="id" id="productSelect" data-section="{{ section.id }}" class="product-form__variants no-js hide">
                           {% for variant in product.variants %}
@@ -227,12 +228,12 @@
                         {% include 'swatch' with option %}
                         {% endfor %}
                         {% endif %}
-                      {% endif %}
+                      {% endif %} 
 
                         <div class="product-description">
                           {% if product.options contains 'Size' or product.options contains 'size' %}
                           <h6 class="product-title size-text">
-                            select size
+                            select size 
                             {% if section.settings.show_size_chart %}
                             <span><a href="" data-toggle="modal" data-target="#sizemodal" {% if settings.enable_lang_switcher %}data-trans-key="products.product.size_chart"{%endif%}>
                               {{ 'products.product.size_chart' | t }}</a></span>
@@ -243,7 +244,7 @@
                        <!-- ========================= END All buttons ========================= -->
 
                           {% if section.settings.show_product_inventory %}
-                          <div class="pro_inventory" style="width: 80%;">
+                          <div class="pro_inventory" style="width: 80%;"> 
                             {% for variant in product.variants %}
                             {% if variant.inventory_management == "shopify" and variant.inventory_policy != "continue" and  variant.inventory_quantity <= 10 %}
                             <p data-value="{{variant.title}}">Hurry! We have only {{ variant.inventory_quantity }} product in stock.</p>
@@ -283,25 +284,19 @@
                         </div>
 
 
-
+                       
                         {% if settings.show_catelogue != true %}
                         <div class="product-buttons">
-                          <button type="submit" id="addtocart_btn_id" class="add_to_cart_btn_cls cart_btn_class btn btn-solid" {% unless current_variant.available %}disabled="disabled"{% endunless %} {% if settings.enable_lang_switcher %}data-trans-key="products.product.add_to_cart"{%endif%}>In Stock Add to cart &nbsp;&nbsp;&nbsp;>></button>
-                          {% if section.settings.show_buy_now_btn %}
-                          <div class="dynamic-payment-button">
-                            <div data-shopify="payment-button" class="shopify-payment-button">
-                              <button type="button" class="shopify-payment-button__button shopify-payment-button__button--unbranded">{{ 'products.product.but_now' | t }}</button>
-                              <button aria-disabled="true" aria-hidden="true" class="shopify-payment-button__more-options shopify-payment-button__button--hidden" type="button">More payment options</button>
-                            </div>
-                          </div>
-                          {% endif %}
+                          {% comment %}<button type="" id="" class="add_to_cart_btn_cls cart_btn_class btn btn-solid" >Avaliable in Store Only &nbsp;&nbsp;&nbsp;>></button>
+                          {% endcomment %}
+                          Avaliable in Store Only &nbsp;&nbsp;&nbsp;>>
                         </div>
                         {% endif %}
 
                         {% comment %} dtm added {% endcomment %}
                         <div id="video-wrapper" class="embed-responsive embed-responsive-16by9"></div>
-                        {% comment %} dtm added {% endcomment %}
-                        {% if product.type != 'Barbeques' %}
+                        {% comment %} dtm added {% endcomment %}  
+                        {% if product.type != 'Barbeques' %}                      
                         <div class="">
                           {% if section.settings.show_product_desc %}
                           <div>
@@ -317,7 +312,7 @@
                         </div>
                         {% endif %}
                       </form>
-
+                      
 
 
                       {% comment %} {% if product.description contains '[countdowntimer-date-start]' %}
@@ -343,14 +338,14 @@
                         <div class="trust-badges">
                           {% assign block_image = section.settings.trust_badge_img %}
                           {% assign img_url = block_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
-                          <img itemprop="image" src="{{ block_image | img_url: 'original' }}"
-                               data-src="{{ block_image | img_url: 'original' }}"
-                               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                               data-aspectratio="{{ block_image.aspect_ratio }}"
-                               data-sizes="auto"
+                          <img itemprop="image" src="{{ block_image | img_url: 'original' }}" 
+                               data-src="{{ block_image | img_url: 'original' }}" 
+                               data-widths="[157, 270, 303, 370, 377, 670, 570, 720, 900, 1080, 1296, 1512, 1728, 2048]" 
+                               data-aspectratio="{{ block_image.aspect_ratio }}" 
+                               data-sizes="auto" 
                                class="lazyload {% if settings.enable_blur_lazy_load %} blur-up {% endif %} img-fluid" alt="badges" >
                         </div>
-                      </div>
+                      </div>      
                       {% endif %} {% endcomment %}
 
                     </div>
@@ -367,7 +362,7 @@
                   {% endif %}  {% endcomment %}
 
               </div>
-
+             
             </div>
         </div>
     </div>
@@ -411,7 +406,7 @@
 <product-page
   class="dtm"
   product-total-inventory="{{totalInventory}}"
-  product-handle="{{product.handle}}"
+  product-handle="{{product.handle}}" 
   product-json="{{product | json | escape }}"
   product-metafield="{{product.metafields.dtm.info | json | escape}}"
   similar-metafield="{{shop.metafields.dtm.similar | json | escape}}"
@@ -425,7 +420,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-
+        
         {% assign data_title = product.title | split: '|' | first | escape %}
         {% assign data_json = product.title | split: '|' | last %}
         <h5 id="exampleModalLabel" class="modal-title {% if settings.enable_lang_switcher %}lang_trans{% endif %}" {% if settings.enable_lang_switcher %}data-trans="#{{product.id}}_pro_title"{% endif %}>
@@ -434,13 +429,13 @@
         {% if settings.enable_lang_switcher %}
         <span class="hide" id="{{product.id}}_pro_title">{{ data_json | raw }}</span>
         {% endif %}
-
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-
+        
         {% if product.metafields.size-chart.size-chart-content %}
         {{ product.metafields.size-chart.size-chart-content }}
         {% else %}
@@ -531,7 +526,7 @@ document.addEventListener('scriptJSLoaded', function () {
     focusOnSelect: true,
      autoplaySpeed:1500,
   });
-
+  
   $('.product-right-slick').slick({
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -569,7 +564,7 @@ document.addEventListener('scriptJSLoaded', function () {
       centerMode: false,
       dots: false,
       focusOnSelect: true,
-
+      
       responsive: [
         {
           breakpoint: 576,
@@ -582,7 +577,7 @@ document.addEventListener('scriptJSLoaded', function () {
     });
   }
 });
-
+  
   var selectCallback = function(variant, selector){
     {% if section.settings.variant_style == 'color-swatches' %}
     if (variant){
@@ -594,7 +589,7 @@ document.addEventListener('scriptJSLoaded', function () {
         }
       }
     }
-    {% endif %}
+    {% endif %}   
 
     if (variant && variant.available == true){
       var shop_curr = '{{shop.money_format}}';
@@ -658,10 +653,10 @@ document.addEventListener('scriptJSLoaded', function () {
           //console.log(temp_img_src);
           var new_temp_img_src = temp_img_src.substring(0, temp_img_src.indexOf("?"));
           var temp_newImageSizedSrc = newImageSizedSrc.substring(0, newImageSizedSrc.indexOf("?"));
-          var temp_data_index = $(this).attr('data-slick-index');
+          var temp_data_index = $(this).attr('data-slick-index'); 
          // console.log(temp_data_index);
           if(new_temp_img_src == temp_newImageSizedSrc){
-            $('.product-right-slick, .product-slick').slick('slickGoTo', temp_data_index);
+            $('.product-right-slick, .product-slick').slick('slickGoTo', temp_data_index);  
           }
         });
       });
@@ -688,7 +683,7 @@ document.addEventListener('scriptJSLoaded', function () {
     {% unless option_style contains 'dropdown_list' %}
     $('.selector-wrapper').addClass('hide');
     {% endunless %}
-
+    
     {% assign found_one_in_stock = false %}
     {% for variant in product.variants %}
     {% if variant.available and found_one_in_stock == false %}
@@ -764,7 +759,7 @@ document.addEventListener('scriptJSLoaded', function () {
   //     $('body').removeClass('show-360');
   //   });
   //   $('#notify-me').click(function() {
-  //     jQuery('#notify-me-wrapper').fadeIn();
+  //     jQuery('#notify-me-wrapper').fadeIn();           
   //     return false;
   //   });
 

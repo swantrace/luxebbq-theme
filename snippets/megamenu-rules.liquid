@@ -367,7 +367,7 @@ window.dtmMegaMenu = {
         header: false,
         rules: {
           selectedStandTypes: ['Built In'],
-          selectedCookTypesAndBrands: [['', ['Urban Bonfire']], ['', ['Urban Bonfire']], ['', ['Urban Bonfire']], ['', ['Urban Bonfire']], ['', ['Urban Bonfire']], ['', ['Urban Bonfire']]]
+          selectedCookTypesAndBrands: [['Gas Grill', ['Urban Bonfire']], ['Charcoal Grill', ['Urban Bonfire']], ['Pellet Grill', ['Urban Bonfire']], ['Electric Grill', ['Urban Bonfire']], ['Offset Smoker', ['Urban Bonfire']], ['Pizza Oven', ['Urban Bonfire']]]
         }
       },
       {
@@ -378,7 +378,52 @@ window.dtmMegaMenu = {
           selectedStandTypes: ['Built In']
         }
       },
-    ]
+    ],
+    [
+      {
+        label: 'Kitchen Components',
+        header: true,
+        rules: {
+          selectedCookTypesAndBrands: [['Kitchen Components', []]]
+        }
+      },
+      {
+        label: 'Napoleon',
+        header: false,
+        rules: {
+          selectedCookTypesAndBrands: [['Kitchen Components', ['Napoleon']]]
+        }
+      },
+      {
+        label: 'Lynx',
+        header: false,
+        rules: {
+          selectedCookTypesAndBrands: [['Kitchen Components', ['Lynx Grills']]]
+        }
+      },
+      {
+        label: 'Hestan',
+        header: false,
+        rules: {
+          selectedCookTypesAndBrands: [['Kitchen Components', ['Hestan']]]
+        }
+      },
+      {
+        label: 'Urban Bonfire',
+        header: false,
+        rules: {
+          selectedCookTypesAndBrands: [['Kitchen Components', ['Urban Bonfire']]]
+        }
+      },
+      {
+        label: 'View All',
+        class: 'btn btn-solid',
+        header: false,
+        rules: {
+          selectedCookTypesAndBrands: [['Kitchen Components', []]]
+        }
+      },
+    ],
   ],
   'Grilling Accessories': [
     [
@@ -773,7 +818,7 @@ window.dtmMegaMenu = {
     ]
   ],
   'Lifestyle Accessories': [
-    [
+    [  
       {
         label: 'Apparel',
         header: false,
@@ -782,10 +827,45 @@ window.dtmMegaMenu = {
         }
       },
       {
+        label: 'Bags & Luggage',
+        header: false,
+        rules: {
+          selectedLifestyleAccessoriesTypes: ['Bags & Luggage']
+        }
+      },
+         {
+        label: 'Blankets',
+        header: false,
+        rules: {
+          selectedLifestyleAccessoriesTypes: ['Blankets']
+        }
+      },
+         {
+        label: 'Camping',
+        header: false,
+        rules: {
+          selectedLifestyleAccessoriesTypes: ['Camping']
+        }
+      },
+      {
         label: 'Cookbooks',
         header: false,
         rules: {
           selectedLifestyleAccessoriesTypes: ['Cookbooks']
+        }
+      },
+         {
+        label: 'Games',
+        header: false,
+        rules: {
+          selectedLifestyleAccessoriesTypes: ['Games']
+        }
+      },
+         {
+        label: 'Pet Products',
+        header: false,
+        rules: {
+          selectedLifestyleAccessoriesTypes: ['Pet Products']
         }
       },
       {
@@ -958,7 +1038,7 @@ window.dtmMegaMenu = {
         label: 'Warranty Claim',
         header: false,
         rules: {
-          customLink: 'https://luxebbq.ca/pages/warranty-registration'
+          customLink: 'https://luxebbq.ca/pages/warranty-service-part-request'
         }
       },
     ]

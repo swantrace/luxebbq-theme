@@ -144,9 +144,7 @@
                       </div>
                     </div>
                     <div class="col-xs-3">
-                      <h2 class="td-color"><div class="pn-price-item" data-id="{{ item.key }}"><span class="savy-cart-item-price" data-key="{{ item.key }}"><div class="pn-price-item" data-id="{{ item.key }}">
-<span class="saso-cart-item-price" data-key="{{item.key}}"><div class="pn-price-item" data-id="{{ item.key }}">{{ item.price | money }}</div></span>
-</div></span></div></h2>
+                      <h2 class="td-color"><div class="pn-price-item" data-id="{{ item.key }}"><span class="savy-cart-item-price" data-key="{{ item.key }}"><div class="pn-price-item" data-id="{{ item.key }}">{{ item.price | money }}</div></span></div></h2>
                     </div>
                     <div class="col-xs-3">
                       <h2 class="td-color">
@@ -157,9 +155,7 @@
                     </div>
                   </div>
                 </td>
-                <td><h2><div class="pn-price-item" data-id="{{ item.key }}"><span class="savy-cart-item-price" data-key="{{ item.key }}"><div class="pn-price-item" data-id="{{ item.key }}">
-<span class="saso-cart-item-price" data-key="{{item.key}}"><div class="pn-price-item" data-id="{{ item.key }}">{{ item.price | money }}</div></span>
-</div></span></div></h2></td>
+                <td><h2><div class="pn-price-item" data-id="{{ item.key }}"><span class="savy-cart-item-price" data-key="{{ item.key }}"><div class="pn-price-item" data-id="{{ item.key }}">{{ item.price | money }}</div></span></div></h2></td>
                 <td >
                   <div class="qty-box">
                     <div class="input-group">
@@ -173,9 +169,7 @@
                     <i class="ti-close"></i>
                   </a>
                 </td>
-                <td><h2 class="td-color"><div class="pn-total-line-item" data-id="{{ item.key }}"><span class="savy-cart-line-price" data-key="{{ item.key }}"><div class="pn-total-line-item" data-id="{{ item.key }}">
-<span class="saso-cart-item-line-price" data-key="{{item.key}}"><div class="pn-total-line-item" data-id="{{ item.key }}">{{ item.line_price | money }}</div></span>
-</div></span></div></h2></td>
+                <td><h2 class="td-color"><div class="pn-total-line-item" data-id="{{ item.key }}"><span class="savy-cart-line-price" data-key="{{ item.key }}"><div class="pn-total-line-item" data-id="{{ item.key }}">{{ item.line_price | money }}</div></span></div></h2></td>
               </tr>
             </tbody>
             {% endfor %}
@@ -184,17 +178,11 @@
             <tfoot>
               <tr>
                 <td {% if settings.enable_lang_switcher %}data-trans-key="cart.general.total"{%endif%}>{{ 'cart.general.total' | t }}</td>
-                <td><h2> <span class="csapps-cart-original-total">
-<span class="saso-cart-original-total"><span class="savy-cart-total-price">{{ cart.total_price | money }}</span></span>
-<span class="saso-cart-total"></span>
-</span> </h2></td>
+                <td><h2> <span class="csapps-cart-original-total"><span class="savy-cart-total-price">{{ cart.total_price | money }}</span></span> </h2></td>
               </tr>
               <tr id="payright-wrapper">
                 <td colspan="2" style="padding-right: 45px;">
-                  
-<span class="saso-cart-original-total"><script id="paybright" src=" https://app.paybright.com/api/shopify.js?public_key=dkJXwWqz9jq7SkVXCjQuuuTcqJyCD873ctxfND8VymHTHX8UZu&financedamount=$<span class="savy-cart-total-price">{{ cart.total_price | divided_by: 100.00 | round: 2 }}</span></span>
-<span class="saso-cart-total"></span>
-"></script>
+                  <script id="paybright" src=" https://app.paybright.com/api/shopify.js?public_key=dkJXwWqz9jq7SkVXCjQuuuTcqJyCD873ctxfND8VymHTHX8UZu&financedamount=$<span class="savy-cart-total-price">{{ cart.total_price | divided_by: 100.00 | round: 2 }}</span>"></script>
                   <div id="paybright-widget-container"></div>
                 </td>
               </tr>

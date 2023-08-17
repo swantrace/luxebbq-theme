@@ -333,7 +333,7 @@
       "sku": "SKU:",
       "product_type": "Product Type:",
       "quantity": "Quantity",
-      "add_to_cart": "Add to cart",
+      "add_to_cart": "In stock Add to cart",
       "but_now": "Buy Now",
       "back_to_collection": "Back to {{ title }}",
       "add_wishlist": "Add to Wishlist",
